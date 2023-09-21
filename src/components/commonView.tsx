@@ -10,6 +10,7 @@ import {
 import styled from 'styled-components';
   
   const backgroundColor = 'backgroundColor';
+  const color = 'color'
   const justifyContent = 'justifyContent';
   const paddingVertical = 'paddingVertical';
   const paddingHorizontal = 'paddingHorizontal';
@@ -48,9 +49,9 @@ import styled from 'styled-components';
       borderWidth: 1,
     },
     commonButtonTextStyle: {
-      fontSize: 14,
-      textAlign: 'center',
-      color: colors.white,
+      fontSize:15, 
+      fontWeight:'900',
+      textAlign:'center',
     },
     textNow: {
       fontSize: 16,
@@ -83,10 +84,14 @@ import styled from 'styled-components';
     },
     commonButtonStyle: {
       backgroundColor: colors.purple,
-      width: '100%',
+      width: '40%',
       marginVertical: 10,
-      borderRadius: 50,
-      height: 49,
+      borderRadius: 10,
+      height: 48,
+      borderWidth:2,
+      borderColor:colors.white,
+    
+
      
     },
     commonButtonFull: {

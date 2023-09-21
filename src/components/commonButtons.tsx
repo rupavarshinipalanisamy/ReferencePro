@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleProp,
   StyleSheet,
@@ -20,23 +20,31 @@ type ButtonProps = {
   label: string;
   style?: StyleProp<ViewStyle>;
   success?: boolean;
+  color: string;
 };
+
 export const ButtonFull: React.FC<ButtonProps> = ({
   style,
   disabled,
   funCallback,
   label,
   success,
+  color,
 }) => {
+  const [textColor, setTextColor] = useState(color);
+
+  const handleClick = () => {
+    // You can change the text color to a new color when the button is clicked.
+    setTextColor(colors.purple); // Replace 'new-color-here' with the desired color
+    funCallback();
+  };
+
   return (
     <CommonButton
       disabled={disabled}
       style={style}
-      onPress={() => {
-        funCallback();
-      }}>
-      <ButtonText>{label}</ButtonText>
+      onPress={handleClick}>
+      <ButtonText style={{ color: textColor }}>{label}</ButtonText>
     </CommonButton>
   );
 };
-

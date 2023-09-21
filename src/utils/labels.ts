@@ -1,6 +1,7 @@
 const labels ={
+logIn:'Login',
+signUp:'Sign Up',
 chat: 'Chat',
-Theme: 'Theme',
-light: 'Light'
+
 };
 export default labels;
