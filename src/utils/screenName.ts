@@ -5,4 +5,5 @@ export const screenName = {
     Verification: 'Verification',
     SignUp: 'SignUp',
     ChatSettings : 'ChatSettings',
+    Chat : 'Chat',
 };

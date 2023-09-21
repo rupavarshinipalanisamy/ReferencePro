@@ -9,7 +9,7 @@ export type AppProps = {
 const App = (props: AppProps) => {
   return (
     <View style={{flex:1}}>
-      <RootNavigation initialRouteName={screenName.WelcomePage} />
+      <RootNavigation initialRouteName={screenName.Chat} />
       {/* <WelcomePage /> */}
     </View>
   );
