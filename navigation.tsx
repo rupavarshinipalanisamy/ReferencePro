@@ -8,7 +8,7 @@ import ForgetPassword from './src/pages/authentication/forgetPassword';
 import Verification from './src/pages/authentication/verification';
 import SignUp from './src/pages/authentication/signUp';
 import ChatSettings from './src/pages/chat/chatSettings';
-import chat from './src/pages/chat/chat';
+import Chats from './src/pages/chat/Chats';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,7 +27,7 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.ForgetPassword} component={ForgetPassword} />
             <Stack.Screen name={screenName.Verification} component={Verification} />
             <Stack.Screen name={screenName.SignUp} component={SignUp} />
-            <Stack.Screen name={screenName.Chat} component={chat} />
+            <Stack.Screen name={screenName.Chats} component={Chats} />
         </Stack.Navigator>
     );
 };

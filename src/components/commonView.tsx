@@ -25,7 +25,7 @@ import styled from 'styled-components';
     },
     mainContainer: {
       flex: 1,
-      backgroundColor: colors.white,
+      backgroundColor: colors.purple,
     },
     subContainer: {
       flex: 1,
