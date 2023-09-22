@@ -5,6 +5,9 @@ import { alignSelfCenter, borderRadius10, flex1, flexRow, mh10, ml15, mt20, mt5,
 import Icon from 'react-native-vector-icons/Ionicons';
 import Archive from '../../../assets/images/archive-icon.svg'
 import { allChatsData } from '../../utils/data/chatsData';
+import { screenName } from '../../utils/screenName';
+import { useNavigation } from '@react-navigation/native';
+
 
 export type AllChatsProps = {
 
@@ -12,6 +15,8 @@ export type AllChatsProps = {
 
 
 const AllChats = (props: AllChatsProps) => {
+const navigation = useNavigation()
+
     return (
         <View style={[mt20, styles.whiteBg]}>
             <View style={[flexRow, spaceBetween, mt20, alignSelfCenter, p10, borderRadius10, { height: 50, width: 350, backgroundColor: colors.extraLightPurple }]}>
@@ -29,7 +34,7 @@ const AllChats = (props: AllChatsProps) => {
             <View>
                 {allChatsData.map((chat) => {
                     return (
-                        <TouchableOpacity key={chat.id} onPress={() => { }} style={{}}>
+                        <TouchableOpacity key={chat.id} onPress={()=>navigation.navigate(screenName.ChatView as never)} style={{}}>
                             <View style={[flexRow]}>
                                 <Image
                                     source={chat.profileImg}
