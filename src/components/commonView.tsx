@@ -52,11 +52,13 @@ import styled from 'styled-components';
       fontSize:15, 
       fontWeight:'900',
       textAlign:'center',
+      // color:colors.white,
     },
     textNow: {
       fontSize: 16,
       textAlign: 'center',
       color: colors.white,
+      fontWeight:'900'
     },
     textAppointments: {
       fontSize: 14,
@@ -95,12 +97,15 @@ import styled from 'styled-components';
      
     },
     commonButtonFull: {
-      backgroundColor: colors.blue,
-      width: '100%',
-      paddingVertical: 15,
-      marginVertical: 15,
+      backgroundColor: colors.purple,
+      width: '40%',
+      paddingVertical: 13,
+      marginVertical: 13,
       borderRadius: 5,
       alignSelf: 'center',
+      borderColor:colors.white,
+      borderWidth:2
+
     },
     commonButtonStyleBlue: {
       width: 340,
