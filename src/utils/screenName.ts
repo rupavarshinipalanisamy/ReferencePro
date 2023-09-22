@@ -6,4 +6,5 @@ export const screenName = {
     SignUp: 'SignUp',
     ChatSettings : 'ChatSettings',
     Chats : 'Chats',
+    ChatView:'ChatView'
 };

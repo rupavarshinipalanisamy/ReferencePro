@@ -9,6 +9,7 @@ import Verification from './src/pages/authentication/verification';
 import SignUp from './src/pages/authentication/signUp';
 import ChatSettings from './src/pages/chat/chatSettings';
 import Chats from './src/pages/chat/Chats';
+import ChatView from './src/pages/chatView/chatView';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +29,8 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.Verification} component={Verification} />
             <Stack.Screen name={screenName.SignUp} component={SignUp} />
             <Stack.Screen name={screenName.Chats} component={Chats} />
+            <Stack.Screen name={screenName.ChatView} component={ChatView} />
+
         </Stack.Navigator>
     );
 };
