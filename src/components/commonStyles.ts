@@ -112,6 +112,9 @@ margin:30,
   mr15:{
     marginRight:15
    },
+   mt5: {
+    marginTop: 5,
+  },
   mt10: {
     marginTop: 10,
   },
@@ -350,6 +353,9 @@ margin:30,
   borderRadius6: {
     borderRadius: 6,
   },
+  borderRadius10: {
+    borderRadius: 10,
+  },
   borderRadius0: {
     borderRadius: 0,
   },
@@ -402,6 +408,7 @@ export const { flexRow, flex1, flex025, flex050, flex075, flex002, flex048 } = s
 export const {
   borderRadius0,
   borderRadius6,
+  borderRadius10,
   borderRadius25,
   border0,
   border1,
@@ -445,6 +452,7 @@ export const {
   mt15,
   mb20,
   mt10,
+  mt5,
   mr5,
   mb15
 } = styles;
@@ -500,10 +508,10 @@ export const {
   p20,
   pl2
 } = styles;
-export const { alignItemsCenter, alignItemsLeft, alignItemsRight, } = styles;
+export const { alignItemsCenter, alignItemsLeft, alignItemsRight } = styles;
 
-export const { alignSelfCenter, alignSelfLeft, alignSelfRight, } = styles;
-export const { justifyEnd, justifyStart, justyfyCenter, spaceBetween, spaceAround, spaceEvenly, spaceCenter,} = styles;
-export const { txtCenter, txtLeft, txtRight, bgSecondary, bgPrimary, } = styles;
-export const { elevation3, elevation0, elevation1, elevation2 ,} = styles;
-export const { textRight, textLeft, textCenter ,} = styles;
+export const { alignSelfCenter, alignSelfLeft, alignSelfRight } = styles;
+export const { justifyEnd, justifyStart, justyfyCenter, spaceBetween, spaceAround, spaceEvenly, spaceCenter} = styles;
+export const { txtCenter, txtLeft, txtRight, bgSecondary, bgPrimary } = styles;
+export const { elevation3, elevation0, elevation1, elevation2 } = styles;
+export const { textRight, textLeft, textCenter } = styles;

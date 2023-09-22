@@ -7,6 +7,8 @@ export const colors = {
     textcolorGray:'#616161',
     selectedackgroundcolor:'#F8ECFF',
     circleColor:'#FCF6FF',
+    lightPurple : '#DBB0F5',
+    extraLightPurple : '#F8ECFF',
     green: '#1BA345',
     red: '#DE3E44',
     borderTextColor: '#DBDBDB',
@@ -18,3 +20,4 @@ export const colors = {
     
   };
   
+

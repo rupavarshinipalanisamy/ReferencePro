@@ -27,6 +27,10 @@ import styled from 'styled-components';
       flex: 1,
       backgroundColor: colors.white,
     },
+    purpleMainContainer: {
+      flex: 1,
+      backgroundColor: colors.purple,
+    },
     subContainer: {
       flex: 1,
       paddingHorizontal: 20,
@@ -279,6 +283,7 @@ import styled from 'styled-components';
   const {
     row,
     mainContainer,
+    purpleMainContainer,
     subContainer,
     textInputStyle,
     inputStyle,
@@ -320,6 +325,10 @@ import styled from 'styled-components';
   export const MainContainer = styled(SafeAreaView)<{secondary?: boolean}>`
     ${mainContainer};
   `;
+
+  export const PurpleMainContainer = styled(SafeAreaView)<{secondary?: boolean}>`
+  ${purpleMainContainer};
+`;
   
   export const ButtonText = styled(Text)`
     ${commonButtonTextStyle};

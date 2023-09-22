@@ -8,6 +8,8 @@ import ForgetPassword from './src/pages/authentication/forgetPassword';
 import Verification from './src/pages/authentication/verification';
 import SignUp from './src/pages/authentication/signUp';
 import ChatSettings from './src/pages/chat/chatSettings';
+import Chats from './src/pages/chat/Chats';
+import ChatView from './src/pages/chatView/chatView';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,12 +22,15 @@ const HomeNavigation = (props: NavigationProps) => {
         <Stack.Navigator
             screenOptions={{ headerShown: false }}
             initialRouteName={props.initialRouteName}>
-                <Stack.Screen name={screenName.ChatSettings} component={ChatSettings} />
+            <Stack.Screen name={screenName.ChatSettings} component={ChatSettings} />
             <Stack.Screen name={screenName.WelcomePage} component={WelcomePage} />
             <Stack.Screen name={screenName.LoginEmail} component={LoginEmail} />
             <Stack.Screen name={screenName.ForgetPassword} component={ForgetPassword} />
             <Stack.Screen name={screenName.Verification} component={Verification} />
             <Stack.Screen name={screenName.SignUp} component={SignUp} />
+            <Stack.Screen name={screenName.Chats} component={Chats} />
+            <Stack.Screen name={screenName.ChatView} component={ChatView} />
+
         </Stack.Navigator>
     );
 };
@@ -34,8 +39,8 @@ interface RootNavigationProps {
     initialRouteName: string;
 };
 
-const RootNavigation = (props: RootNavigationProps)=>{
-    return(
+const RootNavigation = (props: RootNavigationProps) => {
+    return (
         <NavigationContainer>
             <HomeNavigation initialRouteName={props.initialRouteName} />
         </NavigationContainer>
