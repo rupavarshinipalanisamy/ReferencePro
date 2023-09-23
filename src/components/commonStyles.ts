@@ -225,7 +225,6 @@ const styles = StyleSheet.create({
   },
   pr18:{
     paddingRight:18
-
   },
 
   pl30: {
@@ -389,6 +388,12 @@ const styles = StyleSheet.create({
   borderDangerColor: {
     borderColor: colors.red,
   },
+  letterSpacing03 : {
+    letterSpacing : 0.3
+  },
+  letterSpacing04 : {
+    letterSpacing : 0.4
+  }
 });
 
 export const { flexRow, flex1, flex025, flex050, flex075, flex002, flex048 } = styles;
@@ -405,6 +410,8 @@ export const {
   borderColor,
   borderDangerColor,
   borderSecondaryColor,
+  letterSpacing03,
+  letterSpacing04,
 } = styles;
 export const {
   m5,

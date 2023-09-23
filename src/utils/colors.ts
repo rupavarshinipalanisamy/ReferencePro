@@ -5,7 +5,7 @@ export const colors = {
     extraLightPurple : '#F8ECFF',
     blue: '#0566FF',
     white: '#FFFFFF',
-    black: '#0000',
+    black: '#000000',
     textcolorGray: '#616161',
     selectedackgroundcolor: '#F8ECFF',
     green: '#1BA345',
@@ -13,4 +13,5 @@ export const colors = {
     borderTextColor: '#DBDBDB',
     placeholderTextColor: '#494949',
     dark: '#333333',
+    lightGrey : '#E0E0E0',
 };
