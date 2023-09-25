@@ -17,6 +17,7 @@ export type chatProps = {
 const Chats = (props: chatProps) => {
     const [selectedTab, setSelectedTab] = useState('allChat');
     const [selectedCards, setSelectedCards] = useState<number[]>([]);
+    const [isCustomActionBar, setIsCustomActionBar] = useState(false);
 
     const tabs = [
         { label: labels.AllChats },
@@ -26,13 +27,25 @@ const Chats = (props: chatProps) => {
 
     const handleTabPress = (tab: string) => {
         setSelectedTab(tab);
+        setSelectedCards([]);
+        setIsCustomActionBar(false);
     };
 
     const handleCardSelection = (cardId: number) => {
-        if (selectedCards.includes(cardId)) {
-            setSelectedCards(selectedCards.filter((id) => id !== cardId));
+        const updatedSelectedCards = [...selectedCards];
+
+        if (updatedSelectedCards.includes(cardId)) {
+            updatedSelectedCards.splice(updatedSelectedCards.indexOf(cardId), 1);
         } else {
-            setSelectedCards([...selectedCards, cardId]);
+            updatedSelectedCards.push(cardId);
+        }
+
+        setSelectedCards(updatedSelectedCards);
+
+        if (updatedSelectedCards.length > 0 && !isCustomActionBar) {
+            setIsCustomActionBar(true);
+        } else if (updatedSelectedCards.length === 0) {
+            setIsCustomActionBar(false);
         }
     };
 
@@ -40,12 +53,12 @@ const Chats = (props: chatProps) => {
         <Fragment>
             <PurpleMainContainer>
                 <StatusBar backgroundColor={colors.purple} />
-                {selectedCards.length === 0 ? (
-                    <ChatHeader title={labels.Chats} />
-                ) : (
+                {isCustomActionBar ? (
                     <CustomActionBar text={selectedCards.length} />
+                ) : (
+                    <ChatHeader title={labels.Chats} />
                 )}
-                <CustomActionBarSecond />
+                <CustomActionBarSecond itemNumber={3} />
                 <View style={flex1}>
                     <TabControl tabs={tabs} activeTab={selectedTab} onTabPress={handleTabPress} />
                     {selectedTab === labels.AllChats && (
@@ -54,8 +67,15 @@ const Chats = (props: chatProps) => {
                             onCardSelection={handleCardSelection}
                         />
                     )}
-                    {selectedTab === labels.PinnedChat && <PinnedChats />}
-                    {selectedTab === labels.ArchiveChat && <ArchiveChats />}
+                    {selectedTab === labels.PinnedChat && (
+                        <PinnedChats selectedCards={selectedCards}
+                            onCardSelection={handleCardSelection} />
+                    )}
+                    {selectedTab === labels.ArchiveChat && (
+                        <ArchiveChats
+                            selectedCards={selectedCards}
+                            onCardSelection={handleCardSelection} />
+                    )}
                 </View>
             </PurpleMainContainer>
         </Fragment>

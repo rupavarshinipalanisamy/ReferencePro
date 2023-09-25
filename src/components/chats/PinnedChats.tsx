@@ -10,11 +10,14 @@ import { colors } from '../../utils/colors';
 import { DevWidth } from '../../utils/device';
 
 export type PinnedChatsProps = {
-
+    selectedCards: number[];
+    onCardSelection: (cardId: number) => void;
 }
 
 
-const PinnedChats = (props: PinnedChatsProps) => {
+const PinnedChats = ({ selectedCards, onCardSelection }: PinnedChatsProps) => {
+
+
     return (
         <View style={[flex1, mt20, styles.whiteBg]}>
             <View style={flex1}>
@@ -22,7 +25,22 @@ const PinnedChats = (props: PinnedChatsProps) => {
                     <View key={chat.id}>
                         <ScrollView>
                             {chat.id === 1 ? <View style={mv15} /> : <CommonLineDividerGrey style={mv15} />}
-                            <TouchableOpacity style={[mh20, { backgroundColor: 'transparent' }]}>
+                            <TouchableOpacity onPress={() => {
+                                if (selectedCards.length === 0) {
+                                    console.log('navigated====>');
+                                } else {
+                                    onCardSelection(chat.id);
+                                }
+                            }}
+                                onLongPress={() => {
+                                    if (!selectedCards.includes(chat.id)) {
+                                        onCardSelection(chat.id);
+                                    }
+                                }} style={[mh20, {
+                                    backgroundColor: selectedCards.includes(chat.id)
+                                        ? colors.extraLightPurple
+                                        : 'transparent',
+                                }]}>
                                 <View style={[flexRow]}>
                                     <View>
                                         <Image source={chat.profileImg} style={styles.profileImg} />
