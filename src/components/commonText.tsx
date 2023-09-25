@@ -11,6 +11,9 @@ const styles = StyleSheet.create({
   white: {
     color: colors.white,
   },
+  lightBlue: {
+    color:colors.linkTextBlue,
+  },
   h1: {
     fontSize: 48,
   },
@@ -26,10 +29,23 @@ const styles = StyleSheet.create({
   h5: {
     fontSize: 20,
   },
+  h6:{
+    fontSize:18,
+  
+  },
+  h7:{
+    fontSize:16,
+  
+  },
+  h8:{
+    fontSize:14,
+  
+  },
 
   fontBold: {
     fontWeight: 'bold',
   },
+
   fontRegular: {
     fontWeight:'500',
   },
@@ -41,24 +57,35 @@ const {
   h3,
   h4,
   h5,
+  h6,
+  h7,
+  h8
 
 } = styles;
-const { black,white} = styles;
+const { black,white,lightBlue} = styles;
 const {fontBold, fontRegular} = styles;
 
-export const H6fontRegularBlack = styled(Text)`
-  ${h1};
-  ${fontRegular};
+
+export const H16BlackText = styled(Text)`
+  ${h7};
   ${black};
 `;
-export const H10fontRegularBlack = styled(Text)`
-  ${h4};
-  ${fontRegular};
+export const H16WhiteText = styled(Text)`
+  ${h7};
+  ${white};
+`;
+export const H18WhiteText = styled(Text)`
+  ${h6};
+  ${white};
+`;
+export const H14BlackText = styled(Text)`
+  ${h8};
   ${black};
 `;
-export const H10fontRegularLight = styled(Text)`
-  ${h5};
-  ${fontRegular};
+export const H14BlueText = styled(Text)`
+  ${h8};
+  ${lightBlue};
 `;
+
 
 
