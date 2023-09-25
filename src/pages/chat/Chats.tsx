@@ -17,7 +17,7 @@ export type chatProps = {
 const Chats = (props: chatProps) => {
     const [selectedTab, setSelectedTab] = useState('allChat');
     const [selectedCards, setSelectedCards] = useState<number[]>([]);
-    const [isCustomActionBar, setIsCustomActionBar] = useState(false);
+
 
     const tabs = [
         { label: labels.AllChats },
@@ -28,7 +28,6 @@ const Chats = (props: chatProps) => {
     const handleTabPress = (tab: string) => {
         setSelectedTab(tab);
         setSelectedCards([]);
-        setIsCustomActionBar(false);
     };
 
     const handleCardSelection = (cardId: number) => {
@@ -41,24 +40,40 @@ const Chats = (props: chatProps) => {
         }
 
         setSelectedCards(updatedSelectedCards);
+    };
 
-        if (updatedSelectedCards.length > 0 && !isCustomActionBar) {
-            setIsCustomActionBar(true);
-        } else if (updatedSelectedCards.length === 0) {
-            setIsCustomActionBar(false);
-        }
+    interface HeaderProps {
+        selectedTab: string;
+        selectedCards: number[];
+        handleTabPress: (tab: string) => void;
+      }
+
+    const Header = ({ selectedTab, selectedCards, handleTabPress } : HeaderProps ) => {
+        const isCustomActionBar = selectedCards.length > 0;
+        const showCustomActionBarSecond = selectedTab === labels.ArchiveChat && isCustomActionBar;
+
+        return (
+            <>
+                {showCustomActionBarSecond ? (
+                    <CustomActionBarSecond itemNumber={selectedCards.length} />
+                ) : isCustomActionBar ? (
+                    <CustomActionBar text={selectedCards.length} />
+                ) : (
+                    <ChatHeader title={labels.Chats} />
+                )}
+            </>
+        );
     };
 
     return (
         <Fragment>
             <PurpleMainContainer>
                 <StatusBar backgroundColor={colors.purple} />
-                {isCustomActionBar ? (
-                    <CustomActionBar text={selectedCards.length} />
-                ) : (
-                    <ChatHeader title={labels.Chats} />
-                )}
-                <CustomActionBarSecond itemNumber={3} />
+                <Header
+                    selectedTab={selectedTab}
+                    selectedCards={selectedCards}
+                    handleTabPress={handleTabPress}
+                />
                 <View style={flex1}>
                     <TabControl tabs={tabs} activeTab={selectedTab} onTabPress={handleTabPress} />
                     {selectedTab === labels.AllChats && (
