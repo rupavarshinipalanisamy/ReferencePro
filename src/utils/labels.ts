@@ -15,5 +15,6 @@ const labels = {
     Image : 'Image',
     guidelinespdf : 'guidelines.pdf',
     MissedVoiceCall : 'Missed Voice Call',
+    MissedVideoCall : 'Missed Voice Call',
 };
 export default labels;

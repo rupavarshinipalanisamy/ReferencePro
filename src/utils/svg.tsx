@@ -21,6 +21,7 @@ import ProfileAvatar from '../../assets/images/profileAvatar.svg'
 import ThreeDotsWhite from '../../assets/images/threeDotsWhite.svg'
 import WelcomeBottom from '../../assets/images/welcomepage_bottom.svg'
 import WelcomeCenter from '../../assets/images/welcomepage_center.svg'
+import VideoRed from '../../assets/images/VideoRed.svg'
 
 export const LeftArrowWhiteIcon = () => (
     <LeftArrowWhite />
@@ -84,4 +85,7 @@ export const WelcomeBottomIcon = () => (
 );
 export const WelcomeCenterIcon = () => (
     <WelcomeCenter />
+);
+export const VideoRedIcon = () => (
+    <VideoRed />
 );

@@ -37,7 +37,12 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     height: 1,
     backgroundColor: colors.lightGrey
-  }
+  },
+  tabContainer: {
+    fontSize: 16,
+    fontWeight: '500',
+    flexDirection: 'row',
+  },
 });
 const {
   rowSpaceBetween,
@@ -47,6 +52,7 @@ const {
   purpleMainContainer,
   subContainer,
   commonLineDividerGrey,
+  tabContainer,
 } = styles;
 
 
@@ -58,16 +64,19 @@ export const PurpleMainContainer = styled(SafeAreaView) <{ secondary?: boolean }
 `;
 export const CommonLineDividerGrey = styled(View)`
   ${commonLineDividerGrey}
-` 
+`
 export const RowSpaceBetween = styled(View)`
   ${rowSpaceBetween}
 `
-export const RowSpaceEvenly  = styled(View)`
+export const RowSpaceEvenly = styled(View)`
   ${rowSpaceEvenly}
 `
-export const RowSpaceAround  = styled(View)`
+export const RowSpaceAround = styled(View)`
   ${rowSpaceAround}
 `
-export const SubContainer  = styled(View)`
+export const SubContainer = styled(View)`
   ${subContainer}
+`
+export const TabContainer = styled(View)`
+  ${tabContainer}
 `

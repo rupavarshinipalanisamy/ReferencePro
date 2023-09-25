@@ -1,12 +1,14 @@
 import React, { Fragment, useState } from 'react';
-import { Text, View, StatusBar, TouchableOpacity } from 'react-native';
-import { PurpleMainContainer, RowSpaceBetween } from '../../components/commonView';
+import { View, StatusBar, Text, TouchableOpacity } from 'react-native';
+import { PurpleMainContainer } from '../../components/commonView';
 import { colors } from '../../utils/colors';
 import AllChats from '../../components/chats/AllChats';
 import labels from '../../utils/labels';
-import { ChatHeader, CustomActionBar, TabControl } from '../../components/commonComponents';
-import { flex1, flexRow, mh20, mr10, mv15, spaceAround, spaceBetween } from '../../components/commonStyles';
-import { ArchiveIconWhiteIcon, DeleteWhiteIcon, LeftArrowWhiteIcon, MikeWhiteIcon, PinWhiteIcon, ThreeDotsWhiteIcon } from '../../utils/svg';
+import { ChatHeader, CustomActionBar, CustomActionBarSecond, TabControl } from '../../components/commonComponents';
+import { flex1, flexRow, mh20, ml10, mv15, spaceAround, spaceBetween } from '../../components/commonStyles';
+import PinnedChats from '../../components/chats/PinnedChats';
+import ArchiveChats from '../../components/chats/ArchiveChats';
+import { ArchiveIconWhiteIcon, DeleteWhiteIcon, LeftArrowWhiteIcon, ThreeDotsWhiteIcon } from '../../utils/svg';
 
 export type chatProps = {
 
@@ -14,6 +16,8 @@ export type chatProps = {
 
 const Chats = (props: chatProps) => {
     const [selectedTab, setSelectedTab] = useState('allChat');
+    const [selectedCards, setSelectedCards] = useState<number[]>([]);
+
     const tabs = [
         { label: labels.AllChats },
         { label: labels.PinnedChat, count: 5 },
@@ -24,17 +28,34 @@ const Chats = (props: chatProps) => {
         setSelectedTab(tab);
     };
 
+    const handleCardSelection = (cardId: number) => {
+        if (selectedCards.includes(cardId)) {
+            setSelectedCards(selectedCards.filter((id) => id !== cardId));
+        } else {
+            setSelectedCards([...selectedCards, cardId]);
+        }
+    };
+
     return (
         <Fragment>
             <PurpleMainContainer>
                 <StatusBar backgroundColor={colors.purple} />
-                <ChatHeader title={labels.Chats} />
-                <CustomActionBar text={2} />
-                <View style = {flex1}>
+                {selectedCards.length === 0 ? (
+                    <ChatHeader title={labels.Chats} />
+                ) : (
+                    <CustomActionBar text={selectedCards.length} />
+                )}
+                <CustomActionBarSecond />
+                <View style={flex1}>
                     <TabControl tabs={tabs} activeTab={selectedTab} onTabPress={handleTabPress} />
-                    {selectedTab === labels.AllChats && <AllChats />}
-                    {selectedTab === labels.PinnedChat && <Text>pinned chat</Text>}
-                    {selectedTab === labels.ArchiveChat && <Text>archive chat</Text>}
+                    {selectedTab === labels.AllChats && (
+                        <AllChats
+                            selectedCards={selectedCards}
+                            onCardSelection={handleCardSelection}
+                        />
+                    )}
+                    {selectedTab === labels.PinnedChat && <PinnedChats />}
+                    {selectedTab === labels.ArchiveChat && <ArchiveChats />}
                 </View>
             </PurpleMainContainer>
         </Fragment>

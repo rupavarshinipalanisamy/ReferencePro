@@ -1,10 +1,9 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Avatar from '../../assets/images/profileAvatar.svg';
-import { flexRow, mh10, mh20, mr10, mv15, p5, spaceAround, spaceBetween } from './commonStyles';
+import { flexRow, mh10, mh20, ml10, mr10, mv15, p5, spaceAround, spaceBetween } from './commonStyles';
 import { colors } from '../utils/colors';
-import { ArchiveIconWhiteIcon, DeleteWhiteIcon, LeftArrowWhiteIcon, MikeWhiteIcon, PinWhiteIcon, ThreeDotsWhiteIcon } from '../utils/svg';
+import { ArchiveIconWhiteIcon, DeleteWhiteIcon, LeftArrowWhiteIcon, MikeWhiteIcon, PinWhiteIcon, ProfileAvatarIcon, ThreeDotsWhiteIcon } from '../utils/svg';
 
 // ====================   Chat based Header Component   ====================
 
@@ -27,7 +26,7 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({ title }) => {
                     <Icon name="add-outline" size={25} color={colors.white} style={mh10} />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => { }}>
-                    <Avatar />
+                    <ProfileAvatarIcon />
                 </TouchableOpacity>
             </View>
         </View>
@@ -85,7 +84,7 @@ export const TabControl: React.FC<TabControlProps> = ({ tabs, activeTab, onTabPr
 // ====================   NavBar while selecting cards in Chat page   ====================
 
 interface CustomActionBarProps {
-    text ?: number;
+    text?: number;
     onPinPress?: () => void;
     onDeletePress?: () => void;
     onMikePress?: () => void;
@@ -102,31 +101,74 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
     onThreeDotsPress,
 }) => {
     return (
-        <View style={flexRow}>
+        <View style={[flexRow, spaceBetween, mh20, mv15]}>
             <View style={flexRow}>
                 <LeftArrowWhiteIcon />
-                <Text>{text}</Text>
+                {/* <Text>{text}</Text> */}
+                <View style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)', height: 20, width: 20, borderRadius: 20, }}>
+                    <Text style={{ textAlign: 'center', color: colors.white, fontSize: 14 }}>{text}</Text>
+                </View>
             </View>
             <View style={[flexRow, spaceAround]}>
-                <TouchableOpacity style = {mr10} onPress={onPinPress}>
+                <TouchableOpacity style={ml10} onPress={onPinPress}>
                     <PinWhiteIcon />
                 </TouchableOpacity>
-                <TouchableOpacity style = {mr10} onPress={onDeletePress}>
+                <TouchableOpacity style={ml10} onPress={onDeletePress}>
                     <DeleteWhiteIcon />
                 </TouchableOpacity>
-                <TouchableOpacity style = {mr10} onPress={onMikePress}>
+                <TouchableOpacity style={ml10} onPress={onMikePress}>
                     <MikeWhiteIcon />
                 </TouchableOpacity>
-                <TouchableOpacity style = {mr10} onPress={onArchivePress}>
+                <TouchableOpacity style={ml10} onPress={onArchivePress}>
                     <ArchiveIconWhiteIcon />
                 </TouchableOpacity>
-                <TouchableOpacity style = {mr10} onPress={onThreeDotsPress}>
+                <TouchableOpacity style={ml10} onPress={onThreeDotsPress}>
                     <ThreeDotsWhiteIcon />
                 </TouchableOpacity>
             </View>
         </View>
     );
 };
+
+
+// ====================   NavBar while selecting cards in Archive chat page   ====================
+
+interface CustomActionBarSecondProps {
+    itemNumber: number;
+    onDeletePress?: () => void;
+    onArchivePress?: () => void;
+    onMorePress?: () => void;
+}
+
+export const CustomActionBarSecond: React.FC<CustomActionBarSecondProps> = ({
+    itemNumber,
+    onDeletePress,
+    onArchivePress,
+    onMorePress,
+}) => {
+    return (
+        <View style={[flexRow, spaceBetween, mh20, mv15]}>
+            <View style = {flexRow}>
+                <LeftArrowWhiteIcon />
+                <View style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)', height: 20, width: 20, borderRadius: 20, }}>
+                    <Text style={{ textAlign: 'center', color: colors.white, fontSize: 14 }}>{itemNumber}</Text>
+                </View>
+            </View>
+            <View style={[flexRow, spaceAround]}>
+                <TouchableOpacity style={ml10} onPress={onDeletePress}>
+                    <DeleteWhiteIcon />
+                </TouchableOpacity>
+                <TouchableOpacity style={ml10} onPress={onArchivePress}>
+                    <ArchiveIconWhiteIcon />
+                </TouchableOpacity>
+                <TouchableOpacity style={ml10} onPress={onMorePress}>
+                    <ThreeDotsWhiteIcon />
+                </TouchableOpacity>
+            </View>
+        </View>
+    );
+};
+
 
 
 const styles = StyleSheet.create({

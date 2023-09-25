@@ -1,51 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
-import { colors } from '../../utils/colors';
-import { alignSelfCenter, borderRadius10, flex1, flexRow, mh20, ml15, mr5, mt20, mv15, p10, pb5, spaceBetween, spaceEvenly } from '../commonStyles';
-import { allChatsData } from '../../utils/data/chatsData';
-import { DevWidth } from '../../utils/device';
+import { flex1, flexRow, mh20, mr5, mt20, mt5, mv15, pb5 } from '../commonStyles';
+import { PinnedChatsdata, allChatsData } from '../../utils/data/chatsData';
 import { CommonLineDividerGrey, RowSpaceBetween, RowSpaceEvenly } from '../commonView';
+import { H15Green, H15Grey, H15Red, H16SemiBoldBlack } from '../commonText';
 import labels from '../../utils/labels';
-import { H15Green, H15Grey, H15Red, H16SemiBoldBlack, H18BoldGrey } from '../commonText';
 import { ArchiveIconBlackIcon, BlackDoubleTickIcon, BlackSingleTickIcon, BlueDoubleTickIcon, FileBlackIcon, MikeBlackIcon, PhoneIncomingRedIcon, PictureBlackIcon, PinBlackIcon, VideoBlackIcon } from '../../utils/svg';
+import { colors } from '../../utils/colors';
+import { DevWidth } from '../../utils/device';
 
-export type AllChatsProps = {
-    selectedCards: number[];
-    onCardSelection: (cardId: number) => void;
+export type ArchiveChatsProps = {
+
 }
 
 
-const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
+const ArchiveChats = (props: ArchiveChatsProps) => {
     return (
         <View style={[flex1, mt20, styles.whiteBg]}>
-            <View style={[flexRow, spaceBetween, mt20, alignSelfCenter, p10, borderRadius10, styles.archiveCard]}>
-                <View style={[flexRow, spaceEvenly]}>
-                    <View>
-                        <ArchiveIconBlackIcon />
-                    </View>
-                    <H18BoldGrey style={ml15}>{labels.Archived}</H18BoldGrey>
-                </View>
-                <View style={[styles.roundNumber, { backgroundColor: colors.red }]}>
-                    <Text style={[styles.roundNumberText]}>10</Text>
-                </View>
-            </View>
             <View style={flex1}>
-                {allChatsData.map((chat) => (
+                {PinnedChatsdata.map((chat) => (
                     <View key={chat.id}>
                         <ScrollView>
-                            <CommonLineDividerGrey style={mv15} />
-                            <TouchableOpacity onPress={() => {
-                                if (selectedCards.length === 0) {
-                                    console.log('navigated====>');
-                                } else {
-                                    onCardSelection(chat.id);
-                                }
-                            }}
-                                onLongPress={() => {
-                                    if (!selectedCards.includes(chat.id)) {
-                                        onCardSelection(chat.id);
-                                    }
-                                }} style={[mh20, { backgroundColor: selectedCards.includes(chat.id) ? colors.extraLightPurple : 'transparent' }]}>
+                            {chat.id === 1 ? <View style={mv15} /> : <CommonLineDividerGrey style={mv15} />}
+                            <TouchableOpacity style={[mh20, { backgroundColor: 'transparent' }]}>
                                 <View style={[flexRow]}>
                                     <View>
                                         <Image source={chat.profileImg} style={styles.profileImg} />
@@ -63,7 +40,7 @@ const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
                                                     <View style={mr5}>
                                                         <BlueDoubleTickIcon />
                                                     </View>
-                                                    <PinBlackIcon />
+                                                    <ArchiveIconBlackIcon />
                                                 </RowSpaceEvenly>
                                             </RowSpaceBetween>
                                         ) : chat.id === 2 ? (
@@ -78,7 +55,7 @@ const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
                                                     <View style={mr5}>
                                                         <BlueDoubleTickIcon />
                                                     </View>
-                                                    <PinBlackIcon />
+                                                    <ArchiveIconBlackIcon />
                                                 </RowSpaceEvenly>
                                             </RowSpaceBetween>
                                         ) : chat.id === 3 ? (
@@ -89,14 +66,22 @@ const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
                                                     </View>
                                                     <H15Grey>{labels.Audio}</H15Grey>
                                                 </RowSpaceEvenly>
-                                                <BlackSingleTickIcon />
+                                                <RowSpaceEvenly>
+                                                    <View style={mr5}>
+                                                        <BlackSingleTickIcon />
+                                                    </View>
+                                                    <ArchiveIconBlackIcon />
+                                                </RowSpaceEvenly>
                                             </RowSpaceBetween>
                                         ) : chat.id === 4 ? (
                                             <RowSpaceBetween>
                                                 <H15Grey>{labels.Chaturl}</H15Grey>
-                                                <View style={[styles.roundNumber, { backgroundColor: colors.purple }]}>
-                                                    <Text style={styles.roundNumberText}>3</Text>
-                                                </View>
+                                                <RowSpaceEvenly>
+                                                    <View style={[styles.roundNumber, mr5, { backgroundColor: colors.purple }]}>
+                                                        <Text style={styles.roundNumberText}>3</Text>
+                                                    </View>
+                                                    <ArchiveIconBlackIcon />
+                                                </RowSpaceEvenly>
                                             </RowSpaceBetween>
                                         ) : chat.id === 5 ? (
                                             <RowSpaceBetween>
@@ -106,22 +91,43 @@ const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
                                                     </View>
                                                     <H15Grey>{labels.Image}</H15Grey>
                                                 </RowSpaceEvenly>
-                                                <BlackDoubleTickIcon />
+                                                <RowSpaceBetween>
+                                                    <View style={[mr5, mt5]}>
+                                                        <BlackDoubleTickIcon />
+                                                    </View>
+                                                    <ArchiveIconBlackIcon />
+                                                </RowSpaceBetween>
                                             </RowSpaceBetween>
                                         ) : chat.id === 6 ? (
-                                            <View style={[flexRow]}>
-                                                <View style={mr5} >
-                                                    <FileBlackIcon />
-                                                </View>
-                                                <H15Grey>{labels.guidelinespdf}</H15Grey>
-                                            </View>
+                                            <RowSpaceBetween>
+                                                <RowSpaceBetween>
+                                                    <View style={mr5} >
+                                                        <FileBlackIcon />
+                                                    </View>
+                                                    <H15Grey>{labels.guidelinespdf}</H15Grey>
+                                                </RowSpaceBetween>
+                                                <ArchiveIconBlackIcon />
+                                            </RowSpaceBetween>
+                                        ) : chat.id === 7 ? (
+                                            <RowSpaceBetween>
+                                                <RowSpaceBetween>
+                                                    <View style={mr5} >
+                                                        <PhoneIncomingRedIcon />
+                                                    </View>
+                                                    <H15Red>{labels.MissedVoiceCall}</H15Red>
+                                                </RowSpaceBetween>
+                                                <ArchiveIconBlackIcon />
+                                            </RowSpaceBetween>
                                         ) : (
-                                            <View style={[flexRow]}>
-                                                <View style={mr5} >
-                                                    <PhoneIncomingRedIcon />
-                                                </View>
-                                                <H15Red>{labels.MissedVoiceCall}</H15Red>
-                                            </View>
+                                            <RowSpaceBetween>
+                                                <RowSpaceBetween>
+                                                    <View style={mr5} >
+                                                        <PhoneIncomingRedIcon />
+                                                    </View>
+                                                    <H15Red>{labels.MissedVideoCall}</H15Red>
+                                                </RowSpaceBetween>
+                                                <ArchiveIconBlackIcon />
+                                            </RowSpaceBetween>
                                         )
                                         }
                                     </View>
@@ -130,9 +136,6 @@ const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
                         </ScrollView>
                     </View>
                 ))}
-            </View>
-            <View>
-                <Text>Total Selected Cards: {selectedCards.length}</Text>
             </View>
         </View >
     )
@@ -181,4 +184,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default AllChats
+export default ArchiveChats
