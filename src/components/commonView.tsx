@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
   purpleMainContainer: {
     flex: 1,
-    backgroundColor: colors.purple,
+    backgroundColor: colors.purpleVar3,
   },
   subContainer: {
     flex: 1,
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     width: '88%',
     alignSelf: 'center',
     height: 1,
-    backgroundColor: colors.lightGrey
+    backgroundColor: colors.greyVar0
   },
   tabContainer: {
     fontSize: 16,

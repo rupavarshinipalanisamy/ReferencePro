@@ -68,7 +68,7 @@ const Chats = (props: chatProps) => {
     return (
         <Fragment>
             <PurpleMainContainer>
-                <StatusBar backgroundColor={colors.purple} />
+                <StatusBar backgroundColor={colors.purpleVar3} />
                 <Header
                     selectedTab={selectedTab}
                     selectedCards={selectedCards}

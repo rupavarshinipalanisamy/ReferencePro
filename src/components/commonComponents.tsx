@@ -59,7 +59,7 @@ export const TabControl: React.FC<TabControlProps> = ({ tabs, activeTab, onTabPr
                         <Text
                             style={[
                                 styles.tabText,
-                                { color: activeTab === tabInfo.label ? colors.white : colors.lightPurple },
+                                { color: activeTab === tabInfo.label ? colors.white : colors.purpleVar2 },
                             ]}
                         >
                             {tabInfo.label}
@@ -68,7 +68,7 @@ export const TabControl: React.FC<TabControlProps> = ({ tabs, activeTab, onTabPr
                             <View
                                 style={[
                                     styles.roundNumber,
-                                    { backgroundColor: activeTab === tabInfo.label ? colors.white : colors.lightPurple },
+                                    { backgroundColor: activeTab === tabInfo.label ? colors.white : colors.purpleVar2 },
                                 ]}
                             >
                                 <Text style={styles.roundNumberText}>{tabInfo.count}</Text>
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
     },
     roundNumberText: {
         textAlign: 'center',
-        color: colors.purple,
+        color: colors.purpleVar3,
         fontSize: 12,
     },
 });

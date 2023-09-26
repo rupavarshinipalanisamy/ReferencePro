@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     color: colors.red,
   },
   textcolorGray : {
-    color : colors.textcolorGray,
+    color : colors.greyVar4,
   },
   h1: {
     fontSize: 48,

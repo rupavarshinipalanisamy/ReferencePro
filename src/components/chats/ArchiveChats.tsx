@@ -1,13 +1,13 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
-import { flex1, flexRow, mh20, mr5, mt20, mt5, mv15, pb5 } from '../commonStyles';
-import { PinnedChatsdata, allChatsData } from '../../utils/data/chatsData';
+import { flex1, flexRow, mr5, mt20, mt5, mv10, pb5, ph20, pv15 } from '../commonStyles';
+import { PinnedChatsdata } from '../../utils/data/chatsData';
 import { CommonLineDividerGrey, RowSpaceBetween, RowSpaceEvenly } from '../commonView';
 import { H15Green, H15Grey, H15Red, H16SemiBoldBlack } from '../commonText';
 import labels from '../../utils/labels';
-import { ArchiveIconBlackIcon, BlackDoubleTickIcon, BlackSingleTickIcon, BlueDoubleTickIcon, FileBlackIcon, MikeBlackIcon, PhoneIncomingRedIcon, PictureBlackIcon, PinBlackIcon, VideoBlackIcon } from '../../utils/svg';
+import { ArchiveIconBlackIcon, BlackDoubleTickIcon, BlackSingleTickIcon, BlueDoubleTickIcon, FileBlackIcon, MikeBlackIcon, PhoneIncomingRedIcon, PictureBlackIcon, VideoBlackIcon } from '../../utils/svg';
 import { colors } from '../../utils/colors';
-import { DevWidth } from '../../utils/device';
+import { DevHeight, DevWidth } from '../../utils/device';
 
 export type ArchiveChatsProps = {
     selectedCards: number[];
@@ -22,7 +22,7 @@ const ArchiveChats = ({ selectedCards, onCardSelection }: ArchiveChatsProps) => 
                 {PinnedChatsdata.map((chat) => (
                     <View key={chat.id}>
                         <ScrollView>
-                            {chat.id === 1 ? <View style={mv15} /> : <CommonLineDividerGrey style={mv15} />}
+                            {chat.id === 1 ? <View style={mv10} /> : <CommonLineDividerGrey />}
                             <TouchableOpacity onPress={() => {
                                 if (selectedCards.length === 0) {
                                     console.log('navigated====>');
@@ -34,9 +34,9 @@ const ArchiveChats = ({ selectedCards, onCardSelection }: ArchiveChatsProps) => 
                                     if (!selectedCards.includes(chat.id)) {
                                         onCardSelection(chat.id);
                                     }
-                                }} style={[mh20, {
+                                }} style={[ph20, pv15, {
                                     backgroundColor: selectedCards.includes(chat.id)
-                                        ? colors.extraLightPurple
+                                        ? colors.purpleVar1
                                         : 'transparent',
                                 }]}>
                                 <View style={[flexRow]}>
@@ -93,7 +93,7 @@ const ArchiveChats = ({ selectedCards, onCardSelection }: ArchiveChatsProps) => 
                                             <RowSpaceBetween>
                                                 <H15Grey>{labels.Chaturl}</H15Grey>
                                                 <RowSpaceEvenly>
-                                                    <View style={[styles.roundNumber, mr5, { backgroundColor: colors.purple }]}>
+                                                    <View style={[styles.roundNumber, mr5, { backgroundColor: colors.purpleVar3 }]}>
                                                         <Text style={styles.roundNumberText}>3</Text>
                                                     </View>
                                                     <ArchiveIconBlackIcon />
@@ -153,6 +153,11 @@ const ArchiveChats = ({ selectedCards, onCardSelection }: ArchiveChatsProps) => 
                     </View>
                 ))}
             </View>
+            <View>
+                <View style = {[{}]}>
+
+                </View>
+            </View>
         </View >
     )
 }
@@ -190,7 +195,7 @@ const styles = StyleSheet.create({
     archiveCard: {
         height: 45,
         width: 0.90 * DevWidth,
-        backgroundColor: colors.extraLightPurple
+        backgroundColor: colors.purpleVar1
     },
     profileImg: {
         width: 40,
