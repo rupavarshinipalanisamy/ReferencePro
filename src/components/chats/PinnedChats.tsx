@@ -1,39 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
-import { colors } from '../../utils/colors';
-import { alignSelfCenter, borderRadius10, flex1, flexRow, mb15, mh20, ml15, mr5, mt20, mv10, mv15, p10, pb5, ph10, ph20, pv10, pv15, spaceBetween, spaceEvenly } from '../commonStyles';
-import { allChatsData } from '../../utils/data/chatsData';
-import { DevWidth } from '../../utils/device';
+import { flex1, flexRow, mh20, mr5, mt20, mt5, mv10, mv15, pb5, ph20, pv15 } from '../commonStyles';
+import { PinnedChatsdata, allChatsData } from '../../utils/data/chatsData';
 import { CommonLineDividerGrey, RowSpaceBetween, RowSpaceEvenly } from '../commonView';
+import { H15Green, H15Grey, H15Red, H16SemiBoldBlack } from '../commonText';
 import labels from '../../utils/labels';
-import { H15Green, H15Grey, H15Red, H16SemiBoldBlack, H18BoldGrey } from '../commonText';
-import { ArchiveIconBlackIcon, BlackDoubleTickIcon, BlackSingleTickIcon, BlueDoubleTickIcon, FileBlackIcon, MikeBlackIcon, PhoneIncomingRedIcon, PictureBlackIcon, PinBlackIcon, VideoBlackIcon } from '../../utils/svg';
+import { BlackDoubleTickIcon, BlackSingleTickIcon, BlueDoubleTickIcon, FileBlackIcon, MikeBlackIcon, PhoneIncomingRedIcon, PictureBlackIcon, PinBlackIcon, VideoBlackIcon, VideoRedIcon } from '../../utils/svg';
+import { colors } from '../../utils/colors';
+import { DevWidth } from '../../utils/device';
 
-export type AllChatsProps = {
+export type PinnedChatsProps = {
     selectedCards: number[];
     onCardSelection: (cardId: number) => void;
 }
 
 
-const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
+const PinnedChats = ({ selectedCards, onCardSelection }: PinnedChatsProps) => {
+
+
     return (
         <View style={[flex1, mt20, styles.whiteBg]}>
-            <View style={[flexRow, spaceBetween, mt20, alignSelfCenter, p10, borderRadius10, styles.archiveCard, mb15]}>
-                <View style={[flexRow, spaceEvenly]}>
-                    <View>
-                        <ArchiveIconBlackIcon />
-                    </View>
-                    <H18BoldGrey style={ml15}>{labels.Archived}</H18BoldGrey>
-                </View>
-                <View style={[styles.roundNumber, { backgroundColor: colors.red }]}>
-                    <Text style={[styles.roundNumberText]}>10</Text>
-                </View>
-            </View>
             <View style={flex1}>
-                {allChatsData.map((chat) => (
+                {PinnedChatsdata.map((chat) => (
                     <View key={chat.id}>
                         <ScrollView>
-                            <CommonLineDividerGrey />
+                            {chat.id === 1 ? <View style={mv10} /> : <CommonLineDividerGrey />}
                             <TouchableOpacity onPress={() => {
                                 if (selectedCards.length === 0) {
                                     console.log('navigated====>');
@@ -45,7 +36,11 @@ const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
                                     if (!selectedCards.includes(chat.id)) {
                                         onCardSelection(chat.id);
                                     }
-                                }} style={[ph20, pv15, { backgroundColor: selectedCards.includes(chat.id) ? colors.purpleVar1 : 'transparent' }]}>
+                                }} style={[ph20, pv15, {
+                                    backgroundColor: selectedCards.includes(chat.id)
+                                        ? colors.purpleVar1
+                                        : 'transparent',
+                                }]}>
                                 <View style={[flexRow]}>
                                     <View>
                                         <Image source={chat.profileImg} style={styles.profileImg} />
@@ -89,14 +84,24 @@ const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
                                                     </View>
                                                     <H15Grey>{labels.Audio}</H15Grey>
                                                 </RowSpaceEvenly>
-                                                <BlackSingleTickIcon />
+                                                <RowSpaceEvenly>
+                                                    <View style={mr5}>
+                                                        <BlackSingleTickIcon />
+                                                    </View>
+                                                    <PinBlackIcon />
+                                                </RowSpaceEvenly>
                                             </RowSpaceBetween>
                                         ) : chat.id === 4 ? (
                                             <RowSpaceBetween>
                                                 <H15Grey>{labels.Chaturl}</H15Grey>
-                                                <View style={[styles.roundNumber, { backgroundColor: colors.purpleVar3 }]}>
-                                                    <Text style={styles.roundNumberText}>3</Text>
-                                                </View>
+                                                <RowSpaceEvenly>
+                                                    <View style={[styles.roundNumber, mr5, { backgroundColor: colors.purpleVar1 }]}>
+                                                        <Text style={styles.roundNumberText}>3</Text>
+                                                    </View>
+                                                    <View style={mt5}>
+                                                        <PinBlackIcon />
+                                                    </View>
+                                                </RowSpaceEvenly>
                                             </RowSpaceBetween>
                                         ) : chat.id === 5 ? (
                                             <RowSpaceBetween>
@@ -106,22 +111,43 @@ const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
                                                     </View>
                                                     <H15Grey>{labels.Image}</H15Grey>
                                                 </RowSpaceEvenly>
-                                                <BlackDoubleTickIcon />
+                                                <RowSpaceBetween>
+                                                    <View style={mr5}>
+                                                        <BlackDoubleTickIcon />
+                                                    </View>
+                                                    <PinBlackIcon />
+                                                </RowSpaceBetween>
                                             </RowSpaceBetween>
                                         ) : chat.id === 6 ? (
-                                            <View style={[flexRow]}>
-                                                <View style={mr5} >
-                                                    <FileBlackIcon />
-                                                </View>
-                                                <H15Grey>{labels.guidelinespdf}</H15Grey>
-                                            </View>
+                                            <RowSpaceBetween>
+                                                <RowSpaceBetween>
+                                                    <View style={mr5} >
+                                                        <FileBlackIcon />
+                                                    </View>
+                                                    <H15Grey>{labels.guidelinespdf}</H15Grey>
+                                                </RowSpaceBetween>
+                                                <PinBlackIcon />
+                                            </RowSpaceBetween>
+                                        ) : chat.id === 7 ? (
+                                            <RowSpaceBetween>
+                                                <RowSpaceBetween>
+                                                    <View style={mr5} >
+                                                        <PhoneIncomingRedIcon />
+                                                    </View>
+                                                    <H15Red>{labels.MissedVoiceCall}</H15Red>
+                                                </RowSpaceBetween>
+                                                <PinBlackIcon />
+                                            </RowSpaceBetween>
                                         ) : (
-                                            <View style={[flexRow]}>
-                                                <View style={mr5} >
-                                                    <PhoneIncomingRedIcon />
-                                                </View>
-                                                <H15Red>{labels.MissedVoiceCall}</H15Red>
-                                            </View>
+                                            <RowSpaceBetween>
+                                                <RowSpaceBetween>
+                                                    <View style={mr5} >
+                                                        <VideoRedIcon />
+                                                    </View>
+                                                    <H15Red>{labels.MissedVideoCall}</H15Red>
+                                                </RowSpaceBetween>
+                                                <PinBlackIcon />
+                                            </RowSpaceBetween>
                                         )
                                         }
                                     </View>
@@ -178,4 +204,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default AllChats
+export default PinnedChats

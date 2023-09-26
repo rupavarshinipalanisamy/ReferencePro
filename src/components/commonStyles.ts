@@ -225,7 +225,6 @@ const styles = StyleSheet.create({
   },
   pr18:{
     paddingRight:18
-
   },
 
   pl30: {
@@ -269,6 +268,9 @@ const styles = StyleSheet.create({
   },
   ph15: {
     paddingHorizontal: 15,
+  },
+  ph20: {
+    paddingHorizontal: 20,
   },
   ph30: {
     paddingHorizontal: 30,
@@ -352,9 +354,6 @@ const styles = StyleSheet.create({
   borderRadius25: {
     borderRadius: 25
   },
-  bgSecondary: {
-    backgroundColor: colors.onBoardingBackgroundColor,
-  },
   bgPrimary: {
     backgroundColor: colors.white,
   },
@@ -380,15 +379,18 @@ const styles = StyleSheet.create({
   textRight: {
     textAlign: 'right',
   },
-  borderColor: {
-    borderColor: colors.placeholderSecondaryTextColor,
-  },
   borderSecondaryColor: {
-    borderColor: colors.borderTextColor,
+    borderColor: colors.greyVar1,
   },
   borderDangerColor: {
     borderColor: colors.red,
   },
+  letterSpacing03 : {
+    letterSpacing : 0.3
+  },
+  letterSpacing04 : {
+    letterSpacing : 0.4
+  }
 });
 
 export const { flexRow, flex1, flex025, flex050, flex075, flex002, flex048 } = styles;
@@ -402,9 +404,10 @@ export const {
   borderBottom1,
   borderLeft1,
   borderRight1,
-  borderColor,
   borderDangerColor,
   borderSecondaryColor,
+  letterSpacing03,
+  letterSpacing04,
 } = styles;
 export const {
   m5,
@@ -457,6 +460,7 @@ export const {
   ph5,
   ph10,
   ph15,
+  ph20,
   ph30,
   pb0,
   pb5,
@@ -495,6 +499,6 @@ export const { alignItemsCenter, alignItemsLeft, alignItemsRight } = styles;
 
 export const { alignSelfCenter, alignSelfLeft, alignSelfRight } = styles;
 export const { justifyEnd, justifyStart, justyfyCenter, spaceBetween, spaceAround, spaceEvenly, spaceCenter} = styles;
-export const { txtCenter, txtLeft, txtRight, bgSecondary, bgPrimary } = styles;
+export const { txtCenter, txtLeft, txtRight, bgPrimary } = styles;
 export const { elevation3, elevation0, elevation1, elevation2 } = styles;
 export const { textRight, textLeft, textCenter } = styles;
