@@ -4,7 +4,7 @@ import { MainContainer } from '../../components/commonView';
 import { colors } from '../../utils/colors';
 import {  flexRow,pb10, pl15, pl6, pt10,spaceBetween } from '../../components/commonStyles';
 import { H14BlackText, H16BlackText } from '../../components/commonText';
-import labels from '../../utils/labels';
+import {labels} from '../../utils/labels';
 import { FooterChatView, HeaderChatView, receiveMessage1, receiveMessage2, receiveMessage3, receiveMessage4, sentMessage1, sentMessage2, sentMessage3 } from './Messagecomponents/messages';
 import CustomIcon from '../../utils/Icons';
 import Modal from 'react-native-modal';
@@ -72,10 +72,10 @@ export const DayDetails = () => {
     );
 };
 
-export const blueVar2tick = () => {
+export const bluetick = () => {
     return (
         <View>
-            <CustomIcon name='check-all' type="MaterialCommunityIcons" color={colors.blueVar2Var1} size={16} />
+            <CustomIcon name='check-all' type="MaterialCommunityIcons" color={colors.blueVar1} size={16} />
         </View>
     )
 }
@@ -124,13 +124,13 @@ const ChatView = () => {
 
     const chatMessages = [
         { id: 1, message: receiveMessage1(), type: "receivemsg", time: "8:16 PM" },
-        { id: 2, message: sentMessage1("Good Morning Mam"), type: "sentmsg", time: "8:17 PM", icon: blueVar2tick() },
+        { id: 2, message: sentMessage1("Good Morning Mam"), type: "sentmsg", time: "8:17 PM", icon: bluetick() },
         { id: 3, message: receiveMessage2(), type: "receivemsg", time: "8:16 PM" },
-        { id: 4, message: sentMessage2(), type: "sentmsg", time: "8:17 PM", icon: blueVar2tick() },
+        { id: 4, message: sentMessage2(), type: "sentmsg", time: "8:17 PM", icon: bluetick() },
         { id: 5, message: receiveMessage3(), type: "receivemsg", time: "8:16 PM" },
-        { id: 6, message: sentMessage3(), type: "sentmsg", time: "8:17 PM", icon: blueVar2tick(), msg: Reactmsg() },
+        { id: 6, message: sentMessage3(), type: "sentmsg", time: "8:17 PM", icon: bluetick(), msg: Reactmsg() },
         { id: 7, message: receiveMessage4(), type: "receivemsg", time: "8:16 PM" },
-        { id: 8, message: sentMessage1("Thank You Mam"), type: "sentmsg", time: "8:17 PM", icon: blueVar2tick() },
+        { id: 8, message: sentMessage1("Thank You Mam"), type: "sentmsg", time: "8:17 PM", icon: bluetick() },
     ];
     const tabs = [
         { label: "All", count: 1 },

@@ -3,8 +3,8 @@ import { Text, View, Image, ImageBackground, StyleSheet, TouchableOpacity, TextI
 import { colors } from '../../../utils/colors';
 import { flex1, flexRow, pt10, pl10, spaceBetween, alignItemsCenter, justyfyCenter, pt5, pl13, p5 } from '../../../components/commonStyles';
 import CustomIcon from '../../..//utils/Icons';
-import { H14BlackText, H14blueVar2Text, H16WhiteText, H18WhiteText } from '../../../components/commonText';
-import labels from '../../../utils/labels';
+import { H14BlackText, H14blueVar1Text, H16WhiteText, H18WhiteText } from '../../../components/commonText';
+import {labels} from '../../../utils/labels';
 import { DevHeight, DevWidth } from '../../../utils/device';
 import AudioImg from '../../../../assets/images/Audio.svg'
 import SendImg1 from '../../../../assets/images/sentMsg.svg'
@@ -200,7 +200,7 @@ export const sentMessage3 = () => {
         <View style={{ alignItems: 'flex-end', marginHorizontal: 20, marginTop: 5 }}>
             <View style={styles.sndMsgCard}>
                 <SendImg2 />
-                <H14blueVar2Text style={p5}>{labels.chatLink}</H14blueVar2Text>
+                <H14blueVar1Text style={p5}>{labels.chatLink}</H14blueVar1Text>
             </View>
 
         </View >

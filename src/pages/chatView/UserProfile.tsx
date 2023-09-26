@@ -6,7 +6,7 @@ import { flexRow,mr5, mt10, mt15, pl10, pt10, spaceBetween } from '../../compone
 import CustomIcon from '../../utils/Icons';
 import { DevHeight } from '../../utils/device';
 import Profile from '../../../assets/images/profileView.svg'
-import labels from '../../utils/labels';
+import {labels} from '../../utils/labels';
 import { H14BlackText, H14purpleVar3Text, H18BlackText } from '../../components/commonText';
 import MessageIcon from '../../../assets/images/messageIcon.svg'
 import Media1 from '../../../assets/images/Media1.svg'

@@ -4,7 +4,7 @@ import { flex1, flexRow, mr5, mt20, mt5, mv10, pb5, ph20, pv15 } from '../common
 import { PinnedChatsdata } from '../../utils/data/chatsData';
 import { CommonLineDividerGrey, RowSpaceBetween, RowSpaceEvenly } from '../commonView';
 import { H15Green, H15Grey, H15Red, H16SemiBoldBlack } from '../commonText';
-import labels from '../../utils/labels';
+import {labels} from '../../utils/labels';
 import { ArchiveIconBlackIcon, BlackDoubleTickIcon, BlackSingleTickIcon, BlueDoubleTickIcon, FileBlackIcon, MikeBlackIcon, PhoneIncomingRedIcon, PictureBlackIcon, VideoBlackIcon } from '../../utils/svg';
 import { colors } from '../../utils/colors';
 import { DevHeight, DevWidth } from '../../utils/device';
