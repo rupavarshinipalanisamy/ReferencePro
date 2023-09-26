@@ -294,7 +294,7 @@ const styles = StyleSheet.create({
   alignSelfRight: {
     alignSelf: 'flex-end',
   },
-  justyfyCenter: {
+  justifyCenter: {
     justifyContent: 'center',
   },
   justifyStart: {
@@ -498,7 +498,7 @@ export const {
 export const { alignItemsCenter, alignItemsLeft, alignItemsRight } = styles;
 
 export const { alignSelfCenter, alignSelfLeft, alignSelfRight } = styles;
-export const { justifyEnd, justifyStart, justyfyCenter, spaceBetween, spaceAround, spaceEvenly, spaceCenter} = styles;
+export const { justifyEnd, justifyStart, justifyCenter, spaceBetween, spaceAround, spaceEvenly, spaceCenter} = styles;
 export const { txtCenter, txtLeft, txtRight, bgPrimary } = styles;
 export const { elevation3, elevation0, elevation1, elevation2 } = styles;
 export const { textRight, textLeft, textCenter } = styles;

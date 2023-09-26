@@ -3,7 +3,6 @@ import React from 'react';
 import LeftArrowWhite from '../../assets/images/leftArrowWhite.svg';
 import ArchiveIconBlack from '../../assets/images/archive-icon.svg'
 import ArchiveIconWhite from '../../assets/images/archiveWhite.svg'
-import BackgroundImage from '../../assets/images/background_image.svg'
 import BlackDoubleTick from '../../assets/images/blackDoubleTick.svg'
 import BlackSingleTick from '../../assets/images/blacksingleTick.svg'
 import BlueDoubleTick from '../../assets/images/blueDoubleTick.svg'
@@ -31,9 +30,6 @@ export const ArchiveIconBlackIcon = () => (
 );
 export const ArchiveIconWhiteIcon = () => (
     <ArchiveIconWhite />
-);
-export const BackgroundImageIcon = () => (
-    <BackgroundImage />
 );
 export const BlackDoubleTickIcon = () => (
     <BlackDoubleTick />

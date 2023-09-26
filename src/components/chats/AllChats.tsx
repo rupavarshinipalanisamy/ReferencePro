@@ -5,7 +5,7 @@ import { alignSelfCenter, borderRadius10, flex1, flexRow, mb15, mh20, ml15, mr5,
 import { allChatsData } from '../../utils/data/chatsData';
 import { DevWidth } from '../../utils/device';
 import { CommonLineDividerGrey, RowSpaceBetween, RowSpaceEvenly } from '../commonView';
-import labels from '../../utils/labels';
+import {labels} from '../../utils/labels';
 import { H15Green, H15Grey, H15Red, H16SemiBoldBlack, H18BoldGrey } from '../commonText';
 import { ArchiveIconBlackIcon, BlackDoubleTickIcon, BlackSingleTickIcon, BlueDoubleTickIcon, FileBlackIcon, MikeBlackIcon, PhoneIncomingRedIcon, PictureBlackIcon, PinBlackIcon, VideoBlackIcon } from '../../utils/svg';
 

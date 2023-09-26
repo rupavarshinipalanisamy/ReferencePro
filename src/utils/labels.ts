@@ -1,4 +1,4 @@
-const labels = {
+export const labels = {
     logIn: 'Login',
     signUp: 'Sign Up',
     chat: 'Chat',
@@ -16,5 +16,8 @@ const labels = {
     guidelinespdf : 'guidelines.pdf',
     MissedVoiceCall : 'Missed Voice Call',
     MissedVideoCall : 'Missed Voice Call',
+    Group : 'Group',
+    Status : 'Status',
+    Contact : 'Contact',
+    Call : 'Call',
 };
-export default labels;

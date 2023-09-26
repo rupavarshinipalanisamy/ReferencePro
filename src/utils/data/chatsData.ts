@@ -108,4 +108,18 @@ export const PinnedChatsdata = [
         time : '10:20 PM',
         status : 'inactive'
     },
+    {
+        id: 9,
+        name : 'Dina Brown',
+        profileImg : require('../../../assets/images/png/chatimg7.png'),
+        time : '10:20 PM',
+        status : 'inactive'
+    },
+    {
+        id: 10,
+        name : 'Judy Mercer',
+        profileImg : require('../../../assets/images/png/chatimg8.png'),
+        time : '10:20 PM',
+        status : 'inactive'
+    },
 ]

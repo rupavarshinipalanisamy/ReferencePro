@@ -3,7 +3,7 @@ import { View, StatusBar, Text, TouchableOpacity } from 'react-native';
 import { PurpleMainContainer } from '../../components/commonView';
 import { colors } from '../../utils/colors';
 import AllChats from '../../components/chats/AllChats';
-import labels from '../../utils/labels';
+import {labels} from '../../utils/labels';
 import { ChatHeader, CustomActionBar, CustomActionBarSecond, TabControl } from '../../components/commonComponents';
 import { flex1, flexRow, mh20, ml10, mv15, spaceAround, spaceBetween } from '../../components/commonStyles';
 import PinnedChats from '../../components/chats/PinnedChats';
