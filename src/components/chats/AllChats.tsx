@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { colors } from '../../utils/colors';
-import { alignSelfCenter, borderRadius10, flex1, flexRow, mb15, mh20, ml15, mr5, mt20, mv10, mv15, p10, pb5, ph10, ph20, pv10, pv15, spaceBetween, spaceEvenly } from '../commonStyles';
+import { alignSelfCenter, borderRadius10, flex1, flexRow,  mb15,  ml15, mr5, mt20, mt5,  p10, pb5,ph20, pv15, spaceBetween, spaceEvenly } from '../commonStyles';
 import { allChatsData } from '../../utils/data/chatsData';
 import { DevWidth } from '../../utils/device';
 import { CommonLineDividerGrey, RowSpaceBetween, RowSpaceEvenly } from '../commonView';
 import {labels} from '../../utils/labels';
 import { H15Green, H15Grey, H15Red, H16SemiBoldBlack, H18BoldGrey } from '../commonText';
 import { ArchiveIconBlackIcon, BlackDoubleTickIcon, BlackSingleTickIcon, BlueDoubleTickIcon, FileBlackIcon, MikeBlackIcon, PhoneIncomingRedIcon, PictureBlackIcon, PinBlackIcon, VideoBlackIcon } from '../../utils/svg';
+import { useNavigation } from '@react-navigation/native';
+import { screenName } from '../../utils/screenName';
+
 
 export type AllChatsProps = {
     selectedCards: number[];
@@ -16,11 +19,13 @@ export type AllChatsProps = {
 
 
 const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
+    const navigation =useNavigation()
     return (
-        <View style={[flex1, mt20, styles.whiteBg]}>
+        <View style={[mt20, styles.whiteBg]}>
             <View style={[flexRow, spaceBetween, mt20, alignSelfCenter, p10, borderRadius10, styles.archiveCard, mb15]}>
                 <View style={[flexRow, spaceEvenly]}>
-                    <View>
+                    {/* <Icon name="archive-outline" size={25} color={colors.greyVar4} style={[mh10]} /> */}
+                    <View style={mt5}>
                         <ArchiveIconBlackIcon />
                     </View>
                     <H18BoldGrey style={ml15}>{labels.Archived}</H18BoldGrey>
@@ -36,7 +41,7 @@ const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
                             <CommonLineDividerGrey />
                             <TouchableOpacity onPress={() => {
                                 if (selectedCards.length === 0) {
-                                    console.log('navigated====>');
+                                    navigation.navigate(screenName.ChatView as never);
                                 } else {
                                     onCardSelection(chat.id);
                                 }
@@ -148,6 +153,12 @@ const styles = StyleSheet.create({
         width: 25,
         borderRadius: 20,
     },
+    chatHeaderText: {
+        fontSize: 19,
+        color: colors.greyVar4,
+        fontWeight: '700',
+        top: 2
+    },
     roundNumberText: {
         textAlign: 'center',
         color: colors.white,
@@ -168,7 +179,8 @@ const styles = StyleSheet.create({
     archiveCard: {
         height: 45,
         width: 0.90 * DevWidth,
-        backgroundColor: colors.purpleVar1
+        backgroundColor: colors.purpleVar1,
+        borderRadius:10
     },
     profileImg: {
         width: 40,
