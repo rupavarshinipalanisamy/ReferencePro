@@ -8,6 +8,7 @@ import {
   } from 'react-native';
   import {colors} from '../utils/colors';
 import styled from 'styled-components';
+import { DevWidth } from '../utils/device';
   
   const backgroundColor = 'backgroundColor';
   const color = 'color'
@@ -29,7 +30,7 @@ import styled from 'styled-components';
     },
     purpleMainContainer: {
       flex: 1,
-      backgroundColor: colors.purple,
+      backgroundColor: colors.purpleVar3
     },
     subContainer: {
       flex: 1,
@@ -40,7 +41,7 @@ import styled from 'styled-components';
       width: '100%',
       height: 55,
       borderRadius: 35,
-      borderColor: colors.borderTextColor,
+      borderColor: colors.greyVar1,
       borderWidth: 0.5,
       backgroundColor: 'white',
       elevation: 1,
@@ -49,7 +50,7 @@ import styled from 'styled-components';
     inputStyle: {
       width: '100%',
       heiht: 40,
-      borderColor: colors.borderTextColor,
+      borderColor: colors.greyVar1,
       borderWidth: 1,
     },
     commonButtonTextStyle: {
@@ -60,9 +61,10 @@ import styled from 'styled-components';
     },
     textNow: {
       fontSize: 16,
-      textAlign: 'center',
       color: colors.white,
-      fontWeight:'900'
+      fontWeight:'900',
+      justifyContent:'center',
+      alignSelf:'center'
     },
     textAppointments: {
       fontSize: 14,
@@ -89,7 +91,7 @@ import styled from 'styled-components';
       textTransform: 'uppercase',
     },
     commonButtonStyle: {
-      backgroundColor: colors.purple,
+      backgroundColor: colors.purpleVar3,
       width: '40%',
       marginVertical: 10,
       borderRadius: 10,
@@ -97,11 +99,9 @@ import styled from 'styled-components';
       borderWidth:2,
       borderColor:colors.white,
     
-
-     
     },
     commonButtonFull: {
-      backgroundColor: colors.purple,
+      backgroundColor: colors.purpleVar3,
       width: '40%',
       paddingVertical: 13,
       marginVertical: 13,
@@ -134,18 +134,23 @@ import styled from 'styled-components';
       paddingHorizontal: 20,
     },
     commonButtonNow: {
-      width: 340,
+      width: '100%',
       paddingVertical: 8,
-      marginVertical: 10,
+      marginVertical: 40,
       borderRadius: 5,
       alignSelf: 'center',
+      height:50,
+      justifyContent:'center',
+      
+    
     },
     commonButtonBook: {
-      width: 340,
-      paddingVertical: 7,
-      marginVertical: 7,
+      width: 200,
+      paddingVertical: 8,
+      marginVertical: 8,
       borderRadius: 5,
       alignSelf: 'center',
+      margin:9,
     },
     commonButtonCancelStyle: {
       backgroundColor: colors.red,

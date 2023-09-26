@@ -1,5 +1,5 @@
-import {Text, StyleSheet} from 'react-native';
-import {colors} from '../utils/colors';
+import { Text, StyleSheet } from 'react-native';
+import { colors } from '../utils/colors';
 import styled from 'styled-components';
 
 const styles = StyleSheet.create({
@@ -9,8 +9,14 @@ const styles = StyleSheet.create({
   white: {
     color: colors.white,
   },
-  textGray:{
-    color:colors.textcolorGray,
+  textGray: {
+    color: colors.greyVar4,
+  },
+  textBlue: {
+    color: colors.blueVar2,
+  },
+  purple: {
+    color: colors.purpleVar3,
   },
   h1: {
     fontSize: 25,
@@ -30,15 +36,18 @@ const styles = StyleSheet.create({
   h18: {
     fontSize: 18,
   },
+  h16: {
+    fontSize: 16,
+  },
 
   fontBold: {
     fontWeight: 'bold',
   },
   fontRegular: {
-    fontWeight:'500',
+    fontWeight: '500',
   },
-  fontNormal :{
-    fontWeight:'normal'
+  fontNormal: {
+    fontWeight: 'normal'
   }
 });
 
@@ -48,11 +57,12 @@ const {
   h3,
   h4,
   h5,
-  h18
+  h18,
+  h16
 
 } = styles;
-const { black,white,textGray} = styles;
-const {fontBold, fontRegular,fontNormal} = styles;
+const { black, white, textGray, textBlue, purple } = styles;
+const { fontBold, fontRegular, fontNormal } = styles;
 
 export const H6fontRegularBlack = styled(Text)`
   ${h1};
@@ -74,5 +84,23 @@ export const H18fontNormalGray = styled(Text)`
   ${fontNormal};
   ${textGray};
 `;
-
-
+export const H16fontNormalGray = styled(Text)`
+  ${h16};
+  ${fontNormal};
+  ${textGray};
+`;
+export const H16fontNormalBlue = styled(Text)`
+  ${h16};
+  ${fontNormal};
+  ${textBlue};
+`;
+export const H16fontNormalPurple = styled(Text)`
+  ${h16};
+  ${fontNormal};
+  ${purple};
+`;
+export const H18fontBoldBlack = styled(Text)`
+  ${h18};
+  ${fontBold};
+  ${black};
+`;
