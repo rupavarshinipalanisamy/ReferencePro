@@ -11,6 +11,7 @@ import ChatSettings from './src/pages/chat/chatSettings';
 import Chats from './src/pages/chat/Chats';
 import ChatView from './src/pages/chatView/chatView';
 import UserProfile from './src/pages/chatView/UserProfile';
+import CreateNewPassword from './src/pages/authentication/createNewPassword';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,7 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.Chats} component={Chats} />
             <Stack.Screen name={screenName.ChatView} component={ChatView} />
             <Stack.Screen name={screenName.UserProfile} component={UserProfile} />
+            <Stack.Screen name={screenName.CreateNewPassword} component={CreateNewPassword} />
 
 
         </Stack.Navigator>

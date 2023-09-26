@@ -2,6 +2,8 @@ import {
   View,
   StyleSheet,
   SafeAreaView,
+  TouchableOpacity,
+  Text,
 } from 'react-native';
 import { colors } from '../utils/colors';
 import styled from 'styled-components';
@@ -43,6 +45,41 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     flexDirection: 'row',
   },
+  textNow: {
+    fontSize: 16,
+    color: colors.white,
+    fontWeight:'900',
+    justifyContent:'center',
+    alignSelf:'center'
+  },
+commonButtonNow: {
+    width: '100%',
+    paddingVertical: 8,
+    marginVertical: 40,
+    borderRadius: 5,
+    alignSelf: 'center',
+    height:50,
+    justifyContent:'center',
+  },
+commonButtonBook: {
+    width: 200,
+    paddingVertical: 8,
+    marginVertical: 8,
+    borderRadius: 5,
+    alignSelf: 'center',
+    margin:9,
+  },
+commonButtonFull: {
+    backgroundColor: colors.purpleVar3,
+    width: '40%',
+    paddingVertical: 13,
+    marginVertical: 13,
+    borderRadius: 5,
+    alignSelf: 'center',
+    borderColor:colors.white,
+    borderWidth:2
+
+  },
 });
 const {
   rowSpaceBetween,
@@ -53,6 +90,13 @@ const {
   subContainer,
   commonLineDividerGrey,
   tabContainer,
+  textNow,
+  commonButtonNow,
+  commonButtonBook,
+  commonButtonFull
+
+
+
 } = styles;
 
 
@@ -80,3 +124,16 @@ export const SubContainer = styled(View)`
 export const TabContainer = styled(View)`
   ${tabContainer}
 `
+export const CommonButtonBlue = styled(TouchableOpacity)`
+    ${commonButtonFull};
+  `;
+export const TextNow = styled(Text)`
+    ${textNow};
+  `;
+export const CommonButtonNow = styled(TouchableOpacity)`
+    ${commonButtonNow};
+  `;
+export const CommonButtonBook = styled(TouchableOpacity)`
+    ${commonButtonBook};
+  `;
+

@@ -1,13 +1,11 @@
-//import liraries
-import {Text, StyleSheet} from 'react-native';
-import {colors} from '../utils/colors';
+import { Text, StyleSheet } from 'react-native';
+import { colors } from '../utils/colors';
 import styled from 'styled-components';
 import { letterSpacing03, txtCenter } from './commonStyles';
 
-// define your styles
 const styles = StyleSheet.create({
   black: {
-    color: colors.black,
+    color: colors.black
   },
   white: {
     color: colors.white,
@@ -27,8 +25,11 @@ const styles = StyleSheet.create({
   purpleVar3: {
     color:colors.purpleVar3,
   },
+  greyVar3: {
+    color:colors.greyVar3,
+  },
   h1: {
-    fontSize: 48,
+    fontSize: 25,
   },
   h2: {
     fontSize: 36,
@@ -42,8 +43,6 @@ const styles = StyleSheet.create({
   h5: {
     fontSize: 20,
   },
-
- 
   h6:{
     fontSize:18,
   
@@ -66,16 +65,19 @@ const styles = StyleSheet.create({
   },
 
   fontRegular: {
-    fontWeight:'500',
+    fontWeight: '500',
   },
   fontBold700: {
     fontWeight:'700',
   },
-  });
+  fontNormal: {
+    fontWeight: 'normal'
+  }
+});
 
 
-const { green,red, textcolorGray,black,white,purpleVar3,blueVar1} = styles;
-const {fontBold, fontRegular, fontBold700} = styles;
+const { green,red, textcolorGray,black,white,purpleVar3,blueVar1,greyVar3} = styles;
+const {fontBold, fontRegular, fontBold700,fontNormal} = styles;
 const {
   h1,
   h2,
@@ -148,5 +150,28 @@ export const H14blueVar1Text = styled(Text)`
   ${blueVar1};
 `;
 
-
-
+export const H18fontNormalGray = styled(Text)`
+  ${h6};
+  ${fontNormal};
+  ${greyVar3};
+`;
+export const H16fontNormalGray = styled(Text)`
+  ${h7};
+  ${fontNormal};
+  ${greyVar3};
+`;
+export const H16fontNormalBlue = styled(Text)`
+  ${h7};
+  ${fontNormal};
+  ${blueVar1};
+`;
+export const H16fontNormalPurple = styled(Text)`
+  ${h7};
+  ${fontNormal};
+  ${purpleVar3};
+`;
+export const H18fontBoldBlack = styled(Text)`
+  ${h6};
+  ${fontBold};
+  ${black};
+`;

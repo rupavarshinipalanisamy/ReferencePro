@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   flexRow: {
     flexDirection: 'row',
   },
+
   m5: {
     margin: 5,
   },
@@ -32,6 +33,9 @@ const styles = StyleSheet.create({
   },
   m15: {
     margin: 15,
+  },
+  m30: {
+    margin: 30,
   },
   mt0: {
     marginTop: 0,
@@ -44,6 +48,9 @@ const styles = StyleSheet.create({
   },
   ml5: {
     marginLeft: 5,
+  },
+  m90: {
+    marginTop: 80,
   },
   ml10: {
     marginLeft: 10,
@@ -61,8 +68,9 @@ const styles = StyleSheet.create({
     marginRight: 30,
   },
   ml30: {
-    marginLeft: 30,
+    marginLeft: 220,
   },
+
   mh1: {
     marginHorizontal: 1,
   },
@@ -99,13 +107,13 @@ const styles = StyleSheet.create({
   mt15: {
     marginTop: 15,
   },
-  ml15:{
-   marginLeft:15
+  ml15: {
+    marginLeft: 15
   },
-  mr15:{
-    marginRight:15
-   },
-   mt5: {
+  mr15: {
+    marginRight: 15
+  },
+  mt5: {
     marginTop: 5,
   },
   mt10: {
@@ -119,6 +127,15 @@ const styles = StyleSheet.create({
   },
   mb15: {
     marginBottom: 15,
+  },
+  b50: {
+    bottom: 50,
+  },
+  t20: {
+    top: 20,
+  },
+  b40: {
+    bottom: 40,
   },
   p0: {
     padding: 0
@@ -144,6 +161,9 @@ const styles = StyleSheet.create({
   pt15: {
     paddingTop: 15,
   },
+  pt25: {
+    paddingTop: 25,
+  },
   pb0: {
     paddingBottom: 0,
   },
@@ -156,20 +176,23 @@ const styles = StyleSheet.create({
   pl0: {
     paddingLeft: 0,
   },
-  pr10:{
-    paddingRight:10
+  pr10: {
+    paddingRight: 10
   },
-  pl6:{
-    paddingLeft:6
+  pl6: {
+    paddingLeft: 6
   },
-  pl7:{
-    paddingLeft:7
+  pl7: {
+    paddingLeft: 7
   },
-  pr6:{
-    paddingRight:6
+  pl70: {
+    paddingLeft: 70
   },
-  pr7:{
-    paddingRight:7
+  pr6: {
+    paddingRight: 6
+  },
+  pr7: {
+    paddingRight: 7
   },
   pl2: {
     paddingLeft: 2,
@@ -190,11 +213,11 @@ const styles = StyleSheet.create({
   pl10: {
     paddingLeft: 10,
   },
-  pl32:{
-    paddingLeft:32
+  pl32: {
+    paddingLeft: 32
   },
-  pr32:{
-    paddingRight:32
+  pr32: {
+    paddingRight: 32
   },
   pR10: {
     paddingRight: 10
@@ -202,14 +225,14 @@ const styles = StyleSheet.create({
   pl15: {
     paddingLeft: 15,
   },
-  pl13:{
-    paddingLeft:13
+  pl13: {
+    paddingLeft: 13
   },
-  pr13:{
-    paddingRight:13
+  pr13: {
+    paddingRight: 13
   },
-  pr15:{
-    paddingRight:15
+  pr15: {
+    paddingRight: 15
   },
   pR15: {
     paddingRight: 15
@@ -220,11 +243,12 @@ const styles = StyleSheet.create({
   pl20: {
     paddingLeft: 20,
   },
-  pr20:{
-    paddingRight:20
+  pr20: {
+    paddingRight: 20
   },
-  pr18:{
-    paddingRight:18
+  pr18: {
+    paddingRight: 18
+
   },
 
   pl30: {
@@ -241,6 +265,9 @@ const styles = StyleSheet.create({
   },
   pv5: {
     paddingVertical: 5,
+  },
+  pv8: {
+    paddingVertical: 8,
   },
   pv10: {
     paddingVertical: 10,
@@ -274,6 +301,15 @@ const styles = StyleSheet.create({
   },
   ph30: {
     paddingHorizontal: 30,
+  },
+  ph31: {
+    paddingHorizontal: 180,
+  },
+  w100: {
+    width: '100%'
+  },
+  h100: {
+    height: '100%'
   },
   alignItemsCenter: {
     alignItems: 'center',
@@ -354,6 +390,9 @@ const styles = StyleSheet.create({
   borderRadius25: {
     borderRadius: 25
   },
+  bgSecondary: {
+    backgroundColor: colors.purpleVar3
+  },
   bgPrimary: {
     backgroundColor: colors.white,
   },
@@ -379,6 +418,9 @@ const styles = StyleSheet.create({
   textRight: {
     textAlign: 'right',
   },
+  borderColor: {
+    borderColor: colors.purpleVar3
+  },
   borderSecondaryColor: {
     borderColor: colors.greyVar1,
   },
@@ -391,6 +433,7 @@ const styles = StyleSheet.create({
   letterSpacing04 : {
     letterSpacing : 0.4
   }
+
 });
 
 export const { flexRow, flex1, flex025, flex050, flex075, flex002, flex048 } = styles;
@@ -413,6 +456,7 @@ export const {
   m5,
   m10,
   m15,
+  m30,
   mv5,
   mv10,
   mv15,
@@ -429,6 +473,7 @@ export const {
   mb0,
   ml0,
   ml5,
+  m90,
   ml10,
   mh20,
   mr0,
@@ -449,6 +494,7 @@ export const {
   p10,
   p15,
   pv5,
+  pv8,
   pv10,
   pv15,
   pv20,
@@ -462,15 +508,20 @@ export const {
   ph15,
   ph20,
   ph30,
+  ph31,
+  w100,
+  h100,
   pb0,
   pb5,
   pb10,
   pt0,
   pt5,
   pt10,
+  pt25,
   pl0,
   pl6,
   pl7,
+  pl70,
   pr10,
   pr18,
   pr20,
@@ -493,12 +544,15 @@ export const {
   pr5,
   pR10,
   p20,
-  pl2
+  pl2,
+  b50,
+  b40,
+  t20,
 } = styles;
 export const { alignItemsCenter, alignItemsLeft, alignItemsRight } = styles;
 
 export const { alignSelfCenter, alignSelfLeft, alignSelfRight } = styles;
-export const { justifyEnd, justifyStart, justyfyCenter, spaceBetween, spaceAround, spaceEvenly, spaceCenter} = styles;
-export const { txtCenter, txtLeft, txtRight, bgPrimary } = styles;
+export const { justifyEnd, justifyStart, justyfyCenter, spaceBetween, spaceAround, spaceEvenly, spaceCenter } = styles;
+export const { txtCenter, txtLeft, txtRight, bgSecondary, bgPrimary } = styles;
 export const { elevation3, elevation0, elevation1, elevation2 } = styles;
 export const { textRight, textLeft, textCenter } = styles;
