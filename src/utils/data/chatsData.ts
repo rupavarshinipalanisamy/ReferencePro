@@ -53,6 +53,27 @@ export const allChatsData = [
         time : '10:20 PM',
         status : 'inactive'
     },
+    {
+        id: 8,
+        name : 'Hollis Tran',
+        profileImg : require('../../../assets/images/png/chatimg5.png'),
+        time : '10:20 PM',
+        status : 'inactive'
+    },
+    {
+        id: 9,
+        name : 'James Albert',
+        profileImg : require('../../../assets/images/png/chatimg6.png'),
+        time : '10:20 PM',
+        status : 'active'
+    },
+    {
+        id: 10,
+        name : 'Dina Brown',
+        profileImg : require('../../../assets/images/png/chatimg7.png'),
+        time : '10:20 PM',
+        status : 'inactive'
+    },
 ]
 
 

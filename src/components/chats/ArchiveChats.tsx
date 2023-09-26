@@ -1,14 +1,16 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
-import { alignSelfCenter, borderRadius10, flex1, flexRow, mr5, mt20, mt5, mv10, pb5, ph20, pv15 } from '../commonStyles';
+import { flex1, flexRow, mr5, mt20, mt5, mv10, pb5, ph20, pv15 } from '../commonStyles';
 import { PinnedChatsdata } from '../../utils/data/chatsData';
 import { CommonLineDividerGrey, RowSpaceBetween, RowSpaceEvenly } from '../commonView';
 import { H15Green, H15Grey, H15Red, H16SemiBoldBlack } from '../commonText';
-import {labels} from '../../utils/labels';
+import { labels } from '../../utils/labels';
 import { ArchiveIconBlackIcon, BlackDoubleTickIcon, BlackSingleTickIcon, BlueDoubleTickIcon, FileBlackIcon, MikeBlackIcon, PhoneIncomingRedIcon, PictureBlackIcon, VideoBlackIcon } from '../../utils/svg';
 import { colors } from '../../utils/colors';
-import { DevHeight, DevWidth } from '../../utils/device';
-import { bottomNavData } from '../../utils/data/bottomNavData';
+import { DevWidth } from '../../utils/device';
+import { BottomTabBar } from '../commonComponents';
+import { useNavigation } from '@react-navigation/native';
+import { screenName } from '../../utils/screenName';
 
 export type ArchiveChatsProps = {
     selectedCards: number[];
@@ -17,6 +19,7 @@ export type ArchiveChatsProps = {
 
 
 const ArchiveChats = ({ selectedCards, onCardSelection }: ArchiveChatsProps) => {
+    const navigation = useNavigation();
     return (
         <View style={[flex1, mt20, styles.whiteBg]}>
             <View style={flex1}>
@@ -26,7 +29,7 @@ const ArchiveChats = ({ selectedCards, onCardSelection }: ArchiveChatsProps) => 
                             {chat.id === 1 ? <View style={mv10} /> : <CommonLineDividerGrey />}
                             <TouchableOpacity onPress={() => {
                                 if (selectedCards.length === 0) {
-                                    console.log('navigated====>');
+                                    navigation.navigate(screenName.ChatView as never);
                                 } else {
                                     onCardSelection(chat.id);
                                 }
@@ -155,17 +158,7 @@ const ArchiveChats = ({ selectedCards, onCardSelection }: ArchiveChatsProps) => 
                     ))}
                 </ScrollView>
             </View>
-            <View style={[alignSelfCenter, borderRadius10, { height: DevHeight * 0.08, width: DevWidth * 0.9, backgroundColor: colors.purpleVar3, position: 'absolute', bottom: 10 }]}>
-                {
-                    bottomNavData.map((item) => {
-                        return (
-                            <TouchableOpacity key = {item.id}>
-                                {/* <CustomIcon name='sc-facebook' type="EvilIcons" size={24} color={colors.black} /> */}
-                            </TouchableOpacity>
-                        )
-                    })
-                }
-            </View>
+            <BottomTabBar />
         </View >
     )
 }
@@ -177,6 +170,7 @@ const styles = StyleSheet.create({
         width: '100%',
         borderTopLeftRadius: 45,
         borderTopRightRadius: 45,
+        overflow : 'hidden'
     },
     roundNumber: {
         height: 25,

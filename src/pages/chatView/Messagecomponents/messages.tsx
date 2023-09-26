@@ -4,40 +4,40 @@ import { colors } from '../../../utils/colors';
 import { flex1, flexRow, pt10, pl10, spaceBetween, alignItemsCenter, justyfyCenter, pt5, pl13, p5 } from '../../../components/commonStyles';
 import CustomIcon from '../../..//utils/Icons';
 import { H14BlackText, H14blueVar1Text, H16WhiteText, H18WhiteText } from '../../../components/commonText';
-import {labels} from '../../../utils/labels';
+import { labels } from '../../../utils/labels';
 import { DevHeight, DevWidth } from '../../../utils/device';
 import AudioImg from '../../../../assets/images/Audio.svg'
 import SendImg1 from '../../../../assets/images/sentMsg.svg'
 import SendImg2 from '../../../../assets/images/sendMsg1.svg'
 import { useNavigation } from '@react-navigation/native';
 
-interface HeaderChatViewProps  {
+interface HeaderChatViewProps {
     backgroundColor: string,
-    onPress?:() => void;
+    onPress?: () => void;
     navigate: string;
 
 }
 
 export const HeaderChatView = (props: HeaderChatViewProps) => {
-    const navigation =useNavigation()
+    const navigation = useNavigation()
     return (
-        <View style={{ height: DevWidth / 4, backgroundColor:props.backgroundColor, borderBottomRightRadius: 20, borderBottomLeftRadius: 20, position: 'relative' }}>
+        <View style={{ height: DevWidth / 4, backgroundColor: props.backgroundColor, borderBottomRightRadius: 20, borderBottomLeftRadius: 20, position: 'relative' }}>
             <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
                 <View style={[flexRow]}>
                     <View style={pt10} >
                         <CustomIcon name='chevron-back-sharp' color={colors.white} size={16} type="Ionicons" />
                     </View>
                     <View style={[flexRow, spaceBetween, flex1]}>
-                        <TouchableOpacity style={[pl10,flexRow]}  onPress={() =>{ navigation.navigate(props.navigate as never) }}>
+                        <TouchableOpacity style={[pl10, flexRow]} onPress={() => { navigation.navigate(props.navigate as never) }}>
                             <Image source={require('../../../../assets/images/png/profile.png')} />
-                        
-                        <View style={pl13}>
-                            <H18WhiteText>{labels.horaceKeene}</H18WhiteText>
-                            <H16WhiteText>{labels.online}</H16WhiteText>
-                        </View>
+
+                            <View style={pl13}>
+                                <H18WhiteText>{labels.horaceKeene}</H18WhiteText>
+                                <H16WhiteText>{labels.online}</H16WhiteText>
+                            </View>
                         </TouchableOpacity>
                         <View style={[flexRow, alignItemsCenter]}>
-                            <TouchableOpacity style={pl10}  onPress={() =>{navigation.navigate(props.navigate as never) }}>
+                            <TouchableOpacity style={pl10} onPress={() => { navigation.navigate(props.navigate as never) }}>
                                 <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={22} color={colors.white} />
                             </TouchableOpacity>
                             <TouchableOpacity style={pl10}>

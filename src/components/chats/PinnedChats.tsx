@@ -1,13 +1,16 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
-import { flex1, flexRow, mh20, mr5, mt20, mt5, mv10, mv15, pb5, ph20, pv15 } from '../commonStyles';
-import { PinnedChatsdata, allChatsData } from '../../utils/data/chatsData';
+import { flex1, flexRow, mr5, mt20, mt5, mv10, pb5, ph20, pv15 } from '../commonStyles';
+import { PinnedChatsdata } from '../../utils/data/chatsData';
 import { CommonLineDividerGrey, RowSpaceBetween, RowSpaceEvenly } from '../commonView';
 import { H15Green, H15Grey, H15Red, H16SemiBoldBlack } from '../commonText';
-import {labels} from '../../utils/labels';
+import { labels } from '../../utils/labels';
 import { BlackDoubleTickIcon, BlackSingleTickIcon, BlueDoubleTickIcon, FileBlackIcon, MikeBlackIcon, PhoneIncomingRedIcon, PictureBlackIcon, PinBlackIcon, VideoBlackIcon, VideoRedIcon } from '../../utils/svg';
 import { colors } from '../../utils/colors';
 import { DevWidth } from '../../utils/device';
+import { BottomTabBar } from '../commonComponents';
+import { useNavigation } from '@react-navigation/native';
+import { screenName } from '../../utils/screenName';
 
 export type PinnedChatsProps = {
     selectedCards: number[];
@@ -16,18 +19,17 @@ export type PinnedChatsProps = {
 
 
 const PinnedChats = ({ selectedCards, onCardSelection }: PinnedChatsProps) => {
-
-
+    const navigation = useNavigation();
     return (
         <View style={[flex1, mt20, styles.whiteBg]}>
             <View style={flex1}>
-                {PinnedChatsdata.map((chat) => (
-                    <View key={chat.id}>
-                        <ScrollView>
+                <ScrollView showsVerticalScrollIndicator={false}>
+                    {PinnedChatsdata.map((chat) => (
+                        <View key={chat.id}>
                             {chat.id === 1 ? <View style={mv10} /> : <CommonLineDividerGrey />}
                             <TouchableOpacity onPress={() => {
                                 if (selectedCards.length === 0) {
-                                    console.log('navigated====>');
+                                    navigation.navigate(screenName.ChatView as never);
                                 } else {
                                     onCardSelection(chat.id);
                                 }
@@ -153,10 +155,11 @@ const PinnedChats = ({ selectedCards, onCardSelection }: PinnedChatsProps) => {
                                     </View>
                                 </View>
                             </TouchableOpacity>
-                        </ScrollView>
-                    </View>
-                ))}
+                        </View>
+                    ))}
+                </ScrollView>
             </View>
+            <BottomTabBar />
         </View >
     )
 }
@@ -168,6 +171,7 @@ const styles = StyleSheet.create({
         width: '100%',
         borderTopLeftRadius: 45,
         borderTopRightRadius: 45,
+        overflow: 'hidden'
     },
     roundNumber: {
         height: 25,

@@ -1,9 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { flexRow, mh10, mh20, ml10, mr10, mv15, p5, spaceAround, spaceBetween } from './commonStyles';
+import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, mh10, mh20, ml10, mr10, mv10, mv15, p5, spaceAround, spaceBetween, textCenter } from './commonStyles';
 import { colors } from '../utils/colors';
 import { ArchiveIconWhiteIcon, DeleteWhiteIcon, LeftArrowWhiteIcon, MikeWhiteIcon, PinWhiteIcon, ProfileAvatarIcon, ThreeDotsWhiteIcon } from '../utils/svg';
+import { DevHeight, DevWidth } from '../utils/device';
+import { RowSpaceBetween } from './commonView';
+import { bottomNavData } from '../utils/data/bottomNavData';
+import CustomIcon from '../utils/Icons';
+import { useNavigation } from '@react-navigation/native';
 
 // ====================   Chat based Header Component   ====================
 
@@ -168,6 +173,40 @@ export const CustomActionBarSecond: React.FC<CustomActionBarSecondProps> = ({
         </View>
     );
 };
+
+
+// ====================   Bottom Nav Bar   ====================
+
+export const BottomTabBar = () => {
+  const [selectedTab, setSelectedTab] = useState(1); 
+  const navigation = useNavigation();
+
+  const handleTabPress = (tabId : number, screenNameNavigate : string) => {
+    setSelectedTab(tabId);
+    navigation.navigate(screenNameNavigate as never)
+  };
+
+  return (
+    <View style={[alignSelfCenter, borderRadius10, { height: DevHeight * 0.08, width: DevWidth * 0.9, backgroundColor: colors.purpleVar3, position: 'absolute', bottom: 10 }]}>
+    <RowSpaceBetween style={[alignItemsCenter, mv10, mh20]}>
+        {
+            bottomNavData.map((item) => {
+                const isSelected = item.id === selectedTab;
+                return (
+                    <TouchableOpacity key={item.id} onPress={() => handleTabPress(item.id, item.screenName)}>
+                        <View style = {alignItemsCenter}>
+                            <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={isSelected ? colors.white : colors.purpleVar2} />
+                        </View>
+                        <Text style={[{ color: isSelected ? colors.white : colors.purpleVar2 }, textCenter]}>{item.name}</Text>
+                    </TouchableOpacity>
+                )
+            })
+        }
+    </RowSpaceBetween>
+</View>
+  );
+};
+
 
 
 
