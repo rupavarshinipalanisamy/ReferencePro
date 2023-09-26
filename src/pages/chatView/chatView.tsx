@@ -1,14 +1,15 @@
 import React, { Fragment, useState } from 'react';
-import { Text, View, StatusBar, ImageBackground, StyleSheet, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Image } from 'react-native';
+import { Text, View, ImageBackground, StyleSheet, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Image } from 'react-native';
 import { MainContainer } from '../../components/commonView';
 import { colors } from '../../utils/colors';
-import { flex1, flexRow, p5, pb10, pl15, pl6, pt10, spaceAround, spaceBetween, spaceEvenly } from '../../components/commonStyles';
+import {  flexRow,pb10, pl15, pl6, pt10,spaceBetween } from '../../components/commonStyles';
 import { H14BlackText, H16BlackText } from '../../components/commonText';
 import labels from '../../utils/labels';
 import { FooterChatView, HeaderChatView, receiveMessage1, receiveMessage2, receiveMessage3, receiveMessage4, sentMessage1, sentMessage2, sentMessage3 } from './Messagecomponents/messages';
 import CustomIcon from '../../utils/Icons';
 import Modal from 'react-native-modal';
 import { DevHeight, DevWidth } from '../../utils/device';
+import { screenName } from '../../utils/screenName';
 
 export type chatViewProps = {
 }
@@ -27,10 +28,9 @@ export const TabControl: React.FC<TabControlProps> = ({ tabs, activeTab, onTabPr
             {tabs.map((tabInfo) => (
                 <View style={{ marginLeft: 15 }} key={tabInfo.label}>
                     <TouchableOpacity
-
                         style={[
                             { borderBottomWidth: activeTab === tabInfo.label ? 3 : 0 },
-                            { borderBottomColor: activeTab === tabInfo.label ? colors.purple : "" },
+                            { borderBottomColor: activeTab === tabInfo.label ? colors.purpleVar3 : "" },
                         ]}
                         onPress={() => onTabPress(tabInfo.label)}
                     >
@@ -39,7 +39,7 @@ export const TabControl: React.FC<TabControlProps> = ({ tabs, activeTab, onTabPr
                                 style={[
                                     styles.tabText
 
-                                    , { color: activeTab === tabInfo.label ? colors.purple : colors.purple },
+                                    , { color: activeTab === tabInfo.label ? colors.purpleVar3 : colors.purpleVar3 },
                                 ]}
                             >
                                 {tabInfo.label}
@@ -72,10 +72,10 @@ export const DayDetails = () => {
     );
 };
 
-export const Bluetick = () => {
+export const blueVar2tick = () => {
     return (
         <View>
-            <CustomIcon name='check-all' type="MaterialCommunityIcons" color={colors.linkTextBlue} size={16} />
+            <CustomIcon name='check-all' type="MaterialCommunityIcons" color={colors.blueVar2Var1} size={16} />
         </View>
     )
 }
@@ -124,13 +124,13 @@ const ChatView = () => {
 
     const chatMessages = [
         { id: 1, message: receiveMessage1(), type: "receivemsg", time: "8:16 PM" },
-        { id: 2, message: sentMessage1("Good Morning Mam"), type: "sentmsg", time: "8:17 PM", icon: Bluetick() },
+        { id: 2, message: sentMessage1("Good Morning Mam"), type: "sentmsg", time: "8:17 PM", icon: blueVar2tick() },
         { id: 3, message: receiveMessage2(), type: "receivemsg", time: "8:16 PM" },
-        { id: 4, message: sentMessage2(), type: "sentmsg", time: "8:17 PM", icon: Bluetick() },
+        { id: 4, message: sentMessage2(), type: "sentmsg", time: "8:17 PM", icon: blueVar2tick() },
         { id: 5, message: receiveMessage3(), type: "receivemsg", time: "8:16 PM" },
-        { id: 6, message: sentMessage3(), type: "sentmsg", time: "8:17 PM", icon: Bluetick(), msg: Reactmsg() },
+        { id: 6, message: sentMessage3(), type: "sentmsg", time: "8:17 PM", icon: blueVar2tick(), msg: Reactmsg() },
         { id: 7, message: receiveMessage4(), type: "receivemsg", time: "8:16 PM" },
-        { id: 8, message: sentMessage1("Thank You Mam"), type: "sentmsg", time: "8:17 PM", icon: Bluetick() },
+        { id: 8, message: sentMessage1("Thank You Mam"), type: "sentmsg", time: "8:17 PM", icon: blueVar2tick() },
     ];
     const tabs = [
         { label: "All", count: 1 },
@@ -140,13 +140,13 @@ const ChatView = () => {
     const handleTabPress = (tab: string) => {
         setSelectedTab(tab);
     };
+
     return (
         <Fragment>
             <MainContainer>
-                <StatusBar backgroundColor={colors.purple} />
-                {/* <TouchableWithoutFeedback onPress={closeModal}> */}
+                {/* <StatusBar backgroundColor={colors.purpleVar3} /> */}
                 <View style={{ flex: 1 }}>
-                    <HeaderChatView />
+                    <HeaderChatView backgroundColor={colors.purpleVar3} navigate={screenName.UserProfile} />
                     <ImageBackground
                         source={require('../../../assets/images/png/chatBackground.png')}
                         style={styles.backgroundImage}
@@ -160,7 +160,7 @@ const ChatView = () => {
                                 <View style={[message.type === 'sentmsg' ? { alignItems: 'flex-end' } : { alignItems: 'flex-start' }, { paddingTop: 10, marginHorizontal: 20 }]}
                                     key={message.id}>
                                     <View style={{ flexDirection: 'row' }}>
-                                        <Text style={{ fontSize: 14, color: colors.greyVar1 }}>{message.time}</Text>
+                                        <Text style={{ fontSize: 14, color: colors.greyVar4 }}>{message.time}</Text>
                                         <Text style={pl6}> {message.icon}</Text>
                                     </View>
                                     <Text>{message.message}</Text>
@@ -174,7 +174,7 @@ const ChatView = () => {
                         <Modal
                             style={{ margin: 0, position: 'absolute', bottom: 0, width: '100%' }}
                             isVisible={isModalVisible}
-                            onBackdropPress={closeModal}  // Set the backdrop opacity to 0 so that it's transparent
+                            onBackdropPress={closeModal}
                         >
                             <TouchableWithoutFeedback onPress={closeModal}>
                                 <View style={{ flex: 1 }}>
@@ -192,22 +192,14 @@ const ChatView = () => {
                                             {selectedTab === "All" && (
                                                 <All />
                                             )}
-                                            {selectedTab === "👍" && <All/>}
+                                            {selectedTab === "👍" && <All />}
                                         </View>
                                     </View>
                                 </View>
-
                             </TouchableWithoutFeedback>
-
                         </Modal>
-
-
                     </View>
-
                 </View>
-
-
-
             </MainContainer>
         </Fragment>
     )
@@ -227,7 +219,7 @@ const styles = StyleSheet.create({
         padding: 10
     },
     sndMsgCard: {
-        backgroundColor: colors.lightPurple1,
+        backgroundColor: colors.purpleVar2,
         borderTopLeftRadius: 8,
         borderBottomRightRadius: 8,
         borderBottomLeftRadius: 8,
@@ -277,7 +269,7 @@ const styles = StyleSheet.create({
     },
     roundNumberText: {
 
-        color: colors.greyVar3,
+        color: colors.greyVar4,
         fontSize: 12,
     },
 

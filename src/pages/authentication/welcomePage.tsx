@@ -35,7 +35,7 @@ const WelcomePage: React.FC<WelcomePageProps> = (props: WelcomePageProps) => {
             color={activeButton === labels.logIn ? 'black' : 'white'} // Change 'white' and 'black' to your desired text colors
             style={{
               marginVertical: 0,
-              backgroundColor: activeButton === labels.logIn ? 'white' : 'transparent', // Change 'blue' to your desired background color
+              backgroundColor: activeButton === labels.logIn ? 'white' : 'transparent', // Change 'blueVar2' to your desired background color
             }}
           />
           <ButtonFull

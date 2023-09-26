@@ -39,7 +39,7 @@ const Chats = (props: chatProps) => {
     return (
         <Fragment>
             <PurpleMainContainer>
-                <StatusBar backgroundColor={colors.purple} />
+                <StatusBar backgroundColor={colors.purpleVar3} />
                 <TouchableOpacity style={[flexRow, spaceBetween, mh20, mv15]} >
                     <Text style={styles.chatHeaderText}>Chats</Text>
                     <View style={[flexRow, spaceBetween]}>
@@ -52,20 +52,20 @@ const Chats = (props: chatProps) => {
                 <View>
                     <View style={styles.tabContainer}>
                         <TouchableOpacity style={[p5, { borderBottomWidth: activeTab === 'allChat' ? 3 : 0, borderBottomColor: activeTab === 'allChat' ? colors.white : ""}]} onPress={() => handleTabPress('allChat')}>
-                            <Text style={[styles.tabText, {color : activeTab === 'allChat' ? colors.white : colors.lightPurple}]}>All Chats</Text>
+                            <Text style={[styles.tabText, {color : activeTab === 'allChat' ? colors.white : colors.lightpurpleVar3}]}>All Chats</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={[p5, { borderBottomWidth: activeTab === 'pinnedChat' ? 3 : 0, borderBottomColor: activeTab === 'pinnedChat' ? colors.white : ""}]} onPress={() => handleTabPress('pinnedChat')}>
                             <View style={[flexRow, spaceBetween]}>
-                                <Text style={[styles.tabText, {color : activeTab === 'pinnedChat' ? colors.white : colors.lightPurple}]}>Pinned Chat</Text>
-                                <View style={[styles.roundNumber,{ backgroundColor: activeTab === 'pinnedChat' ? colors.white : colors.lightPurple }]}>
+                                <Text style={[styles.tabText, {color : activeTab === 'pinnedChat' ? colors.white : colors.lightpurpleVar3}]}>Pinned Chat</Text>
+                                <View style={[styles.roundNumber,{ backgroundColor: activeTab === 'pinnedChat' ? colors.white : colors.lightpurpleVar3 }]}>
                                     <Text style={styles.roundNumberText}>5</Text>
                                 </View>
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity style={[p5, { borderBottomWidth: activeTab === 'archiveChat' ? 3 : 0, borderBottomColor: activeTab === 'archiveChat' ? colors.white : "" }]} onPress={() => handleTabPress('archiveChat')}>
                             <View style={[flexRow, spaceBetween]}>
-                                <Text style={[styles.tabText, {color : activeTab === 'archiveChat' ? colors.white : colors.lightPurple}]}>Archive Chat</Text>
-                                <View style={[styles.roundNumber,{ backgroundColor: activeTab === 'archiveChat' ? colors.white : colors.lightPurple }]}>
+                                <Text style={[styles.tabText, {color : activeTab === 'archiveChat' ? colors.white : colors.lightpurpleVar3}]}>Archive Chat</Text>
+                                <View style={[styles.roundNumber,{ backgroundColor: activeTab === 'archiveChat' ? colors.white : colors.lightpurpleVar3 }]}>
                                     <Text style={styles.roundNumberText}>3</Text>
                                 </View>
                             </View>
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     },
     roundNumberText : { 
         textAlign: 'center', 
-        color: colors.purple, 
+        color: colors.purpleVar3, 
         fontSize : 12 
     },
 })

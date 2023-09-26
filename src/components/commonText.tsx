@@ -11,8 +11,11 @@ const styles = StyleSheet.create({
   white: {
     color: colors.white,
   },
-  lightBlue: {
-    color:colors.linkTextBlue,
+  lightblueVar2: {
+    color:colors.blueVar2Var1,
+  },
+  purpleVar3: {
+    color:colors.purpleVar3,
   },
   h1: {
     fontSize: 48,
@@ -37,7 +40,7 @@ const styles = StyleSheet.create({
     fontSize:16,
   
   },
-  h8:{
+  h9:{
     fontSize:14,
   
   },
@@ -59,10 +62,10 @@ const {
   h5,
   h6,
   h7,
-  h8
+  h9
 
 } = styles;
-const { black,white,lightBlue} = styles;
+const { black,white,lightblueVar2,purpleVar3} = styles;
 const {fontBold, fontRegular} = styles;
 
 
@@ -78,13 +81,22 @@ export const H18WhiteText = styled(Text)`
   ${h6};
   ${white};
 `;
-export const H14BlackText = styled(Text)`
-  ${h8};
+export const H18BlackText = styled(Text)`
+  ${h6};
   ${black};
 `;
-export const H14BlueText = styled(Text)`
-  ${h8};
-  ${lightBlue};
+export const H14BlackText = styled(Text)`
+  ${h9};
+  ${black};
+`;
+
+export const H14purpleVar3Text = styled(Text)`
+  ${h9};
+  ${purpleVar3};
+`;
+export const H14blueVar2Text = styled(Text)`
+  ${h9};
+  ${lightblueVar2};
 `;
 
 

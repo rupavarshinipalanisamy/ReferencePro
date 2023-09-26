@@ -1,36 +1,43 @@
-import React, { Fragment } from 'react';
-import { Text, View, StatusBar, Image, ImageBackground, StyleSheet, TouchableOpacity, ScrollView, TextInput } from 'react-native';
-import { MainContainer } from '../../../components/commonView';
+import React from 'react';
+import { Text, View, Image, ImageBackground, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import { colors } from '../../../utils/colors';
-import { flex1, flexRow, pt10, pl10, pl25, spaceAround, spaceBetween, alignItemsCenter, justyfyCenter, pl5, pt5, pl13, justifyStart, p5 } from '../../../components/commonStyles';
+import { flex1, flexRow, pt10, pl10, spaceBetween, alignItemsCenter, justyfyCenter, pt5, pl13, p5 } from '../../../components/commonStyles';
 import CustomIcon from '../../..//utils/Icons';
-import { H14BlackText, H14BlueText, H16BlackText, H16WhiteText, H18WhiteText } from '../../../components/commonText';
+import { H14BlackText, H14blueVar2Text, H16WhiteText, H18WhiteText } from '../../../components/commonText';
 import labels from '../../../utils/labels';
 import { DevHeight, DevWidth } from '../../../utils/device';
 import AudioImg from '../../../../assets/images/Audio.svg'
 import SendImg1 from '../../../../assets/images/sentMsg.svg'
 import SendImg2 from '../../../../assets/images/sendMsg1.svg'
+import { useNavigation } from '@react-navigation/native';
 
+interface HeaderChatViewProps  {
+    backgroundColor: string,
+    onPress?:() => void;
+    navigate: string;
 
+}
 
-export const HeaderChatView = () => {
+export const HeaderChatView = (props: HeaderChatViewProps) => {
+    const navigation =useNavigation()
     return (
-        <View style={{ height: DevWidth / 4, backgroundColor: colors.purple, borderBottomRightRadius: 20, borderBottomLeftRadius: 20, position: 'relative' }}>
+        <View style={{ height: DevWidth / 4, backgroundColor:props.backgroundColor, borderBottomRightRadius: 20, borderBottomLeftRadius: 20, position: 'relative' }}>
             <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
                 <View style={[flexRow]}>
                     <View style={pt10} >
                         <CustomIcon name='chevron-back-sharp' color={colors.white} size={16} type="Ionicons" />
                     </View>
-                    <TouchableOpacity style={pl10}>
-                        <Image source={require('../../../../assets/images/png/profile.png')} />
-                    </TouchableOpacity>
                     <View style={[flexRow, spaceBetween, flex1]}>
+                        <TouchableOpacity style={[pl10,flexRow]}  onPress={() =>{ navigation.navigate(props.navigate as never) }}>
+                            <Image source={require('../../../../assets/images/png/profile.png')} />
+                        
                         <View style={pl13}>
                             <H18WhiteText>{labels.horaceKeene}</H18WhiteText>
                             <H16WhiteText>{labels.online}</H16WhiteText>
                         </View>
+                        </TouchableOpacity>
                         <View style={[flexRow, alignItemsCenter]}>
-                            <TouchableOpacity style={pl10}>
+                            <TouchableOpacity style={pl10}  onPress={() =>{navigation.navigate(props.navigate as never) }}>
                                 <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={22} color={colors.white} />
                             </TouchableOpacity>
                             <TouchableOpacity style={pl10}>
@@ -53,7 +60,7 @@ export const FooterChatView = () => {
             <View style={[{ marginHorizontal: 20 }, flexRow, spaceBetween]}>
                 <View style={{ flex: 1 }}>
                     <View style={{ position: 'absolute', paddingTop: 15, paddingLeft: 20 }}>
-                        <CustomIcon name='smiley' type="octicons" size={20} color={colors.greyVar3} />
+                        <CustomIcon name='smiley' type="octicons" size={20} color={colors.greyVar4} />
                     </View>
                     <View>
                         <TextInput
@@ -71,15 +78,15 @@ export const FooterChatView = () => {
                         />
                         <View style={{ alignItems: 'flex-end', marginHorizontal: 8 }}>
                             <View style={{ position: 'absolute', paddingTop: 15, bottom: 10, paddingRight: 32 }}>
-                                <CustomIcon name='attachment' type="MaterialIcons" size={26} color={colors.greyVar3} />
+                                <CustomIcon name='attachment' type="MaterialIcons" size={26} color={colors.greyVar4} />
                             </View>
                             <View style={{ position: 'absolute', paddingTop: 15, bottom: 12 }}>
-                                <CustomIcon name='camera-outline' type="MaterialCommunityIcons" size={24} color={colors.greyVar3} />
+                                <CustomIcon name='camera-outline' type="MaterialCommunityIcons" size={24} color={colors.greyVar4} />
                             </View>
                         </View>
                     </View>
                 </View>
-                <View style={{ backgroundColor: colors.purple, height: 50, width: 50, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center' }}>
+                <View style={{ backgroundColor: colors.purpleVar3, height: 50, width: 50, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center' }}>
                     <CustomIcon name='microphone-outline' type="MaterialCommunityIcons" color={colors.white} size={25} />
                 </View>
             </View>
@@ -103,7 +110,7 @@ export const receiveMessage2 = () => {
     return (
         <View style={{ alignItems: 'flex-start', marginHorizontal: 20, marginTop: 20 }}>
             <View style={[styles.receiveMsgCard, flexRow]}>
-                <CustomIcon name="play-circle-o" size={20} color={colors.purple} type="font-awesome" />
+                <CustomIcon name="play-circle-o" size={20} color={colors.purpleVar3} type="font-awesome" />
                 <View style={pl10}>
                     <AudioImg />
                 </View>
@@ -116,17 +123,17 @@ export const receiveMessage3 = () => {
     return (
         <View style={{ alignItems: 'flex-start', marginHorizontal: 20, marginTop: 20 }}>
             <View style={styles.receiveMsgCard}>
-                <View style={[{ backgroundColor: colors.whitishLigtgreyVar2, alignItems: 'center', padding: 10, width: DevWidth / 1.4, borderRadius: 8 }, flexRow, spaceBetween]}>
+                <View style={[{ backgroundColor: colors.whiteVar1, alignItems: 'center', padding: 10, width: DevWidth / 1.4, borderRadius: 8 }, flexRow, spaceBetween]}>
                     <View style={[flexRow]}>
                         <View style={justyfyCenter}>
-                            <CustomIcon name='document-text-outline' type="Ionicons" color={colors.greyVar3} size={20} />
+                            <CustomIcon name='document-text-outline' type="Ionicons" color={colors.greyVar4} size={20} />
                         </View>
                         <View style={pl13}>
                             <H14BlackText>Design_Brief.pdf</H14BlackText>
                             <H14BlackText>243 KB</H14BlackText>
                         </View>
                     </View>
-                    <CustomIcon name='download' type="Feather" color={colors.greyVar3} size={20} />
+                    <CustomIcon name='download' type="Feather" color={colors.greyVar4} size={20} />
                 </View>
                 <View style={pt5}>
                     <H14BlackText>{labels.checkThisFile}</H14BlackText>
@@ -193,7 +200,7 @@ export const sentMessage3 = () => {
         <View style={{ alignItems: 'flex-end', marginHorizontal: 20, marginTop: 5 }}>
             <View style={styles.sndMsgCard}>
                 <SendImg2 />
-                <H14BlueText style={p5}>{labels.chatLink}</H14BlueText>
+                <H14blueVar2Text style={p5}>{labels.chatLink}</H14blueVar2Text>
             </View>
 
         </View >
@@ -214,7 +221,7 @@ const styles = StyleSheet.create({
         padding: 10
     },
     sndMsgCard: {
-        backgroundColor: colors.lightPurple1,
+        backgroundColor: colors.purpleVar1,
         borderTopLeftRadius: 8,
         borderBottomRightRadius: 8,
         borderBottomLeftRadius: 8,

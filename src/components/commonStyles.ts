@@ -384,7 +384,7 @@ const styles = StyleSheet.create({
     borderColor: colors.placeholderSecondaryTextColor,
   },
   borderSecondaryColor: {
-    borderColor: colors.borderTextColor,
+    borderColor: colors.greyVar1,
   },
   borderDangerColor: {
     borderColor: colors.red,

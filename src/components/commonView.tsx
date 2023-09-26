@@ -29,7 +29,7 @@ import styled from 'styled-components';
     },
     purpleMainContainer: {
       flex: 1,
-      backgroundColor: colors.purple,
+      backgroundColor: colors.purpleVar3,
     },
     subContainer: {
       flex: 1,
@@ -40,7 +40,7 @@ import styled from 'styled-components';
       width: '100%',
       height: 55,
       borderRadius: 35,
-      borderColor: colors.borderTextColor,
+      borderColor: colors.greyVar1,
       borderWidth: 0.5,
       backgroundColor: 'white',
       elevation: 1,
@@ -49,7 +49,7 @@ import styled from 'styled-components';
     inputStyle: {
       width: '100%',
       heiht: 40,
-      borderColor: colors.borderTextColor,
+      borderColor: colors.greyVar1,
       borderWidth: 1,
     },
     commonButtonTextStyle: {
@@ -87,7 +87,7 @@ import styled from 'styled-components';
       textTransform: 'uppercase',
     },
     commonButtonStyle: {
-      backgroundColor: colors.purple,
+      backgroundColor: colors.purpleVar3,
       width: '40%',
       marginVertical: 10,
       borderRadius: 10,
@@ -99,14 +99,14 @@ import styled from 'styled-components';
      
     },
     commonButtonFull: {
-      backgroundColor: colors.blue,
+      backgroundColor: colors.blueVar2Var2,
       width: '100%',
       paddingVertical: 15,
       marginVertical: 15,
       borderRadius: 5,
       alignSelf: 'center',
     },
-    commonButtonStyleBlue: {
+    commonButtonStyleblueVar2: {
       width: 340,
       paddingVertical: 15,
       marginVertical: 15,
@@ -286,7 +286,7 @@ import styled from 'styled-components';
     commonButtonStyle,
     commonButtonFull,
     commonButtonNow,
-    commonButtonStyleBlue,
+    commonButtonStyleblueVar2,
     commonButtonStyleNext,
     commonButtonCancelStyle,
     commonButtonReturnStyle,
@@ -350,7 +350,7 @@ import styled from 'styled-components';
   export const CommonButton = styled(TouchableOpacity)`
     ${commonButtonStyle};
   `;
-  export const CommonButtonBlue = styled(TouchableOpacity)`
+  export const CommonButtonblueVar2 = styled(TouchableOpacity)`
     ${commonButtonFull};
   `;
   export const CommonButtonAppointment = styled(TouchableOpacity)`
@@ -363,7 +363,7 @@ import styled from 'styled-components';
     ${commonButtonBook};
   `;
   export const CommonButtonInvoice = styled(TouchableOpacity)`
-    ${commonButtonStyleBlue};
+    ${commonButtonStyleblueVar2};
   `;
   export const CommonButtonNext = styled(TouchableOpacity)`
     ${commonButtonStyleNext};

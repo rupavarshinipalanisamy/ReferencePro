@@ -35,7 +35,7 @@ export const ButtonFull: React.FC<ButtonProps> = ({
 
   const handleClick = () => {
     // You can change the text color to a new color when the button is clicked.
-    setTextColor(colors.purple); // Replace 'new-color-here' with the desired color
+    setTextColor(colors.purpleVar3); // Replace 'new-color-here' with the desired color
     funCallback();
   };
 
