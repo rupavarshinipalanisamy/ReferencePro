@@ -5,11 +5,11 @@ import { ImageBackground, StatusBar, TouchableOpacity, View } from 'react-native
 import { ButtonNow } from '../../components/commonButtons';
 import { CustomTextInput } from '../../components/commonInputFields';
 import { m30, ph30, pv8, justyfyCenter } from '../../components/commonStyles';
-import { H6fontRegularBlack, H18fontNormalGray, H16fontNormalGray, H16fontNormalBlue } from '../../components/commonText';
+import {  H18fontNormalGray, H16fontNormalGray, H16fontNormalBlue, H25fontBoldBlack } from '../../components/commonText';
 import { MainContainer } from '../../components/commonView';
 import { LoginLogoBigCircle, LoginLogoCircle, IconInputContainer, TextContainer1 } from '../../styledComponent/styledComponent';
 import CustomIcon from '../../utils/Icons';
-import labels from '../../utils/labels';
+import {labels} from '../../utils/labels';
 import { screenName } from '../../utils/screenName';
 import { requiredValidation, minLengthValidation, validationSchema } from '../../utils/validationconfig';
 import { useNavigation } from '@react-navigation/native';
@@ -51,7 +51,7 @@ const ForgetPassword = (props: forgetPasswordProps) => {
                     </View>
                     <View>
                         <View style={[ph30]}>
-                            <H6fontRegularBlack>{labels.forgetPassword1}</H6fontRegularBlack>
+                            <H25fontBoldBlack>{labels.forgetPassword1}</H25fontBoldBlack>
                             <H18fontNormalGray style={[pv8]}>{labels.fPmsg}</H18fontNormalGray>
                             <IconInputContainer>
                                 <View style={[justyfyCenter]}>

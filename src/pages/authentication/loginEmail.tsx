@@ -6,8 +6,8 @@ import FaceBook from '../../../assets/images/facebook.svg';
 import Apple from '../../../assets/images/apple.svg';
 import { BottomStyle, CheckBox, CheckBoxContainer, CheckBoxContainer1, IconInputContainer, InputContainer1, LoginLogoBigCircle, LoginLogoCircle, SocialLogoCircle, SocialLogoContainer, TextContainer } from '../../styledComponent/styledComponent';
 import { alignItemsCenter, flexRow, justyfyCenter, m30, ph30, ph5, pv20, pv8 } from '../../components/commonStyles';
-import { H16fontNormalBlue, H16fontNormalGray, H18fontNormalGray, H6fontRegularBlack } from '../../components/commonText';
-import labels from '../../utils/labels';
+import { H16fontNormalBlue, H16fontNormalGray, H18fontNormalGray, H25fontBoldBlack,  } from '../../components/commonText';
+import {labels} from '../../utils/labels';
 import { MainContainer } from '../../components/commonView';
 import CustomIcon from '../../utils/Icons';
 import { colors } from '../../utils/colors';
@@ -62,7 +62,7 @@ const LoginEmail = (props: loginEmailProps) => {
                     </View>
                     <View>
                         <View style={[ph30]}>
-                            <H6fontRegularBlack>{labels.logIn}</H6fontRegularBlack>
+                            <H25fontBoldBlack>{labels.logIn}</H25fontBoldBlack>
                             <H18fontNormalGray style={[pv8]}>{labels.message}</H18fontNormalGray>
                             <IconInputContainer>
                                 <View style={[justyfyCenter]}>

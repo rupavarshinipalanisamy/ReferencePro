@@ -2,11 +2,11 @@ import React, { Fragment } from 'react';
 import { Text, View, StyleSheet, ScrollView } from 'react-native';
 import { MainContainer } from '../../components/commonView';
 import { colors } from '../../utils/colors';
-import { flexRow,mr5, mt10, mt15, pl10, pt10, spaceBetween } from '../../components/commonStyles';
+import { flexRow, mr5, mt10, mt15, pl10, pt10, spaceBetween } from '../../components/commonStyles';
 import CustomIcon from '../../utils/Icons';
 import { DevHeight } from '../../utils/device';
 import Profile from '../../../assets/images/profileView.svg'
-import {labels} from '../../utils/labels';
+import { labels } from '../../utils/labels';
 import { H14BlackText, H14purpleVar3Text, H18BlackText } from '../../components/commonText';
 import MessageIcon from '../../../assets/images/messageIcon.svg'
 import Media1 from '../../../assets/images/Media1.svg'
@@ -21,10 +21,13 @@ export type UserProfileProps = {
 
 export const Header = () => {
     return (
-        <View style={[flexRow, spaceBetween, { marginTop: 30, marginHorizontal: 25 }]}>
-            <CustomIcon name='chevron-back-sharp' color={colors.greyVar4} size={16} type="Ionicons" />
-            <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={colors.greyVar4} />
+        <View style={{ marginVertical: 20 }}>
+            <View style={[flexRow, spaceBetween, {  marginHorizontal: 25 }]}>
+                <CustomIcon name='chevron-back-sharp' color={colors.greyVar4} size={16} type="Ionicons" />
+                <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={colors.greyVar4} />
+            </View>
         </View>
+
     )
 }
 export const ProfileCard = () => {
@@ -179,7 +182,7 @@ export const MediaCard = () => {
 
 export const Groups = () => {
     return (
-        <View style={{marginTop:10}}>
+        <View style={{ marginTop: 10 }}>
             <CardHeaderText text='2 Groups in common' />
 
         </View>

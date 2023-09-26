@@ -175,3 +175,8 @@ export const H18fontBoldBlack = styled(Text)`
   ${fontBold};
   ${black};
 `;
+export const H25fontBoldBlack = styled(Text)`
+  ${h1};
+  ${fontBold};
+  ${black};
+`;
