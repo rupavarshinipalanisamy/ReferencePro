@@ -12,6 +12,9 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
 import Fontisto from 'react-native-vector-icons/Fontisto'
+import { StyleProp } from 'react-native';
+import { ViewStyle } from 'react-native';
+
 
 export interface IconProps {
   name: string;

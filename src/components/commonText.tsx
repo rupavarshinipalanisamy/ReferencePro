@@ -59,6 +59,9 @@ const styles = StyleSheet.create({
     fontSize:14,
   
   },
+  h16: {
+    fontSize: 16,
+  },
 
   fontBold: {
     fontWeight: 'bold',
