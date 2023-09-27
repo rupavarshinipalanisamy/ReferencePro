@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   flexRow: {
     flexDirection: 'row',
   },
+
   m5: {
     margin: 5,
   },
@@ -33,8 +34,8 @@ const styles = StyleSheet.create({
   m15: {
     margin: 15,
   },
-  m30 :{
-margin:30,
+  m30: {
+    margin: 30,
   },
   mt0: {
     marginTop: 0,
@@ -48,8 +49,8 @@ margin:30,
   ml5: {
     marginLeft: 5,
   },
-  m90:{
-    marginTop:80,
+  m90: {
+    marginTop: 80,
   },
   ml10: {
     marginLeft: 10,
@@ -67,7 +68,7 @@ margin:30,
     marginRight: 30,
   },
   ml30: {
-    marginLeft: 30,
+    marginLeft: 220,
   },
 
   mh1: {
@@ -106,13 +107,13 @@ margin:30,
   mt15: {
     marginTop: 15,
   },
-  ml15:{
-   marginLeft:15
+  ml15: {
+    marginLeft: 15
   },
-  mr15:{
-    marginRight:15
-   },
-   mt5: {
+  mr15: {
+    marginRight: 15
+  },
+  mt5: {
     marginTop: 5,
   },
   mt10: {
@@ -126,6 +127,15 @@ margin:30,
   },
   mb15: {
     marginBottom: 15,
+  },
+  b50: {
+    bottom: 50,
+  },
+  t20: {
+    top: 20,
+  },
+  b40: {
+    bottom: 40,
   },
   p0: {
     padding: 0
@@ -151,6 +161,9 @@ margin:30,
   pt15: {
     paddingTop: 15,
   },
+  pt25: {
+    paddingTop: 25,
+  },
   pb0: {
     paddingBottom: 0,
   },
@@ -163,20 +176,23 @@ margin:30,
   pl0: {
     paddingLeft: 0,
   },
-  pr10:{
-    paddingRight:10
+  pr10: {
+    paddingRight: 10
   },
-  pl6:{
-    paddingLeft:6
+  pl6: {
+    paddingLeft: 6
   },
-  pl7:{
-    paddingLeft:7
+  pl7: {
+    paddingLeft: 7
   },
-  pr6:{
-    paddingRight:6
+  pl70: {
+    paddingLeft: 70
   },
-  pr7:{
-    paddingRight:7
+  pr6: {
+    paddingRight: 6
+  },
+  pr7: {
+    paddingRight: 7
   },
   pl2: {
     paddingLeft: 2,
@@ -197,11 +213,11 @@ margin:30,
   pl10: {
     paddingLeft: 10,
   },
-  pl32:{
-    paddingLeft:32
+  pl32: {
+    paddingLeft: 32
   },
-  pr32:{
-    paddingRight:32
+  pr32: {
+    paddingRight: 32
   },
   pR10: {
     paddingRight: 10
@@ -209,14 +225,14 @@ margin:30,
   pl15: {
     paddingLeft: 15,
   },
-  pl13:{
-    paddingLeft:13
+  pl13: {
+    paddingLeft: 13
   },
-  pr13:{
-    paddingRight:13
+  pr13: {
+    paddingRight: 13
   },
-  pr15:{
-    paddingRight:15
+  pr15: {
+    paddingRight: 15
   },
   pR15: {
     paddingRight: 15
@@ -227,11 +243,11 @@ margin:30,
   pl20: {
     paddingLeft: 20,
   },
-  pr20:{
-    paddingRight:20
+  pr20: {
+    paddingRight: 20
   },
-  pr18:{
-    paddingRight:18
+  pr18: {
+    paddingRight: 18
 
   },
 
@@ -282,6 +298,15 @@ margin:30,
   },
   ph30: {
     paddingHorizontal: 30,
+  },
+  ph31: {
+    paddingHorizontal: 180,
+  },
+  w100: {
+    width: '100%'
+  },
+  h100: {
+    height: '100%'
   },
   alignItemsCenter: {
     alignItems: 'center',
@@ -363,7 +388,7 @@ margin:30,
     borderRadius: 25
   },
   bgSecondary: {
-    backgroundColor: colors.purple
+    backgroundColor: colors.purpleVar3
   },
   bgPrimary: {
     backgroundColor: colors.white,
@@ -391,16 +416,16 @@ margin:30,
     textAlign: 'right',
   },
   borderColor: {
-    borderColor: colors.purple
+    borderColor: colors.purpleVar3
   },
   borderSecondaryColor: {
-    borderColor: colors.borderTextColor,
+    borderColor: colors.greyVar1,
   },
   borderDangerColor: {
     borderColor: colors.red,
   },
-  positionAbs:{
-    position:'absolute'
+  positionAbs: {
+    position: 'absolute'
   }
 });
 
@@ -475,15 +500,20 @@ export const {
   ph10,
   ph15,
   ph30,
+  ph31,
+  w100,
+  h100,
   pb0,
   pb5,
   pb10,
   pt0,
   pt5,
   pt10,
+  pt25,
   pl0,
   pl6,
   pl7,
+  pl70,
   pr10,
   pr18,
   pr20,
@@ -506,12 +536,15 @@ export const {
   pr5,
   pR10,
   p20,
-  pl2
+  pl2,
+  b50,
+  b40,
+  t20,
 } = styles;
 export const { alignItemsCenter, alignItemsLeft, alignItemsRight } = styles;
 
 export const { alignSelfCenter, alignSelfLeft, alignSelfRight } = styles;
-export const { justifyEnd, justifyStart, justyfyCenter, spaceBetween, spaceAround, spaceEvenly, spaceCenter} = styles;
+export const { justifyEnd, justifyStart, justyfyCenter, spaceBetween, spaceAround, spaceEvenly, spaceCenter } = styles;
 export const { txtCenter, txtLeft, txtRight, bgSecondary, bgPrimary } = styles;
 export const { elevation3, elevation0, elevation1, elevation2 } = styles;
 export const { textRight, textLeft, textCenter } = styles;

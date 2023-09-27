@@ -30,7 +30,7 @@ const ChatView = (props: chatViewProps) => {
     return (
         <Fragment>
             <MainContainer>
-                <StatusBar backgroundColor={colors.purple} />
+                <StatusBar backgroundColor={colors.purpleVar3} />
                 <HeaderChatView />
                 <ProfileAvatar />
                 <ProfileImg />

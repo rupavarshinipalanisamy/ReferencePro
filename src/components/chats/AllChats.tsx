@@ -19,7 +19,7 @@ const navigation = useNavigation()
 
     return (
         <View style={[mt20, styles.whiteBg]}>
-            <View style={[flexRow, spaceBetween, mt20, alignSelfCenter, p10, borderRadius10, { height: 50, width: 350, backgroundColor: colors.extraLightPurple }]}>
+            <View style={[flexRow, spaceBetween, mt20, alignSelfCenter, p10, borderRadius10, { height: 50, width: 350, backgroundColor: colors.purpleVar1 }]}>
                 <View style={[flexRow, spaceEvenly]}>
                     {/* <Icon name="archive-outline" size={25} color={colors.textcolorGray} style={[mh10]} /> */}
                     <View style={mt5}>
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     },
     chatHeaderText: {
         fontSize: 19,
-        color: colors.textcolorGray,
+        color: colors.greyVar4,
         fontWeight: '700',
         top: 2
     },
