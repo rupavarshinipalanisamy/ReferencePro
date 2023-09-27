@@ -3,7 +3,7 @@ import { Modal, View } from 'react-native';
 import CreatePasswordLogo from '../../assets/images/modal-logo.svg';
 import { ButtonBook } from './commonButtons';
 import { colors } from '../utils/colors';
-import labels from '../utils/labels';
+import {labels} from '../utils/labels';
 import { HalfCircle, ModalContainer, ModalContent } from '../styledComponent/styledComponent';
 import { alignItemsCenter, b40, b50, justyfyCenter, pl10, pr10, t20 } from './commonStyles';
 import { useNavigation } from '@react-navigation/native';

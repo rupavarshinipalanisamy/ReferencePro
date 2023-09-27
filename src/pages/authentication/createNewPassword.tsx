@@ -5,11 +5,11 @@ import { ImageBackground, StatusBar, TouchableOpacity, View } from 'react-native
 import { ButtonNow } from '../../components/commonButtons';
 import { CustomTextInput } from '../../components/commonInputFields';
 import { m30, ph30, pv8, justyfyCenter, alignItemsCenter, flexRow } from '../../components/commonStyles';
-import { H6fontRegularBlack, H18fontNormalGray } from '../../components/commonText';
+import {  H18fontNormalGray, H25fontBoldBlack } from '../../components/commonText';
 import { MainContainer } from '../../components/commonView';
 import { LoginLogoBigCircle, LoginLogoCircle, IconInputContainer, InputContainer1 } from '../../styledComponent/styledComponent';
 import CustomIcon from '../../utils/Icons';
-import labels from '../../utils/labels';
+import {labels} from '../../utils/labels';
 import { requiredValidation, minLengthValidation, validationSchema } from '../../utils/validationconfig';
 import { colors } from '../../utils/colors';
 import PasswordLogo from '../../../assets/images/create-password.svg';
@@ -52,8 +52,9 @@ const CreateNewPassword = (props: createNewPasswordProps) => {
     return (
         <Fragment>
             <MainContainer>
-                <StatusBar translucent backgroundColor={statusBarColor} />
-                <ImageBackground source={require('../../../assets/images/png/background-image.png')} style={{ flex: 1 }}>
+                
+                <ImageBackground source={require('../../../assets/images/png/background-image.png')} 
+                style={{ flex: 1}}>
                     <View style={m30}>
                         <TouchableOpacity onPress={() => navigation.goBack()}>
                             <CustomIcon name='arrow-back-outline' size={28} color={colors.black} type='Ionicons' />
@@ -66,7 +67,7 @@ const CreateNewPassword = (props: createNewPasswordProps) => {
                     </View>
                     <View>
                         <View style={[ph30]}>
-                            <H6fontRegularBlack>{labels.createpassword}</H6fontRegularBlack>
+                            <H25fontBoldBlack>{labels.createpassword}</H25fontBoldBlack>
                             <H18fontNormalGray style={[pv8]}>{labels.cpMsg}</H18fontNormalGray>
                             <IconInputContainer>
                                 <InputContainer1>

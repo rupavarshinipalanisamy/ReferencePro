@@ -4,7 +4,7 @@ import ToddleImage from '../../../assets/images/welcomepage_center.svg';
 import Logo from '../../../assets/images/logo.svg';
 import { ButtonContainer, LogoContainer } from '../../styledComponent/styledComponent';
 import { ButtonFull } from '../../components/commonButtons';
-import labels from '../../utils/labels';
+import { labels } from '../../utils/labels';
 import { colors } from '../../utils/colors';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
@@ -27,24 +27,25 @@ const WelcomePage: React.FC<WelcomePageProps> = (props: WelcomePageProps) => {
   };
 
   return (
-    <Fragment>
       <MainContainer>
-        <StatusBar translucent backgroundColor="transparent" />
         <ImageBackground
           source={require('../../../assets/images/png/background-image.png')}
-          style={{ width: DevWidth, height: DevHeight, }}>
-          <LogoContainer>
+          style={{ flex: 1 }}>
+          <LogoContainer style={{marginTop:50}}>
             <Logo height={80} width={'50%'} />
-            <ToddleImage top={70} />
+            <ToddleImage marginTop={70} />
           </LogoContainer>
-          <View>
-            <ButtonContainer>
+
+          <ImageBackground source={require('../../../assets/images/png/welcomepage_bottom.png')}
+            style={{ width: '100%', flex: 1 }} >
+
+
+            <ButtonContainer style={{ position: 'absolute', bottom: 25 }}>
               <ButtonFull
                 disabled={false}
                 funCallback={() => handleButtonClick(labels.logIn)}
                 label={labels.logIn}
                 style={{
-                  marginVertical: 0,
                   backgroundColor: activeButton === labels.logIn ? colors.white : colors.purpleVar3,
                 }}
                 textStyle={{ color: activeButton === labels.logIn ? colors.purpleVar3 : colors.white }}
@@ -54,18 +55,14 @@ const WelcomePage: React.FC<WelcomePageProps> = (props: WelcomePageProps) => {
                 funCallback={() => handleButtonClick(labels.signUp)}
                 label={labels.signUp}
                 style={{
-                  marginVertical: 0,
                   backgroundColor: activeButton === labels.signUp ? colors.white : colors.purpleVar3,
                 }}
                 textStyle={{ color: activeButton === labels.signUp ? colors.purpleVar3 : colors.white }}
               />
             </ButtonContainer>
-            <Image source={require('../../../assets/images/png/welcomepage_bottom.png')}
-              style={{ width: DevWidth }} />
-          </View>
+          </ImageBackground>
         </ImageBackground>
       </MainContainer>
-    </Fragment>
   );
 };
 
