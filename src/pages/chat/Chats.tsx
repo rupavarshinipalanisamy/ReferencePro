@@ -57,7 +57,7 @@ const Chats = (props: chatProps) => {
                 {showCustomActionBarSecond ? (
                     <CustomActionBarSecond itemNumber={selectedCards.length} />
                 ) : isCustomActionBar ? (
-                    <CustomActionBar text={selectedCards.length} />
+                    <CustomActionBar text={selectedCards.length} selectedCardsCount={selectedCards.length} />
                 ) : (
                     <ChatHeader title={labels.Chats} />
                 )}

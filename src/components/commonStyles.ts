@@ -114,6 +114,9 @@ const styles = StyleSheet.create({
   mt20: {
     marginTop: 20,
   },
+  mt30: {
+    marginTop: 30,
+  },
   mb20: {
     marginTop: 20,
   },
@@ -423,6 +426,7 @@ export const {
   mh10,
   mh15,
   mt20,
+  mt30,
   mt0,
   mr15,
   ml15,

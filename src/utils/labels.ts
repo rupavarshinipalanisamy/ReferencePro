@@ -25,7 +25,9 @@ export const labels = {
     chatViewToday: 'Today, July 24',
     chatLink: "https://www.figma.com/file/QamN",
     checkThisFile: "You can check on this file.",
-    helloAlex: "Hello @Alex Good Morning"
+    helloAlex: "Hello @Alex Good Morning",
+    ViewContact : 'View Contact',
+    MarkAsRead : 'Mark as Read'
 };
 
 

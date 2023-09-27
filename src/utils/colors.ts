@@ -7,6 +7,7 @@ export const colors = {
 
     //black
     black: '#000000',
+    blackVar1 : '#424242',
 
     //grey
     greyVar6: '#333333',
