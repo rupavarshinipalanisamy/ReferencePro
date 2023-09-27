@@ -105,6 +105,9 @@ const styles = StyleSheet.create({
   mr15:{
     marginRight:15
    },
+  mt3: {
+    marginTop: 3,
+  },
    mt5: {
     marginTop: 5,
   },
@@ -146,6 +149,9 @@ const styles = StyleSheet.create({
   },
   pt15: {
     paddingTop: 15,
+  },
+  pt30: {
+    paddingTop: 30,
   },
   pb0: {
     paddingBottom: 0,
@@ -443,6 +449,7 @@ export const {
   mt15,
   mb20,
   mt10,
+  mt3,
   mt5,
   mr5,
   mb15
@@ -472,6 +479,8 @@ export const {
   pt0,
   pt5,
   pt10,
+  pt15,
+  pt30,
   pl0,
   pl6,
   pl7,

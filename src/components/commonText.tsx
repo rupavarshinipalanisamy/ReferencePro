@@ -1,8 +1,8 @@
 //import liraries
-import {Text, StyleSheet} from 'react-native';
-import {colors} from '../utils/colors';
+import { Text, StyleSheet } from 'react-native';
+import { colors } from '../utils/colors';
 import styled from 'styled-components';
-import { letterSpacing03, txtCenter } from './commonStyles';
+import { letterSpacing03, letterSpacing04, txtCenter } from './commonStyles';
 
 // define your styles
 const styles = StyleSheet.create({
@@ -18,14 +18,14 @@ const styles = StyleSheet.create({
   red: {
     color: colors.red,
   },
-  textcolorGray : {
-    color : colors.greyVar4,
+  textcolorGray: {
+    color: colors.greyVar4,
   },
-  blueVar1:{
-    color:colors.blueVar1
-  } ,
+  blueVar1: {
+    color: colors.blueVar1
+  },
   purpleVar3: {
-    color:colors.purpleVar3,
+    color: colors.purpleVar3,
   },
   h1: {
     fontSize: 48,
@@ -43,22 +43,22 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 
- 
-  h6:{
-    fontSize:18,
-  
+
+  h6: {
+    fontSize: 18,
+
   },
-  h7:{
-    fontSize:16,
-  
+  h7: {
+    fontSize: 16,
+
   },
   h8: {
     fontSize: 15,
   },
 
-  h9:{
-    fontSize:14,
-  
+  h9: {
+    fontSize: 14,
+
   },
 
   fontBold: {
@@ -66,16 +66,19 @@ const styles = StyleSheet.create({
   },
 
   fontRegular: {
-    fontWeight:'500',
+    fontWeight: '500',
   },
   fontBold700: {
-    fontWeight:'700',
+    fontWeight: '700',
   },
-  });
+  fontBold800: {
+    fontWeight: '800',
+  },
+});
 
 
-const { green,red, textcolorGray,black,white,purpleVar3,blueVar1} = styles;
-const {fontBold, fontRegular, fontBold700} = styles;
+const { green, red, textcolorGray, black, white, purpleVar3, blueVar1 } = styles;
+const { fontBold, fontRegular, fontBold700, fontBold800 } = styles;
 const {
   h1,
   h2,
@@ -133,6 +136,12 @@ export const H18WhiteText = styled(Text)`
 export const H18BlackText = styled(Text)`
   ${h6};
   ${black};
+`;
+export const H20BlackBoldText = styled(Text)`
+  ${h5};
+  ${black};
+  ${fontBold700};
+  ${letterSpacing04};
 `;
 export const H14BlackText = styled(Text)`
   ${h9};

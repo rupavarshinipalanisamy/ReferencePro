@@ -10,11 +10,13 @@ import AudioImg from '../../../../assets/images/Audio.svg'
 import SendImg1 from '../../../../assets/images/sentMsg.svg'
 import SendImg2 from '../../../../assets/images/sendMsg1.svg'
 import { useNavigation } from '@react-navigation/native';
+import { screenName } from '../../../utils/screenName';
 
 interface HeaderChatViewProps {
     backgroundColor: string,
     onPress?: () => void;
     navigate: string;
+    groups?: boolean;
 
 }
 
@@ -29,7 +31,9 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
                     </View>
                     <View style={[flexRow, spaceBetween, flex1]}>
                         <TouchableOpacity style={[pl10, flexRow]} onPress={() => { navigation.navigate(props.navigate as never) }}>
-                            <Image source={require('../../../../assets/images/png/profile.png')} />
+                            {props.groups ? <Image source={require('../../../../assets/images/png/groupimg1.png')} /> :
+                                <Image source={require('../../../../assets/images/png/profile.png')} />
+                            }
 
                             <View style={pl13}>
                                 <H18WhiteText>{labels.horaceKeene}</H18WhiteText>
@@ -40,7 +44,7 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
                             <TouchableOpacity style={pl10} onPress={() => { navigation.navigate(props.navigate as never) }}>
                                 <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={22} color={colors.white} />
                             </TouchableOpacity>
-                            <TouchableOpacity style={pl10}>
+                            <TouchableOpacity onPress={() => navigation.navigate(screenName.Calling as never)} style={pl10}>
                                 <CustomIcon name='call-outline' type="Ionicons" size={18} color={colors.white} />
                             </TouchableOpacity>
                             <TouchableOpacity style={pl10}>

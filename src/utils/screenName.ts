@@ -7,5 +7,17 @@ export const screenName = {
     ChatSettings : 'ChatSettings',
     Chats : 'Chats',
     ChatView:'ChatView',
-    UserProfile:'UserProfile'
+    UserProfile:'UserProfile',
+    Group : 'Group',
+    GroupChatting : 'GroupChatting',
+    GroupChattingAdmin : 'GroupChattingAdmin',
+    GroupInfo : 'GroupInfo',
+    GroupInfoAdmin : 'GroupInfoAdmin',
+    GroupSettingEditContact : 'GroupSettingEditContact',
+    SingleAudioCallRing : 'SingleAudioCallRing',
+    SingleAudioCallAttend : 'SingleAudioCallAttend',
+    Calling : 'Calling',
+    SingleVideoCall : 'SingleVideoCall',
+    GroupAudioCallAttend : 'GroupAudioCallAttend',
+    GroupVideoCallAttend : 'GroupVideoCallAttend',
 };

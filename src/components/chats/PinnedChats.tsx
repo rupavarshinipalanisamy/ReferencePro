@@ -97,7 +97,7 @@ const PinnedChats = ({ selectedCards, onCardSelection }: PinnedChatsProps) => {
                                             <RowSpaceBetween>
                                                 <H15Grey>{labels.Chaturl}</H15Grey>
                                                 <RowSpaceEvenly>
-                                                    <View style={[styles.roundNumber, mr5, { backgroundColor: colors.purpleVar1 }]}>
+                                                    <View style={[styles.roundNumber, mr5, { backgroundColor: colors.purpleVar3 }]}>
                                                         <Text style={styles.roundNumberText}>3</Text>
                                                     </View>
                                                     <View style={mt5}>

@@ -11,6 +11,14 @@ import ChatSettings from './src/pages/chat/chatSettings';
 import Chats from './src/pages/chat/Chats';
 import ChatView from './src/pages/chatView/chatView';
 import UserProfile from './src/pages/chatView/UserProfile';
+import Groups from './src/pages/groups/Groups';
+import GroupChatting from './src/pages/groups/GroupChatting';
+import GroupChattingAdmin from './src/pages/groups/GroupChattingAdmin';
+import GroupInfo from './src/pages/groups/GroupInfo';
+import GroupInfoAdmin from './src/pages/groups/GroupInfoAdmin';
+import SingleAudioCallRing from './src/pages/calls/SingleAudioCallRing';
+import SingleAudioCallAttend from './src/pages/calls/SingleAudioCallAttend';
+import Calling from './src/pages/calls/Calling';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,8 +40,14 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.Chats} component={Chats} />
             <Stack.Screen name={screenName.ChatView} component={ChatView} />
             <Stack.Screen name={screenName.UserProfile} component={UserProfile} />
-
-
+            <Stack.Screen name={screenName.Group} component={Groups} />
+            <Stack.Screen name={screenName.GroupChatting} component={GroupChatting} />
+            <Stack.Screen name={screenName.GroupChattingAdmin} component={GroupChattingAdmin} />
+            <Stack.Screen name={screenName.GroupInfo} component={GroupInfo} />
+            <Stack.Screen name={screenName.GroupInfoAdmin} component={GroupInfoAdmin} />
+            <Stack.Screen name={screenName.SingleAudioCallRing} component={SingleAudioCallRing} />
+            <Stack.Screen name={screenName.SingleAudioCallAttend} component={SingleAudioCallAttend} />
+            <Stack.Screen name={screenName.Calling} component={Calling} />
         </Stack.Navigator>
     );
 };

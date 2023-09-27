@@ -16,7 +16,7 @@ export const bottomNavData = [
         iconName : 'account-group-outline',
         iconType : "MaterialCommunityIcons",
         iconSize : 25,
-        screenName : screenName.ChatView,
+        screenName : screenName.Group,
     },
     {
         id: 3,

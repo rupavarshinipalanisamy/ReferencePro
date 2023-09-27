@@ -113,7 +113,7 @@ const CustomModal: React.FC<ModalProps> = ({ isVisible, height, width, modalData
                         alignItems: 'flex-end',
                     }}
                 >
-                    <View style={[mt30, { backgroundColor: colors.white, elevation : 4, borderRadius: 5, height: height || DevHeight * 0.5, width: width || DevWidth * 0.5 }]}>{modalData}</View>
+                    <View style={[mt30, { backgroundColor: colors.white, elevation: 4, borderRadius: 5, height: height || DevHeight * 0.5, width: width || DevWidth * 0.5 }]}>{modalData}</View>
                 </Modal>
             </View>
         </RNModal>
@@ -272,6 +272,15 @@ export const BottomTabBar = () => {
                                 <View style={alignItemsCenter}>
                                     <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={isSelected ? colors.white : colors.purpleVar2} />
                                 </View>
+                                {
+                                    item.id === 1 || item.id == 2 ? (
+                                        <View style={styles.unredBadge}>
+                                            <Text style={styles.unredBadgeText}>2</Text>
+                                        </View>
+                                    ) : (
+                                        <View />
+                                    )
+                                }
                                 <Text style={[{ color: isSelected ? colors.white : colors.purpleVar2 }, textCenter]}>{item.name}</Text>
                             </TouchableOpacity>
                         )
@@ -312,5 +321,23 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: colors.purpleVar3,
         fontSize: 12,
+    },
+    unredBadge: {
+        backgroundColor: colors.red,
+        position: 'absolute',
+        left: 20,
+        bottom: 28,
+        width: 20,
+        height: 20,
+        borderRadius: 25,
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 100
+    },
+    unredBadgeText: {
+        color: 'white',
+        fontWeight: '600',
+        fontSize: 12,
+        textAlign : 'center',
     },
 });

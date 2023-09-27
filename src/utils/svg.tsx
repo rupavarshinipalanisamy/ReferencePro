@@ -21,6 +21,8 @@ import ThreeDotsWhite from '../../assets/images/threeDotsWhite.svg'
 import WelcomeBottom from '../../assets/images/welcomepage_bottom.svg'
 import WelcomeCenter from '../../assets/images/welcomepage_center.svg'
 import VideoRed from '../../assets/images/VideoRed.svg'
+import StickerGrey from '../../assets/images/sticker.svg'
+import CallAvatarBig from '../../assets/images/call-big-avatar.svg'
 
 export const LeftArrowWhiteIcon = () => (
     <LeftArrowWhite />
@@ -84,4 +86,10 @@ export const WelcomeCenterIcon = () => (
 );
 export const VideoRedIcon = () => (
     <VideoRed />
+);
+export const StickerGreyIcon = () => (
+    <StickerGrey />
+);
+export const CallAvatarBigIcon = () => (
+    <CallAvatarBig />
 );

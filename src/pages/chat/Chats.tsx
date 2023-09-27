@@ -15,7 +15,7 @@ export type chatProps = {
 }
 
 const Chats = (props: chatProps) => {
-    const [selectedTab, setSelectedTab] = useState('allChat');
+    const [selectedTab, setSelectedTab] = useState(labels.AllChats);
     const [selectedCards, setSelectedCards] = useState<number[]>([]);
 
 
