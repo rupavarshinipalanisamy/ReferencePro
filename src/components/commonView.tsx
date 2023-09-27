@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   iconBackground:{
-    backgroundColor: colors.purpleVar2, 
+    backgroundColor: colors.purpleVar4, 
     width: 38, 
     borderRadius: 5, 
     justifyContent: 'center', 

@@ -66,6 +66,18 @@ export const labels = {
     termandCondition:'Terms & Conditions',
     privacyPolicy: 'Privacy policy',
     deleteAcc:'Delete Account',
-    logout:'Logout'
+    logout:'Logout',
+    fbLink:'www.facebook.com',
+    googleLink:'www.googleplus.com',
+    twitterLink:'www.twitter.com',
+    linkedinLink:'www.linkedIn.com',
+    youtubeLink:'www.youtubelink.com',
+    fb:'Facebook',
+    googleplus:'Google+',
+    twitter:'Twitter',
+    linkedIn:'LinkedIn',
+    youtube:'Youtube',
+
+    
 };
 

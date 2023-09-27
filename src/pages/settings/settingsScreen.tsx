@@ -13,13 +13,15 @@ import { labels } from '../../utils/labels';
 import Password from './password';
 import { ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { screenName } from '../../utils/screenName';
+import { DevHeight } from '../../utils/device';
 
 export type settingsScreenProps = {
 
 }
 
 export const SocialIcon = () => {
-    const navigation=useNavigation()
+    const navigation = useNavigation()
     return (
         <View style={[flexRow, mt20]}>
             <InputContainer1>
@@ -27,12 +29,12 @@ export const SocialIcon = () => {
                     <IconBackground>
                         <CustomIcon name='share-social' size={20} color={colors.purpleVar3} type='Ionicons' />
                     </IconBackground>
-                    <TouchableOpacity onPress={na}>
-                    <H16fontBoldBlack style={[ph10]}>{labels.socialPro}</H16fontBoldBlack>
+                    <TouchableOpacity >
+                        <H16fontBoldBlack style={[ph10]}>{labels.socialPro}</H16fontBoldBlack>
                     </TouchableOpacity>
                 </View>
                 <View style={[justyfyCenter]}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate(screenName.SocialProfiles as never)}>
                         <CustomIcon name='chevron-right' size={20} color={colors.black} type='octicons' />
                     </TouchableOpacity>
                 </View>
@@ -244,40 +246,51 @@ export const LogoutIcon = () => {
 
 
 const SettingsScreen = (props: settingsScreenProps) => {
-    const navigation=useNavigation()
+    const navigation = useNavigation()
     return (
         <Fragment>
             <MainContainer>
                 <StatusBar backgroundColor={colors.white} />
-                <TopContainerWhiteCard>
+                <View style={styles.topContainerWhiteCard}>
                     <View style={{ flexDirection: 'row', marginHorizontal: 20, justifyContent: 'space-between' }}>
                         <Text style={{ color: 'black', fontSize: 17, fontWeight: '900' }}> Settings</Text>
                         <CustomIcon name='search-outline' size={20} color={colors.black} type='Ionicons' />
                     </View>
-                </TopContainerWhiteCard>
-                <ScrollView>
-                <View style={{ margin: 15 }}>
-                    <View style={styles.cardSurface}>
-                        <View>
-                            <SettingAvatar />
-                        </View>
-                        <View style={{ paddingHorizontal: 15 }}>
-                            <Text style={{ color: 'black', fontSize: 16, fontWeight: '600' }}>Mark Villiams</Text>
-                            <Text style={{ color: colors.greyVar4, fontSize: 14 }}>Hello, I am using Dreamschat</Text>
-                        </View>
-                    </View>
-                    <SocialIcon />
-                    <PasswordIcon />
-                    <PrivacyIcon />
-                    <ChatIcon />
-                    <NotificationIcon/>
-                    <LanguageIcon/>
-                    <DeviceIcon/>
-                    <TermsandConIcon/>
-                    <PrivacyPolicyIcon/>
-                    <DeleteIcon/>
-                    <LogoutIcon/>
                 </View>
+                <ScrollView>
+                    <View style={{ margin: 15 }}>
+                        <View style={styles.cardSurface}>
+                            <View>
+                                <SettingAvatar />
+                            </View>
+                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <View style={{ paddingHorizontal: 15, }}>
+                                    <Text style={{ color: 'black', fontSize: 16, fontWeight: '600' }}>Mark Villiams</Text>
+                                    <Text style={{ color: colors.greyVar4, fontSize: 14 }}>Hello, I am using Dreamschat</Text>
+                                </View>
+                                <View style={{ marginLeft: 60 }}>
+                                    <IconBackground>
+                                        <CustomIcon name='qr-code' size={20} color={colors.black} type='MaterialIcons' />
+                                    </IconBackground>
+
+                                    <View>
+
+                                    </View>
+                                </View>
+                            </View>
+                        </View>
+                        <SocialIcon />
+                        <PasswordIcon />
+                        <PrivacyIcon />
+                        <ChatIcon />
+                        <NotificationIcon />
+                        <LanguageIcon />
+                        <DeviceIcon />
+                        <TermsandConIcon />
+                        <PrivacyPolicyIcon />
+                        <DeleteIcon />
+                        <LogoutIcon />
+                    </View>
                 </ScrollView>
             </MainContainer>
         </Fragment>
@@ -297,6 +310,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderRadius: 8,
         shadowColor: colors.greyVar3
+    },
+    topContainerWhiteCard: {
+        backgroundColor: 'white',
+        borderBottomStartRadius: 25,
+        borderBottomEndRadius: 25,
+        elevation: 4,
+        height: DevHeight / 10,
+        justifyContent: 'center'
     }
 
 })
