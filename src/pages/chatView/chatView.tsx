@@ -38,6 +38,7 @@ const ChatView = (props: chatViewProps) => {
             </MainContainer>
         </Fragment>
     )
+    
 }
 
 export default ChatView
