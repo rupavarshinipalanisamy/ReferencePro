@@ -10,11 +10,11 @@ import {
     pt25,
     flex1,
 } from '../../components/commonStyles';
-import {  H18fontNormalGray, H16fontNormalGray, H16fontNormalPurple, H25fontBoldBlack } from '../../components/commonText';
+import { H18fontNormalGray, H16fontNormalGray, H16fontNormalPurple, H25fontBoldBlack } from '../../components/commonText';
 import { MainContainer } from '../../components/commonView';
 import { LoginLogoBigCircle, LoginLogoCircle, OtpInput } from '../../styledComponent/styledComponent';
 import CustomIcon from '../../utils/Icons';
-import {labels} from '../../utils/labels';
+import { labels } from '../../utils/labels';
 import VerificationLogo from '../../../assets/images/verification-logo.svg';
 import { useNavigation } from '@react-navigation/native';
 import { colors } from '../../utils/colors';
@@ -66,7 +66,6 @@ const Verification = (props: verificationProps) => {
     return (
         <Fragment>
             <MainContainer>
-                <StatusBar translucent backgroundColor="transparent" />
                 <ImageBackground
                     source={require('../../../assets/images/png/background-image.png')}
                     style={[flex1]}

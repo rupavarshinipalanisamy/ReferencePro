@@ -37,7 +37,6 @@ const ForgetPassword = (props: forgetPasswordProps) => {
     return (
         <Fragment>
             <MainContainer>
-                <StatusBar translucent backgroundColor='transparent' />
                 <ImageBackground source={require('../../../assets/images/png/background-image.png')} style={{ flex: 1 }}>
                     <View style={m30}>
                         <TouchableOpacity onPress={() => navigation.goBack()}>

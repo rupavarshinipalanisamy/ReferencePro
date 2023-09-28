@@ -52,8 +52,9 @@ const CreateNewPassword = (props: createNewPasswordProps) => {
     return (
         <Fragment>
             <MainContainer>
-                <StatusBar translucent backgroundColor={statusBarColor} />
-                <ImageBackground source={require('../../../assets/images/png/background-image.png')} style={{ flex: 1 }}>
+                
+                <ImageBackground source={require('../../../assets/images/png/background-image.png')} 
+                style={{ flex: 1}}>
                     <View style={m30}>
                         <TouchableOpacity onPress={() => navigation.goBack()}>
                             <CustomIcon name='arrow-back-outline' size={28} color={colors.black} type='Ionicons' />

@@ -203,6 +203,7 @@ const ChatView = () => {
             </MainContainer>
         </Fragment>
     )
+    
 }
 
 const styles = StyleSheet.create({

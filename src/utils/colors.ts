@@ -1,5 +1,6 @@
 export const colors = {
     //purple
+    purpleVar4:'#F2DDFF',
     purpleVar3: '#680A83',
     purpleVar2: '#DBB0F5',
     purpleVar1: '#F8ECFF',

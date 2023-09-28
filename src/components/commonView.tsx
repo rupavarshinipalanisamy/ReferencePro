@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { colors } from '../utils/colors';
 import styled from 'styled-components';
+import { DevHeight } from '../utils/device';
 
 const styles = StyleSheet.create({
   rowSpaceBetween: {
@@ -48,38 +49,53 @@ const styles = StyleSheet.create({
   textNow: {
     fontSize: 16,
     color: colors.white,
-    fontWeight:'900',
-    justifyContent:'center',
-    alignSelf:'center'
+    fontWeight: '900',
+    justifyContent: 'center',
+    alignSelf: 'center'
   },
-commonButtonNow: {
+  commonButtonNow: {
     width: '100%',
     paddingVertical: 8,
     marginVertical: 40,
     borderRadius: 5,
     alignSelf: 'center',
-    height:50,
-    justifyContent:'center',
+    height: 50,
+    justifyContent: 'center',
   },
-commonButtonBook: {
+  commonButtonBook: {
     width: 200,
     paddingVertical: 8,
     marginVertical: 8,
     borderRadius: 5,
     alignSelf: 'center',
-    margin:9,
+    margin: 9,
   },
-commonButtonFull: {
+  commonButtonFull: {
     backgroundColor: colors.purpleVar3,
-    width: '40%',
+    width: '45%',
     paddingVertical: 13,
-    marginVertical: 13,
     borderRadius: 5,
     alignSelf: 'center',
-    borderColor:colors.white,
-    borderWidth:2
+    borderColor: colors.white,
+    borderWidth: 2
 
   },
+  topContainerWhiteCard: {
+    backgroundColor: 'white', 
+    borderBottomStartRadius: 25, 
+    borderBottomEndRadius: 25, 
+    elevation: 4, 
+    height: DevHeight / 10, 
+    justifyContent: 'center'
+  },
+  iconBackground:{
+    backgroundColor: colors.purpleVar4, 
+    width: 38, 
+    borderRadius: 5, 
+    justifyContent: 'center', 
+    height: 38, 
+    alignItems: 'center'
+  }
 });
 const {
   rowSpaceBetween,
@@ -93,7 +109,9 @@ const {
   textNow,
   commonButtonNow,
   commonButtonBook,
-  commonButtonFull
+  commonButtonFull,
+  topContainerWhiteCard,
+  iconBackground,
 
 
 
@@ -137,3 +155,9 @@ export const CommonButtonBook = styled(TouchableOpacity)`
     ${commonButtonBook};
   `;
 
+export const TopContainerWhiteCard = styled(View)`
+${topContainerWhiteCard};
+`
+export const IconBackground = styled(View)`
+${iconBackground};
+`

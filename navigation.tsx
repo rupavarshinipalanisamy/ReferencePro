@@ -7,11 +7,15 @@ import LoginEmail from './src/pages/authentication/loginEmail';
 import ForgetPassword from './src/pages/authentication/forgetPassword';
 import Verification from './src/pages/authentication/verification';
 import SignUp from './src/pages/authentication/signUp';
-import ChatSettings from './src/pages/chat/chatSettings';
 import Chats from './src/pages/chat/Chats';
 import ChatView from './src/pages/chatView/chatView';
 import UserProfile from './src/pages/chatView/UserProfile';
 import CreateNewPassword from './src/pages/authentication/createNewPassword';
+import AddContact from './src/pages/contact/addContact';
+import ContactPage from './src/pages/contact/contactPage';
+import SettingsScreen from './src/pages/settings/settingsScreen';
+import SocialProfiles from './src/pages/settings/socialProfiles';
+import Password from './src/pages/settings/password';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,9 +28,8 @@ const HomeNavigation = (props: NavigationProps) => {
         <Stack.Navigator
             screenOptions={{ headerShown: false }}
             initialRouteName={props.initialRouteName}>
-            <Stack.Screen name={screenName.ChatSettings} component={ChatSettings} />
             <Stack.Screen name={screenName.WelcomePage} component={WelcomePage} />
-            <Stack.Screen name={screenName.LoginEmail} component={LoginEmail} />
+            <Stack.Screen name={screenName.LoginEmail} component={LoginEmail}  />
             <Stack.Screen name={screenName.ForgetPassword} component={ForgetPassword} />
             <Stack.Screen name={screenName.Verification} component={Verification} />
             <Stack.Screen name={screenName.SignUp} component={SignUp} />
@@ -34,6 +37,11 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.ChatView} component={ChatView} />
             <Stack.Screen name={screenName.UserProfile} component={UserProfile} />
             <Stack.Screen name={screenName.CreateNewPassword} component={CreateNewPassword} />
+            <Stack.Screen name={screenName.AddContact} component={AddContact} />
+            <Stack.Screen name={screenName.ContactPage} component={ContactPage} />
+            <Stack.Screen name={screenName.SettingsScreen} component={SettingsScreen} />
+            <Stack.Screen name={screenName.SocialProfiles} component={SocialProfiles} />
+            <Stack.Screen name={screenName.Password} component={Password} />
 
 
         </Stack.Navigator>

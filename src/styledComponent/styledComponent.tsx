@@ -4,16 +4,15 @@ import { colors } from "../utils/colors";
 import { DevWidth } from "../utils/device";
 
 export const LogoContainer = styled(View)`
-marginTop:45px;
 alignItems:center;
 `
 export const ButtonContainer = styled(View)`
 flexDirection:row;
-top:330px;
 zIndex:1;
-justifyContent:space-around;
+align-self:center;
+justifyContent:space-between;
 `
-export const LoginLogoBigCircle = styled(View)`
+export const LoginLogoBigCircle = styled(View)` 
 height: 110px;
 width: 110px;
 border-radius: 100px;

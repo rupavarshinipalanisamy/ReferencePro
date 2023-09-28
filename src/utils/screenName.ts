@@ -9,4 +9,15 @@ export const screenName = {
     ChatView:'ChatView',
     UserProfile:'UserProfile',
     CreateNewPassword:'CreateNewPassword',
+    AddContact:'AddContact',
+    ContactPage: 'ContactPage',
+    SettingsScreen:'SettingsScreen',
+    SocialProfiles: 'SocialProfiles',
+    Password: 'Password',
+    Privacy: 'Privacy',
+    Profile: 'Profile',
+    LastSeen: 'LastSeen',
+    Groups: 'Groups',
+    PrivacyChat: 'PrivacyChat',
+
 };

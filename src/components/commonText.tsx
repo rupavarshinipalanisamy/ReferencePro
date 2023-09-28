@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     fontSize:14,
   
   },
+ 
 
   fontBold: {
     fontWeight: 'bold',
@@ -70,6 +71,9 @@ const styles = StyleSheet.create({
   fontBold700: {
     fontWeight:'700',
   },
+  fontBold600: {
+    fontWeight:'600',
+  },
   fontNormal: {
     fontWeight: 'normal'
   }
@@ -77,7 +81,7 @@ const styles = StyleSheet.create({
 
 
 const { green,red, textcolorGray,black,white,purpleVar3,blueVar1,greyVar3} = styles;
-const {fontBold, fontRegular, fontBold700,fontNormal} = styles;
+const {fontBold, fontRegular, fontBold700,fontNormal,fontBold600} = styles;
 const {
   h1,
   h2,
@@ -178,5 +182,10 @@ export const H18fontBoldBlack = styled(Text)`
 export const H25fontBoldBlack = styled(Text)`
   ${h1};
   ${fontBold};
+  ${black};
+`;
+export const H16fontBoldBlack = styled(Text)`
+  ${h7};
+  ${fontBold600};
   ${black};
 `;

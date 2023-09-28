@@ -10,11 +10,11 @@ import CountryLogo from '../../../assets/images/counrty-logo.svg';
 import { ButtonNow } from '../../components/commonButtons';
 import { CustomTextInput } from '../../components/commonInputFields';
 import { m30, ph30, pv8, justyfyCenter, pv20, flexRow, alignItemsCenter, ml15, mt15, ml10, mb20 } from '../../components/commonStyles';
-import { H6fontRegularBlack, H18fontNormalGray, H16fontNormalGray, H16fontNormalBlue } from '../../components/commonText';
+import {  H18fontNormalGray, H16fontNormalGray, H16fontNormalBlue, H25fontBoldBlack } from '../../components/commonText';
 import { MainContainer } from '../../components/commonView';
 import { LoginLogoBigCircle, LoginLogoCircle, IconInputContainer, InputContainer1, CheckBoxContainer, BottomStyle, SocialLogoContainer, SocialLogoCircle, TextContainer } from '../../styledComponent/styledComponent';
 import CustomIcon from '../../utils/Icons';
-import labels from '../../utils/labels';
+import {labels} from '../../utils/labels';
 import { screenName } from '../../utils/screenName';
 import { requiredValidation, minLengthValidation, validationSchema } from '../../utils/validationconfig';
 import { colors } from '../../utils/colors';
@@ -68,7 +68,6 @@ const SignUp = (props: signUpProps) => {
     return (
         <Fragment>
             <MainContainer>
-                <StatusBar translucent backgroundColor='transparent' />
                 <ImageBackground source={require('../../../assets/images/png/background-image.png')} style={{ flex: 1 }}>
                     <View >
                         <ScrollView>
@@ -84,7 +83,7 @@ const SignUp = (props: signUpProps) => {
                             </View>
                             <View>
                                 <View style={[ph30]}>
-                                    <H6fontRegularBlack>{labels.signUp}</H6fontRegularBlack>
+                                    <H25fontBoldBlack>{labels.signUp}</H25fontBoldBlack>
                                     <H18fontNormalGray style={[pv8]}>{labels.newaccount}</H18fontNormalGray>
                                     <IconInputContainer>
                                         <View style={[justyfyCenter]}>

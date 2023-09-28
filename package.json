@@ -28,6 +28,7 @@
     "react-native-screens": "^3.25.0",
     "react-native-splash-screen": "^3.3.0",
     "react-native-svg": "^13.13.0",
+    "react-native-swipe-button": "^0.0.4",
     "react-native-vector-icons": "^10.0.0",
     "styled-components": "^6.0.8"
   },

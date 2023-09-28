@@ -1,5 +1,5 @@
-import React, { Fragment, useState } from 'react';
-import { ImageBackground, StatusBar, View, TouchableOpacity } from 'react-native';
+import React, { Fragment, useState ,useEffect} from 'react';
+import { ImageBackground, StatusBar, View, TouchableOpacity ,ScrollView} from 'react-native';
 import LoginLogo from '../../../assets/images/login-logo.svg';
 import Google from '../../../assets/images/google.svg';
 import FaceBook from '../../../assets/images/facebook.svg';
@@ -25,6 +25,9 @@ const LoginEmail = (props: loginEmailProps) => {
     const [showPassword, setShowPassword] = useState(true);
     const [isChecked, setIsChecked] = useState(false);
     const navigation = useNavigation()
+   
+
+    
 
     const formKeys = {
         name: 'Email',
@@ -51,8 +54,8 @@ const LoginEmail = (props: loginEmailProps) => {
     return (
         <Fragment>
             <MainContainer>
-                <StatusBar translucent backgroundColor='transparent' />
                 <ImageBackground source={require('../../../assets/images/png/background-image.png')} style={{ flex: 1 }}>
+                    <ScrollView>
                     <View style={m30}>
                         <LoginLogoBigCircle>
                             <LoginLogoCircle>
@@ -170,6 +173,7 @@ const LoginEmail = (props: loginEmailProps) => {
                             </TouchableOpacity>
                         </TextContainer>
                     </View>
+                    </ScrollView>
                 </ImageBackground>
             </MainContainer>
         </Fragment>
