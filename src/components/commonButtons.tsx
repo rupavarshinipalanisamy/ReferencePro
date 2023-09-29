@@ -16,10 +16,11 @@ import {
   CommonButtonNow,
   CommonButtonBook,
 } from '../components/commonView';
+import { TextNowSecond } from './commonText';
 
 type ButtonProps = {
-  style:StyleProp<ViewStyle>;
-  textStyle:StyleProp<TextStyle>
+  style: StyleProp<ViewStyle>;
+  textStyle: StyleProp<TextStyle>
   disabled?: boolean;
   funCallback: CallableFunction;
   label: string;

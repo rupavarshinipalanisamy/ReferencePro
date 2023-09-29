@@ -10,6 +10,7 @@ import CustomIcon from '../../utils/Icons';
 import Modal from 'react-native-modal';
 import { DevHeight, DevWidth } from '../../utils/device';
 import { screenName } from '../../utils/screenName';
+import { ChatBackgroundImg, ProfileImg } from '../../utils/png';
 
 export type chatViewProps = {
 }
@@ -105,7 +106,7 @@ const ChatView = () => {
             <View style={{ marginHorizontal: 25, marginTop: 20 }}>
                 <View style={[flexRow, spaceBetween]}>
                     <View style={flexRow}>
-                        <Image source={require('../../../assets/images/png/profile.png')}
+                        <Image source={ProfileImg}
                         />
                         <View style={[pl15, spaceBetween]}>
                             <H14BlackText>Horace Keene</H14BlackText>
@@ -146,9 +147,9 @@ const ChatView = () => {
             <MainContainer>
                 {/* <StatusBar backgroundColor={colors.purpleVar3} /> */}
                 <View style={{ flex: 1 }}>
-                    <HeaderChatView backgroundColor={colors.purpleVar3} navigate={screenName.UserProfile} />
+                    <HeaderChatView backgroundColor={colors.purpleVar3} profileNavigate={screenName.UserProfile} videoNavigate={screenName.SingleVideoCall} audioNavigate={screenName.SingleAudioCallRing} />
                     <ImageBackground
-                        source={require('../../../assets/images/png/chatBackground.png')}
+                        source={ChatBackgroundImg}
                         style={styles.backgroundImage}
                         imageStyle={{ opacity: 0.1, backgroundColor: 'rgba(200, 180, 230, 0.5)' }}
                     >

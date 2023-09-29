@@ -1,7 +1,7 @@
 import { Text, StyleSheet } from 'react-native';
 import { colors } from '../utils/colors';
 import styled from 'styled-components';
-import { letterSpacing03, txtCenter } from './commonStyles';
+import { alignSelfCenter, justyfyCenter, letterSpacing03, letterSpacing04, txtCenter } from './commonStyles';
 
 const styles = StyleSheet.create({
   black: {
@@ -16,17 +16,17 @@ const styles = StyleSheet.create({
   red: {
     color: colors.red,
   },
-  textcolorGray : {
-    color : colors.greyVar4,
-  },
-  blueVar1:{
-    color:colors.blueVar1
-  } ,
-  purpleVar3: {
-    color:colors.purpleVar3,
+  textcolorGray: {
+    color: colors.greyVar4,
   },
   greyVar3: {
-    color:colors.greyVar3,
+    color: colors.greyVar3,
+  },
+  blueVar1: {
+    color: colors.blueVar1
+  },
+  purpleVar3: {
+    color: colors.purpleVar3,
   },
   h1: {
     fontSize: 25,
@@ -43,45 +43,43 @@ const styles = StyleSheet.create({
   h5: {
     fontSize: 20,
   },
-  h6:{
-    fontSize:18,
-  
+  h6: {
+    fontSize: 18,
   },
-  h7:{
-    fontSize:16,
-  
+  h7: {
+    fontSize: 16,
   },
   h8: {
     fontSize: 15,
   },
-
-  h9:{
-    fontSize:14,
-  
+  h9: {
+    fontSize: 14,
   },
- 
-
   fontBold: {
     fontWeight: 'bold',
   },
-
   fontRegular: {
     fontWeight: '500',
   },
-  fontBold700: {
-    fontWeight:'700',
-  },
   fontBold600: {
-    fontWeight:'600',
+    fontWeight: '600',
+  },
+  fontBold700: {
+    fontWeight: '700',
+  },
+  fontBold800: {
+    fontWeight: '800',
+  },
+  fontBold900: {
+    fontWeight: '900',
   },
   fontNormal: {
     fontWeight: 'normal'
   }
+
 });
-
-
-const { green,red, textcolorGray,black,white,purpleVar3,blueVar1,greyVar3} = styles;
-const {fontBold, fontRegular, fontBold700,fontNormal,fontBold600} = styles;
+const { green, red, textcolorGray, black, white, purpleVar3, blueVar1, greyVar3 } = styles;
+const { fontBold, fontRegular, fontBold600, fontBold700, fontBold800, fontNormal, fontBold900 } = styles;
 const {
   h1,
   h2,
@@ -128,6 +126,11 @@ export const H15Grey = styled(Text)`
   ${h8};
   ${textcolorGray};
 `
+export const H15GreySemiBold = styled(Text)`
+  ${h8};
+  ${textcolorGray};
+  ${fontRegular}
+`
 export const H16WhiteText = styled(Text)`
   ${h7};
   ${white};
@@ -139,6 +142,12 @@ export const H18WhiteText = styled(Text)`
 export const H18BlackText = styled(Text)`
   ${h6};
   ${black};
+`;
+export const H20BlackBoldText = styled(Text)`
+  ${h5};
+  ${black};
+  ${fontBold700};
+  ${letterSpacing04};
 `;
 export const H14BlackText = styled(Text)`
   ${h9};
@@ -189,3 +198,10 @@ export const H16fontBoldBlack = styled(Text)`
   ${fontBold600};
   ${black};
 `;
+export const TextNowSecond = styled(Text)`
+${h7};
+${white};
+${fontBold900};
+${justyfyCenter};
+${alignSelfCenter};
+  `;

@@ -120,9 +120,32 @@ borderTopLeftRadius: 100px;
 borderTopRightRadius: 100px;
 width:30%;
 height:60px;
+justifyContent:space-around;
+bottom:0px;
+`
+
+
+export const ModalContainerSecond = styled(View)`
+flex: 1px;
+justifyContent: center;
+alignItems: center;
+
+`
+export const HalfCircleSecond = styled(View)`
+backgroundColor: ${colors.white};
+borderTopLeftRadius: 100px;
+borderTopRightRadius: 100px;
+width:20%;
+height:40px;
 alignSelf: center;
 zIndex:-1;
 top:15px;
+`
+export const ModalContentSecond = styled(View)`
+backgroundColor: ${colors.white};
+paddingHorizontal: 20px;
+paddingVertical:20px;
+borderRadius: 10px;
 `
 export const ModalContent=styled(View)`
 backgroundColor: ${colors.white};

@@ -41,7 +41,7 @@ const App = (props: AppProps) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <RootNavigation initialRouteName={screenName.SettingsScreen} />
+      <RootNavigation initialRouteName={screenName.WelcomePage} />
     </View>
   );
 };

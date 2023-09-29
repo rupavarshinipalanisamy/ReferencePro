@@ -78,22 +78,21 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderColor: colors.white,
     borderWidth: 2
-
   },
   topContainerWhiteCard: {
-    backgroundColor: 'white', 
-    borderBottomStartRadius: 25, 
-    borderBottomEndRadius: 25, 
-    elevation: 4, 
-    height: DevHeight / 10, 
+    backgroundColor: 'white',
+    borderBottomStartRadius: 25,
+    borderBottomEndRadius: 25,
+    elevation: 4,
+    height: DevHeight / 10,
     justifyContent: 'center'
   },
-  iconBackground:{
-    backgroundColor: colors.purpleVar4, 
-    width: 38, 
-    borderRadius: 5, 
-    justifyContent: 'center', 
-    height: 38, 
+  iconBackground: {
+    backgroundColor: colors.purpleVar4,
+    width: 38,
+    borderRadius: 5,
+    justifyContent: 'center',
+    height: 38,
     alignItems: 'center'
   }
 });
@@ -112,9 +111,6 @@ const {
   commonButtonFull,
   topContainerWhiteCard,
   iconBackground,
-
-
-
 } = styles;
 
 
@@ -154,7 +150,6 @@ export const CommonButtonNow = styled(TouchableOpacity)`
 export const CommonButtonBook = styled(TouchableOpacity)`
     ${commonButtonBook};
   `;
-
 export const TopContainerWhiteCard = styled(View)`
 ${topContainerWhiteCard};
 `

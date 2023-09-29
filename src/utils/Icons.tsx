@@ -20,7 +20,7 @@ export interface IconProps {
   name: string;
   size: number;
   color: string;
-  type: 'font-awesome' | 'octicons' | 'entypo' | 'Ionicons' | 'MaterialIcons' | 'MaterialCommunityIcons' | 'Foundation' | 'Feather'|"EvilIcons"|"AntDesign"|"SimpleLineIcons"|"Fontisto"
+  type: 'font-awesome' | 'octicons' | 'entypo' | 'Ionicons' | 'MaterialIcons' | 'MaterialCommunityIcons' | 'Foundation' | 'Feather' | "EvilIcons" | "AntDesign" | "SimpleLineIcons" | "Fontisto"
 }
 const CustomIcon: React.FC<IconProps> = ({ name, size, color, type }) => {
   let IconComponent;
@@ -50,18 +50,18 @@ const CustomIcon: React.FC<IconProps> = ({ name, size, color, type }) => {
     case 'Feather':
       IconComponent = Feather;
       break;
-      case 'EvilIcons':
-        IconComponent = EvilIcons;
-        break;
-        case'AntDesign':
-        IconComponent = AntDesign;
-        break;
-        case'SimpleLineIcons':
-        IconComponent = SimpleLineIcons;
-        break;
-        case'SimpleLineIcons':
-        IconComponent = Fontisto;
-        break;
+    case 'EvilIcons':
+      IconComponent = EvilIcons;
+      break;
+    case 'AntDesign':
+      IconComponent = AntDesign;
+      break;
+    case 'SimpleLineIcons':
+      IconComponent = SimpleLineIcons;
+      break;
+    case 'SimpleLineIcons':
+      IconComponent = Fontisto;
+      break;
     default:
       IconComponent = FontAwesome;
       break;

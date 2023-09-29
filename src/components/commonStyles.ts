@@ -113,6 +113,9 @@ const styles = StyleSheet.create({
   mr15: {
     marginRight: 15
   },
+  mt3: {
+    marginTop: 3,
+  },
   mt5: {
     marginTop: 5,
   },
@@ -122,8 +125,11 @@ const styles = StyleSheet.create({
   mt20: {
     marginTop: 20,
   },
+  mt30: {
+    marginTop: 30,
+  },
   mb20: {
-    marginTop: 20,
+    marginBottom: 20,
   },
   mb15: {
     marginBottom: 15,
@@ -163,6 +169,9 @@ const styles = StyleSheet.create({
   },
   pt25: {
     paddingTop: 25,
+  },
+  pt30: {
+    paddingTop: 30,
   },
   pb0: {
     paddingBottom: 0,
@@ -427,11 +436,11 @@ const styles = StyleSheet.create({
   borderDangerColor: {
     borderColor: colors.red,
   },
-  letterSpacing03 : {
-    letterSpacing : 0.3
+  letterSpacing03: {
+    letterSpacing: 0.3
   },
-  letterSpacing04 : {
-    letterSpacing : 0.4
+  letterSpacing04: {
+    letterSpacing: 0.4
   }
 
 });
@@ -467,6 +476,7 @@ export const {
   mh10,
   mh15,
   mt20,
+  mt30,
   mt0,
   mr15,
   ml15,
@@ -484,6 +494,7 @@ export const {
   mt15,
   mb20,
   mt10,
+  mt3,
   mt5,
   mr5,
   mb15
@@ -518,6 +529,8 @@ export const {
   pt5,
   pt10,
   pt25,
+  pt15,
+  pt30,
   pl0,
   pl6,
   pl7,

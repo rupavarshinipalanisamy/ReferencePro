@@ -1,15 +1,16 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { colors } from '../../utils/colors';
-import { alignSelfCenter, borderRadius10, flex1, flexRow,  mb15,  ml15, mr5, mt20, mt5,  p10, pb5,ph20, pv15, spaceBetween, spaceEvenly } from '../commonStyles';
+import { alignSelfCenter, borderRadius10, flex1, flexRow, mb15, ml15, mr5, mt20, mt5, p10, pb5, ph20, pv15, spaceBetween, spaceEvenly } from '../commonStyles';
 import { allChatsData } from '../../utils/data/chatsData';
 import { DevWidth } from '../../utils/device';
 import { CommonLineDividerGrey, RowSpaceBetween, RowSpaceEvenly } from '../commonView';
-import {labels} from '../../utils/labels';
+import { labels } from '../../utils/labels';
 import { H15Green, H15Grey, H15Red, H16SemiBoldBlack, H18BoldGrey } from '../commonText';
 import { ArchiveIconBlackIcon, BlackDoubleTickIcon, BlackSingleTickIcon, BlueDoubleTickIcon, FileBlackIcon, MikeBlackIcon, PhoneIncomingRedIcon, PictureBlackIcon, PinBlackIcon, VideoBlackIcon } from '../../utils/svg';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
+import { BottomTabBar } from '../commonComponents';
 
 
 export type AllChatsProps = {
@@ -19,25 +20,25 @@ export type AllChatsProps = {
 
 
 const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
-    const navigation =useNavigation()
+    const navigation = useNavigation()
     return (
-        <View style={[mt20, styles.whiteBg]}>
-            <View style={[flexRow, spaceBetween, mt20, alignSelfCenter, p10, borderRadius10, styles.archiveCard, mb15]}>
-                <View style={[flexRow, spaceEvenly]}>
-                    {/* <Icon name="archive-outline" size={25} color={colors.greyVar4} style={[mh10]} /> */}
-                    <View style={mt5}>
-                        <ArchiveIconBlackIcon />
+        <View style={[flex1, mt20, styles.whiteBg]}>
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <View style={[flexRow, spaceBetween, mt20, alignSelfCenter, p10, borderRadius10, styles.archiveCard, mb15]}>
+                    <View style={[flexRow, spaceEvenly]}>
+                        {/* <Icon name="archive-outline" size={25} color={colors.greyVar4} style={[mh10]} /> */}
+                        <View style={mt5}>
+                            <ArchiveIconBlackIcon />
+                        </View>
+                        <H18BoldGrey style={ml15}>{labels.Archived}</H18BoldGrey>
                     </View>
-                    <H18BoldGrey style={ml15}>{labels.Archived}</H18BoldGrey>
+                    <View style={[styles.roundNumber, { backgroundColor: colors.red }]}>
+                        <Text style={[styles.roundNumberText]}>10</Text>
+                    </View>
                 </View>
-                <View style={[styles.roundNumber, { backgroundColor: colors.red }]}>
-                    <Text style={[styles.roundNumberText]}>10</Text>
-                </View>
-            </View>
-            <View style={flex1}>
-                {allChatsData.map((chat) => (
-                    <View key={chat.id}>
-                        <ScrollView>
+                <View style={flex1}>
+                    {allChatsData.map((chat) => (
+                        <View key={chat.id}>
                             <CommonLineDividerGrey />
                             <TouchableOpacity onPress={() => {
                                 if (selectedCards.length === 0) {
@@ -132,10 +133,11 @@ const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
                                     </View>
                                 </View>
                             </TouchableOpacity>
-                        </ScrollView>
-                    </View>
-                ))}
-            </View>
+                        </View>
+                    ))}
+                </View>
+            </ScrollView>
+            <BottomTabBar />
         </View >
     )
 }
@@ -147,6 +149,7 @@ const styles = StyleSheet.create({
         width: '100%',
         borderTopLeftRadius: 45,
         borderTopRightRadius: 45,
+        overflow: 'hidden'
     },
     roundNumber: {
         height: 25,
@@ -180,7 +183,7 @@ const styles = StyleSheet.create({
         height: 45,
         width: 0.90 * DevWidth,
         backgroundColor: colors.purpleVar1,
-        borderRadius:10
+        borderRadius: 10
     },
     profileImg: {
         width: 40,

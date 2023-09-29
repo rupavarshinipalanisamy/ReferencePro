@@ -15,7 +15,7 @@ export type chatProps = {
 }
 
 const Chats = (props: chatProps) => {
-    const [selectedTab, setSelectedTab] = useState('allChat');
+    const [selectedTab, setSelectedTab] = useState(labels.AllChats);
     const [selectedCards, setSelectedCards] = useState<number[]>([]);
 
 
@@ -57,7 +57,7 @@ const Chats = (props: chatProps) => {
                 {showCustomActionBarSecond ? (
                     <CustomActionBarSecond itemNumber={selectedCards.length} />
                 ) : isCustomActionBar ? (
-                    <CustomActionBar text={selectedCards.length} />
+                    <CustomActionBar text={selectedCards.length} selectedCardsCount={selectedCards.length} />
                 ) : (
                     <ChatHeader title={labels.Chats} />
                 )}
