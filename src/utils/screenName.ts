@@ -7,5 +7,12 @@ export const screenName = {
     ChatSettings : 'ChatSettings',
     Chats : 'Chats',
     ChatView:'ChatView',
-    UserProfile:'UserProfile'
+    UserProfile:'UserProfile',
+    Media:'Media',
+    Image:'Image',
+    ImageView:'ImageView',
+    Video:'Video',
+    Link:'Link',
+    VideoView:'VideoView'
+
 };

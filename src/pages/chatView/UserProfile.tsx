@@ -1,21 +1,130 @@
 import React, { Fragment } from 'react';
-import { Text, View, StyleSheet, ScrollView } from 'react-native';
-import { MainContainer } from '../../components/commonView';
+import { Text, View, StyleSheet, ScrollView, TouchableOpacity, Image, Dimensions } from 'react-native';
+import { MainContainer, CommonLineDividerGrey } from '../../components/commonView';
 import { colors } from '../../utils/colors';
-import { flexRow,mr5, mt10, mt15, pl10, pt10, spaceBetween } from '../../components/commonStyles';
+import { alignItemsCenter, flexRow, justyfyCenter, mb15, mr5, mt10, mt15, mt20, p5, pb10, pl10, pl13, pt10, pt5, spaceBetween } from '../../components/commonStyles';
 import CustomIcon from '../../utils/Icons';
-import { DevHeight } from '../../utils/device';
+import { DevHeight} from '../../utils/device';
 import Profile from '../../../assets/images/profileView.svg'
-import {labels} from '../../utils/labels';
-import { H14BlackText, H14purpleVar3Text, H18BlackText } from '../../components/commonText';
+import { labels } from '../../utils/labels';
+import { H14BlackText, H14purpleVar3Text, H16BlackText, H18BlackText } from '../../components/commonText';
 import MessageIcon from '../../../assets/images/messageIcon.svg'
-import Media1 from '../../../assets/images/Media1.svg'
-import Media2 from '../../../assets/images/Media2.svg'
-import Media3 from '../../../assets/images/Media3.svg'
+import Group1 from '../../../assets/images/groupImg1.svg'
+import Group2 from '../../../assets/images/groupImg2.svg'
+import { useNavigation } from '@react-navigation/native';
+import { screenName } from '../../utils/screenName';
+
 
 
 export type UserProfileProps = {
 
+}
+
+export const colorIconsData = [
+    {
+        id: 1,
+        name: 'Starred Messages',
+        iconName: 'star-outline',
+        iconType: "Ionicons",
+        iconSize: 20,
+        iconColor: colors.yellow,
+        bgcolor: colors.yellowVar1,
+        screenName: screenName.Chats,
+    },
+    {
+        id: 2,
+        name: 'Mute Notifications',
+        iconName: 'microphone-off',
+        iconType: "MaterialCommunityIcons",
+        iconSize: 20,
+        iconColor: colors.blueVar3,
+        bgcolor: colors.blueVar4,
+        screenName: screenName.Chats,
+    },
+    {
+        id: 3,
+        name: 'Encryption',
+        iconName: 'lock',
+        iconType: "FontAwesome",
+        iconSize: 20,
+        iconColor: colors.green,
+        bgcolor: colors.greenVar1,
+        screenName: screenName.Chats,
+    },
+    {
+        id: 4,
+        name: 'Block User',
+        iconName: 'block-flipped',
+        iconType: "MaterialIcons",
+        iconSize: 20,
+        iconColor: colors.red,
+        bgcolor: colors.redVar1,
+        screenName: screenName.Chats,
+    },
+    {
+        id: 5,
+        name: 'Report User',
+        iconName: 'thumbs-down',
+        iconType: "Feather",
+        iconSize: 20,
+        iconColor: colors.purpleVar3,
+        bgcolor: colors.purpleVar1,
+        screenName: screenName.Chats,
+    },
+    {
+        id: 6,
+        name: 'Delete Chat',
+        iconName: 'delete',
+        iconType: "AntDesign",
+        iconSize: 20,
+        iconColor: colors.red,
+        bgcolor: colors.redVar1,
+        screenName: screenName.Chats,
+    },
+]
+
+export const ColorIconTab = () => {
+    return (
+        <View>
+            {
+                colorIconsData.map((item) => {
+                    return (
+                        <TouchableOpacity key={item.id}>
+                            <View style={[flexRow, spaceBetween, pb10, p5]}>
+                                <View style={[flexRow]}>
+
+                                    <View style={{ height: 35, width: 35, borderRadius: 8, backgroundColor: item.bgcolor, alignItems: 'center', justifyContent: 'center' }}>
+                                        <CustomIcon name={item.iconName} size={item.iconSize} type={item.iconType} color={item.iconColor} />
+                                    </View>
+                                    <View style={[alignItemsCenter, justyfyCenter, pl13]}>
+                                        <H16BlackText>{item.name}</H16BlackText>
+                                    </View>
+                                </View>
+                                {
+                                    item.id === 1 ? (
+                                        <View style={[flexRow, alignItemsCenter, justyfyCenter]}>
+                                            <View >
+                                                <Text>10</Text>
+                                            </View>
+                                            <View style={[{ transform: [{ rotate: '180deg' }] }]}>
+                                                <CustomIcon name='chevron-back-sharp' color={colors.greyVar4} size={16} type="Ionicons"
+                                                />
+                                            </View>
+                                        </View>
+                                    ) : (
+                                        <View style={[{ transform: [{ rotate: '180deg' }] }, flexRow, alignItemsCenter, justyfyCenter]}>
+                                            <CustomIcon name='chevron-back-sharp' color={colors.greyVar4} size={16} type="Ionicons"
+                                            />
+                                        </View>
+                                    )
+                                }
+                            </View>
+                        </TouchableOpacity>
+                    )
+                })
+            }
+        </View>
+    )
 }
 
 
@@ -85,18 +194,21 @@ export const CardHeaderText: React.FC<CardHeaderTextProps> = ({ text }) => {
 export const InfoCard = () => {
     const socialMediaIcon = () => {
         return (
+            <>
+                <View style={[flexRow]}>
+                    <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                        <CustomIcon name='sc-facebook' type="EvilIcons" size={24} color={colors.black} />
+                    </View>
+                    <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                        <CustomIcon name='twitter' type="entypo" size={20} color={colors.black} />
+                    </View>
+                    <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                        <CustomIcon name='youtube' type="MaterialCommunityIcons" size={22} color={colors.black} />
+                    </View>
+                </View>
 
-            <View style={[flexRow]}>
-                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                    <CustomIcon name='sc-facebook' type="EvilIcons" size={24} color={colors.black} />
-                </View>
-                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                    <CustomIcon name='twitter' type="entypo" size={20} color={colors.black} />
-                </View>
-                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                    <CustomIcon name='youtube' type="MaterialCommunityIcons" size={22} color={colors.black} />
-                </View>
-            </View>
+            </>
+
         )
     }
     const InfoCardData = [{
@@ -106,7 +218,7 @@ export const InfoCard = () => {
     }]
 
     return (
-        <View>
+        <View style={mt20}>
             <CardHeaderText text='Info' />
             <View style={mt10}>
                 <Text style={{ color: colors.greyVar4 }}>Bio</Text>
@@ -120,6 +232,9 @@ export const InfoCard = () => {
                     ))
                 )}
             </View>
+            <View style={[mt15, mb15]}>
+                <CommonLineDividerGrey />
+            </View>
         </View>
     );
 }
@@ -127,31 +242,30 @@ export const InfoCard = () => {
 
 export const MediaCard = () => {
 
-    const mediaData = [{
-        id: 1,
-        image: <Media1 />
-    },
-    {
-        id: 2,
-        image: <Media2 />
-
-    },
-    {
-        id: 3,
-        image: <Media3 />
-
-    },
-    {
-        id: 4,
-        image: <Media3 />
-
-    },
-
-
+    const navigation = useNavigation();
+    const mediaData = [
+        {
+            id: 1,
+            image: require('../../../assets/images/png/mediaimg1.png')
+        },
+        {
+            id: 2,
+            image: require('../../../assets/images/png/mediaimg2.png')
+        },
+        {
+            id: 3,
+            image: require('../../../assets/images/png/mediaimg3.png')
+        },
+        {
+            id: 4,
+            image: require('../../../assets/images/png/mediaimg4.png')
+        }
     ]
+
+
     return (
         <View>
-            <View style={[flexRow, spaceBetween]}>
+            <TouchableOpacity style={[flexRow, spaceBetween]} onPress={() => navigation.navigate(screenName.Media as never)}>
                 <CardHeaderText text='Media' />
                 <View style={flexRow}>
                     <View style={[styles.roundNumber, { backgroundColor: 'rgba(97, 97, 97, 0.15) ' }, mt10, mr5]}>
@@ -162,27 +276,69 @@ export const MediaCard = () => {
                         />
                     </View>
                 </View>
+            </TouchableOpacity>
+
+            <View style={styles.gridContainer}>
+                {mediaData.map((item) => (
+                    <TouchableOpacity
+                        key={item.id}
+                        style={styles.gridItem}
+                        onPress={() => {
+                            navigation.navigate(screenName.Media as never)
+                        }}
+                    >
+                        <Image
+                            source={item.image}
+                            style={styles.gridItemImage}
+                        />
+                    </TouchableOpacity>
+                ))}
             </View>
-            <ScrollView>
-                <View style={[{ flexDirection: 'row', justifyContent: 'space-between' }, mt15]}>
-                    {mediaData.map((data, index) => (
-                        <View key={index}>
-                            {data.image}
-                        </View>
-                    ))}
-                </View>
-            </ScrollView>
+
+
+
+            <View style={[mt15, mb15]}>
+                <CommonLineDividerGrey />
+            </View>
         </View>
 
     )
 }
 
 export const Groups = () => {
-    return (
-        <View style={{marginTop:10}}>
-            <CardHeaderText text='2 Groups in common' />
 
+    const groupsData = [{
+        id: 1,
+        img: <Group1 />,
+        grpName: 'Themeforest Group',
+        personName: 'Mark Villiams, Elizabeth, Michael.....'
+    },
+    {
+        id: 2,
+        img: <Group2 />,
+        grpName: 'Graphics Designers',
+        personName: 'Mark Villiams, Elizabeth, Michael.....'
+    }
+
+    ]
+    return (
+        <View>
+            <CardHeaderText text='2 Groups in common' />
+            {groupsData.map((item, index) => (
+                <View key={index} style={styles.cardSurface}>
+                    <View>{item.img}</View>
+                    <View style={pl10}>
+                        <Text style={{ color: 'black', fontSize: 15, fontWeight: '500' }}>{item.grpName}</Text>
+                        <Text style={[{ color: colors.greyVar4 }, pt5]}>{item.personName}</Text>
+                    </View>
+                </View>
+
+            ))}
+            <View style={[mt20, mb15]}>
+                <CommonLineDividerGrey />
+            </View>
         </View>
+
     )
 }
 const UserProfile = (props: UserProfileProps) => {
@@ -190,17 +346,14 @@ const UserProfile = (props: UserProfileProps) => {
         <Fragment>
             <MainContainer style={{ backgroundColor: colors.whiteVar0, flex: 1 }}>
                 <Header />
-                <View style={{ marginHorizontal: 20 }}>
+                <ScrollView style={{ marginHorizontal: 20 }} showsVerticalScrollIndicator={false}>
                     <ProfileCard />
-                    <View style={{ marginTop: 20 }}>
-                        <InfoCard />
-                        <MediaCard />
-                        <Groups />
-                    </View>
-
-                </View>
+                    <InfoCard />
+                    <MediaCard />
+                    <Groups />
+                    <ColorIconTab />
+                </ScrollView>
             </MainContainer>
-
         </Fragment>
     )
 }
@@ -220,6 +373,28 @@ const styles = StyleSheet.create({
 
         color: colors.greyVar4,
         fontSize: 12,
+    },
+    cardSurface: {
+        backgroundColor: colors.white,
+        padding: 10,
+        elevation: 4,
+        marginTop: 20,
+        flexDirection: 'row',
+        borderRadius: 8,
+        shadowColor: colors.greyVar3
+    },
+    gridContainer: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        marginVertical: 15
+    },
+    gridItem: {
+        flex: 1,
+        margin: 4,
+    },
+    gridItemImage: {
+        width: (Dimensions.get('window').width - 75) / 4,
+        borderRadius: 10
     },
 })
 export default UserProfile

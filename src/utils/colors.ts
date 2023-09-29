@@ -9,6 +9,7 @@ export const colors = {
     black: '#000000',
 
     //grey
+    greyVar7: '#EDEDED',
     greyVar6: '#333333',
     greyVar5: '#494949',
     greyVar4: '#616161',
@@ -21,6 +22,9 @@ export const colors = {
     //blue
     blueVar2: '#0566FF',
     blueVar1: "#50B8F2",
+    blueVar3: '#02A2B9',
+    blueVar4: '#EBFDFF',
+
 
     //white  
     whiteVar1: "#f5f5f5",
@@ -28,6 +32,10 @@ export const colors = {
     white: '#FFFFFF',
 
     green: '#1BA345',
+    greenVar1: '#E7FAF2',
+    yellow: '#FEC001',
+    yellowVar1: '#FEF6DC',
     red: '#DE3E44',
+    redVar1 : '#FFE8E9',
 };
 

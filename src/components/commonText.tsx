@@ -1,6 +1,6 @@
 //import liraries
-import {Text, StyleSheet} from 'react-native';
-import {colors} from '../utils/colors';
+import { Text, StyleSheet } from 'react-native';
+import { colors } from '../utils/colors';
 import styled from 'styled-components';
 import { letterSpacing03, txtCenter } from './commonStyles';
 
@@ -18,14 +18,14 @@ const styles = StyleSheet.create({
   red: {
     color: colors.red,
   },
-  textcolorGray : {
-    color : colors.greyVar4,
+  textcolorGray: {
+    color: colors.greyVar4,  
   },
-  blueVar1:{
-    color:colors.blueVar1
-  } ,
+  blueVar1: {
+    color: colors.blueVar1
+  },
   purpleVar3: {
-    color:colors.purpleVar3,
+    color: colors.purpleVar3,
   },
   h1: {
     fontSize: 48,
@@ -43,22 +43,22 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 
- 
-  h6:{
-    fontSize:18,
-  
+
+  h6: {
+    fontSize: 18,
+
   },
-  h7:{
-    fontSize:16,
-  
+  h7: {
+    fontSize: 16,
+
   },
   h8: {
     fontSize: 15,
   },
 
-  h9:{
-    fontSize:14,
-  
+  h9: {
+    fontSize: 14,
+
   },
 
   fontBold: {
@@ -66,16 +66,19 @@ const styles = StyleSheet.create({
   },
 
   fontRegular: {
-    fontWeight:'500',
+    fontWeight: '500',
   },
   fontBold700: {
-    fontWeight:'700',
+    fontWeight: '700',
   },
-  });
+  fontBold500: {
+    fontWeight: '500',
+  },
+});
 
 
-const { green,red, textcolorGray,black,white,purpleVar3,blueVar1} = styles;
-const {fontBold, fontRegular, fontBold700} = styles;
+const { green, red, textcolorGray, black, white, purpleVar3, blueVar1 } = styles;
+const { fontBold, fontRegular, fontBold700,fontBold500 } = styles;
 const {
   h1,
   h2,
@@ -134,6 +137,12 @@ export const H18BlackText = styled(Text)`
   ${h6};
   ${black};
 `;
+export const H18BlackBoldText = styled(Text)`
+  ${h6};
+  ${black};
+  ${fontBold500};
+
+`;
 export const H14BlackText = styled(Text)`
   ${h9};
   ${black};
@@ -146,6 +155,10 @@ export const H14purpleVar3Text = styled(Text)`
 export const H14blueVar1Text = styled(Text)`
   ${h9};
   ${blueVar1};
+`;
+export const H18GreyVar4Text = styled(Text)`
+  ${h8};
+  ${textcolorGray};
 `;
 
 
