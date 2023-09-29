@@ -63,6 +63,7 @@ export const TabControl: React.FC<TabControlProps> = ({ tabs, activeTab, onTabPr
         </View>
     );
 };
+
 export const DayDetails = () => {
     return (
         <>

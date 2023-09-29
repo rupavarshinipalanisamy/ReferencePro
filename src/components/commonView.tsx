@@ -36,8 +36,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
   },
   commonLineDividerGrey: {
-    width: '88%',
-    alignSelf: 'center',
+    width: '100%',
     height: 1,
     backgroundColor: colors.greyVar0
   },
@@ -91,10 +90,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.purpleVar4,
     width: 38,
     borderRadius: 5,
-    justifyContent: 'center',
-    height: 38,
-    alignItems: 'center'
+    alignItems: 'center',
+    shadowColor: colors.greyVar3,
+    height: DevHeight / 8,
+    justifyContent: 'center'
   }
+
 });
 const {
   rowSpaceBetween,
@@ -156,3 +157,17 @@ ${topContainerWhiteCard};
 export const IconBackground = styled(View)`
 ${iconBackground};
 `
+
+interface TopContainerWhiteCardProps {
+  height?: number;
+}
+
+
+export const TopContainerWhiteCard1= styled(View)<TopContainerWhiteCardProps>`
+  background-color: ${colors.white};
+  border-bottom-start-radius: 25px;
+  border-bottom-end-radius: 25px;
+  ${({ height }) => height && `height: ${height}px;`}
+  elevation: 2;
+  shadow-color: #000;
+`;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import {NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { screenName } from './src/utils/screenName';
 import WelcomePage from './src/pages/authentication/welcomePage';
@@ -27,6 +27,13 @@ import Calling from './src/pages/calls/Calling';
 import SingleVideoCallAttend from './src/pages/calls/SingleVideoCallAttend';
 import GroupAudioCallAttend from './src/pages/calls/GroupAudioCallAttend';
 import GroupVideoCallAttend from './src/pages/calls/GroupVideoCallAttend';
+import Media from './src/pages/Media/Media';
+import ImageScreen from './src/pages/Media/Image';
+import ImageView from './src/pages/Media/ImageView';
+import Video from './src/pages/Media/Video';
+import Link from './src/pages/Media/Link'
+import VideoView from './src/pages/Media/VideoView';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -64,6 +71,18 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.SingleVideoCall} component={SingleVideoCallAttend} />
             <Stack.Screen name={screenName.GroupAudioCallAttend} component={GroupAudioCallAttend} />
             <Stack.Screen name={screenName.GroupVideoCallAttend} component={GroupVideoCallAttend} />
+            <Stack.Screen name={screenName.Media} component={Media} />
+            <Stack.Screen name={screenName.Image} component={ImageScreen} />
+            <Stack.Screen name={screenName.ImageView} component={ImageView} />
+            <Stack.Screen name={screenName.Video} component={Video} />
+            <Stack.Screen name={screenName.Link} component={Link} />
+            <Stack.Screen name={screenName.VideoView} component={VideoView} />
+
+
+
+
+
+
         </Stack.Navigator>
     );
 };

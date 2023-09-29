@@ -31,4 +31,11 @@ export const screenName = {
     SingleVideoCall : 'SingleVideoCall',
     GroupAudioCallAttend : 'GroupAudioCallAttend',
     GroupVideoCallAttend : 'GroupVideoCallAttend',
+    Media:'Media',
+    Image:'Image',
+    ImageView:'ImageView',
+    Video:'Video',
+    Link:'Link',
+    VideoView:'VideoView'
+
 };

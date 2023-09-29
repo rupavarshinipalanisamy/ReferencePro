@@ -1,3 +1,4 @@
+//import liraries
 import { Text, StyleSheet } from 'react-native';
 import { colors } from '../utils/colors';
 import styled from 'styled-components';
@@ -49,6 +50,7 @@ const styles = StyleSheet.create({
   h7: {
     fontSize: 16,
   },
+
   h8: {
     fontSize: 15,
   },
@@ -75,9 +77,11 @@ const styles = StyleSheet.create({
   },
   fontNormal: {
     fontWeight: 'normal'
-  }
+  },
 
 });
+
+
 const { green, red, textcolorGray, black, white, purpleVar3, blueVar1, greyVar3 } = styles;
 const { fontBold, fontRegular, fontBold600, fontBold700, fontBold800, fontNormal, fontBold900 } = styles;
 const {
@@ -92,9 +96,6 @@ const {
   h9
 
 } = styles;
-
-
-
 
 export const H16BlackText = styled(Text)`
   ${h7};
@@ -148,6 +149,12 @@ export const H20BlackBoldText = styled(Text)`
   ${black};
   ${fontBold700};
   ${letterSpacing04};
+  `
+export const H18BlackBoldText = styled(Text)`
+  ${h6};
+  ${black};
+  ${fontRegular};
+
 `;
 export const H14BlackText = styled(Text)`
   ${h9};
@@ -161,6 +168,10 @@ export const H14purpleVar3Text = styled(Text)`
 export const H14blueVar1Text = styled(Text)`
   ${h9};
   ${blueVar1};
+`;
+export const H18GreyVar4Text = styled(Text)`
+  ${h8};
+  ${textcolorGray};
 `;
 
 export const H18fontNormalGray = styled(Text)`

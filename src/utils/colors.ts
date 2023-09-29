@@ -1,6 +1,6 @@
 export const colors = {
     //purple
-    purpleVar4:'#F2DDFF',
+    purpleVar4: '#F2DDFF',
     purpleVar3: '#680A83',
     purpleVar2: '#DBB0F5',
     purpleVar1: '#F8ECFF',
@@ -12,6 +12,7 @@ export const colors = {
     blackVar2: '#0A0A0A',
 
     //grey
+    greyVar7: '#EDEDED',
     greyVar6: '#333333',
     greyVar5: '#494949',
     greyVar4: '#616161',
@@ -25,6 +26,8 @@ export const colors = {
     blueVar3: '#02A2B9',
     blueVar2: '#0566FF',
     blueVar1: "#50B8F2",
+    blueVar4: '#EBFDFF',
+
 
     //white  
     whiteVar1: "#f5f5f5",
@@ -32,9 +35,11 @@ export const colors = {
     white: '#FFFFFF',
 
     green: '#1BA345',
+    greenVar1: '#E7FAF2',
+    yellow: '#FEC001',
+    yellowVar1: '#FEF6DC',
     red: '#DE3E44',
     redVar1: '#FFE8E9',
-    yellow: '#FEC001',
 
 };
 
