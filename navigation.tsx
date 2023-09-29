@@ -19,6 +19,9 @@ import GroupInfoAdmin from './src/pages/groups/GroupInfoAdmin';
 import SingleAudioCallRing from './src/pages/calls/SingleAudioCallRing';
 import SingleAudioCallAttend from './src/pages/calls/SingleAudioCallAttend';
 import Calling from './src/pages/calls/Calling';
+import SingleVideoCallAttend from './src/pages/calls/SingleVideoCallAttend';
+import GroupAudioCallAttend from './src/pages/calls/GroupAudioCallAttend';
+import GroupVideoCallAttend from './src/pages/calls/GroupVideoCallAttend';
 
 const Stack = createNativeStackNavigator();
 
@@ -48,6 +51,9 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.SingleAudioCallRing} component={SingleAudioCallRing} />
             <Stack.Screen name={screenName.SingleAudioCallAttend} component={SingleAudioCallAttend} />
             <Stack.Screen name={screenName.Calling} component={Calling} />
+            <Stack.Screen name={screenName.SingleVideoCall} component={SingleVideoCallAttend} />
+            <Stack.Screen name={screenName.GroupAudioCallAttend} component={GroupAudioCallAttend} />
+            <Stack.Screen name={screenName.GroupVideoCallAttend} component={GroupVideoCallAttend} />
         </Stack.Navigator>
     );
 };

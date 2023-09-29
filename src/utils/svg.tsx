@@ -23,6 +23,12 @@ import WelcomeCenter from '../../assets/images/welcomepage_center.svg'
 import VideoRed from '../../assets/images/VideoRed.svg'
 import StickerGrey from '../../assets/images/sticker.svg'
 import CallAvatarBig from '../../assets/images/call-big-avatar.svg'
+import CallAvatarMedium from '../../assets/images/call-medium-avatar.svg'
+import PurpleSignal from '../../assets/images/purple-signal.svg'
+import GreenSignal from '../../assets/images/green-signal.svg'
+import YellowSignal from '../../assets/images/yellow-signal.svg'
+import BlueSignal from '../../assets/images/blue-signal.svg'
+
 
 export const LeftArrowWhiteIcon = () => (
     <LeftArrowWhite />
@@ -92,4 +98,19 @@ export const StickerGreyIcon = () => (
 );
 export const CallAvatarBigIcon = () => (
     <CallAvatarBig />
+);
+export const CallAvatarMediumIcon = () => (
+    <CallAvatarMedium />
+);
+export const PurpleSignalIcon = () => (
+    <PurpleSignal />
+);
+export const GreenSignalIcon = () => (
+    <GreenSignal />
+);
+export const YellowSignalIcon = () => (
+    <YellowSignal />
+);
+export const BlueSignalIcon = () => (
+    <BlueSignal />
 );

@@ -7,6 +7,7 @@ import { pl6, pt10 } from '../../components/commonStyles';
 import { MainContainer } from '../../components/commonView';
 import { bluetick } from '../chatView/chatView';
 import { screenName } from '../../utils/screenName';
+import { ChatBackgroundImg } from '../../utils/png';
 
 export type GroupChattingProps = {
 
@@ -28,9 +29,9 @@ const GroupChatting = (props: GroupChattingProps) => {
     return (
         <Fragment>
             <MainContainer>
-                <HeaderChatView backgroundColor={colors.purpleVar3} groups={true} navigate={screenName.GroupInfo as never} />
+                <HeaderChatView backgroundColor={colors.purpleVar3} groups={true} profileNavigate={screenName.GroupInfo} videoNavigate={screenName.GroupVideoCallAttend} audioNavigate={screenName.GroupAudioCallAttend} />
                 <ImageBackground
-                    source={require('../../../assets/images/png/chatBackground.png')}
+                    source={ChatBackgroundImg}
                     style={{ flex: 1 }}
                     imageStyle={{ opacity: 0.1, backgroundColor: 'rgba(200, 180, 230, 0.5)' }}
                 >

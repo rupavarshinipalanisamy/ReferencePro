@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   mb20: {
-    marginTop: 20,
+    marginBottom: 20,
   },
   mb15: {
     marginBottom: 15,

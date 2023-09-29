@@ -11,11 +11,14 @@ import SendImg1 from '../../../../assets/images/sentMsg.svg'
 import SendImg2 from '../../../../assets/images/sendMsg1.svg'
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../../utils/screenName';
+import { GroupImg1Img, ProfileImg } from '../../../utils/png';
 
 interface HeaderChatViewProps {
     backgroundColor: string,
     onPress?: () => void;
-    navigate: string;
+    profileNavigate : string;
+    videoNavigate: string;
+    audioNavigate : string;
     groups?: boolean;
 
 }
@@ -30,9 +33,9 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
                         <CustomIcon name='chevron-back-sharp' color={colors.white} size={16} type="Ionicons" />
                     </View>
                     <View style={[flexRow, spaceBetween, flex1]}>
-                        <TouchableOpacity style={[pl10, flexRow]} onPress={() => { navigation.navigate(props.navigate as never) }}>
-                            {props.groups ? <Image source={require('../../../../assets/images/png/groupimg1.png')} /> :
-                                <Image source={require('../../../../assets/images/png/profile.png')} />
+                        <TouchableOpacity style={[pl10, flexRow]} onPress={() => { navigation.navigate(props.profileNavigate as never) }}>
+                            {props.groups ? <Image source={GroupImg1Img} /> :
+                                <Image source={ProfileImg} />
                             }
 
                             <View style={pl13}>
@@ -41,10 +44,10 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
                             </View>
                         </TouchableOpacity>
                         <View style={[flexRow, alignItemsCenter]}>
-                            <TouchableOpacity style={pl10} onPress={() => { navigation.navigate(props.navigate as never) }}>
+                            <TouchableOpacity style={pl10} onPress={() => { navigation.navigate(props.videoNavigate as never) }}>
                                 <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={22} color={colors.white} />
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => navigation.navigate(screenName.Calling as never)} style={pl10}>
+                            <TouchableOpacity onPress={() => navigation.navigate(props.audioNavigate as never)} style={pl10}>
                                 <CustomIcon name='call-outline' type="Ionicons" size={18} color={colors.white} />
                             </TouchableOpacity>
                             <TouchableOpacity style={pl10}>

@@ -2,7 +2,7 @@
 import { Text, StyleSheet } from 'react-native';
 import { colors } from '../utils/colors';
 import styled from 'styled-components';
-import { letterSpacing03, letterSpacing04, txtCenter } from './commonStyles';
+import { alignSelfCenter, justyfyCenter, letterSpacing03, letterSpacing04, txtCenter } from './commonStyles';
 
 // define your styles
 const styles = StyleSheet.create({
@@ -20,6 +20,9 @@ const styles = StyleSheet.create({
   },
   textcolorGray: {
     color: colors.greyVar4,
+  },
+  greyVar3: {
+    color: colors.greyVar3,
   },
   blueVar1: {
     color: colors.blueVar1
@@ -74,11 +77,18 @@ const styles = StyleSheet.create({
   fontBold800: {
     fontWeight: '800',
   },
+  fontBold900: {
+    fontWeight: '900',
+  },
+  fontNormal: {
+    fontWeight: 'normal'
+  }
+
 });
 
 
-const { green, red, textcolorGray, black, white, purpleVar3, blueVar1 } = styles;
-const { fontBold, fontRegular, fontBold700, fontBold800 } = styles;
+const { green, red, textcolorGray, black, white, purpleVar3, blueVar1, greyVar3 } = styles;
+const { fontBold, fontRegular, fontBold700, fontBold800, fontNormal, fontBold900 } = styles;
 const {
   h1,
   h2,
@@ -125,6 +135,11 @@ export const H15Grey = styled(Text)`
   ${h8};
   ${textcolorGray};
 `
+export const H15GreySemiBold = styled(Text)`
+  ${h8};
+  ${textcolorGray};
+  ${fontRegular}
+`
 export const H16WhiteText = styled(Text)`
   ${h7};
   ${white};
@@ -156,6 +171,20 @@ export const H14blueVar1Text = styled(Text)`
   ${h9};
   ${blueVar1};
 `;
-
-
-
+export const H18fontBoldBlack = styled(Text)`
+  ${h6};
+  ${fontBold};
+  ${black};
+`;
+export const H16fontNormalGray = styled(Text)`
+  ${h7};
+  ${fontNormal};
+  ${greyVar3};
+`;
+export const TextNow = styled(Text)`
+${h7};
+${white};
+${fontBold900};
+${justyfyCenter};
+${alignSelfCenter};
+  `;

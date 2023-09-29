@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, mh10, mh20, ml10, mr10, mt30, mt5, mv10, mv15, p5, spaceAround, spaceBetween, textCenter } from './commonStyles';
+import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mh20, ml10, mr10, mt30, mt5, mv10, mv15, p5, pl10, pr10, pt10, spaceAround, spaceBetween, textCenter } from './commonStyles';
 import { colors } from '../utils/colors';
-import { ArchiveIconWhiteIcon, DeleteWhiteIcon, LeftArrowWhiteIcon, MikeWhiteIcon, PinWhiteIcon, ProfileAvatarIcon, ThreeDotsWhiteIcon } from '../utils/svg';
+import { ArchiveIconBlackIcon, ArchiveIconWhiteIcon, DeleteWhiteIcon, LeftArrowWhiteIcon, MikeWhiteIcon, PinWhiteIcon, ProfileAvatarIcon, ThreeDotsWhiteIcon } from '../utils/svg';
 import { DevHeight, DevWidth } from '../utils/device';
 import { RowSpaceBetween } from './commonView';
 import { bottomNavData } from '../utils/data/bottomNavData';
@@ -11,7 +11,10 @@ import CustomIcon from '../utils/Icons';
 import { useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal';
 import { threeDotsOption } from '../utils/data/modalData';
-import { H15Grey } from './commonText';
+import { H15Grey, H16fontNormalGray, H18fontBoldBlack } from './commonText';
+import { HalfCircleSecond, ModalContainerSecond, ModalContentSecond } from '../styledComponent/styledComponent';
+import { labels } from '../utils/labels';
+import { ButtonBook } from './commonButtons';
 
 // ====================   Chat based Header Component   ====================
 
@@ -98,16 +101,17 @@ interface ModalProps {
     width?: number;
     modalData?: React.ReactNode;
     onClose: () => void;
+    backdropOpacity?: number;
 }
 
-const CustomModal: React.FC<ModalProps> = ({ isVisible, height, width, modalData, onClose }) => {
+const CustomModal: React.FC<ModalProps> = ({ isVisible, height, width, modalData, onClose, backdropOpacity }) => {
     return (
         <RNModal transparent={true} visible={isVisible} onRequestClose={onClose}>
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <Modal
                     isVisible={isVisible}
                     onBackdropPress={onClose}
-                    backdropOpacity={0}
+                    backdropOpacity={backdropOpacity || 0}
                     style={{
                         justifyContent: 'flex-start',
                         alignItems: 'flex-end',
@@ -142,6 +146,7 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
     selectedCardsCount,
 }) => {
     const [isModalVisible, setModalVisible] = useState(false);
+    const [deleteModalVisible, setDeleteModalVisible] = useState(false);
 
     const handleThreeDotsClick = () => {
         if (selectedCardsCount === 1) {
@@ -151,6 +156,17 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
         }
         if (onThreeDotsPress) {
             onThreeDotsPress();
+        }
+    };
+
+    const handleDeleteClick = () => {
+        if (selectedCardsCount === 1) {
+            setDeleteModalVisible((prevIsModalVisible) => !prevIsModalVisible);
+        } else if (selectedCardsCount > 1) {
+            console.log('Delete icon clicked for multiple cards');
+        }
+        if (onDeletePress) {
+            onDeletePress();
         }
     };
 
@@ -174,8 +190,42 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
         )
     }
 
+    const DeleteChatOption = () => {
+        return (
+            // <ModalContainerSecond>
+            //     <HalfCircleSecond />
+            //     <ModalContentSecond>
+            //             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+            //                 <ArchiveIconBlackIcon />
+            //             </View>
+            //             <View style={[ justyfyCenter, alignItemsCenter]}>
+            //                 <H18fontBoldBlack>{labels.Groups}</H18fontBoldBlack>
+            //                 <View style={[justyfyCenter, alignItemsCenter]}>
+            //                     <H16fontNormalGray style={[pl10, pr10]}>{labels.Endtoendencrypted}</H16fontNormalGray>
+            //                     <H16fontNormalGray style={[pl10, pr10]}>{labels.Endtoendencrypted}</H16fontNormalGray>
+            //                     <H16fontNormalGray style={[pl10, pr10]}>{labels.Endtoendencrypted}</H16fontNormalGray>
+            //                     <H16fontNormalGray style={[pl10, pr10]}>{labels.Endtoendencrypted}</H16fontNormalGray>
+            //                     <Text> dfgfdverffffffffffffffffffffffffdddddddddddddddddddddddddddddffffffffffffffffffffffffffffffffffffffffffffffffffffff</Text>
+            //                     <H16fontNormalGray>{labels.ArchiveChat}</H16fontNormalGray>
+            //                 </View>
+            //             </View>
+            //             <ButtonBook style={{
+            //                 backgroundColor: colors.purpleVar3
+            //             }}
+            //                 textStyle={{ color: colors.black }}
+            //                 // funCallback={}
+            //                 label={labels.chat} />
+            //     </ModalContentSecond>
+            // </ModalContainerSecond>
+            <View>
+                <Text>hhhhhhh</Text>
+            </View>
+
+        )
+    }
+
     return (
-        <View style={[flexRow, spaceBetween, mh20, mv15]}>
+        <View style={[flexRow, spaceBetween, mh20, mv15, pt10]}>
             <View style={flexRow}>
                 <LeftArrowWhiteIcon />
                 <View style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)', height: 20, width: 20, borderRadius: 20, }}>
@@ -186,7 +236,7 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
                 <TouchableOpacity style={ml10} onPress={onPinPress}>
                     <PinWhiteIcon />
                 </TouchableOpacity>
-                <TouchableOpacity style={ml10} onPress={onDeletePress}>
+                <TouchableOpacity style={ml10} onPress={handleDeleteClick}>
                     <DeleteWhiteIcon />
                 </TouchableOpacity>
                 <TouchableOpacity style={ml10} onPress={onMikePress}>
@@ -205,6 +255,12 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
                 width={DevWidth * 0.47}
                 modalData={<PinChatOption />}
                 onClose={() => setModalVisible(false)}
+            />
+            <CustomModal
+                isVisible={deleteModalVisible}
+                modalData={<DeleteChatOption />}
+                backdropOpacity={0.5}
+                onClose={() => setDeleteModalVisible(false)}
             />
         </View>
     );
@@ -338,6 +394,6 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: '600',
         fontSize: 12,
-        textAlign : 'center',
+        textAlign: 'center',
     },
 });

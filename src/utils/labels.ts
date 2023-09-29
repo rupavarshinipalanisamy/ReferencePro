@@ -62,6 +62,10 @@ export const labels = {
     Sticker: 'Sticker',
     Endtoendencrypted: 'End-to-End Encrypted',
     Ringing: 'Ringing',
+    DreamsChatVoiceCall : 'Dreamschat Voice Call',
+    Decline : 'Decline',
+    Accept : 'Accept',
+    Message : 'Message',
 };
 
 
