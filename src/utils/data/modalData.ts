@@ -7,7 +7,7 @@ export const threeDotsOption = [
         name : labels.ViewContact,
         iconName : 'person-circle-outline',
         iconType : "Ionicons",
-        iconSize : 25,
+        iconSize : 20,
         screenName : screenName.ChatView,
     },
     {
@@ -15,7 +15,7 @@ export const threeDotsOption = [
         name : labels.MarkAsRead,
         iconName : 'verified',
         iconType : "octicons",
-        iconSize : 25,
+        iconSize : 20,
         screenName : screenName.ChatView,
     },
 ]

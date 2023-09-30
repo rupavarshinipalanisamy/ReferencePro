@@ -36,6 +36,7 @@ export const screenName = {
     ImageView:'ImageView',
     Video:'Video',
     Link:'Link',
-    VideoView:'VideoView'
+    VideoView:'VideoView',
+    StarredMsg:'StarredMsg'
 
 };

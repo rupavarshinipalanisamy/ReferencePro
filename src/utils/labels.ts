@@ -121,5 +121,16 @@ export const labels = {
     Decline: 'Decline',
     Accept: 'Accept',
     Message: 'Message',
+    Media : 'Media',
+    Search : 'Media',
+    MuteNotification : 'Mute Notification',
+    Wallpaper : 'Wallpaper',
+    Report : 'Report',
+    Block : 'Block',
+    ClearChat : 'ClearChat',
+    Delete:'Delete',
+    Showinchat:'Show in Chat',
+    Forward:'Forward'
+
 };
 

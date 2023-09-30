@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mh20, ml10, mr10, mt30, mt5, mv10, mv15, p5, pl10, pr10, pt10, spaceAround, spaceBetween, textCenter } from './commonStyles';
+import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mh20, ml10, mr10, mt10, mt30, mt5, mv10, mv15, p10, p5, pl10, pl13, pl5, pr10, pt10, spaceAround, spaceBetween, textCenter } from './commonStyles';
 import { colors } from '../utils/colors';
 import { ArchiveIconBlackIcon, ArchiveIconWhiteIcon, DeleteWhiteIcon, LeftArrowWhiteIcon, MikeWhiteIcon, PinWhiteIcon, ProfileAvatarIcon, ThreeDotsWhiteIcon } from '../utils/svg';
 import { DevHeight, DevWidth } from '../utils/device';
@@ -102,9 +102,10 @@ interface ModalProps {
     modalData?: React.ReactNode;
     onClose: () => void;
     backdropOpacity?: number;
+    marginTop?:number
 }
 
-const CustomModal: React.FC<ModalProps> = ({ isVisible, height, width, modalData, onClose, backdropOpacity }) => {
+export const CustomModal: React.FC<ModalProps> = ({ isVisible, width, modalData, onClose, backdropOpacity,marginTop }) => {
     return (
         <RNModal transparent={true} visible={isVisible} onRequestClose={onClose}>
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -117,7 +118,7 @@ const CustomModal: React.FC<ModalProps> = ({ isVisible, height, width, modalData
                         alignItems: 'flex-end',
                     }}
                 >
-                    <View style={[mt30, { backgroundColor: colors.white, elevation: 4, borderRadius: 5, height: height || DevHeight * 0.5, width: width || DevWidth * 0.5 }]}>{modalData}</View>
+                    <View style={[{ backgroundColor: colors.white, elevation: 4, borderRadius: 5, width: width || DevWidth * 0.5, padding: 10,marginTop:marginTop||30 }]}>{modalData}</View>
                 </Modal>
             </View>
         </RNModal>
@@ -173,14 +174,16 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
     const PinChatOption = () => {
         const navigation = useNavigation();
         return (
-            <View style={mt5}>
+            <View style={{}}>
                 {
                     threeDotsOption.map((item) => {
                         return (
-                            <TouchableOpacity key={item.id} onPress={() => navigation.navigate(item.screenName as never)}>
-                                <View style={[flexRow, spaceAround, p5]}>
+                            <TouchableOpacity key={item.id} onPress={() => navigation.navigate(item.screenName as never)} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
+                                <View style={[flexRow]}>
                                     <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={colors.blackVar1} />
-                                    <H15Grey>{item.name}</H15Grey>
+                                    <View style={[alignItemsCenter, justyfyCenter, pl13]}>
+                                        <H15Grey>{item.name}</H15Grey>
+                                    </View>
                                 </View>
                             </TouchableOpacity>
                         )
@@ -251,11 +254,14 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
             </View>
             <CustomModal
                 isVisible={isModalVisible}
-                height={80}
+                // height={80}
                 width={DevWidth * 0.47}
                 modalData={<PinChatOption />}
+                marginTop={48}
                 onClose={() => setModalVisible(false)}
             />
+
+
             <CustomModal
                 isVisible={deleteModalVisible}
                 modalData={<DeleteChatOption />}

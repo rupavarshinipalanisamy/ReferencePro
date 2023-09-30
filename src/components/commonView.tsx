@@ -94,7 +94,14 @@ const styles = StyleSheet.create({
     shadowColor: colors.greyVar3,
     height: DevHeight / 8,
     justifyContent: 'center'
-  }
+  },
+  receiveMsgCard: {
+    backgroundColor: colors.white,
+    borderTopRightRadius: 8,
+    borderBottomRightRadius: 8,
+    borderBottomLeftRadius: 8,
+    padding: 10
+  },
 
 });
 const {
@@ -112,6 +119,7 @@ const {
   commonButtonFull,
   topContainerWhiteCard,
   iconBackground,
+  receiveMsgCard
 } = styles;
 
 
@@ -158,12 +166,25 @@ export const IconBackground = styled(View)`
 ${iconBackground};
 `
 
+
+interface MessageCardProps {
+  backgroundColor?: string;
+}
+export const MessageCard = styled(View)<MessageCardProps>`
+background-color: ${(props) => props.backgroundColor || colors.white };
+border-top-right-radius: 8px;
+border-bottom-right-radius: 8px;
+border-bottom-left-radius: 8px;
+padding: 10px;
+`;
+
+
 interface TopContainerWhiteCardProps {
   height?: number;
 }
 
 
-export const TopContainerWhiteCard1= styled(View)<TopContainerWhiteCardProps>`
+export const TopContainerWhiteCard1 = styled(View) <TopContainerWhiteCardProps>`
   background-color: ${colors.white};
   border-bottom-start-radius: 25px;
   border-bottom-end-radius: 25px;
