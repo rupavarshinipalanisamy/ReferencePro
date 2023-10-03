@@ -50,13 +50,20 @@ const styles = StyleSheet.create({
   h7: {
     fontSize: 16,
   },
-
   h8: {
     fontSize: 15,
   },
-  h9: {
-    fontSize: 14,
+
+  h9:{
+    fontSize:14,
+  
   },
+  h10:{
+    fontSize:12,
+  
+  },
+
+ 
   fontBold: {
     fontWeight: 'bold',
   },
@@ -93,7 +100,8 @@ const {
   h6,
   h7,
   h8,
-  h9
+  h9,
+  h10
 
 } = styles;
 
@@ -216,3 +224,28 @@ ${fontBold900};
 ${justyfyCenter};
 ${alignSelfCenter};
   `;
+export const H16font900Black = styled(Text)`
+  ${h7};
+  ${fontBold900};
+  ${black};
+`;
+
+export const H12fontNormalGray = styled(Text)`
+  ${h10};
+  ${fontNormal};
+  ${greyVar3};
+`;
+export const H16fontNormalGray4 = styled(Text)`
+  ${h8};
+  ${fontBold600};
+  ${textcolorGray};
+`;
+
+
+export const H16font900= styled(Text)`
+${h7};
+${fontBold900};
+alignSelf:center;
+justifyContent:center;
+borderColor:${colors.greyVar4}
+`

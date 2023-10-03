@@ -34,6 +34,8 @@ import Video from './src/pages/Media/Video';
 import Link from './src/pages/Media/Link'
 import VideoView from './src/pages/Media/VideoView';
 
+import Privacy from './src/pages/settings/privacy';
+import ChatSettings from './src/pages/settings/chatSettings';
 
 const Stack = createNativeStackNavigator();
 
@@ -81,6 +83,8 @@ const HomeNavigation = (props: NavigationProps) => {
 
 
 
+            <Stack.Screen name={screenName.Privacy} component={Privacy} />
+            <Stack.Screen name={screenName.ChatSettings} component={ChatSettings} />
 
 
         </Stack.Navigator>

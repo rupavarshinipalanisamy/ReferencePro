@@ -146,3 +146,31 @@ export const PinnedChatsdata = [
         status : 'inactive'
     },
 ]
+
+export const chatSettings=[
+    {
+        id:1,
+        chatSettings:labels.theme
+    },
+    {
+        id:2,
+        chatSettings:labels.wallpaper
+    },
+    {
+        id:3,
+        chatSettings:labels.mediaVisibility
+    },
+    {
+        id:4,
+        chatSettings:labels.archieveAllChats
+    },
+    {
+        id:5,
+        chatSettings:labels.clearAllChats
+    },
+    {
+        id:6,
+        chatSettings:labels.deleteAllChats
+    }
+
+]

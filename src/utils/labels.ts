@@ -121,5 +121,51 @@ export const labels = {
     Decline: 'Decline',
     Accept: 'Accept',
     Message: 'Message',
+    twofactor: 'Use two-factor authendication',
+    security: 'Security',
+    cancel: 'Cancel',
+    saveChange: 'Save Changes',
+    currentPwd: 'Current Password',
+    ProfilePic: 'Profile Picture',
+    lastseen: 'Last Seen',
+    groups: 'Groups',
+    status: 'Status',
+    readreceipts: 'Read Receipts',
+    blockCon: 'Block Contacts',
+    everyOne: 'Everyone',
+    blockNum: '38',
+    profilePhoto: 'Profile Photo',
+    profilePicContent: 'Who can see my profile photo',
+    myContact:'My Contacts',
+    myConExpect: 'My Contacts Expect Only',
+    nobody:'Nobody',
+    lastSeenandOnline: 'Last Seen and Online',
+    lastseenCon:'Who can see my last seen',
+    onlineCon:"Who can see when I'm online",
+    sameandlastSeen: 'same and last seen',
+    groupsCont:'Who can add me to groups',
+    theme:'Theme',
+    light:'Light',
+    wallpaper:'Wallpaper',
+    mediaVisibility:'Media Visibility',
+    archieveAllChats:'Archive All Chats',
+    clearAllChats:'Clear All Chats',
+    clearAllChats1:'Clear All Chats ?',
+    deleteAllChats:'Delete All Chats',
+    deleteAllChats1:'Delete All Chats ?',
+    chooseTheme:'Choose Theme',
+    dark: 'Dark',
+    systemDefault: 'System Default',
+    ok:'Ok',
+    archiveChatMessage: 'Are you sure want to archive all chats ?',
+    deleteMsg1:'Also delete media received in this chat from the device gallery.',
+    deleteMsg2:'Delete starred message',
+    deleteMsg: 'Message will only be removed from this device and your devices.'
+
+
+
+
+
+
 };
 

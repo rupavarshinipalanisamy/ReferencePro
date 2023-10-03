@@ -52,7 +52,6 @@ const CreateNewPassword = (props: createNewPasswordProps) => {
     return (
         <Fragment>
             <MainContainer>
-                
                 <ImageBackground source={require('../../../assets/images/png/background-image.png')} 
                 style={{ flex: 1}}>
                     <View style={m30}>

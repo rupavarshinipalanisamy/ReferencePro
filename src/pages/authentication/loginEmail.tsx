@@ -90,7 +90,7 @@ const LoginEmail = (props: loginEmailProps) => {
                                     }}
                                 />
                             </IconInputContainer>
-                            <View style={[pv20]}>
+                           
                                 <IconInputContainer>
                                     <InputContainer1>
                                         <View style={[flexRow, alignItemsCenter]}>
@@ -126,7 +126,7 @@ const LoginEmail = (props: loginEmailProps) => {
                                         </View>
                                     </InputContainer1>
                                 </IconInputContainer>
-                            </View>
+                            
                             <CheckBoxContainer1>
                                 <View style={[flexRow]}>
                                     <TouchableOpacity

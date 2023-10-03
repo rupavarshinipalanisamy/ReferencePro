@@ -15,8 +15,10 @@ import {
   CommonButtonBlue,
   CommonButtonNow,
   CommonButtonBook,
+  SaveAndCancel,
 } from '../components/commonView';
 import { TextNowSecond } from './commonText';
+import { H16font900, H16font900Black } from './commonText';
 
 type ButtonProps = {
   style: StyleProp<ViewStyle>;
@@ -84,3 +86,25 @@ export const ButtonBook: React.FC<ButtonProps> = ({
     </CommonButtonBook>
   );
 };
+
+export const ButtonSaveandCancel: React.FC<ButtonProps> = ({
+  style,
+  disabled,
+  funCallback,
+  label,
+  success,
+  textStyle
+}) => {
+  return (
+    <SaveAndCancel
+      disabled={disabled}
+      style={[style, success ? { backgroundColor: colors.blueVar1 } : null]}
+      onPress={() => {
+        funCallback();
+      }}>
+      <H16font900 
+      style={[textStyle]}>{label}</H16font900>
+    </SaveAndCancel>
+  );
+};
+
