@@ -1,51 +1,209 @@
 import React, { Fragment, useState } from 'react';
-import { StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { IconBackground, MainContainer } from '../../components/commonView';
+import { StatusBar, TouchableOpacity, View } from 'react-native';
+import { IconBackground, MainContainer, TopContainerWhiteCard } from '../../components/commonView';
 import { colors } from '../../utils/colors';
-import { DevHeight } from '../../utils/device';
 import { labels } from '../../utils/labels';
-import { H15Grey, H16fontBoldBlack, H16fontNormalGray } from '../../components/commonText';
+import { H16font900Black, H16fontBoldBlack } from '../../components/commonText';
 import CustomIcon from '../../utils/Icons';
-import { InputContainer1 } from '../../styledComponent/styledComponent';
-import { flexRow, mt20, alignItemsCenter, ph10, justyfyCenter, p20, mh20, ph15, m15 } from '../../components/commonStyles';
-import { socilProfile } from '../../utils/data/socialServiceData';
+import { flexRow, mt20, alignItemsCenter, ph10, justyfyCenter, ph15, pv20 } from '../../components/commonStyles';
+import { ButtonContainer, IconInputContainer, InputContainer1, Textwithg } from '../../styledComponent/styledComponent';
+import { Controller, useForm } from 'react-hook-form';
+import { CustomTextInput } from '../../components/commonInputFields';
+import { requiredValidation, minLengthValidation, validationSchema } from '../../utils/validationconfig';
+import { ButtonSaveandCancel } from '../../components/commonButtons';
 
 export type socialProfilesProps = {};
 
 const Password = (props: socialProfilesProps) => {
   const [isUnlocked, setIsUnlocked] = useState(false);
+  const [currentPassword, setCurrentPassword] = useState(true);
+  const [newPassword, setNewPassword] = useState(true);
+  const [confirmPassword, setConfirmPassword] = useState(true);
 
   const handleToggleClick = () => {
     setIsUnlocked((prevState) => !prevState);
+  };
+
+  const formKeys = {
+    newpassword: 'password',
+    currentPassword: 'currentpassword',
+    confirmpassword: 'confirmpassword'
+  };
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm();
+
+  const handleCurrentPassword = () => {
+    setCurrentPassword(!currentPassword);
+  };
+  const handleNewPassword = () => {
+    setNewPassword(!newPassword);
+  };
+  const handleConfirmPassword = () => {
+    setConfirmPassword(!confirmPassword);
+  };
+
+  const onLogin = (details: any) => {
   };
 
   return (
     <Fragment>
       <MainContainer>
         <StatusBar backgroundColor={colors.white} />
-
-        <View style={styles.topContainerWhiteCard}>
+        <TopContainerWhiteCard>
           <View style={[flexRow, mt20, { margin: 15 }]}>
             <View style={[flexRow, alignItemsCenter]}>
               <CustomIcon name='chevron-left' size={20} color={colors.black} type='octicons' />
-              <Text style={{ color: 'black', fontSize: 17, fontWeight: '900', paddingHorizontal: 15 }}>{labels.pwdandSec}</Text>
+              <H16font900Black style={[ph15]}>{labels.pwdandSec}</H16font900Black>
             </View>
           </View>
-        </View>
+        </TopContainerWhiteCard>
         <View style={[ph15, mt20]}>
-          <Text style={{ backgroundColor: colors.purpleVar4, width: '18%', textAlign: 'center', height: 25, color: colors.purpleVar3, borderRadius: 5, fontSize: 14 }}>Security</Text>
-          <View style={[mt20, flexRow]}>
-            <IconBackground>
-              <CustomIcon name='smartphone' size={20} color={colors.purpleVar3} type='Feather' />
-            </IconBackground>
-            <TouchableOpacity
-              style={[styles.toggleButton, isUnlocked ? styles.activeButton : styles.inactiveButton]}
-              onPress={handleToggleClick}
-            >
-              <CustomIcon name={isUnlocked ? 'toggle-on' : 'toggle-off'} size={20} color='white' type='Fontisto' />
+          <Textwithg style={{ width: '18%' }}>{labels.security}</Textwithg>
+          <View style={[pv20, flexRow, { justifyContent: 'space-between' }]}>
+            <View style={[flexRow, alignItemsCenter]}>
+              <IconBackground>
+                <CustomIcon name='smartphone' size={20} color={colors.purpleVar3} type='Feather' />
+              </IconBackground>
+              <H16fontBoldBlack style={[ph10]}>{labels.twofactor}</H16fontBoldBlack>
+            </View>
+            <TouchableOpacity style={[alignItemsCenter, justyfyCenter]}
+              onPress={handleToggleClick}>
+              <CustomIcon name={isUnlocked ? 'toggle-on' : 'toggle-off'} size={30} color={colors.greyVar3} type='Fontisto' />
             </TouchableOpacity>
           </View>
+          <View style={[mt20]}>
+            <Textwithg style={{ width: '35%' }}>{labels.changePwd}</Textwithg>
+          </View>
+
+          <IconInputContainer>
+            <InputContainer1>
+              <View style={[flexRow, alignItemsCenter]}>
+                <CustomIcon name='lock-outline' size={20} color={colors.greyVar4} type='MaterialIcons' />
+                <Controller
+                  name={formKeys.currentPassword}
+                  control={control}
+                  render={({ field: { onChange, value } }) => (
+                    <CustomTextInput
+                      errorMessage={errors[formKeys.password]?.message.toString()}
+                      placeholder={labels.currentPwd}
+                      value={value}
+                      secureTextEntry={currentPassword}
+                      onChangeText={onChange} />
+                  )}
+                  rules={{
+                    required: requiredValidation(('labels.password')),
+                    minLength: minLengthValidation(
+                      validationSchema.password.minLength,
+                    ),
+                  }}
+                />
+              </View>
+              <View style={[justyfyCenter]}>
+                <TouchableOpacity onPress={handleCurrentPassword} >
+                  <CustomIcon
+                    name={!currentPassword ? 'eye' : 'eye-closed'}
+                    size={20}
+                    color={colors.greyVar4}
+                    type='octicons'
+                  />
+                </TouchableOpacity>
+              </View>
+            </InputContainer1>
+          </IconInputContainer>
+
+          <IconInputContainer>
+            <InputContainer1 >
+              <View style={[flexRow, alignItemsCenter]}>
+                <CustomIcon name='lock-outline' size={20} color={colors.greyVar4} type='MaterialIcons' />
+                <Controller
+                  name={formKeys.newpassword}
+                  control={control}
+                  render={({ field: { onChange, value } }) => (
+                    <CustomTextInput
+                      errorMessage={errors[formKeys.password]?.message.toString()}
+                      placeholder={labels.newPwd}
+                      value={value}
+                      secureTextEntry={newPassword}
+                      onChangeText={onChange} />
+                  )}
+                  rules={{
+                    required: requiredValidation(('labels.password')),
+                    minLength: minLengthValidation(
+                      validationSchema.password.minLength,
+                    ),
+                  }}
+                />
+              </View>
+              <View style={[justyfyCenter]}>
+                <TouchableOpacity onPress={handleNewPassword} >
+                  <CustomIcon
+                    name={!newPassword ? 'eye' : 'eye-closed'}
+                    size={20}
+                    color={colors.greyVar4}
+                    type='octicons'
+                  />
+                </TouchableOpacity>
+              </View>
+            </InputContainer1>
+          </IconInputContainer>
+
+         
+
+
+          <IconInputContainer>
+            <InputContainer1 >
+              <View style={[flexRow, alignItemsCenter]}>
+                <CustomIcon name='lock-outline' size={20} color={colors.greyVar4} type='MaterialIcons' />
+                <Controller
+                  name={formKeys.confirmpassword}
+                  control={control}
+                  render={({ field: { onChange, value } }) => (
+                    <CustomTextInput
+                      errorMessage={errors[formKeys.password]?.message.toString()}
+                      placeholder={labels.confirmPwd}
+                      value={value}
+                      secureTextEntry={confirmPassword}
+                      onChangeText={onChange} />
+                  )}
+                  rules={{
+                    required: requiredValidation(('labels.password')),
+                    minLength: minLengthValidation(
+                      validationSchema.password.minLength,
+                    ),
+                  }}
+                />
+              </View>
+              <View style={[justyfyCenter]}>
+                <TouchableOpacity onPress={handleConfirmPassword} >
+                  <CustomIcon
+                    name={!confirmPassword ? 'eye' : 'eye-closed'}
+                    size={20}
+                    color={colors.greyVar4}
+                    type='octicons'
+                  />
+                </TouchableOpacity>
+              </View>
+            </InputContainer1>
+          </IconInputContainer>
         </View>
+        <ButtonContainer style={{ position: 'absolute', bottom: 20 }}>
+          <ButtonSaveandCancel style={{
+            backgroundColor: colors.white
+          }}
+            textStyle={{ color: colors.greyVar4 }}
+            funCallback={() => { }}
+            label={labels.cancel} />
+
+          <ButtonSaveandCancel style={{
+            backgroundColor: colors.purpleVar3,
+          }}
+            textStyle={{ color: colors.white }}
+            funCallback={() => { }}
+            label={labels.saveChange} />
+        </ButtonContainer>
       </MainContainer>
     </Fragment>
   );
@@ -53,41 +211,3 @@ const Password = (props: socialProfilesProps) => {
 
 export default Password;
 
-const styles = StyleSheet.create({
-  cardSurface: {
-    backgroundColor: colors.purpleVar1,
-    padding: 10,
-    elevation: 4,
-    marginTop: 20,
-    flexDirection: 'row',
-    borderRadius: 8,
-    shadowColor: colors.greyVar3,
-  },
-  topContainerWhiteCard: {
-    backgroundColor: 'white',
-    borderBottomStartRadius: 25,
-    borderBottomEndRadius: 25,
-    elevation: 4,
-    height: DevHeight / 10,
-    justifyContent: 'center',
-  },
-  toggleButton: {
-    width: 100,
-    height: 40,
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-    marginTop: 20,
-  },
-  activeButton: {
-    backgroundColor: 'green', // Change this to your desired active color
-  },
-  inactiveButton: {
-    backgroundColor: 'red', // Change this to your desired inactive color
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 16,
-  },
-});

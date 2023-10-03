@@ -128,6 +128,9 @@ const styles = StyleSheet.create({
   mb15: {
     marginBottom: 15,
   },
+  mb50:{
+    marginBottom:90,
+  },
   b50: {
     bottom: 50,
   },
@@ -476,6 +479,7 @@ export const {
   ml30,
   mt15,
   mb20,
+  mb50,
   mt10,
   mt5,
   mr5,

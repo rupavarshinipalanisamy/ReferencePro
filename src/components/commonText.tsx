@@ -59,9 +59,11 @@ const styles = StyleSheet.create({
     fontSize:14,
   
   },
-  h16: {
-    fontSize: 16,
+  h10:{
+    fontSize:12,
+  
   },
+ 
 
   fontBold: {
     fontWeight: 'bold',
@@ -76,6 +78,9 @@ const styles = StyleSheet.create({
   fontBold600: {
     fontWeight:'600',
   },
+  fontBold900: {
+    fontWeight:'900',
+  },
   fontNormal: {
     fontWeight: 'normal'
   }
@@ -83,7 +88,7 @@ const styles = StyleSheet.create({
 
 
 const { green,red, textcolorGray,black,white,purpleVar3,blueVar1,greyVar3} = styles;
-const {fontBold, fontRegular, fontBold700,fontNormal,fontBold600} = styles;
+const {fontBold, fontRegular, fontBold700,fontNormal,fontBold600,fontBold900} = styles;
 const {
   h1,
   h2,
@@ -93,7 +98,8 @@ const {
   h6,
   h7,
   h8,
-  h9
+  h9,
+  h10
 
 } = styles;
 
@@ -191,3 +197,28 @@ export const H16fontBoldBlack = styled(Text)`
   ${fontBold600};
   ${black};
 `;
+export const H16font900Black = styled(Text)`
+  ${h7};
+  ${fontBold900};
+  ${black};
+`;
+
+export const H12fontNormalGray = styled(Text)`
+  ${h10};
+  ${fontNormal};
+  ${greyVar3};
+`;
+export const H16fontNormalGray4 = styled(Text)`
+  ${h8};
+  ${fontBold600};
+  ${textcolorGray};
+`;
+
+
+export const H16font900= styled(Text)`
+${h7};
+${fontBold900};
+alignSelf:center;
+justifyContent:center;
+borderColor:${colors.greyVar4}
+`

@@ -16,6 +16,8 @@ import ContactPage from './src/pages/contact/contactPage';
 import SettingsScreen from './src/pages/settings/settingsScreen';
 import SocialProfiles from './src/pages/settings/socialProfiles';
 import Password from './src/pages/settings/password';
+import Privacy from './src/pages/settings/privacy';
+import ChatSettings from './src/pages/settings/chatSettings';
 
 const Stack = createNativeStackNavigator();
 
@@ -42,6 +44,8 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.SettingsScreen} component={SettingsScreen} />
             <Stack.Screen name={screenName.SocialProfiles} component={SocialProfiles} />
             <Stack.Screen name={screenName.Password} component={Password} />
+            <Stack.Screen name={screenName.Privacy} component={Privacy} />
+            <Stack.Screen name={screenName.ChatSettings} component={ChatSettings} />
 
 
         </Stack.Navigator>

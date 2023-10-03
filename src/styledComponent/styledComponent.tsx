@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { View, TextInput } from 'react-native';
+import { View, TextInput, Text } from 'react-native';
 import { colors } from "../utils/colors";
 import { DevWidth } from "../utils/device";
 
@@ -11,6 +11,10 @@ flexDirection:row;
 zIndex:1;
 align-self:center;
 justifyContent:space-between;
+`
+export const ButtonContainer1 = styled(View)`
+flexDirection:row;
+justifyContent:space-around;
 `
 export const LoginLogoBigCircle = styled(View)` 
 height: 110px;
@@ -40,17 +44,19 @@ alignItems:center;
 export const InputData = styled(TextInput)`
 font-size: 16px;
 color:${colors.black};
-paddingHorizontal: 15px;
+padding:15px;
 `
 export const IconInputContainer = styled(View)`
 borderBottomWidth: 1px;
 borderBottomColor: ${colors.borderBottomColor};
 flexDirection: row;
+marginTop:15px;
 `
 export const InputContainer1 = styled(View)`
 flexDirection: row;
 justifyContent: space-between;
 flex: 1px;
+
 `
 export const CheckBoxContainer = styled(View)`
 alignItems:center;
@@ -60,6 +66,7 @@ flexDirection: row;
 export const CheckBoxContainer1 = styled(View)`
 justifyContent: space-between;
 flexDirection: row;
+marginTop:30px;
 `
 export const CheckBox = styled(View)`
 width: 24px;
@@ -108,25 +115,48 @@ flex: 1px;
 justifyContent: center;
 alignItems:center;
 `
-export const ModalContainer= styled(View)`
-flex: 1px;
-justifyContent: center;
-alignItems: center;
-backgroundColor: rgba(0, 0, 0, 0.5);
-`
-export const HalfCircle= styled(View)`
-backgroundColor: ${colors.white};
-borderTopLeftRadius: 100px;
-borderTopRightRadius: 100px;
-width:30%;
-height:60px;
-alignSelf: center;
-zIndex:-1;
-top:15px;
-`
-export const ModalContent=styled(View)`
-backgroundColor: ${colors.white};
-paddingHorizontal: 20px;
-paddingVertical:20px;
-borderRadius: 10px;
+export const ModalContainer = styled(View)`
+  flex: 1px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+`;
+
+
+export const HalfCircle = styled(View)`
+  background-color: ${colors.white};
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  width: 30%;
+  height: 60px;
+  align-self: center;
+  top: 15px;
+  overflow: hidden;
+`;
+export const HalfCircle2 = styled(View)`
+  background-color: ${colors.white};
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  width: 17%;
+  height: 34px;
+  align-self: center;
+  top: 15px;
+  overflow: hidden;
+`;
+export const ModalContent = styled(View)`
+  background-color: ${colors.white};
+  padding: 20px;
+  borderRadius: 10px;
+  width: 80%;
+  max-width: 400px; 
+`;
+
+
+export const Textwithg=styled(Text)`
+backgroundColor: ${colors.purpleVar4};
+textAlign:center;
+borderRadius: 5px;
+height:25px;
+color:${colors.purpleVar3}
+
 `

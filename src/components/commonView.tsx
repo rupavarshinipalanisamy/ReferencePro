@@ -81,21 +81,52 @@ const styles = StyleSheet.create({
 
   },
   topContainerWhiteCard: {
-    backgroundColor: 'white', 
-    borderBottomStartRadius: 25, 
-    borderBottomEndRadius: 25, 
-    elevation: 4, 
-    height: DevHeight / 10, 
+    backgroundColor: 'white',
+    borderBottomStartRadius: 25,
+    borderBottomEndRadius: 25,
+    elevation: 4,
+    height: DevHeight / 10,
     justifyContent: 'center'
   },
-  iconBackground:{
-    backgroundColor: colors.purpleVar4, 
-    width: 38, 
-    borderRadius: 5, 
-    justifyContent: 'center', 
-    height: 38, 
+  iconBackground: {
+    backgroundColor: colors.purpleVar4,
+    width: 38,
+    borderRadius: 5,
+    justifyContent: 'center',
+    height: 38,
     alignItems: 'center'
-  }
+  },
+  commonButtonSaveandCancel: {
+    width: '45%',
+    // paddingVertical: 8,
+    // marginVertical: 40,
+    borderRadius: 9,
+    alignSelf: 'center',
+    height: 50,
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: colors.greyVar3
+  },
+  radioButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 5,
+  },
+  radioButtonRound: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    borderWidth: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor:colors.greyVar4
+  },
+  selectedRadioBtn:{
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: colors.purpleVar3,
+  },
 });
 const {
   rowSpaceBetween,
@@ -110,8 +141,12 @@ const {
   commonButtonNow,
   commonButtonBook,
   commonButtonFull,
+  commonButtonSaveandCancel,
   topContainerWhiteCard,
   iconBackground,
+  radioButton,
+  radioButtonRound,
+  selectedRadioBtn
 
 
 
@@ -156,8 +191,25 @@ export const CommonButtonBook = styled(TouchableOpacity)`
   `;
 
 export const TopContainerWhiteCard = styled(View)`
-${topContainerWhiteCard};
+backgroundColor: white;
+borderBottomStartRadius: 25px;
+borderBottomEndRadius: 25px;
+elevation: 4;
+height: ${DevHeight / 10}px;
+justifyContent: center;
 `
 export const IconBackground = styled(View)`
 ${iconBackground};
+`
+export const SaveAndCancel = styled(TouchableOpacity)`
+${commonButtonSaveandCancel};
+`
+export const RadioButton = styled(TouchableOpacity)`
+${radioButton};
+`
+export const RadioButtonRound = styled(View)`
+${radioButtonRound}
+`
+export const SelectedRadioBtn = styled(View)`
+${selectedRadioBtn}
 `
