@@ -25,16 +25,25 @@ export const colors = {
     blueVar3: '#02A2B9',
     blueVar2: '#0566FF',
     blueVar1: "#50B8F2",
+    blueVar4 : '#EBFDFF',
+    
 
     //white  
     whiteVar1: "#f5f5f5",
     whiteVar0: "#FAFAFA",
     white: '#FFFFFF',
 
+    //green
     green: '#1BA345',
+    greenVar1 : '#E7FAF2',
+
+    //red
     red: '#DE3E44',
     redVar1: '#FFE8E9',
+
+    //yellow
     yellow: '#FEC001',
+    yellowVar1 : '#FEF6DC',
 
 };
 

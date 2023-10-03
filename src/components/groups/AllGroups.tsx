@@ -27,8 +27,8 @@ const AllGroups = (props: AllGroupsProps) => {
                         <View key={group.id}>
                             <CommonLineDividerGrey />
                             <TouchableOpacity onPress={() => {
+                                group.isAdmin === 'true' ? navigation.navigate(screenName.GroupChattingAdmin as never) : navigation.navigate(screenName.GroupChatting as never);
                                 // if (selectedCards.length === 0) {
-                                    navigation.navigate(screenName.GroupChatting as never);
                                 // } else {
                                 //     onCardSelection(chat.id);
                                 // }

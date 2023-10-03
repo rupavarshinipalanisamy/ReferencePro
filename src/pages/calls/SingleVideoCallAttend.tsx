@@ -10,6 +10,7 @@ import { VideoCallLowerImg, VideoCallUpperImg } from '../../utils/png';
 import { DevHeight, DevWidth } from '../../utils/device';
 import CustomIcon from '../../utils/Icons';
 import { callBottomDataFourth } from '../../utils/data/callsData';
+import { CallBottomTab } from '../../components/commonComponents';
 
 
 export type SingleVideoCallAttendProps = {
@@ -35,34 +36,7 @@ const SingleVideoCallAttend = (props: SingleVideoCallAttendProps) => {
                     <Image source={VideoCallLowerImg} style={[mb20, { height: 120, width: 90, right: 20, position: 'absolute', bottom: 0 }]} />
                 </ImageBackground>
             </View>
-            <View style={[{ height: DevHeight * 0.12, width: DevWidth, backgroundColor: colors.white, borderTopLeftRadius: 45, borderTopRightRadius: 45 }]}>
-                <View style={[alignSelfCenter, mt15, { height: 5, width: DevWidth * 0.2, backgroundColor: colors.greyVar0 }]} />
-                <View style={[flexRow, spaceAround, mt20]}>
-                    {
-                        callBottomDataFourth.map((item) => {
-                            return (
-                                <View key={item.id}>
-                                    {
-                                        item.id == 1 ? (
-                                            <TouchableOpacity style={[{ height: 40, width: 80, backgroundColor: colors.purpleVar1, bottom: 5 }, alignItemsCenter, justyfyCenter, borderRadius10]}>
-                                                <CustomIcon name={item.iconName} size={item.iconSize} color={item.iconColor} type={item.iconType} />
-                                            </TouchableOpacity>
-                                        ) : item.id == 4 ? (
-                                            <TouchableOpacity style={[{ height: 40, width: 80, backgroundColor: colors.redVar1, bottom: 5 }, alignItemsCenter, justyfyCenter, borderRadius10]}>
-                                                <CustomIcon name={item.iconName} size={item.iconSize} color={item.iconColor} type={item.iconType} />
-                                            </TouchableOpacity>
-                                        ) : (
-                                            <TouchableOpacity style={mt5}>
-                                                <CustomIcon name={item.iconName} size={item.iconSize} color={item.iconColor} type={item.iconType} />
-                                            </TouchableOpacity>
-                                        )
-                                    }
-                                </View>
-                            )
-                        })
-                    }
-                </View>
-            </View>
+            <CallBottomTab />
         </View>
     )
 }

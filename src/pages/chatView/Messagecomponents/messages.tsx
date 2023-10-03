@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Text, View, Image, ImageBackground, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import { colors } from '../../../utils/colors';
-import { flex1, flexRow, pt10, pl10, spaceBetween, alignItemsCenter, justyfyCenter, pt5, pl13, p5 } from '../../../components/commonStyles';
+import { flex1, flexRow, pt10, pl10, spaceBetween, alignItemsCenter, justyfyCenter, pt5, pl13, p5, mt5, borderRadius10 } from '../../../components/commonStyles';
 import CustomIcon from '../../..//utils/Icons';
-import { H14BlackText, H14blueVar1Text, H16WhiteText, H18WhiteText } from '../../../components/commonText';
+import { H14BlackText, H14blueVar1Text, H15Grey, H16WhiteText, H16fontNormalBlue, H16fontNormalGray, H16fontSemiBoldBluevar4, H16fontSemiBoldGreyvar4, H18WhiteText } from '../../../components/commonText';
 import { labels } from '../../../utils/labels';
 import { DevHeight, DevWidth } from '../../../utils/device';
 import AudioImg from '../../../../assets/images/Audio.svg'
@@ -12,19 +12,52 @@ import SendImg2 from '../../../../assets/images/sendMsg1.svg'
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../../utils/screenName';
 import { GroupImg1Img, ProfileImg } from '../../../utils/png';
+import { CustomModal } from '../../../components/commonComponents';
+import { GroupChatViewModalData } from '../../../utils/data/groupsData';
 
 interface HeaderChatViewProps {
+    title: string;
+    subTitle: string;
     backgroundColor: string,
     onPress?: () => void;
-    profileNavigate : string;
+    profileNavigate: string;
     videoNavigate: string;
-    audioNavigate : string;
+    audioNavigate: string;
+    threeDotOptionNavigate?: () => void;
     groups?: boolean;
 
 }
 
 export const HeaderChatView = (props: HeaderChatViewProps) => {
-    const navigation = useNavigation()
+    const [groupOptionModal, setGroupOptionModal] = useState(false);
+
+    const navigation = useNavigation();
+   
+
+    const handleGroupOptionModal = () => {
+        setGroupOptionModal(!groupOptionModal);
+    }
+
+    const OptionModalComponent = () => {
+        return (
+            <View>
+                {
+                    GroupChatViewModalData.map((item) => {
+                        return (
+                            <TouchableOpacity key={item.id} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
+                                <View  style={flexRow}>
+                                    <CustomIcon name={item.iconName} size={item.iconSize} color={item.iconColor} type={item.iconType} />
+                                    <View style={[alignItemsCenter, justyfyCenter, pl13]}>
+                                         <H15Grey>{item.text}</H15Grey>
+                                    </View>
+                                </View>
+                            </TouchableOpacity>
+                        )
+                    })
+                }
+            </View>
+        )
+    }
     return (
         <View style={{ height: DevWidth / 4, backgroundColor: props.backgroundColor, borderBottomRightRadius: 20, borderBottomLeftRadius: 20, position: 'relative' }}>
             <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
@@ -39,8 +72,10 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
                             }
 
                             <View style={pl13}>
-                                <H18WhiteText>{labels.horaceKeene}</H18WhiteText>
-                                <H16WhiteText>{labels.online}</H16WhiteText>
+                                <H18WhiteText>{props.title}</H18WhiteText>
+                                <H16WhiteText>{props.subTitle}</H16WhiteText>
+                                {/* <H18WhiteText>{labels.horaceKeene}</H18WhiteText>
+                                <H16WhiteText>{labels.online}</H16WhiteText> */}
                             </View>
                         </TouchableOpacity>
                         <View style={[flexRow, alignItemsCenter]}>
@@ -50,13 +85,21 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
                             <TouchableOpacity onPress={() => navigation.navigate(props.audioNavigate as never)} style={pl10}>
                                 <CustomIcon name='call-outline' type="Ionicons" size={18} color={colors.white} />
                             </TouchableOpacity>
-                            <TouchableOpacity style={pl10}>
+                            <TouchableOpacity onPress={props.groups ? handleGroupOptionModal : null} style={pl10}>
                                 <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={colors.white} />
                             </TouchableOpacity>
                         </View>
                     </View>
                 </View>
             </View>
+            <CustomModal
+                isVisible={groupOptionModal}
+                width={DevWidth * 0.47}
+                height={DevHeight * 0.4}
+                modalData={<OptionModalComponent />}
+                // marginTop={48}
+                onClose={() => setGroupOptionModal(false)}
+            />
         </View>
     )
 
@@ -96,6 +139,16 @@ export const FooterChatView = () => {
                 <View style={{ backgroundColor: colors.purpleVar3, height: 50, width: 50, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center' }}>
                     <CustomIcon name='microphone-outline' type="MaterialCommunityIcons" color={colors.white} size={25} />
                 </View>
+            </View>
+        </View>
+    )
+}
+
+export const FooterAdminChatView = () => {
+    return (
+        <View style={[{ backgroundColor: colors.white, height: DevHeight / 8, borderTopLeftRadius: 20, borderTopRightRadius: 20, paddingTop: 20 }, alignItemsCenter]}>
+            <View style={[{ height: DevHeight * 0.06, width: DevWidth * 0.88, backgroundColor: colors.whiteVar1, borderWidth: 1, borderColor: colors.greyVar2 }, mt5, borderRadius10, alignItemsCenter, justyfyCenter]}>
+                <H16fontSemiBoldGreyvar4>Only <H16fontSemiBoldBluevar4>Admins</H16fontSemiBoldBluevar4> can send messages</H16fontSemiBoldGreyvar4>
             </View>
         </View>
     )

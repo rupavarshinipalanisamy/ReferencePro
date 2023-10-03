@@ -40,6 +40,6 @@ export const bottomNavData = [
         iconName : 'call-outline',
         iconType : "Ionicons",
         iconSize : 25,
-        screenName : screenName.ChatView,
+        screenName : screenName.Calls,
     },
 ]

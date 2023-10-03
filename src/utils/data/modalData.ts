@@ -19,3 +19,22 @@ export const threeDotsOption = [
         screenName : screenName.ChatView,
     },
 ]
+
+export const CallThreeDotsOption = [
+    {
+        id: 1,
+        name : labels.RemoveFromCallLog,
+        iconName : 'delete',
+        iconType : "AntDesign",
+        iconSize : 25,
+        screenName : screenName.ChatView,
+    },
+    {
+        id: 5,
+        name : labels.Block,
+        iconName : 'block',
+        iconType : "entypo",
+        iconSize : 25,
+        screenName : screenName.ChatView,
+    },
+]

@@ -147,7 +147,7 @@ const ChatView = () => {
             <MainContainer>
                 {/* <StatusBar backgroundColor={colors.purpleVar3} /> */}
                 <View style={{ flex: 1 }}>
-                    <HeaderChatView backgroundColor={colors.purpleVar3} profileNavigate={screenName.UserProfile} videoNavigate={screenName.SingleVideoCall} audioNavigate={screenName.SingleAudioCallRing} />
+                    <HeaderChatView backgroundColor={colors.purpleVar3} profileNavigate={screenName.UserProfile} videoNavigate={screenName.SingleVideoCall} audioNavigate={screenName.SingleAudioCallRing} title={labels.horaceKeene} subTitle={labels.online} />
                     <ImageBackground
                         source={ChatBackgroundImg}
                         style={styles.backgroundImage}

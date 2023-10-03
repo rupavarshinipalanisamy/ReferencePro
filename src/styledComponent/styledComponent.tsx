@@ -103,26 +103,35 @@ borderRadius:7px;
 justifyContent: space-around;
 color: ${colors.black}
 `
-export const SplashScreenContainer= styled(View)`
+export const SplashScreenContainer = styled(View)`
 flex: 1px;
 justifyContent: center;
 alignItems:center;
 `
-export const ModalContainer= styled(View)`
-flex: 1px;
-justifyContent: center;
-alignItems: center;
-backgroundColor: rgba(0, 0, 0, 0.5);
-`
-export const HalfCircle= styled(View)`
-backgroundColor: ${colors.white};
-borderTopLeftRadius: 100px;
-borderTopRightRadius: 100px;
-width:30%;
-height:60px;
-justifyContent:space-around;
-bottom:0px;
-`
+export const ModalContainer = styled(View)`
+ flex: 1;
+ justify-content: center;
+ align-items: center;
+ background-color: rgba(0, 0, 0, 0.5);
+`;
+
+
+export const HalfCircle = styled(View)`
+ background-color: ${colors.white};
+ borderTopLeftRadius: 100px;
+ borderTopRightRadius: 100px;
+ width: 30%;
+ height: 60px;
+ align-self: center;
+ top: 15px;
+`;
+export const ModalContent = styled(View)`
+ background-color: ${colors.white};
+ padding: 20px;
+ borderRadius: 10px;
+ width: 80%;
+ max-width: 400px; 
+`;
 
 
 export const ModalContainerSecond = styled(View)`
@@ -147,9 +156,4 @@ paddingHorizontal: 20px;
 paddingVertical:20px;
 borderRadius: 10px;
 `
-export const ModalContent=styled(View)`
-backgroundColor: ${colors.white};
-paddingHorizontal: 20px;
-paddingVertical:20px;
-borderRadius: 10px;
-`
+

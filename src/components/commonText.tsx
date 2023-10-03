@@ -28,6 +28,9 @@ const styles = StyleSheet.create({
   purpleVar3: {
     color: colors.purpleVar3,
   },
+  greyVar4Color: {
+    color: colors.greyVar4,
+  },
   h1: {
     fontSize: 25,
   },
@@ -78,7 +81,7 @@ const styles = StyleSheet.create({
   }
 
 });
-const { green, red, textcolorGray, black, white, purpleVar3, blueVar1, greyVar3 } = styles;
+const { green, red, textcolorGray, black, white, purpleVar3, blueVar1, greyVar3, greyVar4Color } = styles;
 const { fontBold, fontRegular, fontBold600, fontBold700, fontBold800, fontNormal, fontBold900 } = styles;
 const {
   h1,
@@ -125,6 +128,11 @@ export const H15Red = styled(Text)`
 export const H15Grey = styled(Text)`
   ${h8};
   ${textcolorGray};
+`
+export const H15BlackBold600 = styled(Text)`
+  ${h8};
+  ${black};
+  ${fontBold600}
 `
 export const H15GreySemiBold = styled(Text)`
   ${h8};
@@ -204,4 +212,14 @@ ${white};
 ${fontBold900};
 ${justyfyCenter};
 ${alignSelfCenter};
-  `;
+`;
+export const H16fontSemiBoldGreyvar4 = styled(Text)`
+  ${h7};
+  ${fontRegular};
+  ${greyVar4Color};
+`;
+export const H16fontSemiBoldBluevar4 = styled(Text)`
+  ${h7};
+  ${fontRegular};
+  ${blueVar1};
+`;

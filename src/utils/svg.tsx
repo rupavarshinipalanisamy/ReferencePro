@@ -28,6 +28,7 @@ import PurpleSignal from '../../assets/images/purple-signal.svg'
 import GreenSignal from '../../assets/images/green-signal.svg'
 import YellowSignal from '../../assets/images/yellow-signal.svg'
 import BlueSignal from '../../assets/images/blue-signal.svg'
+import GroupProfileAvatar from '../../assets/images/GroupProfileAvatar.svg'
 
 
 export const LeftArrowWhiteIcon = () => (
@@ -113,4 +114,7 @@ export const YellowSignalIcon = () => (
 );
 export const BlueSignalIcon = () => (
     <BlueSignal />
+);
+export const GroupProfileAvatarIcon = () => (
+    <GroupProfileAvatar />
 );

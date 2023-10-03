@@ -34,12 +34,12 @@ export const CommonModal: React.FC<CommonModalProps> = ({
           <HalfCircle />
           <ModalContent>
             <View style={{ backgroundColor: colors.purpleVar1, borderRadius: 6 }}>
-              <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                <CreatePasswordLogo style={[b50]} />
+              <View style={{ justifyContent: 'center', alignItems: 'center' ,bottom:50}}>
+                <CreatePasswordLogo  />
               </View>
-              <View style={[b40, justyfyCenter, alignItemsCenter]}>
+              <View style={[ justyfyCenter, alignItemsCenter]}>
                 <H18fontBoldBlack>{labels.pwdChanged}</H18fontBoldBlack>
-                <View style={[justyfyCenter, alignItemsCenter, t20]}>
+                <View style={[justyfyCenter, alignItemsCenter, ]}>
                   <H16fontNormalGray style={[pl10, pr10]}>{labels.pwdChangedContent}</H16fontNormalGray>
                   <H16fontNormalGray>{labels.suceessfully}</H16fontNormalGray>
                 </View>
