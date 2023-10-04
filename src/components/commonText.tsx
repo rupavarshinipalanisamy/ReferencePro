@@ -151,6 +151,11 @@ export const H18BlackText = styled(Text)`
   ${h6};
   ${black};
 `;
+export const H18BlackBoldText = styled(Text)`
+  ${h6};
+  ${black};
+  ${fontBold600};
+`;
 export const H20BlackBoldText = styled(Text)`
   ${h5};
   ${black};

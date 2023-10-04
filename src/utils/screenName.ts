@@ -33,4 +33,5 @@ export const screenName = {
     GroupVideoCallAttend : 'GroupVideoCallAttend',
     Calls : 'Calls',
     CallHistory : 'CallHistory',
+    GroupSettings : 'GroupSettings'
 };

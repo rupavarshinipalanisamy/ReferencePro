@@ -286,7 +286,7 @@ export const colorIconsAdminData = [
         iconSize: 20,
         iconColor: colors.purpleVar3,
         bgcolor: colors.purpleVar1,
-        screenName: screenName.Chats,
+        screenName: screenName.GroupSettings,
     },
 ]
 
@@ -321,4 +321,52 @@ export const colorIconsDataSecond = [
     //     bgcolor: colors.redVar1,
     //     screenName: screenName.ChatView,
     // },
+]
+
+export const GroupSettingData = [
+    {
+        id: 1,
+        name: labels.EditGroupSetting,
+        iconName: 'pencil-outline',
+        iconType: "MaterialCommunityIcons",
+        iconSize: 18,
+        iconColor: colors.purpleVar3,
+        bgcolor: colors.purpleVar1,
+    },
+    {
+        id: 2,
+        name: labels.SendMessage,
+        iconName: 'chatbox-ellipses-outline',
+        iconType: "Ionicons",
+        iconSize: 18,
+        iconColor: colors.purpleVar3,
+        bgcolor: colors.purpleVar1,
+    },
+    {
+        id: 3,
+        name: labels.AddOtherParticipants,
+        iconName: 'person-add',
+        iconType: "octicons",
+        iconSize: 18,
+        iconColor: colors.purpleVar3,
+        bgcolor: colors.purpleVar1,
+    },
+    {
+        id: 4,
+        name: labels.ApproveNewParticipants,
+        iconName: 'person-add',
+        iconType: "octicons",
+        iconSize: 18,
+        iconColor: colors.purpleVar3,
+        bgcolor: colors.purpleVar1,
+    },
+    {
+        id: 5,
+        name: labels.EditGroupAdmins,
+        iconName: 'person-add',
+        iconType: "octicons",
+        iconSize: 18,
+        iconColor: colors.purpleVar3,
+        bgcolor: colors.purpleVar1,
+    },
 ]

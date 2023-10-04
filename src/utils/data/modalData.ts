@@ -11,7 +11,7 @@ export const threeDotsOption = [
         screenName : screenName.ChatView,
     },
     {
-        id: 5,
+        id: 2,
         name : labels.MarkAsRead,
         iconName : 'verified',
         iconType : "octicons",

@@ -29,6 +29,7 @@ import GroupAudioCallAttend from './src/pages/calls/GroupAudioCallAttend';
 import GroupVideoCallAttend from './src/pages/calls/GroupVideoCallAttend';
 import Calls from './src/pages/calls/Calls';
 import CallHistory from './src/pages/calls/CallHistory';
+import GroupSettings from './src/pages/groups/GroupSettings';
 
 const Stack = createNativeStackNavigator();
 
@@ -68,6 +69,7 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.GroupVideoCallAttend} component={GroupVideoCallAttend} />
             <Stack.Screen name={screenName.Calls} component={Calls} />
             <Stack.Screen name={screenName.CallHistory} component={CallHistory} />
+            <Stack.Screen name={screenName.GroupSettings} component={GroupSettings} />
         </Stack.Navigator>
     );
 };

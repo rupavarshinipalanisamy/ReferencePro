@@ -145,5 +145,11 @@ export const labels = {
     AtWork : 'At Work',
     CantTalk : "Can't Talk, Whatsapp only",
     Busy : 'Busy',
+    GroupSetting : 'Group Setting',
+    EditGroupSetting : 'Edit Group Setting',
+    SendMessage : 'Send Message',
+    AddOtherParticipants : 'Add Other Participants',
+    ApproveNewParticipants : 'Approve New Participants',
+    EditGroupAdmins : 'Edit Group Admins'
 };
 

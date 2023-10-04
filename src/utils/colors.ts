@@ -12,6 +12,7 @@ export const colors = {
     blackVar2: '#0A0A0A',
 
     //grey
+    greyVar7: '#EDEDED',
     greyVar6: '#333333',
     greyVar5: '#494949',
     greyVar4: '#616161',

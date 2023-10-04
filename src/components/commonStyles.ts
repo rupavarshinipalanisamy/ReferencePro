@@ -68,9 +68,8 @@ const styles = StyleSheet.create({
     marginRight: 30,
   },
   ml30: {
-    marginLeft: 220,
+    marginLeft: 30,
   },
-
   mh1: {
     marginHorizontal: 1,
   },
