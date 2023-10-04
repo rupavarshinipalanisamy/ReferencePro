@@ -2,7 +2,7 @@
 import { Text, StyleSheet } from 'react-native';
 import { colors } from '../utils/colors';
 import styled from 'styled-components';
-import { alignSelfCenter, justyfyCenter, letterSpacing03, letterSpacing04, txtCenter } from './commonStyles';
+import { alignItemsCenter, alignSelfCenter, justyfyCenter, letterSpacing03, letterSpacing04, txtCenter } from './commonStyles';
 
 const styles = StyleSheet.create({
   black: {
@@ -28,6 +28,9 @@ const styles = StyleSheet.create({
   },
   purpleVar3: {
     color: colors.purpleVar3,
+  },
+  greyVar4Color: {
+    color: colors.greyVar4,
   },
   h1: {
     fontSize: 25,
@@ -87,9 +90,7 @@ const styles = StyleSheet.create({
   },
 
 });
-
-
-const { green, red, textcolorGray, black, white, purpleVar3, blueVar1, greyVar3 } = styles;
+const { green, red, textcolorGray, black, white, purpleVar3, blueVar1, greyVar3, greyVar4Color } = styles;
 const { fontBold, fontRegular, fontBold600, fontBold700, fontBold800, fontNormal, fontBold900 } = styles;
 const {
   h1,
@@ -135,6 +136,11 @@ export const H15Grey = styled(Text)`
   ${h8};
   ${textcolorGray};
 `
+export const H15BlackBold600 = styled(Text)`
+  ${h8};
+  ${black};
+  ${fontBold600}
+`
 export const H15GreySemiBold = styled(Text)`
   ${h8};
   ${textcolorGray};
@@ -151,6 +157,11 @@ export const H18WhiteText = styled(Text)`
 export const H18BlackText = styled(Text)`
   ${h6};
   ${black};
+`;
+export const H18BlackBoldText600 = styled(Text)`
+  ${h6};
+  ${black};
+  ${fontBold600};
 `;
 export const H20BlackBoldText = styled(Text)`
   ${h5};
@@ -240,12 +251,20 @@ export const H16fontNormalGray4 = styled(Text)`
   ${fontBold600};
   ${textcolorGray};
 `;
-
-
 export const H16font900= styled(Text)`
 ${h7};
 ${fontBold900};
-alignSelf:center;
-justifyContent:center;
-borderColor:${colors.greyVar4}
-`
+${alignItemsCenter};
+${justyfyCenter};
+borderColor:${colors.greyVar4};
+`;
+export const H16fontSemiBoldGreyvar4 = styled(Text)`
+  ${h7};
+  ${fontRegular};
+  ${greyVar4Color};
+`;
+export const H16fontSemiBoldBluevar4 = styled(Text)`
+  ${h7};
+  ${fontRegular};
+  ${blueVar1};
+`;

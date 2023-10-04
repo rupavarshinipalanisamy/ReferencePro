@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal, Switch } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mh20, ml10, mr10, mt10, mt30, mt5, mv10, mv15, p10, p5, pl10, pl13, pl5, pr10, pt10, spaceAround, spaceBetween, textCenter } from './commonStyles';
+import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mh20, ml10, mr10, mt10, mt15, mt20, mt30, mt5, mv10, mv15, p10, p5, pl10, pl13, pl5, pr10, pt10, spaceAround, spaceBetween, textCenter } from './commonStyles';
 import { colors } from '../utils/colors';
 import { ArchiveIconBlackIcon, ArchiveIconWhiteIcon, DeleteWhiteIcon, LeftArrowWhiteIcon, MikeWhiteIcon, PinWhiteIcon, ProfileAvatarIcon, ThreeDotsWhiteIcon } from '../utils/svg';
 import { DevHeight, DevWidth } from '../utils/device';
@@ -11,10 +11,8 @@ import CustomIcon from '../utils/Icons';
 import { useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal';
 import { threeDotsOption } from '../utils/data/modalData';
-import { H15Grey, H16fontNormalGray, H18fontBoldBlack } from './commonText';
-import { HalfCircleSecond, ModalContainerSecond, ModalContentSecond } from '../styledComponent/styledComponent';
-import { labels } from '../utils/labels';
-import { ButtonBook } from './commonButtons';
+import { H15Grey} from './commonText';
+import { callBottomDataFourth } from '../utils/data/callsData';
 
 // ====================   Chat based Header Component   ====================
 
@@ -27,16 +25,46 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({ title }) => {
         <View style={[flexRow, spaceBetween, mh20, mv15]}>
             <Text style={styles.chatHeaderText}>{title}</Text>
             <View style={[flexRow, spaceBetween]}>
-                <TouchableOpacity onPress={() => { }}>
-                    <Icon name="camera-outline" size={25} color={colors.white} style={mh10} />
+                <TouchableOpacity onPress={() => { }} style={mh10}>
+                    <Icon name="camera-outline" size={25} color={colors.white} />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => { }}>
-                    <Icon name="search" size={22} color={colors.white} style={mh10} />
+                <TouchableOpacity onPress={() => { }} style={mh10}>
+                    <Icon name="search" size={22} color={colors.white} />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => { }}>
-                    <Icon name="add-outline" size={25} color={colors.white} style={mh10} />
+                <TouchableOpacity onPress={() => { }} style={mh10}>
+                    {/* <CustomIcon name='delete' type='AntDesign' size={23} color={colors.white} /> */}
+                    <DeleteWhiteIcon />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => { }}>
+                <TouchableOpacity onPress={() => { }} style={mh10}>
+                    <ProfileAvatarIcon />
+                </TouchableOpacity>
+            </View>
+        </View>
+    );
+};
+
+
+// ====================   Call based Header Component   ====================
+
+interface CallHeaderProps {
+    title: string;
+}
+
+export const CallHeader: React.FC<ChatHeaderProps> = ({ title }) => {
+    return (
+        <View style={[flexRow, spaceBetween, mh20, mv15]}>
+            <Text style={styles.chatHeaderText}>{title}</Text>
+            <View style={[flexRow, spaceBetween]}>
+                <TouchableOpacity onPress={() => { }} style={mh10}>
+                    <Icon name="search" size={22} color={colors.white} />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => { }} style={mh10}>
+                    <Icon name="add-outline" size={22} color={colors.white} />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => { }} style={mh10}>
+                    <DeleteWhiteIcon />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => { }} style={ml10}>
                     <ProfileAvatarIcon />
                 </TouchableOpacity>
             </View>
@@ -312,6 +340,37 @@ export const CustomActionBarSecond: React.FC<CustomActionBarSecondProps> = ({
 };
 
 
+// ====================   NavBar while selecting cards in Chat page   ====================
+
+interface CustomCallActionBarProps {
+    text?: number;
+    onDeletePress?: () => void;
+    selectedCardsCount?: number;
+}
+
+export const CustomcallActionBar: React.FC<CustomActionBarProps> = ({
+    text,
+    onDeletePress,
+    selectedCardsCount,
+}) => {
+    return (
+        <View style={[flexRow, spaceBetween, mh20, mv15, pt10]}>
+            <View style={flexRow}>
+                <LeftArrowWhiteIcon />
+                <View style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)', height: 20, width: 20, borderRadius: 20, }}>
+                    <Text style={{ textAlign: 'center', color: colors.white, fontSize: 14 }}>{text}</Text>
+                </View>
+            </View>
+            {/* <View style={[flexRow, spaceAround]}> */}
+            <TouchableOpacity style={ml10} onPress={() => { }}>
+                <DeleteWhiteIcon />
+            </TouchableOpacity>
+            {/* </View> */}
+        </View>
+    );
+};
+
+
 // ====================   Bottom Nav Bar   ====================
 
 export const BottomTabBar = () => {
@@ -353,7 +412,95 @@ export const BottomTabBar = () => {
     );
 };
 
+// ====================   Call Bottom Tab   ====================
 
+export const CallBottomTab = () => {
+    return (
+        <View style={[{ height: DevHeight * 0.12, width: DevWidth, backgroundColor: colors.white, borderTopLeftRadius: 45, borderTopRightRadius: 45 }]}>
+            <View style={[alignSelfCenter, mt15, { height: 5, width: DevWidth * 0.2, backgroundColor: colors.greyVar0 }]} />
+            <View style={[flexRow, spaceAround, mt20]}>
+                {
+                    callBottomDataFourth.map((item) => {
+                        return (
+                            <View key={item.id}>
+                                {
+                                    item.id == 1 ? (
+                                        <TouchableOpacity style={[{ height: 40, width: 80, backgroundColor: colors.purpleVar1, bottom: 5 }, alignItemsCenter, justyfyCenter, borderRadius10]}>
+                                            <CustomIcon name={item.iconName} size={item.iconSize} color={item.iconColor} type={item.iconType} />
+                                        </TouchableOpacity>
+                                    ) : item.id == 4 ? (
+                                        <TouchableOpacity style={[{ height: 40, width: 80, backgroundColor: colors.redVar1, bottom: 5 }, alignItemsCenter, justyfyCenter, borderRadius10]}>
+                                            <CustomIcon name={item.iconName} size={item.iconSize} color={item.iconColor} type={item.iconType} />
+                                        </TouchableOpacity>
+                                    ) : (
+                                        <TouchableOpacity style={mt5}>
+                                            <CustomIcon name={item.iconName} size={item.iconSize} color={item.iconColor} type={item.iconType} />
+                                        </TouchableOpacity>
+                                    )
+                                }
+                            </View>
+                        )
+                    })
+                }
+            </View>
+        </View>
+    )
+}
+
+// =============== toggle switch component======================
+
+type ToggleSwitchProps = {
+    value: boolean;
+    onToggle: () => void;
+  };
+  
+ export const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ value, onToggle }) => {
+    const borderRadius = 20; // Adjust the border radius as needed
+  
+    return (
+      <TouchableOpacity onPress={onToggle}>
+        <View
+          style={[
+            styles.container,
+            {
+              backgroundColor: value ? colors.green : colors.greyVar7,
+              borderWidth : 1,
+              borderColor : value ? colors.green : colors.greyVar2,
+            },
+          ]}
+        >
+          <View
+            style={[
+              styles.toggle,
+              {
+                transform: [{ translateX: value ? 22 : 0 }], 
+                backgroundColor: value ? colors.white : colors.greyVar2,
+              },
+            ]}
+          />
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
+// type ToggleProps = {
+//     onToggle: () => void;
+//     value: string | any
+// };
+
+// export const ToggleSwitch: React.FC<ToggleProps> = ({ onToggle, value}) => {
+//     return (
+//         <View>
+//           <Switch
+//             trackColor={{ false: colors.green, true: colors.greenVar1 }}
+//             thumbColor={value ? colors.greyVar4 : colors.greyVar1}
+//             ios_backgroundColor={colors.black}
+//             onValueChange={onToggle}
+//             value={value}
+//           />
+//       </View >
+//     );
+//   };
 
 
 const styles = StyleSheet.create({
@@ -402,4 +549,16 @@ const styles = StyleSheet.create({
         fontSize: 12,
         textAlign: 'center',
     },
+    container: {
+        width: 45, // Adjust the toggle switch width
+        height: 25, // Adjust the toggle switch height
+        borderRadius: 20, // Adjust the border radius
+        flexDirection: 'row',
+        alignItems: 'center',
+      },
+      toggle: {
+        width: 20, // Adjust the round toggle width
+        height: 20, // Adjust the round toggle height
+        borderRadius: 15, // Make it a circle
+      },
 });

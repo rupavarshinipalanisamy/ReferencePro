@@ -9,6 +9,8 @@ import { BottomTabBar } from '../commonComponents';
 import { colors } from '../../utils/colors';
 import { DevWidth } from '../../utils/device';
 import { allGroupsData } from '../../utils/data/groupsData';
+import { useNavigation } from '@react-navigation/native';
+import { screenName } from '../../utils/screenName';
 
 export type ArchiveGroupsProps = {
 
@@ -16,6 +18,7 @@ export type ArchiveGroupsProps = {
 
 
 const ArchiveGroups = (props: ArchiveGroupsProps) => {
+    const navigation = useNavigation();
     return (
         <View style={[flex1, mt20, styles.whiteBg]}>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -24,6 +27,7 @@ const ArchiveGroups = (props: ArchiveGroupsProps) => {
                         <View key={group.id}>
                             <CommonLineDividerGrey />
                             <TouchableOpacity onPress={() => {
+                                group.isAdmin === 'true' ? navigation.navigate(screenName.GroupChattingAdmin as never) : navigation.navigate(screenName.GroupChatting as never);
                                 // if (selectedCards.length === 0) {
                                 //     navigation.navigate(screenName.ChatView as never);
                                 // } else {

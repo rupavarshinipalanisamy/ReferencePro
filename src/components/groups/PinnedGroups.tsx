@@ -9,6 +9,8 @@ import { BottomTabBar } from '../commonComponents';
 import { colors } from '../../utils/colors';
 import { DevWidth } from '../../utils/device';
 import { allGroupsData } from '../../utils/data/groupsData';
+import { screenName } from '../../utils/screenName';
+import { useNavigation } from '@react-navigation/native';
 
 export type PinnedGroupsProps = {
 
@@ -16,6 +18,7 @@ export type PinnedGroupsProps = {
 
 
 const PinnedGroups = (props: PinnedGroupsProps) => {
+    const navigation = useNavigation();
     return (
         <View style={[flex1, mt20, styles.whiteBg]}>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -24,6 +27,7 @@ const PinnedGroups = (props: PinnedGroupsProps) => {
                         <View key={group.id}>
                             <CommonLineDividerGrey />
                             <TouchableOpacity onPress={() => {
+                                group.isAdmin === 'true' ? navigation.navigate(screenName.GroupChattingAdmin as never) : navigation.navigate(screenName.GroupChatting as never);
                                 // if (selectedCards.length === 0) {
                                 //     navigation.navigate(screenName.ChatView as never);
                                 // } else {

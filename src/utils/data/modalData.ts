@@ -11,7 +11,7 @@ export const threeDotsOption = [
         screenName : screenName.ChatView,
     },
     {
-        id: 5,
+        id: 2,
         name : labels.MarkAsRead,
         iconName : 'verified',
         iconType : "octicons",
@@ -96,6 +96,25 @@ export const deleteAllChats =[
     {
         id:1,
         status:labels.deleteMsg1,
+        iconSize : 20,
+        screenName : screenName.ChatView,
+    },
+]
+
+export const CallThreeDotsOption = [
+    {
+        id: 1,
+        name : labels.RemoveFromCallLog,
+        iconName : 'delete',
+        iconType : "AntDesign",
+        iconSize : 20,
+        screenName : screenName.ChatView,
+    },
+    {
+        id: 5,
+        name : labels.Block,
+        iconName : 'block',
+        iconType : "entypo",
         iconSize : 20,
         screenName : screenName.ChatView,
     },
