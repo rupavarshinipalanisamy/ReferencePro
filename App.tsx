@@ -7,6 +7,7 @@ import * as Keychain from 'react-native-keychain';
 import { getData, storageKeys } from './src/common/asyncStorage';
 import { SplashScreenContainer } from './src/styledComponent/styledComponent';
 import { h100, w100 } from './src/components/commonStyles';
+import { ThemeProvider } from './src/Theme/ThemeContext';
 
 export type AppProps = {};
 
@@ -32,6 +33,7 @@ const App = (props: AppProps) => {
 
   if (isLoading) {
     return (
+
       <SplashScreenContainer>
         <StatusBar translucent backgroundColor="transparent" />
         <Image source={require('./assets/images/png/splash_image.png')} style={[w100, h100]} />
@@ -40,9 +42,11 @@ const App = (props: AppProps) => {
   }
 
   return (
-    <View style={{ flex: 1 }}>
-      <RootNavigation initialRouteName={screenName.WelcomePage} />
-    </View>
+    <ThemeProvider>
+      <View style={{ flex: 1 }}>
+        <RootNavigation initialRouteName={screenName.Chats} />
+      </View>
+    </ThemeProvider>
   );
 };
 
