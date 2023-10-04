@@ -33,6 +33,8 @@ import ImageView from './src/pages/Media/ImageView';
 import Video from './src/pages/Media/Video';
 import Link from './src/pages/Media/Link'
 import VideoView from './src/pages/Media/VideoView';
+import starredMessages from './src/pages/starredMessages';
+import StarredMessages from './src/pages/starredMessages';
 
 import Privacy from './src/pages/settings/privacy';
 import ChatSettings from './src/pages/settings/chatSettings';
@@ -79,6 +81,8 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.Video} component={Video} />
             <Stack.Screen name={screenName.Link} component={Link} />
             <Stack.Screen name={screenName.VideoView} component={VideoView} />
+            <Stack.Screen name={screenName.StarredMsg} component={StarredMessages} />
+
 
 
 

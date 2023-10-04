@@ -7,7 +7,7 @@ export const threeDotsOption = [
         name : labels.ViewContact,
         iconName : 'person-circle-outline',
         iconType : "Ionicons",
-        iconSize : 25,
+        iconSize : 20,
         screenName : screenName.ChatView,
     },
     {
@@ -95,6 +95,8 @@ export const clearAllChats =[
 export const deleteAllChats =[
     {
         id:1,
-        status:labels.deleteMsg1
+        status:labels.deleteMsg1,
+        iconSize : 20,
+        screenName : screenName.ChatView,
     },
 ]

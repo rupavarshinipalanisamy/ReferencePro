@@ -160,12 +160,17 @@ export const labels = {
     archiveChatMessage: 'Are you sure want to archive all chats ?',
     deleteMsg1:'Also delete media received in this chat from the device gallery.',
     deleteMsg2:'Delete starred message',
-    deleteMsg: 'Message will only be removed from this device and your devices.'
-
-
-
-
-
+    deleteMsg: 'Message will only be removed from this device and your devices.',
+    Media : 'Media',
+    Search : 'Media',
+    MuteNotification : 'Mute Notification',
+    Wallpaper : 'Wallpaper',
+    Report : 'Report',
+    Block : 'Block',
+    ClearChat : 'ClearChat',
+    Delete:'Delete',
+    Showinchat:'Show in Chat',
+    Forward:'Forward'
 
 };
 

@@ -5,12 +5,13 @@ import { colors } from '../../utils/colors';
 import { alignItemsCenter, flex1, flexRow, justyfyCenter, pb10, pl10, pl13, pt10, spaceBetween } from '../../components/commonStyles';
 import { TopContainerWhiteCard1 } from '../../components/commonView';
 import CustomIcon from '../../utils/Icons';
-import { H18BlackText, H18GreyVar4Text } from '../../components/commonText';
+import { H15Green, H15Grey, H18BlackText, H18GreyVar4Text } from '../../components/commonText';
 import { labels } from '../../utils/labels';
-import { DevHeight } from '../../utils/device';
+import { DevHeight, DevWidth } from '../../utils/device';
 import Docs from './Docs';
 import Video from './Video';
 import Link from './Link';
+import { CustomModal } from '../../components/commonComponents';
 
 export type MediaProps = {
 
@@ -61,7 +62,8 @@ export const TabControl: React.FC<TabControlProps> = ({ tabs, activeTab, onTabPr
 interface MediaHeaderProps {
     Imagess?: boolean;
     height?: number;
-    startDot?: boolean
+    startDot?: boolean;
+    imageViewModal?: boolean;
 }
 
 export const MediaHeader = (props: MediaHeaderProps) => {
@@ -76,8 +78,76 @@ export const MediaHeader = (props: MediaHeaderProps) => {
         { label: "Docs" },
         { label: "Links" },
     ];
+
+    const imageViewModalData = [
+        {
+            id: 1,
+            iconName: 'mail-forward',
+            iconType: 'FontAwesome',
+            text: labels.Forward,
+        },
+        {
+            id: 2,
+            iconName: 'chatbox-ellipses-outline',
+            iconType: 'Ionicons',
+            text: labels.Showinchat,
+        },
+        {
+            id: 3,
+            iconName: 'thumbs-down',
+            iconType: 'Feather',
+            text: labels.Report,
+        },
+        {
+            id: 4,
+            iconName: 'delete',
+            iconType: 'AntDesign',
+            text: labels.Delete,
+        },
+
+
+    ]
+    const [optionModal, setOptionModal] = useState(false);
+
+    const handleOptionModal = () => {
+        setOptionModal(!optionModal)
+    }
+
+    const OptionModalComponent = () => {
+        return (
+            <View>
+                {
+                    imageViewModalData.map((item) => {
+                        if (props.imageViewModal && item.id === 3) {
+                            return null;
+                        } else {
+                            return (
+                                <TouchableOpacity
+                                    key={item.id}
+                                    style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}
+                                >
+                                    <View style={flexRow}>
+                                        <CustomIcon
+                                            name={item.iconName}
+                                            size={20}
+                                            color={colors.blackVar1}
+                                            type={item.iconType}
+                                        />
+                                        <View style={[alignItemsCenter, justyfyCenter, pl13]}>
+                                            <H15Grey>{item.text}</H15Grey>
+                                        </View>
+                                    </View>
+                                </TouchableOpacity>
+                            );
+                        }
+                    })
+                }
+            </View>
+        )
+    }
+
     return (
-        <View style={{ flex: props.Imagess? 1:0}}>
+        <View style={{ flex: props.Imagess ? 1 : 0 }}>
             <TopContainerWhiteCard1 height={props.height}{...props}>
                 <View style={[{ marginHorizontal: 25, marginTop: 15 }, flex1, justyfyCenter]}>
                     <View style={[flexRow, spaceBetween]}>
@@ -98,10 +168,11 @@ export const MediaHeader = (props: MediaHeaderProps) => {
                         {props.startDot &&
                             <View style={[flexRow, alignItemsCenter]}>
                                 <CustomIcon name='star' color={colors.greyVar4} size={20} type="Feather" />
-                                <View style={pl10}>
+                                <TouchableOpacity style={pl10} onPress={handleOptionModal}>
                                     <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={colors.greyVar4} />
-                                </View>
-                            </View>}
+                                </TouchableOpacity>
+                            </View>
+                        }
 
                     </View>
                 </View>
@@ -109,31 +180,38 @@ export const MediaHeader = (props: MediaHeaderProps) => {
                     <TabControl tabs={tabs} activeTab={selectedTab} onTabPress={handleTabPress} />
                 </View>}
             </TopContainerWhiteCard1>
-            
+
             {selectedTab === "Image" && (
                 <ScrollView>
-                    {props.Imagess &&  <ImageScreen />}
-                 
+                    {props.Imagess && <ImageScreen />}
+
                 </ScrollView>
             )}
-              {selectedTab === "Docs" && (
+            {selectedTab === "Docs" && (
                 <ScrollView>
-                    {props.Imagess &&  <Docs />}
-                 
+                    {props.Imagess && <Docs />}
+
                 </ScrollView>
             )}
-             {selectedTab === "Video" && (
+            {selectedTab === "Video" && (
                 <ScrollView>
-                    {props.Imagess &&  <Video />}
-                 
+                    {props.Imagess && <Video />}
+
                 </ScrollView>
             )}
-              {selectedTab === "Links" && (
+            {selectedTab === "Links" && (
                 <ScrollView>
-                    {props.Imagess &&  <Link />}
-                 
+                    {props.Imagess && <Link />}
+
                 </ScrollView>
             )}
+            <CustomModal
+                isVisible={optionModal}
+                width={DevWidth * 0.47}
+                modalData={<OptionModalComponent />}
+                marginTop={60}
+                onClose={() => setOptionModal(false)}
+            />
         </View>
     )
 

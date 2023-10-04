@@ -1,18 +1,19 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, Image, Dimensions } from 'react-native';
 import { MainContainer, CommonLineDividerGrey } from '../../components/commonView';
 import { colors } from '../../utils/colors';
-import { alignItemsCenter, flexRow, justyfyCenter, mb15, mr5, mt10, mt15, mt20, p5, pb10, pl10, pl13, pt10, pt5, spaceBetween } from '../../components/commonStyles';
+import { alignItemsCenter, flexRow, justyfyCenter, mb15, mr5, mt10, mt15, mt20, pl10, pl13, pt10, pt5, spaceBetween } from '../../components/commonStyles';
 import CustomIcon from '../../utils/Icons';
-import { DevHeight} from '../../utils/device';
+import { DevHeight, DevWidth } from '../../utils/device';
 import Profile from '../../../assets/images/profileView.svg'
 import { labels } from '../../utils/labels';
-import { H14BlackText, H14purpleVar3Text, H16BlackText, H18BlackText } from '../../components/commonText';
+import { H14BlackText, H14purpleVar3Text, H15Grey, H16BlackText, H18BlackText } from '../../components/commonText';
 import MessageIcon from '../../../assets/images/messageIcon.svg'
 import Group1 from '../../../assets/images/groupImg1.svg'
 import Group2 from '../../../assets/images/groupImg2.svg'
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
+import { CustomModal } from '../../components/commonComponents';
 
 
 
@@ -29,7 +30,7 @@ export const colorIconsData = [
         iconSize: 20,
         iconColor: colors.yellow,
         bgcolor: colors.yellowVar1,
-        screenName: screenName.Chats,
+        screenName: screenName.StarredMsg,
     },
     {
         id: 2,
@@ -79,18 +80,21 @@ export const colorIconsData = [
         iconSize: 20,
         iconColor: colors.red,
         bgcolor: colors.redVar1,
-        screenName: screenName.Chats,
+        screenName: screenName.ChatView,
     },
 ]
 
 export const ColorIconTab = () => {
+    const navigation = useNavigation()
+
+
     return (
         <View>
             {
                 colorIconsData.map((item) => {
                     return (
-                        <TouchableOpacity key={item.id}>
-                            <View style={[flexRow, spaceBetween,{paddingBottom:15}]}>
+                        <TouchableOpacity key={item.id} onPress={() => navigation.navigate(item.screenName as never)}>
+                            <View style={[flexRow, spaceBetween, { paddingBottom: 15 }]}>
                                 <View style={[flexRow]}>
 
                                     <View style={{ height: 35, width: 35, borderRadius: 8, backgroundColor: item.bgcolor, alignItems: 'center', justifyContent: 'center' }}>
@@ -106,16 +110,17 @@ export const ColorIconTab = () => {
                                             <View >
                                                 <Text>10</Text>
                                             </View>
-                                            <View style={[{ transform: [{ rotate: '180deg' }] }]}>
+                                            <View style={[{ transform: [{ rotate: '180deg' }] }]}
+                                            >
                                                 <CustomIcon name='chevron-back-sharp' color={colors.greyVar4} size={16} type="Ionicons"
                                                 />
                                             </View>
                                         </View>
                                     ) : (
-                                        <View style={[{ transform: [{ rotate: '180deg' }] }, flexRow, alignItemsCenter, justyfyCenter]}>
+                                        <TouchableOpacity style={[{ transform: [{ rotate: '180deg' }] }, flexRow, alignItemsCenter, justyfyCenter]}>
                                             <CustomIcon name='chevron-back-sharp' color={colors.greyVar4} size={16} type="Ionicons"
                                             />
-                                        </View>
+                                        </TouchableOpacity>
                                     )
                                 }
                             </View>
@@ -128,13 +133,49 @@ export const ColorIconTab = () => {
 }
 
 
+
+
 export const Header = () => {
+    const [optionModal, setOptionModal] = useState(false);
+
+    const navigation = useNavigation()
+    const handleOptionModal = () => {
+        setOptionModal(!optionModal)
+    }
+
+
+    const OptionModalComponent = () => {
+        return (
+            <View>
+
+                <TouchableOpacity style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
+                    <View style={flexRow}>
+                        <CustomIcon name="pencil" size={20} color={colors.blackVar1} type="octicons" />
+                        <View style={[alignItemsCenter, justyfyCenter, pl13]}>
+                            <H15Grey>Edit</H15Grey>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+            </View>
+        )
+    }
     return (
         <View style={{ marginVertical: 20 }}>
-            <View style={[flexRow, spaceBetween, {  marginHorizontal: 25 }]}>
+            <View style={[flexRow, spaceBetween, { marginHorizontal: 25 }]}>
                 <CustomIcon name='chevron-back-sharp' color={colors.greyVar4} size={16} type="Ionicons" />
-                <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={colors.greyVar4} />
+                <TouchableOpacity onPress={handleOptionModal}>
+                    <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={colors.greyVar4} />
+
+
+                </TouchableOpacity>
             </View>
+            <CustomModal
+                isVisible={optionModal}
+                width={DevWidth * 0.49}
+                modalData={<OptionModalComponent />}
+                marginTop={48}
+                onClose={() => setOptionModal(false)}
+            />
         </View>
 
     )
@@ -338,7 +379,7 @@ export const Groups = () => {
             ))}
             <View style={[mt20, mb15]}>
                 <CommonLineDividerGrey />
-            </View>
+            </View>   
         </View>
 
     )
@@ -393,7 +434,7 @@ const styles = StyleSheet.create({
     },
     gridItem: {
         flex: 1,
-    
+
     },
     gridItemImage: {
         width: (Dimensions.get('window').width - 75) / 4,

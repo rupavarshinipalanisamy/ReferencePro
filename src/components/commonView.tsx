@@ -127,6 +127,14 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: colors.purpleVar3,
   },
+  receiveMsgCard: {
+    backgroundColor: colors.white,
+    borderTopRightRadius: 8,
+    borderBottomRightRadius: 8,
+    borderBottomLeftRadius: 8,
+    padding: 10
+  },
+
 });
 const {
   rowSpaceBetween,
@@ -146,10 +154,8 @@ const {
   iconBackground,
   radioButton,
   radioButtonRound,
-  selectedRadioBtn
-
-
-
+  selectedRadioBtn,
+  receiveMsgCard
 } = styles;
 
 
@@ -213,6 +219,19 @@ ${radioButtonRound}
 export const SelectedRadioBtn = styled(View)`
 ${selectedRadioBtn}
 `
+
+
+interface MessageCardProps {
+  backgroundColor?: string;
+}
+export const MessageCard = styled(View)<MessageCardProps>`
+background-color: ${(props) => props.backgroundColor || colors.white };
+border-top-right-radius: 8px;
+border-bottom-right-radius: 8px;
+border-bottom-left-radius: 8px;
+padding: 10px;
+`;
+
 
 interface TopContainerWhiteCardProps {
   height?: number;

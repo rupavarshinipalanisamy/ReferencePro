@@ -1,30 +1,124 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, Image, ImageBackground, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import { colors } from '../../../utils/colors';
 import { flex1, flexRow, pt10, pl10, spaceBetween, alignItemsCenter, justyfyCenter, pt5, pl13, p5 } from '../../../components/commonStyles';
 import CustomIcon from '../../..//utils/Icons';
-import { H14BlackText, H14blueVar1Text, H16WhiteText, H18WhiteText } from '../../../components/commonText';
+import { H14BlackText, H14blueVar1Text, H15Grey, H16WhiteText, H18WhiteText } from '../../../components/commonText';
 import { labels } from '../../../utils/labels';
 import { DevHeight, DevWidth } from '../../../utils/device';
 import AudioImg from '../../../../assets/images/Audio.svg'
 import SendImg1 from '../../../../assets/images/sentMsg.svg'
 import SendImg2 from '../../../../assets/images/sendMsg1.svg'
 import { useNavigation } from '@react-navigation/native';
-import { screenName } from '../../../utils/screenName';
 import { GroupImg1Img, ProfileImg } from '../../../utils/png';
+import { CustomModal } from '../../../components/commonComponents';
+
+const chatViewModalData = [
+    {
+        id: 1,
+        iconName: 'person-circle-outline',
+        iconSize: 20,
+        iconColor: colors.blackVar1,
+        iconType: 'Ionicons',
+        text: labels.ViewContact,
+    },
+    {
+        id: 2,
+        iconName: 'photo',
+        iconSize: 20,
+        iconColor: colors.blackVar1,
+        iconType: 'FontAwesome',
+        text: labels.Media,
+    },
+    {
+        id: 3,
+        iconName: 'search',
+        iconSize: 20,
+        iconColor: colors.blackVar1,
+        iconType: 'Feather',
+        text: labels.Search,
+    },
+    {
+        id: 4,
+        iconName: 'microphone-off',
+        iconSize: 20,
+        iconColor: colors.blackVar1,
+        iconType: 'MaterialCommunityIcons',
+        text: labels.MuteNotification,
+    },
+    {
+        id: 5,
+        iconName: 'wallpaper',
+        iconSize: 20,
+        iconColor: colors.blackVar1,
+        iconType: 'MaterialCommunityIcons',
+        text: labels.Wallpaper,
+    },
+    {
+        id: 6,
+        iconName: 'thumbs-down',
+        iconSize: 20,
+        iconColor: colors.blackVar1,
+        iconType: 'Feather',
+        text: labels.Report,
+    },
+    {
+        id: 7,
+        iconName: 'block-flipped',
+        iconSize: 20,
+        iconColor: colors.blackVar1,
+        iconType: 'MaterialIcons',
+        text: labels.Block,
+    },
+    {
+        id: 8,
+        iconName: 'delete',
+        iconSize: 20,
+        iconColor: colors.blackVar1,
+        iconType: 'AntDesign',
+        text: labels.ClearChat,
+    },
+]
 
 interface HeaderChatViewProps {
     backgroundColor: string,
     onPress?: () => void;
-    profileNavigate : string;
+    profileNavigate: string;
     videoNavigate: string;
-    audioNavigate : string;
+    audioNavigate: string;
     groups?: boolean;
 
 }
 
 export const HeaderChatView = (props: HeaderChatViewProps) => {
+    const [optionModal, setOptionModal] = useState(false);
+
     const navigation = useNavigation()
+    const handleOptionModal = () => {
+        setOptionModal(!optionModal)
+    }
+
+    const OptionModalComponent = () => {
+        return (
+            <View>
+                {
+                    chatViewModalData.map((item) => {
+                        return (
+                            <TouchableOpacity key={item.id} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
+                                <View  style={flexRow}>
+                                    <CustomIcon name={item.iconName} size={item.iconSize} color={item.iconColor} type={item.iconType} />
+                                    <View style={[alignItemsCenter, justyfyCenter, pl13]}>
+                                         <H15Grey>{item.text}</H15Grey>
+                                    </View>
+                                </View>
+                            </TouchableOpacity>
+                        )
+                    })
+                }
+            </View>
+        )
+    }
+
     return (
         <View style={{ height: DevWidth / 4, backgroundColor: props.backgroundColor, borderBottomRightRadius: 20, borderBottomLeftRadius: 20, position: 'relative' }}>
             <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
@@ -50,13 +144,20 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
                             <TouchableOpacity onPress={() => navigation.navigate(props.audioNavigate as never)} style={pl10}>
                                 <CustomIcon name='call-outline' type="Ionicons" size={18} color={colors.white} />
                             </TouchableOpacity>
-                            <TouchableOpacity style={pl10}>
+                            <TouchableOpacity style={pl10} onPress={handleOptionModal}>
                                 <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={colors.white} />
                             </TouchableOpacity>
                         </View>
                     </View>
                 </View>
             </View>
+            <CustomModal
+                isVisible={optionModal}
+                width={DevWidth * 0.47}
+                modalData={<OptionModalComponent />}
+                marginTop={48}
+                onClose={() => setOptionModal(false)}
+            />
         </View>
     )
 
