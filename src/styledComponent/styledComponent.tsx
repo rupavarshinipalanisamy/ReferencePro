@@ -110,7 +110,7 @@ borderRadius:7px;
 justifyContent: space-around;
 color: ${colors.black}
 `
-export const SplashScreenContainer= styled(View)`
+export const SplashScreenContainer = styled(View)`
 flex: 1px;
 justifyContent: center;
 alignItems:center;
@@ -181,11 +181,21 @@ export const ModalContent = styled(View)`
 `;
 
 
-export const Textwithg=styled(Text)`
+export const Textwithg = styled(Text)`
 backgroundColor: ${colors.purpleVar4};
 textAlign:center;
 borderRadius: 5px;
 height:25px;
 color:${colors.purpleVar3}
-
+`
+export const QrImgView = styled(View)`
+backgroundColor:${colors.white};
+padding: 15px;
+elevation: 4;
+marginTop: 35px;
+flexDirection:row;
+borderRadius: 8px;
+shadowColor:${colors.greyVar3};
+width: ${DevWidth / 2.1}px;
+alignSelf:center;
 `

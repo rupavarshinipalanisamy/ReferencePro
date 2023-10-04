@@ -135,6 +135,11 @@ export const H15Grey = styled(Text)`
   ${h8};
   ${textcolorGray};
 `
+export const H14Grey = styled(Text)`
+  ${h9};
+  ${textcolorGray};
+  
+`
 export const H15GreySemiBold = styled(Text)`
   ${h8};
   ${textcolorGray};
@@ -151,6 +156,7 @@ export const H18WhiteText = styled(Text)`
 export const H18BlackText = styled(Text)`
   ${h6};
   ${black};
+  ${fontBold600}
 `;
 export const H20BlackBoldText = styled(Text)`
   ${h5};

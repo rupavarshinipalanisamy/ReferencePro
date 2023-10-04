@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   textNow: {
     fontSize: 16,
     color: colors.white,
-    fontWeight: '900',
+    fontWeight: '700',
     justifyContent: 'center',
     alignSelf: 'center'
   },
@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     height: 50,
     justifyContent: 'center',
+    backgroundColor:colors.purpleVar3
   },
   commonButtonBook: {
     width: 200,
@@ -119,9 +120,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor:colors.greyVar4
+    borderColor: colors.greyVar4
   },
-  selectedRadioBtn:{
+  selectedRadioBtn: {
     width: 10,
     height: 10,
     borderRadius: 5,
@@ -133,6 +134,15 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 8,
     borderBottomLeftRadius: 8,
     padding: 10
+  },
+  cardSurface: {
+    backgroundColor: colors.white,
+    padding: 10,
+    elevation:4,
+    marginTop: 20,
+    flexDirection: 'row',
+    borderRadius: 8,
+    shadowColor: colors.greyVar3
   },
 
 });
@@ -155,7 +165,8 @@ const {
   radioButton,
   radioButtonRound,
   selectedRadioBtn,
-  receiveMsgCard
+  receiveMsgCard,
+  cardSurface
 } = styles;
 
 
@@ -224,8 +235,8 @@ ${selectedRadioBtn}
 interface MessageCardProps {
   backgroundColor?: string;
 }
-export const MessageCard = styled(View)<MessageCardProps>`
-background-color: ${(props) => props.backgroundColor || colors.white };
+export const MessageCard = styled(View) <MessageCardProps>`
+background-color: ${(props) => props.backgroundColor || colors.white};
 border-top-right-radius: 8px;
 border-bottom-right-radius: 8px;
 border-bottom-left-radius: 8px;
@@ -245,4 +256,9 @@ export const TopContainerWhiteCard1 = styled(View) <TopContainerWhiteCardProps>`
   ${({ height }) => height && `height: ${height}px;`}
   elevation: 2;
   shadow-color: #000;
+`;
+
+
+export const CardSurface = styled(View) <TopContainerWhiteCardProps>`
+${cardSurface}
 `;

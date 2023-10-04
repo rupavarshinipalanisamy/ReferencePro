@@ -50,7 +50,7 @@ export const colorIconsData = [
         iconSize: 20,
         iconColor: colors.green,
         bgcolor: colors.greenVar1,
-        screenName: screenName.Chats,
+        screenName: screenName.VerifyCode,
     },
     {
         id: 4,
@@ -414,8 +414,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     roundNumberText: {
-
-        color: colors.greyVar4,
+       color: colors.greyVar4,
         fontSize: 12,
     },
     cardSurface: {

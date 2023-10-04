@@ -21,8 +21,8 @@ import { TextNowSecond } from './commonText';
 import { H16font900, H16font900Black } from './commonText';
 
 type ButtonProps = {
-  style: StyleProp<ViewStyle>;
-  textStyle: StyleProp<TextStyle>
+  style?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>
   disabled?: boolean;
   funCallback: CallableFunction;
   label: string;
@@ -50,16 +50,15 @@ export const ButtonFull: React.FC<ButtonProps> = ({
 };
 
 export const ButtonNow: React.FC<ButtonProps> = ({
-  style,
+ 
   disabled,
   funCallback,
   label,
-  success,
+
 }) => {
   return (
     <CommonButtonNow
       disabled={disabled}
-      style={[style, success ? { backgroundColor: colors.blueVar1 } : null]}
       onPress={() => {
         funCallback();
       }}>

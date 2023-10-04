@@ -33,11 +33,11 @@ import ImageView from './src/pages/Media/ImageView';
 import Video from './src/pages/Media/Video';
 import Link from './src/pages/Media/Link'
 import VideoView from './src/pages/Media/VideoView';
-import starredMessages from './src/pages/starredMessages';
 import StarredMessages from './src/pages/starredMessages';
 import Privacy from './src/pages/settings/privacy';
 import ChatSettings from './src/pages/settings/chatSettings';
 import { useTheme } from './src/Theme/ThemeContext';
+import VerifyCode from './src/pages/VerifyCode';
 import {
   DefaultTheme,
   DarkTheme,
@@ -88,6 +88,8 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.StarredMsg} component={StarredMessages} />
             <Stack.Screen name={screenName.Privacy} component={Privacy} />
             <Stack.Screen name={screenName.ChatSettings} component={ChatSettings} />
+            <Stack.Screen name={screenName.VerifyCode} component={VerifyCode} />
+
 
 
         </Stack.Navigator>

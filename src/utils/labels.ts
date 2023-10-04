@@ -170,7 +170,8 @@ export const labels = {
     ClearChat : 'ClearChat',
     Delete:'Delete',
     Showinchat:'Show in Chat',
-    Forward:'Forward'
+    Forward:'Forward',
+    VerifyText:'To verify that messages and calls with Horace Keene are end-to-end encrypted, scan this code on their phone. You can also compare the number above instead.'
 
 };
 

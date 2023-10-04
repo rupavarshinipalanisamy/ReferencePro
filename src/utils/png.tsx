@@ -17,3 +17,4 @@ export const GroupImg5Img = require('../../assets/images/png/groupimg5.png');
 export const GroupImg6Img = require('../../assets/images/png/groupimg6.png');
 export const GroupImg7Img = require('../../assets/images/png/groupimg7.png');
 export const ProfileImg = require('../../assets/images/png/profile.png');
+export const QrCodeImg=require('../../assets/images/png/qrcode.png');
