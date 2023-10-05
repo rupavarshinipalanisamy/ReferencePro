@@ -14,6 +14,7 @@ import { GroupImg1Img, ProfileImg } from '../../../utils/png';
 import { CustomModal } from '../../../components/commonComponents';
 import { GroupChatViewModalData } from '../../../utils/data/groupsData';
 import { CallThreeDotsOption } from '../../../utils/data/modalData';
+import { isDark } from '../../../Theme/ThemeContext';
 
 const chatViewModalData = [
     {
@@ -181,7 +182,7 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
     }
 
     return (
-        <View style={{ height: DevWidth / 4, backgroundColor: props.backgroundColor, borderBottomRightRadius: 20, borderBottomLeftRadius: 20, position: 'relative' }}>
+        <View style={{ height: DevWidth / 4, backgroundColor: isDark()?colors.darkModeVar1:colors.white, borderBottomRightRadius: 20, borderBottomLeftRadius: 20, position: 'relative' }}>
             <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
                 <View style={[flexRow]}>
                     <View style={pt10} >
@@ -196,8 +197,7 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
                             <View style={pl13}>
                                 <H18WhiteText>{props.title}</H18WhiteText>
                                 <H16WhiteText>{props.subTitle}</H16WhiteText>
-                                {/* <H18WhiteText>{labels.horaceKeene}</H18WhiteText>
-                                <H16WhiteText>{labels.online}</H16WhiteText> */}
+
                             </View>
                         </TouchableOpacity>
                         <View style={[flexRow, alignItemsCenter]}>

@@ -21,10 +21,10 @@ import { TextNowSecond } from './commonText';
 import { H16font900, H16font900Black } from './commonText';
 
 type ButtonProps = {
-  style: StyleProp<ViewStyle>;
-  textStyle: StyleProp<TextStyle>
+  style?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>
   disabled?: boolean;
-  funCallback: CallableFunction;
+  funCallback?: CallableFunction |any;
   label: string;
   success?: boolean;
 };
@@ -50,16 +50,15 @@ export const ButtonFull: React.FC<ButtonProps> = ({
 };
 
 export const ButtonNow: React.FC<ButtonProps> = ({
-  style,
+
   disabled,
   funCallback,
   label,
-  success,
+ 
 }) => {
   return (
     <CommonButtonNow
       disabled={disabled}
-      style={[style, success ? { backgroundColor: colors.blueVar1 } : null]}
       onPress={() => {
         funCallback();
       }}>
@@ -103,7 +102,7 @@ export const ButtonSaveandCancel: React.FC<ButtonProps> = ({
         funCallback();
       }}>
       <H16font900 
-      style={[textStyle]}>{label}</H16font900>
+      style={[textStyle,{textAlign:'center'}]}>{label}</H16font900>
     </SaveAndCancel>
   );
 };

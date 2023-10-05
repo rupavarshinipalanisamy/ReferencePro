@@ -11,6 +11,7 @@ import Modal from 'react-native-modal';
 import { DevHeight, DevWidth } from '../../utils/device';
 import { screenName } from '../../utils/screenName';
 import { ChatBackgroundImg, ProfileImg } from '../../utils/png';
+import { isDark } from '../../Theme/ThemeContext';
 
 export type chatViewProps = {
 }
@@ -145,7 +146,7 @@ const ChatView = () => {
 
     return (
         <Fragment>
-            <MainContainer>
+            <View style={{flex:1,backgroundColor:isDark()?colors.darkModeVar1:colors.white}}>
                 {/* <StatusBar backgroundColor={colors.purpleVar3} /> */}
                 <View style={{ flex: 1 }}>
                     <HeaderChatView backgroundColor={colors.purpleVar3} profileNavigate={screenName.UserProfile} videoNavigate={screenName.SingleVideoCall} audioNavigate={screenName.SingleAudioCallRing} title={labels.horaceKeene} subTitle={labels.online} />
@@ -202,7 +203,7 @@ const ChatView = () => {
                         </Modal>
                     </View>
                 </View>
-            </MainContainer>
+            </View>
         </Fragment>
     )
     

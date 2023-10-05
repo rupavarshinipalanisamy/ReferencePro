@@ -5,7 +5,7 @@ import { colors } from '../../utils/colors';
 import { alignItemsCenter, flex1, flexRow, justyfyCenter, pb10, pl10, pl13, pt10, spaceBetween } from '../../components/commonStyles';
 import { TopContainerWhiteCard1 } from '../../components/commonView';
 import CustomIcon from '../../utils/Icons';
-import { H15Green, H15Grey, H18BlackText, H18GreyVar4Text } from '../../components/commonText';
+import { H15Grey, H18BlackText, H18GreyVar4Text } from '../../components/commonText';
 import { labels } from '../../utils/labels';
 import { DevHeight, DevWidth } from '../../utils/device';
 import Docs from './Docs';
@@ -216,6 +216,40 @@ export const MediaHeader = (props: MediaHeaderProps) => {
     )
 
 }
+
+interface StarredAndVerifycodeHeaderProps {
+    height?: number;
+    headerText:string;
+}
+
+export const StarredAndVerifycodeHeader=(props:StarredAndVerifycodeHeaderProps)=>{
+    return (
+        <View>
+            <TopContainerWhiteCard1 height={DevHeight / 7.5}{...props}>
+                <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
+                    <View style={[flexRow, spaceBetween]}>
+                        <View style={[flexRow]}>
+                            <View style={[alignItemsCenter, justyfyCenter]}>
+                                <CustomIcon name='chevron-back-sharp' color={colors.black} size={16} type="Ionicons" />
+                            </View>
+                            <View style={pl13}>
+                                <H18BlackText>{props.headerText}</H18BlackText>
+                            </View>
+                        </View>
+                        <View style={[flexRow, alignItemsCenter]}>
+                            <CustomIcon name="search" size={22} color={colors.greyVar4} type="Ionicons" />
+                            <TouchableOpacity style={pl10} >
+                                <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={colors.greyVar4} />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            </TopContainerWhiteCard1>
+
+        </View>
+    )
+}
+
 
 const styles = StyleSheet.create({
     tabContainer: {

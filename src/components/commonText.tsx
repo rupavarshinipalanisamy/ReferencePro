@@ -3,6 +3,7 @@ import { Text, StyleSheet } from 'react-native';
 import { colors } from '../utils/colors';
 import styled from 'styled-components';
 import { alignItemsCenter, alignSelfCenter, justyfyCenter, letterSpacing03, letterSpacing04, txtCenter } from './commonStyles';
+import { isDark } from '../Theme/ThemeContext';
 
 const styles = StyleSheet.create({
   black: {
@@ -18,6 +19,7 @@ const styles = StyleSheet.create({
     color: colors.red,
   },
   textcolorGray: {
+
     color: colors.greyVar4,
   },
   greyVar3: {
@@ -57,16 +59,16 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
 
-  h9:{
-    fontSize:14,
-  
+  h9: {
+    fontSize: 14,
+
   },
-  h10:{
-    fontSize:12,
-  
+  h10: {
+    fontSize: 12,
+
   },
 
- 
+
   fontBold: {
     fontWeight: 'bold',
   },
@@ -140,6 +142,11 @@ export const H15BlackBold600 = styled(Text)`
   ${h8};
   ${black};
   ${fontBold600}
+  `
+export const H14Grey = styled(Text)`
+  ${h9};
+  ${textcolorGray};
+  
 `
 export const H15GreySemiBold = styled(Text)`
   ${h8};
@@ -147,16 +154,18 @@ export const H15GreySemiBold = styled(Text)`
   ${fontRegular}
 `
 export const H16WhiteText = styled(Text)`
-  ${h7};
-  ${white};
+color: ${props => isDark() ? colors.white : colors.black};
+font-size:16px;
 `;
 export const H18WhiteText = styled(Text)`
-  ${h6};
-  ${white};
-`;
+color: ${props => isDark() ? colors.white : colors.black};
+font-size:18px;
+
+`
 export const H18BlackText = styled(Text)`
   ${h6};
   ${black};
+  ${fontBold600}
 `;
 export const H18BlackBoldText600 = styled(Text)`
   ${h6};
@@ -251,7 +260,7 @@ export const H16fontNormalGray4 = styled(Text)`
   ${fontBold600};
   ${textcolorGray};
 `;
-export const H16font900= styled(Text)`
+export const H16font900 = styled(Text)`
 ${h7};
 ${fontBold900};
 ${alignItemsCenter};

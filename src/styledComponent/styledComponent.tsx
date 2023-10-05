@@ -123,15 +123,6 @@ export const ModalContainer = styled(View)`
 `;
 
 
-export const HalfCircle = styled(View)`
- background-color: ${colors.white};
- borderTopLeftRadius: 100px;
- borderTopRightRadius: 100px;
- width: 30%;
- height: 60px;
- align-self: center;
- top: 15px;
-`;
 export const ModalContent = styled(View)`
  background-color: ${colors.white};
  padding: 20px;
@@ -139,6 +130,8 @@ export const ModalContent = styled(View)`
  width: 80%;
  max-width: 400px; 
 `;
+
+
 
 
 export const ModalContainerSecond = styled(View)`
@@ -164,3 +157,48 @@ paddingVertical:20px;
 borderRadius: 10px;
 `
 
+
+
+
+
+export const HalfCircle = styled(View)`
+  background-color: ${colors.white};
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  width: 30%;
+  height: 60px;
+  align-self: center;
+  top: 15px;
+  overflow: hidden;
+`;
+
+export const HalfCircle2 = styled(View)`
+  background-color: ${colors.white};
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  width: 17%;
+  height: 34px;
+  align-self: center;
+  top: 15px;
+  overflow: hidden;
+`;
+
+
+export const Textwithg = styled(Text)`
+backgroundColor: ${colors.purpleVar4};
+textAlign:center;
+borderRadius: 5px;
+height:25px;
+color:${colors.purpleVar3}
+`
+export const QrImgView = styled(View)`
+backgroundColor:${colors.white};
+padding: 15px;
+elevation: 4;
+marginTop: 35px;
+flexDirection:row;
+borderRadius: 8px;
+shadowColor:${colors.greyVar3};
+width: ${DevWidth / 2.1}px;
+alignSelf:center;
+`

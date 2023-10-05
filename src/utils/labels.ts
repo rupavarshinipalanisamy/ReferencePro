@@ -194,6 +194,8 @@ export const labels = {
     SendMessage : 'Send Message',
     AddOtherParticipants : 'Add Other Participants',
     ApproveNewParticipants : 'Approve New Participants',
-    EditGroupAdmins : 'Edit Group Admins'
+    EditGroupAdmins : 'Edit Group Admins',
+    VerifyText:'To verify that messages and calls with Horace Keene are end-to-end encrypted, scan this code on their phone. You can also compare the number above instead.'
+
 };
 

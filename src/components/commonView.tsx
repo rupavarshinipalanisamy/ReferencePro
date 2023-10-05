@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     height: 50,
     justifyContent: 'center',
+    backgroundColor:colors.purpleVar3
   },
   commonButtonBook: {
     width: 200,

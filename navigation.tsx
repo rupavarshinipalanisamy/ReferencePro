@@ -33,13 +33,18 @@ import ImageView from './src/pages/Media/ImageView';
 import Video from './src/pages/Media/Video';
 import Link from './src/pages/Media/Link'
 import VideoView from './src/pages/Media/VideoView';
-import starredMessages from './src/pages/starredMessages';
 import StarredMessages from './src/pages/starredMessages';
 import Privacy from './src/pages/settings/privacy';
 import ChatSettings from './src/pages/settings/chatSettings';
 import Calls from './src/pages/calls/Calls';
 import CallHistory from './src/pages/calls/CallHistory';
 import GroupSettings from './src/pages/groups/GroupSettings';
+import { useTheme } from './src/Theme/ThemeContext';
+import VerifyCode from './src/pages/VerifyCode';
+import {
+  DefaultTheme,
+  DarkTheme,
+} from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator();
 
@@ -89,6 +94,10 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.Calls} component={Calls} />
             <Stack.Screen name={screenName.CallHistory} component={CallHistory} />
             <Stack.Screen name={screenName.GroupSettings} component={GroupSettings} />
+            <Stack.Screen name={screenName.VerifyCode} component={VerifyCode} />
+
+
+
         </Stack.Navigator>
     );
 };
@@ -98,8 +107,9 @@ interface RootNavigationProps {
 };
 
 const RootNavigation = (props: RootNavigationProps) => {
+    const { theme } = useTheme(); 
     return (
-        <NavigationContainer>
+        <NavigationContainer theme={theme === 'dark' ? DarkTheme : DefaultTheme}>
             <HomeNavigation initialRouteName={props.initialRouteName} />
         </NavigationContainer>
     );

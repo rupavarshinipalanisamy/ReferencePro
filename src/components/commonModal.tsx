@@ -20,6 +20,7 @@ import { H16fontNormalGray, H16fontNormalGray4, H18fontBoldBlack } from './commo
 import { chooseTheme, clearAllChats, deleteAllChats, groupsData, lastSee, profilePic } from '../utils/data/modalData';
 import { RadioButton, RadioButtonRound, SelectedRadioBtn } from './commonView';
 import CustomIcon from '../utils/Icons';
+import { useTheme } from '../Theme/ThemeContext';
 
 export type CommonModalProps = {
   isVisible: boolean;
@@ -34,7 +35,9 @@ export const ThemeModal: React.FC<CommonModalProps> = ({
 
   const handleStatusSelect = (status: string) => {
     setSelectedStatus(status);
+
   };
+  const { toggleTheme } = useTheme();
 
   const renderRadio = (status: string) => {
     return (
@@ -53,9 +56,17 @@ export const ThemeModal: React.FC<CommonModalProps> = ({
   const buttonPress = () => {
     if (selectedStatus) {
       console.log(`Selected status: ${selectedStatus}`);
+      if (selectedStatus === labels.dark) {
+        toggleTheme()
+        console.log("Changing to Dark Theme");
+      } else {
+        toggleTheme();
+        console.log("Changing to Light Theme");
+      }
     }
     onClose();
-  }
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <Modal transparent={true} animationType="slide" visible={isVisible}

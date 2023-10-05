@@ -41,4 +41,6 @@ export const screenName = {
     Calls : 'Calls',
     CallHistory : 'CallHistory',
     GroupSettings : 'GroupSettings',
+    VerifyCode:'VerifyCode'
+
 };
