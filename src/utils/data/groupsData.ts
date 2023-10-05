@@ -1,78 +1,78 @@
 import { colors } from "../colors";
 import { labels } from "../labels";
-import { Chatimg1Img, Chatimg2Img, Chatimg3Img, Chatimg4Img, Chatimg5Img, GroupImg1Img, GroupImg2Img, GroupImg3Img, GroupImg4Img, GroupImg5Img, GroupImg6Img, GroupImg7Img, MediaImg1, MediaImg2, MediaImg3, MediaImg4 } from "../png";
+import { Chatimg1Img, Chatimg2Img, Chatimg3Img, Chatimg4Img, Chatimg5Img, Chatimg6Img, Chatimg7Img, GroupImg1Img, GroupImg2Img, GroupImg3Img, GroupImg4Img, GroupImg5Img, GroupImg6Img, GroupImg7Img, MediaImg1, MediaImg2, MediaImg3, MediaImg4 } from "../png";
 import { screenName } from "../screenName";
 
 export const allGroupsData = [
     {
         id: 1,
-        name : labels.UIUXDesigner,
-        profileImg : GroupImg1Img,
-        time : labels.Time1020,
-        isAdmin : 'true'
+        name: labels.UIUXDesigner,
+        profileImg: GroupImg1Img,
+        time: labels.Time1020,
+        isAdmin: 'true'
     },
     {
         id: 2,
-        name : labels.GraphicsTeam,
-        profileImg : GroupImg2Img,
-        time : labels.Time0953,
-        isAdmin : 'false'
+        name: labels.GraphicsTeam,
+        profileImg: GroupImg2Img,
+        time: labels.Time0953,
+        isAdmin: 'false'
     },
     {
         id: 3,
-        name : labels.HTMLTeam,
-        profileImg : GroupImg3Img,
-        time : labels.Time0721,
-        isAdmin : 'true'
+        name: labels.HTMLTeam,
+        profileImg: GroupImg3Img,
+        time: labels.Time0721,
+        isAdmin: 'true'
     },
     {
         id: 4,
-        name : labels.ColumbusStudios,
-        profileImg : GroupImg4Img,
-        time : labels.Yesterday,
-        isAdmin : 'false'
+        name: labels.ColumbusStudios,
+        profileImg: GroupImg4Img,
+        time: labels.Yesterday,
+        isAdmin: 'false'
     },
     {
         id: 5,
-        name : labels.ThemeforestGroup,
-        profileImg : GroupImg5Img,
-        time : labels.Aug1523,
-        isAdmin : 'true'
+        name: labels.ThemeforestGroup,
+        profileImg: GroupImg5Img,
+        time: labels.Aug1523,
+        isAdmin: 'true'
     },
     {
         id: 6,
-        name : labels.CompetitionTeam,
-        profileImg : GroupImg6Img,
-        time : labels.Time1020,
-        isAdmin : 'false'
+        name: labels.CompetitionTeam,
+        profileImg: GroupImg6Img,
+        time: labels.Time1020,
+        isAdmin: 'false'
     },
     {
         id: 7,
-        name : labels.CricketTeam,
-        profileImg : GroupImg7Img,
-        time : labels.Time1020,
-        isAdmin : 'true'
+        name: labels.CricketTeam,
+        profileImg: GroupImg7Img,
+        time: labels.Time1020,
+        isAdmin: 'true'
     },
     {
         id: 8,
-        name : labels.Dreamsguys,
-        profileImg : GroupImg7Img,
-        time : labels.Time1020,
-        isAdmin : 'false'
+        name: labels.Dreamsguys,
+        profileImg: GroupImg7Img,
+        time: labels.Time1020,
+        isAdmin: 'false'
     },
     {
         id: 9,
-        name : labels.ThemeforestGroup,
-        profileImg : GroupImg5Img,
-        time : labels.Time1020,
-        isAdmin : 'true'
+        name: labels.ThemeforestGroup,
+        profileImg: GroupImg5Img,
+        time: labels.Time1020,
+        isAdmin: 'true'
     },
     {
         id: 10,
-        name : labels.CompetitionTeam,
-        profileImg : GroupImg6Img,
-        time : labels.Time1020,
-        isAdmin : 'false'
+        name: labels.CompetitionTeam,
+        profileImg: GroupImg6Img,
+        time: labels.Time1020,
+        isAdmin: 'false'
     },
 ]
 
@@ -369,4 +369,69 @@ export const GroupSettingData = [
         iconColor: colors.purpleVar3,
         bgcolor: colors.purpleVar1,
     },
+]
+
+export const createGroupUserSelectData = [{
+    id: 1,
+    img: Chatimg1Img,
+    name: labels.MarkVilliams,
+    note: labels.Sleeping,
+    status: 'inactive',
+    isAdmin: 'true',
+    isSelected : false,
+},
+{
+    id: 2,
+    img: Chatimg2Img,
+    name: labels.ElizabethSosa,
+    note: labels.Available,
+    status: 'inactive',
+    isAdmin: 'true',
+    isSelected : false,
+},
+{
+    id: 3,
+    img: Chatimg3Img,
+    name: labels.MichaelHoward,
+    note: labels.AtWork,
+    status: 'active',
+    isAdmin: 'false',
+    isSelected : false,
+},
+{
+    id: 4,
+    img: Chatimg4Img,
+    name: labels.horaceKeene,
+    note: labels.CantTalk,
+    status: 'active',
+    isAdmin: 'false',
+    isSelected : false,
+},
+{
+    id: 5,
+    img: Chatimg5Img,
+    name: labels.HollisTran,
+    note: labels.Busy,
+    status: 'inactive',
+    isAdmin: 'false',
+    isSelected : false,
+},
+{
+    id: 6,
+    img: Chatimg6Img,
+    name: labels.DebraJones,
+    note: labels.InaMeeting,
+    status: 'inactive',
+    isAdmin: 'false',
+    isSelected : false,
+},
+{
+    id: 7,
+    img: Chatimg7Img,
+    name: labels.JamesAlbert,
+    note: labels.AtMovies,
+    status: 'active',
+    isAdmin: 'false',
+    isSelected : false,
+},
 ]

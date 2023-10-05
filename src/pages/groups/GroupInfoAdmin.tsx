@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, { Fragment, useState } from 'react';
 import { Text, View, StyleSheet, ScrollView, Dimensions, TouchableOpacity } from 'react-native';
 import { CommonLineDividerGrey, MainContainer } from '../../components/commonView';
 import { colors } from '../../utils/colors';
@@ -8,6 +8,7 @@ import { alignItemsCenter, flexRow, justyfyCenter, mb15, mr5, mt10, pl13, spaceB
 import CustomIcon from '../../utils/Icons';
 import { H16BlackText } from '../../components/commonText';
 import { colorIconsAdminData } from '../../utils/data/groupsData';
+import { ToggleSwitch } from '../../components/commonComponents';
 
 export type GroupInfoAdminProps = {
 
@@ -15,7 +16,11 @@ export type GroupInfoAdminProps = {
 
 const ColorIconTab = () => {
     const navigation = useNavigation();
+    const [toggleVisible, setToggleVisible] = useState(false);
 
+    const handleToggleChange = () => {
+        setToggleVisible(!toggleVisible);
+    };
 
     return (
         <View>
@@ -46,8 +51,8 @@ const ColorIconTab = () => {
                                             </View>
                                         </View>
                                     ) : item.id === 1 ? (
-                                        <View>
-                                            
+                                        <View style = {[alignItemsCenter,justyfyCenter]}>
+                                            <ToggleSwitch value={toggleVisible} onToggle={handleToggleChange} />
                                         </View>
                                     ) : (
                                         <TouchableOpacity style={[{ transform: [{ rotate: '180deg' }] }, flexRow, alignItemsCenter, justyfyCenter]}>

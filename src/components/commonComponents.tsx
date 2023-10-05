@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal, Switch } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal, Switch, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mh20, ml10, mr10, mt10, mt15, mt20, mt30, mt5, mv10, mv15, p10, p5, pl10, pl13, pl5, pr10, pt10, spaceAround, spaceBetween, textCenter } from './commonStyles';
 import { colors } from '../utils/colors';
@@ -11,34 +11,59 @@ import CustomIcon from '../utils/Icons';
 import { useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal';
 import { threeDotsOption } from '../utils/data/modalData';
-import { H15Grey} from './commonText';
+import { H15Grey } from './commonText';
 import { callBottomDataFourth } from '../utils/data/callsData';
 
 // ====================   Chat based Header Component   ====================
 
 interface ChatHeaderProps {
     title: string;
+    isCall?: boolean;
+    icon1Navigate?: string;
+    icon2Navigate?: string;
+    icon3Navigate?: string;
+    profileIconNavigate?: string;
+    onPress?: () => void;
 }
 
-export const ChatHeader: React.FC<ChatHeaderProps> = ({ title }) => {
+export const ChatHeader: React.FC<ChatHeaderProps> = ({ title, isCall, icon1Navigate, icon2Navigate, icon3Navigate, profileIconNavigate, onPress }) => {
+    const navigation = useNavigation();
     return (
         <View style={[flexRow, spaceBetween, mh20, mv15]}>
             <Text style={styles.chatHeaderText}>{title}</Text>
-            <View style={[flexRow, spaceBetween]}>
-                <TouchableOpacity onPress={() => { }} style={mh10}>
-                    <Icon name="camera-outline" size={25} color={colors.white} />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => { }} style={mh10}>
-                    <Icon name="search" size={22} color={colors.white} />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => { }} style={mh10}>
-                    {/* <CustomIcon name='delete' type='AntDesign' size={23} color={colors.white} /> */}
-                    <DeleteWhiteIcon />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => { }} style={mh10}>
-                    <ProfileAvatarIcon />
-                </TouchableOpacity>
-            </View>
+            {
+                isCall ? (
+                    <View style={[flexRow, spaceBetween]}>
+                        <TouchableOpacity onPress={() => { navigation.navigate(icon1Navigate as never) }} style={mh10}>
+                            <CustomIcon name='search' color={colors.white} type='Ionicons' size={22} />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => { navigation.navigate(icon2Navigate as never) }} style={mh10}>
+                            <CustomIcon name='add' type='Ionicons' size={22} color={colors.white} />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => { navigation.navigate(icon3Navigate as never) }} style={mh10}>
+                            <CustomIcon name="delete" size={22} color={colors.white} type='AntDesign' />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => { navigation.navigate(profileIconNavigate as never) }} style={mh10}>
+                            <ProfileAvatarIcon />
+                        </TouchableOpacity>
+                    </View>
+                ) : (
+                    <View style={[flexRow, spaceBetween]}>
+                        <TouchableOpacity onPress={() => { navigation.navigate(icon1Navigate as never) }} style={mh10}>
+                            <CustomIcon name="camera-outline" size={25} color={colors.white} type='Ionicons' />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => { navigation.navigate(icon2Navigate as never) }} style={mh10}>
+                            <CustomIcon name='search' color={colors.white} type='Ionicons' size={22} />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => { navigation.navigate(icon3Navigate as never) }} style={mh10}>
+                            <CustomIcon name='add' type='Ionicons' size={23} color={colors.white} />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => { navigation.navigate(profileIconNavigate as never) }} style={mh10}>
+                            <ProfileAvatarIcon />
+                        </TouchableOpacity>
+                    </View>
+                )
+            }
         </View>
     );
 };
@@ -130,10 +155,10 @@ interface ModalProps {
     modalData?: React.ReactNode;
     onClose: () => void;
     backdropOpacity?: number;
-    marginTop?:number
+    marginTop?: number
 }
 
-export const CustomModal: React.FC<ModalProps> = ({ isVisible, width, modalData, onClose, backdropOpacity,marginTop }) => {
+export const CustomModal: React.FC<ModalProps> = ({ isVisible, width, modalData, onClose, backdropOpacity, marginTop }) => {
     return (
         <RNModal transparent={true} visible={isVisible} onRequestClose={onClose}>
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -146,7 +171,7 @@ export const CustomModal: React.FC<ModalProps> = ({ isVisible, width, modalData,
                         alignItems: 'flex-end',
                     }}
                 >
-                    <View style={[{ backgroundColor: colors.white, elevation: 4, borderRadius: 5, width: width || DevWidth * 0.5, padding: 10,marginTop:marginTop||30 }]}>{modalData}</View>
+                    <View style={[{ backgroundColor: colors.white, elevation: 4, borderRadius: 5, width: width || DevWidth * 0.5, padding: 10, marginTop: marginTop || 30 }]}>{modalData}</View>
                 </Modal>
             </View>
         </RNModal>
@@ -452,55 +477,71 @@ export const CallBottomTab = () => {
 type ToggleSwitchProps = {
     value: boolean;
     onToggle: () => void;
-  };
-  
- export const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ value, onToggle }) => {
+};
+
+export const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ value, onToggle }) => {
     const borderRadius = 20; // Adjust the border radius as needed
-  
+
     return (
-      <TouchableOpacity onPress={onToggle}>
-        <View
-          style={[
-            styles.container,
-            {
-              backgroundColor: value ? colors.green : colors.greyVar7,
-              borderWidth : 1,
-              borderColor : value ? colors.green : colors.greyVar2,
-            },
-          ]}
-        >
-          <View
-            style={[
-              styles.toggle,
-              {
-                transform: [{ translateX: value ? 22 : 0 }], 
-                backgroundColor: value ? colors.white : colors.greyVar2,
-              },
-            ]}
-          />
-        </View>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={onToggle}>
+            <View
+                style={[
+                    styles.container,
+                    {
+                        backgroundColor: value ? colors.green : colors.greyVar7,
+                        borderWidth: 1,
+                        borderColor: value ? colors.green : colors.greyVar2,
+                    },
+                ]}
+            >
+                <View
+                    style={[
+                        styles.toggle,
+                        {
+                            transform: [{ translateX: value ? 22 : 0 }],
+                            backgroundColor: value ? colors.white : colors.greyVar2,
+                        },
+                    ]}
+                />
+            </View>
+        </TouchableOpacity>
     );
-  };
+};
 
-// type ToggleProps = {
-//     onToggle: () => void;
-//     value: string | any
-// };
 
-// export const ToggleSwitch: React.FC<ToggleProps> = ({ onToggle, value}) => {
-//     return (
-//         <View>
-//           <Switch
-//             trackColor={{ false: colors.green, true: colors.greenVar1 }}
-//             thumbColor={value ? colors.greyVar4 : colors.greyVar1}
-//             ios_backgroundColor={colors.black}
-//             onValueChange={onToggle}
-//             value={value}
-//           />
-//       </View >
-//     );
-//   };
+// =============== Multi select option component======================
+
+interface MultiSelectProps {
+    selectedColor: string;
+    unselectedColor: string;
+    isSelected: boolean;
+    onSelect: () => void;
+}
+
+export const MultiSelectOption: React.FC<MultiSelectProps> = ({
+    selectedColor,
+    unselectedColor,
+    isSelected,
+    onSelect,
+}) => {
+    return (
+        <TouchableOpacity
+            onPress={onSelect}
+            style={[
+                styles.multiSelectBox,
+                {
+                    backgroundColor: isSelected === true ? selectedColor : unselectedColor,
+                },
+            ]}
+        >
+            {isSelected === true && (
+                <CustomIcon name="check" size={15} color="white" type="MaterialIcons" />
+            )}
+        </TouchableOpacity>
+    );
+};
+
+
 
 
 const styles = StyleSheet.create({
@@ -550,15 +591,22 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     container: {
-        width: 45, // Adjust the toggle switch width
-        height: 25, // Adjust the toggle switch height
-        borderRadius: 20, // Adjust the border radius
+        width: 45,
+        height: 25,
+        borderRadius: 20,
         flexDirection: 'row',
         alignItems: 'center',
-      },
-      toggle: {
-        width: 20, // Adjust the round toggle width
-        height: 20, // Adjust the round toggle height
-        borderRadius: 15, // Make it a circle
-      },
+    },
+    toggle: {
+        width: 20,
+        height: 20,
+        borderRadius: 15,
+    },
+    multiSelectBox: {
+        width: 20,
+        height: 20,
+        borderRadius: 4,
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
 });

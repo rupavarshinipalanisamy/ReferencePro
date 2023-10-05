@@ -5,10 +5,11 @@ import CustomIcon from '../../utils/Icons';
 import { colors } from '../../utils/colors';
 import { labels } from '../../utils/labels';
 import { H15BlackBold600, H15Grey, H16fontBoldBlack, H18BlackBoldText, H18BlackBoldText600 } from '../../components/commonText';
-import { alignItemsCenter, alignSelfCenter, borderRadius10, flex1, flexRow, justifyStart, justyfyCenter, mh20, ml10, ml15, ml30, mt20, mv10 } from '../../components/commonStyles';
+import { alignItemsCenter, alignSelfCenter, borderRadius10, flex1, flexRow, justifyEnd, justifyStart, justyfyCenter, mh20, ml10, ml15, ml30, mt20, mv10 } from '../../components/commonStyles';
 import { GroupSettingData } from '../../utils/data/groupsData';
 import { RowSpaceBetween } from '../../components/commonView';
 import { ToggleSwitch } from '../../components/commonComponents';
+import { ButtonNow } from '../../components/commonButtons';
 
 export type GroupSettingsProps = {
 
@@ -51,6 +52,13 @@ const GroupSettings = (props: GroupSettingsProps) => {
                     })
                 }
             </View>
+            {/* <View style = {[mh20, justifyEnd, flex1, {bottom : 10}]}>
+                <ButtonNow
+                    style={{ backgroundColor: colors.purpleVar3 }}
+                    textStyle={{ color: colors.white }}
+                    // funCallback={handleSubmit(onLogin)}
+                    label={labels.logIn} />
+            </View> */}
         </View>
     )
 }

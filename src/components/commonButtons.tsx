@@ -24,7 +24,7 @@ type ButtonProps = {
   style: StyleProp<ViewStyle>;
   textStyle: StyleProp<TextStyle>
   disabled?: boolean;
-  funCallback: CallableFunction;
+  funCallback?: CallableFunction;
   label: string;
   success?: boolean;
 };
@@ -107,4 +107,3 @@ export const ButtonSaveandCancel: React.FC<ButtonProps> = ({
     </SaveAndCancel>
   );
 };
-

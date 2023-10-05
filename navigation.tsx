@@ -40,6 +40,8 @@ import ChatSettings from './src/pages/settings/chatSettings';
 import Calls from './src/pages/calls/Calls';
 import CallHistory from './src/pages/calls/CallHistory';
 import GroupSettings from './src/pages/groups/GroupSettings';
+import CreateGroup from './src/pages/groups/CreateGroup';
+import CreateGroupUserSelect from './src/pages/groups/CreateGroupUserSelect';
 
 const Stack = createNativeStackNavigator();
 
@@ -89,6 +91,8 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.Calls} component={Calls} />
             <Stack.Screen name={screenName.CallHistory} component={CallHistory} />
             <Stack.Screen name={screenName.GroupSettings} component={GroupSettings} />
+            <Stack.Screen name={screenName.CreateGroup} component={CreateGroup} />
+            <Stack.Screen name={screenName.CreateGroupUserSelect} component={CreateGroupUserSelect} />
         </Stack.Navigator>
     );
 };

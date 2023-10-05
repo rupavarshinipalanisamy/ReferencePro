@@ -3,6 +3,7 @@ export const labels = {
     signUp: 'Sign Up',
     chat: 'Chat',
     Chats: 'Chats',
+    Calls : 'Calls',
     AllChats: 'All Chats',
     PinnedChat: 'Pinned Chat',
     ArchiveChat: 'Archive Chat',
@@ -194,6 +195,14 @@ export const labels = {
     SendMessage : 'Send Message',
     AddOtherParticipants : 'Add Other Participants',
     ApproveNewParticipants : 'Approve New Participants',
-    EditGroupAdmins : 'Edit Group Admins'
+    EditGroupAdmins : 'Edit Group Admins',
+    CreateGroup: 'Create Group',
+    GroupName : 'Group Name',
+    GroupType : 'Group Type',
+    Next : 'Next',
+    Create : 'Create',
+    DebraJones : 'Debra Jones',
+    InaMeeting : 'In a Meeting',
+    AtMovies : 'At The Movies',
 };
 

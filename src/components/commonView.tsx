@@ -56,7 +56,6 @@ const styles = StyleSheet.create({
   commonButtonNow: {
     width: '100%',
     paddingVertical: 8,
-    marginVertical: 40,
     borderRadius: 5,
     alignSelf: 'center',
     height: 50,
@@ -97,12 +96,12 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   commonButtonSaveandCancel: {
-    width: '45%',
-    paddingVertical: 8,
-    marginVertical: 40,
-    borderRadius: 9,
-    alignSelf: 'center',
-    height: 50,
+    width: '48%',
+    // paddingVertical: 8,
+    // marginVertical: 40,
+    borderRadius: 10,
+    alignItems: 'center',
+    height: 42,
     justifyContent: 'center',
     borderWidth: 1,
     borderColor: colors.greyVar3
