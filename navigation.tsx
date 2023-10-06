@@ -42,6 +42,7 @@ import {
   DefaultTheme,
   DarkTheme,
 } from '@react-navigation/native';
+import ChooseWallper from './src/pages/ChooseWallper';
 
 const Stack = createNativeStackNavigator();
 
@@ -89,6 +90,8 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.Privacy} component={Privacy} />
             <Stack.Screen name={screenName.ChatSettings} component={ChatSettings} />
             <Stack.Screen name={screenName.VerifyCode} component={VerifyCode} />
+            <Stack.Screen name={screenName.ChooseWallpaper} component={ChooseWallper} />
+
 
 
 

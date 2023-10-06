@@ -12,6 +12,7 @@ import SendImg2 from '../../../../assets/images/sendMsg1.svg'
 import { useNavigation } from '@react-navigation/native';
 import { GroupImg1Img, ProfileImg } from '../../../utils/png';
 import { CustomModal } from '../../../components/commonComponents';
+import { screenName } from '../../../utils/screenName';
 
 const chatViewModalData = [
     {
@@ -21,6 +22,8 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'Ionicons',
         text: labels.ViewContact,
+        screenName:screenName.ChooseWallpaper,
+
     },
     {
         id: 2,
@@ -29,6 +32,8 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'FontAwesome',
         text: labels.Media,
+        screenName:screenName.ChooseWallpaper,
+
     },
     {
         id: 3,
@@ -37,6 +42,8 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'Feather',
         text: labels.Search,
+        screenName:screenName.ChooseWallpaper,
+
     },
     {
         id: 4,
@@ -45,6 +52,8 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'MaterialCommunityIcons',
         text: labels.MuteNotification,
+        screenName:screenName.ChooseWallpaper,
+
     },
     {
         id: 5,
@@ -53,6 +62,8 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'MaterialCommunityIcons',
         text: labels.Wallpaper,
+        screenName:screenName.ChooseWallpaper,
+
     },
     {
         id: 6,
@@ -61,6 +72,8 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'Feather',
         text: labels.Report,
+        screenName:screenName.ChooseWallpaper,
+
     },
     {
         id: 7,
@@ -69,6 +82,8 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'MaterialIcons',
         text: labels.Block,
+        screenName:screenName.ChooseWallpaper,
+
     },
     {
         id: 8,
@@ -77,6 +92,8 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'AntDesign',
         text: labels.ClearChat,
+        screenName:screenName.ChooseWallpaper,
+
     },
 ]
 
@@ -104,7 +121,9 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
                 {
                     chatViewModalData.map((item) => {
                         return (
-                            <TouchableOpacity key={item.id} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
+                            <TouchableOpacity key={item.id} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}
+                            onPress={() => navigation.navigate(item.screenName as never)}
+                            >
                                 <View  style={flexRow}>
                                     <CustomIcon name={item.iconName} size={item.iconSize} color={item.iconColor} type={item.iconType} />
                                     <View style={[alignItemsCenter, justyfyCenter, pl13]}>
@@ -162,7 +181,7 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
     )
 
 }
-export const FooterChatView = () => {
+export const FooterChatView = ({text,onSwipeRight}:any) => {
     return (
         <View style={{ backgroundColor: colors.white, height: DevHeight / 8, borderTopLeftRadius: 20, borderTopRightRadius: 20, paddingTop: 20 }}>
             <View style={[{ marginHorizontal: 20 }, flexRow, spaceBetween]}>
@@ -171,6 +190,7 @@ export const FooterChatView = () => {
                         <CustomIcon name='smiley' type="octicons" size={20} color={colors.greyVar4} />
                     </View>
                     <View>
+                    <Text>{text}</Text>
                         <TextInput
                             style={{
                                 borderColor: colors.greyVar2,

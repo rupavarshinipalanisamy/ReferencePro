@@ -38,6 +38,7 @@ export const screenName = {
     Link:'Link',
     VideoView:'VideoView',
     StarredMsg:'StarredMsg',
-    VerifyCode:'VerifyCode'
+    VerifyCode:'VerifyCode',
+    ChooseWallpaper:'ChooseWallpaper'
 
 };
