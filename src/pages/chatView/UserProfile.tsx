@@ -290,7 +290,7 @@ export const MediaCard = () => {
     const mediaData = [
         {
             id: 1,
-            image: require('../../../assets/images/png/mediaImg1.png')
+            image: require('../../../assets/images/png/medaImg1.png')
         },
         {
             id: 2,
