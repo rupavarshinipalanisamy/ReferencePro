@@ -11,7 +11,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { CustomTextInput } from '../../components/commonInputFields';
 import { requiredValidation, minLengthValidation, validationSchema } from '../../utils/validationconfig';
 import { SmallButton } from '../../components/commonButtons';
-import { PasswordToggleIcon } from '../../components/commonComponents';
+// import { PasswordToggleIcon } from '../../components/commonComponents';
 import { CardHeaderText } from '../chatView/UserProfile';
 
 export type socialProfilesProps = {};
@@ -113,7 +113,7 @@ const Password = (props: socialProfilesProps) => {
                   />
                 </View>
                 <View style={[justyfyCenter]}>
-                  <PasswordToggleIcon isVisible={!currentPassword} toggleVisibility={handleCurrentPassword} />
+                  {/* <PasswordToggleIcon isVisible={!currentPassword} toggleVisibility={handleCurrentPassword} /> */}
                 </View>
               </InputContainer1>
             </IconInputContainer>
@@ -141,7 +141,7 @@ const Password = (props: socialProfilesProps) => {
                   />
                 </View>
                 <View style={[justyfyCenter]}>
-                  <PasswordToggleIcon isVisible={!newPassword} toggleVisibility={handleNewPassword} />
+                  {/* <PasswordToggleIcon isVisible={!newPassword} toggleVisibility={handleNewPassword} /> */}
                 </View>
               </InputContainer1>
             </IconInputContainer>
@@ -169,7 +169,7 @@ const Password = (props: socialProfilesProps) => {
                   />
                 </View>
                 <View style={[justyfyCenter]}>
-                  <PasswordToggleIcon isVisible={!confirmPassword} toggleVisibility={handleConfirmPassword} />
+                  {/* <PasswordToggleIcon isVisible={!confirmPassword} toggleVisibility={handleConfirmPassword} /> */}
                 </View>
               </InputContainer1>
             </IconInputContainer>

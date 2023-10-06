@@ -42,6 +42,12 @@ export const screenName = {
     CallHistory : 'CallHistory',
     GroupSettings : 'GroupSettings',
     VerifyCode:'VerifyCode',
-    ChooseWallpaper:'ChooseWallpaper'
-
+    ChooseWallpaper:'ChooseWallpaper',
+    CreateGroup : 'CreateGroup',
+    CreateGroupUserSelect : 'CreateGroupUserSelect',
+    AccountSettings : 'AccountSettings',
+    AccountSettingsEdit : 'AccountSettingsEdit',
+    StatusOnlyShareWith : 'StatusOnlyShareWith',
+    StatusMyContactExcept : 'StatusMyContactExcept',
+    EditAccountSettings : 'EditAccountSettings',
 };

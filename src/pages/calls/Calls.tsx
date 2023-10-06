@@ -57,7 +57,7 @@ const Calls = (props: CallsProps) => {
                 { isCustomActionBar ? (
                     <CustomcallActionBar text={selectedCards.length} selectedCardsCount={selectedCards.length} />
                 ) : (
-                    <ChatHeader title={labels.Chats} />
+                    <ChatHeader title={labels.Calls} isCall = {true} />
                 )}
             </>
         );

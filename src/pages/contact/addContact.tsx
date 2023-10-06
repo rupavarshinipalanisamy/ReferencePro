@@ -140,7 +140,7 @@ const AddContact = (props: addContactProps) => {
                     </View>
                     <IconInputContainer>
                         <View style={[justyfyCenter]}>
-                            <CustomIcon name='call-outline' size={20} color={colors.greyVar4} type='Ionicons' />
+                            <CustomIcon name='phone' size={20} color={colors.greyVar4} type='Feather' />
                         </View>
 
                         <CustomTextInput

@@ -15,10 +15,10 @@ export const callBottomData = [
     },
     {
         id: 2,
-        iconName: 'call-outline',
+        iconName: 'phone',
         iconColor: colors.white,
         iconSize: 20,
-        iconType: 'Ionicons',
+        iconType: 'Feather',
         bgColor: colors.green,
         text: labels.Accept,
     },
@@ -57,10 +57,10 @@ export const callBottomDataSecond = [
     },
     {
         id: 4,
-        iconName: 'call-outline',
+        iconName: 'phone',
         iconColor: colors.red,
         iconSize: 23,
-        iconType: 'Ionicons',
+        iconType: 'Feather',
     },
 ]
 
@@ -88,10 +88,10 @@ export const callBottomDataThird = [
     },
     {
         id: 4,
-        iconName: 'call-outline',
+        iconName: 'phone',
         iconColor: colors.red,
         iconSize: 23,
-        iconType: 'Ionicons',
+        iconType: 'Feather',
     },
 ]
 
@@ -119,10 +119,10 @@ export const callBottomDataFourth = [
     },
     {
         id: 4,
-        iconName: 'call-outline',
+        iconName: 'phone',
         iconColor: colors.red,
         iconSize: 23,
-        iconType: 'Ionicons',
+        iconType: 'Feather',
     },
 ]
 
