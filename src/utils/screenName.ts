@@ -45,6 +45,11 @@ export const screenName = {
     ChooseWallpaper:'ChooseWallpaper',
     Notification: 'Notification',
     TermsAndCondition: 'TermsAndCondition',
-    
-
+    CreateGroup : 'CreateGroup',
+    CreateGroupUserSelect : 'CreateGroupUserSelect',
+    AccountSettings : 'AccountSettings',
+    AccountSettingsEdit : 'AccountSettingsEdit',
+    StatusOnlyShareWith : 'StatusOnlyShareWith',
+    StatusMyContactExcept : 'StatusMyContactExcept',
+    EditAccountSettings : 'EditAccountSettings',
 };

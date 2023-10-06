@@ -25,7 +25,7 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'Ionicons',
         text: labels.ViewContact,
-        screenName:screenName.ChooseWallpaper,
+        screenName: screenName.ChooseWallpaper,
 
     },
     {
@@ -35,7 +35,7 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'FontAwesome',
         text: labels.Media,
-        screenName:screenName.ChooseWallpaper,
+        screenName: screenName.ChooseWallpaper,
 
     },
     {
@@ -45,7 +45,7 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'Feather',
         text: labels.Search,
-        screenName:screenName.ChooseWallpaper,
+        screenName: screenName.ChooseWallpaper,
 
     },
     {
@@ -55,17 +55,17 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'MaterialCommunityIcons',
         text: labels.MuteNotification,
-        screenName:screenName.ChooseWallpaper,
+        screenName: screenName.ChooseWallpaper,
 
     },
     {
         id: 5,
-        iconName: 'wallpaper',
+        iconName: 'window-maximize',
         iconSize: 20,
         iconColor: colors.blackVar1,
-        iconType: 'MaterialCommunityIcons',
+        iconType: 'FontAwesome',
         text: labels.Wallpaper,
-        screenName:screenName.ChooseWallpaper,
+        screenName: screenName.ChooseWallpaper,
 
     },
     {
@@ -75,7 +75,7 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'Feather',
         text: labels.Report,
-        screenName:screenName.ChooseWallpaper,
+        screenName: screenName.ChooseWallpaper,
 
     },
     {
@@ -85,17 +85,17 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'MaterialIcons',
         text: labels.Block,
-        screenName:screenName.ChooseWallpaper,
+        screenName: screenName.ChooseWallpaper,
 
     },
     {
         id: 8,
-        iconName: 'delete',
+        iconName: 'trash-2',
         iconSize: 20,
         iconColor: colors.blackVar1,
-        iconType: 'AntDesign',
+        iconType: 'Feather',
         text: labels.ClearChat,
-        screenName:screenName.ChooseWallpaper,
+        screenName: screenName.ChooseWallpaper,
 
     },
 ]
@@ -141,9 +141,9 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
                     chatViewModalData.map((item) => {
                         return (
                             <TouchableOpacity key={item.id} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}
-                            onPress={() => navigation.navigate(item.screenName as never)}
+                                onPress={() => navigation.navigate(item.screenName as never)}
                             >
-                                <View  style={flexRow}>
+                                <View style={flexRow}>
                                     <CustomIcon name={item.iconName} size={item.iconSize} color={item.iconColor} type={item.iconType} />
                                     <View style={[alignItemsCenter, justyfyCenter, pl13]}>
                                         <H15Grey>{item.text}</H15Grey>
@@ -201,7 +201,7 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
     }
 
     return (
-        <View style={{ height: DevWidth / 4, backgroundColor: isDark()?colors.darkModeVar1:colors.white, borderBottomRightRadius: 20, borderBottomLeftRadius: 20, position: 'relative' }}>
+        <View style={{ height: DevWidth / 4.2, backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, borderBottomRightRadius: 25, borderBottomLeftRadius: 25, elevation: 1 }}>
             <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
                 <View style={[flexRow]}>
                     <View style={pt10} >
@@ -214,8 +214,8 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
                             }
 
                             <View style={pl13}>
-                                <Text style={{fontSize:15,fontWeight:'500',color:colors.black}}>{props.title}</Text>
-                                <Text style={{color:colors.greyVar4,fontSize:14,fontWeight:'400'}}>{props.subTitle}</Text>
+                                <Text style={{ fontSize: 15, fontWeight: '500', color: colors.black }}>{props.title}</Text>
+                                <Text style={{ color: colors.greyVar4, fontSize: 14, fontWeight: '400' }}>{props.subTitle}</Text>
 
                             </View>
                         </TouchableOpacity>
@@ -260,7 +260,7 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
     )
 
 }
-export const FooterChatView = ({text,onSwipeRight}:any) => {
+export const FooterChatView = ({ text, onSwipeRight }: any) => {
     return (
         <View style={{ backgroundColor: colors.white, height: DevHeight / 8, borderTopLeftRadius: 20, borderTopRightRadius: 20, paddingTop: 20 }}>
             <View style={[{ marginHorizontal: 20 }, flexRow, spaceBetween]}>
@@ -269,7 +269,7 @@ export const FooterChatView = ({text,onSwipeRight}:any) => {
                         <CustomIcon name='smiley' type="octicons" size={20} color={colors.greyVar4} />
                     </View>
                     <View>
-                    <Text>{text}</Text>
+                        <Text>{text}</Text>
                         <TextInput
                             style={{
                                 borderColor: colors.greyVar2,
@@ -373,11 +373,11 @@ export const receiveMessage4 = () => {
                             <CustomIcon name='play' type="Feather" size={20} color={colors.white} />
                         </View>
                     </View>
-                    <View style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)', height: 24, width:75, borderRadius:10, alignItems: 'center', justifyContent: "space-evenly", bottom: 10, flexDirection: 'row', marginLeft: 15 }}>
+                    <View style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)', height: 24, width: 75, borderRadius: 10, alignItems: 'center', justifyContent: "space-evenly", bottom: 10, flexDirection: 'row', marginLeft: 15 }}>
                         <View style={{ marginTop: 3 }}>
                             <CustomIcon name='file-download' type="MaterialIcons" size={14} color={colors.white} />
                         </View>
-                        <Text style={{ color: colors.white, fontSize: 12,fontWeight:'400' }}>2.8 MB</Text>
+                        <Text style={{ color: colors.white, fontSize: 12, fontWeight: '400' }}>2.8 MB</Text>
                     </View>
                 </ImageBackground>
             </View>
@@ -428,7 +428,6 @@ const styles = StyleSheet.create({
     backgroundImage: {
         flex: 1,
         resizeMode: 'cover',
-        // backgroundColor: 'rgba(180,0,0,0.5)'// You can adjust the resizeMode as needed
     },
     receiveMsgCard: {
         backgroundColor: colors.white,

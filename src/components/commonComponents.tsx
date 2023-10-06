@@ -1,5 +1,5 @@
-import React, { ReactNode, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal } from 'react-native';
+import React, { useState, ReactNode } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal, Switch, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mh20, ml10, mr10, mt10, mt15, mt20, mt30, mt5, mv10, mv15, p10, p5, pl10, pl13, pl5, pr10, pt10, spaceAround, spaceBetween, textCenter } from './commonStyles';
 import { colors } from '../utils/colors';
@@ -15,33 +15,57 @@ import { H15Grey, H16fontNormalGray, H16fontNormalGray4, H18fontBoldBlack } from
 import { HalfCircleSecond, ModalContainerSecond, ModalContentSecond } from '../styledComponent/styledComponent';
 import { labels } from '../utils/labels';
 import { callBottomDataFourth } from '../utils/data/callsData';
-
+import { screenName } from '../utils/screenName';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 
 // ====================   Chat based Header Component   ====================
 
 interface ChatHeaderProps {
     title: string;
+    isCall?: boolean;
+    icon1Navigate?: string;
+    icon2Navigate?: string;
+    icon3Navigate?: string;
 }
 
-export const ChatHeader: React.FC<ChatHeaderProps> = ({ title }) => {
+export const ChatHeader: React.FC<ChatHeaderProps> = ({ title, isCall, icon1Navigate, icon2Navigate, icon3Navigate }) => {
+    const navigation = useNavigation();
     return (
         <View style={[flexRow, spaceBetween, mh20, mv15]}>
             <Text style={styles.chatHeaderText}>{title}</Text>
-            <View style={[flexRow, spaceBetween]}>
-                <TouchableOpacity onPress={() => { }} style={mh10}>
-                    <Icon name="camera-outline" size={25} color={colors.white} />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => { }} style={mh10}>
-                    <Icon name="search" size={22} color={colors.white} />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => { }} style={mh10}>
-                    {/* <CustomIcon name='delete' type='AntDesign' size={23} color={colors.white} /> */}
-                    <DeleteWhiteIcon />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => { }} style={mh10}>
-                    <ProfileAvatarIcon />
-                </TouchableOpacity>
-            </View>
+            {
+                isCall ? (
+                    <View style={[flexRow, spaceBetween]}>
+                        <TouchableOpacity onPress={() => { navigation.navigate(icon1Navigate as never) }} style={mh10}>
+                            <CustomIcon name='search' color={colors.white} type='Ionicons' size={22} />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => { navigation.navigate(icon2Navigate as never) }} style={mh10}>
+                            <CustomIcon name='add' type='Ionicons' size={22} color={colors.white} />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => { navigation.navigate(icon3Navigate as never) }} style={mh10}>
+                            <CustomIcon name="delete" size={22} color={colors.white} type='AntDesign' />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => { navigation.navigate(screenName.SettingsScreen as never) }} style={mh10}>
+                            <ProfileAvatarIcon />
+                        </TouchableOpacity>
+                    </View>
+                ) : (
+                    <View style={[flexRow, spaceBetween]}>
+                        <TouchableOpacity onPress={() => { navigation.navigate(icon1Navigate as never) }} style={mh10}>
+                            <CustomIcon name="camera-outline" size={25} color={colors.white} type='Ionicons' />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => { navigation.navigate(icon2Navigate as never) }} style={mh10}>
+                            <CustomIcon name='search' color={colors.white} type='Ionicons' size={22} />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => { navigation.navigate(icon3Navigate as never) }} style={mh10}>
+                            <CustomIcon name='add' type='Ionicons' size={23} color={colors.white} />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => { navigation.navigate(screenName.SettingsScreen as never) }} style={mh10}>
+                            <ProfileAvatarIcon />
+                        </TouchableOpacity>
+                    </View>
+                )
+            }
         </View>
     );
 };
@@ -158,10 +182,10 @@ interface ModalProps {
     modalData?: React.ReactNode;
     onClose: () => void;
     backdropOpacity?: number;
-    marginTop?:number
+    marginTop?: number
 }
 
-export const CustomModal: React.FC<ModalProps> = ({ isVisible, width, modalData, onClose, backdropOpacity,marginTop }) => {
+export const CustomModal: React.FC<ModalProps> = ({ isVisible, width, modalData, onClose, backdropOpacity, marginTop }) => {
     return (
         <RNModal transparent={true} visible={isVisible} onRequestClose={onClose}>
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -174,7 +198,7 @@ export const CustomModal: React.FC<ModalProps> = ({ isVisible, width, modalData,
                         alignItems: 'flex-end',
                     }}
                 >
-                    <View style={[{ backgroundColor: colors.white, elevation: 4, borderRadius: 5, width: width || DevWidth * 0.5, padding: 10,marginTop:marginTop||30 }]}>{modalData}</View>
+                    <View style={[{ backgroundColor: colors.white, elevation: 4, borderRadius: 5, width: width || DevWidth * 0.5, padding: 10, marginTop: marginTop || 30 }]}>{modalData}</View>
                 </Modal>
             </View>
         </RNModal>
@@ -367,144 +391,9 @@ export const CustomActionBarSecond: React.FC<CustomActionBarSecondProps> = ({
     );
 };
 
-// ====================   CustomBar INIYA while selecting cards in Archive chat page   ====================
 
-interface CustomActionBarContactProps {
-    text?: number;
-    onPinPress?: () => void;
-    onDeletePress?: () => void;
-    onMikePress?: () => void;
-    onArchivePress?: () => void;
-    onThreeDotsPress?: () => void;
-    selectedCardsCount?: number;
-}
 
-export const CustomActionBarContact: React.FC<CustomActionBarContactProps> = ({
-    text,
-    onPinPress,
-    onDeletePress,
-    onMikePress,
-    onArchivePress,
-    onThreeDotsPress,
-    selectedCardsCount,
-}) => {
-    const [isModalVisible, setModalVisible] = useState(false);
-    const [deleteModalVisible, setDeleteModalVisible] = useState(false);
-
-    const handleThreeDotsClick = () => {
-        if (selectedCardsCount === 1) {
-            setModalVisible((prevIsModalVisible) => !prevIsModalVisible);
-        } else if (selectedCardsCount > 1) {
-            console.log('Three dots icon clicked for multiple cards');
-        }
-        if (onThreeDotsPress) {
-            onThreeDotsPress();
-        }
-    };
-
-    const handleDeleteClick = () => {
-        if (selectedCardsCount === 1) {
-            setDeleteModalVisible((prevIsModalVisible) => !prevIsModalVisible);
-        } else if (selectedCardsCount > 1) {
-            console.log('Delete icon clicked for multiple cards');
-        }
-        if (onDeletePress) {
-            onDeletePress();
-        }
-    };
-
-    const PinChatOption = () => {
-        const navigation = useNavigation();
-        return (
-            <View style={mt5}>
-                {
-                    threeDotsOption.map((item) => {
-                        return (
-                            <TouchableOpacity key={item.id} onPress={() => navigation.navigate(item.screenName as never)}>
-                                <View style={[flexRow, spaceAround, p5]}>
-                                    <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={colors.blackVar1} />
-                                    <H15Grey>{item.name}</H15Grey>
-                                </View>
-                            </TouchableOpacity>
-                        )
-                    })
-                }
-            </View>
-        )
-    }
-
-    const DeleteChatOption = () => {
-        return (
-            // <ModalContainerSecond>
-            //     <HalfCircleSecond />
-            //     <ModalContentSecond>
-            //             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-            //                 <ArchiveIconBlackIcon />
-            //             </View>
-            //             <View style={[ justyfyCenter, alignItemsCenter]}>
-            //                 <H18fontBoldBlack>{labels.Groups}</H18fontBoldBlack>
-            //                 <View style={[justyfyCenter, alignItemsCenter]}>
-            //                     <H16fontNormalGray style={[pl10, pr10]}>{labels.Endtoendencrypted}</H16fontNormalGray>
-            //                     <H16fontNormalGray style={[pl10, pr10]}>{labels.Endtoendencrypted}</H16fontNormalGray>
-            //                     <H16fontNormalGray style={[pl10, pr10]}>{labels.Endtoendencrypted}</H16fontNormalGray>
-            //                     <H16fontNormalGray style={[pl10, pr10]}>{labels.Endtoendencrypted}</H16fontNormalGray>
-            //                     <Text> dfgfdverffffffffffffffffffffffffdddddddddddddddddddddddddddddffffffffffffffffffffffffffffffffffffffffffffffffffffff</Text>
-            //                     <H16fontNormalGray>{labels.ArchiveChat}</H16fontNormalGray>
-            //                 </View>
-            //             </View>
-            //             <ButtonBook style={{
-            //                 backgroundColor: colors.purpleVar3
-            //             }}
-            //                 textStyle={{ color: colors.black }}
-            //                 // funCallback={}
-            //                 label={labels.chat} />
-            //     </ModalContentSecond>
-            // </ModalContainerSecond>
-            <View>
-                <Text>hhhhhhh</Text>
-            </View>
-
-        )
-    }
-
-    return (
-        <View style={[flexRow, spaceBetween, mh20, mv15, pt10]}>
-            <View style={flexRow}>
-                <LeftArrowWhiteIcon />
-                <View style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)', height: 20, width: 20, borderRadius: 20, }}>
-                    <Text style={{ textAlign: 'center', color: colors.white, fontSize: 14 }}>{text}</Text>
-                </View>
-            </View>
-            <View style={[flexRow, spaceAround]}>
-
-                <TouchableOpacity style={ml10} onPress={handleDeleteClick}>
-                    <DeleteWhiteIcon />
-                </TouchableOpacity>
-                <TouchableOpacity style={ml10} onPress={()=>{}}>
-                    <DeleteWhiteIcon />
-                </TouchableOpacity>
-             
-               
-              
-            </View>
-            <CustomModal
-                isVisible={isModalVisible}
-                height={80}
-                width={DevWidth * 0.47}
-                modalData={<PinChatOption />}
-                onClose={() => setModalVisible(false)}
-            />
-            <CustomModal
-                isVisible={deleteModalVisible}
-                modalData={<DeleteChatOption />}
-                backdropOpacity={0.5}
-                onClose={() => setDeleteModalVisible(false)}
-            />
-        </View>
-    );
-};
-
-// ====================   NavBar while selecting cards in Chat page   ====================
+// ====================   NavBar while selecting cards in Call page   ====================
 
 interface CustomCallActionBarProps {
     text?: number;
@@ -512,7 +401,7 @@ interface CustomCallActionBarProps {
     selectedCardsCount?: number;
 }
 
-export const CustomcallActionBar: React.FC<CustomActionBarProps> = ({
+export const CustomcallActionBar: React.FC<CustomCallActionBarProps> = ({
     text,
     onDeletePress,
     selectedCardsCount,
@@ -616,87 +505,127 @@ export const CallBottomTab = () => {
 type ToggleSwitchProps = {
     value: boolean;
     onToggle: () => void;
-  };
-  
- export const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ value, onToggle }) => {
+};
+
+export const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ value, onToggle }) => {
     const borderRadius = 20; // Adjust the border radius as needed
-  
+
     return (
-      <TouchableOpacity onPress={onToggle}>
-        <View
-          style={[
-            styles.container,
-            {
-              backgroundColor: value ? colors.green : colors.greyVar7,
-              borderWidth : 1,
-              borderColor : value ? colors.green : colors.greyVar2,
-            },
-          ]}
-        >
-          <View
+        <TouchableOpacity onPress={onToggle}>
+            <View
+                style={[
+                    styles.container,
+                    {
+                        backgroundColor: value ? colors.green : colors.greyVar7,
+                        borderWidth: 1,
+                        borderColor: value ? colors.green : colors.greyVar2,
+                    },
+                ]}
+            >
+                <View
+                    style={[
+                        styles.toggle,
+                        {
+                            transform: [{ translateX: value ? 22 : 0 }],
+                            backgroundColor: value ? colors.white : colors.greyVar2,
+                        },
+                    ]}
+                />
+            </View>
+        </TouchableOpacity>
+    );
+};
+
+
+// =============== Multi select option component======================
+
+interface MultiSelectProps {
+    selectedColor: string;
+    unselectedColor: string;
+    isSelected: boolean;
+    onSelect: () => void;
+}
+
+export const MultiSelectOption: React.FC<MultiSelectProps> = ({
+    selectedColor,
+    unselectedColor,
+    isSelected,
+    onSelect,
+}) => {
+    return (
+        <TouchableOpacity
+            onPress={onSelect}
             style={[
-              styles.toggle,
-              {
-                transform: [{ translateX: value ? 22 : 0 }], 
-                backgroundColor: value ? colors.white : colors.greyVar2,
-              },
+                styles.multiSelectBox,
+                {
+                    backgroundColor: isSelected === true ? selectedColor : colors.white,
+                    borderWidth : isSelected === true ? 0 : 1,
+                    borderColor : isSelected === true ? colors.purpleVar3 : colors.greyVar7,
+                },
             ]}
-          />
-        </View>
-      </TouchableOpacity>
+        >
+            {isSelected === true && (
+                <CustomIcon name="check" size={15} color="white" type="MaterialIcons" />
+            )}
+        </TouchableOpacity>
     );
+};
+
+
+// =============== Multi select option component======================
+
+type ImagePickerProps = {
+    onImageSelect: (base64Image: string) => void;
   };
-
-// type ToggleProps = {
-//     onToggle: () => void;
-//     value: string | any
-// };
-
-// export const ToggleSwitch: React.FC<ToggleProps> = ({ onToggle, value}) => {
-//     return (
-//         <View>
-//           <Switch
-//             trackColor={{ false: colors.green, true: colors.greenVar1 }}
-//             thumbColor={value ? colors.greyVar4 : colors.greyVar1}
-//             ios_backgroundColor={colors.black}
-//             onValueChange={onToggle}
-//             value={value}
-//           />
-//       </View >
-//     );
-//   };
-
-// ====================  PasswordIcon  ====================
-
- export const PasswordToggleIcon = ({ isVisible, toggleVisibility }) => {
-    const iconName = isVisible ? 'eye' : 'eye-closed';
+  
+export const ImagePicker: React.FC<ImagePickerProps> = ({ onImageSelect }) => {
+    const openCamera = () => {
+      let options = {
+        mediaType: 'photo',
+        quality: 1,
+        includeBase64: true,
+      };
+      launchCamera(options, response => {
+        imageResponse(response);
+      });
+    };
+  
+    const uploadImage = () => {
+      let options = {
+        mediaType: 'photo',
+        quality: 1,
+        includeBase64: true,
+      };
+      launchImageLibrary(options, response => {
+        imageResponse(response);
+      });
+    };
+  
+    const imageResponse = (response: any) => {
+      if (response.didCancel) {
+        // Handle cancel
+      } else if (response.errorCode == 'permission') {
+        // Handle permission error
+      } else if (response.errorCode == 'others') {
+        // Handle other error
+      } else if (response.assets[0].fileSize > 2097152) {
+        // Handle size exceeded error
+      } else if (response.assets && response.assets.length > 0) {
+        onImageSelect(response.assets[0].base64);
+      }
+    };
   
     return (
-      <TouchableOpacity onPress={toggleVisibility}>
-        <CustomIcon name={iconName} size={20} color={colors.greyVar4} type='octicons' />
-      </TouchableOpacity>
+      <View>
+        <TouchableOpacity onPress={openCamera}>
+          <Text>Camera</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={uploadImage}>
+          <Text>Gallery</Text>
+        </TouchableOpacity>
+      </View>
     );
   };
-
-// ====================  Radio Button  ====================
-interface RadioBtnProps {
-    selected: boolean;
-    onPress: () => void;
-  }
-  
-  export const RadioBtn: React.FC<RadioBtnProps> = ({  selected, onPress }) => {
-    return (
-      <RadioButton onPress={onPress}>
-        <RadioButtonRound style={{ backgroundColor: selected ? colors.purpleVar3 : colors.white }}>
-          {selected && (
-            <SelectedRadioBtn />
-          )}
-        </RadioButtonRound>
-
-      </RadioButton>
-    );
-  };
-  
 
 
 const styles = StyleSheet.create({
@@ -746,15 +675,22 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     container: {
-        width: 45, // Adjust the toggle switch width
-        height: 25, // Adjust the toggle switch height
-        borderRadius: 20, // Adjust the border radius
+        width: 45,
+        height: 25,
+        borderRadius: 20,
         flexDirection: 'row',
         alignItems: 'center',
-      },
-      toggle: {
-        width: 20, // Adjust the round toggle width
-        height: 20, // Adjust the round toggle height
-        borderRadius: 15, // Make it a circle
-      },
+    },
+    toggle: {
+        width: 20,
+        height: 20,
+        borderRadius: 15,
+    },
+    multiSelectBox: {
+        width: 20,
+        height: 20,
+        borderRadius: 4,
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
 });

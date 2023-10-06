@@ -7,15 +7,15 @@ export const threeDotsOption = [
         name : labels.ViewContact,
         iconName : 'person-circle-outline',
         iconType : "Ionicons",
-        iconSize : 20,
+        iconSize : 18,
         screenName : screenName.ChatView,
     },
     {
         id: 2,
         name : labels.MarkAsRead,
-        iconName : 'verified',
-        iconType : "octicons",
-        iconSize : 25,
+        iconName : 'checkmark-circle-outline',
+        iconType : "Ionicons",
+        iconSize : 18,
         screenName : screenName.ChatView,}]
 
 export const profilePic = [

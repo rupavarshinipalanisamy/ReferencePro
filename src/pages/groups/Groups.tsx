@@ -8,6 +8,7 @@ import { flex1 } from '../../components/commonStyles';
 import AllGroups from '../../components/groups/AllGroups';
 import PinnedGroups from '../../components/groups/PinnedGroups';
 import ArchiveGroups from '../../components/groups/ArchiveGroups';
+import { screenName } from '../../utils/screenName';
 
 export type GroupsProps = {
     
@@ -30,7 +31,7 @@ const Groups = (props: GroupsProps) => {
         <Fragment>
             <PurpleMainContainer>
                 <StatusBar backgroundColor={colors.purpleVar3} />
-                <ChatHeader title={labels.Groups} />
+                <ChatHeader title={labels.Groups} icon3Navigate={screenName.CreateGroup} />
                 <View style={flex1}>
                     <TabControl tabs={tabs} activeTab={selectedTab} onTabPress={handleTabPress} />
                     {selectedTab === labels.AllGroups && (

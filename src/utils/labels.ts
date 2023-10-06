@@ -3,6 +3,7 @@ export const labels = {
     signUp: 'Sign Up',
     chat: 'Chat',
     Chats: 'Chats',
+    Calls : 'Calls',
     AllChats: 'All Chats',
     PinnedChat: 'Pinned Chat',
     ArchiveChat: 'Archive Chat',
@@ -225,16 +226,31 @@ export const labels = {
     ringtone: 'Ringtone',
     termsandcondition1:'Terms and Condition',
     termText2:'Sed ut perspiciatis unde',
-    agreeText:'I agree with the'
-
-
-
-
-
-
-
-
-
-
+    agreeText:'I agree with the',
+    CreateGroup: 'Create Group',
+    GroupName : 'Group Name',
+    GroupType : 'Group Type',
+    Next : 'Next',
+    Create : 'Create',
+    DebraJones : 'Debra Jones',
+    InaMeeting : 'In a Meeting',
+    AtMovies : 'At The Movies',
+    AccountSetting : 'Account Setting',
+    Male : 'Male',
+    UK : 'United Kingdom',
+    Jan1982 : '19 Jan 1982',
+    MobileNo : '+91 9988776655',
+    Name : 'Name',
+    About : 'About',
+    Phone : 'Phone',
+    Gender : 'Gender',
+    Country : 'Country',
+    MyContactsExceptOnly : 'My Contacts Except Only',
+    OnlyShareWith : 'Only share with',
+    EditProfile : 'Edit Profile',
+    InfoEmail : 'info@example.com',
+    PhoneNo : '9988776655',
+    Date : '25 August 1997',
+    India : 'India',
 };
 
