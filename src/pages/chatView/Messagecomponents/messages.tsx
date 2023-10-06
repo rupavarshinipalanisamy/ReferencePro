@@ -15,6 +15,7 @@ import { CustomModal } from '../../../components/commonComponents';
 import { GroupChatViewModalData } from '../../../utils/data/groupsData';
 import { CallThreeDotsOption } from '../../../utils/data/modalData';
 import { isDark } from '../../../Theme/ThemeContext';
+import { screenName } from '../../../utils/screenName';
 
 const chatViewModalData = [
     {
@@ -24,6 +25,8 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'Ionicons',
         text: labels.ViewContact,
+        screenName:screenName.ChooseWallpaper,
+
     },
     {
         id: 2,
@@ -32,6 +35,8 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'FontAwesome',
         text: labels.Media,
+        screenName:screenName.ChooseWallpaper,
+
     },
     {
         id: 3,
@@ -40,6 +45,8 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'Feather',
         text: labels.Search,
+        screenName:screenName.ChooseWallpaper,
+
     },
     {
         id: 4,
@@ -48,6 +55,8 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'MaterialCommunityIcons',
         text: labels.MuteNotification,
+        screenName:screenName.ChooseWallpaper,
+
     },
     {
         id: 5,
@@ -56,6 +65,8 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'MaterialCommunityIcons',
         text: labels.Wallpaper,
+        screenName:screenName.ChooseWallpaper,
+
     },
     {
         id: 6,
@@ -64,6 +75,8 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'Feather',
         text: labels.Report,
+        screenName:screenName.ChooseWallpaper,
+
     },
     {
         id: 7,
@@ -72,6 +85,8 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'MaterialIcons',
         text: labels.Block,
+        screenName:screenName.ChooseWallpaper,
+
     },
     {
         id: 8,
@@ -80,6 +95,8 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'AntDesign',
         text: labels.ClearChat,
+        screenName:screenName.ChooseWallpaper,
+
     },
 ]
 
@@ -123,8 +140,10 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
                 {
                     chatViewModalData.map((item) => {
                         return (
-                            <TouchableOpacity key={item.id} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
-                                <View style={flexRow}>
+                            <TouchableOpacity key={item.id} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}
+                            onPress={() => navigation.navigate(item.screenName as never)}
+                            >
+                                <View  style={flexRow}>
                                     <CustomIcon name={item.iconName} size={item.iconSize} color={item.iconColor} type={item.iconType} />
                                     <View style={[alignItemsCenter, justyfyCenter, pl13]}>
                                         <H15Grey>{item.text}</H15Grey>
@@ -186,7 +205,7 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
             <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
                 <View style={[flexRow]}>
                     <View style={pt10} >
-                        <CustomIcon name='chevron-back-sharp' color={colors.white} size={16} type="Ionicons" />
+                        <CustomIcon name='chevron-left' color={colors.black} size={20} type="entypo" />
                     </View>
                     <View style={[flexRow, spaceBetween, flex1]}>
                         <TouchableOpacity style={[pl10, flexRow]} onPress={() => { navigation.navigate(props.profileNavigate as never) }}>
@@ -195,20 +214,20 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
                             }
 
                             <View style={pl13}>
-                                <H18WhiteText>{props.title}</H18WhiteText>
-                                <H16WhiteText>{props.subTitle}</H16WhiteText>
+                                <Text style={{fontSize:15,fontWeight:'500',color:colors.black}}>{props.title}</Text>
+                                <Text style={{color:colors.greyVar4,fontSize:14,fontWeight:'400'}}>{props.subTitle}</Text>
 
                             </View>
                         </TouchableOpacity>
                         <View style={[flexRow, alignItemsCenter]}>
                             <TouchableOpacity style={pl10} onPress={() => { navigation.navigate(props.videoNavigate as never) }}>
-                                <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={22} color={colors.white} />
+                                <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={20} color={colors.greyVar4} />
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => navigation.navigate(props.audioNavigate as never)} style={pl10}>
-                                <CustomIcon name='call-outline' type="Ionicons" size={18} color={colors.white} />
+                                <CustomIcon name='phone' type="Feather" size={16} color={colors.greyVar4} />
                             </TouchableOpacity>
                             <TouchableOpacity onPress={props.groups ? handleGroupOptionModal : (props.call ? handleCallOptionModal : handleOptionModal)} style={pl10}>
-                                <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={colors.white} />
+                                <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={20} color={colors.greyVar4} />
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -241,7 +260,7 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
     )
 
 }
-export const FooterChatView = () => {
+export const FooterChatView = ({text,onSwipeRight}:any) => {
     return (
         <View style={{ backgroundColor: colors.white, height: DevHeight / 8, borderTopLeftRadius: 20, borderTopRightRadius: 20, paddingTop: 20 }}>
             <View style={[{ marginHorizontal: 20 }, flexRow, spaceBetween]}>
@@ -250,6 +269,7 @@ export const FooterChatView = () => {
                         <CustomIcon name='smiley' type="octicons" size={20} color={colors.greyVar4} />
                     </View>
                     <View>
+                    <Text>{text}</Text>
                         <TextInput
                             style={{
                                 borderColor: colors.greyVar2,
@@ -353,11 +373,11 @@ export const receiveMessage4 = () => {
                             <CustomIcon name='play' type="Feather" size={20} color={colors.white} />
                         </View>
                     </View>
-                    <View style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)', height: 28, width: 90, borderRadius: 14, alignItems: 'center', justifyContent: "space-evenly", bottom: 10, flexDirection: 'row', marginLeft: 15 }}>
+                    <View style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)', height: 24, width:75, borderRadius:10, alignItems: 'center', justifyContent: "space-evenly", bottom: 10, flexDirection: 'row', marginLeft: 15 }}>
                         <View style={{ marginTop: 3 }}>
-                            <CustomIcon name='file-download' type="MaterialIcons" size={18} color={colors.white} />
+                            <CustomIcon name='file-download' type="MaterialIcons" size={14} color={colors.white} />
                         </View>
-                        <Text style={{ color: colors.white, fontSize: 14 }}>2.8 MB</Text>
+                        <Text style={{ color: colors.white, fontSize: 12,fontWeight:'400' }}>2.8 MB</Text>
                     </View>
                 </ImageBackground>
             </View>

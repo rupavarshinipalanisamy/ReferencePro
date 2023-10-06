@@ -45,6 +45,7 @@ import {
   DefaultTheme,
   DarkTheme,
 } from '@react-navigation/native';
+import ChooseWallper from './src/pages/ChooseWallper';
 
 const Stack = createNativeStackNavigator();
 
@@ -95,6 +96,8 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.CallHistory} component={CallHistory} />
             <Stack.Screen name={screenName.GroupSettings} component={GroupSettings} />
             <Stack.Screen name={screenName.VerifyCode} component={VerifyCode} />
+            <Stack.Screen name={screenName.ChooseWallpaper} component={ChooseWallper} />
+
 
 
 
