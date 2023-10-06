@@ -434,4 +434,22 @@ export const createGroupUserSelectData = [{
     isAdmin: 'false',
     isSelected : false,
 },
+// {
+//     id: 8,
+//     img: Chatimg4Img,
+//     name: labels.horaceKeene,
+//     note: labels.CantTalk,
+//     status: 'active',
+//     isAdmin: 'false',
+//     isSelected : false,
+// },
+// {
+//     id: 9,
+//     img: Chatimg5Img,
+//     name: labels.HollisTran,
+//     note: labels.Busy,
+//     status: 'inactive',
+//     isAdmin: 'false',
+//     isSelected : false,
+// },
 ]

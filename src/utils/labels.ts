@@ -204,5 +204,22 @@ export const labels = {
     DebraJones : 'Debra Jones',
     InaMeeting : 'In a Meeting',
     AtMovies : 'At The Movies',
+    AccountSetting : 'Account Setting',
+    Male : 'Male',
+    UK : 'United Kingdom',
+    Jan1982 : '19 Jan 1982',
+    MobileNo : '+91 9988776655',
+    Name : 'Name',
+    About : 'About',
+    Phone : 'Phone',
+    Gender : 'Gender',
+    Country : 'Country',
+    MyContactsExceptOnly : 'My Contacts Except Only',
+    OnlyShareWith : 'Only share with',
+    EditProfile : 'Edit Profile',
+    InfoEmail : 'info@example.com',
+    PhoneNo : '9988776655',
+    Date : '25 August 1997',
+    India : 'India'
 };
 

@@ -144,7 +144,7 @@ const SignUp = (props: signUpProps) => {
                                     </View>
                                     <IconInputContainer>
                                         <View style={[justyfyCenter]}>
-                                            <CustomIcon name='call-outline' size={20} color={colors.greyVar4} type='Ionicons' />
+                                            <CustomIcon name='phone' size={20} color={colors.greyVar4} type='Feather' />
                                         </View>
                                         <CountryLogo style={[ml15, mt15]} />
                                         <View style={[justyfyCenter, ml10]}>

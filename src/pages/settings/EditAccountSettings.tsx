@@ -14,17 +14,20 @@ import { ButtonSaveandCancel } from '../../components/commonButtons';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
 
-export type CreateGroupProps = {
+export type EditAccountSettingsProps = {
 
 }
 
 
-const CreateGroup = (props: CreateGroupProps) => {
+const EditAccountSettings = (props: EditAccountSettingsProps) => {
     const navigation = useNavigation();
     const [formData, setFormData] = useState({
-        groupName: '',
-        groupType: '',
-        groupDescription: '',
+        name : labels.MarkVilliams,
+        hello : labels.HelloIamUsingDreamsChat,
+        email : labels.InfoEmail,
+        phoneNo : labels.PhoneNo,
+        dob : labels.Date,
+        country : labels.India,
     });
 
     const handleInputChange = (key: string, value: string) => {
@@ -36,23 +39,42 @@ const CreateGroup = (props: CreateGroupProps) => {
 
     const inputFields = [
         {
-            key: 'groupName',
-            label: labels.GroupName,
-            iconName: 'users',
+            key: 'name',
+            label: labels.MarkVilliams,
+            iconName: 'user',
             iconType: 'Feather',
         },
         {
-            key: 'groupType',
-            label: labels.GroupType,
-            iconName: 'tago',
-            iconType: 'AntDesign',
+            key: 'hello',
+            label: labels.HelloIamUsingDreamsChat,
+            iconName: 'user',
+            iconType: 'Feather',
         },
         {
-            key: 'groupDescription',
-            label: labels.GroupDescription,
-            iconName: 'chatbox-ellipses-outline',
-            iconType: 'Ionicons',
+            key: 'email',
+            label: labels.InfoEmail,
+            iconName: 'envelope',
+            iconType: 'SimpleLineIcons',
         },
+        {
+            key: 'phoneNo',
+            label: labels.PhoneNo,
+            iconName: 'phone',
+            iconType: 'Feather',
+        },
+        {
+            key: 'dob',
+            label: labels.Date,
+            iconName: 'calendar-blank',
+            iconType: 'MaterialCommunityIcons',
+        },
+        {
+            key: 'country',
+            label: labels.India,
+            iconName: 'calendar-blank',
+            iconType: 'MaterialCommunityIcons',
+        },
+        
     ];
 
     return (
@@ -66,12 +88,6 @@ const CreateGroup = (props: CreateGroupProps) => {
                     <CustomIcon size={20} name='search' type='Feather' color={colors.blackVar2} />
                 </RowSpaceBetween>
             </View>
-            <View style={[mt20, mh30]}>
-                <Image source={UserImg} style={[{ height: 70, width: 70, borderRadius: 100 }]} />
-                <TouchableOpacity style={[{ height: 30, width: 30, borderRadius: 100, backgroundColor: colors.purpleVar3 }, styles.status, alignItemsCenter, justyfyCenter]}>
-                    <CustomIcon type='Feather' name='camera' color={colors.white} size={12} />
-                </TouchableOpacity>
-            </View>
             <View style={[flex1, mh30]}>
                 {
                     inputFields.map((field) => (
@@ -80,8 +96,7 @@ const CreateGroup = (props: CreateGroupProps) => {
                                 <View style={[justyfyCenter]}>
                                     <CustomIcon name={field.iconName} size={20} color={colors.greyVar4} type={field.iconType} />
                                 </View>
-                                <CustomTextInput
-                                    placeholder={field.label}
+                                <CustomTextInput style= {{fontSize : 14, fontWeight : '400', color : colors.greyVar2}}
                                     value={formData[field.key]}
                                     onChangeText={(text) => handleInputChange(field.key, text)}
                                 />
@@ -121,4 +136,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default CreateGroup
+export default EditAccountSettings

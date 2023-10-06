@@ -78,7 +78,7 @@ export const GroupProfileCard = () => {
                                 <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={22} color={colors.greyVar4} />
                             </View>
                             <View style={[{ alignItems: 'center', justifyContent: 'center' }, pl10]}>
-                                <CustomIcon name='call-outline' type="Ionicons" size={18} color={colors.greyVar4} />
+                                <CustomIcon name='phone' type="Feather" size={18} color={colors.greyVar4} />
                             </View>
                             <View style={[{ alignItems: 'center', justifyContent: 'center' }, pl10]}>
                                 <CustomIcon name='chatbox-ellipses-outline' type="Ionicons" size={18} color={colors.greyVar4} />

@@ -13,6 +13,7 @@ import Modal from 'react-native-modal';
 import { threeDotsOption } from '../utils/data/modalData';
 import { H15Grey } from './commonText';
 import { callBottomDataFourth } from '../utils/data/callsData';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 
 // ====================   Chat based Header Component   ====================
 
@@ -530,7 +531,9 @@ export const MultiSelectOption: React.FC<MultiSelectProps> = ({
             style={[
                 styles.multiSelectBox,
                 {
-                    backgroundColor: isSelected === true ? selectedColor : unselectedColor,
+                    backgroundColor: isSelected === true ? selectedColor : colors.white,
+                    borderWidth : isSelected === true ? 0 : 1,
+                    borderColor : isSelected === true ? colors.purpleVar3 : colors.greyVar7,
                 },
             ]}
         >
@@ -542,6 +545,62 @@ export const MultiSelectOption: React.FC<MultiSelectProps> = ({
 };
 
 
+// =============== Multi select option component======================
+
+
+type ImagePickerProps = {
+    onImageSelect: (base64Image: string) => void;
+  };
+  
+export const ImagePicker: React.FC<ImagePickerProps> = ({ onImageSelect }) => {
+    const openCamera = () => {
+      let options = {
+        mediaType: 'photo',
+        quality: 1,
+        includeBase64: true,
+      };
+      launchCamera(options, response => {
+        imageResponse(response);
+      });
+    };
+  
+    const uploadImage = () => {
+      let options = {
+        mediaType: 'photo',
+        quality: 1,
+        includeBase64: true,
+      };
+      launchImageLibrary(options, response => {
+        imageResponse(response);
+      });
+    };
+  
+    const imageResponse = (response: any) => {
+      if (response.didCancel) {
+        // Handle cancel
+      } else if (response.errorCode == 'permission') {
+        // Handle permission error
+      } else if (response.errorCode == 'others') {
+        // Handle other error
+      } else if (response.assets[0].fileSize > 2097152) {
+        // Handle size exceeded error
+      } else if (response.assets && response.assets.length > 0) {
+        onImageSelect(response.assets[0].base64);
+      }
+    };
+  
+    return (
+      <View>
+        <TouchableOpacity onPress={openCamera}>
+          <Text>Camera</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={uploadImage}>
+          <Text>Gallery</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  };
+  
 
 
 const styles = StyleSheet.create({

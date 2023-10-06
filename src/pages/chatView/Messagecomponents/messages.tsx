@@ -205,7 +205,7 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
                                 <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={22} color={colors.white} />
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => navigation.navigate(props.audioNavigate as never)} style={pl10}>
-                                <CustomIcon name='call-outline' type="Ionicons" size={18} color={colors.white} />
+                                <CustomIcon name='phone' type="Feather" size={18} color={colors.white} />
                             </TouchableOpacity>
                             <TouchableOpacity onPress={props.groups ? handleGroupOptionModal : (props.call ? handleCallOptionModal : handleOptionModal)} style={pl10}>
                                 <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={colors.white} />

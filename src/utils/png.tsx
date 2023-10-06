@@ -29,3 +29,4 @@ export const MediaImg2 = require('../../assets/images/png/mediaimg2.png');
 export const MediaImg3 = require('../../assets/images/png/mediaimg3.png');
 export const MediaImg4 = require('../../assets/images/png/mediaimg4.png');
 export const UserImg = require('../../assets/images/png/userImg.png');
+export const Chatimg1AltImg = require('../../assets/images/png/chatImg1Alt.png');

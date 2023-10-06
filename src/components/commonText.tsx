@@ -8,6 +8,9 @@ const styles = StyleSheet.create({
   black: {
     color: colors.black
   },
+  blackvar2: {
+    color: colors.blackVar2
+  },
   white: {
     color: colors.white,
   },
@@ -56,19 +59,19 @@ const styles = StyleSheet.create({
   h8: {
     fontSize: 15,
   },
-
   h9:{
     fontSize:14,
-  
   },
   h10:{
     fontSize:12,
-  
   },
 
  
   fontBold: {
     fontWeight: 'bold',
+  },
+  fontBold400: {
+    fontWeight: '400',
   },
   fontRegular: {
     fontWeight: '500',
@@ -90,8 +93,8 @@ const styles = StyleSheet.create({
   },
 
 });
-const { green, red, textcolorGray, black, white, purpleVar3, blueVar1, greyVar3, greyVar4Color } = styles;
-const { fontBold, fontRegular, fontBold600, fontBold700, fontBold800, fontNormal, fontBold900 } = styles;
+const { green, red, textcolorGray, black,blackvar2, white, purpleVar3, blueVar1, greyVar3, greyVar4Color } = styles;
+const { fontBold, fontRegular,fontBold400, fontBold600, fontBold700, fontBold800, fontNormal, fontBold900 } = styles;
 const {
   h1,
   h2,
@@ -122,6 +125,11 @@ export const H16SemiBoldBlack = styled(Text)`
   ${fontRegular};
   ${letterSpacing03}; 
 `
+export const H14GreyVar4Bold400 = styled(Text)`
+  ${greyVar4Color};
+  ${h9};
+  ${fontBold400};
+`
 export const H15Green = styled(Text)`
   ${green};
   ${h8};
@@ -136,10 +144,19 @@ export const H15Grey = styled(Text)`
   ${h8};
   ${textcolorGray};
 `
+export const H12Grey = styled(Text)`
+  ${h10};
+  ${textcolorGray};
+`
 export const H15BlackBold600 = styled(Text)`
   ${h8};
   ${black};
   ${fontBold600}
+`
+export const H15Blackvar2Bold500 = styled(Text)`
+  ${h8};
+  ${blackvar2};
+  ${fontRegular};
 `
 export const H15GreySemiBold = styled(Text)`
   ${h8};
@@ -179,7 +196,11 @@ export const H14BlackText = styled(Text)`
   ${h9};
   ${black};
 `;
-
+export const H14BlackVar2Bold400Text = styled(Text)`
+  ${h9};
+  ${blackvar2};
+  ${fontBold400};
+`;
 export const H14purpleVar3Text = styled(Text)`
   ${h9};
   ${purpleVar3};
