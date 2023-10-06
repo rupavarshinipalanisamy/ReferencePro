@@ -290,19 +290,19 @@ export const MediaCard = () => {
     const mediaData = [
         {
             id: 1,
-            image: require('../../../assets/images/png/mediaimg1.png')
+            image: require('../../../assets/images/png/mediaImg1.png')
         },
         {
             id: 2,
-            image: require('../../../assets/images/png/mediaimg2.png')
+            image: require('../../../assets/images/png/mediaImg2.png')
         },
         {
             id: 3,
-            image: require('../../../assets/images/png/mediaimg3.png')
+            image: require('../../../assets/images/png/mediaImg3.png')
         },
         {
             id: 4,
-            image: require('../../../assets/images/png/mediaimg4.png')
+            image: require('../../../assets/images/png/mediaImg4.png')
         }
     ]
 

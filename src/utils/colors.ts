@@ -22,6 +22,7 @@ export const colors = {
     greyVar0: '#E0E0E0',
     borderBottomColor: '#ccc',
 
+
     //blue
     blueVar3: '#02A2B9',
     blueVar2: '#0566FF',

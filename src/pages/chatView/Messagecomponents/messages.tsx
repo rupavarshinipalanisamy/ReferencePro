@@ -60,10 +60,10 @@ const chatViewModalData = [
     },
     {
         id: 5,
-        iconName: 'wallpaper',
+        iconName: 'window-maximize',
         iconSize: 20,
         iconColor: colors.blackVar1,
-        iconType: 'MaterialCommunityIcons',
+        iconType: 'FontAwesome',
         text: labels.Wallpaper,
         screenName:screenName.ChooseWallpaper,
 
@@ -90,10 +90,10 @@ const chatViewModalData = [
     },
     {
         id: 8,
-        iconName: 'delete',
+        iconName: 'trash-2',
         iconSize: 20,
         iconColor: colors.blackVar1,
-        iconType: 'AntDesign',
+        iconType: 'Feather',
         text: labels.ClearChat,
         screenName:screenName.ChooseWallpaper,
 
@@ -201,7 +201,7 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
     }
 
     return (
-        <View style={{ height: DevWidth / 4, backgroundColor: isDark()?colors.darkModeVar1:colors.white, borderBottomRightRadius: 20, borderBottomLeftRadius: 20, position: 'relative' }}>
+        <View style={{ height: DevWidth /4.2, backgroundColor: isDark()?colors.darkModeVar1:colors.white, borderBottomRightRadius:25, borderBottomLeftRadius:25, elevation:1}}>
             <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
                 <View style={[flexRow]}>
                     <View style={pt10} >
