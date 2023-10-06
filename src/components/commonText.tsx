@@ -144,6 +144,12 @@ export const H15Grey = styled(Text)`
   ${h8};
   ${textcolorGray};
 `
+ export const H16font500Black=styled(Text)`
+
+ ${h7};
+ ${fontRegular};
+ ${black};
+`
 export const H15BlackBold600 = styled(Text)`
   ${h8};
   ${black};

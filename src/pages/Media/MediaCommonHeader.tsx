@@ -270,6 +270,7 @@ interface SearchHeader {
     height?: number;
     headerText: string;
     searchIcon?: boolean;
+    editIcon?:boolean
 }
 
 export const SearchHeader = (props: SearchHeader) => {
@@ -284,6 +285,9 @@ export const SearchHeader = (props: SearchHeader) => {
                             </View>
                             <H18BlackText style={pl13}>{props.headerText}</H18BlackText>
                         </View>
+                        {props.editIcon && 
+                          <CustomIcon name='pencil' type="SimpleLineIcons" size={20} color={colors.greyVar4} />
+                          }
                         {props.searchIcon &&
                             <CustomIcon name="search" size={20} color={colors.greyVar4} type="Ionicons" />
                         }

@@ -46,6 +46,8 @@ import {
   DarkTheme,
 } from '@react-navigation/native';
 import ChooseWallper from './src/pages/ChooseWallper';
+import Notification from './src/pages/settings/Notification';
+import TermsAndConditions from './src/utils/data/termsAndConditions';
 
 const Stack = createNativeStackNavigator();
 
@@ -97,9 +99,8 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.GroupSettings} component={GroupSettings} />
             <Stack.Screen name={screenName.VerifyCode} component={VerifyCode} />
             <Stack.Screen name={screenName.ChooseWallpaper} component={ChooseWallper} />
-
-
-
+            <Stack.Screen name={screenName.Notification} component={Notification} />
+            <Stack.Screen name={screenName.TermsAndCondition} component={TermsAndConditions} />
 
         </Stack.Navigator>
     );

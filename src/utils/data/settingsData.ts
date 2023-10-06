@@ -50,7 +50,7 @@ export const settingsData = [
         iconName1: 'chevron-right',
         iconType1: "octicons",    
         iconSize: 20,
-        screenName:screenName.SocialProfiles
+        screenName:screenName.Notification
     },
     {
         id: 6,
@@ -81,7 +81,7 @@ export const settingsData = [
         iconName1: 'chevron-right',
         iconType1: "octicons",   
         iconSize: 20,
-        screenName:screenName.SocialProfiles
+        screenName:screenName.TermsAndCondition
     },
     {
         id: 9,

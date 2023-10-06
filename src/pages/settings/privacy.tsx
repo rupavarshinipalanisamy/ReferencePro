@@ -115,6 +115,8 @@ import { labels } from '../../utils/labels';
 import { useNavigation } from '@react-navigation/native';
 import { privacyData } from '../../utils/data/privacyData';
 import { GroupsModal, LastSeenModal, SettingsModal } from '../../components/commonModal';
+import { SearchHeader } from '../Media/MediaCommonHeader';
+import { DevHeight } from '../../utils/device';
 
 export type privacyProps = {};
 
@@ -134,7 +136,7 @@ const Privacy = (props: privacyProps) => {
         <Fragment>
             <MainContainer>
                 <StatusBar backgroundColor={colors.white} />
-                <TopContainerWhiteCard>
+                {/* <TopContainerWhiteCard>
                     <View style={[flexRow, mt20, { margin: 15 }]}>
                         <View style={[flexRow, alignItemsCenter]}>
                             <CustomIcon
@@ -148,7 +150,10 @@ const Privacy = (props: privacyProps) => {
                             </H16font900Black>
                         </View>
                     </View>
-                </TopContainerWhiteCard>
+                </TopContainerWhiteCard> */}
+                <SearchHeader headerText={labels.privacy} height={DevHeight/12} />
+
+
                 <View style={[mh20, mt20]}>
                     {privacyData.map((privacyDatas, index) => {
                         return (
