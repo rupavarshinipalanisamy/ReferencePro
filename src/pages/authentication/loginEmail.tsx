@@ -1,18 +1,18 @@
-import React, { Fragment, useState ,useEffect} from 'react';
-import { ImageBackground, StatusBar, View, TouchableOpacity ,ScrollView} from 'react-native';
+import React, { Fragment, useState } from 'react';
+import { ImageBackground, View, TouchableOpacity, ScrollView } from 'react-native';
 import LoginLogo from '../../../assets/images/login-logo.svg';
 import Google from '../../../assets/images/google.svg';
 import FaceBook from '../../../assets/images/facebook.svg';
 import Apple from '../../../assets/images/apple.svg';
 import { BottomStyle, CheckBox, CheckBoxContainer, CheckBoxContainer1, IconInputContainer, InputContainer1, LoginLogoBigCircle, LoginLogoCircle, SocialLogoCircle, SocialLogoContainer, TextContainer } from '../../styledComponent/styledComponent';
-import { alignItemsCenter, flexRow, justyfyCenter, m30, ph30, ph5, pv20, pv8 } from '../../components/commonStyles';
-import { H16fontNormalBlue, H16fontNormalGray, H18fontNormalGray, H25fontBoldBlack,  } from '../../components/commonText';
-import {labels} from '../../utils/labels';
+import { alignItemsCenter, flexRow, justyfyCenter, m30, mh20, mh25, ph30, ph5, pv30, pv8 } from '../../components/commonStyles';
+import { H14font400Blue, H14font400Gray4, H16fontNormalGray, H18fontNormalGray, H20font600Black, } from '../../components/commonText';
+import { labels } from '../../utils/labels';
 import { MainContainer } from '../../components/commonView';
 import CustomIcon from '../../utils/Icons';
 import { colors } from '../../utils/colors';
 import { CustomTextInput } from '../../components/commonInputFields';
-import { ButtonNow } from '../../components/commonButtons';
+import {  LongPurpleButton } from '../../components/commonButtons';
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
@@ -25,9 +25,6 @@ const LoginEmail = (props: loginEmailProps) => {
     const [showPassword, setShowPassword] = useState(true);
     const [isChecked, setIsChecked] = useState(false);
     const navigation = useNavigation()
-   
-
-    
 
     const formKeys = {
         name: 'Email',
@@ -56,41 +53,40 @@ const LoginEmail = (props: loginEmailProps) => {
             <MainContainer>
                 <ImageBackground source={require('../../../assets/images/png/background-image.png')} style={{ flex: 1 }}>
                     <ScrollView>
-                    <View style={m30}>
-                        <LoginLogoBigCircle>
-                            <LoginLogoCircle>
-                                <LoginLogo />
-                            </LoginLogoCircle>
-                        </LoginLogoBigCircle>
-                    </View>
-                    <View>
-                        <View style={[ph30]}>
-                            <H25fontBoldBlack>{labels.logIn}</H25fontBoldBlack>
-                            <H18fontNormalGray style={[pv8]}>{labels.message}</H18fontNormalGray>
-                            <IconInputContainer>
-                                <View style={[justyfyCenter]}>
-                                    <CustomIcon name='email-outline' size={20} color={colors.greyVar4} type='MaterialCommunityIcons' />
-                                </View>
-                                <Controller
-                                    name={formKeys.name}
-                                    control={control}
-                                    render={({ field: { onChange, value } }) => (
-                                        <CustomTextInput
-                                            placeholder={labels.emailaddress}
-                                            value={value}
-                                            onChangeText={onChange}
-                                            errorMessage={errors[formKeys.name]?.message.toString()}
-                                        />
-                                    )}
-                                    rules={{
-                                        required: requiredValidation(("labels.emailOrUserName")),
-                                        minLength: minLengthValidation(
-                                            validationSchema.name.minLength,
-                                        ),
-                                    }}
-                                />
-                            </IconInputContainer>
-                           
+                        <View style={{margin:28}}>
+                            <LoginLogoBigCircle>
+                                <LoginLogoCircle>
+                                    <LoginLogo />
+                                </LoginLogoCircle>
+                            </LoginLogoBigCircle>
+                        </View>
+                        <View>
+                            <View style={[mh25]}>
+                                <H20font600Black>{labels.logIn}</H20font600Black>
+                                <H14font400Gray4 style={{marginVertical:8}}>{labels.message}</H14font400Gray4>
+                                <IconInputContainer style={{}}>
+                                    <View style={[justyfyCenter]}>
+                                        <CustomIcon name='email-outline' size={20} color={colors.greyVar4} type='MaterialCommunityIcons' />
+                                    </View>
+                                    <Controller
+                                        name={formKeys.name}
+                                        control={control}
+                                        render={({ field: { onChange, value } }) => (
+                                            <CustomTextInput
+                                                placeholder={labels.emailaddress}
+                                                value={value}
+                                                onChangeText={onChange}
+                                            />
+                                        )}
+                                        rules={{
+                                            required: requiredValidation(("labels.emailOrUserName")),
+                                            minLength: minLengthValidation(
+                                                validationSchema.name.minLength,
+                                            ),
+                                        }}
+                                    />
+                                </IconInputContainer>
+
                                 <IconInputContainer>
                                     <InputContainer1>
                                         <View style={[flexRow, alignItemsCenter]}>
@@ -100,7 +96,6 @@ const LoginEmail = (props: loginEmailProps) => {
                                                 control={control}
                                                 render={({ field: { onChange, value } }) => (
                                                     <CustomTextInput
-                                                        errorMessage={errors[formKeys.password]?.message.toString()}
                                                         placeholder={labels.password}
                                                         value={value}
                                                         secureTextEntry={showPassword}
@@ -126,53 +121,54 @@ const LoginEmail = (props: loginEmailProps) => {
                                         </View>
                                     </InputContainer1>
                                 </IconInputContainer>
-                            
-                            <CheckBoxContainer1>
-                                <View style={[flexRow]}>
+
+                                <CheckBoxContainer1>
+                                    <View style={[flexRow]}>
+                                        <TouchableOpacity
+                                            onPress={toggleCheckbox}>
+                                            <CheckBox style={{ backgroundColor: isChecked ? colors.purpleVar3 : 'transparent' }}>
+                                                {isChecked && (
+                                                    <CustomIcon name="check" size={16} color={colors.white} type={'MaterialCommunityIcons'} />)}
+                                            </CheckBox>
+                                        </TouchableOpacity>
+                                        <H14font400Gray4 style={[ph5]}>{labels.rememberme}</H14font400Gray4>
+                                    </View>
                                     <TouchableOpacity
-                                        onPress={toggleCheckbox}>
-                                        <CheckBox style={{ backgroundColor: isChecked ? colors.purpleVar3 : 'transparent' }}>
-                                            {isChecked && (
-                                                <CustomIcon name="check" size={16} color={colors.white} type={'MaterialCommunityIcons'} />)}
-                                        </CheckBox>
+                                        onPress={() => { navigation.navigate(screenName.ForgetPassword as never) }}>
+                                        <H14font400Blue >{labels.forgetpassword}</H14font400Blue>
                                     </TouchableOpacity>
-                                    <H16fontNormalGray style={[ph5]}>{labels.rememberme}</H16fontNormalGray>
+                                </CheckBoxContainer1>
+                                <View style={{marginVertical:30}}>
+                                    <LongPurpleButton
+                                        title={labels.logIn}
+                                        onChange={handleSubmit(onLogin)}
+                                    />
                                 </View>
+                                <CheckBoxContainer>
+                                    <BottomStyle />
+                                    <H14font400Gray4>{labels.continuemsg}</H14font400Gray4>
+                                    <BottomStyle />
+                                </CheckBoxContainer>
+                                <SocialLogoContainer>
+                                    <SocialLogoCircle>
+                                        <Google />
+                                    </SocialLogoCircle>
+                                    <SocialLogoCircle>
+                                        <FaceBook />
+                                    </SocialLogoCircle>
+                                    <SocialLogoCircle>
+                                        <Apple />
+                                    </SocialLogoCircle>
+                                </SocialLogoContainer>
+                            </View>
+                            <TextContainer>
+                                <H14font400Gray4>{labels.donthaveanaccount}</H14font400Gray4>
                                 <TouchableOpacity
-                                    onPress={() => { navigation.navigate(screenName.ForgetPassword as never) }}>
-                                    <H16fontNormalBlue >{labels.forgetpassword}</H16fontNormalBlue>
+                                    onPress={() => { navigation.navigate(screenName.SignUp as never) }}>
+                                    <H14font400Blue >{labels.signUp}</H14font400Blue>
                                 </TouchableOpacity>
-                            </CheckBoxContainer1>
-                            <ButtonNow
-                                style={{ backgroundColor: colors.purpleVar3 }}
-                                textStyle={{ color: colors.white }}
-                                funCallback={handleSubmit(onLogin)}
-                                label={labels.logIn} />
-                            <CheckBoxContainer>
-                                <BottomStyle />
-                                <H18fontNormalGray>{labels.continuemsg}</H18fontNormalGray>
-                                <BottomStyle />
-                            </CheckBoxContainer>
-                            <SocialLogoContainer>
-                                <SocialLogoCircle>
-                                    <Google />
-                                </SocialLogoCircle>
-                                <SocialLogoCircle>
-                                    <FaceBook />
-                                </SocialLogoCircle>
-                                <SocialLogoCircle>
-                                    <Apple />
-                                </SocialLogoCircle>
-                            </SocialLogoContainer>
+                            </TextContainer>
                         </View>
-                        <TextContainer>
-                            <H16fontNormalGray>{labels.donthaveanaccount}</H16fontNormalGray>
-                            <TouchableOpacity
-                                onPress={() => { navigation.navigate(screenName.SignUp as never) }}>
-                                <H16fontNormalBlue >{labels.signUp}</H16fontNormalBlue>
-                            </TouchableOpacity>
-                        </TextContainer>
-                    </View>
                     </ScrollView>
                 </ImageBackground>
             </MainContainer>

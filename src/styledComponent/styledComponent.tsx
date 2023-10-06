@@ -37,20 +37,20 @@ export const SocialLogoCircle = styled(View)`
 height: 60px;
 width: 60px;
 border-radius: 100px;
-background-color: rgba(90, 7, 139, 0.03);
+background-color:${colors.purpleVar1};
 justify-content: center;
 alignItems:center;
 `
 export const InputData = styled(TextInput)`
-font-size: 16px;
+font-size: 14px;
 color:${colors.black};
-padding:15px;
+padding:10px;
 `
 export const IconInputContainer = styled(View)`
 borderBottomWidth: 1px;
 borderBottomColor: ${colors.borderBottomColor};
 flexDirection: row;
-marginTop:15px;
+marginVertical:7px;
 `
 export const InputContainer1 = styled(View)`
 flexDirection: row;
@@ -66,11 +66,11 @@ flexDirection: row;
 export const CheckBoxContainer1 = styled(View)`
 justifyContent: space-between;
 flexDirection: row;
-marginTop:30px;
+marginTop:10px;
 `
 export const CheckBox = styled(View)`
-width: 24px;
-height: 24px;
+width: 20px;
+height: 20px;
 borderWidth: 1px;
 borderColor: ${colors.greyVar4};
 borderRadius: 4px;
@@ -93,7 +93,7 @@ flexDirection:row;
 alignSelf:center;
 justifyContent:flex-end;
 marginBottom:30px;
-paddingTop:60px;
+paddingTop:100px;
 `
 export const TextContainer1 = styled(View)`
 flexDirection:row;
@@ -175,7 +175,14 @@ export const HalfCircle2 = styled(View)`
 export const ModalContent = styled(View)`
   background-color: ${colors.white};
   padding: 20px;
-  borderRadius: 10px;
+  borderRadius: 15px;
+  width: 80%;
+  max-width: 400px; 
+`;
+
+export const ModalContent1 = styled(View)`
+  background-color: ${colors.white};
+  borderRadius: 15px;
   width: 80%;
   max-width: 400px; 
 `;

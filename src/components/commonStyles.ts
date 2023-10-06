@@ -89,6 +89,9 @@ const styles = StyleSheet.create({
   mh20: {
     marginHorizontal: 20,
   },
+  mh25: {
+    marginHorizontal: 25,
+  },
   mv5: {
     marginVertical: 5,
   },
@@ -489,6 +492,7 @@ export const {
   m90,
   ml10,
   mh20,
+  mh25,
   mr0,
   mr10,
   mr25,

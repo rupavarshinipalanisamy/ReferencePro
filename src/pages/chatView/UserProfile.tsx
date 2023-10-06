@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, Image, Dimensions } from 'react-native';
 import { MainContainer, CommonLineDividerGrey } from '../../components/commonView';
 import { colors } from '../../utils/colors';
@@ -13,6 +13,7 @@ import Group1 from '../../../assets/images/groupImg1.svg'
 import Group2 from '../../../assets/images/groupImg2.svg'
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
+import CustomModal from '../../components/customModal';
 
 
 
@@ -84,12 +85,28 @@ export const colorIconsData = [
 ]
 
 export const ColorIconTab = () => {
+    const [modalVisible, setModalVisible] = useState(false);
+    const openModal = () => {
+        setModalVisible(true);
+    }
+    const ModalComponent = () => {
+        return(
+            <View>
+                <Text>hhhhhh</Text>
+                <Text>hhhhhh</Text>
+                <Text>hhhhhh</Text>
+                <Text>hhhhhh</Text>
+                <Text>hhhhhh</Text>
+
+            </View>
+        )
+    }
     return (
         <View>
             {
                 colorIconsData.map((item) => {
                     return (
-                        <TouchableOpacity key={item.id}>
+                        <TouchableOpacity key={item.id} onPress={openModal}>
                             <View style={[flexRow, spaceBetween,{paddingBottom:15}]}>
                                 <View style={[flexRow]}>
 
@@ -123,6 +140,7 @@ export const ColorIconTab = () => {
                     )
                 })
             }
+            <CustomModal content = {<ModalComponent />} />
         </View>
     )
 }

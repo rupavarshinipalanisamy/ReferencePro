@@ -26,6 +26,9 @@ const styles = StyleSheet.create({
   blueVar1: {
     color: colors.blueVar1
   },
+  blueVar2: {
+    color: colors.blueVar2
+  },
   purpleVar3: {
     color: colors.purpleVar3,
   },
@@ -54,16 +57,16 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
 
-  h9:{
-    fontSize:14,
-  
+  h9: {
+    fontSize: 14,
+
   },
-  h10:{
-    fontSize:12,
-  
+  h10: {
+    fontSize: 12,
+
   },
 
- 
+
   fontBold: {
     fontWeight: 'bold',
   },
@@ -85,12 +88,15 @@ const styles = StyleSheet.create({
   fontNormal: {
     fontWeight: 'normal'
   },
+  font400:{
+    fontWeight:'400'
+  }
 
 });
 
 
-const { green, red, textcolorGray, black, white, purpleVar3, blueVar1, greyVar3 } = styles;
-const { fontBold, fontRegular, fontBold600, fontBold700, fontBold800, fontNormal, fontBold900 } = styles;
+const { green, red, textcolorGray, black, white, purpleVar3, blueVar1, greyVar3,blueVar2 } = styles;
+const { fontBold, fontRegular, fontBold600, fontBold700, fontBold800, fontNormal, fontBold900 ,font400} = styles;
 const {
   h1,
   h2,
@@ -144,6 +150,11 @@ export const H16WhiteText = styled(Text)`
   ${h7};
   ${white};
 `;
+export const H16font600Black = styled(Text)`
+  ${h7};
+  ${fontBold600}
+  ${black};
+`;
 export const H18WhiteText = styled(Text)`
   ${h6};
   ${white};
@@ -169,6 +180,12 @@ export const H14BlackText = styled(Text)`
   ${black};
 `;
 
+export const H14font400Gray4 = styled(Text)`
+${h9};
+${textcolorGray};
+${font400}
+`
+
 export const H14purpleVar3Text = styled(Text)`
   ${h9};
   ${purpleVar3};
@@ -192,14 +209,14 @@ export const H16fontNormalGray = styled(Text)`
   ${fontNormal};
   ${greyVar3};
 `;
-export const H16fontNormalBlue = styled(Text)`
-  ${h7};
-  ${fontNormal};
-  ${blueVar1};
+export const H14font400Blue = styled(Text)`
+  ${h9};
+  ${font400};
+  ${blueVar2};
 `;
-export const H16fontNormalPurple = styled(Text)`
-  ${h7};
-  ${fontNormal};
+export const H14font400Purple3 = styled(Text)`
+  ${h9};
+  ${font400};
   ${purpleVar3};
 `;
 export const H18fontBoldBlack = styled(Text)`
@@ -207,14 +224,19 @@ export const H18fontBoldBlack = styled(Text)`
   ${fontBold};
   ${black};
 `;
-export const H25fontBoldBlack = styled(Text)`
-  ${h1};
-  ${fontBold};
+export const H20font600Black = styled(Text)`
+  ${h5};
+  ${fontBold600};
   ${black};
 `;
 export const H16fontBoldBlack = styled(Text)`
   ${h7};
   ${fontBold600};
+  ${black};
+`;
+export const H15font500Black = styled(Text)`
+  ${h8};
+  ${fontRegular};
   ${black};
 `;
 export const TextNowSecond = styled(Text)`
@@ -242,10 +264,19 @@ export const H16fontNormalGray4 = styled(Text)`
 `;
 
 
-export const H16font900= styled(Text)`
+export const H16font900 = styled(Text)`
 ${h7};
 ${fontBold900};
 alignSelf:center;
 justifyContent:center;
 borderColor:${colors.greyVar4}
+`
+export const H15font600 = styled(Text)`
+${h8};
+${fontBold600};
+${white};
+`
+export const H15fontBold600 = styled(Text)`
+${h8};
+${fontBold600};
 `

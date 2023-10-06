@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { StatusBar, Text, View } from 'react-native';
+import { ScrollView, StatusBar, Text, View } from 'react-native';
 import { MainContainer } from '../../components/commonView';
 import CustomIcon from '../../utils/Icons';
 import { colors } from '../../utils/colors';
@@ -71,6 +71,7 @@ const AddContact = (props: addContactProps) => {
         <Fragment>
             <MainContainer>
                 <StatusBar backgroundColor={colors.white} />
+
                 <View style={{ backgroundColor: 'white', borderBottomStartRadius: 25, borderBottomEndRadius: 25, elevation: 4, height: DevHeight / 10, justifyContent: 'center' }}>
                     <View style={{ flexDirection: 'row', marginHorizontal: 20 }}>
                         <CustomIcon name='chevron-back-sharp' size={20} color={colors.black} type='Ionicons' />
@@ -78,6 +79,7 @@ const AddContact = (props: addContactProps) => {
                     </View>
 
                 </View>
+                <ScrollView>
                 <View style={{ marginHorizontal: 20, marginTop: 20 }}>
                     <IconInputContainer>
                         <View style={[justyfyCenter]}>
@@ -179,6 +181,7 @@ const AddContact = (props: addContactProps) => {
                             label={labels.saveContact} />
                     </View>
                 </View>
+                </ScrollView>
             </MainContainer>
         </Fragment>
     );

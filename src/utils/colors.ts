@@ -1,3 +1,4 @@
+
 export const colors = {
     //purple
     purpleVar4: '#F2DDFF',

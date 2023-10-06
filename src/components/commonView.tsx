@@ -110,7 +110,6 @@ const styles = StyleSheet.create({
   radioButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 5,
   },
   radioButtonRound: {
     width: 20,
@@ -119,14 +118,39 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor:colors.greyVar4
+    borderColor: colors.greyVar2
   },
-  selectedRadioBtn:{
+  selectedRadioBtn: {
     width: 10,
     height: 10,
     borderRadius: 5,
-    backgroundColor: colors.purpleVar3,
+    backgroundColor: colors.white,
   },
+  cardSurface: {
+    backgroundColor: colors.white,
+    padding: 10,
+    marginTop: 20,
+    marginHorizontal: 15,
+    margin: 20,
+    flexDirection: 'row',
+    borderRadius: 8,
+    shadowColor: colors.greyVar3,
+  },
+  longButton: {
+    height: 50,
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.purpleVar3
+  },
+  smallButton: {
+    height: 42,
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: colors.greyVar4
+
+  }
 });
 const {
   rowSpaceBetween,
@@ -146,7 +170,11 @@ const {
   iconBackground,
   radioButton,
   radioButtonRound,
-  selectedRadioBtn
+  selectedRadioBtn,
+  cardSurface,
+  longButton,
+  smallButton
+
 
 
 
@@ -189,6 +217,9 @@ export const CommonButtonNow = styled(TouchableOpacity)`
 export const CommonButtonBook = styled(TouchableOpacity)`
     ${commonButtonBook};
   `;
+  export const TwoSmallButton = styled(TouchableOpacity)`
+  ${smallButton};
+  `
 
 export const TopContainerWhiteCard = styled(View)`
 backgroundColor: white;
@@ -227,3 +258,11 @@ export const TopContainerWhiteCard1 = styled(View) <TopContainerWhiteCardProps>`
   elevation: 2;
   shadow-color: #000;
 `;
+
+export const CardSurface = styled(TouchableOpacity)`
+${cardSurface};
+elevation:4
+`
+export const LongButton = styled(TouchableOpacity)`
+${longButton}
+`

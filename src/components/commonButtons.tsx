@@ -1,110 +1,62 @@
-import React, { useState } from 'react';
-import {
-  StyleProp,
-  StyleSheet,
-  Text,
-  TextStyle,
-  TouchableOpacity,
-  View,
-  ViewStyle,
-} from 'react-native';
+import React from 'react';
+import { StyleProp, View, ViewStyle } from 'react-native';
+import { LongButton, TwoSmallButton } from './commonView';
+import { H15font600, H15fontBold600 } from './commonText';
 import { DevWidth } from '../utils/device';
-import { colors } from '../utils/colors';
-import {
-  TextNow,
-  CommonButtonBlue,
-  CommonButtonNow,
-  CommonButtonBook,
-  SaveAndCancel,
-} from '../components/commonView';
-import { TextNowSecond } from './commonText';
-import { H16font900, H16font900Black } from './commonText';
 
-type ButtonProps = {
-  style: StyleProp<ViewStyle>;
-  textStyle: StyleProp<TextStyle>
-  disabled?: boolean;
-  funCallback: CallableFunction;
-  label: string;
-  success?: boolean;
+//================================ LONG BUTTON =============================//
+
+type LongPurpleButtonProps = {
+  title: string;
+  onChange: () => void;
 };
 
-export const ButtonFull: React.FC<ButtonProps> = ({
-  style,
-  textStyle,
-  disabled,
-  funCallback,
-  label,
-  success,
+export const LongPurpleButton: React.FC<LongPurpleButtonProps> = ({
+  title,
+  onChange,
+
 }) => {
   return (
-    <CommonButtonBlue
-      disabled={disabled}
-      style={[style, success ? { backgroundColor: colors.blueVar1 } : null]}
-      onPress={() => {
-        funCallback();
-      }}>
-      <TextNow style={textStyle} >{label}</TextNow>
-    </CommonButtonBlue>
+    <View>
+      <LongButton
+        onPress={onChange}>
+        <H15font600 >{title} </H15font600>
+      </LongButton>
+    </View>
   );
 };
 
-export const ButtonNow: React.FC<ButtonProps> = ({
-  style,
-  disabled,
-  funCallback,
-  label,
-  success,
-}) => {
-  return (
-    <CommonButtonNow
-      disabled={disabled}
-      style={[style, success ? { backgroundColor: colors.blueVar1 } : null]}
-      onPress={() => {
-        funCallback();
-      }}>
-      <TextNow>{label}</TextNow>
-    </CommonButtonNow>
-  );
+//================================ SMALL BUTTON =============================//
+
+type SmallButtonProps = {
+  title: string;
+  onChange: () => void;
+  borderWidth?: number;
+  backgroundColor: string;
+  textColor: string;
+  width?: string | number;
+  style?: StyleProp<ViewStyle>;
 };
 
-export const ButtonBook: React.FC<ButtonProps> = ({
-  style,
-  disabled,
-  funCallback,
-  label,
-  success,
+export const SmallButton: React.FC<SmallButtonProps> = ({
+  title,
+  onChange,
+  backgroundColor,
+  textColor,
+  borderWidth,
+  width = DevWidth / 2.4
 }) => {
   return (
-    <CommonButtonBook
-      disabled={disabled}
-      style={[style, success ? { backgroundColor: colors.blueVar1 } : null]}
-      onPress={() => {
-        funCallback();
-      }}>
-      <TextNow>{label}</TextNow>
-    </CommonButtonBook>
+    <View>
+      <TwoSmallButton
+        style={{
+          backgroundColor: backgroundColor,
+          borderWidth: borderWidth,
+          width: width,
+        }}
+        onPress={onChange}>
+        <H15fontBold600 style={{ color: textColor }}> {title}</H15fontBold600>
+      </TwoSmallButton>
+    </View>
   );
 };
-
-export const ButtonSaveandCancel: React.FC<ButtonProps> = ({
-  style,
-  disabled,
-  funCallback,
-  label,
-  success,
-  textStyle
-}) => {
-  return (
-    <SaveAndCancel
-      disabled={disabled}
-      style={[style, success ? { backgroundColor: colors.blueVar1 } : null]}
-      onPress={() => {
-        funCallback();
-      }}>
-      <H16font900 
-      style={[textStyle]}>{label}</H16font900>
-    </SaveAndCancel>
-  );
-};
-

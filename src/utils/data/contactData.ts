@@ -1,0 +1,66 @@
+import { labels } from "../labels";
+import { ContactImg1, ContactImg2, ContactImg3, ContactImg4, ContactImg5, ContactImg6, ContactImg7, ContactImg8, ContactImg9 } from "../svg";
+
+export const contactList=[
+    {
+        id:1,
+        contName:labels.alexander,
+        location:labels.location1,
+        profImg:ContactImg1(),
+    },
+    {
+        id:2,
+        contName:labels.annette,
+        location:labels.location2,
+        profImg:ContactImg2(),
+    },
+    {
+        id:3,
+        contName:labels.bacon,
+        location:labels.location2,
+        profImg:ContactImg3(),
+    },
+    {
+        id:4,
+        contName:labels.bennett,
+        location:labels.location3,
+        profImg:ContactImg4(),
+    },
+      {
+        id:5,
+        contName:labels.charles,
+        location:labels.location4,
+        profImg:ContactImg5(),
+    },
+    {
+        id:6,
+        contName:labels.dina,
+        location:labels.location5,
+        profImg:ContactImg6(),
+    },
+    {
+        id:7,
+        contName:labels.debra,
+        location:labels.location6,
+        profImg:ContactImg7(),
+    },
+    {
+        id:8,
+        contName:labels.elaine,
+        location:labels.location5,
+        profImg:ContactImg8(),
+    },
+    {
+        id:9,
+        contName:labels.edward,
+        location:labels.location6,
+        profImg:ContactImg9(),
+    },
+    {
+        id:10,
+        contName:labels.elaine,
+        location:labels.location1,
+        profImg:ContactImg9(),
+    },
+
+]

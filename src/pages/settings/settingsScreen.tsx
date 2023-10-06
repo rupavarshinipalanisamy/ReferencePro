@@ -8,7 +8,7 @@ import { StyleSheet } from 'react-native';
 import SettingAvatar from '../../../assets/images/settings-avatar.svg'
 import { justyfyCenter, ml10, alignItemsCenter, flexRow, ph10, mt20, m15 } from '../../components/commonStyles';
 import { InputContainer1 } from '../../styledComponent/styledComponent';
-import { H16fontBoldBlack } from '../../components/commonText';
+import { H14font400Gray4, H15font500Black, H16fontBoldBlack } from '../../components/commonText';
 import { ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
@@ -44,8 +44,8 @@ const SettingsScreen = (props: settingsScreenProps) => {
                             <View style={{ flexDirection: 'row' }}>
                                 <SettingAvatar />
                                 <View style={{ paddingHorizontal: 15, }}>
-                                    <Text style={{ color: 'black', fontSize: 16, fontWeight: '600' }}>Mark Villiams</Text>
-                                    <Text style={{ color: colors.greyVar4, fontSize: 14 }}>Hello, I am using Dreamschat</Text>
+                                    <H15font500Black>Mark Villiams</H15font500Black>
+                                    <H14font400Gray4>Hello, I am using Dreamschat</H14font400Gray4>
                                 </View>
                             </View>
                             <IconBackground >
@@ -63,7 +63,7 @@ const SettingsScreen = (props: settingsScreenProps) => {
                                                     <CustomIcon name={settingsDatas.iconName} type={settingsDatas.iconType} size={settingsDatas.iconSize} color={colors.purpleVar3} />
                                                 </IconBackground>
                                                 <TouchableOpacity key={settingsDatas.id} onPress={() => handleTabPress(settingsDatas.id, settingsDatas.screenName)}>
-                                                    <H16fontBoldBlack style={[ph10]}>{settingsDatas.name}</H16fontBoldBlack>
+                                                    <H15font500Black style={[ph10]}>{settingsDatas.name}</H15font500Black>
                                                 </TouchableOpacity>
                                             </View>
                                             <View style={[justyfyCenter]}>

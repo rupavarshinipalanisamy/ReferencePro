@@ -2,18 +2,18 @@ import { useNavigation } from '@react-navigation/native';
 import React, { Fragment, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { ImageBackground, StatusBar, TouchableOpacity, View } from 'react-native';
-import { ButtonNow } from '../../components/commonButtons';
 import { CustomTextInput } from '../../components/commonInputFields';
-import { m30, ph30, pv8, justyfyCenter, alignItemsCenter, flexRow } from '../../components/commonStyles';
-import {  H18fontNormalGray, H25fontBoldBlack } from '../../components/commonText';
+import { m30, ph30, pv8, justyfyCenter, alignItemsCenter, flexRow, mh25 } from '../../components/commonStyles';
+import { H14font400Gray4, H18fontNormalGray, H20font600Black, } from '../../components/commonText';
 import { MainContainer } from '../../components/commonView';
 import { LoginLogoBigCircle, LoginLogoCircle, IconInputContainer, InputContainer1 } from '../../styledComponent/styledComponent';
 import CustomIcon from '../../utils/Icons';
-import {labels} from '../../utils/labels';
+import { labels } from '../../utils/labels';
 import { requiredValidation, minLengthValidation, validationSchema } from '../../utils/validationconfig';
 import { colors } from '../../utils/colors';
 import PasswordLogo from '../../../assets/images/create-password.svg';
 import { CommonModal } from '../../components/commonModal';
+import { LongPurpleButton } from '../../components/commonButtons';
 
 export type createNewPasswordProps = {
 }
@@ -52,9 +52,9 @@ const CreateNewPassword = (props: createNewPasswordProps) => {
     return (
         <Fragment>
             <MainContainer>
-                <ImageBackground source={require('../../../assets/images/png/background-image.png')} 
-                style={{ flex: 1}}>
-                    <View style={m30}>
+                <ImageBackground source={require('../../../assets/images/png/background-image.png')}
+                    style={{ flex: 1 }}>
+                    <View style={{ margin: 28 }}>
                         <TouchableOpacity onPress={() => navigation.goBack()}>
                             <CustomIcon name='arrow-back-outline' size={28} color={colors.black} type='Ionicons' />
                         </TouchableOpacity>
@@ -65,9 +65,11 @@ const CreateNewPassword = (props: createNewPasswordProps) => {
                         </LoginLogoBigCircle>
                     </View>
                     <View>
-                        <View style={[ph30]}>
-                            <H25fontBoldBlack>{labels.createpassword}</H25fontBoldBlack>
-                            <H18fontNormalGray style={[pv8]}>{labels.cpMsg}</H18fontNormalGray>
+                        <View style={[mh25]}>
+                            <H20font600Black>{labels.createpassword}</H20font600Black>
+                            <H14font400Gray4 style={{ marginTop: 8 }}>{labels.cpMsg}</H14font400Gray4>
+                            <H14font400Gray4 >{labels.cpMsg1}</H14font400Gray4>
+
                             <IconInputContainer>
                                 <InputContainer1>
                                     <View style={[flexRow, alignItemsCenter]}>
@@ -77,7 +79,6 @@ const CreateNewPassword = (props: createNewPasswordProps) => {
                                             control={control}
                                             render={({ field: { onChange, value } }) => (
                                                 <CustomTextInput
-                                                    errorMessage={errors[formKeys.password]?.message.toString()}
                                                     placeholder={labels.newPwd}
                                                     value={value}
                                                     secureTextEntry={showPassword}
@@ -112,7 +113,6 @@ const CreateNewPassword = (props: createNewPasswordProps) => {
                                             control={control}
                                             render={({ field: { onChange, value } }) => (
                                                 <CustomTextInput
-                                                    errorMessage={errors[formKeys.confirmpassword]?.message.toString()}
                                                     placeholder={labels.confirmPwd}
                                                     value={value}
                                                     secureTextEntry={shownewPassword}
@@ -138,14 +138,18 @@ const CreateNewPassword = (props: createNewPasswordProps) => {
                                     </View>
                                 </InputContainer1>
                             </IconInputContainer>
-                            <ButtonNow
-                                style={{ backgroundColor: colors.purpleVar3 }}
-                                textStyle={{ color: colors.white }}
-                                funCallback={() => {
-                                    handleSubmit(onLogin);
-                                    toggleModal();
-                                }}
-                                label={labels.changePwd} />
+
+                            <View style={{ marginVertical: 30 }}>
+                                <LongPurpleButton
+                                    title={labels.changePwd}
+                                    onChange={() => {
+                                        handleSubmit(onLogin);
+                                        toggleModal();
+
+                                    }}
+                                />
+                            </View>
+
                         </View>
                         <CommonModal
                             isVisible={isModalVisible}

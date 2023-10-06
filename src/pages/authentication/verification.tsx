@@ -9,8 +9,9 @@ import {
     mt20,
     pt25,
     flex1,
+    mh25,
 } from '../../components/commonStyles';
-import { H18fontNormalGray, H16fontNormalGray, H16fontNormalPurple, H25fontBoldBlack } from '../../components/commonText';
+import { H18fontNormalGray, H16fontNormalGray, H20font600Black, H14font400Gray4, H14font400Purple3 } from '../../components/commonText';
 import { MainContainer } from '../../components/commonView';
 import { LoginLogoBigCircle, LoginLogoCircle, OtpInput } from '../../styledComponent/styledComponent';
 import CustomIcon from '../../utils/Icons';
@@ -19,7 +20,7 @@ import VerificationLogo from '../../../assets/images/verification-logo.svg';
 import { useNavigation } from '@react-navigation/native';
 import { colors } from '../../utils/colors';
 import { screenName } from '../../utils/screenName';
-import { ButtonNow } from '../../components/commonButtons';
+import { LongPurpleButton } from '../../components/commonButtons';
 
 export type verificationProps = {};
 
@@ -70,7 +71,7 @@ const Verification = (props: verificationProps) => {
                     source={require('../../../assets/images/png/background-image.png')}
                     style={[flex1]}
                 >
-                    <View style={m30}>
+                    <View style={{ margin: 28 }}>
                         <TouchableOpacity onPress={() => navigation.goBack()}>
                             <CustomIcon name="arrow-back-outline" size={28} color={colors.black} type="Ionicons" />
                         </TouchableOpacity>
@@ -81,9 +82,11 @@ const Verification = (props: verificationProps) => {
                         </LoginLogoBigCircle>
                     </View>
                     <View>
-                        <View style={[ph30]}>
-                            <H25fontBoldBlack>{labels.verification}</H25fontBoldBlack>
-                            <H18fontNormalGray style={[pv8]}>{labels.verifyMsg}</H18fontNormalGray>
+                        <View style={[mh25]}>
+                            <H20font600Black>{labels.verification}</H20font600Black>
+                            <H14font400Gray4 style={{marginTop:8}}>{labels.verifyMsg}</H14font400Gray4>
+                            <H14font400Gray4 >{labels.number}</H14font400Gray4>
+
                         </View>
                     </View>
                     <View style={[ph30]}>
@@ -92,18 +95,25 @@ const Verification = (props: verificationProps) => {
                         </View>
                         <View style={[pt25, flexRow, spaceBetween]}>
                             <View style={[flexRow]}>
-                                <H16fontNormalGray>{labels.didnotReceivecode}</H16fontNormalGray>
+                                <H14font400Gray4>{labels.didnotReceivecode}</H14font400Gray4>
                                 <TouchableOpacity>
-                                    <H16fontNormalPurple>{labels.resendCode}</H16fontNormalPurple>
+                                    <H14font400Purple3>{labels.resendCode}</H14font400Purple3>
                                 </TouchableOpacity>
                             </View>
-                            <H16fontNormalGray>{labels.second}</H16fontNormalGray>
+                            <H14font400Gray4>{labels.second}</H14font400Gray4>
                         </View>
-                        <ButtonNow
+                        {/* <ButtonNow
                             style={{ backgroundColor: colors.purpleVar3 }}
                             textStyle={{ color: colors.white }}
                             funCallback={handleSubmitOtp}
-                            label={labels.verifyAcc} />
+                            label={labels.verifyAcc} /> */}
+
+                        <View style={{ marginVertical: 30 }}>
+                            <LongPurpleButton
+                                title={labels.verifyAcc}
+                                onChange={handleSubmitOtp}
+                            />
+                        </View>
                     </View>
                 </ImageBackground>
             </MainContainer>
