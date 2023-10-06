@@ -15,6 +15,7 @@ import { H15Grey, H16fontNormalGray, H16fontNormalGray4, H18fontBoldBlack } from
 import { HalfCircleSecond, ModalContainerSecond, ModalContentSecond } from '../styledComponent/styledComponent';
 import { labels } from '../utils/labels';
 import { callBottomDataFourth } from '../utils/data/callsData';
+import { screenName } from '../utils/screenName';
 
 
 // ====================   Chat based Header Component   ====================
@@ -24,6 +25,7 @@ interface ChatHeaderProps {
 }
 
 export const ChatHeader: React.FC<ChatHeaderProps> = ({ title }) => {
+    const navigation =useNavigation()
     return (
         <View style={[flexRow, spaceBetween, mh20, mv15]}>
             <Text style={styles.chatHeaderText}>{title}</Text>
@@ -38,7 +40,7 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({ title }) => {
                     {/* <CustomIcon name='delete' type='AntDesign' size={23} color={colors.white} /> */}
                     <DeleteWhiteIcon />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => { }} style={mh10}>
+                <TouchableOpacity onPress={() => {navigation.navigate(screenName.SettingsScreen as never)}} style={mh10}>
                     <ProfileAvatarIcon />
                 </TouchableOpacity>
             </View>

@@ -205,7 +205,7 @@
 //             </View>
 //         </Fragment>
 //     )
-    
+
 // }
 
 // const styles = StyleSheet.create({
@@ -283,8 +283,8 @@
 // export default ChatView
 
 
-import React, { Fragment, useState ,useRef} from 'react';
-import { Text, View, ImageBackground, StyleSheet, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Image,Animated,PanResponder } from 'react-native';
+import React, { Fragment, useState, useRef } from 'react';
+import { Text, View, ImageBackground, StyleSheet, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Image, Animated, PanResponder } from 'react-native';
 import { colors } from '../../utils/colors';
 import { flexRow, pb10, pl15, pl6, pt10, spaceBetween } from '../../components/commonStyles';
 import { H14BlackText, H16BlackText } from '../../components/commonText';
@@ -347,12 +347,12 @@ export const TabControl: React.FC<TabControlProps> = ({ tabs, activeTab, onTabPr
 export const DayDetails = () => {
     return (
         <>
-            <View style={{ height:28, backgroundColor: colors.white, width:115, borderRadius: 20, alignItems: 'center', justifyContent: 'center', marginHorizontal: 100 }}>
-                <Text style={{fontSize:12,fontWeight:'400',color:'#0A0A0A'}}>{labels.chatViewToday}</Text>
+            <View style={{ height: 28, backgroundColor: colors.white, width: 115, borderRadius: 20, alignItems: 'center', justifyContent: 'center', marginHorizontal: 100 }}>
+                <Text style={{ fontSize: 12, fontWeight: '400', color: '#0A0A0A' }}>{labels.chatViewToday}</Text>
             </View>
         </>
     );
-    
+
 
 };
 
@@ -472,7 +472,7 @@ const ChatView = () => {
 
     // Function to show "hai" text
     const showHaiText = () => {
-       console.log('hii')
+        console.log('hii')
     };
 
     return (
@@ -480,12 +480,13 @@ const ChatView = () => {
             <View style={{ flex: 1, backgroundColor: isDark() ? colors.black : colors.white }}>
                 {/* <StatusBar backgroundColor={colors.purpleVar3} /> */}
                 <View style={{ flex: 1 }}>
-                    <HeaderChatView backgroundColor={colors.purpleVar3} profileNavigate={screenName.UserProfile} videoNavigate={screenName.SingleVideoCall} audioNavigate={screenName.SingleAudioCallRing} title={labels.horaceKeene} subTitle={labels.online} />
                     <ImageBackground
                         source={ChatBackgroundImg}
                         style={styles.backgroundImage}
-                        imageStyle={{ opacity: 0.1, backgroundColor: 'rgba(200, 180, 230, 0.5)' }}
+                        imageStyle={{ opacity: 0.1, backgroundColor: 'rgba(200, 180, 260, 10)' }}
                     >
+                        <HeaderChatView backgroundColor={colors.purpleVar3} profileNavigate={screenName.UserProfile} videoNavigate={screenName.SingleVideoCall} audioNavigate={screenName.SingleAudioCallRing} title={labels.horaceKeene} subTitle={labels.online} />
+
                         <View style={[{ alignItems: 'center' }, pt10]}>
                             <DayDetails />
                         </View>
@@ -494,7 +495,7 @@ const ChatView = () => {
                                 <View style={[message.type === 'sentmsg' ? { alignItems: 'flex-end' } : { alignItems: 'flex-start' }, { paddingTop: 10, marginHorizontal: 20 }]}
                                     key={message.id}>
                                     <View style={{ flexDirection: 'row' }}>
-                                        <Text style={{ fontSize: 12, color: colors.greyVar3,fontWeight:'400' }}>{message.time}</Text>
+                                        <Text style={{ fontSize: 12, color: colors.greyVar3, fontWeight: '400' }}>{message.time}</Text>
                                         <Text style={pl6}> {message.icon}</Text>
                                     </View>
                                     {/* Use SwipableText for message.message and message.msg */}
@@ -503,7 +504,7 @@ const ChatView = () => {
                                 </View>
                             ))}
                         </ScrollView>
-                        <FooterChatView  onSwipeRight={showHaiText} />
+                        <FooterChatView onSwipeRight={showHaiText} />
 
                     </ImageBackground>
                     <View>
@@ -545,6 +546,7 @@ const styles = StyleSheet.create({
     backgroundImage: {
         flex: 1,
         resizeMode: 'cover',
+
     },
     receiveMsgCard: {
         backgroundColor: colors.white,

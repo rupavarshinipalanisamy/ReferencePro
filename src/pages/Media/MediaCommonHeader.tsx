@@ -12,6 +12,8 @@ import Docs from './Docs';
 import Video from './Video';
 import Link from './Link';
 import { CustomModal } from '../../components/commonComponents';
+import { useNavigation } from '@react-navigation/native';
+import { screenName } from '../../utils/screenName';
 
 export type MediaProps = {
 
@@ -223,15 +225,18 @@ interface StarredAndVerifycodeHeaderProps {
 }
 
 export const StarredAndVerifycodeHeader = (props: StarredAndVerifycodeHeaderProps) => {
+    const navigation=useNavigation();
     return (
         <View>
             <TopContainerWhiteCard1 height={DevHeight / 7.5}{...props}>
                 <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
                     <View style={[flexRow, spaceBetween]}>
                         <View style={[flexRow]}>
-                            <View style={[alignItemsCenter, justyfyCenter]}>
+                            <TouchableOpacity style={[alignItemsCenter, justyfyCenter]}
+                             onPress={navigation.goBack}
+                            >
                                 <CustomIcon name='chevron-back-sharp' color={colors.black} size={16} type="Ionicons" />
-                            </View>
+                            </TouchableOpacity>
                             <View style={pl13}>
                                 <H18BlackText>{props.headerText}</H18BlackText>
                             </View>
@@ -270,20 +275,26 @@ interface SearchHeader {
     height?: number;
     headerText: string;
     searchIcon?: boolean;
+    editIcon?:boolean
 }
 
 export const SearchHeader = (props: SearchHeader) => {
+    const navigation =useNavigation()
     return (
         <View>
             <TopContainerWhiteCard1 height={DevHeight / 7.5}{...props}>
                 <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
                     <View style={[flexRow, spaceBetween]}>
                         <View style={[flexRow]}>
-                            <View style={[justyfyCenter, alignItemsCenter, { marginTop: 2 }]}>
+                            <TouchableOpacity style={[justyfyCenter, alignItemsCenter, { marginTop: 2 }]}
+                            onPress={navigation.goBack}
+                            >
                                 <CustomIcon name='chevron-left' color={colors.black} size={18} type="entypo" />
-                            </View>
+                            </TouchableOpacity>
                             <H18BlackText style={pl13}>{props.headerText}</H18BlackText>
                         </View>
+                        {props.editIcon && 
+                        <CustomIcon name='pencil' size={20} color={colors.black} type='SimpleLineIcons' />}
                         {props.searchIcon &&
                             <CustomIcon name="search" size={20} color={colors.greyVar4} type="Ionicons" />
                         }

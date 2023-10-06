@@ -75,7 +75,7 @@ const ImageScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginHorizontal: 15
+        marginHorizontal: 24
     },
     gridContainer: {
         flexDirection: 'row',
@@ -84,8 +84,8 @@ const styles = StyleSheet.create({
     },
     touchable: {
         aspectRatio: 1,
-        width: (Dimensions.get('window').width - 56) / 3,
-        margin: 3,
+        width: (Dimensions.get('window').width - 72) / 3,
+        margin: 4,
     },
     image: {
         flex: 1,
