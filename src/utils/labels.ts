@@ -41,18 +41,20 @@ export const labels = {
     lastName: 'Last Name',
     phNumber: 'Phone Number',
     userName: 'User Name',
-    haveanAccount: 'Already have an account?',
-    remeberyourPassword: 'You remember your password?',
+    haveanAccount: 'Already have an account? ',
+    remeberyourPassword: 'You remember your password? ',
     resetPassword: 'Reset Password',
     forgetPassword1: 'Forget Password',
     fPmsg: "Don't worry! It happens.Please enter the address associated with your account.",
     createpassword: 'Create New Password',
-    cpMsg: 'Your ne password must be different from previous used passwords.',
+    cpMsg: 'Your ne password must be different from ',
+    cpMsg1:'previous used passwords.',
     changePwd: 'Change Password',
     newPwd: 'New Password',
     confirmPwd: 'Confirm Password',
     verification: 'Verification',
-    verifyMsg: 'Enter 6-digit code sent to you phone number ******6698',
+    verifyMsg: 'Enter 6-digit code sent to you phone number ',
+    number: '******6698',
     didnotReceivecode: "I didn't receive code.",
     resendCode: 'Resend code.',
     verifyAcc: 'Verify My Account',
@@ -195,7 +197,28 @@ export const labels = {
     AddOtherParticipants : 'Add Other Participants',
     ApproveNewParticipants : 'Approve New Participants',
     EditGroupAdmins : 'Edit Group Admins',
-    VerifyText:'To verify that messages and calls with Horace Keene are end-to-end encrypted, scan this code on their phone. You can also compare the number above instead.'
+    VerifyText:'To verify that messages and calls with Horace Keene are end-to-end encrypted, scan this code on their phone. You can also compare the number above instead.',
+    alexander: 'Alexander Manuel',
+    annette:'Annette Theroit',
+    bacon:'Bacon Mark',
+    bennett:'Bennett Gerard',
+    charles: 'Charles Sellars',
+    dina:'Dina Brown',
+    debra:'Debra Jones',
+    elaine:'Elaine Vaillancourt',
+    edward:'Edward Sanchez',
+    location1:'San Fransixcon, CA',
+    location2:'Brentwood, NY',
+    location3: 'Riverside, CA',
+    location4: 'Frederick, MD',
+    location5:'Zephyr, NC',
+    location6:'Jackson, TN'
+
+
+
+
+
+
 
 };
 

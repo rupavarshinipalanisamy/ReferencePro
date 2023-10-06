@@ -2,19 +2,45 @@ import { useNavigation } from '@react-navigation/native';
 import React, { Fragment, useState } from 'react';
 import { StatusBar, Text, TouchableOpacity, View } from 'react-native';
 import { colors } from 'react-native-elements';
-import { SettingsModal, LastSeenModal, GroupsModal, ThemeModal, ArchieveChatModal, DeleteModal, DeleteAllModal } from '../../components/commonModal';
-import { flexRow, mt20, alignItemsCenter, ph15, mh20, spaceBetween } from '../../components/commonStyles';
+import { CustomModal,  } from '../../components/commonModal';
+import { flexRow, mt20, alignItemsCenter, ph15, mh20, spaceBetween, justyfyCenter } from '../../components/commonStyles';
 import { H16font900Black, H16fontNormalGray4, H12fontNormalGray } from '../../components/commonText';
 import { MainContainer, TopContainerWhiteCard } from '../../components/commonView';
 import CustomIcon from '../../utils/Icons';
-import { privacyData } from '../../utils/data/privacyData';
 import { labels } from '../../utils/labels';
 import { chatSettings } from '../../utils/data/chatsData';
+import DeleteLogo from '../../../assets/images/delete1-logo.svg'
+import { chooseTheme } from '../../utils/data/modalData';
+import { RadioBtn } from '../../components/commonComponents';
+
 
 export type chatSettingsProps = {
 
 }
 
+
+export const RenderTheme = () => {
+    const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
+
+      const handleStatusSelect = (status: string) => {
+        setSelectedStatus(status);
+      };
+    return (
+        <View>
+      {chooseTheme.map((data, index) => (
+      <View key={index} style={{flexDirection:'row'}}>
+        <RadioBtn
+                      key={data.id}
+        
+                          selected= { selectedStatus === data.status}
+                          onPress={() => handleStatusSelect(data.status)}
+                        />
+                       <Text>{data.status}</Text>
+                       </View>
+                      ))}
+                </View>
+    )
+}
 
 const ChatSettings = (props: chatSettingsProps) => {
 
@@ -50,8 +76,8 @@ const ChatSettings = (props: chatSettingsProps) => {
                 </TopContainerWhiteCard>
                 <View style={[mh20, mt20]}>
 
-                <H16fontNormalGray4>{labels.theme} </H16fontNormalGray4>
-                <H12fontNormalGray>{labels.light}</H12fontNormalGray>
+                    <H16fontNormalGray4>{labels.theme} </H16fontNormalGray4>
+                    <H12fontNormalGray>{labels.light}</H12fontNormalGray>
                     {chatSettings.map((data, index) => {
                         return (
                             <View key={data.id} style={[flexRow, spaceBetween]}>
@@ -73,12 +99,13 @@ const ChatSettings = (props: chatSettingsProps) => {
                     })}
                 </View>
                 {selectedModalId === 1 && (
-                    <ThemeModal
-                        isVisible={true}
+                    <CustomModal isVisible={true}
                         onClose={closeModal}
-                    />
-                )}
-
+                        contentComponent={<RenderTheme/>}
+                        image={<DeleteLogo/>} 
+                        headingText={labels.chooseTheme}
+                        />)}
+                {/* 
                 {selectedModalId === 4 && (
                     <ArchieveChatModal
                         isVisible={true}
@@ -96,7 +123,7 @@ const ChatSettings = (props: chatSettingsProps) => {
                         isVisible={true}
                         onClose={closeModal}
                     />
-                )}
+                )} */}
             </MainContainer>
         </Fragment>
     )

@@ -111,7 +111,6 @@ const styles = StyleSheet.create({
   radioButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 5,
   },
   radioButtonRound: {
     width: 20,
@@ -120,22 +119,47 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor:colors.greyVar4
+    borderColor: colors.greyVar2
   },
-  selectedRadioBtn:{
+  selectedRadioBtn: {
     width: 10,
     height: 10,
     borderRadius: 5,
-    backgroundColor: colors.purpleVar3,
-  },
-  receiveMsgCard: {
     backgroundColor: colors.white,
-    borderTopRightRadius: 8,
-    borderBottomRightRadius: 8,
-    borderBottomLeftRadius: 8,
-    padding: 10
   },
+  // receiveMsgCard: {
+  //   backgroundColor: colors.white,
+  //   borderTopRightRadius: 8,
+  //   borderBottomRightRadius: 8,
+  //   borderBottomLeftRadius: 8,
+  //   padding: 10
+  // },
 
+  cardSurface: {
+    backgroundColor: colors.white,
+    padding: 10,
+    marginTop: 20,
+    marginHorizontal: 15,
+    margin: 20,
+    flexDirection: 'row',
+    borderRadius: 8,
+    shadowColor: colors.greyVar3,
+  },
+  longButton: {
+    height: 50,
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.purpleVar3
+  },
+  smallButton: {
+    height: 42,
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: colors.greyVar4
+
+  }
 });
 const {
   rowSpaceBetween,
@@ -156,7 +180,14 @@ const {
   radioButton,
   radioButtonRound,
   selectedRadioBtn,
-  receiveMsgCard
+  // receiveMsgCard,
+  cardSurface,
+  longButton,
+  smallButton
+
+
+
+
 } = styles;
 
 
@@ -196,6 +227,9 @@ export const CommonButtonNow = styled(TouchableOpacity)`
 export const CommonButtonBook = styled(TouchableOpacity)`
     ${commonButtonBook};
   `;
+  export const TwoSmallButton = styled(TouchableOpacity)`
+  ${smallButton};
+  `
 
 export const TopContainerWhiteCard = styled(View)`
 backgroundColor: white;
@@ -247,3 +281,11 @@ export const TopContainerWhiteCard1 = styled(View) <TopContainerWhiteCardProps>`
   elevation: 2;
   shadow-color: #000;
 `;
+
+export const CardSurface = styled(TouchableOpacity)`
+${cardSurface};
+elevation:4
+`
+export const LongButton = styled(TouchableOpacity)`
+${longButton}
+`

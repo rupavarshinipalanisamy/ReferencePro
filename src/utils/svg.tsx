@@ -29,6 +29,16 @@ import GreenSignal from '../../assets/images/green-signal.svg'
 import YellowSignal from '../../assets/images/yellow-signal.svg'
 import BlueSignal from '../../assets/images/blue-signal.svg'
 import GroupProfileAvatar from '../../assets/images/GroupProfileAvatar.svg'
+import ConImg1 from '../../assets/images/conImg1.svg'
+import ConImg2 from '../../assets/images/conImg2.svg'
+import ConImg3 from '../../assets/images/conImg3.svg'
+import ConImg4 from '../../assets/images/conImg4.svg'
+import ConImg5 from '../../assets/images/conImg5.svg'
+import ConImg6 from '../../assets/images/conImg6.svg'
+import ConImg7 from '../../assets/images/conImg7.svg'
+import ConImg8 from '../../assets/images/conImg8.svg'
+import ConImg9 from '../../assets/images/conImg9.svg'
+
 
 
 export const LeftArrowWhiteIcon = () => (
@@ -117,4 +127,31 @@ export const BlueSignalIcon = () => (
 );
 export const GroupProfileAvatarIcon = () => (
     <GroupProfileAvatar />
+    );
+export const ContactImg1 = () => (
+    <ConImg1 />
+);
+export const ContactImg2 = () => (
+    <ConImg2 />
+);
+export const ContactImg3 = () => (
+    <ConImg3 />
+);
+export const ContactImg4 = () => (
+    <ConImg4 />
+);
+export const ContactImg5 = () => (
+    <ConImg5 />
+);
+export const ContactImg6 = () => (
+    <ConImg6 />
+);
+export const ContactImg7 = () => (
+    <ConImg7 />
+);
+export const ContactImg8 = () => (
+    <ConImg8 />
+);
+export const ContactImg9 = () => (
+    <ConImg9 />
 );

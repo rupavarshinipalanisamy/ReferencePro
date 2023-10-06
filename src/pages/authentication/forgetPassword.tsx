@@ -2,10 +2,10 @@ import React, { Fragment, } from 'react';
 import PasswordLogo from '../../../assets/images/forget-password.svg';
 import { Controller, useForm } from 'react-hook-form';
 import { ImageBackground, StatusBar, TouchableOpacity, View } from 'react-native';
-import { ButtonNow } from '../../components/commonButtons';
+import { ButtonNow, LongPurpleButton } from '../../components/commonButtons';
 import { CustomTextInput } from '../../components/commonInputFields';
-import { m30, ph30, pv8, justyfyCenter } from '../../components/commonStyles';
-import {  H18fontNormalGray, H16fontNormalGray, H16fontNormalBlue, H25fontBoldBlack } from '../../components/commonText';
+import { m30, ph30, pv8, justyfyCenter, mh25 } from '../../components/commonStyles';
+import {  H18fontNormalGray, H16fontNormalGray, H20font600Black, H14font400Gray4, H14font400Blue,  } from '../../components/commonText';
 import { MainContainer } from '../../components/commonView';
 import { LoginLogoBigCircle, LoginLogoCircle, IconInputContainer, TextContainer1 } from '../../styledComponent/styledComponent';
 import CustomIcon from '../../utils/Icons';
@@ -38,7 +38,7 @@ const ForgetPassword = (props: forgetPasswordProps) => {
         <Fragment>
             <MainContainer>
                 <ImageBackground source={require('../../../assets/images/png/background-image.png')} style={{ flex: 1 }}>
-                    <View style={m30}>
+                    <View style={{margin:28}}>
                         <TouchableOpacity onPress={() => navigation.goBack()}>
                             <CustomIcon name='arrow-back-outline' size={28} color={colors.black} type='Ionicons' />
                         </TouchableOpacity>
@@ -49,9 +49,9 @@ const ForgetPassword = (props: forgetPasswordProps) => {
                         </LoginLogoBigCircle>
                     </View>
                     <View>
-                        <View style={[ph30]}>
-                            <H25fontBoldBlack>{labels.forgetPassword1}</H25fontBoldBlack>
-                            <H18fontNormalGray style={[pv8]}>{labels.fPmsg}</H18fontNormalGray>
+                        <View style={[mh25]}>
+                            <H20font600Black>{labels.forgetPassword1}</H20font600Black>
+                            <H14font400Gray4 style={{marginVertical:8}}>{labels.fPmsg}</H14font400Gray4>
                             <IconInputContainer>
                                 <View style={[justyfyCenter]}>
                                     <CustomIcon name='email-outline' size={20} color={colors.greyVar4} type='MaterialCommunityIcons' />
@@ -64,7 +64,6 @@ const ForgetPassword = (props: forgetPasswordProps) => {
                                             placeholder={labels.emailaddress}
                                             value={value}
                                             onChangeText={onChange}
-                                            errorMessage={errors[formKeys.name]?.message.toString()}
                                         />
                                     )}
                                     rules={{
@@ -75,17 +74,18 @@ const ForgetPassword = (props: forgetPasswordProps) => {
                                     }}
                                 />
                             </IconInputContainer>
-                            <ButtonNow
-                                style={{ backgroundColor: colors.purpleVar3 }}
-                                textStyle={{ color: colors.white }}
-                                funCallback={handleSubmit(onLogin)}
-                                label={labels.resetPassword} />
+                            <View style={{marginVertical:30}}>
+                                    <LongPurpleButton
+                                        title={labels.resetPassword}
+                                        onChange={handleSubmit(onLogin)}
+                                    />
+                                </View>
                         </View>
                         <TextContainer1>
-                            <H16fontNormalGray>{labels.remeberyourPassword}</H16fontNormalGray>
+                            <H14font400Gray4>{labels.remeberyourPassword}</H14font400Gray4>
                             <TouchableOpacity
                                 onPress={() => { navigation.navigate(screenName.LoginEmail as never) }}>
-                                <H16fontNormalBlue >{labels.logIn}</H16fontNormalBlue>
+                                <H14font400Blue >{labels.logIn}</H14font400Blue>
                             </TouchableOpacity>
                         </TextContainer1>
                     </View>

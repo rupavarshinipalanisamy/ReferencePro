@@ -32,7 +32,7 @@ export const bottomNavData = [
         iconName : 'person-circle-outline',
         iconType : "Ionicons",
         iconSize : 25,
-        screenName : screenName.SettingsScreen,
+        screenName : screenName.ContactPage,
     },
     {
         id: 5,

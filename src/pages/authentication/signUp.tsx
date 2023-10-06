@@ -7,10 +7,9 @@ import Google from '../../../assets/images/google.svg';
 import FaceBook from '../../../assets/images/facebook.svg';
 import Apple from '../../../assets/images/apple.svg';
 import CountryLogo from '../../../assets/images/counrty-logo.svg';
-import { ButtonNow } from '../../components/commonButtons';
 import { CustomTextInput } from '../../components/commonInputFields';
-import { m30, ph30, pv8, justyfyCenter, pv20, flexRow, alignItemsCenter, ml15, mt15, ml10, mb20 } from '../../components/commonStyles';
-import {  H18fontNormalGray, H16fontNormalGray, H16fontNormalBlue, H25fontBoldBlack } from '../../components/commonText';
+import { m30, ph30, pv8, justyfyCenter, pv20, flexRow, alignItemsCenter, ml15, mt15, ml10, mb20, mh25 } from '../../components/commonStyles';
+import {  H18fontNormalGray, H16fontNormalGray, H16SemiBoldBlack, H20font600Black, H14font400Gray4, H14font400Blue, } from '../../components/commonText';
 import { MainContainer } from '../../components/commonView';
 import { LoginLogoBigCircle, LoginLogoCircle, IconInputContainer, InputContainer1, CheckBoxContainer, BottomStyle, SocialLogoContainer, SocialLogoCircle, TextContainer } from '../../styledComponent/styledComponent';
 import CustomIcon from '../../utils/Icons';
@@ -18,6 +17,7 @@ import {labels} from '../../utils/labels';
 import { screenName } from '../../utils/screenName';
 import { requiredValidation, minLengthValidation, validationSchema } from '../../utils/validationconfig';
 import { colors } from '../../utils/colors';
+import { LongPurpleButton } from '../../components/commonButtons';
 
 export type signUpProps = {
 }
@@ -71,7 +71,7 @@ const SignUp = (props: signUpProps) => {
                 <ImageBackground source={require('../../../assets/images/png/background-image.png')} style={{ flex: 1 }}>
                     <View >
                         <ScrollView>
-                            <View style={m30}>
+                            <View style={{margin:28}}>
                                 <TouchableOpacity onPress={() => navigation.goBack()}>
                                     <CustomIcon name='arrow-back-outline' size={28} color={colors.black} type='Ionicons' />
                                 </TouchableOpacity>
@@ -82,9 +82,9 @@ const SignUp = (props: signUpProps) => {
                                 </LoginLogoBigCircle>
                             </View>
                             <View>
-                                <View style={[ph30]}>
-                                    <H25fontBoldBlack>{labels.signUp}</H25fontBoldBlack>
-                                    <H18fontNormalGray style={[pv8]}>{labels.newaccount}</H18fontNormalGray>
+                                <View style={[mh25]}>
+                                    <H20font600Black>{labels.signUp}</H20font600Black>
+                                    <H14font400Gray4 style={{marginVertical:8}}>{labels.newaccount}</H14font400Gray4>
                                     <IconInputContainer>
                                         <View style={[justyfyCenter]}>
                                             <CustomIcon name='person' size={20} color={colors.greyVar4} type='octicons' />
@@ -95,7 +95,7 @@ const SignUp = (props: signUpProps) => {
                                             onChangeText={handleFirstName}
                                         />
                                     </IconInputContainer>
-                                    <View style={[pv20]}>
+                                    <View >
                                         <IconInputContainer>
                                             <View style={[justyfyCenter]}>
                                                 <CustomIcon name='person' size={20} color={colors.greyVar4} type='octicons' />
@@ -119,7 +119,6 @@ const SignUp = (props: signUpProps) => {
                                                     placeholder={labels.emailaddress}
                                                     value={value}
                                                     onChangeText={onChange}
-                                                    errorMessage={errors[formKeys.name]?.message.toString()}
                                                 />
                                             )}
                                             rules={{
@@ -130,7 +129,7 @@ const SignUp = (props: signUpProps) => {
                                             }}
                                         />
                                     </IconInputContainer>
-                                    <View style={[pv20]}>
+                                    <View >
                                         <IconInputContainer>
                                             <View style={[justyfyCenter]}>
                                                 <CustomIcon name='person' size={20} color={colors.greyVar4} type='octicons' />
@@ -154,11 +153,11 @@ const SignUp = (props: signUpProps) => {
                                         <CustomTextInput
                                             placeholder={labels.phNumber}
                                             value={phoneNumber}
-                                            onChange={handlePhoneNumber}
+                                            onChangeText={handlePhoneNumber}
                                             keyboardType='numeric'
                                         />
                                     </IconInputContainer>
-                                    <View style={[pv20]}>
+                                    <View >
                                         <IconInputContainer>
                                             <InputContainer1>
                                                 <View style={[flexRow, alignItemsCenter]}>
@@ -168,7 +167,6 @@ const SignUp = (props: signUpProps) => {
                                                         control={control}
                                                         render={({ field: { onChange, value } }) => (
                                                             <CustomTextInput
-                                                                errorMessage={errors[formKeys.password]?.message.toString()}
                                                                 placeholder={labels.password}
                                                                 value={value}
                                                                 secureTextEntry={showPassword}
@@ -195,14 +193,16 @@ const SignUp = (props: signUpProps) => {
                                             </InputContainer1>
                                         </IconInputContainer>
                                     </View>
-                                    <ButtonNow
-                                        style={{ backgroundColor: colors.purpleVar3 }}
-                                        textStyle={{ color: colors.white }}
-                                        funCallback={handleSubmit(onSignup)}
-                                        label={labels.signUp} />
+                                 <View style={{marginVertical:30}}>
+                                 <LongPurpleButton
+                                        title={labels.signUp}
+                                        onChange={()=>{}}
+                                    />
+                                 </View>
+                                 
                                     <CheckBoxContainer>
                                         <BottomStyle />
-                                        <H18fontNormalGray>{labels.continuemsg}</H18fontNormalGray>
+                                        <H14font400Gray4>{labels.continuemsg}</H14font400Gray4>
                                         <BottomStyle />
                                     </CheckBoxContainer>
                                     <SocialLogoContainer>
@@ -218,10 +218,10 @@ const SignUp = (props: signUpProps) => {
                                     </SocialLogoContainer>
                                 </View>
                                 <TextContainer style={[mb20]}>
-                                    <H16fontNormalGray>{labels.haveanAccount}</H16fontNormalGray>
+                                    <H14font400Gray4>{labels.haveanAccount}</H14font400Gray4>
                                     <TouchableOpacity
                                         onPress={() => { navigation.navigate(screenName.LoginEmail as never) }}>
-                                        <H16fontNormalBlue >{labels.logIn}</H16fontNormalBlue>
+                                        <H14font400Blue >{labels.logIn}</H14font400Blue>
                                     </TouchableOpacity>
                                 </TextContainer>
                             </View>
