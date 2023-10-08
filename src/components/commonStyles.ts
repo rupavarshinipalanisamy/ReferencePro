@@ -55,6 +55,9 @@ const styles = StyleSheet.create({
   ml10: {
     marginLeft: 10,
   },
+  ml20: {
+    marginLeft: 20,
+  },
   mr0: {
     marginRight: 0,
   },
@@ -404,6 +407,12 @@ const styles = StyleSheet.create({
   borderRadius10: {
     borderRadius: 10,
   },
+  borderRadius15: {
+    borderRadius: 15,
+  },
+  borderRadius20: {
+    borderRadius: 20,
+  },
   borderRadius0: {
     borderRadius: 0,
   },
@@ -461,6 +470,8 @@ export const {
   borderRadius0,
   borderRadius6,
   borderRadius10,
+  borderRadius15,
+  borderRadius20,
   borderRadius25,
   border0,
   border1,
@@ -496,6 +507,7 @@ export const {
   ml5,
   m90,
   ml10,
+  ml20,
   mh20,
   mh25,
   mh30,

@@ -10,7 +10,7 @@ import { labels } from '../../utils/labels';
 import { createGroupUserSelectData } from '../../utils/data/groupsData';
 import { MultiSelectOption } from '../../components/commonComponents';
 import { ButtonContainer } from '../../styledComponent/styledComponent';
-import { ButtonSaveandCancel } from '../../components/commonButtons';
+// import { ButtonSaveandCancel } from '../../components/commonButtons';
 
 export type StatusOnlyShareWithProps = {
 
@@ -94,7 +94,7 @@ const StatusOnlyShareWith = (props: StatusOnlyShareWithProps) => {
                     }
 
                 </View>
-                <ButtonContainer style={[mh20]}>
+                {/* <ButtonContainer style={[mh20]}>
                     <ButtonSaveandCancel style={{
                         backgroundColor: colors.white
                     }}
@@ -107,7 +107,7 @@ const StatusOnlyShareWith = (props: StatusOnlyShareWithProps) => {
                         textStyle={{ color: colors.white }}
                         funCallback={() => { }}
                         label={labels.Next} />
-                </ButtonContainer>
+                </ButtonContainer> */}
             </ScrollView>
         </View>
     )

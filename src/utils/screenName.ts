@@ -50,4 +50,5 @@ export const screenName = {
     StatusOnlyShareWith : 'StatusOnlyShareWith',
     StatusMyContactExcept : 'StatusMyContactExcept',
     EditAccountSettings : 'EditAccountSettings',
+    DeleteAccount : 'DeleteAccount',
 };

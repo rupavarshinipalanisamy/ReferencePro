@@ -41,6 +41,12 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: colors.greyVar0
   },
+  commonLineDividerPurple: {
+    width: '88%',
+    alignSelf: 'center',
+    height: 1,
+    backgroundColor: colors.purpleVar2
+  },
   tabContainer: {
     fontSize: 16,
     fontWeight: '500',
@@ -168,6 +174,7 @@ const {
   purpleMainContainer,
   subContainer,
   commonLineDividerGrey,
+  commonLineDividerPurple,
   tabContainer,
   textNow,
   commonButtonNow,
@@ -198,6 +205,9 @@ export const PurpleMainContainer = styled(SafeAreaView) <{ secondary?: boolean }
 `;
 export const CommonLineDividerGrey = styled(View)`
   ${commonLineDividerGrey}
+`
+export const CommonLineDividerPurple = styled(View)`
+  ${commonLineDividerPurple};
 `
 export const RowSpaceBetween = styled(View)`
   ${rowSpaceBetween}

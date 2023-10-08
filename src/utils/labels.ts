@@ -239,5 +239,6 @@ export const labels = {
     PhoneNo : '9988776655',
     Date : '25 August 1997',
     India : 'India',
+    DeleteThisAccount : 'Delete This Account',
 };
 

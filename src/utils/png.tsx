@@ -30,3 +30,4 @@ export const MediaImg3 = require('../../assets/images/png/mediaImg3.png');
 export const MediaImg4 = require('../../assets/images/png/mediaImg4.png');
 export const QrCodeImg = require('../../assets/images/png/qrcode.png');
 export const UserImg = require('../../assets/images/png/userImg.png');
+export const UsFlagTmg = require('../../assets/images/png/usFlag.png');

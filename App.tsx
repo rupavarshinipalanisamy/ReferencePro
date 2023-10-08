@@ -33,7 +33,6 @@ const App = (props: AppProps) => {
 
   if (isLoading) {
     return (
-
       <SplashScreenContainer>
         <StatusBar translucent backgroundColor="transparent" />
         <Image source={require('./assets/images/png/splash_image.png')} style={[w100, h100]} />
@@ -44,7 +43,7 @@ const App = (props: AppProps) => {
   return (
     <ThemeProvider>
       <View style={{ flex: 1 }}>
-        <RootNavigation initialRouteName={screenName.LoginEmail} />
+        <RootNavigation initialRouteName={screenName.SettingsScreen} />
       </View>
     </ThemeProvider>
   );

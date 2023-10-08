@@ -28,6 +28,9 @@ const styles = StyleSheet.create({
   greyVar3: {
     color: colors.greyVar3,
   },
+  greyVar4: {
+    color: colors.greyVar4,
+  },
   blueVar1: {
     color: colors.blueVar1
   },
@@ -37,8 +40,8 @@ const styles = StyleSheet.create({
   greyVar4Color: {
     color: colors.greyVar4,
   },
-  blueVar2:{
-color:colors.blueVar2,
+  blueVar2: {
+    color: colors.blueVar2,
   },
   h1: {
     fontSize: 25,
@@ -64,11 +67,11 @@ color:colors.blueVar2,
   h8: {
     fontSize: 15,
   },
-  h9:{
-    fontSize:14,
+  h9: {
+    fontSize: 14,
   },
-  h10:{
-    fontSize:12,
+  h10: {
+    fontSize: 12,
   },
   fontBold: {
     fontWeight: 'bold',
@@ -97,8 +100,8 @@ color:colors.blueVar2,
 
 
 });
-const { green, red, textcolorGray, black,blackvar2, white, purpleVar3, blueVar1, greyVar3, greyVar4Color,blueVar2 } = styles;
-const { fontBold, fontRegular,fontBold400, fontBold600, fontBold700, fontBold800, fontNormal, fontBold900 } = styles;
+const { green, red, textcolorGray, black, blackvar2, white, purpleVar3, blueVar1, greyVar3, greyVar4Color, blueVar2, greyVar4 } = styles;
+const { fontBold, fontRegular, fontBold400, fontBold600, fontBold700, fontBold800, fontNormal, fontBold900 } = styles;
 const {
   h1,
   h2,
@@ -157,6 +160,11 @@ export const H15BlackBold600 = styled(Text)`
   ${black};
   ${fontBold600}
   `
+export const H15PurpleVar3Bold500 = styled(Text)`
+  ${h8};
+  ${purpleVar3};
+  ${fontRegular};
+  `
 export const H14Grey = styled(Text)`
   ${h9};
   ${textcolorGray};
@@ -164,6 +172,11 @@ export const H14Grey = styled(Text)`
 `
 export const H15Blackvar2Bold500 = styled(Text)`
   ${h8};
+  ${blackvar2};
+  ${fontRegular};
+`
+export const H14Blackvar2Bold500 = styled(Text)`
+  ${h9};
   ${blackvar2};
   ${fontRegular};
 `
@@ -215,6 +228,11 @@ export const H14BlackText = styled(Text)`
 export const H14BlackVar2Bold400Text = styled(Text)`
   ${h9};
   ${blackvar2};
+  ${fontBold400};
+`;
+export const H14GreyVar4Bold400Text = styled(Text)`
+  ${h9};
+  ${greyVar4};
   ${fontBold400};
 `;
 export const H14purpleVar3Text = styled(Text)`
