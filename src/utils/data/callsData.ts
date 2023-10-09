@@ -262,6 +262,32 @@ export const AllCallsdata = [
         DurationColor : colors.greyVar4,
         img : Chatimg8Img,
     },
+    {
+        id : 9,
+        name : labels.DinaBrown,
+        text : '24 Jul 2023, 09:47 PM',
+        duration : 'Missed',
+        iconName : 'phone-incoming',
+        iconColor : colors.red,
+        iconType : 'Feather',
+        iconSize : 20,
+        status : 'inactive',
+        DurationColor : colors.red,
+        img : Chatimg7Img,
+    },
+    {
+        id : 10,
+        name : labels.JudyMercer,
+        text : '17 Jul 2023, 05:34 AM',
+        duration : '34:50',
+        iconName : 'phone-outgoing',
+        iconColor : colors.green,
+        iconType : 'Feather',
+        iconSize : 20,
+        status : 'inactive',
+        DurationColor : colors.greyVar4,
+        img : Chatimg8Img,
+    },
 ]
 
 export const callHistoryTodaydata = [

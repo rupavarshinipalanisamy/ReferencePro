@@ -293,10 +293,10 @@ export const colorIconsAdminData = [
 export const colorIconsDataSecond = [
     {
         id: 1,
-        name: 'Block User',
-        iconName: 'block-flipped',
-        iconType: "MaterialIcons",
-        iconSize: 20,
+        name: 'Exit Group',
+        iconName: 'logout',
+        iconType: "SimpleLineIcons",
+        iconSize: 18,
         iconColor: colors.red,
         bgcolor: colors.redVar1,
         screenName: screenName.Chats,

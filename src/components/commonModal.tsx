@@ -19,7 +19,6 @@ import { chooseTheme, clearAllChats, deleteAllChats, groupsData, lastSee, profil
 import { RadioButton, RadioButtonRound, SelectedRadioBtn } from './commonView';
 import CustomIcon from '../utils/Icons';
 import { LongPurpleButton } from './commonButtons';
-import { RadioBtn } from './commonComponents';
 
 export type CommonModalProps = {
   isVisible: boolean;
@@ -331,9 +330,9 @@ export type CommonModalProps = {
 //         <ModalContainer>
 //           <HalfCircle2 />
 //           <ModalContent>
-            // <View style={{ justifyContent: 'center', alignItems: 'center', bottom: 30 }}>
-            //   <DeleteLogo />
-            // </View>
+// <View style={{ justifyContent: 'center', alignItems: 'center', bottom: 30 }}>
+//   <DeleteLogo />
+// </View>
 //             <View>
 //               <H18fontBoldBlack>{labels.clearAllChats1}</H18fontBoldBlack>
 //               <H16fontNormalGray>{labels.deleteMsg}</H16fontNormalGray>
@@ -588,24 +587,26 @@ interface CustomModalProps {
   isVisible: boolean;
   onClose: () => void;
   contentComponent: React.ReactNode;
-  image ? : React.ReactNode;
-  headingText ?: string;
+  iconName: string;
+  iconType: string;
+  iconSize:number;
 }
 
 
-export const CustomModal: React.FC<CustomModalProps> = ({ isVisible, onClose, contentComponent ,image,headingText}) => {
+export const IconModal: React.FC<CustomModalProps> = ({ isVisible, onClose, contentComponent, iconName, iconType,iconSize }) => {
   return (
-    <Modal transparent={true} animationType="slide" visible={isVisible} onRequestClose={onClose}>
+<Modal transparent={true} animationType="slide" visible={isVisible} onRequestClose={onClose}>
       <View style={{ flex: 1 }}>
         <ModalContainer>
           <HalfCircle2 />
-          <ModalContent1>
-          <View style={{ justifyContent: 'center', alignItems: 'center',bottom:10 }}>
-             {image}
+          <ModalContent1 style={{ }}>
+            <View style={{ backgroundColor: colors.purpleVar3, height: 47, width: 47, borderRadius: 25, bottom: 25, alignSelf: 'center', justifyContent: 'center' }}>
+              <View style={[alignItemsCenter, justyfyCenter]}>
+                <CustomIcon name={iconName} size={iconSize} color={colors.white} type={iconType} />
+              </View>
             </View>
-            <H16font600Black style={[mh15]}>{headingText}</H16font600Black>
             {contentComponent}
-            </ModalContent1>
+          </ModalContent1>
         </ModalContainer>
       </View>
     </Modal>

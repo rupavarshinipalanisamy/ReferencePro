@@ -240,5 +240,9 @@ export const labels = {
     Date : '25 August 1997',
     India : 'India',
     DeleteThisAccount : 'Delete This Account',
+    DeleteChat : 'Delete Chat',
+    Exit : 'Exit',
+    Camera : 'Camera',
+    Gallery : 'Gallery',
 };
 

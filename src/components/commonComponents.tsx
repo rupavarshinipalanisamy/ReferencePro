@@ -1,7 +1,7 @@
 import React, { useState, ReactNode } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal, Switch, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mh20, ml10, mr10, mt10, mt15, mt20, mt30, mt5, mv10, mv15, p10, p5, pl10, pl13, pl5, pr10, pt10, spaceAround, spaceBetween, textCenter } from './commonStyles';
+import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mh20, mh30, ml10, ml15, mr10, mt10, mt15, mt20, mt30, mt5, mv10, mv15, mv20, p10, p5, pl10, pl13, pl5, pr10, pt10, spaceAround, spaceBetween, textCenter } from './commonStyles';
 import { colors } from '../utils/colors';
 import { ArchiveIconBlackIcon, ArchiveIconWhiteIcon, DeleteWhiteIcon, LeftArrowWhiteIcon, MikeWhiteIcon, PinWhiteIcon, ProfileAvatarIcon, ThreeDotsWhiteIcon } from '../utils/svg';
 import { DevHeight, DevWidth } from '../utils/device';
@@ -11,12 +11,14 @@ import CustomIcon from '../utils/Icons';
 import { useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal';
 import { threeDotsOption } from '../utils/data/modalData';
-import { H15Grey, H16fontNormalGray, H16fontNormalGray4, H18fontBoldBlack } from './commonText';
+import { H15Grey, H16font600Black, H16fontNormalGray, H16fontNormalGray4, H18fontBoldBlack } from './commonText';
 import { HalfCircleSecond, ModalContainerSecond, ModalContentSecond } from '../styledComponent/styledComponent';
 import { labels } from '../utils/labels';
 import { callBottomDataFourth } from '../utils/data/callsData';
 import { screenName } from '../utils/screenName';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import { IconModal } from './commonModal';
+import { SmallButton } from './commonButtons';
 
 // ====================   Chat based Header Component   ====================
 
@@ -30,24 +32,76 @@ interface ChatHeaderProps {
 
 export const ChatHeader: React.FC<ChatHeaderProps> = ({ title, isCall, icon1Navigate, icon2Navigate, icon3Navigate }) => {
     const navigation = useNavigation();
+    const [clearCallOptionModal, setClearCallOptionModal] = useState(false);
+
+    const handleClearCallOptionModal = () => {
+        setClearCallOptionModal(!clearCallOptionModal);
+    }
+
+    const ClearCallOption = () => {
+        const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+        const handleCancelButton = () => {
+            setIsCancelButtonActive(true);
+        };
+
+        const handleDeleteChatButton = () => {
+            setIsCancelButtonActive(false);
+        };
+
+        return (
+            <View style={[mh20]} >
+                <H16font600Black>Clear Call Log?</H16font600Black>
+                <Text style={[mt20]}>Do you want to clear your entire call log.</Text>
+                <RowSpaceBetween style={[mv20]}>
+                    <SmallButton
+                        title={labels.cancel}
+                        onChange={handleCancelButton}
+                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
+                        textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
+                        borderWidth={isCancelButtonActive ? 0 : 1}
+                        width={DevWidth / 2.6}
+                    />
+                    <SmallButton
+                        title={labels.DeleteChat}
+                        onChange={handleDeleteChatButton}
+                        backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
+                        textColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
+                        borderWidth={isCancelButtonActive ? 1 : 0}
+                        width={DevWidth / 2.6}
+                    />
+                </RowSpaceBetween>
+            </View>
+        )
+    }
+
     return (
         <View style={[flexRow, spaceBetween, mh20, mv15]}>
             <Text style={styles.chatHeaderText}>{title}</Text>
             {
                 isCall ? (
-                    <View style={[flexRow, spaceBetween]}>
-                        <TouchableOpacity onPress={() => { navigation.navigate(icon1Navigate as never) }} style={mh10}>
-                            <CustomIcon name='search' color={colors.white} type='Ionicons' size={22} />
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => { navigation.navigate(icon2Navigate as never) }} style={mh10}>
-                            <CustomIcon name='add' type='Ionicons' size={22} color={colors.white} />
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => { navigation.navigate(icon3Navigate as never) }} style={mh10}>
-                            <CustomIcon name="delete" size={22} color={colors.white} type='AntDesign' />
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => { navigation.navigate(screenName.SettingsScreen as never) }} style={mh10}>
-                            <ProfileAvatarIcon />
-                        </TouchableOpacity>
+                    <View>
+                        <View style={[flexRow, spaceBetween]}>
+                            <TouchableOpacity onPress={() => { }} style={mh10}>
+                                <CustomIcon name='search' color={colors.white} type='Ionicons' size={22} />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => { }} style={mh10}>
+                                <CustomIcon name='add' type='Ionicons' size={22} color={colors.white} />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={handleClearCallOptionModal} style={mh10}>
+                                <CustomIcon name="delete" size={22} color={colors.white} type='AntDesign' />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => { navigation.navigate(screenName.SettingsScreen as never) }} style={mh10}>
+                                <ProfileAvatarIcon />
+                            </TouchableOpacity>
+                        </View>
+                        <IconModal
+                            isVisible={clearCallOptionModal}
+                            onClose={() => handleClearCallOptionModal()}
+                            contentComponent={<ClearCallOption />}
+                            iconName='trash-o'
+                            iconType='FontAwesome'
+                            iconSize={26}
+                        />
                     </View>
                 ) : (
                     <View style={[flexRow, spaceBetween]}>
@@ -227,7 +281,11 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
     selectedCardsCount,
 }) => {
     const [isModalVisible, setModalVisible] = useState(false);
-    const [deleteModalVisible, setDeleteModalVisible] = useState(false);
+    const [deleteOptionModal, setDeleteOptionModal] = useState(false);
+
+    const handleDeleteOptionModal = () => {
+        setDeleteOptionModal(!deleteOptionModal)
+    }
 
     const handleThreeDotsClick = () => {
         if (selectedCardsCount === 1) {
@@ -240,16 +298,6 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
         }
     };
 
-    const handleDeleteClick = () => {
-        if (selectedCardsCount === 1) {
-            setDeleteModalVisible((prevIsModalVisible) => !prevIsModalVisible);
-        } else if (selectedCardsCount > 1) {
-            console.log('Delete icon clicked for multiple cards');
-        }
-        if (onDeletePress) {
-            onDeletePress();
-        }
-    };
 
     const PinChatOption = () => {
         const navigation = useNavigation();
@@ -274,36 +322,47 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
     }
 
     const DeleteChatOption = () => {
-        return (
-            // <ModalContainerSecond>
-            //     <HalfCircleSecond />
-            //     <ModalContentSecond>
-            //             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-            //                 <ArchiveIconBlackIcon />
-            //             </View>
-            //             <View style={[ justyfyCenter, alignItemsCenter]}>
-            //                 <H18fontBoldBlack>{labels.Groups}</H18fontBoldBlack>
-            //                 <View style={[justyfyCenter, alignItemsCenter]}>
-            //                     <H16fontNormalGray style={[pl10, pr10]}>{labels.Endtoendencrypted}</H16fontNormalGray>
-            //                     <H16fontNormalGray style={[pl10, pr10]}>{labels.Endtoendencrypted}</H16fontNormalGray>
-            //                     <H16fontNormalGray style={[pl10, pr10]}>{labels.Endtoendencrypted}</H16fontNormalGray>
-            //                     <H16fontNormalGray style={[pl10, pr10]}>{labels.Endtoendencrypted}</H16fontNormalGray>
-            //                     <Text> dfgfdverffffffffffffffffffffffffdddddddddddddddddddddddddddddffffffffffffffffffffffffffffffffffffffffffffffffffffff</Text>
-            //                     <H16fontNormalGray>{labels.ArchiveChat}</H16fontNormalGray>
-            //                 </View>
-            //             </View>
-            //             <ButtonBook style={{
-            //                 backgroundColor: colors.purpleVar3
-            //             }}
-            //                 textStyle={{ color: colors.black }}
-            //                 // funCallback={}
-            //                 label={labels.chat} />
-            //     </ModalContentSecond>
-            // </ModalContainerSecond>
-            <View>
-                <Text>hhhhhhh</Text>
-            </View>
+        const [optionSelect, setOptionSelect] = useState(false);
+        const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
 
+        const handleCancelButton = () => {
+            setIsCancelButtonActive(true);
+        };
+
+        const handleDeleteChatButton = () => {
+            setIsCancelButtonActive(false);
+        };
+
+        const handleOptionSelect = () => {
+            setOptionSelect(!optionSelect);
+        };
+        return (
+            <View style={[mh20]} >
+                <H16font600Black>Delete This Chat?</H16font600Black>
+                <Text style={[mt20]}>Messages will only be removed from this{'\n'}device and your devices</Text>
+                <View style={[flexRow, mt20, alignItemsCenter]}>
+                    <MultiSelectOption selectedColor={colors.purpleVar3} unselectedColor={colors.greyVar6} isSelected={optionSelect} onSelect={handleOptionSelect} />
+                    <Text style={[ml15]}>Also delete media received in this call from{'\n'}the device gallery.</Text>
+                </View>
+                <RowSpaceBetween style={[mv20]}>
+                    <SmallButton
+                        title={labels.cancel}
+                        onChange={handleCancelButton}
+                        backgroundColor={isCancelButtonActive ? colors.red : colors.white}
+                        textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
+                        borderWidth={isCancelButtonActive ? 0 : 1}
+                        width={DevWidth / 2.6}
+                    />
+                    <SmallButton
+                        title={labels.DeleteChat}
+                        onChange={handleDeleteChatButton}
+                        backgroundColor={isCancelButtonActive ? colors.white : colors.red}
+                        textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
+                        borderWidth={isCancelButtonActive ? 1 : 0}
+                        width={DevWidth / 2.6}
+                    />
+                </RowSpaceBetween>
+            </View>
         )
     }
 
@@ -319,7 +378,7 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
                 <TouchableOpacity style={ml10} onPress={onPinPress}>
                     <PinWhiteIcon />
                 </TouchableOpacity>
-                <TouchableOpacity style={ml10} onPress={handleDeleteClick}>
+                <TouchableOpacity style={ml10} onPress={handleDeleteOptionModal}>
                     <DeleteWhiteIcon />
                 </TouchableOpacity>
                 <TouchableOpacity style={ml10} onPress={onMikePress}>
@@ -340,13 +399,13 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
                 marginTop={48}
                 onClose={() => setModalVisible(false)}
             />
-
-
-            <CustomModal
-                isVisible={deleteModalVisible}
-                modalData={<DeleteChatOption />}
-                backdropOpacity={0.5}
-                onClose={() => setDeleteModalVisible(false)}
+            <IconModal
+                isVisible={deleteOptionModal}
+                onClose={() => handleDeleteOptionModal()}
+                contentComponent={<DeleteChatOption />}
+                iconName='trash-o'
+                iconType='FontAwesome'
+                iconSize={26}
             />
         </View>
     );
@@ -559,8 +618,8 @@ export const MultiSelectOption: React.FC<MultiSelectProps> = ({
                 styles.multiSelectBox,
                 {
                     backgroundColor: isSelected === true ? selectedColor : colors.white,
-                    borderWidth : isSelected === true ? 0 : 1,
-                    borderColor : isSelected === true ? colors.purpleVar3 : colors.greyVar7,
+                    borderWidth: isSelected === true ? 0 : 1,
+                    borderColor: isSelected === true ? colors.purpleVar3 : colors.greyVar7,
                 },
             ]}
         >
@@ -576,56 +635,57 @@ export const MultiSelectOption: React.FC<MultiSelectProps> = ({
 
 type ImagePickerProps = {
     onImageSelect: (base64Image: string) => void;
-  };
-  
+};
+
 export const ImagePicker: React.FC<ImagePickerProps> = ({ onImageSelect }) => {
+    
     const openCamera = () => {
-      let options = {
-        mediaType: 'photo',
-        quality: 1,
-        includeBase64: true,
-      };
-      launchCamera(options, response => {
-        imageResponse(response);
-      });
+        let options = {
+            mediaType: 'photo',
+            quality: 1,
+            includeBase64: true,
+        };
+        launchCamera(options, response => {
+            imageResponse(response);
+        });
     };
-  
-    const uploadImage = () => {
-      let options = {
-        mediaType: 'photo',
-        quality: 1,
-        includeBase64: true,
-      };
-      launchImageLibrary(options, response => {
-        imageResponse(response);
-      });
+
+    const openGallery = () => {
+        let options = {
+            mediaType: 'photo',
+            quality: 1,
+            includeBase64: true,
+        };
+        launchImageLibrary(options, response => {
+            imageResponse(response);
+        });
     };
-  
+
     const imageResponse = (response: any) => {
-      if (response.didCancel) {
-        // Handle cancel
-      } else if (response.errorCode == 'permission') {
-        // Handle permission error
-      } else if (response.errorCode == 'others') {
-        // Handle other error
-      } else if (response.assets[0].fileSize > 2097152) {
-        // Handle size exceeded error
-      } else if (response.assets && response.assets.length > 0) {
-        onImageSelect(response.assets[0].base64);
-      }
+        if (response.didCancel) {
+            // Handle cancel
+        } else if (response.errorCode == 'permission') {
+            // Handle permission error
+        } else if (response.errorCode == 'others') {
+            // Handle other error
+        } else if (response.assets[0].fileSize > 2097152) {
+            // Handle size exceeded error
+        } else if (response.assets && response.assets.length > 0) {
+            onImageSelect(response.assets[0].base64);
+        }
     };
-  
+
     return (
-      <View>
-        <TouchableOpacity onPress={openCamera}>
-          <Text>Camera</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={uploadImage}>
-          <Text>Gallery</Text>
-        </TouchableOpacity>
-      </View>
+        <View>
+            <TouchableOpacity onPress={openCamera}>
+                <Text>Camera</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={openGallery}>
+                <Text>Gallery</Text>
+            </TouchableOpacity>
+        </View>
     );
-  };
+};
 
 
 const styles = StyleSheet.create({

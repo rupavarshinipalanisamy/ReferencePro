@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 import { Text, View, Image, TouchableOpacity, StyleSheet, Alert } from 'react-native';
-import { alignItemsCenter, alignSelfCenter, borderRadius6, flex1, flexRow, justifyStart, justyfyCenter, mh15, mh20, mh30, ml10, ml15, ml30, mr30, mt20, mv10, mv15 } from '../../components/commonStyles';
+import { alignItemsCenter, alignSelfCenter, borderRadius6, flex1, flexRow, justifyStart, justyfyCenter, mh15, mh20, mh30, ml10, ml15, ml30, mr30, mt20, mv10, mv15, mv20 } from '../../components/commonStyles';
 import { colors } from '../../utils/colors';
 import { DevHeight, DevWidth } from '../../utils/device';
 import CustomIcon from '../../utils/Icons';
 import { RowSpaceAround, RowSpaceBetween } from '../../components/commonView';
-import { H12Grey, H15Grey, H16BlackText, H16fontBoldBlack, H18BlackBoldText600 } from '../../components/commonText';
+import { H12Grey, H15Grey, H16BlackText, H16font600Black, H16fontBoldBlack, H18BlackBoldText600 } from '../../components/commonText';
 import { labels } from '../../utils/labels';
-import {  Chatimg1Img } from '../../utils/png';
+import { Chatimg1Img } from '../../utils/png';
 import { accountSettingData, settingsData } from '../../utils/data/settingsData';
 import { CustomModal, ImagePicker } from '../../components/commonComponents';
 import { useNavigation } from '@react-navigation/native';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker'
 import { ToastAndroid } from 'react-native';
 import { screenName } from '../../utils/screenName';
+import { IconModal } from '../../components/commonModal';
+import { SmallButton } from '../../components/commonButtons';
 
 export type AccountSettingsProps = {
 
@@ -33,6 +35,43 @@ const AccountSettings = (props: AccountSettingsProps) => {
         setPic(base64Image);
         setImagePickerModal(false);
     };
+
+    const ImagePickerModal = () => {
+        const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+
+        const handleCancelButton = () => {
+            setIsCancelButtonActive(true);
+        };
+
+        const handleDeleteChatButton = () => {
+            setIsCancelButtonActive(false);
+        };
+
+        return (
+            <View style={[mh20]} >
+                <H16font600Black>Choose Image?</H16font600Black>
+                <Text style={[mt20]}>Choose image picking options.</Text>
+                <RowSpaceBetween style={[mv20]}>
+                    <SmallButton
+                        title={labels.Camera}
+                        onChange={handleCancelButton}
+                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
+                        textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
+                        borderWidth={isCancelButtonActive ? 0 : 1}
+                        width={DevWidth / 2.6}
+                    />
+                    <SmallButton
+                        title={labels.Gallery}
+                        onChange={handleDeleteChatButton}
+                        backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
+                        textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
+                        borderWidth={isCancelButtonActive ? 1 : 0}
+                        width={DevWidth / 2.6}
+                    />
+                </RowSpaceBetween>
+            </View>
+        )
+    }
 
     return (
         <View style={[flex1, { backgroundColor: colors.whiteVar0 }]} >
@@ -88,6 +127,14 @@ const AccountSettings = (props: AccountSettingsProps) => {
                 }
             </View>
             <ImagePicker onImageSelect={handleImageSelect} />
+            <IconModal
+                isVisible={imagePickerModal}
+                onClose={() => handleImagePickerModal()}
+                contentComponent={<ImagePickerModal />}
+                iconName='logout'
+                iconType='AntDesign'
+                iconSize={24}
+            />
         </View>
     )
 }

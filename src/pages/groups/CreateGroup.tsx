@@ -7,7 +7,7 @@ import CustomIcon from '../../utils/Icons';
 import { H18BlackBoldText600 } from '../../components/commonText';
 import { labels } from '../../utils/labels';
 import { RowSpaceBetween } from '../../components/commonView';
-import { UserImg } from '../../utils/png';
+import { Chatimg1Img, UserImg } from '../../utils/png';
 import { ButtonContainer, ButtonContainer1, IconInputContainer } from '../../styledComponent/styledComponent';
 import { CustomTextInput } from '../../components/commonInputFields';
 import { useNavigation } from '@react-navigation/native';
