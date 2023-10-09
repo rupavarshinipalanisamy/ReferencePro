@@ -23,55 +23,20 @@ export type AccountSettingsProps = {
 
 
 const AccountSettings = (props: AccountSettingsProps) => {
-    const [imagePickerModal, setImagePickerModal] = useState(false);
     const [Pic, setPic] = useState('');
-    const navigation = useNavigation();
+    const [isImagePickerOpen, setIsImagePickerOpen] = useState(false);
 
-    const handleImagePickerModal = () => {
-        setImagePickerModal(!imagePickerModal);
-    }
+    const navigation = useNavigation();
 
     const handleImageSelect = (base64Image: string) => {
         setPic(base64Image);
-        setImagePickerModal(false);
+        setIsImagePickerOpen(false);
     };
 
-    const ImagePickerModal = () => {
-        const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+    const openImagePickerModal = () => {
+        setIsImagePickerOpen(true);
+    };
 
-        const handleCancelButton = () => {
-            setIsCancelButtonActive(true);
-        };
-
-        const handleDeleteChatButton = () => {
-            setIsCancelButtonActive(false);
-        };
-
-        return (
-            <View style={[mh20]} >
-                <H16font600Black>Choose Image?</H16font600Black>
-                <Text style={[mt20]}>Choose image picking options.</Text>
-                <RowSpaceBetween style={[mv20]}>
-                    <SmallButton
-                        title={labels.Camera}
-                        onChange={handleCancelButton}
-                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
-                        textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
-                        borderWidth={isCancelButtonActive ? 0 : 1}
-                        width={DevWidth / 2.6}
-                    />
-                    <SmallButton
-                        title={labels.Gallery}
-                        onChange={handleDeleteChatButton}
-                        backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
-                        textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
-                        borderWidth={isCancelButtonActive ? 1 : 0}
-                        width={DevWidth / 2.6}
-                    />
-                </RowSpaceBetween>
-            </View>
-        )
-    }
 
     return (
         <View style={[flex1, { backgroundColor: colors.whiteVar0 }]} >
@@ -104,7 +69,7 @@ const AccountSettings = (props: AccountSettingsProps) => {
                             style={[{ height: 100, width: 100, borderRadius: 100 }]}
                         />
                     )}
-                    <TouchableOpacity onPress={handleImagePickerModal} style={[{ height: 30, width: 30, borderRadius: 100, backgroundColor: colors.purpleVar3 }, styles.status, alignItemsCenter, justyfyCenter]}>
+                    <TouchableOpacity onPress={openImagePickerModal} style={[{ height: 30, width: 30, borderRadius: 100, backgroundColor: colors.purpleVar3 }, styles.status, alignItemsCenter, justyfyCenter]}>
                         <CustomIcon type='font-awesome' name='camera' color={colors.white} size={12} />
                     </TouchableOpacity>
                 </View>
@@ -126,11 +91,10 @@ const AccountSettings = (props: AccountSettingsProps) => {
                     })
                 }
             </View>
-            <ImagePicker onImageSelect={handleImageSelect} />
             <IconModal
-                isVisible={imagePickerModal}
-                onClose={() => handleImagePickerModal()}
-                contentComponent={<ImagePickerModal />}
+                isVisible= {isImagePickerOpen}
+                onClose={() => setIsImagePickerOpen(false)}
+                contentComponent={<ImagePicker onImageSelect={handleImageSelect} />}
                 iconName='logout'
                 iconType='AntDesign'
                 iconSize={24}

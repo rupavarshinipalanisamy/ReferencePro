@@ -638,7 +638,19 @@ type ImagePickerProps = {
 };
 
 export const ImagePicker: React.FC<ImagePickerProps> = ({ onImageSelect }) => {
-    
+    const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+
+    const handleCancelButton = () => {
+        setIsCancelButtonActive(true);
+        openCamera();
+    };
+
+    const handleDeleteChatButton = () => {
+        setIsCancelButtonActive(false);
+        openGallery();
+    };
+
+
     const openCamera = () => {
         let options = {
             mediaType: 'photo',
@@ -676,13 +688,27 @@ export const ImagePicker: React.FC<ImagePickerProps> = ({ onImageSelect }) => {
     };
 
     return (
-        <View>
-            <TouchableOpacity onPress={openCamera}>
-                <Text>Camera</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={openGallery}>
-                <Text>Gallery</Text>
-            </TouchableOpacity>
+        <View style={[mh20]} >
+            <H16font600Black>Choose Image?</H16font600Black>
+            <Text style={[mt20]}>Choose image picking options.</Text>
+            <RowSpaceBetween style={[mv20]}>
+                <SmallButton
+                    title={labels.Camera}
+                    onChange={handleCancelButton}
+                    backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
+                    textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
+                    borderWidth={isCancelButtonActive ? 0 : 1}
+                    width={DevWidth / 2.6}
+                />
+                <SmallButton
+                    title={labels.Gallery}
+                    onChange={handleDeleteChatButton}
+                    backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
+                    textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
+                    borderWidth={isCancelButtonActive ? 1 : 0}
+                    width={DevWidth / 2.6}
+                />
+            </RowSpaceBetween>
         </View>
     );
 };
