@@ -269,34 +269,34 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
 }
 export const FooterChatView = () => {
     return (
-        <View style={{ backgroundColor: colors.white, alignItems: 'center', height: DevHeight /9.5, paddingHorizontal:20, borderTopLeftRadius: 20, borderTopRightRadius: 20, flexDirection: 'row',justifyContent:'center' }}>
-        <View style={{ width:DevWidth/1.3, height:40, backgroundColor: 'white', borderColor: colors.greyVar2, borderWidth: 2, borderRadius:6, marginTop: 30,bottom:8}}>
-            <View style={{ flexDirection: 'row', width: '80%', height: 40, paddingHorizontal:2, alignItems: 'center'}}>
-                <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginLeft: 15}}>
-                    <CustomIcon name='smiley' type="octicons" size={16} color={colors.greyVar4} />
-                    <TextInput
-                        style={{ flex: 1, marginLeft: 5,color:colors.greyVar4,fontSize:14,fontWeight:'400'}}
-                        placeholder="Type here..."
-                    />
-                </View>
-                <View style={{ flexDirection: 'row' }}>
-                    <View style={{ marginRight:10, transform: [{ rotate: '45deg' }]}}>
-                        <CustomIcon name='paperclip' type="Feather" size={18} color={colors.greyVar4} />
+        <View style={{ backgroundColor: colors.white, alignItems: 'center', height: DevHeight / 9.5, paddingHorizontal: 20, borderTopLeftRadius: 20, borderTopRightRadius: 20, flexDirection: 'row', justifyContent: 'center' }}>
+            <View style={{ width: DevWidth / 1.3, height: 40, backgroundColor: 'white', borderColor: colors.greyVar2, borderWidth: 2, borderRadius: 6, marginTop: 30, bottom: 8 }}>
+                <View style={{ flexDirection: 'row', width: '80%', height: 40, paddingHorizontal: 2, alignItems: 'center' }}>
+                    <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginLeft: 15 }}>
+                        <CustomIcon name='smiley' type="octicons" size={16} color={colors.greyVar4} />
+                        <TextInput
+                            style={{ flex: 1, marginLeft: 5, color: colors.greyVar4, fontSize: 14, fontWeight: '400' }}
+                            placeholder="Type here..."
+                        />
                     </View>
-                    <CustomIcon name='camera-outline' type="MaterialCommunityIcons" size={20} color={colors.greyVar4} />
+                    <View style={{ flexDirection: 'row' }}>
+                        <View style={{ marginRight: 10, transform: [{ rotate: '45deg' }] }}>
+                            <CustomIcon name='paperclip' type="Feather" size={18} color={colors.greyVar4} />
+                        </View>
+                        <CustomIcon name='camera-outline' type="MaterialCommunityIcons" size={20} color={colors.greyVar4} />
+                    </View>
                 </View>
             </View>
+            <View style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', bottom: 15 }}>
+                <CustomIcon name='paper-plane' type="font-awesome" color={colors.white} size={14} />
+            </View>
         </View>
-        <View style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center',alignSelf:'flex-end',bottom:15}}>
-            <CustomIcon name='paper-plane' type="font-awesome" color={colors.white} size={14} />
-        </View>
-    </View>
     )
 }
 
 
 
-export const ReplyFooterView = ({onToggleView}) => {
+export const ReplyFooterView = ({onIconClick}:any) => {
     return (
         <View style={{ backgroundColor: colors.white, alignItems: 'center', height: DevHeight / 5, paddingHorizontal:20, borderTopLeftRadius: 20, borderTopRightRadius: 20, flexDirection: 'row' }}>
             <View style={{ width: '86%', height: 117, backgroundColor: 'white', borderColor: colors.greyVar2, borderWidth: 2, borderRadius: 10, marginTop: 30, bottom:8}}>
@@ -307,7 +307,7 @@ export const ReplyFooterView = ({onToggleView}) => {
                     <View style={{ marginHorizontal: 10 }}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 5 }}>
                             <Text style={{ color: colors.purpleVar3, fontWeight: '500', fontSize: 15, lineHeight: 23 }}>Horace Keene</Text>
-                            <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }}   onPress={() => onToggleView()}  >
+                            <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }}   onPress={() => onIconClick()}  >
                                 <CustomIcon name='x' type="Feather" size={16} color={colors.greyVar4} />
                             </TouchableOpacity>
                         </View>
@@ -337,7 +337,18 @@ export const ReplyFooterView = ({onToggleView}) => {
     );
 }
 
+// export const ReplyFooterView = ({ onIconClick }: any) => {
+//     return (
+//         <View>
+//             <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }} onPress={() => onIconClick()}  >
+//                 <CustomIcon name='x' type="Feather" size={16} color={colors.greyVar4} />
+//             </TouchableOpacity>
 
+//         </View>
+
+
+//     );
+// }
 export const FooterAdminChatView = () => {
     return (
         <View style={[{ backgroundColor: colors.white, height: DevHeight / 8, borderTopLeftRadius: 20, borderTopRightRadius: 20, paddingTop: 20 }, alignItemsCenter]}>

@@ -216,24 +216,21 @@ const ChatView = () => {
         );
     };
     const [isSwiped, setIsSwiped] = useState(false);
-    const [displayedView, setDisplayedView] = useState("reply");
+
 
     const handleSwipeAction = () => {
         setIsSwiped(true);
     };
-    const onToggleView = () => {
-        if (displayedView === "reply") {
-            setDisplayedView("footer");
-        } else {
-            setDisplayedView("reply");
-        }
+
+
+    const handleReplyFooterIconClick = () => {
+        setIsSwiped(false);
     };
 
 
     return (
         <Fragment>
             <GestureHandlerRootView style={{ flex: 1, backgroundColor: isDark() ? colors.black : colors.white }}>
-                {/* <StatusBar backgroundColor={colors.purpleVar3} /> */}
                 <View style={{ flex: 1 }}>
                     <ImageBackground
                         source={ChatBackgroundImg}
@@ -258,17 +255,11 @@ const ChatView = () => {
                             ))}
                         </ScrollView>
 
-
                         {isSwiped ? (
-                            displayedView === "reply" ? (
-                                <ReplyFooterView onToggleView={onToggleView} />
-                            ) : (
-                                <FooterChatView />
-                            )
+                            <ReplyFooterView onIconClick={handleReplyFooterIconClick} />
                         ) : (
-                            <FooterChatView />
+                            <FooterChatView  />
                         )}
-
 
                     </ImageBackground>
                     <View>
