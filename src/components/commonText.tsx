@@ -170,7 +170,7 @@ font-size:18px;
 `
 export const H18BlackText = styled(Text)`
   ${h6};
-  ${black};
+  color: ${props => isDark() ? colors.white : colors.black};
   ${fontBold600}
 `;
 export const H18BlackBoldText600 = styled(Text)`

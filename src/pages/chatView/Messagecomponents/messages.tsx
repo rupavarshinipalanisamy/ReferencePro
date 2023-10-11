@@ -25,7 +25,7 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'Ionicons',
         text: labels.ViewContact,
-        screenName:screenName.ChooseWallpaper,
+        screenName: screenName.ChooseWallpaper,
 
     },
     {
@@ -35,7 +35,7 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'FontAwesome',
         text: labels.Media,
-        screenName:screenName.ChooseWallpaper,
+        screenName: screenName.ChooseWallpaper,
 
     },
     {
@@ -45,7 +45,7 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'Feather',
         text: labels.Search,
-        screenName:screenName.ChooseWallpaper,
+        screenName: screenName.ChooseWallpaper,
 
     },
     {
@@ -55,7 +55,7 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'MaterialCommunityIcons',
         text: labels.MuteNotification,
-        screenName:screenName.ChooseWallpaper,
+        screenName: screenName.ChooseWallpaper,
 
     },
     {
@@ -65,7 +65,7 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'FontAwesome',
         text: labels.Wallpaper,
-        screenName:screenName.ChooseWallpaper,
+        screenName: screenName.ChooseWallpaper,
 
     },
     {
@@ -75,7 +75,7 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'Feather',
         text: labels.Report,
-        screenName:screenName.ChooseWallpaper,
+        screenName: screenName.ChooseWallpaper,
 
     },
     {
@@ -85,7 +85,7 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'MaterialIcons',
         text: labels.Block,
-        screenName:screenName.ChooseWallpaper,
+        screenName: screenName.ChooseWallpaper,
 
     },
     {
@@ -95,7 +95,7 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'Feather',
         text: labels.ClearChat,
-        screenName:screenName.ChooseWallpaper,
+
 
     },
 ]
@@ -112,6 +112,7 @@ interface HeaderChatViewProps {
     threeDotOptionNavigate?: () => void;
     groups?: boolean;
     call?: boolean;
+    clearChatopenModal?: any;
 
 }
 
@@ -141,9 +142,15 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
                     chatViewModalData.map((item) => {
                         return (
                             <TouchableOpacity key={item.id} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}
-                            onPress={() => navigation.navigate(item.screenName as never)}
+                                onPress={() => {
+                                    if (item.id === 8) {
+                                        props.clearChatopenModal(8);
+                                    } else {
+                                        navigation.navigate(item.screenName as never);
+                                    }
+                                }}
                             >
-                                <View  style={flexRow}>
+                                <View style={flexRow}>
                                     <CustomIcon name={item.iconName} size={item.iconSize} color={item.iconColor} type={item.iconType} />
                                     <View style={[alignItemsCenter, justyfyCenter, pl13]}>
                                         <H15Grey>{item.text}</H15Grey>
@@ -201,7 +208,7 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
     }
 
     return (
-        <View style={{ height: DevWidth /4.2, backgroundColor: isDark()?colors.darkModeVar1:colors.white, borderBottomRightRadius:25, borderBottomLeftRadius:25, elevation:1}}>
+        <View style={{ height: DevWidth / 4.2, backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, borderBottomRightRadius: 25, borderBottomLeftRadius: 25, elevation: 1 }}>
             <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
                 <View style={[flexRow]}>
                     <View style={pt10} >
@@ -214,8 +221,8 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
                             }
 
                             <View style={pl13}>
-                                <Text style={{fontSize:15,fontWeight:'500',color:colors.black}}>{props.title}</Text>
-                                <Text style={{color:colors.greyVar4,fontSize:14,fontWeight:'400'}}>{props.subTitle}</Text>
+                                <Text style={{ fontSize: 15, fontWeight: '500', color: colors.black }}>{props.title}</Text>
+                                <Text style={{ color: colors.greyVar4, fontSize: 14, fontWeight: '400' }}>{props.subTitle}</Text>
 
                             </View>
                         </TouchableOpacity>
@@ -260,46 +267,76 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
     )
 
 }
-export const FooterChatView = ({text,onSwipeRight}:any) => {
+export const FooterChatView = () => {
     return (
-        <View style={{ backgroundColor: colors.white, height: DevHeight / 8, borderTopLeftRadius: 20, borderTopRightRadius: 20, paddingTop: 20 }}>
-            <View style={[{ marginHorizontal: 20 }, flexRow, spaceBetween]}>
-                <View style={{ flex: 1 }}>
-                    <View style={{ position: 'absolute', paddingTop: 15, paddingLeft: 20 }}>
-                        <CustomIcon name='smiley' type="octicons" size={20} color={colors.greyVar4} />
-                    </View>
-                    <View>
-                    <Text>{text}</Text>
-                        <TextInput
-                            style={{
-                                borderColor: colors.greyVar2,
-                                borderWidth: 2,
-                                borderRadius: 8,
-                                fontWeight: '600',
-                                padding: 8,
-                                paddingLeft: 50,
-                                color: colors.greyVar2
-                            }}
-                            placeholder="Type Here..."
-
-                        />
-                        <View style={{ alignItems: 'flex-end', marginHorizontal: 8 }}>
-                            <View style={{ position: 'absolute', paddingTop: 15, bottom: 10, paddingRight: 32 }}>
-                                <CustomIcon name='attachment' type="MaterialIcons" size={26} color={colors.greyVar4} />
-                            </View>
-                            <View style={{ position: 'absolute', paddingTop: 15, bottom: 12 }}>
-                                <CustomIcon name='camera-outline' type="MaterialCommunityIcons" size={24} color={colors.greyVar4} />
-                            </View>
-                        </View>
-                    </View>
+        <View style={{ backgroundColor: colors.white, alignItems: 'center', height: DevHeight /9.5, paddingHorizontal:20, borderTopLeftRadius: 20, borderTopRightRadius: 20, flexDirection: 'row',justifyContent:'center' }}>
+        <View style={{ width:DevWidth/1.3, height:40, backgroundColor: 'white', borderColor: colors.greyVar2, borderWidth: 2, borderRadius:6, marginTop: 30,bottom:8}}>
+            <View style={{ flexDirection: 'row', width: '80%', height: 40, paddingHorizontal:2, alignItems: 'center'}}>
+                <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginLeft: 15}}>
+                    <CustomIcon name='smiley' type="octicons" size={16} color={colors.greyVar4} />
+                    <TextInput
+                        style={{ flex: 1, marginLeft: 5,color:colors.greyVar4,fontSize:14,fontWeight:'400'}}
+                        placeholder="Type here..."
+                    />
                 </View>
-                <View style={{ backgroundColor: colors.purpleVar3, height: 50, width: 50, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center' }}>
-                    <CustomIcon name='microphone-outline' type="MaterialCommunityIcons" color={colors.white} size={25} />
+                <View style={{ flexDirection: 'row' }}>
+                    <View style={{ marginRight:10, transform: [{ rotate: '45deg' }]}}>
+                        <CustomIcon name='paperclip' type="Feather" size={18} color={colors.greyVar4} />
+                    </View>
+                    <CustomIcon name='camera-outline' type="MaterialCommunityIcons" size={20} color={colors.greyVar4} />
                 </View>
             </View>
         </View>
+        <View style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center',alignSelf:'flex-end',bottom:15}}>
+            <CustomIcon name='paper-plane' type="font-awesome" color={colors.white} size={14} />
+        </View>
+    </View>
     )
 }
+
+
+
+export const ReplyFooterView = ({onToggleView}) => {
+    return (
+        <View style={{ backgroundColor: colors.white, alignItems: 'center', height: DevHeight / 5, paddingHorizontal:20, borderTopLeftRadius: 20, borderTopRightRadius: 20, flexDirection: 'row' }}>
+            <View style={{ width: '86%', height: 117, backgroundColor: 'white', borderColor: colors.greyVar2, borderWidth: 2, borderRadius: 10, marginTop: 30, bottom:8}}>
+                <View style={{
+                    width: '98%', height: 67, backgroundColor: colors.purpleVar1, marginTop: 5, borderRadius: 5,marginHorizontal:3,
+                    borderLeftWidth: 1.5, borderLeftColor: colors.purpleVar3
+                }}>
+                    <View style={{ marginHorizontal: 10 }}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 5 }}>
+                            <Text style={{ color: colors.purpleVar3, fontWeight: '500', fontSize: 15, lineHeight: 23 }}>Horace Keene</Text>
+                            <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }}   onPress={() => onToggleView()}  >
+                                <CustomIcon name='x' type="Feather" size={16} color={colors.greyVar4} />
+                            </TouchableOpacity>
+                        </View>
+                        <Text style={{ fontSize: 14, color: colors.blackVar1, fontWeight: '400', lineHeight: 20 }}>Hello <Text style={{ color: colors.blueVar1 }}>@Alex</Text> Good Morning</Text>
+                    </View>
+                </View>
+                <View style={{ flexDirection: 'row', width: '80%', height: 40, paddingHorizontal:2, alignItems: 'center'}}>
+                    <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginLeft: 15 }}>
+                        <CustomIcon name='smiley' type="octicons" size={16} color={colors.greyVar4} />
+                        <TextInput
+                            style={{ flex: 1, marginLeft: 5,color:colors.greyVar4,fontSize:14,fontWeight:'400'}}
+                            placeholder="Type here..."
+                        />
+                    </View>
+                    <View style={{ flexDirection: 'row' }}>
+                        <View style={{ marginRight:10, transform: [{ rotate: '45deg' }]}}>
+                            <CustomIcon name='paperclip' type="Feather" size={18} color={colors.greyVar4} />
+                        </View>
+                        <CustomIcon name='camera-outline' type="MaterialCommunityIcons" size={20} color={colors.greyVar4} />
+                    </View>
+                </View>
+            </View>
+            <View style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', bottom:15}}>
+                <CustomIcon name='paper-plane' type="font-awesome" color={colors.white} size={14} />
+            </View>
+        </View>
+    );
+}
+
 
 export const FooterAdminChatView = () => {
     return (
@@ -373,11 +410,11 @@ export const receiveMessage4 = () => {
                             <CustomIcon name='play' type="Feather" size={20} color={colors.white} />
                         </View>
                     </View>
-                    <View style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)', height: 24, width:75, borderRadius:10, alignItems: 'center', justifyContent: "space-evenly", bottom: 10, flexDirection: 'row', marginLeft: 15 }}>
+                    <View style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)', height: 24, width: 75, borderRadius: 10, alignItems: 'center', justifyContent: "space-evenly", bottom: 10, flexDirection: 'row', marginLeft: 15 }}>
                         <View style={{ marginTop: 3 }}>
                             <CustomIcon name='file-download' type="MaterialIcons" size={14} color={colors.white} />
                         </View>
-                        <Text style={{ color: colors.white, fontSize: 12,fontWeight:'400' }}>2.8 MB</Text>
+                        <Text style={{ color: colors.white, fontSize: 12, fontWeight: '400' }}>2.8 MB</Text>
                     </View>
                 </ImageBackground>
             </View>

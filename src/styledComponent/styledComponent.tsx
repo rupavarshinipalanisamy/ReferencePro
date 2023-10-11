@@ -176,8 +176,8 @@ export const HalfCircle2 = styled(View)`
   background-color: ${colors.white};
   border-top-left-radius: 100px;
   border-top-right-radius: 100px;
-  width: 17%;
-  height: 34px;
+  width:16%;
+  height:48px;
   align-self: center;
   top: 15px;
   overflow: hidden;
@@ -193,8 +193,8 @@ export const ModalContent = styled(View)`
 export const ModalContent1 = styled(View)`
   background-color: ${colors.white};
   borderRadius: 15px;
-  width: 80%;
-  max-width: 400px; 
+  width:${DevWidth/1.3}px;
+  max-width:400px; 
 `;
 
 

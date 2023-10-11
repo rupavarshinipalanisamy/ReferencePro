@@ -212,7 +212,7 @@ export const labels = {
     location3: 'Riverside, CA',
     location4: 'Frederick, MD',
     location5:'Zephyr, NC',
-    location6:'Jackson, TN'
+    location6:'Jackson, TN',
 
 
 

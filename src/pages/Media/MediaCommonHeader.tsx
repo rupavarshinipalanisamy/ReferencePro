@@ -14,6 +14,7 @@ import Link from './Link';
 import { CustomModal } from '../../components/commonComponents';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
+import { isDark } from '../../Theme/ThemeContext';
 
 export type MediaProps = {
 
@@ -289,7 +290,7 @@ export const SearchHeader = (props: SearchHeader) => {
                             <TouchableOpacity style={[justyfyCenter, alignItemsCenter, { marginTop: 2 }]}
                             onPress={navigation.goBack}
                             >
-                                <CustomIcon name='chevron-left' color={colors.black} size={18} type="entypo" />
+                                <CustomIcon name='chevron-left' color={isDark()?colors.white:colors.black} size={18} type="entypo" />
                             </TouchableOpacity>
                             <H18BlackText style={pl13}>{props.headerText}</H18BlackText>
                         </View>

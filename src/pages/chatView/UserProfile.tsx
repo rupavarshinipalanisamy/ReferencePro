@@ -14,6 +14,8 @@ import Group2 from '../../../assets/images/groupImg2.svg'
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
 import { CustomModal } from '../../components/commonComponents';
+import { IconModal } from '../../components/commonModal';
+import { BlockUserModal, ReportUserModal } from '../../ModalContents/IconModelContents';
 
 
 
@@ -60,7 +62,7 @@ export const colorIconsData = [
         iconSize: 20,
         iconColor: colors.red,
         bgcolor: colors.redVar1,
-        screenName: screenName.Chats,
+
     },
     {
         id: 5,
@@ -70,7 +72,6 @@ export const colorIconsData = [
         iconSize: 20,
         iconColor: colors.purpleVar3,
         bgcolor: colors.purpleVar1,
-        screenName: screenName.Chats,
     },
     {
         id: 6,
@@ -84,16 +85,28 @@ export const colorIconsData = [
     },
 ]
 
-export const ColorIconTab = () => {
+export const ColorIconTab = ({ openModal }: any) => {
     const navigation = useNavigation()
-
-
     return (
         <View>
             {
                 colorIconsData.map((item) => {
                     return (
-                        <TouchableOpacity key={item.id} onPress={() => navigation.navigate(item.screenName as never)}>
+
+
+                        <TouchableOpacity
+                            key={item.id}
+                            onPress={() => {
+                                if (item.id === 4) {
+                                    openModal(4); // Open Block User modal
+                                } else if (item.id === 5) {
+                                    openModal(5); // Open Delete Chat modal
+                                } else {
+                                    // Navigate to the desired screen for other items
+                                    navigation.navigate(item.screenName as never);
+                                }
+                            }}
+                        >
                             <View style={[flexRow, spaceBetween, { paddingBottom: 15 }]}>
                                 <View style={[flexRow]}>
 
@@ -128,7 +141,6 @@ export const ColorIconTab = () => {
                     )
                 })
             }
-            <CustomModal content = {<ModalComponent />} />
         </View>
     )
 }
@@ -380,13 +392,20 @@ export const Groups = () => {
             ))}
             <View style={[mt20, mb15]}>
                 <CommonLineDividerGrey />
-            </View>   
+            </View>
         </View>
 
     )
 }
 
 const UserProfile = (props: UserProfileProps) => {
+    const [selectedModalId, setSelectedModalId] = useState(null);
+    const closeModal = () => {
+        setSelectedModalId(null);
+    };
+    const openModal = (id: number) => {
+        setSelectedModalId(id);
+    }
     return (
         <Fragment>
             <MainContainer style={{ backgroundColor: colors.whiteVar0, flex: 1 }}>
@@ -396,8 +415,29 @@ const UserProfile = (props: UserProfileProps) => {
                     <InfoCard />
                     <MediaCard />
                     <Groups />
-                    <ColorIconTab />
+                    <ColorIconTab openModal={openModal} />
                 </ScrollView>
+                {selectedModalId === 4 && (
+                    <IconModal
+                        isVisible={true}
+                        onClose={closeModal}
+                        contentComponent={<BlockUserModal />}
+                        iconName='block-flipped'
+                        iconType='MaterialIcons'
+                        iconSize={22}
+                    />
+                )}
+                {selectedModalId === 5 && (
+                    <IconModal
+                        isVisible={true}
+                        onClose={closeModal}
+                        contentComponent={<ReportUserModal />}
+                        iconName='block-flipped'
+                        iconType='MaterialIcons'
+                        iconSize={22}
+                    />
+                )}
+
             </MainContainer>
         </Fragment>
     )
@@ -415,7 +455,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     roundNumberText: {
-       color: colors.greyVar4,
+        color: colors.greyVar4,
         fontSize: 12,
     },
     cardSurface: {

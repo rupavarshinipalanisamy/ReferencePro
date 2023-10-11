@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React, { Fragment, useState } from 'react';
 import { StatusBar, Text, TouchableOpacity, View } from 'react-native';
 import { colors } from 'react-native-elements';
-import { CustomModal,  } from '../../components/commonModal';
+import { CustomModal, ThemeModal, } from '../../components/commonModal';
 import { flexRow, mt20, alignItemsCenter, ph15, mh20, spaceBetween, justyfyCenter } from '../../components/commonStyles';
 import { H16font900Black, H16fontNormalGray4, H12fontNormalGray } from '../../components/commonText';
 import { MainContainer, TopContainerWhiteCard } from '../../components/commonView';
@@ -22,23 +22,23 @@ export type chatSettingsProps = {
 export const RenderTheme = () => {
     const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
 
-      const handleStatusSelect = (status: string) => {
+    const handleStatusSelect = (status: string) => {
         setSelectedStatus(status);
-      };
+    };
     return (
         <View>
-      {chooseTheme.map((data, index) => (
-      <View key={index} style={{flexDirection:'row'}}>
-        <RadioBtn
-                      key={data.id}
-        
-                          selected= { selectedStatus === data.status}
-                          onPress={() => handleStatusSelect(data.status)}
-                        />
-                       <Text>{data.status}</Text>
-                       </View>
-                      ))}
+            {chooseTheme.map((data, index) => (
+                <View key={index} style={{ flexDirection: 'row' }}>
+                    <RadioBtn
+                        key={data.id}
+
+                        selected={selectedStatus === data.status}
+                        onPress={() => handleStatusSelect(data.status)}
+                    />
+                    <Text>{data.status}</Text>
                 </View>
+            ))}
+        </View>
     )
 }
 
@@ -99,12 +99,17 @@ const ChatSettings = (props: chatSettingsProps) => {
                     })}
                 </View>
                 {selectedModalId === 1 && (
-                    <CustomModal isVisible={true}
-                        onClose={closeModal}
-                        contentComponent={<RenderTheme/>}
-                        image={<DeleteLogo/>} 
-                        headingText={labels.chooseTheme}
-                        />)}
+                    // <CustomModal isVisible={true}
+                    //     onClose={closeModal}
+                    //     contentComponent={<RenderTheme />}
+                    //     image={<DeleteLogo />}
+                    //     headingText={labels.chooseTheme}
+                    // />
+                    <ThemeModal
+                    isVisible={true}
+                    onClose={closeModal}
+                    />
+                    )}
                 {/* 
                 {selectedModalId === 4 && (
                     <ArchieveChatModal

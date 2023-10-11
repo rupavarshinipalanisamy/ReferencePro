@@ -8,7 +8,7 @@ import { DevWidth } from '../utils/device';
 
 type LongPurpleButtonProps = {
   title: string;
-  onChange: () => void;
+  onChange?: () => void;
 };
 
 export const LongPurpleButton: React.FC<LongPurpleButtonProps> = ({

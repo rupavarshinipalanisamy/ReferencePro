@@ -48,7 +48,11 @@ export const colors = {
     yellow: '#FEC001',
     yellowVar1 : '#FEF6DC',
 
-    darkModeVar1:'#161819'
+    darkModeVar1:'#161819',
+    darkModeVar2:'#1C1D1E',
+  
+  
+
 
 };
 

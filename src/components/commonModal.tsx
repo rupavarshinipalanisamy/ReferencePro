@@ -10,7 +10,7 @@ import DeleteLogo from '../../assets/images/delete1-logo.svg';
 // import { ButtonBook,  } from './commonButtons';
 import { colors } from '../utils/colors';
 import { labels } from '../utils/labels';
-import { ButtonContainer1, CheckBox, HalfCircle, HalfCircle2, ModalContainer, ModalContent, ModalContent1 } from '../styledComponent/styledComponent';
+import { ButtonContainer1, CheckBox, HalfCircle, HalfCircle2, ModalContainer, ModalContent, ModalContent1, ModalContent2 } from '../styledComponent/styledComponent';
 import { alignItemsCenter, flexRow, justyfyCenter, mb15, mh10, mh15, mh5, mt20, p5, pl10, pr10, spaceBetween } from './commonStyles';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../utils/screenName';
@@ -18,8 +18,9 @@ import { H14font400Gray4, H16font600Black, H16fontNormalGray, H16fontNormalGray4
 import { chooseTheme, clearAllChats, deleteAllChats, groupsData, lastSee, profilePic } from '../utils/data/modalData';
 import { RadioButton, RadioButtonRound, SelectedRadioBtn } from './commonView';
 import CustomIcon from '../utils/Icons';
-import { LongPurpleButton } from './commonButtons';
+import { LongPurpleButton, SmallButton } from './commonButtons';
 import { RadioBtn } from './commonComponents';
+import { useTheme } from '../Theme/ThemeContext';
 
 export type CommonModalProps = {
   isVisible: boolean;
@@ -28,48 +29,119 @@ export type CommonModalProps = {
 }
 
 
-// export const ThemeModal: React.FC<CommonModalProps> = ({
-//   isVisible,
-//   onClose,
-// }) => {
-//   const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
 
-//   const handleStatusSelect = (status: string) => {
-//     setSelectedStatus(status);
-//   };
+// export type CommonModalProps = {
+//   isVisible: boolean;
+//   onClose: () => void;
+// }
+
+export const ThemeModal: React.FC<CommonModalProps> = ({
+  isVisible,
+  onClose,
+}) => {
+  const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
+
+  const handleStatusSelect = (status: string) => {
+    setSelectedStatus(status);
+
+  };
+  const { toggleTheme } = useTheme();
+
+  const renderRadio = (status: string) => {
+    return (
+      <RadioButton
+        onPress={() => handleStatusSelect(status)}>
+        <RadioButtonRound style={{ borderColor: selectedStatus === status ? colors.purpleVar3 : colors.black }}>
+          {selectedStatus === status && (
+            <SelectedRadioBtn />
+          )}
+        </RadioButtonRound>
+        <H16fontNormalGray4 style={[mh10]}>{status}</H16fontNormalGray4>
+      </RadioButton>
+    );
+  };
+
+  const buttonPress = () => {
+    if (selectedStatus) {
+      console.log(`Selected status: ${selectedStatus}`);
+      if (selectedStatus === labels.dark) {
+        toggleTheme()
+        console.log("Changing to Dark Theme");
+      } else {
+        toggleTheme();
+        console.log("Changing to Light Theme");
+      }
+    }
+    onClose();
+  };
+
+  return (
+    <View style={{ flex: 1 }}>
+      <Modal transparent={true} animationType="slide" visible={isVisible}
+        onRequestClose={onClose}>
+        <ModalContainer>
+          <HalfCircle2 />
+          <ModalContent>
+            <View style={{ justifyContent: 'center', alignItems: 'center', bottom: 30 }}>
+              <ThemeLogo />
+            </View>
+            <View >
+              <H18fontBoldBlack>{labels.chooseTheme}</H18fontBoldBlack>
+              {chooseTheme.map((data, index) => {
+                return (
+                  <View key={data.id} style={[flexRow, spaceBetween]}>
+                    <View style={{ paddingVertical: 10 }}>
+                      <TouchableOpacity>
+                        <View key={data.id}>
+                          {renderRadio(data.status)}
+                        </View>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                );
+              })}
+            </View>
+
+            <SmallButton
+              title='cancel'
+              onChange={buttonPress}
+              backgroundColor={colors.purpleVar1}
 
 
-//   return (
-//     <View style={{ flex: 1 }}>
-//       <Modal transparent={true} animationType="slide" visible={isVisible}
-//         onRequestClose={onClose}>
-//         <ModalContainer>
-//           <HalfCircle2 />
-//           <ModalContent>
-//             <View style={{ justifyContent: 'center', alignItems: 'center', bottom: 30 }}>
-//               <ThemeLogo />
-//             </View>
-//             <View>
-//               {chooseTheme.map((data, index) => (
-//                <View style={{flexDirection:'row'}}>
-//                  <RadioBtn
-//                   key={data.id}
+            />
+            <SmallButton
+              title='ok'
+              onChange={buttonPress}
+              backgroundColor={colors.white}
 
-//                   selected= { selectedStatus === data.status}
-//                   onPress={() => handleStatusSelect(data.status)}
-//                 />
-//                 <Text>{data.status}</Text>
-//                 </View>
-//               ))}
-//         </View>
-//             <ButtonContainer1 >
-//             </ButtonContainer1>
-//           </ModalContent>
-//         </ModalContainer>
-//       </Modal>
-//     </View>
-//   );
-// };
+
+            />
+            {/* <ButtonContainer1 >
+              <ButtonSaveandCancel style={{
+                backgroundColor: colors.white
+              }}
+                textStyle={{ color: colors.greyVar4 }}
+                funCallback={buttonPress}
+                label={labels.cancel} />
+              <ButtonSaveandCancel style={{
+                backgroundColor: colors.purpleVar3,
+              }}
+                textStyle={{ color: colors.white }}
+                funCallback={buttonPress}
+                label={labels.ok} />
+            </ButtonContainer1> */}
+          </ModalContent>
+        </ModalContainer>
+      </Modal>
+    </View>
+  );
+};
+
+
+
+
+
+
 
 
 // export const SettingsModal: React.FC<CommonModalProps> = ({
@@ -331,9 +403,9 @@ export type CommonModalProps = {
 //         <ModalContainer>
 //           <HalfCircle2 />
 //           <ModalContent>
-            // <View style={{ justifyContent: 'center', alignItems: 'center', bottom: 30 }}>
-            //   <DeleteLogo />
-            // </View>
+// <View style={{ justifyContent: 'center', alignItems: 'center', bottom: 30 }}>
+//   <DeleteLogo />
+// </View>
 //             <View>
 //               <H18fontBoldBlack>{labels.clearAllChats1}</H18fontBoldBlack>
 //               <H16fontNormalGray>{labels.deleteMsg}</H16fontNormalGray>
@@ -582,30 +654,37 @@ export const CommonModal: React.FC<CommonModalProps> = ({
   );
 };
 
+
+
+
+
+
 // =========================================================  CUSTOM MODAL  =======================================
 
 interface CustomModalProps {
   isVisible: boolean;
   onClose: () => void;
   contentComponent: React.ReactNode;
-  image ? : React.ReactNode;
-  headingText ?: string;
+  iconName: string;
+  iconType: string;
+  iconSize:number;
 }
 
 
-export const CustomModal: React.FC<CustomModalProps> = ({ isVisible, onClose, contentComponent ,image,headingText}) => {
+export const IconModal: React.FC<CustomModalProps> = ({ isVisible, onClose, contentComponent, iconName, iconType,iconSize }) => {
   return (
-    <Modal transparent={true} animationType="slide" visible={isVisible} onRequestClose={onClose}>
+<Modal transparent={true} animationType="slide" visible={isVisible} onRequestClose={onClose}>
       <View style={{ flex: 1 }}>
         <ModalContainer>
           <HalfCircle2 />
-          <ModalContent1>
-          <View style={{ justifyContent: 'center', alignItems: 'center',bottom:10 }}>
-             {image}
+          <ModalContent1 style={{ }}>
+            <View style={{ backgroundColor: colors.purpleVar3, height: 47, width: 47, borderRadius: 25, bottom: 25, alignSelf: 'center', justifyContent: 'center' }}>
+              <View style={[alignItemsCenter, justyfyCenter]}>
+                <CustomIcon name={iconName} size={iconSize} color={colors.white} type={iconType} />
+              </View>
             </View>
-            <H16font600Black style={[mh15]}>{headingText}</H16font600Black>
             {contentComponent}
-            </ModalContent1>
+          </ModalContent1>
         </ModalContainer>
       </View>
     </Modal>

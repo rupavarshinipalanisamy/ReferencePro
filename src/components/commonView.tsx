@@ -8,6 +8,7 @@ import {
 import { colors } from '../utils/colors';
 import styled from 'styled-components';
 import { DevHeight } from '../utils/device';
+import { isDark } from '../Theme/ThemeContext';
 
 const styles = StyleSheet.create({
   rowSpaceBetween: {
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     height: 50,
     justifyContent: 'center',
-    backgroundColor:colors.purpleVar3
+    backgroundColor: colors.purpleVar3
   },
   commonButtonBook: {
     width: 200,
@@ -227,7 +228,7 @@ export const CommonButtonNow = styled(TouchableOpacity)`
 export const CommonButtonBook = styled(TouchableOpacity)`
     ${commonButtonBook};
   `;
-  export const TwoSmallButton = styled(TouchableOpacity)`
+export const TwoSmallButton = styled(TouchableOpacity)`
   ${smallButton};
   `
 
@@ -259,8 +260,8 @@ ${selectedRadioBtn}
 interface MessageCardProps {
   backgroundColor?: string;
 }
-export const MessageCard = styled(View)<MessageCardProps>`
-background-color: ${(props) => props.backgroundColor || colors.white };
+export const MessageCard = styled(View) <MessageCardProps>`
+background-color: ${(props) => props.backgroundColor || colors.white};
 border-top-right-radius: 8px;
 border-bottom-right-radius: 8px;
 border-bottom-left-radius: 8px;
@@ -274,7 +275,8 @@ interface TopContainerWhiteCardProps {
 
 
 export const TopContainerWhiteCard1 = styled(View) <TopContainerWhiteCardProps>`
-  background-color: ${colors.white};
+
+  background-color: ${props => isDark() ? colors.black : colors.white};
   border-bottom-start-radius: 25px;
   border-bottom-end-radius: 25px;
   ${({ height }) => height && `height: ${height}px;`}
