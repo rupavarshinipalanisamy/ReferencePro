@@ -1,7 +1,7 @@
 import React, { Fragment, useState, } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, StatusBar } from 'react-native';
 import { colors } from '../../utils/colors';
-import { alignSelfCenter, borderRadius10, flex1, flexRow, m15, mb15, mh20, ml15, mr5, mt20, mt3, mt5, mv10, p10, pb5, ph10, ph20, ph5, pv15, spaceBetween, spaceEvenly } from '../../components/commonStyles';
+import { alignItemsCenter, alignSelfCenter, borderRadius10, flex1, flexRow, justyfyCenter, m15, mb15, mh20, ml15, mr5, mt20, mt3, mt5, mv10, p10, pb5, ph10, ph20, ph5, pv15, spaceBetween, spaceEvenly } from '../../components/commonStyles';
 import { PinnedChatsdata, allChatsData } from '../../utils/data/chatsData';
 import { DevWidth } from '../../utils/device';
 import { CardSurface, CommonLineDividerGrey, PurpleMainContainer, RowSpaceBetween, RowSpaceEvenly } from '../../components/commonView'
@@ -10,7 +10,7 @@ import { H15Green, H15Grey, H15Red, H16SemiBoldBlack, H18BoldGrey } from '../../
 import { ArchiveIconBlackIcon, BlackDoubleTickIcon, BlackSingleTickIcon, BlueDoubleTickIcon, ContactImg1, FileBlackIcon, MikeBlackIcon, PhoneIncomingRedIcon, PictureBlackIcon, PinBlackIcon, VideoBlackIcon, VideoRedIcon } from '../../utils/svg';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
-import { BottomTabBar, ChatHeader, ContactHeader, CustomActionBar, CustomActionBarContact, CustomActionBarSecond } from '../../components/commonComponents'
+import { BottomTabBar, ChatHeader, ContactHeader, CustomActionBar, CustomActionBarSecond } from '../../components/commonComponents'
 import { contactList } from '../../utils/data/contactData';
 import CustomIcon from '../../utils/Icons';
 
@@ -52,8 +52,6 @@ const ContactPage = ({ }: AllChatsProps) => {
             <>
                 {showCustomActionBarSecond ? (
                     <CustomActionBarSecond itemNumber={selectedCards.length} />
-                ) : isCustomActionBar ? (
-                    <CustomActionBarContact text={selectedCards.length} selectedCardsCount={selectedCards.length} />
                 ) : (
                     <ContactHeader title={labels.Contact} />
                 )}
@@ -105,12 +103,14 @@ const ContactPage = ({ }: AllChatsProps) => {
                                             }
                                         >
                                             <View>
-
                                                 <View>{data.profImg}</View>
-                                                <View style={[{ backgroundColor: data.status === 'active' ? '#20c997' : '' }, data.status === 'active' ? styles.status : null]} >
-                                                    <CustomIcon name='check' size={10} color={colors.black} type='entypo' />
-                                                </View>
-
+                                                {
+                                                    selectedCards.includes(data.id) && (
+                                                        <View style={[{ backgroundColor: colors.green }, styles.status, alignItemsCenter, justyfyCenter]} >
+                                                            <CustomIcon name='check' size={10} color={colors.white} type='entypo' />
+                                                        </View>
+                                                    )
+                                                }
                                             </View>
                                             <View>
                                                 <H16SemiBoldBlack style={[ph10]}>
@@ -171,7 +171,6 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         marginVertical: 8
     },
-
     roundNumber: {
         height: 25,
         width: 25,
@@ -191,14 +190,14 @@ const styles = StyleSheet.create({
         marginTop: 3,
     },
     status: {
-        borderWidth: 3,
+        borderWidth: 1.5,
         borderColor: colors.white,
         position: 'absolute',
-        bottom: 5,
-        right: 10,
+        bottom: 0,
+        right: 0,
         height: 15,
         width: 15,
-        borderRadius: 10,
+        borderRadius: 100,
     },
     archiveCard: {
         height: 45,
@@ -211,7 +210,7 @@ const styles = StyleSheet.create({
         height: 40,
         borderRadius: 20,
         marginRight: 12
-    }
+    },
 });
 
 export default ContactPage

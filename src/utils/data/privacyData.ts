@@ -33,7 +33,5 @@ export const privacyData = [
         id: 6,
         heading:labels.blockCon,
         status:labels.blockNum,
-       
-
     },
 ];

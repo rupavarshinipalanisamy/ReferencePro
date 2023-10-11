@@ -54,6 +54,9 @@ import StatusMyContactsExceptOnly from './src/pages/settings/StatusMyContactsExc
 import StatusOnlyShareWith from './src/pages/settings/StatusOnlyShareWith';
 import EditAccountSettings from './src/pages/settings/EditAccountSettings';
 import DeleteAccount from './src/pages/settings/DeleteAccount';
+import BlockedContacts from './src/pages/settings/BlockedContacts';
+import NewChat from './src/pages/chat/NewChat';
+import Forward from './src/pages/chat/Forward';
 
 const Stack = createNativeStackNavigator();
 
@@ -113,6 +116,9 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.StatusOnlyShareWith} component={StatusOnlyShareWith} />
             <Stack.Screen name={screenName.EditAccountSettings} component={EditAccountSettings} />
             <Stack.Screen name={screenName.DeleteAccount} component={DeleteAccount} />
+            <Stack.Screen name={screenName.BlockedContacts} component={BlockedContacts} />
+            <Stack.Screen name={screenName.NewChat} component={NewChat} />
+            <Stack.Screen name={screenName.ForwardTo} component={Forward} />
         </Stack.Navigator>
     );
 };

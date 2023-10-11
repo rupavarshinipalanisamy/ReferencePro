@@ -81,7 +81,7 @@ export const settingsData = [
         iconName1: 'chevron-right',
         iconType1: "octicons",   
         iconSize: 20,
-        screenName:screenName.SocialProfiles
+        screenName:screenName.BlockedContacts
     },
     {
         id: 9,

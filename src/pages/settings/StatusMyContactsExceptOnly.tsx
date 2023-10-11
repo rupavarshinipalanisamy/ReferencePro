@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Text, View, ScrollView, Image, StyleSheet } from 'react-native';
-import { alignItemsCenter, alignSelfCenter, flex1, flexRow, justifyStart, justyfyCenter, mh20, mh30, ml10, ml30, mr15, mr30, mt15, mt3, mt5, mv10, p10, pb5 } from '../../components/commonStyles';
+import { alignItemsCenter, alignSelfCenter, flex025, flex075, flex1, flexRow, justifyStart, justyfyCenter, mh15, mh20, mh30, ml10, ml15, ml20, ml30, mr15, mr30, mt15, mt3, mt5, mv10, mv20, p10, pb5, spaceAround, spaceBetween } from '../../components/commonStyles';
 import { colors } from '../../utils/colors';
 import { DevHeight, DevWidth } from '../../utils/device';
 import CustomIcon from '../../utils/Icons';
@@ -10,6 +10,9 @@ import { labels } from '../../utils/labels';
 import { createGroupUserSelectData } from '../../utils/data/groupsData';
 import { MultiSelectOption } from '../../components/commonComponents';
 import { ButtonContainer } from '../../styledComponent/styledComponent';
+import { SmallButton } from '../../components/commonButtons';
+import { useNavigation } from '@react-navigation/native';
+import { screenName } from '../../utils/screenName';
 // import { ButtonSaveandCancel } from '../../components/commonButtons';
 
 export type StatusMyContactsExceptOnlyProps = {
@@ -18,8 +21,19 @@ export type StatusMyContactsExceptOnlyProps = {
 
 
 const StatusMyContactsExceptOnly = (props: StatusMyContactsExceptOnlyProps) => {
+    const navigation = useNavigation();
     const [selectedItems, setSelectedItems] = useState<number[]>([]);
     const [optionSelect, setOptionSelect] = useState(false);
+    const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+
+    const handleCancelButton = () => {
+        setIsCancelButtonActive(true);
+    };
+
+    const handleDeleteChatButton = () => {
+        setIsCancelButtonActive(false);
+        navigation.navigate(screenName.Privacy as never)
+    };
 
     const toggleHeaderMultiSelect = () => {
         setOptionSelect(!optionSelect);
@@ -94,20 +108,33 @@ const StatusMyContactsExceptOnly = (props: StatusMyContactsExceptOnlyProps) => {
                     }
 
                 </View>
-                {/* <ButtonContainer style={[mh20]}>
-                    <ButtonSaveandCancel style={{
-                        backgroundColor: colors.white
-                    }}
-                        textStyle={{ color: colors.greyVar4 }}
-                        funCallback={() => { }}
-                        label={labels.cancel} />
-                    <ButtonSaveandCancel style={{
-                        backgroundColor: colors.purpleVar3,
-                    }}
-                        textStyle={{ color: colors.white }}
-                        funCallback={() => { }}
-                        label={labels.Next} />
-                </ButtonContainer> */}
+                <View style={[mv20, flex1]}>
+                    <RowSpaceBetween>
+                        <View style={{flex : 0.85}} />
+                        <View style={[flexRow, flex1]}>
+                            <View style = {[]}>
+                                <SmallButton
+                                    title={labels.cancel}
+                                    onChange={handleCancelButton}
+                                    backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
+                                    textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
+                                    borderWidth={isCancelButtonActive ? 0 : 1}
+                                    width={DevWidth / 4.5}
+                                />
+                            </View>
+                            <View style = {[mr30, ml15]}>
+                                <SmallButton
+                                    title={labels.Save}
+                                    onChange={handleDeleteChatButton}
+                                    backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
+                                    textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
+                                    borderWidth={isCancelButtonActive ? 1 : 0}
+                                    width={DevWidth / 4.5}
+                                />
+                            </View>
+                        </View>
+                    </RowSpaceBetween>
+                </View>
             </ScrollView>
         </View>
     )

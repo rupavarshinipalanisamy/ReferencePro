@@ -10,9 +10,8 @@ import { bottomNavData } from '../utils/data/bottomNavData';
 import CustomIcon from '../utils/Icons';
 import { useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal';
-import { threeDotsOption } from '../utils/data/modalData';
-import { H15Grey, H16font600Black, H16fontNormalGray, H16fontNormalGray4, H18fontBoldBlack } from './commonText';
-import { HalfCircleSecond, ModalContainerSecond, ModalContentSecond } from '../styledComponent/styledComponent';
+import { muteNotificationdata, threeDotsOption } from '../utils/data/modalData';
+import { H14BlackVar2Bold400Text, H15Grey, H16font600Black, H16fontNormalGray, H16fontNormalGray4, H18fontBoldBlack } from './commonText';
 import { labels } from '../utils/labels';
 import { callBottomDataFourth } from '../utils/data/callsData';
 import { screenName } from '../utils/screenName';
@@ -236,14 +235,18 @@ interface ModalProps {
     modalData?: React.ReactNode;
     onClose: () => void;
     backdropOpacity?: number;
-    marginTop?: number
+    marginTop?: number;
+    marginLeft?: number;
 }
 
-export const CustomModal: React.FC<ModalProps> = ({ isVisible, width, modalData, onClose, backdropOpacity, marginTop }) => {
+export const CustomModal: React.FC<ModalProps> = ({ isVisible, width, modalData, onClose, backdropOpacity, marginTop, marginLeft }) => {
     return (
         <RNModal transparent={true} visible={isVisible} onRequestClose={onClose}>
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <View style={[flex1, justyfyCenter, alignItemsCenter]}>
                 <Modal
+                    animationInTiming={10}
+                    animationOutTiming={10}
+                    animationIn="slideInRight"
                     isVisible={isVisible}
                     onBackdropPress={onClose}
                     backdropOpacity={backdropOpacity || 0}
@@ -252,7 +255,7 @@ export const CustomModal: React.FC<ModalProps> = ({ isVisible, width, modalData,
                         alignItems: 'flex-end',
                     }}
                 >
-                    <View style={[{ backgroundColor: colors.white, elevation: 4, borderRadius: 5, width: width || DevWidth * 0.5, padding: 10, marginTop: marginTop || 30 }]}>{modalData}</View>
+                    <View style={[{ backgroundColor: colors.white, elevation: 4, borderRadius: 5, width: width || DevWidth * 0.5, padding: 10, marginTop: marginTop || 30, marginLeft : marginLeft || 0 }]}>{modalData}</View>
                 </Modal>
             </View>
         </RNModal>
@@ -264,8 +267,6 @@ export const CustomModal: React.FC<ModalProps> = ({ isVisible, width, modalData,
 interface CustomActionBarProps {
     text?: number;
     onPinPress?: () => void;
-    onDeletePress?: () => void;
-    onMikePress?: () => void;
     onArchivePress?: () => void;
     onThreeDotsPress?: () => void;
     selectedCardsCount?: number;
@@ -274,17 +275,20 @@ interface CustomActionBarProps {
 export const CustomActionBar: React.FC<CustomActionBarProps> = ({
     text,
     onPinPress,
-    onDeletePress,
-    onMikePress,
+
     onArchivePress,
     onThreeDotsPress,
     selectedCardsCount,
 }) => {
     const [isModalVisible, setModalVisible] = useState(false);
     const [deleteOptionModal, setDeleteOptionModal] = useState(false);
+    const [muteOptionModal, setMuteOptionModal] = useState(false);
 
     const handleDeleteOptionModal = () => {
         setDeleteOptionModal(!deleteOptionModal)
+    }
+    const handleMuteOptionModal = () => {
+        setMuteOptionModal(!muteOptionModal)
     }
 
     const handleThreeDotsClick = () => {
@@ -366,6 +370,66 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
         )
     }
 
+    const MuteChatOption = () => {
+        const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+        const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
+
+        const handleCancelButton = () => {
+            setIsCancelButtonActive(true);
+        };
+
+        const handleDeleteChatButton = () => {
+            setIsCancelButtonActive(false);
+        };
+
+        const handleStatusSelect = (status: string) => {
+            setSelectedStatus(status);
+        };
+
+        return (
+            <View style={[mh20]} >
+                <H16font600Black>Mute Notifications</H16font600Black>
+                <Text style={[mt20]}>Other participants will not see you{'\n'}muted this chat. You will still be notified if{'\n'}you are mentioned.</Text>
+                <View style={[mt15]}>
+                    {
+                        muteNotificationdata.map((item) => {
+                            return (
+                                <View style={[flexRow, mv10]} key={item.id}>
+                                    <View>
+                                        <RadioBtn
+                                            key={item.id}
+                                            selected={selectedStatus === item.name}
+                                            onPress={() => handleStatusSelect(item.name)}
+                                        />
+                                    </View>
+                                    <H14BlackVar2Bold400Text style = {[ml10]}>{item.name}</H14BlackVar2Bold400Text>
+                                </View>
+                            )
+                        })
+                    }
+                </View>
+                <RowSpaceBetween style={[mv20]}>
+                    <SmallButton
+                        title={labels.cancel}
+                        onChange={handleCancelButton}
+                        backgroundColor={isCancelButtonActive ? colors.red : colors.white}
+                        textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
+                        borderWidth={isCancelButtonActive ? 0 : 1}
+                        width={DevWidth / 2.6}
+                    />
+                    <SmallButton
+                        title={labels.DeleteChat}
+                        onChange={handleDeleteChatButton}
+                        backgroundColor={isCancelButtonActive ? colors.white : colors.red}
+                        textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
+                        borderWidth={isCancelButtonActive ? 1 : 0}
+                        width={DevWidth / 2.6}
+                    />
+                </RowSpaceBetween>
+            </View>
+        )
+    }
+
     return (
         <View style={[flexRow, spaceBetween, mh20, mv15, pt10]}>
             <View style={flexRow}>
@@ -381,7 +445,7 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
                 <TouchableOpacity style={ml10} onPress={handleDeleteOptionModal}>
                     <DeleteWhiteIcon />
                 </TouchableOpacity>
-                <TouchableOpacity style={ml10} onPress={onMikePress}>
+                <TouchableOpacity style={ml10} onPress={handleMuteOptionModal}>
                     <MikeWhiteIcon />
                 </TouchableOpacity>
                 <TouchableOpacity style={ml10} onPress={onArchivePress}>
@@ -403,6 +467,14 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
                 isVisible={deleteOptionModal}
                 onClose={() => handleDeleteOptionModal()}
                 contentComponent={<DeleteChatOption />}
+                iconName='trash-o'
+                iconType='FontAwesome'
+                iconSize={26}
+            />
+            <IconModal
+                isVisible={muteOptionModal}
+                onClose={() => handleMuteOptionModal()}
+                contentComponent={<MuteChatOption />}
                 iconName='trash-o'
                 iconType='FontAwesome'
                 iconSize={26}
@@ -713,6 +785,24 @@ export const ImagePicker: React.FC<ImagePickerProps> = ({ onImageSelect }) => {
     );
 };
 
+
+// =============== Radio Button component======================
+interface RadioBtnProps {
+    selected: boolean;
+    onPress: () => void;
+}
+
+export const RadioBtn: React.FC<RadioBtnProps> = ({ selected, onPress }) => {
+    return (
+        <RadioButton onPress={onPress}>
+            <RadioButtonRound style={{ backgroundColor: selected ? colors.purpleVar3 : colors.white }}>
+                {selected && (
+                    <SelectedRadioBtn />
+                )}
+            </RadioButtonRound>
+        </RadioButton>
+    );
+};
 
 const styles = StyleSheet.create({
     chatHeaderText: {

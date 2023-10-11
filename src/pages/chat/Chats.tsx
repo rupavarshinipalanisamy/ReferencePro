@@ -60,7 +60,7 @@ const Chats = (props: chatProps) => {
                 ) : isCustomActionBar ? (
                     <CustomActionBar text={selectedCards.length} selectedCardsCount={selectedCards.length} />
                 ) : (
-                    <ChatHeader title={labels.Chats} icon1Navigate={screenName.AccountSettings} />
+                    <ChatHeader title={labels.Chats} icon1Navigate={screenName.AccountSettings} icon3Navigate={screenName.NewChat} icon2Navigate={screenName.ForwardTo} />
                 )}
             </>
         );

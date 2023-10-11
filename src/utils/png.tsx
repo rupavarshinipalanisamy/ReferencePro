@@ -9,6 +9,7 @@ export const Chatimg5Img = require('../../assets/images/png/chatimg5.png');
 export const Chatimg6Img = require('../../assets/images/png/chatimg6.png');
 export const Chatimg7Img = require('../../assets/images/png/chatimg7.png');
 export const Chatimg8Img = require('../../assets/images/png/chatimg8.png');
+export const Chatimg9Img = require('../../assets/images/png/chatimg9.png');
 export const GroupImg1Img = require('../../assets/images/png/groupimg1.png');
 export const GroupImg2Img = require('../../assets/images/png/groupimg2.png');
 export const GroupImg3Img = require('../../assets/images/png/groupimg3.png');

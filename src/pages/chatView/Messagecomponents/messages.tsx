@@ -260,7 +260,7 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
     )
 
 }
-export const FooterChatView = ({ text, onSwipeRight }: any) => {
+export const FooterChatView = ({ text, onSwipeRight, attachmentOnPress }: any) => {
     return (
         <View style={{ backgroundColor: colors.white, height: DevHeight / 8, borderTopLeftRadius: 20, borderTopRightRadius: 20, paddingTop: 20 }}>
             <View style={[{ marginHorizontal: 20 }, flexRow, spaceBetween]}>
@@ -284,9 +284,9 @@ export const FooterChatView = ({ text, onSwipeRight }: any) => {
 
                         />
                         <View style={{ alignItems: 'flex-end', marginHorizontal: 8 }}>
-                            <View style={{ position: 'absolute', paddingTop: 15, bottom: 10, paddingRight: 32 }}>
+                            <TouchableOpacity onPress={attachmentOnPress} style={{ position: 'absolute', paddingTop: 15, bottom: 10, paddingRight: 32 }}>
                                 <CustomIcon name='attachment' type="MaterialIcons" size={26} color={colors.greyVar4} />
-                            </View>
+                            </TouchableOpacity>
                             <View style={{ position: 'absolute', paddingTop: 15, bottom: 12 }}>
                                 <CustomIcon name='camera-outline' type="MaterialCommunityIcons" size={24} color={colors.greyVar4} />
                             </View>

@@ -1,5 +1,6 @@
+import { color } from "react-native-elements/dist/helpers"
 import { labels } from "../labels"
-import { Chatimg1Img, Chatimg2Img, Chatimg3Img, Chatimg4Img, Chatimg5Img, Chatimg6Img, Chatimg7Img, Chatimg8Img } from "../png"
+import { Chatimg1Img, Chatimg2Img, Chatimg3Img, Chatimg4Img, Chatimg5Img, Chatimg6Img, Chatimg7Img, Chatimg8Img, Chatimg9Img } from "../png"
 
 export const allChatsData = [
     {
@@ -173,4 +174,138 @@ export const chatSettings=[
         chatSettings:labels.deleteAllChats
     }
 
+]
+
+export const attachmentData = [
+    {
+        id : 1,
+        name : labels.Document,
+        iconName : 'file-text',
+        iconType : 'Feather',
+        iconSize : '16',
+        iconColor : color.blackVar1,
+    },
+    {
+        id : 2,
+        name : labels.Camera,
+        iconName : 'camera-outline',
+        iconType : 'MaterialCommunityIcons',
+        iconSize : '16',
+        iconColor : color.blackVar1,
+    },
+    {
+        id : 3,
+        name : labels.Gallery,
+        iconName : 'image',
+        iconType : 'font-awesome',
+        iconSize : '16',
+        iconColor : color.blackVar1,
+    },
+    {
+        id : 4,
+        name : labels.Audio,
+        iconName : 'volume-2',
+        iconType : 'Feather',
+        iconSize : '16',
+        iconColor : color.blackVar1,
+    },
+    {
+        id : 5,
+        name : labels.Location,
+        iconName : 'map-pin',
+        iconType : 'Feather',
+        iconSize : '16',
+        iconColor : color.blackVar1,
+    },
+    {
+        id : 6,
+        name : labels.Contact,
+        iconName : 'user',
+        iconType : 'Feather',
+        iconSize : '16',
+        iconColor : color.blackVar1,
+    },
+]
+
+export const newChatData = [{
+    id: 1,
+    img: Chatimg1Img,
+    name: labels.MarkVilliams,
+    note: labels.Sleeping,
+    status: 'inactive',
+    isAdmin: 'true',
+    isSelected : false,
+},
+{
+    id: 2,
+    img: Chatimg2Img,
+    name: labels.ElizabethSosa,
+    note: labels.Available,
+    status: 'inactive',
+    isAdmin: 'true',
+    isSelected : false,
+},
+{
+    id: 3,
+    img: Chatimg3Img,
+    name: labels.MichaelHoward,
+    note: labels.AtWork,
+    status: 'active',
+    isAdmin: 'false',
+    isSelected : false,
+},
+{
+    id: 4,
+    img: Chatimg4Img,
+    name: labels.horaceKeene,
+    note: labels.CantTalk,
+    status: 'active',
+    isAdmin: 'false',
+    isSelected : false,
+},
+{
+    id: 5,
+    img: Chatimg5Img,
+    name: labels.HollisTran,
+    note: labels.Busy,
+    status: 'inactive',
+    isAdmin: 'false',
+    isSelected : false,
+},
+{
+    id: 6,
+    img: Chatimg9Img,
+    name: labels.DebraJones,
+    note: labels.InaMeeting,
+    status: 'inactive',
+    isAdmin: 'false',
+    isSelected : false,
+},
+{
+    id: 7,
+    img: Chatimg6Img,
+    name: labels.JamesAlbert,
+    note: labels.AtMovies,
+    status: 'active',
+    isAdmin: 'false',
+    isSelected : false,
+},
+{
+    id: 8,
+    img: Chatimg8Img,
+    name: labels.JudyMercer,
+    note: labels.AtGym,
+    status: 'active',
+    isAdmin: 'false',
+    isSelected : false,
+},
+{
+    id: 9,
+    img: Chatimg7Img,
+    name: labels.DinaBrown,
+    note: labels.UrgentCallsOnly,
+    status: 'inactive',
+    isAdmin: 'false',
+    isSelected : false,
+},
 ]

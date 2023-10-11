@@ -51,4 +51,7 @@ export const screenName = {
     StatusMyContactExcept : 'StatusMyContactExcept',
     EditAccountSettings : 'EditAccountSettings',
     DeleteAccount : 'DeleteAccount',
+    BlockedContacts : 'BlockedContacts',
+    NewChat : 'New Chats',
+    ForwardTo : 'ForwardTo',
 };
