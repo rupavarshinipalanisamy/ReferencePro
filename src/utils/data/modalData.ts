@@ -7,15 +7,15 @@ export const threeDotsOption = [
         name : labels.ViewContact,
         iconName : 'person-circle-outline',
         iconType : "Ionicons",
-        iconSize : 20,
+        iconSize : 18,
         screenName : screenName.ChatView,
     },
     {
         id: 2,
         name : labels.MarkAsRead,
-        iconName : 'verified',
-        iconType : "octicons",
-        iconSize : 25,
+        iconName : 'checkmark-circle-outline',
+        iconType : "Ionicons",
+        iconSize : 18,
         screenName : screenName.ChatView,}]
 
 export const profilePic = [
@@ -117,5 +117,51 @@ export const CallThreeDotsOption = [
         iconType : "entypo",
         iconSize : 20,
         screenName : screenName.ChatView,
+    },
+]
+
+export const muteNotificationdata = [
+    {
+        id : 1,
+        name : '15 Minutes',
+    },
+    {
+        id : 2,
+        name : '1 Hour',
+    },
+    {
+        id : 3,
+        name : '1 Day',
+    },
+    {
+        id : 4,
+        name : '1 Week',
+    },
+    {
+        id : 5,
+        name : '1 Month',
+    },
+    {
+        id : 6,
+        name : '1 Year',
+    },
+    {
+        id : 7,
+        name : 'Always',
+    },
+]
+
+export const statusPrivacydata = [
+    {
+        id : 1,
+        name : 'My Contacts',
+    },
+    {
+        id : 2,
+        name : 'My Contacts Except Only',
+    },
+    {
+        id : 3,
+        name : 'Only Share with',
     },
 ]

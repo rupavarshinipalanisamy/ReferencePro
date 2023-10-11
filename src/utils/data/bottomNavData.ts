@@ -13,8 +13,8 @@ export const bottomNavData = [
     {
         id: 2,
         name : labels.Group,
-        iconName : 'account-group-outline',
-        iconType : "MaterialCommunityIcons",
+        iconName : 'users',
+        iconType : "Feather",
         iconSize : 25,
         screenName : screenName.Group,
     },
@@ -37,8 +37,8 @@ export const bottomNavData = [
     {
         id: 5,
         name : labels.Call,
-        iconName : 'call-outline',
-        iconType : "Ionicons",
+        iconName : 'phone',
+        iconType : "Feather",
         iconSize : 25,
         screenName : screenName.Calls,
     },

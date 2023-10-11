@@ -42,6 +42,12 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: colors.greyVar0
   },
+  commonLineDividerPurple: {
+    width: '88%',
+    alignSelf: 'center',
+    height: 1,
+    backgroundColor: colors.purpleVar2
+  },
   tabContainer: {
     fontSize: 16,
     fontWeight: '500',
@@ -57,7 +63,6 @@ const styles = StyleSheet.create({
   commonButtonNow: {
     width: '100%',
     paddingVertical: 8,
-    marginVertical: 40,
     borderRadius: 5,
     alignSelf: 'center',
     height: 50,
@@ -99,12 +104,12 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   commonButtonSaveandCancel: {
-    width: '45%',
-    paddingVertical: 8,
-    marginVertical: 40,
-    borderRadius: 9,
-    alignSelf: 'center',
-    height: 50,
+    width: '48%',
+    // paddingVertical: 8,
+    // marginVertical: 40,
+    borderRadius: 10,
+    alignItems: 'center',
+    height: 42,
     justifyContent: 'center',
     borderWidth: 1,
     borderColor: colors.greyVar3
@@ -170,6 +175,7 @@ const {
   purpleMainContainer,
   subContainer,
   commonLineDividerGrey,
+  commonLineDividerPurple,
   tabContainer,
   textNow,
   commonButtonNow,
@@ -200,6 +206,9 @@ export const PurpleMainContainer = styled(SafeAreaView) <{ secondary?: boolean }
 `;
 export const CommonLineDividerGrey = styled(View)`
   ${commonLineDividerGrey}
+`
+export const CommonLineDividerPurple = styled(View)`
+  ${commonLineDividerPurple};
 `
 export const RowSpaceBetween = styled(View)`
   ${rowSpaceBetween}

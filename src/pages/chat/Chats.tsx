@@ -9,6 +9,7 @@ import { flex1, flexRow, mh20, ml10, mv15, spaceAround, spaceBetween } from '../
 import PinnedChats from '../../components/chats/PinnedChats';
 import ArchiveChats from '../../components/chats/ArchiveChats';
 import { ArchiveIconWhiteIcon, DeleteWhiteIcon, LeftArrowWhiteIcon, ThreeDotsWhiteIcon } from '../../utils/svg';
+import { screenName } from '../../utils/screenName';
 
 export type chatProps = {
 
@@ -59,7 +60,7 @@ const Chats = (props: chatProps) => {
                 ) : isCustomActionBar ? (
                     <CustomActionBar text={selectedCards.length} selectedCardsCount={selectedCards.length} />
                 ) : (
-                    <ChatHeader title={labels.Chats} />
+                    <ChatHeader title={labels.Chats} icon1Navigate={screenName.AccountSettings} icon3Navigate={screenName.NewChat} icon2Navigate={screenName.ForwardTo} />
                 )}
             </>
         );

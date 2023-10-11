@@ -46,6 +46,17 @@ import {
   DarkTheme,
 } from '@react-navigation/native';
 import ChooseWallper from './src/pages/ChooseWallper';
+import CreateGroup from './src/pages/groups/CreateGroup';
+import CreateGroupUserSelect from './src/pages/groups/CreateGroupUserSelect';
+import AccountSettings from './src/pages/settings/AccountSettings';
+import AccountSettingsEdit from './src/pages/settings/AccountSettingsEdit';
+import StatusMyContactsExceptOnly from './src/pages/settings/StatusMyContactsExceptOnly';
+import StatusOnlyShareWith from './src/pages/settings/StatusOnlyShareWith';
+import EditAccountSettings from './src/pages/settings/EditAccountSettings';
+import DeleteAccount from './src/pages/settings/DeleteAccount';
+import BlockedContacts from './src/pages/settings/BlockedContacts';
+import NewChat from './src/pages/chat/NewChat';
+import Forward from './src/pages/chat/Forward';
 
 const Stack = createNativeStackNavigator();
 
@@ -97,10 +108,17 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.GroupSettings} component={GroupSettings} />
             <Stack.Screen name={screenName.VerifyCode} component={VerifyCode} />
             <Stack.Screen name={screenName.ChooseWallpaper} component={ChooseWallper} />
-
-
-
-
+            <Stack.Screen name={screenName.CreateGroup} component={CreateGroup} />
+            <Stack.Screen name={screenName.CreateGroupUserSelect} component={CreateGroupUserSelect} />
+            <Stack.Screen name={screenName.AccountSettings} component={AccountSettings} />
+            <Stack.Screen name={screenName.AccountSettingsEdit} component={AccountSettingsEdit} />
+            <Stack.Screen name={screenName.StatusMyContactExcept} component={StatusMyContactsExceptOnly} />
+            <Stack.Screen name={screenName.StatusOnlyShareWith} component={StatusOnlyShareWith} />
+            <Stack.Screen name={screenName.EditAccountSettings} component={EditAccountSettings} />
+            <Stack.Screen name={screenName.DeleteAccount} component={DeleteAccount} />
+            <Stack.Screen name={screenName.BlockedContacts} component={BlockedContacts} />
+            <Stack.Screen name={screenName.NewChat} component={NewChat} />
+            <Stack.Screen name={screenName.ForwardTo} component={Forward} />
         </Stack.Navigator>
     );
 };

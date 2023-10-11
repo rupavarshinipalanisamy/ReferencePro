@@ -91,8 +91,7 @@
 
 // export default Privacy
 import React, { Fragment, useState } from 'react';
-import { StatusBar, View, TouchableOpacity } from 'react-native';
-import { colors } from 'react-native-elements';
+import { StatusBar, View, TouchableOpacity, Text } from 'react-native';
 import {
     flexRow,
     mt20,
@@ -100,35 +99,124 @@ import {
     ph15,
     spaceBetween,
     mh20,
+    mv20,
+    ml10,
+    mv10,
+    mt15,
 } from '../../components/commonStyles';
 import {
     H12fontNormalGray,
+    H14BlackVar2Bold400Text,
+    H16font600Black,
     H16font900Black,
     H16fontNormalGray4,
 } from '../../components/commonText';
 import {
     MainContainer,
+    RowSpaceBetween,
     TopContainerWhiteCard,
 } from '../../components/commonView';
 import CustomIcon from '../../utils/Icons';
 import { labels } from '../../utils/labels';
 import { useNavigation } from '@react-navigation/native';
 import { privacyData } from '../../utils/data/privacyData';
-import { GroupsModal, LastSeenModal, SettingsModal } from '../../components/commonModal';
+import { DevWidth } from '../../utils/device';
+import { SmallButton } from '../../components/commonButtons';
+import { RadioBtn } from '../../components/commonComponents';
+import { muteNotificationdata, statusPrivacydata } from '../../utils/data/modalData';
+import { colors } from '../../utils/colors';
+import { IconModal } from '../../components/commonModal';
+import { screenName } from '../../utils/screenName';
 
 export type privacyProps = {};
 
 const Privacy = (props: privacyProps) => {
     const navigation = useNavigation();
     const [selectedModalId, setSelectedModalId] = useState(null); // State to store the selected modal ID
+    const [statusPrivacyOptionModal, setStatusPrivacyOptionModal] = useState(false);
+
+    const handleStatusPrivacyOptionModal = () => {
+        setStatusPrivacyOptionModal(!statusPrivacyOptionModal)
+    }
 
     const openModal = (id: number) => {
-        setSelectedModalId(id);
+        // setSelectedModalId(id);
+        if (id === 1) {
+            handleStatusPrivacyOptionModal();
+        }
     };
 
     const closeModal = () => {
         setSelectedModalId(null);
     };
+
+    const StatusPrivacyOption = () => {
+        const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+        const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
+
+        const handleCancelButton = () => {
+            setIsCancelButtonActive(true);
+            setStatusPrivacyOptionModal(false);
+        };
+
+        const handleDeleteChatButton = () => {
+            setIsCancelButtonActive(false);
+            setStatusPrivacyOptionModal (false)
+        };
+
+        const handleStatusSelect = (status: string, id : number) => {
+            setSelectedStatus(status);
+            if(id === 2){
+                navigation.navigate(screenName.StatusMyContactExcept as never);
+            } 
+            else if(id === 3){
+                navigation.navigate(screenName.StatusOnlyShareWith as never);
+            }
+        };
+
+        return (
+            <View style={[mh20]} >
+                <H16font600Black>Status Privacy</H16font600Black>
+                <Text style={[mt20]}>Who can see my status updates</Text>
+                <View style={[mt15]}>
+                    {
+                        statusPrivacydata.map((item) => {
+                            return (
+                                <View style={[flexRow, mv10]} key={item.id}>
+                                    <View>
+                                        <RadioBtn
+                                            key={item.id}
+                                            selected={selectedStatus === item.name}
+                                            onPress={() => handleStatusSelect(item.name, item.id)}
+                                        />
+                                    </View>
+                                    <H14BlackVar2Bold400Text style={[ml10]}>{item.name}</H14BlackVar2Bold400Text>
+                                </View>
+                            )
+                        })
+                    }
+                </View>
+                <RowSpaceBetween style={[mv20]}>
+                    <SmallButton
+                        title={labels.cancel}
+                        onChange={handleCancelButton}
+                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
+                        textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
+                        borderWidth={isCancelButtonActive ? 0 : 1}
+                        width={DevWidth / 2.6}
+                    />
+                    <SmallButton
+                        title={labels.SaveChanges}
+                        onChange={handleDeleteChatButton}
+                        backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
+                        textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
+                        borderWidth={isCancelButtonActive ? 1 : 0}
+                        width={DevWidth / 2.6}
+                    />
+                </RowSpaceBetween>
+            </View>
+        )
+    }
 
     return (
         <Fragment>
@@ -172,26 +260,34 @@ const Privacy = (props: privacyProps) => {
                         );
                     })}
                 </View>
+                <IconModal
+                    isVisible={statusPrivacyOptionModal}
+                    onClose={() => handleStatusPrivacyOptionModal()}
+                    contentComponent={<StatusPrivacyOption />}
+                    iconName='stop-circle-outline'
+                    iconType='MaterialCommunityIcons'
+                    iconSize={24}
+                />
                 {/* Conditionally render the modals based on selectedModalId */}
-                {selectedModalId === 1 && (
+                {/* {selectedModalId === 1 && (
                     <SettingsModal
-                        isVisible={true} 
+                        isVisible={true}
                         onClose={closeModal}
                     />
                 )}
 
                 {selectedModalId === 2 && (
                     <LastSeenModal
-                        isVisible={true} 
+                        isVisible={true}
                         onClose={closeModal}
                     />
                 )}
-                 {selectedModalId === 3 && (
+                {selectedModalId === 3 && (
                     <GroupsModal
-                        isVisible={true} 
+                        isVisible={true}
                         onClose={closeModal}
                     />
-                )}
+                )} */}
             </MainContainer>
         </Fragment>
     );

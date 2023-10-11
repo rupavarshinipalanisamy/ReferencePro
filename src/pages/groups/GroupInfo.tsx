@@ -3,9 +3,9 @@ import { Text, View, TouchableOpacity, ScrollView, Image, StyleSheet, Dimensions
 import { colors } from '../../utils/colors';
 import { CommonLineDividerGrey, MainContainer, RowSpaceBetween } from '../../components/commonView';
 import { useNavigation } from '@react-navigation/native';
-import { alignItemsCenter, flexRow, justyfyCenter, mb15, mr5, mt10, mt15, mt20, mt3, mt5, pl10, pl13, pt10, pt5, spaceBetween } from '../../components/commonStyles';
+import { alignItemsCenter, flexRow, justyfyCenter, mb15, mh20, mr5, mt10, mt15, mt20, mt3, mt5, mv20, pl10, pl13, pt10, pt5, spaceBetween } from '../../components/commonStyles';
 import CustomIcon from '../../utils/Icons';
-import { H14BlackText, H15BlackBold600, H15Grey, H16BlackText, H18BlackText, H18fontBoldBlack } from '../../components/commonText';
+import { H14BlackText, H15BlackBold600, H15Grey, H16BlackText, H16font600Black, H18BlackText, H18fontBoldBlack } from '../../components/commonText';
 import { CustomModal } from '../../components/commonComponents';
 import { DevHeight, DevWidth } from '../../utils/device';
 import { labels } from '../../utils/labels';
@@ -14,6 +14,8 @@ import { GroupProfileAvatarIcon } from '../../utils/svg';
 import { CardHeaderText } from '../chatView/UserProfile';
 import { screenName } from '../../utils/screenName';
 import { colorIconsData, colorIconsDataSecond, groupMediaData, groupsData } from '../../utils/data/groupsData';
+import { IconModal } from '../../components/commonModal';
+import { SmallButton } from '../../components/commonButtons';
 
 export type GroupInfoProps = {
 
@@ -78,7 +80,7 @@ export const GroupProfileCard = () => {
                                 <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={22} color={colors.greyVar4} />
                             </View>
                             <View style={[{ alignItems: 'center', justifyContent: 'center' }, pl10]}>
-                                <CustomIcon name='call-outline' type="Ionicons" size={18} color={colors.greyVar4} />
+                                <CustomIcon name='phone' type="Feather" size={18} color={colors.greyVar4} />
                             </View>
                             <View style={[{ alignItems: 'center', justifyContent: 'center' }, pl10]}>
                                 <CustomIcon name='chatbox-ellipses-outline' type="Ionicons" size={18} color={colors.greyVar4} />
@@ -262,15 +264,64 @@ const ColorIconTab = () => {
 }
 
 export const ColorIconTabSecond = () => {
-    const navigation = useNavigation()
+    const navigation = useNavigation();
+    const [exitGroupModal, setExitGroupModal] = useState(false);
+    
+    const handleExitGroupModal = () => {
+        setExitGroupModal(!exitGroupModal);
+    }
 
+    const handleOnPressColorIconTabSecond = (id : number, screenName : string) => {
+        if(id === 1){
+            handleExitGroupModal();
+        }else {
+            navigation.navigate(screenName as never);
+        }
+    }
+
+    const ExitGroupModal = () => {
+        const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+
+        const handleCancelButton = () => {
+            setIsCancelButtonActive(true);
+        };
+
+        const handleDeleteChatButton = () => {
+            setIsCancelButtonActive(false);
+        };
+
+        return (
+            <View style={[mh20]} >
+                <H16font600Black>Exit Group?</H16font600Black>
+                <Text style={[mt20]}>Only group admins will be notifed that you{'\n'}left the group.</Text>
+                <RowSpaceBetween style={[mv20]}>
+                    <SmallButton
+                        title={labels.cancel}
+                        onChange={handleCancelButton}
+                        backgroundColor={isCancelButtonActive ? colors.red : colors.white}
+                        textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
+                        borderWidth={isCancelButtonActive ? 0 : 1}
+                        width={DevWidth / 2.6}
+                    />
+                    <SmallButton
+                        title={labels.Exit}
+                        onChange={handleDeleteChatButton}
+                        backgroundColor={isCancelButtonActive ? colors.white : colors.red}
+                        textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
+                        borderWidth={isCancelButtonActive ? 1 : 0}
+                        width={DevWidth / 2.6}
+                    />
+                </RowSpaceBetween>
+            </View>
+        )
+    }
 
     return (
         <View>
             {
                 colorIconsDataSecond.map((item) => {
                     return (
-                        <TouchableOpacity key={item.id} onPress={() => navigation.navigate(item.screenName as never)}>
+                        <TouchableOpacity key={item.id} onPress={() => handleOnPressColorIconTabSecond(item.id, item.screenName) }>
                             <View style={[flexRow, spaceBetween, { paddingBottom: 15 }]}>
                                 <View style={[flexRow]}>
 
@@ -281,15 +332,23 @@ export const ColorIconTabSecond = () => {
                                         <H16BlackText>{item.name}</H16BlackText>
                                     </View>
                                 </View>
-                                <TouchableOpacity style={[{ transform: [{ rotate: '180deg' }] }, flexRow, alignItemsCenter, justyfyCenter]}>
+                                <View style={[{ transform: [{ rotate: '180deg' }] }, flexRow, alignItemsCenter, justyfyCenter]}>
                                     <CustomIcon name='chevron-back-sharp' color={colors.greyVar4} size={16} type="Ionicons"
                                     />
-                                </TouchableOpacity>
+                                </View>
                             </View>
                         </TouchableOpacity>
                     )
                 })
             }
+            <IconModal
+                isVisible={exitGroupModal}
+                onClose={() => handleExitGroupModal()}
+                contentComponent={<ExitGroupModal />}
+                iconName='logout'
+                iconType='AntDesign'
+                iconSize={24}
+            />
         </View>
     )
 }

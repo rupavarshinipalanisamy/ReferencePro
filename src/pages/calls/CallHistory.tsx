@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, View, Image, StyleSheet, ScrollView } from 'rea
 import { HeaderChatView } from '../chatView/Messagecomponents/messages';
 import { colors } from '../../utils/colors';
 import { screenName } from '../../utils/screenName';
-import { flex1, flexRow, mh10, mh20, mt15, mt5, mv10, mv5, p10, p20, p5, pb5, spaceAround } from '../../components/commonStyles';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh10, mh20, mt15, mt5, mv10, mv5, p10, p20, p5, pb5, spaceAround } from '../../components/commonStyles';
 import { H15Grey, H16SemiBoldBlack, H16fontBoldBlack, H18fontBoldBlack } from '../../components/commonText';
 import { labels } from '../../utils/labels';
 import { callHistoryThirddata, callHistoryTodaydata, callHistoryYesterdaydata } from '../../utils/data/callsData';
@@ -30,9 +30,9 @@ const CallHistory = (props: CallHistoryProps) => {
                         {
                             callHistoryTodaydata.map((item) => {
                                 return (
-                                    <TouchableOpacity key={item.id} style={[p10, mv10, { backgroundColor: colors.white }]}>
+                                    <TouchableOpacity key={item.id} style={[p10, mv10, styles.whiteCard]}>
                                         <View style={[flexRow]}>
-                                            <View>
+                                            <View style = {[alignItemsCenter, justyfyCenter]}>
                                                 <Image source={item.img} style={styles.profileImg} />
                                             </View>
                                             <View style={[flex1]}>
@@ -60,9 +60,9 @@ const CallHistory = (props: CallHistoryProps) => {
                         {
                             callHistoryYesterdaydata.map((item) => {
                                 return (
-                                    <TouchableOpacity key={item.id} style={[p10, mv10, { backgroundColor: colors.white }]}>
+                                    <TouchableOpacity key={item.id} style={[p10, mv10, styles.whiteCard]}>
                                         <View style={[flexRow]}>
-                                            <View>
+                                            <View style = {[alignItemsCenter, justyfyCenter]}>
                                                 <Image source={item.img} style={styles.profileImg} />
                                             </View>
                                             <View style={[flex1]}>
@@ -90,9 +90,9 @@ const CallHistory = (props: CallHistoryProps) => {
                         {
                             callHistoryThirddata.map((item) => {
                                 return (
-                                    <TouchableOpacity key={item.id} style={[p10, mv10, { backgroundColor: colors.white }]}>
+                                    <TouchableOpacity key={item.id} style={[p10, mv10, styles.whiteCard]}>
                                         <View style={[flexRow]}>
-                                            <View>
+                                            <View style = {[alignItemsCenter, justyfyCenter]}>
                                                 <Image source={item.img} style={styles.profileImg} />
                                             </View>
                                             <View style={[flex1]}>
@@ -120,14 +120,6 @@ const CallHistory = (props: CallHistoryProps) => {
 }
 
 const styles = StyleSheet.create({
-    whiteBg: {
-        backgroundColor: colors.white,
-        height: '100%',
-        width: '100%',
-        borderTopLeftRadius: 45,
-        borderTopRightRadius: 45,
-        overflow: 'hidden'
-    },
     profileImg: {
         width: 40,
         height: 40,
@@ -144,6 +136,11 @@ const styles = StyleSheet.create({
         width: 15,
         borderRadius: 10,
     },
+    whiteCard : {
+        backgroundColor: colors.white,
+        height : 70,
+        borderRadius : 5,
+    }
 });
 
 export default CallHistory

@@ -197,7 +197,6 @@ export const ModalContent1 = styled(View)`
   max-width:400px; 
 `;
 
-
 export const Textwithg = styled(Text)`
 backgroundColor: ${colors.purpleVar4};
 textAlign:center;

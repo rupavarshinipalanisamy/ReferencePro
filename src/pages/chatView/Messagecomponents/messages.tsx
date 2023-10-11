@@ -95,7 +95,7 @@ const chatViewModalData = [
         iconColor: colors.blackVar1,
         iconType: 'Feather',
         text: labels.ClearChat,
-
+        screenName: screenName.ChooseWallpaper,
 
     },
 ]
@@ -476,7 +476,6 @@ const styles = StyleSheet.create({
     backgroundImage: {
         flex: 1,
         resizeMode: 'cover',
-        // backgroundColor: 'rgba(180,0,0,0.5)'// You can adjust the resizeMode as needed
     },
     receiveMsgCard: {
         backgroundColor: colors.white,

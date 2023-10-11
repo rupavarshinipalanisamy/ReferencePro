@@ -15,10 +15,10 @@ export const callBottomData = [
     },
     {
         id: 2,
-        iconName: 'call-outline',
+        iconName: 'phone',
         iconColor: colors.white,
         iconSize: 20,
-        iconType: 'Ionicons',
+        iconType: 'Feather',
         bgColor: colors.green,
         text: labels.Accept,
     },
@@ -57,10 +57,10 @@ export const callBottomDataSecond = [
     },
     {
         id: 4,
-        iconName: 'call-outline',
+        iconName: 'phone',
         iconColor: colors.red,
         iconSize: 23,
-        iconType: 'Ionicons',
+        iconType: 'Feather',
     },
 ]
 
@@ -88,10 +88,10 @@ export const callBottomDataThird = [
     },
     {
         id: 4,
-        iconName: 'call-outline',
+        iconName: 'phone',
         iconColor: colors.red,
         iconSize: 23,
-        iconType: 'Ionicons',
+        iconType: 'Feather',
     },
 ]
 
@@ -119,10 +119,10 @@ export const callBottomDataFourth = [
     },
     {
         id: 4,
-        iconName: 'call-outline',
+        iconName: 'phone',
         iconColor: colors.red,
         iconSize: 23,
-        iconType: 'Ionicons',
+        iconType: 'Feather',
     },
 ]
 
@@ -251,6 +251,32 @@ export const AllCallsdata = [
     },
     {
         id : 8,
+        name : labels.JudyMercer,
+        text : '17 Jul 2023, 05:34 AM',
+        duration : '34:50',
+        iconName : 'phone-outgoing',
+        iconColor : colors.green,
+        iconType : 'Feather',
+        iconSize : 20,
+        status : 'inactive',
+        DurationColor : colors.greyVar4,
+        img : Chatimg8Img,
+    },
+    {
+        id : 9,
+        name : labels.DinaBrown,
+        text : '24 Jul 2023, 09:47 PM',
+        duration : 'Missed',
+        iconName : 'phone-incoming',
+        iconColor : colors.red,
+        iconType : 'Feather',
+        iconSize : 20,
+        status : 'inactive',
+        DurationColor : colors.red,
+        img : Chatimg7Img,
+    },
+    {
+        id : 10,
         name : labels.JudyMercer,
         text : '17 Jul 2023, 05:34 AM',
         duration : '34:50',

@@ -81,7 +81,7 @@ export const settingsData = [
         iconName1: 'chevron-right',
         iconType1: "octicons",   
         iconSize: 20,
-        screenName:screenName.SocialProfiles
+        screenName:screenName.BlockedContacts
     },
     {
         id: 9,
@@ -101,7 +101,7 @@ export const settingsData = [
         iconName1: 'chevron-right',
         iconType1: "octicons",  
         iconSize: 20,
-        screenName:screenName.SocialProfiles
+        screenName:screenName.DeleteAccount
     },
     {
         id: 11,
@@ -114,4 +114,49 @@ export const settingsData = [
         screenName:screenName.SocialProfiles
     },
 
+]
+
+export const accountSettingData = [
+    {
+        id : 1,
+        text1 : labels.Name,
+        text2 : labels.MarkVilliams,
+        iconName : 'user',
+        iconType : 'Feather',
+    },
+    {
+        id : 2,
+        text1 : labels.About,
+        text2 : labels.HelloIamUsingDreamsChat,
+        iconName : 'info',
+        iconType : 'Feather',
+    },
+    {
+        id : 3,
+        text1 : labels.Phone,
+        text2 : labels.MobileNo,
+        iconName : 'phone',
+        iconType : 'Feather',
+    },
+    {
+        id : 4,
+        text1 : labels.Gender,
+        text2 : labels.Male,
+        iconName : 'users',
+        iconType : 'Feather',
+    },
+    {
+        id : 5,
+        text1 : labels.dob,
+        text2 : labels.Jan1982,
+        iconName : 'calendar-clear-outline',
+        iconType : 'Ionicons',
+    },
+    {
+        id : 6,
+        text1 : labels.Country,
+        text2 : labels.UK,
+        iconName : 'location-outline',
+        iconType : 'Ionicons',
+    },
 ]
