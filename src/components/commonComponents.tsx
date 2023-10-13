@@ -921,7 +921,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
     },
-    toggle: {
+    toggle: {   
         width: 20,
         height: 20,
         borderRadius: 15,

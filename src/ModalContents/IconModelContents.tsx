@@ -4,8 +4,9 @@ import { colors } from '../utils/colors';
 import { SmallButton } from '../components/commonButtons';
 import { labels } from '../utils/labels';
 import { DevWidth } from '../utils/device';
-import { flexRow, mt15 } from '../components/commonStyles';
+import { alignSelfCenter, flexRow, ml10, mr10, mr15, mr5, mt15, spaceBetween } from '../components/commonStyles';
 import { H16font600Black } from '../components/commonText';
+import { MultiSelectOption } from '../components/commonComponents';
 
 
 export const BlockUserModal = () => {
@@ -55,6 +56,11 @@ export const BlockUserModal = () => {
 
 export const ReportUserModal = () => {
   const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+  const [checkBox, setCheckBox] = useState(false);
+
+  const handleCheckBox = () => {
+    setCheckBox(!checkBox);
+  }
   const handleCancelButtonClick = () => {
     setIsCancelButtonActive(true);
   };
@@ -71,8 +77,11 @@ export const ReportUserModal = () => {
           textAlign: 'center', fontSize: 14, fontWeight: '400', lineHeight: 20, color: colors.greyVar4, marginTop: 5
         }}>If you block this contact and clear the chat, messages will only be removed from this device and your devices</Text>
 
-        <View style={[flexRow, mt15]}>
+        <View style={[flexRow, mt15, alignSelfCenter]}>
+          <View style={mr15}>
+            <MultiSelectOption selectedColor={colors.purpleVar3} unselectedColor={colors.greyVar6} isSelected={checkBox} onSelect={handleCheckBox} />
 
+          </View>
           <Text style={{ textAlign: 'center', fontSize: 12, fontWeight: '400', lineHeight: 16, color: colors.greyVar4 }}>Block contact and delete chat</Text>
         </View>
 
@@ -107,11 +116,14 @@ export const ClearChatModal = () => {
   const handleCancelButtonClick = () => {
     setIsCancelButtonActive(true);
   };
-
+  const [checkBox, setCheckBox] = useState(false);
   const handleSaveChangesClick = () => {
     setIsCancelButtonActive(false);
   };
 
+  const handleCheckBox = () => {
+    setCheckBox(!checkBox);
+  }
   return (
     <View>
       <View style={{ marginHorizontal: 20 }}>
@@ -121,7 +133,9 @@ export const ClearChatModal = () => {
         }}>Messages will only be removed from this device and your devices.</Text>
 
         <View style={[flexRow, mt15]}>
-
+          <View style={mr15}>
+            <MultiSelectOption selectedColor={colors.purpleVar3} unselectedColor={colors.greyVar6} isSelected={checkBox} onSelect={handleCheckBox} />
+          </View>
           <Text style={{ fontSize: 12, fontWeight: '400', lineHeight: 16, color: colors.greyVar4 }}>Also delete media received in this chat from the device gallery.</Text>
         </View>
 

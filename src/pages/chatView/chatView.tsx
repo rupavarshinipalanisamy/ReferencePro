@@ -1,10 +1,10 @@
 import React, { Fragment, useState, useRef, useEffect, useMemo } from 'react';
-import { Text, View, ImageBackground, StyleSheet, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Image, Animated, PanResponder, FlatList } from 'react-native';
+import { Text, View, ImageBackground, StyleSheet, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Image, Animated, PanResponder, TouchableHighlight } from 'react-native';
 import { colors } from '../../utils/colors';
 import { flexRow, pb10, pl15, pl6, pt10, spaceBetween } from '../../components/commonStyles';
 import { H14BlackText, H16BlackText } from '../../components/commonText';
 import { labels } from '../../utils/labels';
-import { FooterChatView, HeaderChatView, ReplyFooterView, receiveMessage1, receiveMessage2, receiveMessage3, receiveMessage4, sentMessage1, sentMessage2, sentMessage3 } from './Messagecomponents/messages';
+import { FooterChatView, HeaderChatView, LongPressedHaeder, ReplyFooterView, receiveMessage1, receiveMessage2, receiveMessage3, receiveMessage4, sentMessage1, sentMessage2, sentMessage3, sentMessage4 } from './Messagecomponents/messages';
 import CustomIcon from '../../utils/Icons';
 import Modal from 'react-native-modal';
 import { DevHeight, DevWidth } from '../../utils/device';
@@ -13,7 +13,16 @@ import { ChatBackgroundImg, ProfileImg } from '../../utils/png';
 import { isDark } from '../../Theme/ThemeContext';
 import { IconModal } from '../../components/commonModal';
 import { ClearChatModal } from '../../ModalContents/IconModelContents';
-import { PanGestureHandler, State, GestureHandlerRootView, Swipeable } from 'react-native-gesture-handler';
+
+import {
+    PanGestureHandler,
+    State as GestureState,
+    LongPressGestureHandler,
+    State as LongPressState,
+    GestureHandlerRootView,
+    TapGestureHandler,
+    State as TapState,
+} from 'react-native-gesture-handler';
 
 
 export type chatViewProps = {
@@ -75,6 +84,7 @@ export const DayDetails = () => {
 
 };
 
+
 export const bluetick = () => {
     return (
         <View>
@@ -84,6 +94,13 @@ export const bluetick = () => {
 }
 
 
+export const tick = () => {
+    return (
+        <View>
+            <CustomIcon name='check-all' type="MaterialCommunityIcons" color={colors.greyVar4} size={16} />
+        </View>
+    )
+}
 
 const ChatView = () => {
     const [isModalVisible, setModalVisible] = useState(false);
@@ -135,9 +152,9 @@ const ChatView = () => {
         { id: 3, message: receiveMessage2(), type: "receivemsg", time: "8:16 PM" },
         { id: 4, message: sentMessage2(), type: "sentmsg", time: "8:17 PM", icon: bluetick() },
         { id: 5, message: receiveMessage3(), type: "receivemsg", time: "8:16 PM" },
-        { id: 6, message: sentMessage3(), type: "sentmsg", time: "8:17 PM", icon: bluetick(), msg: Reactmsg() },
+        { id: 6, message: sentMessage3(), type: "sentmsg", time: "8:17 PM", icon: bluetick() },
         { id: 7, message: receiveMessage4(), type: "receivemsg", time: "8:16 PM" },
-        { id: 8, message: sentMessage1("Thank You Mam"), type: "sentmsg", time: "8:17 PM", icon: bluetick() },
+        { id: 8, message: sentMessage4(), type: "sentmsg", time: "8:17 PM", icon: tick() }
     ];
 
     const tabs = [
@@ -149,10 +166,6 @@ const ChatView = () => {
         setSelectedTab(tab);
     };
 
-    // Function to show "hai" text
-    const showHaiText = () => {
-        console.log('hii')
-    };
     const [selectedModalId, setSelectedModalId] = useState(null);
     const IconcloseModal = () => {
         setSelectedModalId(null);
@@ -161,60 +174,83 @@ const ChatView = () => {
         setSelectedModalId(id);
     }
 
-    const ChatMessage = ({ message, onSwipeRight }: any) => {
-        const [panResponder, setPanResponder] = useState(PanResponder.create({}));
-        const [pan] = useState(new Animated.ValueXY({ x: 0, y: 0 }));
 
-        const resetCardPosition = () => {
-            Animated.spring(pan, {
-                toValue: { x: 0, y: 0 },
+
+
+    const ChatMessage = ({ message, onSwipeRight }: any) => {
+        const translateX = useRef(new Animated.Value(0)).current;
+        const [backgroundColor, setBackgroundColor] = useState('transparent');
+
+        const onSwipeGestureEvent = Animated.event(
+            [
+                {
+                    nativeEvent: {
+                        translationX: translateX,
+                    },
+                },
+            ],
+            {
                 useNativeDriver: false,
-            }).start();
+            }
+        );
+
+        const onSwipeGestureStateChange = (event) => {
+            if (event.nativeEvent.oldState === GestureState.ACTIVE) {
+                const swipeDistance = event.nativeEvent.translationX;
+                if (swipeDistance > 50) {
+                    onSwipeRight();
+                    console.log('Hi');
+                    // Handle swipe action for the specific message
+                }
+                // Reset the position after swipe
+                Animated.spring(translateX, {
+                    toValue: 0,
+                    useNativeDriver: false,
+                }).start();
+            }
         };
 
-        const gestureHandler = useMemo(() => {
-            return PanResponder.create({
-                onMoveShouldSetPanResponder: (_, gestureState) =>
-                    Math.abs(gestureState.dx) > 5 || Math.abs(gestureState.dy) > 5,
 
-                onPanResponderMove: (_, gestureState) => {
-                    if (gestureState.dx > 0) {
-                        pan.setValue({ x: gestureState.dx, y: 0 });
-                    }
-                },
-
-                onPanResponderRelease: (_, gestureState) => {
-                    if (gestureState.dx > 200) {
-                        onSwipeRight();
-                    } else {
-                        // Reset card position when released
-                        resetCardPosition();
-                    }
-                },
-            });
-        }, [onSwipeRight]);
+        const onLongPress = (event) => {
+            if (event.nativeEvent.state === LongPressState.ACTIVE) {
+               
+            }
+        };
+        const onTap = (event) => {
+            if (event.nativeEvent.state === TapState.ACTIVE) {
+                
+            }
+        };
 
         return (
-            <Animated.View
-                style={[
-                    {
-                        transform: [{ translateX: pan.x }],
-                    },
-                ]}
-                {...gestureHandler.panHandlers}
-            >
-                <View style={[message.type === 'sentmsg' ? { alignItems: 'flex-end' } : { alignItems: 'flex-start' }, { paddingTop: 10, marginHorizontal: 20 }]}
-                    key={message.id}>
-                    <View style={{ flexDirection: 'row' }}>
-                        <Text style={{ fontSize: 14, color: colors.greyVar4 }}>{message.time}</Text>
-                        <Text style={pl6}> {message.icon}</Text>
-                    </View>
-                    <Text>{message.message}</Text>
-                    <Text>{message.msg}</Text>
-                </View>
-            </Animated.View>
+            <LongPressGestureHandler onHandlerStateChange={onLongPress}>
+                <PanGestureHandler onGestureEvent={onSwipeGestureEvent} onHandlerStateChange={onSwipeGestureStateChange} activeOffsetX={[-200, 50]}>
+                    <TapGestureHandler onHandlerStateChange={onTap}>
+                        <View >
+                            <Animated.View
+                                style={[
+
+                                    { backgroundColor:'transparent', transform: [{ translateX: translateX }] },
+                                ]}
+                            >
+                                <View style={[message.type === 'sentmsg' ? { alignItems: 'flex-end' } : { alignItems: 'flex-start' }, { paddingTop: 10, marginHorizontal: 20 }]}
+                                    key={message.id}>
+                                    <View style={{ flexDirection: 'row' }}>
+                                        <Text style={{ fontSize: 14, color: colors.greyVar4 }}>{message.time}</Text>
+                                        <Text style={pl6}> {message.icon}</Text>
+                                    </View>
+                                    <Text>{message.message}</Text>
+                                    <Text>{message.msg}</Text>
+                                </View>
+                            </Animated.View>
+                        </View>
+                    </TapGestureHandler>
+                </PanGestureHandler>
+            </LongPressGestureHandler>
         );
-    };
+    }
+
+
     const [isSwiped, setIsSwiped] = useState(false);
 
 
@@ -238,19 +274,18 @@ const ChatView = () => {
                         imageStyle={{ opacity: 0.1, backgroundColor: 'rgba(200, 150, 255, 0.1)' }}
 
                     >
+
+
                         <HeaderChatView backgroundColor={colors.purpleVar3} profileNavigate={screenName.UserProfile} videoNavigate={screenName.SingleVideoCall} audioNavigate={screenName.SingleAudioCallRing} title={labels.horaceKeene} subTitle={labels.online}
                             clearChatopenModal={openModal}
                         />
-
                         <View style={[{ alignItems: 'center' }, pt10]}>
                             <DayDetails />
                         </View>
                         <ScrollView style={{ flex: 1 }}>
-                            {chatMessages.map((message, index) => (
-                                <ChatMessage
-                                    key={message.id}
-                                    message={message}
-                                    onSwipeRight={handleSwipeAction} // Define your swipe action function here
+                            {chatMessages.map((message) => (
+                                <ChatMessage key={message.id} message={message} onSwipeRight={handleSwipeAction}
+
                                 />
                             ))}
                         </ScrollView>
@@ -258,7 +293,7 @@ const ChatView = () => {
                         {isSwiped ? (
                             <ReplyFooterView onIconClick={handleReplyFooterIconClick} />
                         ) : (
-                            <FooterChatView  />
+                            <FooterChatView />
                         )}
 
                     </ImageBackground>
@@ -369,6 +404,7 @@ const styles = StyleSheet.create({
         color: colors.greyVar4,
         fontSize: 12,
     },
+
 });
 
 export default ChatView;
