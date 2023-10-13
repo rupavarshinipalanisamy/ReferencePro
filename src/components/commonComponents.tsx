@@ -691,7 +691,7 @@ export const MultiSelectOption: React.FC<MultiSelectProps> = ({
                 {
                     backgroundColor: isSelected === true ? selectedColor : colors.white,
                     borderWidth: isSelected === true ? 0 : 1,
-                    borderColor: isSelected === true ? colors.purpleVar3 : colors.greyVar7,
+                    borderColor: isSelected === true ? colors.purpleVar3 : colors.greyVar0,
                 },
             ]}
         >
@@ -857,14 +857,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
     },
-    toggle: {
+    toggle: {   
         width: 20,
         height: 20,
         borderRadius: 15,
     },
     multiSelectBox: {
-        width: 20,
-        height: 20,
+        width: 18,
+        height:18,
         borderRadius: 4,
         justifyContent: 'center',
         alignItems: 'center',
