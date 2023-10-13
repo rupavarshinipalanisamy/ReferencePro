@@ -182,7 +182,7 @@ export const attachmentData = [
         name : labels.Document,
         iconName : 'file-text',
         iconType : 'Feather',
-        iconSize : '16',
+        iconSize : 16,
         iconColor : color.blackVar1,
     },
     {
@@ -190,7 +190,7 @@ export const attachmentData = [
         name : labels.Camera,
         iconName : 'camera-outline',
         iconType : 'MaterialCommunityIcons',
-        iconSize : '16',
+        iconSize : 16,
         iconColor : color.blackVar1,
     },
     {
@@ -198,7 +198,7 @@ export const attachmentData = [
         name : labels.Gallery,
         iconName : 'image',
         iconType : 'font-awesome',
-        iconSize : '16',
+        iconSize : 16,
         iconColor : color.blackVar1,
     },
     {
@@ -206,7 +206,7 @@ export const attachmentData = [
         name : labels.Audio,
         iconName : 'volume-2',
         iconType : 'Feather',
-        iconSize : '16',
+        iconSize : 16,
         iconColor : color.blackVar1,
     },
     {
@@ -214,7 +214,7 @@ export const attachmentData = [
         name : labels.Location,
         iconName : 'map-pin',
         iconType : 'Feather',
-        iconSize : '16',
+        iconSize : 16,
         iconColor : color.blackVar1,
     },
     {
@@ -222,7 +222,7 @@ export const attachmentData = [
         name : labels.Contact,
         iconName : 'user',
         iconType : 'Feather',
-        iconSize : '16',
+        iconSize : 16,
         iconColor : color.blackVar1,
     },
 ]

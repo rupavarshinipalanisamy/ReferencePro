@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { View, TextInput, Text } from 'react-native';
 import { colors } from "../utils/colors";
 import { DevWidth } from "../utils/device";
+import { isDark } from "../Theme/ThemeContext";
 
 export const LogoContainer = styled(View)`
 alignItems:center;
@@ -173,7 +174,7 @@ export const HalfCircle = styled(View)`
 `;
 
 export const HalfCircle2 = styled(View)`
-  background-color: ${colors.white};
+  background-color:  ${props => isDark() ? colors.darkModeVar4 : colors.white};
   border-top-left-radius: 100px;
   border-top-right-radius: 100px;
   width:16%;
@@ -183,7 +184,7 @@ export const HalfCircle2 = styled(View)`
   overflow: hidden;
 `;
 export const ModalContent = styled(View)`
-  background-color: ${colors.white};
+  background-color: ${props => isDark() ? colors.darkModeVar4 : colors.white};
   padding: 20px;
   borderRadius: 15px;
   width: 80%;
@@ -191,7 +192,7 @@ export const ModalContent = styled(View)`
 `;
 
 export const ModalContent1 = styled(View)`
-  background-color: ${colors.white};
+  background-color: ${props => isDark() ? colors.darkModeVar4 : colors.white};
   borderRadius: 15px;
   width:${DevWidth/1.3}px;
   max-width:400px; 

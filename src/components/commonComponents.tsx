@@ -1,7 +1,7 @@
 import React, { useState, ReactNode } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal, Switch, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mh20, mh30, ml10, ml15, mr10, mt10, mt15, mt20, mt30, mt5, mv10, mv15, mv20, p10, p5, pl10, pl13, pl5, pr10, pt10, spaceAround, spaceBetween, textCenter,flex1} from './commonStyles';
+import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mh20, mh30, ml10, ml15, mr10, mt10, mt15, mt20, mt30, mt5, mv10, mv15, mv20, p10, p5, pl10, pl13, pl5, pr10, pt10, spaceAround, spaceBetween, textCenter, flex1 } from './commonStyles';
 import { colors } from '../utils/colors';
 import { ArchiveIconBlackIcon, ArchiveIconWhiteIcon, DeleteWhiteIcon, LeftArrowWhiteIcon, MikeWhiteIcon, PinWhiteIcon, ProfileAvatarIcon, ThreeDotsWhiteIcon } from '../utils/svg';
 import { DevHeight, DevWidth } from '../utils/device';
@@ -11,13 +11,15 @@ import CustomIcon from '../utils/Icons';
 import { useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal';
 import { muteNotificationdata, threeDotsOption } from '../utils/data/modalData';
-import { H14BlackVar2Bold400Text, H15Grey, H16font600Black, H16fontNormalGray, H16fontNormalGray4, H18fontBoldBlack } from './commonText';
+import { H14BlackVar2Bold400Text, H14GreyVar4Bold400, H14blackVar1bold400Text, H15Grey, H16font600Black, H16fontNormalGray, H16fontNormalGray4, H18fontBoldBlack } from './commonText';
 import { labels } from '../utils/labels';
 import { callBottomDataFourth } from '../utils/data/callsData';
 import { screenName } from '../utils/screenName';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { IconModal } from './commonModal';
 import { SmallButton } from './commonButtons';
+import { isDark } from '../Theme/ThemeContext';
+import { color } from 'react-native-elements/dist/helpers';
 
 // ====================   Chat based Header Component   ====================
 
@@ -41,6 +43,7 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({ title, isCall, icon1Navi
         const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
         const handleCancelButton = () => {
             setIsCancelButtonActive(true);
+            setClearCallOptionModal(false);
         };
 
         const handleDeleteChatButton = () => {
@@ -58,7 +61,7 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({ title, isCall, icon1Navi
                         backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
                         textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
                         borderWidth={isCancelButtonActive ? 0 : 1}
-                        width={DevWidth / 2.6}
+                        width={DevWidth / 3.15}
                     />
                     <SmallButton
                         title={labels.DeleteChat}
@@ -66,7 +69,7 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({ title, isCall, icon1Navi
                         backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
                         textColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
                         borderWidth={isCancelButtonActive ? 1 : 0}
-                        width={DevWidth / 2.6}
+                        width={DevWidth / 3.15}
                     />
                 </RowSpaceBetween>
             </View>
@@ -203,7 +206,7 @@ export const TabControl: React.FC<TabControlProps> = ({ tabs, activeTab, onTabPr
                         <Text
                             style={[
                                 styles.tabText,
-                                { color: activeTab === tabInfo.label ? colors.white : colors.purpleVar2 },
+                                { color: activeTab === tabInfo.label ? colors.white : (isDark() ? colors.greyVar3 : colors.purpleVar2) },
                             ]}
                         >
                             {tabInfo.label}
@@ -212,7 +215,7 @@ export const TabControl: React.FC<TabControlProps> = ({ tabs, activeTab, onTabPr
                             <View
                                 style={[
                                     styles.roundNumber,
-                                    { backgroundColor: activeTab === tabInfo.label ? colors.white : colors.purpleVar2 },
+                                    { backgroundColor: activeTab === tabInfo.label ? colors.white : (isDark() ? colors.greyVar3 : colors.purpleVar2) },
                                 ]}
                             >
                                 <Text style={styles.roundNumberText}>{tabInfo.count}</Text>
@@ -255,7 +258,7 @@ export const CustomModal: React.FC<ModalProps> = ({ isVisible, width, modalData,
                         alignItems: 'flex-end',
                     }}
                 >
-                    <View style={[{ backgroundColor: colors.white, elevation: 4, borderRadius: 5, width: width || DevWidth * 0.5, padding: 10, marginTop: marginTop || 30, marginLeft : marginLeft || 0 }]}>{modalData}</View>
+                    <View style={[{ backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, elevation: 4, borderRadius: 8, width: width || DevWidth * 0.5, padding: 10, marginTop: marginTop || 30, marginLeft: marginLeft || 0 }]}>{modalData}</View>
                 </Modal>
             </View>
         </RNModal>
@@ -312,9 +315,9 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
                         return (
                             <TouchableOpacity key={item.id} onPress={() => navigation.navigate(item.screenName as never)} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
                                 <View style={[flexRow]}>
-                                    <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={colors.blackVar1} />
+                                    <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={isDark() ? colors.greyVar3 : colors.blackVar1} />
                                     <View style={[alignItemsCenter, justyfyCenter, pl13]}>
-                                        <H15Grey>{item.name}</H15Grey>
+                                        <H14blackVar1bold400Text>{item.name}</H14blackVar1bold400Text>
                                     </View>
                                 </View>
                             </TouchableOpacity>
@@ -331,6 +334,7 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
 
         const handleCancelButton = () => {
             setIsCancelButtonActive(true);
+            setDeleteOptionModal(false);
         };
 
         const handleDeleteChatButton = () => {
@@ -343,27 +347,27 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
         return (
             <View style={[mh20]} >
                 <H16font600Black>Delete This Chat?</H16font600Black>
-                <Text style={[mt20]}>Messages will only be removed from this{'\n'}device and your devices</Text>
+                <H14GreyVar4Bold400 style={[mt20]}>Messages will only be removed from this{'\n'}device and your devices</H14GreyVar4Bold400>
                 <View style={[flexRow, mt20, alignItemsCenter]}>
                     <MultiSelectOption selectedColor={colors.purpleVar3} unselectedColor={colors.greyVar6} isSelected={optionSelect} onSelect={handleOptionSelect} />
-                    <Text style={[ml15]}>Also delete media received in this call from{'\n'}the device gallery.</Text>
+                    <H14GreyVar4Bold400 style={[ml15]}>Also delete media received in this call{'\n'}from the device gallery.</H14GreyVar4Bold400>
                 </View>
                 <RowSpaceBetween style={[mv20]}>
                     <SmallButton
                         title={labels.cancel}
                         onChange={handleCancelButton}
-                        backgroundColor={isCancelButtonActive ? colors.red : colors.white}
-                        textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
+                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
+                        textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar3 : colors.greyVar4)}
                         borderWidth={isCancelButtonActive ? 0 : 1}
-                        width={DevWidth / 2.6}
+                        width={DevWidth / 3.15}
                     />
                     <SmallButton
                         title={labels.DeleteChat}
                         onChange={handleDeleteChatButton}
-                        backgroundColor={isCancelButtonActive ? colors.white : colors.red}
+                        backgroundColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar2 : colors.red)}
                         textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
                         borderWidth={isCancelButtonActive ? 1 : 0}
-                        width={DevWidth / 2.6}
+                        width={DevWidth / 3.15}
                     />
                 </RowSpaceBetween>
             </View>
@@ -376,6 +380,7 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
 
         const handleCancelButton = () => {
             setIsCancelButtonActive(true);
+            setMuteOptionModal(false);
         };
 
         const handleDeleteChatButton = () => {
@@ -389,7 +394,7 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
         return (
             <View style={[mh20]} >
                 <H16font600Black>Mute Notifications</H16font600Black>
-                <Text style={[mt20]}>Other participants will not see you{'\n'}muted this chat. You will still be notified if{'\n'}you are mentioned.</Text>
+                <H14GreyVar4Bold400 style={[mt20]}>Other participants will not see you{'\n'}muted this chat. You will still be notified if{'\n'}you are mentioned.</H14GreyVar4Bold400>
                 <View style={[mt15]}>
                     {
                         muteNotificationdata.map((item) => {
@@ -402,7 +407,7 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
                                             onPress={() => handleStatusSelect(item.name)}
                                         />
                                     </View>
-                                    <H14BlackVar2Bold400Text style = {[ml10]}>{item.name}</H14BlackVar2Bold400Text>
+                                    <H14BlackVar2Bold400Text style={[ml10]}>{item.name}</H14BlackVar2Bold400Text>
                                 </View>
                             )
                         })
@@ -412,18 +417,18 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
                     <SmallButton
                         title={labels.cancel}
                         onChange={handleCancelButton}
-                        backgroundColor={isCancelButtonActive ? colors.red : colors.white}
-                        textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
+                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
+                        textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar3 : colors.greyVar4)}
                         borderWidth={isCancelButtonActive ? 0 : 1}
-                        width={DevWidth / 2.6}
+                        width={DevWidth / 3.15}
                     />
                     <SmallButton
-                        title={labels.DeleteChat}
+                        title={labels.ok}
                         onChange={handleDeleteChatButton}
-                        backgroundColor={isCancelButtonActive ? colors.white : colors.red}
+                        backgroundColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar2 : colors.red)}
                         textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
                         borderWidth={isCancelButtonActive ? 1 : 0}
-                        width={DevWidth / 2.6}
+                        width={DevWidth / 3.15}
                     />
                 </RowSpaceBetween>
             </View>
@@ -434,7 +439,7 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
         <View style={[flexRow, spaceBetween, mh20, mv15, pt10]}>
             <View style={flexRow}>
                 <LeftArrowWhiteIcon />
-                <View style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)', height: 20, width: 20, borderRadius: 20, }}>
+                <View style={{ backgroundColor: isDark() ? colors.purpleVar3 : 'rgba(0, 0, 0, 0.3)', height: 20, width: 20, borderRadius: 20, }}>
                     <Text style={{ textAlign: 'center', color: colors.white, fontSize: 14 }}>{text}</Text>
                 </View>
             </View>
@@ -499,6 +504,58 @@ export const CustomActionBarSecond: React.FC<CustomActionBarSecondProps> = ({
     onArchivePress,
     onMorePress,
 }) => {
+    const [deleteChatOptionModal, setDeleteChatOptionModal] = useState(false);
+
+    const handleDeleteChatOptionModal = () => {
+        setDeleteChatOptionModal(!deleteChatOptionModal);
+    }
+
+    const DeleteChatOption = () => {
+        const [optionSelect, setOptionSelect] = useState(false);
+        const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+
+        const handleCancelButton = () => {
+            setIsCancelButtonActive(true);
+            setDeleteChatOptionModal(false);
+        };
+
+        const handleDeleteChatButton = () => {
+            setIsCancelButtonActive(false);
+        };
+
+        const handleOptionSelect = () => {
+            setOptionSelect(!optionSelect);
+        };
+        return (
+            <View style={[mh20]} >
+            <H16font600Black>Delete This Chat?</H16font600Black>
+            <H14GreyVar4Bold400 style={[mt20]}>Messages will only be removed from this{'\n'}device and your devices</H14GreyVar4Bold400>
+            <View style={[flexRow, mt20, alignItemsCenter]}>
+                <MultiSelectOption selectedColor={colors.purpleVar3} unselectedColor={colors.greyVar6} isSelected={optionSelect} onSelect={handleOptionSelect} />
+                <H14GreyVar4Bold400 style={[ml15]}>Also delete media received in this call{'\n'}from the device gallery.</H14GreyVar4Bold400>
+            </View>
+            <RowSpaceBetween style={[mv20]}>
+                <SmallButton
+                    title={labels.cancel}
+                    onChange={handleCancelButton}
+                    backgroundColor={isCancelButtonActive ? colors.red : `rgba(200, 16, 46, 0.2)`}
+                    textColor={isCancelButtonActive ? colors.white : colors.redVar3}
+                    borderWidth={isCancelButtonActive ? 0 : 1}
+                    width={DevWidth / 3.15}
+                />
+                <SmallButton
+                    title={labels.DeleteChat}
+                    onChange={handleDeleteChatButton}
+                    backgroundColor={isCancelButtonActive ? colors.white : colors.redVar2}
+                    textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
+                    borderWidth={isCancelButtonActive ? 1 : 0}
+                    width={DevWidth / 3.15}
+                />
+            </RowSpaceBetween>
+        </View>
+        )
+    }
+
     return (
         <View style={[flexRow, spaceBetween, mh20, mv15]}>
             <View style={flexRow}>
@@ -508,7 +565,7 @@ export const CustomActionBarSecond: React.FC<CustomActionBarSecondProps> = ({
                 </View>
             </View>
             <View style={[flexRow, spaceAround]}>
-                <TouchableOpacity style={ml10} onPress={onDeletePress}>
+                <TouchableOpacity style={ml10} onPress={handleDeleteChatOptionModal}>
                     <DeleteWhiteIcon />
                 </TouchableOpacity>
                 <TouchableOpacity style={ml10} onPress={onArchivePress}>
@@ -518,6 +575,14 @@ export const CustomActionBarSecond: React.FC<CustomActionBarSecondProps> = ({
                     <ThreeDotsWhiteIcon />
                 </TouchableOpacity>
             </View>
+            <IconModal
+                isVisible={deleteChatOptionModal}
+                onClose={() => handleDeleteChatOptionModal()}
+                contentComponent={<DeleteChatOption />}
+                iconName='trash-o'
+                iconType='FontAwesome'
+                iconSize={26}
+            />
         </View>
     );
 };
@@ -567,7 +632,7 @@ export const BottomTabBar = () => {
     };
 
     return (
-        <View style={[alignSelfCenter, borderRadius10, { height: DevHeight * 0.08, width: DevWidth * 0.9, backgroundColor: colors.purpleVar3, position: 'absolute', bottom: 10 }]}>
+        <View style={[alignSelfCenter, borderRadius10, { height: DevHeight * 0.08, width: DevWidth * 0.9, backgroundColor: isDark() ? colors.darkModeVar1 : colors.purpleVar3, position: 'absolute', bottom: 10 }]}>
             <RowSpaceBetween style={[alignItemsCenter, mv10, mh20]}>
                 {
                     bottomNavData.map((item) => {
@@ -575,7 +640,7 @@ export const BottomTabBar = () => {
                         return (
                             <TouchableOpacity key={item.id} onPress={() => handleTabPress(item.id, item.screenName)}>
                                 <View style={alignItemsCenter}>
-                                    <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={isSelected ? colors.white : colors.purpleVar2} />
+                                    <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={isSelected ? colors.white : (isDark() ? colors.greyVar3 : colors.purpleVar2)} />
                                 </View>
                                 {
                                     item.id === 1 || item.id == 2 ? (
@@ -586,7 +651,7 @@ export const BottomTabBar = () => {
                                         <View />
                                     )
                                 }
-                                <Text style={[{ color: isSelected ? colors.white : colors.purpleVar2 }, textCenter]}>{item.name}</Text>
+                                <Text style={[{ color: isSelected ? colors.white : (isDark() ? colors.greyVar3 : colors.purpleVar2), fontSize: 14, fontWeight: '500', letterSpacing: 0.5 }, textCenter]}>{item.name}</Text>
                             </TouchableOpacity>
                         )
                     })
@@ -689,9 +754,9 @@ export const MultiSelectOption: React.FC<MultiSelectProps> = ({
             style={[
                 styles.multiSelectBox,
                 {
-                    backgroundColor: isSelected === true ? selectedColor : colors.white,
+                    backgroundColor: isSelected === true ? selectedColor : (isDark() ? `rgba(78, 80, 114, 0.15)` : colors.white),
                     borderWidth: isSelected === true ? 0 : 1,
-                    borderColor: isSelected === true ? colors.purpleVar3 : colors.greyVar7,
+                    borderColor: isSelected === true ? colors.purpleVar3 : (isDark() ? `rgba(78, 80, 114, 0.3)` : colors.greyVar7),
                 },
             ]}
         >
@@ -770,7 +835,7 @@ export const ImagePicker: React.FC<ImagePickerProps> = ({ onImageSelect }) => {
                     backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
                     textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
                     borderWidth={isCancelButtonActive ? 0 : 1}
-                    width={DevWidth / 2.6}
+                    width={DevWidth / 3.15}
                 />
                 <SmallButton
                     title={labels.Gallery}
@@ -778,7 +843,7 @@ export const ImagePicker: React.FC<ImagePickerProps> = ({ onImageSelect }) => {
                     backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
                     textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
                     borderWidth={isCancelButtonActive ? 1 : 0}
-                    width={DevWidth / 2.6}
+                    width={DevWidth / 3.15}
                 />
             </RowSpaceBetween>
         </View>
@@ -795,7 +860,7 @@ interface RadioBtnProps {
 export const RadioBtn: React.FC<RadioBtnProps> = ({ selected, onPress }) => {
     return (
         <RadioButton onPress={onPress}>
-            <RadioButtonRound style={{ backgroundColor: selected ? colors.purpleVar3 : colors.white }}>
+            <RadioButtonRound style={{ backgroundColor: selected ? (isDark() ? colors.greyVar3 : colors.purpleVar3) : colors.white }}>
                 {selected && (
                     <SelectedRadioBtn />
                 )}
@@ -829,7 +894,7 @@ const styles = StyleSheet.create({
     },
     roundNumberText: {
         textAlign: 'center',
-        color: colors.purpleVar3,
+        color: isDark() ? colors.darkModeVar1 : colors.purpleVar3,
         fontSize: 12,
     },
     unredBadge: {
@@ -846,9 +911,8 @@ const styles = StyleSheet.create({
     },
     unredBadgeText: {
         color: 'white',
-        fontWeight: '600',
+        fontWeight: '400',
         fontSize: 12,
-        textAlign: 'center',
     },
     container: {
         width: 45,
@@ -863,8 +927,8 @@ const styles = StyleSheet.create({
         borderRadius: 15,
     },
     multiSelectBox: {
-        width: 20,
-        height: 20,
+        width: 18,
+        height: 18,
         borderRadius: 4,
         justifyContent: 'center',
         alignItems: 'center',

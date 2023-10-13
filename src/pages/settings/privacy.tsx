@@ -141,7 +141,7 @@ const Privacy = (props: privacyProps) => {
 
     const openModal = (id: number) => {
         // setSelectedModalId(id);
-        if (id === 1) {
+        if (id === 4) {
             handleStatusPrivacyOptionModal();
         }
     };
@@ -203,7 +203,7 @@ const Privacy = (props: privacyProps) => {
                         backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
                         textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
                         borderWidth={isCancelButtonActive ? 0 : 1}
-                        width={DevWidth / 2.6}
+                        width={DevWidth / 3.15}
                     />
                     <SmallButton
                         title={labels.SaveChanges}
@@ -211,7 +211,7 @@ const Privacy = (props: privacyProps) => {
                         backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
                         textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
                         borderWidth={isCancelButtonActive ? 1 : 0}
-                        width={DevWidth / 2.6}
+                        width={DevWidth / 3.15}
                     />
                 </RowSpaceBetween>
             </View>

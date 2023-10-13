@@ -5,10 +5,11 @@ import { colors } from '../../utils/colors';
 import { DevHeight, DevWidth } from '../../utils/device';
 import { labels } from '../../utils/labels';
 import CustomIcon from '../../utils/Icons';
-import { H15Grey, H20BlackBoldText } from '../../components/commonText';
+import { DefaultH15Grey, H15Grey, H20BlackBoldText } from '../../components/commonText';
 import { CallAvatarBigIcon } from '../../utils/svg';
 import { CallCommonHeader } from '../../components/commonHeaders';
 import { callBottomDataSecond } from '../../utils/data/callsData';
+import { isDark } from '../../Theme/ThemeContext';
 
 export type SingleAudioCallRingProps = {
 
@@ -17,11 +18,11 @@ export type SingleAudioCallRingProps = {
 
 const SingleAudioCallRing = (props: SingleAudioCallRingProps) => {
     return (
-        <View style={[flex1, { backgroundColor: colors.whiteVar0 }]}>
+        <View style={[flex1, { backgroundColor: isDark()?colors.darkModeVar2:colors.whiteVar0 }]}>
             <CallCommonHeader />
             <View style={[flex1, alignItemsCenter, mt30]}>
                 <H20BlackBoldText>{labels.horaceKeene}</H20BlackBoldText>
-                <H15Grey style={mt10}>{labels.Ringing}</H15Grey>
+                <DefaultH15Grey style={mt10}>{labels.Ringing}</DefaultH15Grey>
             </View>
             <View style={[flex1, alignItemsCenter, justyfyCenter, { marginBottom: 170 }]}>
                 <View style={{ height: 170, width: 170, borderRadius: 100, backgroundColor: colors.purpleVar1 }}>

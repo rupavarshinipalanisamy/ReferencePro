@@ -10,6 +10,7 @@ import PinnedChats from '../../components/chats/PinnedChats';
 import ArchiveChats from '../../components/chats/ArchiveChats';
 import { ArchiveIconWhiteIcon, DeleteWhiteIcon, LeftArrowWhiteIcon, ThreeDotsWhiteIcon } from '../../utils/svg';
 import { screenName } from '../../utils/screenName';
+import { isDark } from '../../Theme/ThemeContext';
 
 export type chatProps = {
 
@@ -69,7 +70,7 @@ const Chats = (props: chatProps) => {
     return (
         <Fragment>
             <PurpleMainContainer>
-                <StatusBar backgroundColor={colors.purpleVar3} />
+                <StatusBar backgroundColor={isDark() ? colors.darkModeVar1 : colors.purpleVar3} />
                 <Header
                     selectedTab={selectedTab}
                     selectedCards={selectedCards}

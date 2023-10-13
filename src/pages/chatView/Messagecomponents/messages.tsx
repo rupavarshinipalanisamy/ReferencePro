@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Text, View, Image, ImageBackground, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
+import { Text, View, Image, ImageBackground, StyleSheet, TouchableOpacity, TextInput, Modal as RNModal, } from 'react-native';
 import { colors } from '../../../utils/colors';
-import { flex1, flexRow, pt10, pl10, spaceBetween, alignItemsCenter, justyfyCenter, pt5, pl13, p5, mt5, borderRadius10, spaceAround } from '../../../components/commonStyles';
+import { flex1, flexRow, pt10, pl10, spaceBetween, alignItemsCenter, justyfyCenter, pt5, pl13, p5, mt5, borderRadius10, spaceAround, mb20 } from '../../../components/commonStyles';
 import CustomIcon from '../../..//utils/Icons';
-import { H14BlackText, H14blueVar1Text, H15Grey, H16WhiteText, H16fontNormalBlue, H16fontNormalGray, H16fontSemiBoldBluevar4, H16fontSemiBoldGreyvar4, H18WhiteText } from '../../../components/commonText';
+import { H14BlackText, H14GreyVar4Bold400, H14blackVar1bold400Text, H14blueVar1Text, H15Grey, H16WhiteText, H16fontNormalBlue, H16fontNormalGray, H16fontSemiBoldBluevar4, H16fontSemiBoldGreyvar4, H18WhiteText } from '../../../components/commonText';
 import { labels } from '../../../utils/labels';
 import { DevHeight, DevWidth } from '../../../utils/device';
 import AudioImg from '../../../../assets/images/Audio.svg'
@@ -16,6 +16,8 @@ import { GroupChatViewModalData } from '../../../utils/data/groupsData';
 import { CallThreeDotsOption } from '../../../utils/data/modalData';
 import { isDark } from '../../../Theme/ThemeContext';
 import { screenName } from '../../../utils/screenName';
+import Modal from 'react-native-modal';
+import { attachmentData } from '../../../utils/data/chatsData';
 
 const chatViewModalData = [
     {
@@ -268,6 +270,16 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
 
 }
 export const FooterChatView = () => {
+    const [isModalVisible, setModalVisible] = useState(false);
+
+    const openModal = () => {
+        setModalVisible(true);
+    }
+
+    const closeModal = () => {
+        setModalVisible(false);
+    }
+
     return (
         <View style={{ backgroundColor: colors.white, alignItems: 'center', height: DevHeight / 9.5, paddingHorizontal: 20, borderTopLeftRadius: 20, borderTopRightRadius: 20, flexDirection: 'row', justifyContent: 'center' }}>
             <View style={{ width: DevWidth / 1.3, height: 40, backgroundColor: 'white', borderColor: colors.greyVar2, borderWidth: 2, borderRadius: 6, marginTop: 30, bottom: 8 }}>
@@ -280,9 +292,9 @@ export const FooterChatView = () => {
                         />
                     </View>
                     <View style={{ flexDirection: 'row' }}>
-                        <View style={{ marginRight: 10, transform: [{ rotate: '45deg' }] }}>
+                        <TouchableOpacity onPress={openModal} style={{ marginRight: 10, transform: [{ rotate: '45deg' }] }}>
                             <CustomIcon name='paperclip' type="Feather" size={18} color={colors.greyVar4} />
-                        </View>
+                        </TouchableOpacity>
                         <CustomIcon name='camera-outline' type="MaterialCommunityIcons" size={20} color={colors.greyVar4} />
                     </View>
                 </View>
@@ -290,49 +302,126 @@ export const FooterChatView = () => {
             <View style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', bottom: 15 }}>
                 <CustomIcon name='paper-plane' type="font-awesome" color={colors.white} size={14} />
             </View>
+            <RNModal transparent={true} visible={isModalVisible} onRequestClose={closeModal}>
+                <View style={[flex1]}>
+                    <Modal
+                        animationInTiming={10}
+                        animationOutTiming={10}
+                        animationIn="slideInRight"
+                        isVisible={isModalVisible}
+                        onBackdropPress={closeModal}
+                        backdropOpacity={0}
+                        style={{
+                            justifyContent: 'flex-end',
+                            alignItems: 'flex-end',
+                            bottom :50
+                        }}
+                    >
+                        <View style={[{ backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, elevation: 4, borderRadius: 8, width: DevWidth * 0.47, padding: 10 }]}>
+                            {
+                                attachmentData.map((item) => {
+                                    return (
+                                        <TouchableOpacity key={item.id} onPress={() => {}} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
+                                            <View style={[flexRow]}>
+                                                <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={isDark() ? colors.greyVar3 : colors.blackVar1} />
+                                                <View style={[alignItemsCenter, justyfyCenter, pl13]}>
+                                                    <H14blackVar1bold400Text>{item.name}</H14blackVar1bold400Text>
+                                                </View>
+                                            </View>
+                                        </TouchableOpacity>
+                                    )
+                                })
+                            }
+                        </View>
+                    </Modal>
+                </View>
+            </RNModal>
         </View>
     )
 }
 
 
 
-export const ReplyFooterView = ({onIconClick}:any) => {
+export const ReplyFooterView = ({ onIconClick }: any) => {
+    const [isModalVisible, setModalVisible] = useState(false);
+
+    const openModal = () => {
+        setModalVisible(true);
+    }
+
+    const closeModal = () => {
+        setModalVisible(false);
+    }
     return (
-        <View style={{ backgroundColor: colors.white, alignItems: 'center', height: DevHeight / 5, paddingHorizontal:20, borderTopLeftRadius: 20, borderTopRightRadius: 20, flexDirection: 'row' }}>
-            <View style={{ width: '86%', height: 117, backgroundColor: 'white', borderColor: colors.greyVar2, borderWidth: 2, borderRadius: 10, marginTop: 30, bottom:8}}>
+        <View style={{ backgroundColor: colors.white, alignItems: 'center', height: DevHeight / 5, paddingHorizontal: 20, borderTopLeftRadius: 20, borderTopRightRadius: 20, flexDirection: 'row' }}>
+            <View style={{ width: '86%', height: 117, backgroundColor: 'white', borderColor: colors.greyVar2, borderWidth: 2, borderRadius: 10, marginTop: 30, bottom: 8 }}>
                 <View style={{
-                    width: '98%', height: 67, backgroundColor: colors.purpleVar1, marginTop: 5, borderRadius: 5,marginHorizontal:3,
+                    width: '98%', height: 67, backgroundColor: colors.purpleVar1, marginTop: 5, borderRadius: 5, marginHorizontal: 3,
                     borderLeftWidth: 1.5, borderLeftColor: colors.purpleVar3
                 }}>
                     <View style={{ marginHorizontal: 10 }}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 5 }}>
                             <Text style={{ color: colors.purpleVar3, fontWeight: '500', fontSize: 15, lineHeight: 23 }}>Horace Keene</Text>
-                            <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }}   onPress={() => onIconClick()}  >
+                            <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }} onPress={() => onIconClick()}  >
                                 <CustomIcon name='x' type="Feather" size={16} color={colors.greyVar4} />
                             </TouchableOpacity>
                         </View>
                         <Text style={{ fontSize: 14, color: colors.blackVar1, fontWeight: '400', lineHeight: 20 }}>Hello <Text style={{ color: colors.blueVar1 }}>@Alex</Text> Good Morning</Text>
                     </View>
                 </View>
-                <View style={{ flexDirection: 'row', width: '80%', height: 40, paddingHorizontal:2, alignItems: 'center'}}>
+                <View style={{ flexDirection: 'row', width: '80%', height: 40, paddingHorizontal: 2, alignItems: 'center' }}>
                     <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginLeft: 15 }}>
                         <CustomIcon name='smiley' type="octicons" size={16} color={colors.greyVar4} />
                         <TextInput
-                            style={{ flex: 1, marginLeft: 5,color:colors.greyVar4,fontSize:14,fontWeight:'400'}}
+                            style={{ flex: 1, marginLeft: 5, color: colors.greyVar4, fontSize: 14, fontWeight: '400' }}
                             placeholder="Type here..."
                         />
                     </View>
                     <View style={{ flexDirection: 'row' }}>
-                        <View style={{ marginRight:10, transform: [{ rotate: '45deg' }]}}>
+                        <TouchableOpacity onPress={openModal} style={{ marginRight: 10, transform: [{ rotate: '45deg' }] }}>
                             <CustomIcon name='paperclip' type="Feather" size={18} color={colors.greyVar4} />
-                        </View>
+                        </TouchableOpacity>
                         <CustomIcon name='camera-outline' type="MaterialCommunityIcons" size={20} color={colors.greyVar4} />
                     </View>
                 </View>
             </View>
-            <View style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', bottom:15}}>
+            <View style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', bottom: 15 }}>
                 <CustomIcon name='paper-plane' type="font-awesome" color={colors.white} size={14} />
             </View>
+            <RNModal transparent={true} visible={isModalVisible} onRequestClose={closeModal}>
+                <View style={[flex1]}>
+                    <Modal
+                        animationInTiming={10}
+                        animationOutTiming={10}
+                        animationIn="slideInRight"
+                        isVisible={isModalVisible}
+                        onBackdropPress={closeModal}
+                        backdropOpacity={0}
+                        style={{
+                            justifyContent: 'flex-end',
+                            alignItems: 'flex-end',
+                            bottom :50
+                        }}
+                    >
+                        <View style={[{ backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, elevation: 4, borderRadius: 8, width: DevWidth * 0.47, padding: 10 }]}>
+                            {
+                                attachmentData.map((item) => {
+                                    return (
+                                        <TouchableOpacity key={item.id} onPress={() => {}} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
+                                            <View style={[flexRow]}>
+                                                <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={isDark() ? colors.greyVar3 : colors.blackVar1} />
+                                                <View style={[alignItemsCenter, justyfyCenter, pl13]}>
+                                                    <H14blackVar1bold400Text>{item.name}</H14blackVar1bold400Text>
+                                                </View>
+                                            </View>
+                                        </TouchableOpacity>
+                                    )
+                                })
+                            }
+                        </View>
+                    </Modal>
+                </View>
+            </RNModal>
         </View>
     );
 }
