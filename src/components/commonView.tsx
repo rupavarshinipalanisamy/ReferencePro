@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     width: '88%',
     alignSelf: 'center',
     height: 1,
-    backgroundColor: colors.purpleVar2
+    backgroundColor: isDark() ? `rgba(78, 80, 114, 0.3 )` : colors.purpleVar2,
   },
   tabContainer: {
     fontSize: 16,
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: isDark() ? colors.redVar2 : colors.greyVar4,
+    
   }
 });
 const {

@@ -9,6 +9,7 @@ import AllGroups from '../../components/groups/AllGroups';
 import PinnedGroups from '../../components/groups/PinnedGroups';
 import ArchiveGroups from '../../components/groups/ArchiveGroups';
 import { screenName } from '../../utils/screenName';
+import { isDark } from '../../Theme/ThemeContext';
 
 export type GroupsProps = {
     
@@ -30,7 +31,7 @@ const Groups = (props: GroupsProps) => {
     return (
         <Fragment>
             <PurpleMainContainer>
-                <StatusBar backgroundColor={colors.purpleVar3} />
+                <StatusBar backgroundColor={isDark() ? colors.darkModeVar1 : colors.purpleVar3} />
                 <ChatHeader title={labels.Groups} icon3Navigate={screenName.CreateGroup} />
                 <View style={flex1}>
                     <TabControl tabs={tabs} activeTab={selectedTab} onTabPress={handleTabPress} />

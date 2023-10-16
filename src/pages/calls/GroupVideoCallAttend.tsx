@@ -1,25 +1,70 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import { flex1 } from '../../components/commonStyles';
-import { colors } from '../../utils/colors';
+import { View, FlatList, Image, Text, TouchableOpacity } from 'react-native';
+import { H14Blackvar2Bold500 } from '../../components/commonText';
 import { CallCommonHeader } from '../../components/commonHeaders';
+import { callBottomDataThird, groupCallData, groupVideoCallData } from '../../utils/data/callsData';
+import { DevHeight, DevWidth } from '../../utils/device';
 import { CallBottomTab } from '../../components/commonComponents';
+import { isDark } from '../../Theme/ThemeContext';
+import { colors } from '../../utils/colors';
+import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mt15, mt20, mt8, spaceAround } from '../../components/commonStyles';
+import CustomIcon from '../../utils/Icons';
+import { labels } from '../../utils/labels';
 
-export type GroupVideoCallAttendProps = {
-    
-    }
+const GroupVideoCallAttend = () => {
+
+    const renderItem = ({ item }: any) => (
+        <View key={item.id} style={{ margin: 5}}>
+            <View style={{ height: DevHeight / 4, width: DevWidth / 2.35, backgroundColor:colors.white,borderColor:colors.blueVar3, borderRadius: 10, alignItems: 'center',justifyContent:'center',borderWidth:item.id === 4?2:0}}>
+                <Image source={item.image} style={{borderRadius:item.id ===4 ? 25:10,width: item.id === 1 || item.id === 2 || item.id === 3 ? DevWidth/2.35:40}}/>
+                {item.id ===4 && (
+                <H14Blackvar2Bold500 style={mt8}>{labels.JamesAlbert}</H14Blackvar2Bold500>
 
 
-const GroupVideoCallAttend = (props: GroupVideoCallAttendProps) => {
-    return (
-        <View style={[flex1, { backgroundColor: colors.whiteVar0 }]}>
-            <CallCommonHeader />
-            <View style = {[flex1]}>
-                <Text>hhhh</Text>
+                )}
+
             </View>
-            <CallBottomTab />
-        </View>
-    )
-}
 
-export default GroupVideoCallAttend
+        </View>
+    );
+
+    return (
+        <View style={{ flex: 1, backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }}>
+            <CallCommonHeader />
+            <View style={{ marginHorizontal: 20, marginVertical: 20, flex: 1 }}>
+                <FlatList
+                    data={groupVideoCallData}
+                    renderItem={renderItem}
+                    keyExtractor={(item) => item.id.toString()}
+                    numColumns={2} // Set the number of columns here
+                />
+            </View>
+            <View style={[{ height: DevHeight * 0.12, width: DevWidth, backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, borderTopLeftRadius: 45, borderTopRightRadius: 45 }]}>
+                <View style={[alignSelfCenter, mt15, { height: 5, width: DevWidth * 0.2, backgroundColor: colors.greyVar0 }]} />
+                <View style={[flexRow, spaceAround, mt20, mh10]}>
+                    {
+                        callBottomDataThird.map((item) => {
+                            return (
+                                <View key={item.id}>
+                                    {
+                                        item.id == 4 ? (
+                                            <TouchableOpacity style={[{ height: 40, width: 80, backgroundColor: isDark() ? `rgba(200, 16, 46, 0.2)` : colors.redVar1, bottom: 5 }, alignItemsCenter, justyfyCenter, borderRadius10]}>
+                                                <CustomIcon name={item.iconName} size={item.iconSize} color={item.iconColor} type={item.iconType} />
+                                            </TouchableOpacity>
+                                        ) : (
+                                            <TouchableOpacity style={[{ height: 40, width: 80, backgroundColor: isDark() ? colors.darkModeVar4 : 'transparent', bottom: 5 }, alignItemsCenter, justyfyCenter, borderRadius10]}>
+                                                <CustomIcon name={item.iconName} size={item.iconSize} color={item.iconColor} type={item.iconType} />
+                                            </TouchableOpacity>
+                                        )
+                                    }
+                                </View>
+                            )
+                        })
+                    }
+                </View>
+            </View>
+        </View>
+    );
+};
+
+export default GroupVideoCallAttend;

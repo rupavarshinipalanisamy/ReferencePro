@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, ImageBackground, TouchableOpacity, Image } from 'react-native';
 import { CallCommonHeader } from '../../components/commonHeaders';
 import { alignItemsCenter, alignSelfCenter, alignSelfRight, borderRadius10, borderRadius25, borderRadius6, flex1, flexRow, justifyEnd, justyfyCenter, mb20, mh20, mt10, mt15, mt20, mt30, mt5, mv20, spaceAround } from '../../components/commonStyles';
-import { H20BlackBoldText } from '../../components/commonText';
+import { H14purpleVar3Text, H18Blackvar2Bold600, H20BlackBoldText } from '../../components/commonText';
 import { labels } from '../../utils/labels';
 import { RowSpaceEvenly } from '../../components/commonView';
 import { colors } from '../../utils/colors';
@@ -11,6 +11,7 @@ import { DevHeight, DevWidth } from '../../utils/device';
 import CustomIcon from '../../utils/Icons';
 import { callBottomDataFourth } from '../../utils/data/callsData';
 import { CallBottomTab } from '../../components/commonComponents';
+import { isDark } from '../../Theme/ThemeContext';
 
 
 export type SingleVideoCallAttendProps = {
@@ -20,13 +21,13 @@ export type SingleVideoCallAttendProps = {
 
 const SingleVideoCallAttend = (props: SingleVideoCallAttendProps) => {
     return (
-        <View style={[flex1, { backgroundColor: colors.whiteVar0 }]}>
+        <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]}>
             <CallCommonHeader />
             <View style={[alignItemsCenter, mt10]}>
-                <H20BlackBoldText>{labels.horaceKeene}</H20BlackBoldText>
-                <RowSpaceEvenly style={[{ height: 30, width: 100, backgroundColor: colors.purpleVar1 }, mt5, alignItemsCenter, borderRadius6]}>
-                    <View style={[{ height: 8, width: 8, backgroundColor: colors.purpleVar3 }, borderRadius25]} />
-                    <Text style={{ color: colors.purpleVar3, fontSize: 16, fontWeight: '500' }}>23:45</Text>
+                <H18Blackvar2Bold600>{labels.horaceKeene}</H18Blackvar2Bold600>
+                <RowSpaceEvenly style={[{ height: 30, width: 100, backgroundColor: isDark() ? colors.darkModeVar4 : colors.purpleVar1 }, mt5, alignItemsCenter, borderRadius6]}>
+                    <View style={[{ height: 8, width: 8, backgroundColor: isDark() ? colors.greyVar3 : colors.purpleVar3 }, borderRadius25]} />
+                    <H14purpleVar3Text>23:45</H14purpleVar3Text>
                 </RowSpaceEvenly>
             </View>
             <View style={[alignItemsCenter, justyfyCenter, flex1, mh20, mv20]}>

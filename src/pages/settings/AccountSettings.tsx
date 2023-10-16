@@ -5,7 +5,7 @@ import { colors } from '../../utils/colors';
 import { DevHeight, DevWidth } from '../../utils/device';
 import CustomIcon from '../../utils/Icons';
 import { RowSpaceAround, RowSpaceBetween } from '../../components/commonView';
-import { H12Grey, H15Grey, H16BlackText, H16font600Black, H16fontBoldBlack, H18BlackBoldText600 } from '../../components/commonText';
+import { H12Grey, H15Blackvar2Bold500, H15Grey, H16BlackText, H16font600Black, H16fontBoldBlack, H18BlackBoldText600 } from '../../components/commonText';
 import { labels } from '../../utils/labels';
 import { Chatimg1Img } from '../../utils/png';
 import { accountSettingData, settingsData } from '../../utils/data/settingsData';
@@ -16,6 +16,8 @@ import { ToastAndroid } from 'react-native';
 import { screenName } from '../../utils/screenName';
 import { IconModal } from '../../components/commonModal';
 import { SmallButton } from '../../components/commonButtons';
+import { SearchHeader, StarredAndVerifycodeHeader } from '../Media/MediaCommonHeader';
+import { isDark } from '../../Theme/ThemeContext';
 
 export type AccountSettingsProps = {
 
@@ -39,23 +41,8 @@ const AccountSettings = (props: AccountSettingsProps) => {
 
 
     return (
-        <View style={[flex1, { backgroundColor: colors.whiteVar0 }]} >
-            <View style={[flexRow, justifyStart, alignSelfCenter, alignItemsCenter, { height: DevHeight * 0.12, width: DevWidth, backgroundColor: colors.white, borderBottomLeftRadius: 45, borderBottomRightRadius: 45 }]}>
-                <TouchableOpacity style={[ml30]}>
-                    <CustomIcon name='arrow-back-ios' size={18} color={colors.blackVar2} type='MaterialIcons' />
-                </TouchableOpacity>
-                <RowSpaceBetween style={[flex1, mr30]}>
-                    <H18BlackBoldText600 style={[ml10]}>{labels.AccountSetting}</H18BlackBoldText600>
-                    <View style={[flexRow]}>
-                        <TouchableOpacity>
-                            <CustomIcon size={20} name='search' type='Feather' color={colors.blackVar2} />
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => navigation.navigate(screenName.EditAccountSettings as never)} style={[ml15]}>
-                            <CustomIcon size={20} name='pencil' type='octicons' color={colors.blackVar2} />
-                        </TouchableOpacity>
-                    </View>
-                </RowSpaceBetween>
-            </View>
+        <View style={[flex1,  { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
+            <StarredAndVerifycodeHeader headerText={labels.AccountSetting} isSearchDot={false} pencilNavigate={() => {navigation.navigate(screenName.EditAccountSettings as never)}} />
             <View style={[mt20, alignItemsCenter, justyfyCenter]}>
                 <View>
                     {Pic ? (
@@ -79,12 +66,12 @@ const AccountSettings = (props: AccountSettingsProps) => {
                     accountSettingData.map((item) => {
                         return (
                             <View style={[mh30, mv10, flexRow, alignItemsCenter]} key={item.id}>
-                                <View style={[{ height: 34, width: 34, backgroundColor: colors.purpleVar4 }, borderRadius6, alignItemsCenter, justyfyCenter]}>
-                                    <CustomIcon name={item.iconName} color={colors.purpleVar3} type={item.iconType} size={18} />
+                                <View style={[{ height: 34, width: 34, backgroundColor: isDark() ? `rgba(158, 158, 158, 0.1)` : colors.purpleVar4 }, borderRadius6, alignItemsCenter, justyfyCenter]}>
+                                    <CustomIcon name={item.iconName} color={isDark() ? colors.greyVar3 : colors.purpleVar3} type={item.iconType} size={18} />
                                 </View>
                                 <View style={[ml15]}>
                                     <H12Grey>{item.text1}</H12Grey>
-                                    <H16fontBoldBlack>{item.text2}</H16fontBoldBlack>
+                                    <H15Blackvar2Bold500>{item.text2}</H15Blackvar2Bold500>
                                 </View>
                             </View>
                         )
@@ -92,7 +79,7 @@ const AccountSettings = (props: AccountSettingsProps) => {
                 }
             </View>
             <IconModal
-                isVisible= {isImagePickerOpen}
+                isVisible={isImagePickerOpen}
                 onClose={() => setIsImagePickerOpen(false)}
                 contentComponent={<ImagePicker onImageSelect={handleImageSelect} />}
                 iconName='logout'

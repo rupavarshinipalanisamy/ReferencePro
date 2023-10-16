@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { CommonLineDividerGrey, MessageCard, TopContainerWhiteCard1 } from '../components/commonView';
 import { DevHeight, DevWidth } from '../utils/device';
@@ -11,6 +11,7 @@ import SendImg2 from '../../assets/images/sendMsg1.svg'
 import { labels } from '../utils/labels';
 import { Chatimg1Img } from '../utils/png';
 import AlexProfile from '../../assets/images/starredProfile.svg'
+import { StarredAndVerifycodeHeader, TextInputHeader } from './Media/MediaCommonHeader';
 
 
 export type starredMessagesProps = {
@@ -115,38 +116,21 @@ export const StarredMsg = [
 
 
 
-export const Header = (props: HeaderProps) => {
-    return (
-        <View>
-            <TopContainerWhiteCard1 height={DevHeight / 7.5}{...props}>
-                <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
-                    <View style={[flexRow, spaceBetween]}>
-                        <View style={[flexRow]}>
-                            <View style={[alignItemsCenter, justyfyCenter]}>
-                                <CustomIcon name='chevron-back-sharp' color={colors.black} size={16} type="Ionicons" />
-                            </View>
-                            <View style={pl13}>
-                                <H18BlackText>Starred Messages</H18BlackText>
-                            </View>
-                        </View>
-                        <View style={[flexRow, alignItemsCenter]}>
-                            <CustomIcon name="search" size={22} color={colors.greyVar4} type="Ionicons" />
-                            <TouchableOpacity style={pl10} >
-                                <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={colors.greyVar4} />
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                </View>
-            </TopContainerWhiteCard1>
-
-        </View>
-    )
-}
 
 const StarredMessages = (props: starredMessagesProps) => {
+    const [isTextInputHeader, setIsTextInputHeader] = useState(false);
+    const handleonPress = () => {
+        setIsTextInputHeader(true);
+    }
+
+    const handleBackToInitialHeader = () => {
+        setIsTextInputHeader(false);
+    }
     return (
         <View style={[flex1, { backgroundColor: colors.whiteVar0 }]} >
-            <Header />
+            {isTextInputHeader ? <TextInputHeader onBack={handleBackToInitialHeader} /> :
+                <StarredAndVerifycodeHeader headerText='Starred Messages' isSearchDot={true} onPress={handleonPress} />
+            }
             <ScrollView style={{ marginBottom: 20 }}>
                 {StarredMsg.map((item, index) => (
                     <View key={index} style={{ marginHorizontal: 20 }}>

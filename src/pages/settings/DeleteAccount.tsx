@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
-import { alignItemsCenter, alignSelfCenter, borderRadius10, borderRadius15, flex1, flexRow, justifyStart, justyfyCenter, mh20, mh30, ml10, ml15, ml30, mr5, mt10, mt15, mt20, mt3, mt30, mt5, mv20, textCenter } from '../../components/commonStyles';
+import { alignItemsCenter, alignSelfCenter, borderRadius10, borderRadius15, flex1, flexRow, justifyStart, justyfyCenter, mh20, mh30, ml10, ml15, ml30, mr5, mt10, mt15, mt20, mt3, mt30, mt5, mv10, mv15, mv20, textCenter } from '../../components/commonStyles';
 import { colors } from '../../utils/colors';
 import { DevHeight, DevWidth } from '../../utils/device';
 import CustomIcon from '../../utils/Icons';
@@ -10,6 +10,8 @@ import { CommonLineDividerPurple, RowSpaceBetween } from '../../components/commo
 import { IconInputContainer } from '../../styledComponent/styledComponent';
 import { CustomTextInput } from '../../components/commonInputFields';
 import { UsFlagTmg } from '../../utils/png';
+import { SearchHeader } from '../Media/MediaCommonHeader';
+import { isDark } from '../../Theme/ThemeContext';
 
 export type DeleteAccountProps = {
 
@@ -27,26 +29,28 @@ const DeleteAccount = (props: DeleteAccountProps) => {
         setPhoneNumber(phoneNumber);
     }
     return (
-        <View style={[flex1, { backgroundColor: colors.whiteVar0 }]} >
-            <View style={[flexRow, justifyStart, alignSelfCenter, alignItemsCenter, { height: DevHeight * 0.12, width: DevWidth, backgroundColor: colors.white, borderBottomLeftRadius: 45, borderBottomRightRadius: 45 }]}>
-                <View style={[ml30]}>
-                    <CustomIcon name='arrow-back-ios' size={18} color={colors.blackVar2} type='MaterialIcons' />
-                </View>
-                <H18BlackBoldText600 style={[ml10]}>{labels.DeleteThisAccount}</H18BlackBoldText600>
-            </View>
-            <View style={[alignSelfCenter, mt30, borderRadius10, { backgroundColor: colors.purpleVar1, height: DevHeight * 0.34, width: DevWidth * 0.85 }]}>
+        // <View style={[flex1, { backgroundColor: colors.whiteVar0 }]} >
+        //     <View style={[flexRow, justifyStart, alignSelfCenter, alignItemsCenter, { height: DevHeight * 0.12, width: DevWidth, backgroundColor: colors.white, borderBottomLeftRadius: 45, borderBottomRightRadius: 45 }]}>
+        //         <View style={[ml30]}>
+        //             <CustomIcon name='arrow-back-ios' size={18} color={colors.blackVar2} type='MaterialIcons' />
+        //         </View>
+        //         <H18BlackBoldText600 style={[ml10]}>{labels.DeleteThisAccount}</H18BlackBoldText600>
+        //     </View>
+        <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
+            <SearchHeader headerText={labels.DeleteThisAccount} searchIcon={true} />
+            <View style={[alignSelfCenter, mt30, borderRadius10, { backgroundColor: isDark() ? colors.darkModeVar4 : colors.purpleVar1, height: DevHeight * 0.34, width: DevWidth * 0.85 }]}>
                 <View style={[flexRow, mh20, mt15]}>
-                    <View style={[{ height: 35, width: 35, backgroundColor: colors.purpleVar4 }, alignItemsCenter, justyfyCenter, borderRadius10, mt3]}>
-                        <CustomIcon name='user' type="Feather" color={colors.purpleVar3} size={18} />
+                    <View style={[{ height: 35, width: 35, backgroundColor: isDark() ? `rgba(158, 158, 158,0.1)` : colors.purpleVar4 }, alignItemsCenter, justyfyCenter, borderRadius10, mt3]}>
+                        <CustomIcon name='user' type="Feather" color={isDark() ? colors.greyVar3 : colors.purpleVar3} size={18} />
                     </View>
                     <View style={[flex1, mt10]}>
                         <RowSpaceBetween>
                             <H15PurpleVar3Bold500 style={[ml15]}>If you delete this account</H15PurpleVar3Bold500>
-                            <CustomIcon name='chevron-up' type="Feather" size={15} color={colors.greyVar4} />
+                            <CustomIcon name='chevron-up' type="Feather" size={15} color={isDark() ? colors.greyVar3 : colors.greyVar4} />
                         </RowSpaceBetween>
                     </View>
                 </View>
-                <CommonLineDividerPurple style={[mv20]} />
+                <CommonLineDividerPurple style={[mv15]} />
                 <View>
                     <View style={[flexRow, mh20]}>
                         <CustomIcon name='checkcircle' type="AntDesign" size={16} color={colors.purpleVar3} />
@@ -72,28 +76,28 @@ const DeleteAccount = (props: DeleteAccountProps) => {
             <View style={[mh30, mt20]}>
                 <IconInputContainer>
                     <View style={[justyfyCenter]}>
-                        <CustomIcon name='globe' size={20} color={colors.greyVar4} type="Feather" />
+                        <CustomIcon name='globe' size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type="Feather" />
                     </View>
                     <CustomTextInput
                         value={country}
-                        onChangeText={(text) => handleCountry( text)}
+                        onChangeText={(text) => handleCountry(text)}
                     />
                 </IconInputContainer>
                 <IconInputContainer>
                     <View style={[justyfyCenter, alignItemsCenter, flexRow]}>
-                        <CustomIcon name='phone' size={20} color={colors.greyVar4} type="Feather" />
-                        <View style = {[flexRow, ml15]}>
-                            <Image source={UsFlagTmg} style = {[{height:20, width : 20}, mr5]} />
-                            <CustomIcon name='chevron-down-outline' type="Ionicons" color={colors.blackVar2} size={15} />
+                        <CustomIcon name='phone' size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type="Feather" />
+                        <View style={[flexRow, ml15]}>
+                            <Image source={UsFlagTmg} style={[{ height: 20, width: 20 }, mr5]} />
+                            <CustomIcon name='chevron-down-outline' type="Ionicons" color={isDark() ? colors.greyVar0 : colors.blackVar2} size={15} />
                         </View>
                     </View>
                     <CustomTextInput
                         value={phoneNumber}
-                        onChangeText={(text) => handlePhoneNumber( text)}
+                        onChangeText={(text) => handlePhoneNumber(text)}
                     />
                 </IconInputContainer>
             </View>
-            <View style = {[styles.longButtonRed, mh20]}>
+            <View style={[styles.longButtonRed, mh20]}>
                 <H15font600>{labels.deleteAcc}</H15font600>
             </View>
         </View>
@@ -107,8 +111,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: colors.red,
-        marginTop:150, 
-        bottom : 15
+        marginTop: 150,
+        bottom: 15
     },
 })
 

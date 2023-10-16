@@ -9,6 +9,7 @@ import AllCalls from '../../components/calls/AllCalls';
 import IncomingCalls from '../../components/calls/IncomingCalls';
 import OutgoingCalls from '../../components/calls/OutgoingCalls';
 import MissedCalls from '../../components/calls/MissedCalls';
+import { isDark } from '../../Theme/ThemeContext';
 
 export type CallsProps = {
 
@@ -66,7 +67,7 @@ const Calls = (props: CallsProps) => {
     return (
         <Fragment>
             <PurpleMainContainer>
-                <StatusBar backgroundColor={colors.purpleVar3} />
+                <StatusBar backgroundColor={isDark() ? colors.darkModeVar1 : colors.purpleVar3} />
                 {/* <CallHeader title={labels.Groups} /> */}
                 <Header selectedTab={selectedTab} selectedCards={selectedCards} handleTabPress={handleTabPress} />
                 <View style={flex1}>

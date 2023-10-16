@@ -90,7 +90,7 @@
 // }
 
 // export default Privacy
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { StatusBar, View, TouchableOpacity, Text } from 'react-native';
 import {
     flexRow,
@@ -107,6 +107,7 @@ import {
 import {
     H12fontNormalGray,
     H14BlackVar2Bold400Text,
+    H14GreyVar4Bold400,
     H16font600Black,
     H16font900Black,
     H16fontNormalGray4,
@@ -127,6 +128,7 @@ import { muteNotificationdata, statusPrivacydata } from '../../utils/data/modalD
 import { colors } from '../../utils/colors';
 import { IconModal } from '../../components/commonModal';
 import { screenName } from '../../utils/screenName';
+import { isDark } from '../../Theme/ThemeContext';
 
 export type privacyProps = {};
 
@@ -148,6 +150,7 @@ const Privacy = (props: privacyProps) => {
 
     const closeModal = () => {
         setSelectedModalId(null);
+        setStatusPrivacyOptionModal(false);
     };
 
     const StatusPrivacyOption = () => {
@@ -161,23 +164,24 @@ const Privacy = (props: privacyProps) => {
 
         const handleDeleteChatButton = () => {
             setIsCancelButtonActive(false);
-            setStatusPrivacyOptionModal (false)
         };
 
-        const handleStatusSelect = (status: string, id : number) => {
+        const handleStatusSelect = (status: string, id: number) => {
             setSelectedStatus(status);
-            if(id === 2){
+            if (id === 2) {
                 navigation.navigate(screenName.StatusMyContactExcept as never);
-            } 
-            else if(id === 3){
+                setStatusPrivacyOptionModal(false)
+            }
+            else if (id === 3) {
                 navigation.navigate(screenName.StatusOnlyShareWith as never);
+                setStatusPrivacyOptionModal(false)
             }
         };
 
         return (
             <View style={[mh20]} >
                 <H16font600Black>Status Privacy</H16font600Black>
-                <Text style={[mt20]}>Who can see my status updates</Text>
+                <H14GreyVar4Bold400 style={[mt20]}>Who can see my status updates</H14GreyVar4Bold400>
                 <View style={[mt15]}>
                     {
                         statusPrivacydata.map((item) => {
@@ -200,8 +204,8 @@ const Privacy = (props: privacyProps) => {
                     <SmallButton
                         title={labels.cancel}
                         onChange={handleCancelButton}
-                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
-                        textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
+                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
+                        textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar3 : colors.greyVar4)}
                         borderWidth={isCancelButtonActive ? 0 : 1}
                         width={DevWidth / 3.15}
                     />
@@ -252,9 +256,9 @@ const Privacy = (props: privacyProps) => {
                                     <H12fontNormalGray>{privacyDatas.status}</H12fontNormalGray>
                                 </View>
                                 {index === 4 ? (
-                                    <CustomIcon name='toggle-off' size={27} color={colors.grey3} type='Fontisto' />
+                                    <CustomIcon name='toggle-off' size={27} color={colors.greyVar3} type='Fontisto' />
                                 ) : (
-                                    <CustomIcon name='chevron-right' size={15} color={colors.grey2} type='octicons' />
+                                    <CustomIcon name='chevron-right' size={15} color={colors.greyVar2} type='octicons' />
                                 )}
                             </View>
                         );

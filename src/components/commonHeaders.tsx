@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import { DevHeight, DevWidth } from '../utils/device';
 import { colors } from '../utils/colors';
 import CustomIcon from '../utils/Icons';
-import { H15Grey } from './commonText';
+import { H12fontBold400GreyVar4, H12fontBold400GreyVar4DarkWhite, H15Grey } from './commonText';
 import { labels } from '../utils/labels';
 import { isDark } from '../Theme/ThemeContext';
 
@@ -22,12 +22,12 @@ export const CallCommonHeader = () => {
         borderBottomRightRadius: 45,
       }}
     >
-      <CustomIcon name='arrow-back-ios' size={18} color={isDark() ? colors.white : colors.blackVar2} type='MaterialIcons' />
+      <CustomIcon name='arrow-back-ios' size={15} color={isDark() ? colors.white : colors.blackVar2} type='MaterialIcons' />
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <CustomIcon name='lock' size={15} color={colors.greyVar4} type='Feather' />
-        <H15Grey style={{ marginLeft: 10 }}>{labels.Endtoendencrypted}</H15Grey>
+        <CustomIcon name='lock' size={12} color={isDark() ? colors.white : colors.greyVar4} type='Feather' />
+        <H12fontBold400GreyVar4DarkWhite style={{ marginLeft: 10 }}>{labels.Endtoendencrypted}</H12fontBold400GreyVar4DarkWhite>
       </View>
-      <CustomIcon name='person-add' size={18} color={isDark() ? colors.white : colors.blackVar2} type='octicons' />
+      <CustomIcon name='person-add' size={15} color={isDark() ? colors.white : colors.blackVar2} type='octicons' />
     </View>
   );
 };

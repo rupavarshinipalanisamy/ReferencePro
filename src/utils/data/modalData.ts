@@ -107,7 +107,7 @@ export const CallThreeDotsOption = [
         name : labels.RemoveFromCallLog,
         iconName : 'delete',
         iconType : "AntDesign",
-        iconSize : 20,
+        iconSize : 16,
         screenName : screenName.ChatView,
     },
     {
@@ -115,7 +115,7 @@ export const CallThreeDotsOption = [
         name : labels.Block,
         iconName : 'block',
         iconType : "entypo",
-        iconSize : 20,
+        iconSize : 16,
         screenName : screenName.ChatView,
     },
 ]

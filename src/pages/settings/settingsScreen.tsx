@@ -8,7 +8,7 @@ import { StyleSheet } from 'react-native';
 import SettingAvatar from '../../../assets/images/settings-avatar.svg'
 import { justyfyCenter, ml10, alignItemsCenter, flexRow, ph10, mt20, m15, mh20, mt15, mv20, justifyStart, alignSelfCenter, ml30, flex1, mr30, ml15 } from '../../components/commonStyles';
 import { InputContainer1 } from '../../styledComponent/styledComponent';
-import { H14font400Gray4, H15font500Black, H16font600Black, H16fontBoldBlack, H18BlackBoldText600 } from '../../components/commonText';
+import { H14BlackVar2Bold400Text, H14blackVar1bold400Text, H14font400Gray4, H15font500Black, H16font600Black, H16fontBoldBlack, H18BlackBoldText600 } from '../../components/commonText';
 import { ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal'
@@ -18,6 +18,7 @@ import { SmallButton } from '../../components/commonButtons';
 import { labels } from '../../utils/labels';
 import { IconModal } from '../../components/commonModal';
 import { screenName } from '../../utils/screenName';
+import { isDark } from '../../Theme/ThemeContext';
 
 export type settingsScreenProps = {
 
@@ -78,15 +79,15 @@ const SettingsScreen = (props: settingsScreenProps) => {
         return (
             <View style={[mh20]} >
                 <H16font600Black>Logout?</H16font600Black>
-                <Text style={[mt20]}>Are you sure you want to logout?</Text>
+                <H14blackVar1bold400Text style={[mt20]}>Are you sure you want to logout?</H14blackVar1bold400Text>
                 <RowSpaceBetween style={[mv20]}>
                     <SmallButton
                         title={labels.cancel}
                         onChange={handleCancelButton}
-                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
-                        textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
+                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
+                        textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar3 : colors.greyVar4)}
                         borderWidth={isCancelButtonActive ? 0 : 1}
-                        width={DevWidth / 2.6}
+                        width={DevWidth / 3.15}
                     />
                     <SmallButton
                         title={labels.Logout}
@@ -94,7 +95,7 @@ const SettingsScreen = (props: settingsScreenProps) => {
                         backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
                         textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
                         borderWidth={isCancelButtonActive ? 1 : 0}
-                        width={DevWidth / 2.6}
+                        width={DevWidth / 3.15}
                     />
                 </RowSpaceBetween>
             </View>
@@ -170,7 +171,7 @@ const SettingsScreen = (props: settingsScreenProps) => {
                         <View
                             style={{
                                 height: DevHeight / 5,
-                                backgroundColor: colors.white,
+                                backgroundColor: isDark() ? colors.darkModeVar4 : colors.white,
                                 paddingTop: 25,
                                 borderTopLeftRadius: 10,
                                 borderTopRightRadius: 10
@@ -178,12 +179,12 @@ const SettingsScreen = (props: settingsScreenProps) => {
                         >
                             <View style={[flexRow, alignItemsCenter, justyfyCenter]}>
                                 <TouchableOpacity style={[ml30]}>
-                                    <CustomIcon name='globe' size={18} color={colors.blackVar2} type="octicons" />
+                                    <CustomIcon name='globe' size={18} color={isDark() ? colors.greyVar0 : colors.blackVar2} type="octicons" />
                                 </TouchableOpacity>
                                 <RowSpaceBetween style={[flex1, mr30]}>
-                                    <H18BlackBoldText600 style={[ml10]}>English</H18BlackBoldText600>
+                                    <H14BlackVar2Bold400Text style={[ml10]}>English</H14BlackVar2Bold400Text>
                                     <TouchableOpacity>
-                                        <CustomIcon size={20} name='chevron-down' type='Feather' color={colors.blackVar2} />
+                                        <CustomIcon size={20} name='chevron-down' type='Feather' color={isDark() ? colors.greyVar0 : colors.blackVar2} />
                                     </TouchableOpacity>
                                 </RowSpaceBetween>
                             </View>
@@ -196,8 +197,8 @@ const SettingsScreen = (props: settingsScreenProps) => {
                                             <SmallButton
                                                 title={labels.cancel}
                                                 onChange={handleCancelButton}
-                                                backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
-                                                textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
+                                                backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` :  colors.white)}
+                                                textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar3 : colors.greyVar4)}
                                                 borderWidth={isCancelButtonActive ? 0 : 1}
                                                 width={DevWidth / 4.5}
                                             />

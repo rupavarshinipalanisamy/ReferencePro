@@ -4,12 +4,14 @@ import { DevHeight, DevWidth } from '../../utils/device';
 import CustomIcon from '../../utils/Icons';
 import { colors } from '../../utils/colors';
 import { labels } from '../../utils/labels';
-import { H15BlackBold600, H15Grey, H16fontBoldBlack, H18BlackBoldText, H18BlackBoldText600 } from '../../components/commonText';
+import { H14Blackvar2Bold500, H15BlackBold600, H15Grey, H16fontBoldBlack, H18BlackBoldText, H18BlackBoldText600 } from '../../components/commonText';
 import { alignItemsCenter, alignSelfCenter, borderRadius10, flex1, flexRow, justifyEnd, justifyStart, justyfyCenter, mh20, ml10, ml15, ml30, mt20, mv10 } from '../../components/commonStyles';
 import { GroupSettingData } from '../../utils/data/groupsData';
 import { RowSpaceBetween } from '../../components/commonView';
 import { ToggleSwitch } from '../../components/commonComponents';
 import { ButtonNow } from '../../components/commonButtons';
+import { SearchHeader } from '../Media/MediaCommonHeader';
+import { isDark } from '../../Theme/ThemeContext';
 
 export type GroupSettingsProps = {
 
@@ -28,13 +30,8 @@ const GroupSettings = (props: GroupSettingsProps) => {
     };
 
     return (
-        <View style={[flex1, { backgroundColor: colors.whiteVar0 }]} >
-            <View style={[flexRow, justifyStart, alignSelfCenter, alignItemsCenter, { height: DevHeight * 0.12, width: DevWidth, backgroundColor: colors.white, borderBottomLeftRadius: 45, borderBottomRightRadius: 45 }]}>
-                <View style={[ml30]}>
-                    <CustomIcon name='arrow-back-ios' size={18} color={colors.blackVar2} type='MaterialIcons' />
-                </View>
-                <H18BlackBoldText600 style={[ml10]}>{labels.GroupSetting}</H18BlackBoldText600>
-            </View>
+        <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 :  colors.whiteVar0 }]} >
+            <SearchHeader headerText={labels.GroupSetting} />
             <View style={[mt20, mh20]}>
                 {
                     GroupSettingData.map((item) => {
@@ -44,7 +41,7 @@ const GroupSettings = (props: GroupSettingsProps) => {
                                     <CustomIcon name={item.iconName} size={item.iconSize} type={item.iconType} color={item.iconColor} />
                                 </View>
                                 <RowSpaceBetween style={[flex1, ml15]}>
-                                    <H15BlackBold600>{item.name}</H15BlackBold600>
+                                    <H14Blackvar2Bold500>{item.name}</H14Blackvar2Bold500>
                                     <ToggleSwitch value={toggleStates[item.id]} onToggle={() => toggleSwitch(item.id)} />
                                 </RowSpaceBetween>
                             </View>
@@ -52,13 +49,6 @@ const GroupSettings = (props: GroupSettingsProps) => {
                     })
                 }
             </View>
-            {/* <View style = {[mh20, justifyEnd, flex1, {bottom : 10}]}>
-                <ButtonNow
-                    style={{ backgroundColor: colors.purpleVar3 }}
-                    textStyle={{ color: colors.white }}
-                    // funCallback={handleSubmit(onLogin)}
-                    label={labels.logIn} />
-            </View> */}
         </View>
     )
 }

@@ -49,7 +49,7 @@ padding:10px;
 `
 export const IconInputContainer = styled(View)`
 borderBottomWidth: 1px;
-borderBottomColor: ${colors.borderBottomColor};
+borderBottomColor: ${ isDark() ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor};
 flexDirection: row;
 marginVertical:7px;
 `

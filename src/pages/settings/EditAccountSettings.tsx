@@ -13,6 +13,8 @@ import { CustomTextInput } from '../../components/commonInputFields';
 // import { ButtonSaveandCancel } from '../../components/commonButtons';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
+import { SearchHeader } from '../Media/MediaCommonHeader';
+import { isDark } from '../../Theme/ThemeContext';
 
 export type EditAccountSettingsProps = {
 
@@ -78,8 +80,8 @@ const EditAccountSettings = (props: EditAccountSettingsProps) => {
     ];
 
     return (
-        <View style={[flex1, { backgroundColor: colors.whiteVar0 }]} >
-            <View style={[flexRow, justifyStart, alignSelfCenter, alignItemsCenter, { height: DevHeight * 0.12, width: DevWidth, backgroundColor: colors.white, borderBottomLeftRadius: 45, borderBottomRightRadius: 45 }]}>
+        <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 :  colors.whiteVar0 }]} >
+            {/* <View style={[flexRow, justifyStart, alignSelfCenter, alignItemsCenter, { height: DevHeight * 0.12, width: DevWidth, backgroundColor: colors.white, borderBottomLeftRadius: 45, borderBottomRightRadius: 45 }]}>
                 <View style={[ml30]}>
                     <CustomIcon name='arrow-back-ios' size={18} color={colors.blackVar2} type='MaterialIcons' />
                 </View>
@@ -87,16 +89,17 @@ const EditAccountSettings = (props: EditAccountSettingsProps) => {
                     <H18BlackBoldText600 style={[ml10]}>{labels.CreateGroup}</H18BlackBoldText600>
                     <CustomIcon size={20} name='search' type='Feather' color={colors.blackVar2} />
                 </RowSpaceBetween>
-            </View>
+            </View> */}
+             <SearchHeader headerText={labels.EditProfile} searchIcon={true} />
             <View style={[flex1, mh30]}>
                 {
                     inputFields.map((field) => (
                         <View key={field.key}>
                             <IconInputContainer>
                                 <View style={[justyfyCenter]}>
-                                    <CustomIcon name={field.iconName} size={20} color={colors.greyVar4} type={field.iconType} />
+                                    <CustomIcon name={field.iconName} size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type={field.iconType} />
                                 </View>
-                                <CustomTextInput style= {{fontSize : 14, fontWeight : '400', color : colors.greyVar2}}
+                                <CustomTextInput style= {{fontSize : 14, fontWeight : '400', color : colors.red}}
                                     value={formData[field.key]}
                                     onChangeText={(text) => handleInputChange(field.key, text)}
                                 />

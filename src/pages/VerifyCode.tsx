@@ -5,7 +5,7 @@ import { QrCodeImg } from '../utils/png';
 import { QrImgView } from '../styledComponent/styledComponent';
 import { flex1, mt30, mt8, spaceBetween } from '../components/commonStyles';
 import { H14Grey, H15Grey } from '../components/commonText';
-import { ButtonNow } from '../components/commonButtons';
+
 
 
 export const MiddleData = () => [
@@ -66,7 +66,7 @@ const VerifyCode = () => {
     const [data, setData] = useState(MiddleData);
     return (
         <View style={flex1} >
-            <StarredAndVerifycodeHeader headerText='Verify Security Code' />
+            <StarredAndVerifycodeHeader headerText='Verify Security Code' isSearchDot={true} />
             <QrImgView>
                 <Image source={QrCodeImg} />
             </QrImgView>
@@ -88,13 +88,11 @@ const VerifyCode = () => {
                     To verify that messages and calls with Horace{'\n'} Keene are end-to-end encrypted, scan this code{'\n'} on their phone. You can also compare the {'\n'} number above instead.
                 </H14Grey>
             </View>
-            <View style={{marginHorizontal:20,justifyContent:'flex-end',flex:1}}>
+            {/* <View style={{marginHorizontal:20,justifyContent:'flex-end',flex:1}}>
                 <ButtonNow
                
                     label='Scan  Code' />
-            </View>
-
-
+            </View> */}
         </View>
     )
 }

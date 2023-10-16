@@ -10,9 +10,11 @@ import { labels } from '../../utils/labels';
 import { createGroupUserSelectData } from '../../utils/data/groupsData';
 import { MultiSelectOption } from '../../components/commonComponents';
 import { ButtonContainer } from '../../styledComponent/styledComponent';
-import { ButtonSaveandCancel, SmallButton } from '../../components/commonButtons';
+import { SmallButton } from '../../components/commonButtons';
 import { Chatimg1Img, Chatimg2Img, Chatimg3Img, Chatimg4Img, Chatimg5Img, Chatimg6Img, Chatimg7Img } from '../../utils/png';
 import { useNavigation } from '@react-navigation/native';
+import { SearchHeader } from '../Media/MediaCommonHeader';
+import { isDark } from '../../Theme/ThemeContext';
 
 export type CreateGroupUserSelectProps = {
 
@@ -42,26 +44,18 @@ const CreateGroupUserSelect = (props: CreateGroupUserSelectProps) => {
     };
 
     return (
-        <View style={[flex1, { backgroundColor: colors.whiteVar0 }]} >
-            <View style={[flexRow, justifyStart, alignSelfCenter, alignItemsCenter, { height: DevHeight * 0.12, width: DevWidth, backgroundColor: colors.white, borderBottomLeftRadius: 45, borderBottomRightRadius: 45 }]}>
-                <View style={[ml30]}>
-                    <CustomIcon name='arrow-back-ios' size={18} color={colors.blackVar2} type='MaterialIcons' />
-                </View>
-                <RowSpaceBetween style={[flex1, mr30]}>
-                    <H18BlackBoldText600 style={[ml10]}>{labels.CreateGroup}</H18BlackBoldText600>
-                    <CustomIcon size={20} name='search' type='Feather' color={colors.blackVar2} />
-                </RowSpaceBetween>
-            </View>
+        <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
+            <SearchHeader headerText={labels.CreateGroup} searchIcon={true} />
             <ScrollView showsVerticalScrollIndicator={false} >
                 <View style={[flex1, mh30, mt15]}>
                     {
                         createGroupUserSelectData.map((item) => {
                             return (
-                                <View key={item.id} style={[p10, mv10, styles.whiteCard]}>
+                                <View key={item.id} style={[p10, mv10, styles.whiteCard,{backgroundColor: isDark() ? colors.darkModeVar4 : colors.white,}]}>
                                     <View style={[flexRow]}>
                                         <View style={[alignItemsCenter, justyfyCenter]}>
                                             <Image source={item.img} style={styles.profileImg} />
-                                            <View style={[{ backgroundColor: item.status === 'active' ? '#20c997' : '' }, item.status === 'active' ? styles.status : null]} />
+                                            <View style={[{ backgroundColor: item.status === 'active' ? '#20c997' : '', borderColor: isDark() ? colors.darkModeVar4 : colors.white, }, item.status === 'active' ? styles.status : null]} />
                                         </View>
                                         <View style={[flex1]}>
                                             <RowSpaceBetween style={[pb5]}>
@@ -84,8 +78,8 @@ const CreateGroupUserSelect = (props: CreateGroupUserSelectProps) => {
                     <SmallButton
                         title={labels.cancel}
                         onChange={handleCancelButton}
-                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
-                        textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
+                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
+                        textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar3 : colors.greyVar4)}
                         borderWidth={isCancelButtonActive ? 0 : 1}
                     />
                     <SmallButton
@@ -110,7 +104,6 @@ const styles = StyleSheet.create({
     },
     status: {
         borderWidth: 3,
-        borderColor: colors.white,
         position: 'absolute',
         bottom: 0,
         right: 10,
@@ -119,7 +112,6 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     whiteCard: {
-        backgroundColor: colors.white,
         height: 70,
         borderRadius: 5,
     },

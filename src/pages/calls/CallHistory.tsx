@@ -4,7 +4,7 @@ import { HeaderChatView } from '../chatView/Messagecomponents/messages';
 import { colors } from '../../utils/colors';
 import { screenName } from '../../utils/screenName';
 import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh10, mh20, mt15, mt5, mv10, mv5, p10, p20, p5, pb5, spaceAround } from '../../components/commonStyles';
-import { H15Grey, H16SemiBoldBlack, H16fontBoldBlack, H18fontBoldBlack } from '../../components/commonText';
+import { H14Blackvar2Bold500, H14GreyVar4Bold400, H15Blackvar2Bold500, H15Grey, H16SemiBoldBlack, H16fontBoldBlack, H18fontBoldBlack } from '../../components/commonText';
 import { labels } from '../../utils/labels';
 import { callHistoryThirddata, callHistoryTodaydata, callHistoryYesterdaydata } from '../../utils/data/callsData';
 import { RowSpaceBetween } from '../../components/commonView';
@@ -13,6 +13,7 @@ import { CustomModal } from '../../components/commonComponents';
 import { DevWidth } from '../../utils/device';
 import { useNavigation } from '@react-navigation/native';
 import { CallThreeDotsOption } from '../../utils/data/modalData';
+import { isDark } from '../../Theme/ThemeContext';
 
 export type CallHistoryProps = {
 
@@ -21,11 +22,11 @@ export type CallHistoryProps = {
 
 const CallHistory = (props: CallHistoryProps) => {
     return (
-        <View style={[flex1, { backgroundColor: colors.whiteVar0 }]}>
-            <HeaderChatView backgroundColor={colors.purpleVar3} profileNavigate={screenName.UserProfile} videoNavigate={screenName.SingleVideoCall} call = {true} audioNavigate={screenName.SingleAudioCallRing} title={labels.horaceKeene} subTitle={labels.online} />
+        <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]}>
+            <HeaderChatView backgroundColor={colors.purpleVar3} profileNavigate={screenName.UserProfile} videoNavigate={screenName.SingleVideoCall} call = {true} audioNavigate={screenName.Calling} title={labels.horaceKeene} subTitle={labels.online} />
             <ScrollView>
                 <View style={[mh20, mt15]}>
-                    <H18fontBoldBlack style={[mv5, {}]}>{labels.Today}</H18fontBoldBlack>
+                    <H14Blackvar2Bold500 style={[mv5, {}]}>{labels.Today}</H14Blackvar2Bold500>
                     <View>
                         {
                             callHistoryTodaydata.map((item) => {
@@ -37,14 +38,14 @@ const CallHistory = (props: CallHistoryProps) => {
                                             </View>
                                             <View style={[flex1]}>
                                                 <RowSpaceBetween style={pb5}>
-                                                    <H16SemiBoldBlack>{item.name}</H16SemiBoldBlack>
+                                                    <H15Blackvar2Bold500>{item.name}</H15Blackvar2Bold500>
                                                     <CustomIcon name={item.iconName} size={item.iconSize} color={item.iconColor} type={item.iconType} />
                                                     {/* <Text style={{ fontWeight: call.id === 4 ? '700' : 'normal' }}>{call.duration}</Text> */}
                                                 </RowSpaceBetween>
                                                 <RowSpaceBetween style={pb5}>
-                                                    <H15Grey>{item.text}</H15Grey>
+                                                    <H14GreyVar4Bold400>{item.text}</H14GreyVar4Bold400>
                                                     {/* <CustomIcon name={call.iconName} size={call.iconSize} color={call.iconColor} type={call.iconType} /> */}
-                                                    <H15Grey style={{ color: item.DurationColor }}>{item.duration}</H15Grey>
+                                                    <H14GreyVar4Bold400 style={{ color: item.DurationColor }}>{item.duration}</H14GreyVar4Bold400>
                                                 </RowSpaceBetween>
                                             </View>
                                         </View>
@@ -55,7 +56,7 @@ const CallHistory = (props: CallHistoryProps) => {
                     </View>
                 </View>
                 <View style={[mh20, mt15]}>
-                    <H18fontBoldBlack style={[mv5, {}]}>{labels.Yesterday}</H18fontBoldBlack>
+                    <H14Blackvar2Bold500 style={[mv5, {}]}>{labels.Yesterday}</H14Blackvar2Bold500>
                     <View>
                         {
                             callHistoryYesterdaydata.map((item) => {
@@ -67,14 +68,14 @@ const CallHistory = (props: CallHistoryProps) => {
                                             </View>
                                             <View style={[flex1]}>
                                                 <RowSpaceBetween style={pb5}>
-                                                    <H16SemiBoldBlack>{item.name}</H16SemiBoldBlack>
+                                                    <H15Blackvar2Bold500>{item.name}</H15Blackvar2Bold500>
                                                     <CustomIcon name={item.iconName} size={item.iconSize} color={item.iconColor} type={item.iconType} />
                                                     {/* <Text style={{ fontWeight: call.id === 4 ? '700' : 'normal' }}>{call.duration}</Text> */}
                                                 </RowSpaceBetween>
                                                 <RowSpaceBetween style={pb5}>
-                                                    <H15Grey>{item.text}</H15Grey>
+                                                    <H14GreyVar4Bold400>{item.text}</H14GreyVar4Bold400>
                                                     {/* <CustomIcon name={call.iconName} size={call.iconSize} color={call.iconColor} type={call.iconType} /> */}
-                                                    <H15Grey style={{ color: item.DurationColor }}>{item.duration}</H15Grey>
+                                                    <H14GreyVar4Bold400 style={{ color: item.DurationColor }}>{item.duration}</H14GreyVar4Bold400>
                                                 </RowSpaceBetween>
                                             </View>
                                         </View>
@@ -85,7 +86,7 @@ const CallHistory = (props: CallHistoryProps) => {
                     </View>
                 </View>
                 <View style={[mh20, mt15]}>
-                    <H18fontBoldBlack style={[mv5, {}]}>{labels.Aug232023}</H18fontBoldBlack>
+                    <H14Blackvar2Bold500 style={[mv5, {}]}>{labels.Aug232023}</H14Blackvar2Bold500>
                     <View>
                         {
                             callHistoryThirddata.map((item) => {
@@ -97,14 +98,14 @@ const CallHistory = (props: CallHistoryProps) => {
                                             </View>
                                             <View style={[flex1]}>
                                                 <RowSpaceBetween style={pb5}>
-                                                    <H16SemiBoldBlack>{item.name}</H16SemiBoldBlack>
+                                                    <H15Blackvar2Bold500>{item.name}</H15Blackvar2Bold500>
                                                     <CustomIcon name={item.iconName} size={item.iconSize} color={item.iconColor} type={item.iconType} />
                                                     {/* <Text style={{ fontWeight: call.id === 4 ? '700' : 'normal' }}>{call.duration}</Text> */}
                                                 </RowSpaceBetween>
                                                 <RowSpaceBetween style={pb5}>
-                                                    <H15Grey>{item.text}</H15Grey>
+                                                    <H14GreyVar4Bold400>{item.text}</H14GreyVar4Bold400>
                                                     {/* <CustomIcon name={call.iconName} size={call.iconSize} color={call.iconColor} type={call.iconType} /> */}
-                                                    <H15Grey style={{ color: item.DurationColor }}>{item.duration}</H15Grey>
+                                                    <H14GreyVar4Bold400 style={{ color: item.DurationColor }}>{item.duration}</H14GreyVar4Bold400>
                                                 </RowSpaceBetween>
                                             </View>
                                         </View>
@@ -137,7 +138,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     whiteCard : {
-        backgroundColor: colors.white,
+        backgroundColor: isDark() ? colors.darkModeVar4 : colors.white,
         height : 70,
         borderRadius : 5,
     }

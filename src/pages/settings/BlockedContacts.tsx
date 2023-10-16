@@ -6,11 +6,13 @@ import { DevHeight, DevWidth } from '../../utils/device';
 import CustomIcon from '../../utils/Icons';
 import { labels } from '../../utils/labels';
 import { RowSpaceBetween } from '../../components/commonView';
-import { H14GreyVar4Bold400, H15Blackvar2Bold500, H15Grey, H18BlackBoldText600 } from '../../components/commonText';
+import { H14GreyVar4Bold400, H14blackVar1bold400Text, H15Blackvar2Bold500, H15Grey, H18BlackBoldText600 } from '../../components/commonText';
 import { createGroupUserSelectData } from '../../utils/data/groupsData';
 import { CustomModal, MultiSelectOption } from '../../components/commonComponents';
 import { useNavigation } from '@react-navigation/native';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
+import { isDark } from '../../Theme/ThemeContext';
+import { SearchHeader } from '../Media/MediaCommonHeader';
 
 export type BlockedContactsProps = {
 
@@ -27,17 +29,19 @@ const BlockedContacts = (props: BlockedContactsProps) => {
         setSelectedBlockIcon(item);
         const { pageX, pageY } = event.nativeEvent;
         const marginLeft = pageX - 30;
-        setModalPosition({ x: marginLeft, y: pageY  });
+        setModalPosition({ x: marginLeft, y: pageY });
         setModalVisible(true);
-      };
+    };
 
     const BlockChatOption = () => {
         return (
             <TouchableOpacity onPress={() => { }} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
                 <View style={[flexRow]}>
-                    <CustomIcon name='block-flipped' type="MaterialIcons" size={20} color={colors.blackVar1} />
+                    <View style={[alignItemsCenter, justyfyCenter]}>
+                        <CustomIcon name='block-flipped' type="MaterialIcons" size={20} color={isDark() ? colors.greyVar3 :colors.blackVar1} />
+                    </View>
                     <View style={[alignItemsCenter, justyfyCenter, pl13]}>
-                        <H15Grey>Unblock</H15Grey>
+                        <H14blackVar1bold400Text>Unblock</H14blackVar1bold400Text>
                     </View>
                 </View>
             </TouchableOpacity>
@@ -45,25 +49,15 @@ const BlockedContacts = (props: BlockedContactsProps) => {
     }
 
     return (
-        <View style={[flex1, { backgroundColor: colors.whiteVar0 }]} >
-            <View style={[flexRow, justifyStart, alignSelfCenter, alignItemsCenter, { height: DevHeight * 0.12, width: DevWidth, backgroundColor: colors.white, borderBottomLeftRadius: 45, borderBottomRightRadius: 45 }]}>
-                <TouchableOpacity style={[ml30]}>
-                    <CustomIcon name='arrow-back-ios' size={18} color={colors.blackVar2} type='MaterialIcons' />
-                </TouchableOpacity>
-                <RowSpaceBetween style={[flex1, mr30]}>
-                    <H18BlackBoldText600 style={[ml10]}>{labels.AccountSetting}</H18BlackBoldText600>
-                    <TouchableOpacity>
-                        <CustomIcon size={20} name='search' type='Feather' color={colors.blackVar2} />
-                    </TouchableOpacity>
-                </RowSpaceBetween>
-            </View>
+        <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
+            <SearchHeader headerText={labels.BlockedContacts} searchIcon={true} />
             <View>
                 <ScrollView showsVerticalScrollIndicator={false} >
                     <View style={[flex1, mh30, mt15]}>
                         {
                             createGroupUserSelectData.map((item) => {
                                 return (
-                                    <View key={item.id} style={[p10, mv10, styles.whiteCard]}>
+                                    <View key={item.id} style={[p10, mv10, styles.whiteCard, {backgroundColor: isDark() ? colors.darkModeVar4 : colors.white}]}>
                                         <View style={[flexRow]}>
                                             <View style={[alignItemsCenter, justyfyCenter]}>
                                                 <Image source={item.img} style={styles.profileImg} />
@@ -76,7 +70,7 @@ const BlockedContacts = (props: BlockedContactsProps) => {
                                                         <H14GreyVar4Bold400 style={[mt5]}>{item.note}</H14GreyVar4Bold400>
                                                     </View>
                                                     <TouchableOpacity onPress={(event) => handleBlockContacts(event, item)} style={[alignItemsCenter, justyfyCenter]}>
-                                                        <CustomIcon name='block-flipped' type="MaterialIcons" color={colors.red} size={20} />
+                                                        <CustomIcon name='block-flipped' type="MaterialIcons" color={isDark() ? colors.redVar2 : colors.red} size={16} />
                                                     </TouchableOpacity>
                                                 </RowSpaceBetween>
                                             </View>
@@ -113,13 +107,12 @@ const styles = StyleSheet.create({
         marginRight: 12
     },
     whiteCard: {
-        backgroundColor: colors.white,
         height: 70,
         borderRadius: 5,
     },
     status: {
         borderWidth: 3,
-        borderColor: colors.white,
+        borderColor: isDark() ? colors.blackVar2 : colors.white,
         position: 'absolute',
         bottom: 0,
         right: 10,

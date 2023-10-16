@@ -13,6 +13,10 @@ import { CustomTextInput } from '../../components/commonInputFields';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
 import { SmallButton } from '../../components/commonButtons';
+import { SearchHeader } from '../Media/MediaCommonHeader';
+import { isDark } from '../../Theme/ThemeContext';
+import { IconModal } from '../../components/commonModal';
+import { ImagePicker } from '../../components/commonComponents';
 
 export type CreateGroupProps = {
 
@@ -22,6 +26,17 @@ export type CreateGroupProps = {
 const CreateGroup = (props: CreateGroupProps) => {
     const navigation = useNavigation();
     const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+    const [Pic, setPic] = useState('');
+    const [isImagePickerOpen, setIsImagePickerOpen] = useState(false);
+
+    const handleImageSelect = (base64Image: string) => {
+        setPic(base64Image);
+        setIsImagePickerOpen(false);
+    };
+
+    const openImagePickerModal = () => {
+        setIsImagePickerOpen(true);
+    };
 
     const handleCancelButton = () => {
         setIsCancelButtonActive(true);
@@ -67,19 +82,22 @@ const CreateGroup = (props: CreateGroupProps) => {
     ];
 
     return (
-        <View style={[flex1, { backgroundColor: colors.whiteVar0 }]} >
-            <View style={[flexRow, justifyStart, alignSelfCenter, alignItemsCenter, { height: DevHeight * 0.12, width: DevWidth, backgroundColor: colors.white, borderBottomLeftRadius: 45, borderBottomRightRadius: 45 }]}>
-                <View style={[ml30]}>
-                    <CustomIcon name='arrow-back-ios' size={18} color={colors.blackVar2} type='MaterialIcons' />
-                </View>
-                <RowSpaceBetween style={[flex1, mr30]}>
-                    <H18BlackBoldText600 style={[ml10]}>{labels.CreateGroup}</H18BlackBoldText600>
-                    <CustomIcon size={20} name='search' type='Feather' color={colors.blackVar2} />
-                </RowSpaceBetween>
-            </View>
+        <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
+            <SearchHeader headerText={labels.CreateGroup} searchIcon={true} />
             <View style={[mt20, mh30]}>
-                <Image source={UserImg} style={[{ height: 70, width: 70, borderRadius: 100 }]} />
-                <TouchableOpacity style={[{ height: 30, width: 30, borderRadius: 100, backgroundColor: colors.purpleVar3 }, styles.status, alignItemsCenter, justyfyCenter]}>
+                {Pic ? (
+                    <Image
+                        source={{ uri: `data:image/jpeg;base64,${Pic}` }}
+                        style={[{ height: 70, width: 70, borderRadius: 100 }]}
+                    />
+                ) : (
+                    <Image
+                        source={UserImg}
+                        style={[{ height: 70, width: 70, borderRadius: 100 }]}
+                    />
+                )}
+                {/* <Image source={UserImg} style={[{ height: 70, width: 70, borderRadius: 100 }]} /> */}
+                <TouchableOpacity onPress={openImagePickerModal} style={[{ height: 30, width: 30, borderRadius: 100, backgroundColor: colors.purpleVar3 }, styles.status, alignItemsCenter, justyfyCenter]}>
                     <CustomIcon type='Feather' name='camera' color={colors.white} size={12} />
                 </TouchableOpacity>
             </View>
@@ -100,12 +118,12 @@ const CreateGroup = (props: CreateGroupProps) => {
                         </View>
                     ))
                 }
-                <RowSpaceBetween style = {[{ marginTop : '100%'}]}>
+                <RowSpaceBetween style={[{ marginTop: '100%' }]}>
                     <SmallButton
                         title={labels.cancel}
                         onChange={handleCancelButton}
-                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
-                        textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
+                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
+                        textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar3 : colors.greyVar4)}
                         borderWidth={isCancelButtonActive ? 0 : 1}
                     />
                     <SmallButton
@@ -117,6 +135,14 @@ const CreateGroup = (props: CreateGroupProps) => {
                     />
                 </RowSpaceBetween>
             </View>
+            <IconModal
+                isVisible={isImagePickerOpen}
+                onClose={() => setIsImagePickerOpen(false)}
+                contentComponent={<ImagePicker onImageSelect={handleImageSelect} />}
+                iconName='image-plus'
+                iconType='MaterialCommunityIcons'
+                iconSize={24}
+            />
         </View>
     )
 }

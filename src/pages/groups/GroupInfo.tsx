@@ -5,7 +5,7 @@ import { CommonLineDividerGrey, MainContainer, RowSpaceBetween } from '../../com
 import { useNavigation } from '@react-navigation/native';
 import { alignItemsCenter, flexRow, justyfyCenter, mb15, mh20, mr5, mt10, mt15, mt20, mt3, mt5, mv20, pl10, pl13, pt10, pt5, spaceBetween } from '../../components/commonStyles';
 import CustomIcon from '../../utils/Icons';
-import { H14BlackText, H15BlackBold600, H15Grey, H16BlackText, H16font600Black, H18BlackText, H18fontBoldBlack } from '../../components/commonText';
+import { H14BlackText, H14GreyVar4Bold400, H14blackVar1bold400Text, H15BlackBold600, H15Grey, H16BlackText, H16font600Black, H18BlackText, H18fontBoldBlack } from '../../components/commonText';
 import { CustomModal } from '../../components/commonComponents';
 import { DevHeight, DevWidth } from '../../utils/device';
 import { labels } from '../../utils/labels';
@@ -16,6 +16,7 @@ import { screenName } from '../../utils/screenName';
 import { colorIconsData, colorIconsDataSecond, groupMediaData, groupsData } from '../../utils/data/groupsData';
 import { IconModal } from '../../components/commonModal';
 import { SmallButton } from '../../components/commonButtons';
+import { isDark } from '../../Theme/ThemeContext';
 
 export type GroupInfoProps = {
 
@@ -32,12 +33,13 @@ export const Header = () => {
     const OptionModalComponent = () => {
         return (
             <View>
-
                 <TouchableOpacity style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
                     <View style={flexRow}>
-                        <CustomIcon name="pencil" size={20} color={colors.blackVar1} type="octicons" />
+                        <View style={[alignItemsCenter, justyfyCenter]}>
+                            <CustomIcon name="pencil" size={20} color={isDark() ? colors.greyVar3 : colors.blackVar1} type="octicons" />
+                        </View>
                         <View style={[alignItemsCenter, justyfyCenter, pl13]}>
-                            <H15Grey>Edit</H15Grey>
+                            <H14blackVar1bold400Text>Edit</H14blackVar1bold400Text>
                         </View>
                     </View>
                 </TouchableOpacity>
@@ -266,15 +268,15 @@ const ColorIconTab = () => {
 export const ColorIconTabSecond = () => {
     const navigation = useNavigation();
     const [exitGroupModal, setExitGroupModal] = useState(false);
-    
+
     const handleExitGroupModal = () => {
         setExitGroupModal(!exitGroupModal);
     }
 
-    const handleOnPressColorIconTabSecond = (id : number, screenName : string) => {
-        if(id === 1){
+    const handleOnPressColorIconTabSecond = (id: number, screenName: string) => {
+        if (id === 1) {
             handleExitGroupModal();
-        }else {
+        } else {
             navigation.navigate(screenName as never);
         }
     }
@@ -284,6 +286,7 @@ export const ColorIconTabSecond = () => {
 
         const handleCancelButton = () => {
             setIsCancelButtonActive(true);
+            setExitGroupModal(false);
         };
 
         const handleDeleteChatButton = () => {
@@ -293,23 +296,23 @@ export const ColorIconTabSecond = () => {
         return (
             <View style={[mh20]} >
                 <H16font600Black>Exit Group?</H16font600Black>
-                <Text style={[mt20]}>Only group admins will be notifed that you{'\n'}left the group.</Text>
+                <H14GreyVar4Bold400 style={[mt20]}>Only group admins will be notifed that you{'\n'}left the group.</H14GreyVar4Bold400>
                 <RowSpaceBetween style={[mv20]}>
                     <SmallButton
                         title={labels.cancel}
                         onChange={handleCancelButton}
-                        backgroundColor={isCancelButtonActive ? colors.red : colors.white}
-                        textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
+                        backgroundColor={isCancelButtonActive ? colors.red : ( isDark() ? `rgba(200, 16, 46, 0.2)` :  colors.white)}
+                        textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar3 : colors.greyVar4)}
                         borderWidth={isCancelButtonActive ? 0 : 1}
-                        width={DevWidth / 2.6}
+                        width={DevWidth / 3.15}
                     />
                     <SmallButton
                         title={labels.Exit}
                         onChange={handleDeleteChatButton}
-                        backgroundColor={isCancelButtonActive ? colors.white : colors.red}
+                        backgroundColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar2 : colors.red)}
                         textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
                         borderWidth={isCancelButtonActive ? 1 : 0}
-                        width={DevWidth / 2.6}
+                        width={DevWidth / 3.15}
                     />
                 </RowSpaceBetween>
             </View>
@@ -321,7 +324,7 @@ export const ColorIconTabSecond = () => {
             {
                 colorIconsDataSecond.map((item) => {
                     return (
-                        <TouchableOpacity key={item.id} onPress={() => handleOnPressColorIconTabSecond(item.id, item.screenName) }>
+                        <TouchableOpacity key={item.id} onPress={() => handleOnPressColorIconTabSecond(item.id, item.screenName)}>
                             <View style={[flexRow, spaceBetween, { paddingBottom: 15 }]}>
                                 <View style={[flexRow]}>
 

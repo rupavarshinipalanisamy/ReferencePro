@@ -53,13 +53,13 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({ title, isCall, icon1Navi
         return (
             <View style={[mh20]} >
                 <H16font600Black>Clear Call Log?</H16font600Black>
-                <Text style={[mt20]}>Do you want to clear your entire call log.</Text>
+                <H14GreyVar4Bold400 style={[mt20]}>Do you want to clear your entire call log.</H14GreyVar4Bold400>
                 <RowSpaceBetween style={[mv20]}>
                     <SmallButton
                         title={labels.cancel}
                         onChange={handleCancelButton}
-                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
-                        textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
+                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : ( isDark() ? `rgba(200, 16, 46, 0.2)` :  colors.white)}
+                        textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar3 : colors.greyVar4)}
                         borderWidth={isCancelButtonActive ? 0 : 1}
                         width={DevWidth / 3.15}
                     />
@@ -84,13 +84,13 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({ title, isCall, icon1Navi
                     <View>
                         <View style={[flexRow, spaceBetween]}>
                             <TouchableOpacity onPress={() => { }} style={mh10}>
-                                <CustomIcon name='search' color={colors.white} type='Ionicons' size={22} />
+                                <CustomIcon name='search' color={colors.white} type='Ionicons' size={20} />
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => { }} style={mh10}>
-                                <CustomIcon name='add' type='Ionicons' size={22} color={colors.white} />
+                                <CustomIcon name='add' type='Ionicons' size={20} color={colors.white} />
                             </TouchableOpacity>
                             <TouchableOpacity onPress={handleClearCallOptionModal} style={mh10}>
-                                <CustomIcon name="delete" size={22} color={colors.white} type='AntDesign' />
+                                <CustomIcon name="trash-o" size={20} color={colors.white} type='FontAwesome' />
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => { navigation.navigate(screenName.SettingsScreen as never) }} style={mh10}>
                                 <ProfileAvatarIcon />
@@ -108,13 +108,13 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({ title, isCall, icon1Navi
                 ) : (
                     <View style={[flexRow, spaceBetween]}>
                         <TouchableOpacity onPress={() => { navigation.navigate(icon1Navigate as never) }} style={mh10}>
-                            <CustomIcon name="camera-outline" size={25} color={colors.white} type='Ionicons' />
+                            <CustomIcon name="camera-outline" size={20} color={colors.white} type='Ionicons' />
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => { navigation.navigate(icon2Navigate as never) }} style={mh10}>
-                            <CustomIcon name='search' color={colors.white} type='Ionicons' size={22} />
+                            <CustomIcon name='search' color={colors.white} type='Ionicons' size={20} />
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => { navigation.navigate(icon3Navigate as never) }} style={mh10}>
-                            <CustomIcon name='add' type='Ionicons' size={23} color={colors.white} />
+                            <CustomIcon name='add' type='Ionicons' size={20} color={colors.white} />
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => { navigation.navigate(screenName.SettingsScreen as never) }} style={mh10}>
                             <ProfileAvatarIcon />
@@ -538,15 +538,15 @@ export const CustomActionBarSecond: React.FC<CustomActionBarSecondProps> = ({
                 <SmallButton
                     title={labels.cancel}
                     onChange={handleCancelButton}
-                    backgroundColor={isCancelButtonActive ? colors.red : `rgba(200, 16, 46, 0.2)`}
-                    textColor={isCancelButtonActive ? colors.white : colors.redVar3}
+                    backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
+                    textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar3 : colors.greyVar4)}
                     borderWidth={isCancelButtonActive ? 0 : 1}
                     width={DevWidth / 3.15}
                 />
                 <SmallButton
                     title={labels.DeleteChat}
                     onChange={handleDeleteChatButton}
-                    backgroundColor={isCancelButtonActive ? colors.white : colors.redVar2}
+                    backgroundColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar2 : colors.red)}
                     textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
                     borderWidth={isCancelButtonActive ? 1 : 0}
                     width={DevWidth / 3.15}
@@ -665,24 +665,24 @@ export const BottomTabBar = () => {
 
 export const CallBottomTab = () => {
     return (
-        <View style={[{ height: DevHeight * 0.12, width: DevWidth, backgroundColor: colors.white, borderTopLeftRadius: 45, borderTopRightRadius: 45 }]}>
+        <View style={[{ height: DevHeight * 0.12, width: DevWidth, backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, borderTopLeftRadius: 45, borderTopRightRadius: 45 }]}>
             <View style={[alignSelfCenter, mt15, { height: 5, width: DevWidth * 0.2, backgroundColor: colors.greyVar0 }]} />
-            <View style={[flexRow, spaceAround, mt20]}>
+            <View style={[flexRow, spaceAround, mt20, mh10]}>
                 {
                     callBottomDataFourth.map((item) => {
                         return (
                             <View key={item.id}>
                                 {
                                     item.id == 1 ? (
-                                        <TouchableOpacity style={[{ height: 40, width: 80, backgroundColor: colors.purpleVar1, bottom: 5 }, alignItemsCenter, justyfyCenter, borderRadius10]}>
+                                        <TouchableOpacity style={[{ height: 40, width: 80, backgroundColor: isDark() ? colors.darkModeVar4 : colors.purpleVar1, bottom: 5 }, alignItemsCenter, justyfyCenter, borderRadius10]}>
                                             <CustomIcon name={item.iconName} size={item.iconSize} color={item.iconColor} type={item.iconType} />
                                         </TouchableOpacity>
                                     ) : item.id == 4 ? (
-                                        <TouchableOpacity style={[{ height: 40, width: 80, backgroundColor: colors.redVar1, bottom: 5 }, alignItemsCenter, justyfyCenter, borderRadius10]}>
+                                        <TouchableOpacity style={[{ height: 40, width: 80, backgroundColor: isDark() ? `rgba(200, 16, 46, 0.2)` : colors.redVar1, bottom: 5 }, alignItemsCenter, justyfyCenter, borderRadius10]}>
                                             <CustomIcon name={item.iconName} size={item.iconSize} color={item.iconColor} type={item.iconType} />
                                         </TouchableOpacity>
                                     ) : (
-                                        <TouchableOpacity style={mt5}>
+                                        <TouchableOpacity style={[{ height: 40, width: 80, backgroundColor: isDark() ? colors.darkModeVar4 : 'transparent', bottom: 5 }, alignItemsCenter, justyfyCenter, borderRadius10]}>
                                             <CustomIcon name={item.iconName} size={item.iconSize} color={item.iconColor} type={item.iconType} />
                                         </TouchableOpacity>
                                     )
@@ -712,7 +712,7 @@ export const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ value, onToggle }) =
                 style={[
                     styles.container,
                     {
-                        backgroundColor: value ? colors.green : colors.greyVar7,
+                        backgroundColor: value ? (isDark() ? colors.greenVar2 : colors.green) : colors.greyVar7,
                         borderWidth: 1,
                         borderColor: value ? colors.green : colors.greyVar2,
                     },
@@ -826,16 +826,17 @@ export const ImagePicker: React.FC<ImagePickerProps> = ({ onImageSelect }) => {
 
     return (
         <View style={[mh20]} >
-            <H16font600Black>Choose Image?</H16font600Black>
-            <Text style={[mt20]}>Choose image picking options.</Text>
+            <H16font600Black>Choose Image</H16font600Black>
+            <H14GreyVar4Bold400 style={[mt20]}>Choose image picking options.</H14GreyVar4Bold400>
             <RowSpaceBetween style={[mv20]}>
                 <SmallButton
                     title={labels.Camera}
                     onChange={handleCancelButton}
-                    backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
-                    textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
+                    backgroundColor={isCancelButtonActive ? colors.purpleVar3 : ( isDark() ? colors.darkModeVar4 : colors.white)}
+                    textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.greyVar3 : colors.greyVar4)}
                     borderWidth={isCancelButtonActive ? 0 : 1}
                     width={DevWidth / 3.15}
+                    borderColor={`rgba(78, 80, 114, 0.3)`}
                 />
                 <SmallButton
                     title={labels.Gallery}
@@ -893,12 +894,12 @@ const styles = StyleSheet.create({
         left: 5,
     },
     roundNumberText: {
-        textAlign: 'center',
+        textAlign : 'center',
         color: isDark() ? colors.darkModeVar1 : colors.purpleVar3,
         fontSize: 12,
     },
     unredBadge: {
-        backgroundColor: colors.red,
+        backgroundColor: isDark() ? colors.redVar2 : colors.red,
         position: 'absolute',
         left: 20,
         bottom: 28,

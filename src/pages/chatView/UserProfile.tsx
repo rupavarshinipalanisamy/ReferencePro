@@ -7,7 +7,7 @@ import CustomIcon from '../../utils/Icons';
 import { DevHeight, DevWidth } from '../../utils/device';
 import Profile from '../../../assets/images/profileView.svg'
 import { labels } from '../../utils/labels';
-import { H14BlackText, H14purpleVar3Text, H15Grey, H16BlackText, H18BlackText } from '../../components/commonText';
+import { H14BlackText, H14blackVar1bold400Text, H14purpleVar3Text, H15Grey, H16BlackText, H18BlackText } from '../../components/commonText';
 import MessageIcon from '../../../assets/images/messageIcon.svg'
 import Group1 from '../../../assets/images/groupImg1.svg'
 import Group2 from '../../../assets/images/groupImg2.svg'
@@ -160,12 +160,13 @@ export const Header = () => {
     const OptionModalComponent = () => {
         return (
             <View>
-
                 <TouchableOpacity style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
                     <View style={flexRow}>
-                        <CustomIcon name="pencil" size={20} color={colors.blackVar1} type="octicons" />
+                        <View style={[alignItemsCenter, justyfyCenter]}>
+                            <CustomIcon name="pencil" size={20} color={colors.blackVar1} type="octicons" />
+                        </View>
                         <View style={[alignItemsCenter, justyfyCenter, pl13]}>
-                            <H15Grey>Edit</H15Grey>
+                            <H14blackVar1bold400Text>Edit</H14blackVar1bold400Text>
                         </View>
                     </View>
                 </TouchableOpacity>

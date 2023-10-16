@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { colors } from '../../utils/colors';
-import { alignItemsCenter, alignSelfCenter, borderRadius10, flex1, flexRow, justyfyCenter, mb15, ml15, mr5, mt20, mt5, p10, pb5, ph20, pv15, spaceBetween, spaceEvenly } from '../commonStyles';
+import { alignItemsCenter, alignSelfCenter, borderRadius10, flex1, flexRow, justyfyCenter, mb15, ml15, mr5, mt20, mt3, mt5, p10, pb5, ph20, pv15, spaceBetween, spaceEvenly } from '../commonStyles';
 import { allChatsData } from '../../utils/data/chatsData';
 import { DevWidth } from '../../utils/device';
 import { CommonLineDividerGrey, RowSpaceBetween, RowSpaceEvenly } from '../commonView';
@@ -31,8 +31,8 @@ const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
                         <ArchiveIconBlackIcon />
                         <H16GreyVar4Bold600Text style={[ml15, { letterSpacing: 0.5 }]}>{labels.Archived}</H16GreyVar4Bold600Text>
                     </View>
-                    <View style={[styles.roundNumber, { backgroundColor: isDark() ? colors.redVar2 : colors.red }]}>
-                        <Text style={[styles.roundNumberText]}>10</Text>
+                    <View style={[styles.roundNumberRed,alignItemsCenter, justyfyCenter, { backgroundColor: isDark() ? colors.redVar2 : colors.red }]}>
+                        <Text style={[styles.roundNumberTextRed]}>10</Text>
                     </View>
                 </View>
                 <View style={flex1}>
@@ -113,7 +113,7 @@ const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
                                         ) : chat.id === 4 ? (
                                             <RowSpaceBetween>
                                                 <H14GreyVar4Bold400>{labels.Chaturl}</H14GreyVar4Bold400>
-                                                <View style={[styles.roundNumber, { backgroundColor: colors.purpleVar3 }]}>
+                                                <View style={[styles.roundNumber,alignItemsCenter, justyfyCenter, { backgroundColor: colors.purpleVar3 }]}>
                                                     <Text style={styles.roundNumberText}>3</Text>
                                                 </View>
                                             </RowSpaceBetween>
@@ -164,8 +164,13 @@ const styles = StyleSheet.create({
         overflow: 'hidden'
     },
     roundNumber: {
-        height: 25,
-        width: 25,
+        height: 20,
+        width: 20,
+        borderRadius: 20,
+    },
+    roundNumberRed: {
+        height: 24,
+        width: 24,
         borderRadius: 20,
     },
     chatHeaderText: {
@@ -179,13 +184,18 @@ const styles = StyleSheet.create({
         color: colors.white,
         fontSize: 12,
         fontWeight: '400',
-        marginTop: 3,
+    },
+    roundNumberTextRed: {
+        textAlign: 'center',
+        color: colors.white,
+        fontSize: 12,
+        fontWeight: '400',
     },
     status: {
         borderWidth: 3,
         borderColor: isDark() ? colors.darkModeVar2 : colors.white,
         position: 'absolute',
-        bottom: 4,
+        bottom: 2,
         right: 10,
         height: 15,
         width: 15,
