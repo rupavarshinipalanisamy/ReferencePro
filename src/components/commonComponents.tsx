@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal, Switch, Ima
 import Icon from 'react-native-vector-icons/Ionicons';
 import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mh20, mh30, ml10, ml15, mr10, mt10, mt15, mt20, mt30, mt5, mv10, mv15, mv20, p10, p5, pl10, pl13, pl5, pr10, pt10, spaceAround, spaceBetween, textCenter, flex1 } from './commonStyles';
 import { colors } from '../utils/colors';
-import { ArchiveIconBlackIcon, ArchiveIconWhiteIcon, DeleteWhiteIcon, LeftArrowWhiteIcon, MikeWhiteIcon, PinWhiteIcon, ProfileAvatarIcon, ThreeDotsWhiteIcon } from '../utils/svg';
+import { ArchiveIconBlackIcon, ArchiveIconWhiteIcon, DeleteWhiteIcon, LeftArrowWhiteIcon, MessageIcon, MikeWhiteIcon, PinWhiteIcon, Profile, ProfileAvatarIcon, ThreeDotsWhiteIcon } from '../utils/svg';
 import { DevHeight, DevWidth } from '../utils/device';
 import { RadioButton, RadioButtonRound, RowSpaceBetween, SelectedRadioBtn } from './commonView';
 import { bottomNavData } from '../utils/data/bottomNavData';
@@ -11,7 +11,7 @@ import CustomIcon from '../utils/Icons';
 import { useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal';
 import { muteNotificationdata, threeDotsOption } from '../utils/data/modalData';
-import { H14BlackVar2Bold400Text, H14GreyVar4Bold400, H14blackVar1bold400Text, H15Grey, H16font600Black, H16fontNormalGray, H16fontNormalGray4, H18fontBoldBlack } from './commonText';
+import { H14BlackVar2Bold400Text, H14GreyVar4Bold400, H14blackVar1bold400Text, H14purpleVar3Text, H15Grey, H16font600Black, H16fontNormalGray, H16fontNormalGray4, H18BlackText, H18fontBoldBlack } from './commonText';
 import { labels } from '../utils/labels';
 import { callBottomDataFourth } from '../utils/data/callsData';
 import { screenName } from '../utils/screenName';
@@ -58,7 +58,7 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({ title, isCall, icon1Navi
                     <SmallButton
                         title={labels.cancel}
                         onChange={handleCancelButton}
-                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : ( isDark() ? `rgba(200, 16, 46, 0.2)` :  colors.white)}
+                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
                         textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar3 : colors.greyVar4)}
                         borderWidth={isCancelButtonActive ? 0 : 1}
                         width={DevWidth / 3.15}
@@ -218,7 +218,7 @@ export const TabControl: React.FC<TabControlProps> = ({ tabs, activeTab, onTabPr
                                     { backgroundColor: activeTab === tabInfo.label ? colors.white : (isDark() ? colors.greyVar3 : colors.purpleVar2) },
                                 ]}
                             >
-                                <Text style={[styles.roundNumberText, {color: isDark() ? colors.darkModeVar1 : colors.purpleVar3,}]}>{tabInfo.count}</Text>
+                                <Text style={[styles.roundNumberText, { color: isDark() ? colors.darkModeVar1 : colors.purpleVar3, }]}>{tabInfo.count}</Text>
                             </View>
                         )}
                     </View>
@@ -527,32 +527,34 @@ export const CustomActionBarSecond: React.FC<CustomActionBarSecondProps> = ({
             setOptionSelect(!optionSelect);
         };
         return (
+
             <View style={[mh20]} >
-            <H16font600Black>Delete This Chat?</H16font600Black>
-            <H14GreyVar4Bold400 style={[mt20]}>Messages will only be removed from this{'\n'}device and your devices</H14GreyVar4Bold400>
-            <View style={[flexRow, mt20, alignItemsCenter]}>
-                <MultiSelectOption selectedColor={colors.purpleVar3} unselectedColor={colors.greyVar6} isSelected={optionSelect} onSelect={handleOptionSelect} />
-                <H14GreyVar4Bold400 style={[ml15]}>Also delete media received in this call{'\n'}from the device gallery.</H14GreyVar4Bold400>
+                <H16font600Black>Delete This Chat?</H16font600Black>
+                <H14GreyVar4Bold400 style={[mt20]}>Messages will only be removed from this{'\n'}device and your devices</H14GreyVar4Bold400>
+                <View style={[flexRow, mt20, alignItemsCenter]}>
+                    <MultiSelectOption selectedColor={colors.purpleVar3} unselectedColor={colors.greyVar6} isSelected={optionSelect} onSelect={handleOptionSelect} />
+                    <H14GreyVar4Bold400 style={[ml15]}>Also delete media received in this call{'\n'}from the device gallery.</H14GreyVar4Bold400>
+                </View>
+                <RowSpaceBetween style={[mv20]}>
+                    <SmallButton
+                        title={labels.cancel}
+                        onChange={handleCancelButton}
+                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
+                        textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar3 : colors.greyVar4)}
+                        borderWidth={isCancelButtonActive ? 0 : 1}
+                        width={DevWidth / 3.15}
+                    />
+                    <SmallButton
+                        title={labels.DeleteChat}
+                        onChange={handleDeleteChatButton}
+                        backgroundColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar2 : colors.red)}
+                        textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
+                        borderWidth={isCancelButtonActive ? 1 : 0}
+                        width={DevWidth / 3.15}
+                    />
+                </RowSpaceBetween>
             </View>
-            <RowSpaceBetween style={[mv20]}>
-                <SmallButton
-                    title={labels.cancel}
-                    onChange={handleCancelButton}
-                    backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
-                    textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar3 : colors.greyVar4)}
-                    borderWidth={isCancelButtonActive ? 0 : 1}
-                    width={DevWidth / 3.15}
-                />
-                <SmallButton
-                    title={labels.DeleteChat}
-                    onChange={handleDeleteChatButton}
-                    backgroundColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar2 : colors.red)}
-                    textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
-                    borderWidth={isCancelButtonActive ? 1 : 0}
-                    width={DevWidth / 3.15}
-                />
-            </RowSpaceBetween>
-        </View>
+
         )
     }
 
@@ -644,7 +646,7 @@ export const BottomTabBar = () => {
                                 </View>
                                 {
                                     item.id === 1 || item.id == 2 ? (
-                                        <View style={[styles.unredBadge, {backgroundColor: isDark() ? colors.redVar2 : colors.red,}]}>
+                                        <View style={[styles.unredBadge, { backgroundColor: isDark() ? colors.redVar2 : colors.red, }]}>
                                             <Text style={styles.unredBadgeText}>2</Text>
                                         </View>
                                     ) : (
@@ -832,7 +834,7 @@ export const ImagePicker: React.FC<ImagePickerProps> = ({ onImageSelect }) => {
                 <SmallButton
                     title={labels.Camera}
                     onChange={handleCancelButton}
-                    backgroundColor={isCancelButtonActive ? colors.purpleVar3 : ( isDark() ? colors.darkModeVar4 : colors.white)}
+                    backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? colors.darkModeVar4 : colors.white)}
                     textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.greyVar3 : colors.greyVar4)}
                     borderWidth={isCancelButtonActive ? 0 : 1}
                     width={DevWidth / 3.15}
@@ -870,6 +872,63 @@ export const RadioBtn: React.FC<RadioBtnProps> = ({ selected, onPress }) => {
     );
 };
 
+
+interface CardHeaderTextProps {
+    text: string;
+}
+
+export const CardHeaderText: React.FC<CardHeaderTextProps> = ({ text }) => {
+    return (
+        <View style={{ alignItems: 'flex-start', marginTop: 5 }}>
+            <View style={{
+                backgroundColor: colors.purpleVar1,
+                borderRadius: 8,
+                padding: 10
+            }}>
+                <H14purpleVar3Text style={{ marginHorizontal: 10 }}>
+                    {text}
+                </H14purpleVar3Text>
+            </View>
+
+
+        </View >
+    );
+};
+
+
+
+
+export const ProfileCard = () => {
+    return (
+        <View>
+            <View style={{ marginTop: 50 }}>
+                <View style={{
+                    backgroundColor: colors.white, height: DevHeight / 4.5, width: '100%', borderRadius: 20, elevation: 5, justifyContent: 'center',
+                    shadowOpacity: 1, shadowColor: colors.greyVar4
+                }}>
+                    <View style={{ alignItems: 'center', marginTop: 40 }}>
+                        <H18BlackText>{labels.horaceKeene}</H18BlackText>
+                        <Text style={{ fontSize: 16, color: colors.greyVar4 }}>last seen at 7:15 PM</Text>
+                        <View style={[flexRow, { marginTop: 10 }]}>
+                            <View style={[{ alignItems: 'center', justifyContent: 'center' }]}>
+                                <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={22} color={colors.greyVar4} />
+                            </View>
+                            <View style={[{ alignItems: 'center', justifyContent: 'center' }, pl10]}>
+                                <CustomIcon name='phone' type="Feather" size={18} color={colors.greyVar4} />
+                            </View>
+                            <View style={[{ alignItems: 'center', justifyContent: 'center' }, pl10]}>
+                                <MessageIcon />
+                            </View>
+                        </View>
+                    </View>
+                </View>
+            </View>
+            <View style={{ position: 'absolute', zIndex: 1, alignSelf: 'center', overflow: 'hidden' }}>
+                <Profile />
+            </View>
+        </View>
+    )
+}
 const styles = StyleSheet.create({
     chatHeaderText: {
         fontSize: 20,
@@ -894,7 +953,7 @@ const styles = StyleSheet.create({
         left: 5,
     },
     roundNumberText: {
-        textAlign : 'center',
+        textAlign: 'center',
         fontSize: 12,
     },
     unredBadge: {
@@ -920,7 +979,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
     },
-    toggle: {   
+    toggle: {
         width: 20,
         height: 20,
         borderRadius: 15,

@@ -54,4 +54,6 @@ export const screenName = {
     BlockedContacts : 'BlockedContacts',
     NewChat : 'New Chats',
     ForwardTo : 'ForwardTo',
+    InviteFriend:'InviteFriend',
+    MessageInfo:'MessageInfo'
 };

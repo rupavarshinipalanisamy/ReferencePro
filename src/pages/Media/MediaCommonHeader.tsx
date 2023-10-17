@@ -13,7 +13,6 @@ import Video from './Video';
 import Link from './Link';
 import { CustomModal } from '../../components/commonComponents';
 import { useNavigation } from '@react-navigation/native';
-import { screenName } from '../../utils/screenName';
 import { isDark } from '../../Theme/ThemeContext';
 
 export type MediaProps = {
@@ -223,6 +222,7 @@ export const MediaHeader = (props: MediaHeaderProps) => {
 }
 
 
+
 interface TextInputHeaderProps {
     height?: number;
     onBack: () => void
@@ -291,7 +291,7 @@ export const StarredAndVerifycodeHeader = (props: StarredAndVerifycodeHeaderProp
                 <TouchableOpacity style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
                     <View style={flexRow}>
                         <View style={[alignItemsCenter, justyfyCenter]}>
-                        <CustomIcon name='star-outline' color={colors.blackVar1} size={18} type="Ionicons" />
+                            <CustomIcon name='star-outline' color={colors.blackVar1} size={18} type="Ionicons" />
 
                         </View>
                         <View style={[alignItemsCenter, justyfyCenter, pl13]}>

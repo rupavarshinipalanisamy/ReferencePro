@@ -7,7 +7,7 @@ export const bottomNavData = [
         name : labels.chat,
         iconName : 'chatbox-ellipses-outline',
         iconType : "Ionicons",
-        iconSize : 25,
+        iconSize : 20,
         screenName : screenName.Chats,
     },
     {
@@ -15,7 +15,7 @@ export const bottomNavData = [
         name : labels.Group,
         iconName : 'users',
         iconType : "Feather",
-        iconSize : 25,
+        iconSize : 20,
         screenName : screenName.Group,
     },
     {
@@ -23,7 +23,7 @@ export const bottomNavData = [
         name : labels.Status,
         iconName : 'record-circle-outline',
         iconType : "MaterialCommunityIcons",
-        iconSize : 25,
+        iconSize : 20,
         screenName : screenName.ChatView,
     },
     {
@@ -31,7 +31,7 @@ export const bottomNavData = [
         name : labels.Contact,
         iconName : 'person-circle-outline',
         iconType : "Ionicons",
-        iconSize : 25,
+        iconSize : 20,
         screenName : screenName.ContactPage,
     },
     {
@@ -39,7 +39,7 @@ export const bottomNavData = [
         name : labels.Call,
         iconName : 'phone',
         iconType : "Feather",
-        iconSize : 25,
+        iconSize : 20,
         screenName : screenName.Calls,
     },
 ]

@@ -38,6 +38,9 @@ import ConImg6 from '../../assets/images/conImg6.svg'
 import ConImg7 from '../../assets/images/conImg7.svg'
 import ConImg8 from '../../assets/images/conImg8.svg'
 import ConImg9 from '../../assets/images/conImg9.svg'
+import MsgIcon from '../../assets/images/messageIcon.svg'
+import Profl from '../../assets/images/profileView.svg'
+
 
 
 
@@ -154,4 +157,10 @@ export const ContactImg8 = () => (
 );
 export const ContactImg9 = () => (
     <ConImg9 />
+);
+export const MessageIcon = () => (
+    <MsgIcon />
+);
+export const Profile = () => (
+    <Profl/>
 );
