@@ -1,414 +1,255 @@
-import React, { Fragment, useState, useRef, useEffect, useMemo } from 'react';
-import { Text, View, ImageBackground, StyleSheet, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Image, Animated, PanResponder, TouchableHighlight } from 'react-native';
+import React, { Fragment, useState } from 'react';
+import { Text, View, ImageBackground, StyleSheet, ScrollView, TouchableOpacity, TouchableWithoutFeedback, StatusBar } from 'react-native';
 import { colors } from '../../utils/colors';
-import { flexRow, pb10, pl15, pl6, pt10, spaceBetween } from '../../components/commonStyles';
-import { H14BlackText, H16BlackText } from '../../components/commonText';
+import { pt10 } from '../../components/commonStyles';
+import { H14BlackText } from '../../components/commonText';
 import { labels } from '../../utils/labels';
-import { FooterChatView, HeaderChatView, LongPressedHaeder, ReplyFooterView, receiveMessage1, receiveMessage2, receiveMessage3, receiveMessage4, sentMessage1, sentMessage2, sentMessage3, sentMessage4 } from './Messagecomponents/messages';
-import CustomIcon from '../../utils/Icons';
+import { FooterChatView, HeaderChatView, LongPressedHaeder, ReplyFooterView } from './Messagecomponents/messages';
 import Modal from 'react-native-modal';
 import { DevHeight, DevWidth } from '../../utils/device';
 import { screenName } from '../../utils/screenName';
 import { ChatBackgroundImg, ProfileImg } from '../../utils/png';
 import { isDark } from '../../Theme/ThemeContext';
-import { IconModal } from '../../components/commonModal';
+import { EditModal, EditModal2, IconModal, ReactModal } from '../../components/commonModal';
 import { ClearChatModal } from '../../ModalContents/IconModelContents';
-
-import {
-    PanGestureHandler,
-    State as GestureState,
-    LongPressGestureHandler,
-    State as LongPressState,
-    GestureHandlerRootView,
-    TapGestureHandler,
-    State as TapState,
-} from 'react-native-gesture-handler';
-
-
-export type chatViewProps = {
-}
-
-interface TabControlProps {
-    tabs: { label: string; count?: number }[];
-    activeTab: string;
-    onTabPress: (tab: string) => void;
-}
-
-export const TabControl: React.FC<TabControlProps> = ({ tabs, activeTab, onTabPress }) => {
-    return (
-        <View style={styles.tabContainer}>
-            {tabs.map((tabInfo) => (
-                <View style={{ marginLeft: 15 }} key={tabInfo.label}>
-                    <TouchableOpacity
-                        style={[
-                            { borderBottomWidth: activeTab === tabInfo.label ? 3 : 0 },
-                            { borderBottomColor: activeTab === tabInfo.label ? colors.purpleVar3 : "" },
-                        ]}
-                        onPress={() => onTabPress(tabInfo.label)}
-                    >
-                        <View style={[flexRow, pb10]}>
-                            <Text
-                                style={[
-                                    styles.tabText,
-                                    { color: activeTab === tabInfo.label ? colors.purpleVar3 : colors.purpleVar3 },
-                                ]}
-                            >
-                                {tabInfo.label}
-                            </Text>
-                            {tabInfo.count !== undefined && tabInfo.count > 0 && (
-                                <View
-                                    style={[
-                                        styles.roundNumber, { backgroundColor: 'rgba(128, 0, 128, 0.2)' },
-                                    ]}
-                                >
-                                    <Text style={styles.roundNumberText}>{tabInfo.count}</Text>
-                                </View>
-                            )}
-                        </View>
-                    </TouchableOpacity>
-                </View>
-            ))}
-        </View>
-    );
-};
-
-export const DayDetails = () => {
-    return (
-        <>
-            <View style={{ height: 28, backgroundColor: colors.white, width: 115, borderRadius: 20, alignItems: 'center', justifyContent: 'center', marginHorizontal: 100 }}>
-                <Text style={{ fontSize: 12, fontWeight: '400', color: '#0A0A0A' }}>{labels.chatViewToday}</Text>
-            </View>
-        </>
-    );
-
-
-};
-
-
-export const bluetick = () => {
-    return (
-        <View>
-            <CustomIcon name='check-all' type="MaterialCommunityIcons" color={colors.blueVar1} size={16} />
-        </View>
-    )
-}
-
-
-export const tick = () => {
-    return (
-        <View>
-            <CustomIcon name='check-all' type="MaterialCommunityIcons" color={colors.greyVar4} size={16} />
-        </View>
-    )
-}
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { chatMessages, tabs } from '../../utils/data/chatViewData';
+import { Emojidata } from '../../utils/data/chatViewData';
+import { DayDetails } from '../../components/chatViewComponents';
+import ChatMessage from '../../components/chatView/chatMessages';
 
 const ChatView = () => {
-    const [isModalVisible, setModalVisible] = useState(false);
-    const [selectedTab, setSelectedTab] = useState('All');
-    const [isHaiVisible, setHaiVisible] = useState(false);
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [selectedTab, setSelectedTab] = useState('All');
+  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
+  const [selectedModalId, setSelectedModalId] = useState(null);
+  const [selectedCards, setSelectedCards] = useState<number[]>([]);
+  const [editModal, setEditModal] = useState(false);
+  const [editModal2, setEditModal2] = useState(false);
+  const [isSwiped, setIsSwiped] = useState(false);
+  const [emojiModal, setEmojiModal] = useState(false)
 
 
-    const toggleModal = () => {
-        setModalVisible(!isModalVisible);
-    };
-
-    const closeModal = () => {
-        setModalVisible(false);
-    };
-
-    const Reactmsg = () => {
-        return (
-            <TouchableOpacity style={{ paddingTop: 5 }} onPress={toggleModal}>
-                <View style={{ backgroundColor: colors.white, height: 22, width: 40, borderRadius: 10, justifyContent: "space-evenly", flexDirection: 'row', marginRight: 230 }}>
-                    <H14BlackText>1</H14BlackText>
-                    <H14BlackText>👍</H14BlackText>
-                </View>
-            </TouchableOpacity>
-        )
+  const toggleCardSelection = (cardId: number) => {
+    if (selectedCards.includes(cardId)) {
+      setSelectedCards(selectedCards.filter(id => id !== cardId));
+    } else {
+      setSelectedCards([...selectedCards, cardId]);
     }
+  };
 
-    const All = () => {
-        return (
-            <View style={{ marginHorizontal: 25, marginTop: 20 }}>
-                <View style={[flexRow, spaceBetween]}>
-                    <View style={flexRow}>
-                        <Image source={ProfileImg} />
-                        <View style={[pl15, spaceBetween]}>
-                            <H14BlackText>Horace Keene</H14BlackText>
-                            <Text>Active 4Min Ago</Text>
-                        </View>
-                    </View>
-                    <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                        <H16BlackText>👍</H16BlackText>
-                    </View>
-                </View>
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
+  const handleTabPress = (tab: string) => {
+    setSelectedTab(tab);
+  };
+  const IconcloseModal = () => {
+    setSelectedModalId(null);
+  };
+  const openModal = (id: number) => {
+    setSelectedModalId(id);
+  }
+  const openModalEdit = () => {
+    setEditModal(true)
+    setEditModal2(true)
+
+  }
+  const handleSwipeAction = () => {
+    setIsSwiped(true);
+  };
+  const handleReplyFooterIconClick = () => {
+    setIsSwiped(false);
+  };
+  const isCardSelected = selectedCards.length > 0;
+  const handleReactMsg = () => {
+    setModalVisible(true)
+  }
+  const handleCardSelectionChange = () => {
+
+    setEmojiModal(true)
+  };
+
+  const renderHeader = () => {
+    if (selectedCards.length > 0) {
+      return (
+        <LongPressedHaeder
+          messageType={chatMessages.find((message) => selectedCards.includes(message.id))?.type}
+          EditModal={openModalEdit}
+        />
+      );
+    } else {
+      return (
+        <HeaderChatView
+          backgroundColor={colors.purpleVar3}
+          profileNavigate={screenName.UserProfile}
+          videoNavigate={screenName.SingleVideoCall}
+          audioNavigate={screenName.SingleAudioCallRing}
+          title={labels.horaceKeene}
+          subTitle={labels.online}
+          clearChatopenModal={openModal}
+        />
+      );
+    }
+  };
+
+  return (
+    <Fragment>
+      <StatusBar backgroundColor={colors.purpleVar3} />
+      <GestureHandlerRootView style={{ flex: 1, backgroundColor: isDark() ? colors.black : colors.white }}>
+        <View style={{ flex: 1 }}>
+          <ImageBackground
+            source={ChatBackgroundImg}
+            style={styles.backgroundImage}
+            imageStyle={{ opacity: 0.1, backgroundColor: 'rgba(200, 150, 255, 0.1)' }} >
+            {renderHeader()}
+            <ScrollView style={{ flex: 1 }}>
+              <View style={[{ alignItems: 'center' }, pt10]}>
+                <DayDetails />
+              </View>
+              {chatMessages.map((message) => (
+                <ChatMessage key={message.id} message={message}
+                  onSwipeRight={handleSwipeAction}
+                  onPress={handleReactMsg}
+                  hanldeLogPress={handleCardSelectionChange}
+                  selectedCards={selectedCards}
+                  toggleCardSelection={toggleCardSelection}
+
+                />
+              ))}
+            </ScrollView>
+            {isSwiped ? (
+              <ReplyFooterView onIconClick={handleReplyFooterIconClick} />
+            ) : (
+              <FooterChatView />
+            )}
+          </ImageBackground>
+
+        </View>
+        {isModalVisible && (
+          <ReactModal
+            isVisible={isModalVisible}
+            closeModal={closeModal}
+            selectedTab={selectedTab}
+            handleTabPress={handleTabPress}
+            tabs={tabs}
+          />
+
+        )}
+        {selectedModalId === 8 && (
+          <IconModal
+            isVisible={true}
+            onClose={IconcloseModal}
+            contentComponent={<ClearChatModal />}
+            iconName='trash-o'
+            iconType='FontAwesome'
+            iconSize={25}
+          />
+        )}
+
+        {editModal && <EditModal isVisible={editModal} onClose={() => setEditModal(false)} />}
+        {editModal2 && <EditModal2 isVisible={editModal} onClose={() => setEditModal(false)} />}
+
+        {emojiModal && (
+          <Modal isVisible={emojiModal} onBackdropPress={() => setEmojiModal(false)} backdropOpacity={0}
+            style={{
+              position: 'absolute',
+              top: modalPosition.top,
+              left: modalPosition.left,
+            }}
+          >
+            <View style={styles.modalContent}>
+              {Emojidata.map((item) => (
+                <TouchableOpacity key={item.id} >
+                  <Text style={{ fontSize: 15, color: colors.yellow }}>{item.emoji}</Text>
+                </TouchableOpacity>
+              ))}
             </View>
-        )
-    }
-
-    const chatMessages = [
-        { id: 1, message: receiveMessage1(), type: "receivemsg", time: "8:16 PM" },
-        { id: 2, message: sentMessage1("Good Morning Mam"), type: "sentmsg", time: "8:17 PM", icon: bluetick() },
-        { id: 3, message: receiveMessage2(), type: "receivemsg", time: "8:16 PM" },
-        { id: 4, message: sentMessage2(), type: "sentmsg", time: "8:17 PM", icon: bluetick() },
-        { id: 5, message: receiveMessage3(), type: "receivemsg", time: "8:16 PM" },
-        { id: 6, message: sentMessage3(), type: "sentmsg", time: "8:17 PM", icon: bluetick() },
-        { id: 7, message: receiveMessage4(), type: "receivemsg", time: "8:16 PM" },
-        { id: 8, message: sentMessage4(), type: "sentmsg", time: "8:17 PM", icon: tick() }
-    ];
-
-    const tabs = [
-        { label: "All", count: 1 },
-        { label: "👍", count: 1 },
-    ];
-
-    const handleTabPress = (tab: string) => {
-        setSelectedTab(tab);
-    };
-
-    const [selectedModalId, setSelectedModalId] = useState(null);
-    const IconcloseModal = () => {
-        setSelectedModalId(null);
-    };
-    const openModal = (id: number) => {
-        setSelectedModalId(id);
-    }
-
-
-
-
-    const ChatMessage = ({ message, onSwipeRight }: any) => {
-        const translateX = useRef(new Animated.Value(0)).current;
-        const [backgroundColor, setBackgroundColor] = useState('transparent');
-
-        const onSwipeGestureEvent = Animated.event(
-            [
-                {
-                    nativeEvent: {
-                        translationX: translateX,
-                    },
-                },
-            ],
-            {
-                useNativeDriver: false,
-            }
-        );
-
-        const onSwipeGestureStateChange = (event) => {
-            if (event.nativeEvent.oldState === GestureState.ACTIVE) {
-                const swipeDistance = event.nativeEvent.translationX;
-                if (swipeDistance > 50) {
-                    onSwipeRight();
-                    console.log('Hi');
-                    // Handle swipe action for the specific message
-                }
-                // Reset the position after swipe
-                Animated.spring(translateX, {
-                    toValue: 0,
-                    useNativeDriver: false,
-                }).start();
-            }
-        };
-
-
-        const onLongPress = (event) => {
-            if (event.nativeEvent.state === LongPressState.ACTIVE) {
-               
-            }
-        };
-        const onTap = (event) => {
-            if (event.nativeEvent.state === TapState.ACTIVE) {
-                
-            }
-        };
-
-        return (
-            <LongPressGestureHandler onHandlerStateChange={onLongPress}>
-                <PanGestureHandler onGestureEvent={onSwipeGestureEvent} onHandlerStateChange={onSwipeGestureStateChange} activeOffsetX={[-200, 50]}>
-                    <TapGestureHandler onHandlerStateChange={onTap}>
-                        <View >
-                            <Animated.View
-                                style={[
-
-                                    { backgroundColor:'transparent', transform: [{ translateX: translateX }] },
-                                ]}
-                            >
-                                <View style={[message.type === 'sentmsg' ? { alignItems: 'flex-end' } : { alignItems: 'flex-start' }, { paddingTop: 10, marginHorizontal: 20 }]}
-                                    key={message.id}>
-                                    <View style={{ flexDirection: 'row' }}>
-                                        <Text style={{ fontSize: 14, color: colors.greyVar4 }}>{message.time}</Text>
-                                        <Text style={pl6}> {message.icon}</Text>
-                                    </View>
-                                    <Text>{message.message}</Text>
-                                    <Text>{message.msg}</Text>
-                                </View>
-                            </Animated.View>
-                        </View>
-                    </TapGestureHandler>
-                </PanGestureHandler>
-            </LongPressGestureHandler>
-        );
-    }
-
-
-    const [isSwiped, setIsSwiped] = useState(false);
-
-
-    const handleSwipeAction = () => {
-        setIsSwiped(true);
-    };
-
-
-    const handleReplyFooterIconClick = () => {
-        setIsSwiped(false);
-    };
-
-
-    return (
-        <Fragment>
-            <GestureHandlerRootView style={{ flex: 1, backgroundColor: isDark() ? colors.black : colors.white }}>
-                <View style={{ flex: 1 }}>
-                    <ImageBackground
-                        source={ChatBackgroundImg}
-                        style={styles.backgroundImage}
-                        imageStyle={{ opacity: 0.1, backgroundColor: 'rgba(200, 150, 255, 0.1)' }}
-
-                    >
-
-
-                        <HeaderChatView backgroundColor={colors.purpleVar3} profileNavigate={screenName.UserProfile} videoNavigate={screenName.SingleVideoCall} audioNavigate={screenName.SingleAudioCallRing} title={labels.horaceKeene} subTitle={labels.online}
-                            clearChatopenModal={openModal}
-                        />
-                        <View style={[{ alignItems: 'center' }, pt10]}>
-                            <DayDetails />
-                        </View>
-                        <ScrollView style={{ flex: 1 }}>
-                            {chatMessages.map((message) => (
-                                <ChatMessage key={message.id} message={message} onSwipeRight={handleSwipeAction}
-
-                                />
-                            ))}
-                        </ScrollView>
-
-                        {isSwiped ? (
-                            <ReplyFooterView onIconClick={handleReplyFooterIconClick} />
-                        ) : (
-                            <FooterChatView />
-                        )}
-
-                    </ImageBackground>
-                    <View>
-                        <Modal
-                            style={{ margin: 0, position: 'absolute', bottom: 0, width: '100%' }}
-                            isVisible={isModalVisible}
-                            onBackdropPress={closeModal}
-                        >
-                            <TouchableWithoutFeedback onPress={closeModal}>
-                                <View style={{ flex: 1 }}>
-                                    <View
-                                        style={{
-                                            height: DevHeight / 3.1,
-                                            backgroundColor: colors.white,
-                                            paddingTop: 40,
-                                            borderTopLeftRadius: 30,
-                                            borderTopRightRadius: 30
-                                        }}
-                                    >
-                                        <View>
-                                            <TabControl tabs={tabs} activeTab={selectedTab} onTabPress={handleTabPress} />
-                                            {selectedTab === "All" && (
-                                                <All />
-                                            )}
-                                            {selectedTab === "👍" && <All />}
-                                        </View>
-                                    </View>
-                                </View>
-                            </TouchableWithoutFeedback>
-                        </Modal>
-                    </View>
-                </View>
-                {selectedModalId === 8 && (
-                    <IconModal
-                        isVisible={true}
-                        onClose={IconcloseModal}
-                        contentComponent={<ClearChatModal />}
-                        iconName='trash-o'
-                        iconType='FontAwesome'
-                        iconSize={25}
-                    />
-                )}
-            </GestureHandlerRootView>
-        </Fragment>
-    )
+          </Modal>
+        )}
+      </GestureHandlerRootView>
+    </Fragment>
+  )
 }
 
 const styles = StyleSheet.create({
-    backgroundImage: {
-        flex: 1,
-        resizeMode: 'cover',
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover',
 
-    },
-    receiveMsgCard: {
-        backgroundColor: colors.white,
-        borderTopRightRadius: 8,
-        borderBottomRightRadius: 8,
-        borderBottomLeftRadius: 8,
-        padding: 10
-    },
-    sndMsgCard: {
-        backgroundColor: colors.purpleVar2,
-        borderTopLeftRadius: 8,
-        borderBottomRightRadius: 8,
-        borderBottomLeftRadius: 8,
-        padding: 10
-    },
-    footerView: {
-        backgroundColor: colors.white,
-        height: 100,
-        padding: 10,
-        borderTopLeftRadius: 8,
-        borderTopRightRadius: 8,
-        overflow: 'hidden',
-        borderTopStartRadius: 10,
-    },
-    sideMenuStyle: {
-        margin: 0,
-        width: DevWidth * 0.65,
-    },
-    modal: {
-        backgroundColor: 'white',
-        height: 200,
-        margin: 0, // This is the important style you need to set
-        alignItems: undefined,
-        justifyContent: undefined,
-    },
-    tabContainer: {
-        flexDirection: 'row',
-        marginHorizontal: 10,
-    },
-    tabText: {
-        fontSize: 18,
-        fontWeight: '500',
-        flexDirection: 'row',
-    },
-    roundNumber: {
-        height: 24,
-        width: 24,
-        borderRadius: 12,
-        marginLeft: 10,
-        backgroundColor: 'rgba(255, 255, 255, 0.5)',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    roundNumberText: {
-        color: colors.greyVar4,
-        fontSize: 12,
-    },
+  },
+  receiveMsgCard: {
+    backgroundColor: colors.white,
+    borderTopRightRadius: 8,
+    borderBottomRightRadius: 8,
+    borderBottomLeftRadius: 8,
+    padding: 10
+  },
+  sndMsgCard: {
+    backgroundColor: colors.purpleVar1,
+    borderTopLeftRadius: 8,
+    borderBottomRightRadius: 8,
+    borderBottomLeftRadius: 8,
+    padding: 10
+  },
+  footerView: {
+    backgroundColor: colors.white,
+    height: 100,
+    padding: 10,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+    overflow: 'hidden',
+    borderTopStartRadius: 10,
+  },
+  sideMenuStyle: {
+    margin: 0,
+    width: DevWidth * 0.65,
+  },
+  modal: {
+    backgroundColor: 'white',
+    height: 200,
+    margin: 0, // This is the important style you need to set
+    alignItems: undefined,
+    justifyContent: undefined,
+  },
+  tabContainer: {
+    flexDirection: 'row',
+    marginHorizontal: 10,
+  },
+  tabText: {
+    fontSize: 18,
+    fontWeight: '500',
+    flexDirection: 'row',
+  },
+  roundNumber: {
+    height: 24,
+    width: 24,
+    borderRadius: 12,
+    marginLeft: 10,
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  roundNumberText: {
+    color: colors.greyVar4,
+    fontSize: 12,
+  },
+  modalContent: {
+    height: 40,
+    width: 200,
+    backgroundColor: colors.white,
+    padding: 10,
+    borderRadius: 20,
+    alignSelf: 'center',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    elevation: 2
+
+  },
 
 });
 
 export default ChatView;
-
-
 
 

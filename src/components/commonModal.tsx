@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import CreatePasswordLogo from '../../assets/images/modal-logo.svg';
 import GalleryLogo from '../../assets/images/gallery-icon.svg';
 import OnlineLogo from '../../assets/images/lastseen-logo.svg';
@@ -10,17 +10,22 @@ import DeleteLogo from '../../assets/images/delete1-logo.svg';
 // import { ButtonBook,  } from './commonButtons';
 import { colors } from '../utils/colors';
 import { labels } from '../utils/labels';
-import { ButtonContainer1, CheckBox, HalfCircle, HalfCircle2, ModalContainer, ModalContent, ModalContent1, ModalContent2 } from '../styledComponent/styledComponent';
-import { alignItemsCenter, flexRow, justyfyCenter, mb15, mh10, mh15, mh5, mt20, p5, pl10, pr10, spaceBetween } from './commonStyles';
+import { ButtonContainer1, CheckBox, HalfCircle, HalfCircle2, ModalContainer, ModalContent, ModalContent1 } from '../styledComponent/styledComponent';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mb15, mh10, mh15, mh5, mt20, p5, pl10, pr10, spaceBetween } from './commonStyles';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../utils/screenName';
-import { H14font400Gray4, H16font600Black, H16fontNormalGray, H16fontNormalGray4, H18fontBoldBlack } from './commonText';
+import { H14BlackText, H14font400Gray4, H16font600Black, H16fontNormalGray, H16fontNormalGray4, H18fontBoldBlack } from './commonText';
 import { chooseTheme, clearAllChats, deleteAllChats, groupsData, lastSee, profilePic } from '../utils/data/modalData';
 import { RadioButton, RadioButtonRound, SelectedRadioBtn } from './commonView';
 import CustomIcon from '../utils/Icons';
 import { LongPurpleButton, SmallButton } from './commonButtons';
 import { RadioBtn } from './commonComponents';
 import { useTheme } from '../Theme/ThemeContext';
+import { DevHeight, DevWidth } from '../utils/device';
+import { All, ReactMsgTabControl } from './chatViewComponents';
+import Modal from 'react-native-modal';
+import { FooterChatView } from '../pages/chatView/Messagecomponents/messages';
+
 
 export type CommonModalProps = {
   isVisible: boolean;
@@ -659,7 +664,7 @@ export const CommonModal: React.FC<CommonModalProps> = ({
 
 
 
-// =========================================================  CUSTOM MODAL  =======================================
+// =========================================================  ICON MODAL  =======================================
 
 interface CustomModalProps {
   isVisible: boolean;
@@ -667,17 +672,17 @@ interface CustomModalProps {
   contentComponent: React.ReactNode;
   iconName: string;
   iconType: string;
-  iconSize:number;
+  iconSize: number;
 }
 
 
-export const IconModal: React.FC<CustomModalProps> = ({ isVisible, onClose, contentComponent, iconName, iconType,iconSize }) => {
+export const IconModal: React.FC<CustomModalProps> = ({ isVisible, onClose, contentComponent, iconName, iconType, iconSize }) => {
   return (
-<Modal transparent={true} animationType="slide" visible={isVisible} onRequestClose={onClose}>
+    <Modal transparent={true} animationType="slide" visible={isVisible} onRequestClose={onClose}>
       <View style={{ flex: 1 }}>
         <ModalContainer>
           <HalfCircle2 />
-          <ModalContent1 style={{ }}>
+          <ModalContent1 style={{}}>
             <View style={{ backgroundColor: colors.purpleVar3, height: 47, width: 47, borderRadius: 25, bottom: 25, alignSelf: 'center', justifyContent: 'center' }}>
               <View style={[alignItemsCenter, justyfyCenter]}>
                 <CustomIcon name={iconName} size={iconSize} color={colors.white} type={iconType} />
@@ -690,3 +695,63 @@ export const IconModal: React.FC<CustomModalProps> = ({ isVisible, onClose, cont
     </Modal>
   );
 };
+// =========================================================  Emoji MODAL  =======================================
+
+export const ReactModal = ({ isVisible, closeModal, selectedTab, handleTabPress, tabs }) => {
+  return (
+    <Modal
+      style={{ margin: 0, position: 'absolute', bottom: 0, width: '100%' }}
+      isVisible={isVisible}
+      onBackdropPress={closeModal}
+
+
+    >
+      <TouchableWithoutFeedback onPress={closeModal}>
+        <View style={{ flex: 1 }}>
+          <View
+            style={{
+              height: DevHeight / 3.3,
+              backgroundColor: colors.white,
+              paddingTop: 40,
+              borderTopLeftRadius: 30,
+              borderTopRightRadius: 30
+            }}
+          >
+            <View>
+              <ReactMsgTabControl tabs={tabs} activeTab={selectedTab} onTabPress={handleTabPress} />
+              {selectedTab === "All" && (
+                <All />
+              )}
+              {selectedTab === "👍" && <All />}
+            </View>
+          </View>
+        </View>
+      </TouchableWithoutFeedback>
+    </Modal>
+  );
+};
+
+
+
+export const EditModal = ({ isVisible, onClose }) => {
+  return (
+    <Modal isVisible={isVisible} onBackdropPress={onClose} backdropOpacity={0.5} style={{ alignItems: 'flex-end', marginTop: DevHeight / 1.5 }}>
+      <View style={{backgroundColor: colors.purpleVar1, borderTopLeftRadius: 8,borderBottomRightRadius: 8,borderBottomLeftRadius: 8,padding: 10}}>
+      <H14BlackText>
+        Thank You Mam
+      </H14BlackText>
+    </View>
+    </Modal >
+  );
+};
+export const EditModal2 = ({ isVisible, onClose }) => {
+  return (
+    <Modal isVisible={isVisible} onBackdropPress={onClose} backdropOpacity={0} style={{ margin: 0, position: 'absolute', bottom: 0, width: '100%' }}>
+      <View >
+        <FooterChatView />
+      </View>
+    </Modal>
+  );
+};
+
+

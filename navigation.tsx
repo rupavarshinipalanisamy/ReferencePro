@@ -57,6 +57,8 @@ import DeleteAccount from './src/pages/settings/DeleteAccount';
 import BlockedContacts from './src/pages/settings/BlockedContacts';
 import NewChat from './src/pages/chat/NewChat';
 import Forward from './src/pages/chat/Forward';
+import Invitefriend from './src/pages/Invitefriend';
+import MessageInfo from './src/pages/MessageInfo';
 
 const Stack = createNativeStackNavigator();
 
@@ -119,6 +121,9 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.BlockedContacts} component={BlockedContacts} />
             <Stack.Screen name={screenName.NewChat} component={NewChat} />
             <Stack.Screen name={screenName.ForwardTo} component={Forward} />
+            <Stack.Screen name={screenName.InviteFriend} component={Invitefriend} />
+            <Stack.Screen name={screenName.MessageInfo} component={MessageInfo} />
+
         </Stack.Navigator>
     );
 };

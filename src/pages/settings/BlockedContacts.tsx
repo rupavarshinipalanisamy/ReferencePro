@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, TouchableOpacity, ScrollView, Image, StyleSheet, Platform } from 'react-native';
+import { Text, View, TouchableOpacity, ScrollView, Image, StyleSheet } from 'react-native';
 import { alignItemsCenter, alignSelfCenter, flex1, flexRow, justifyStart, justyfyCenter, mh30, ml10, ml15, ml30, mr30, mt15, mt3, mt5, mv10, p10, pb5, pl13 } from '../../components/commonStyles';
 import { colors } from '../../utils/colors';
 import { DevHeight, DevWidth } from '../../utils/device';

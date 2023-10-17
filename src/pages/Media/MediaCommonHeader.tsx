@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, TextInput } from 'react-native';
 import ImageScreen from './Image';
 import { colors } from '../../utils/colors';
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, mt3, pb10, pl10, pl13, pt10, spaceBetween } from '../../components/commonStyles';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, pb10, pl10, pl13, pt10, spaceBetween } from '../../components/commonStyles';
 import { TopContainerWhiteCard1 } from '../../components/commonView';
 import CustomIcon from '../../utils/Icons';
-import { H15Grey, H16Black600Text, H18BlackText, H18GreyVar4Text } from '../../components/commonText';
+import { H15Grey, H18BlackText, H18GreyVar4Text } from '../../components/commonText';
 import { labels } from '../../utils/labels';
 import { DevHeight, DevWidth } from '../../utils/device';
 import Docs from './Docs';
@@ -13,7 +13,6 @@ import Video from './Video';
 import Link from './Link';
 import { CustomModal } from '../../components/commonComponents';
 import { useNavigation } from '@react-navigation/native';
-import { screenName } from '../../utils/screenName';
 import { isDark } from '../../Theme/ThemeContext';
 
 export type MediaProps = {
@@ -223,10 +222,11 @@ export const MediaHeader = (props: MediaHeaderProps) => {
 interface StarredAndVerifycodeHeaderProps {
     height?: number;
     headerText: string;
+    onPress: () => void;
 }
 
 export const StarredAndVerifycodeHeader = (props: StarredAndVerifycodeHeaderProps) => {
-    const navigation=useNavigation();
+    const navigation = useNavigation();
     return (
         <View>
             <TopContainerWhiteCard1 height={DevHeight / 7.5}{...props}>
@@ -234,16 +234,25 @@ export const StarredAndVerifycodeHeader = (props: StarredAndVerifycodeHeaderProp
                     <View style={[flexRow, spaceBetween]}>
                         <View style={[flexRow]}>
                             <TouchableOpacity style={[alignItemsCenter, justyfyCenter]}
-                             onPress={navigation.goBack}
+                                onPress={navigation.goBack}
                             >
-                                <CustomIcon name='chevron-back-sharp' color={colors.black} size={16} type="Ionicons" />
+                                <View>
+                                    <CustomIcon name='chevron-back-sharp' color={colors.black} size={16} type="Ionicons" />
+
+                                </View>
+
                             </TouchableOpacity>
                             <View style={pl13}>
                                 <H18BlackText>{props.headerText}</H18BlackText>
                             </View>
+
                         </View>
                         <View style={[flexRow, alignItemsCenter]}>
+                            <TouchableOpacity onPress={props.onPress}>
                             <CustomIcon name="search" size={22} color={colors.greyVar4} type="Ionicons" />
+
+
+                            </TouchableOpacity>
                             <TouchableOpacity style={pl10} >
                                 <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={colors.greyVar4} />
                             </TouchableOpacity>
@@ -256,6 +265,51 @@ export const StarredAndVerifycodeHeader = (props: StarredAndVerifycodeHeaderProp
     )
 }
 
+
+
+interface StarredAndVerifycodeHeaderProps {
+    height?: number;
+    headerText: string;
+}
+
+export const TextInputHeader = (props: StarredAndVerifycodeHeaderProps) => {
+    const navigation = useNavigation();
+    return (
+        <View>
+            <TopContainerWhiteCard1 height={DevHeight / 7.5}{...props}>
+                <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
+                    <View style={[flexRow, spaceBetween]}>
+                        <View style={[flexRow]}>
+                            <TouchableOpacity style={[alignItemsCenter, justyfyCenter]}
+                                onPress={navigation.goBack}
+                            >
+                                <View style={{ top: 8 }}>
+                                    <CustomIcon name='chevron-back-sharp' color={colors.black} size={16} type="Ionicons" />
+
+                                </View>
+                            </TouchableOpacity>
+
+                            <View style={[pl13]}>
+                                <TextInput placeholder='Search...' style={{
+                                    borderBottomWidth: 1, borderBottomColor: colors.greyVar2, width: DevWidth / 1.35,
+                                    fontSize: 14, fontWeight: '400', color: colors.blackVar1
+                                }} />
+
+
+                            </View>
+                        </View>
+                        <View style={[flexRow, alignItemsCenter]}>
+                            <TouchableOpacity style={pl10} >
+                                <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={colors.greyVar4} />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            </TopContainerWhiteCard1>
+
+        </View>
+    )
+}
 
 const styles = StyleSheet.create({
     tabContainer: {
@@ -276,11 +330,11 @@ interface SearchHeader {
     height?: number;
     headerText: string;
     searchIcon?: boolean;
-    editIcon?:boolean
+    editIcon?: boolean
 }
 
 export const SearchHeader = (props: SearchHeader) => {
-    const navigation =useNavigation()
+    const navigation = useNavigation()
     return (
         <View>
             <TopContainerWhiteCard1 height={DevHeight / 7.5}{...props}>
@@ -288,14 +342,14 @@ export const SearchHeader = (props: SearchHeader) => {
                     <View style={[flexRow, spaceBetween]}>
                         <View style={[flexRow]}>
                             <TouchableOpacity style={[justyfyCenter, alignItemsCenter, { marginTop: 2 }]}
-                            onPress={navigation.goBack}
+                                onPress={navigation.goBack}
                             >
-                                <CustomIcon name='chevron-left' color={isDark()?colors.white:colors.black} size={18} type="entypo" />
+                                <CustomIcon name='chevron-left' color={isDark() ? colors.white : colors.black} size={18} type="entypo" />
                             </TouchableOpacity>
                             <H18BlackText style={pl13}>{props.headerText}</H18BlackText>
                         </View>
-                        {props.editIcon && 
-                        <CustomIcon name='pencil' size={20} color={colors.black} type='SimpleLineIcons' />}
+                        {props.editIcon &&
+                            <CustomIcon name='pencil' size={20} color={colors.black} type='SimpleLineIcons' />}
                         {props.searchIcon &&
                             <CustomIcon name="search" size={20} color={colors.greyVar4} type="Ionicons" />
                         }

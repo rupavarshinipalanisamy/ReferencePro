@@ -23,7 +23,7 @@ const chatViewModalData = [
     {
         id: 1,
         iconName: 'person-circle-outline',
-        iconSize: 20,
+        iconSize: 16,
         iconColor: colors.blackVar1,
         iconType: 'Ionicons',
         text: labels.ViewContact,
@@ -33,7 +33,7 @@ const chatViewModalData = [
     {
         id: 2,
         iconName: 'photo',
-        iconSize: 20,
+        iconSize: 16,
         iconColor: colors.blackVar1,
         iconType: 'FontAwesome',
         text: labels.Media,
@@ -43,7 +43,7 @@ const chatViewModalData = [
     {
         id: 3,
         iconName: 'search',
-        iconSize: 20,
+        iconSize: 16,
         iconColor: colors.blackVar1,
         iconType: 'Feather',
         text: labels.Search,
@@ -53,7 +53,7 @@ const chatViewModalData = [
     {
         id: 4,
         iconName: 'microphone-off',
-        iconSize: 20,
+        iconSize: 16,
         iconColor: colors.blackVar1,
         iconType: 'MaterialCommunityIcons',
         text: labels.MuteNotification,
@@ -63,7 +63,7 @@ const chatViewModalData = [
     {
         id: 5,
         iconName: 'window-maximize',
-        iconSize: 20,
+        iconSize: 16,
         iconColor: colors.blackVar1,
         iconType: 'FontAwesome',
         text: labels.Wallpaper,
@@ -73,7 +73,7 @@ const chatViewModalData = [
     {
         id: 6,
         iconName: 'thumbs-down',
-        iconSize: 20,
+        iconSize: 16,
         iconColor: colors.blackVar1,
         iconType: 'Feather',
         text: labels.Report,
@@ -83,7 +83,7 @@ const chatViewModalData = [
     {
         id: 7,
         iconName: 'block-flipped',
-        iconSize: 20,
+        iconSize: 16,
         iconColor: colors.blackVar1,
         iconType: 'MaterialIcons',
         text: labels.Block,
@@ -93,7 +93,7 @@ const chatViewModalData = [
     {
         id: 8,
         iconName: 'trash-2',
-        iconSize: 20,
+        iconSize: 16,
         iconColor: colors.blackVar1,
         iconType: 'Feather',
         text: labels.ClearChat,
@@ -272,42 +272,187 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
 }
 
 
-export const LongPressedHaeder = () => {
+export const LongPressedHaeder = ({ messageType,EditModal }) => {
+    const HaederChangechatViewModalData = [
+        {
+            id: 1,
+            iconName: 'copy',
+            iconSize: 16,
+            iconColor: colors.blackVar1,
+            iconType: 'Feather',
+            text: 'Copy',
+            screenName: screenName.ChooseWallpaper,
+
+        },
+        {
+            id: 2,
+            iconName: 'thumbs-down',
+            iconSize: 16,
+            iconColor: colors.blackVar1,
+            iconType: 'Feather',
+            text: 'Report',
+            screenName: screenName.ChooseWallpaper,
+
+        },
+
+    ]
+    const SendMsgModalData = [
+        {
+            id: 1,
+            iconName: 'info',
+            iconSize: 16,
+            iconColor: colors.blackVar1,
+            iconType: 'Feather',
+            text: 'Info',
+            screenName: screenName.ChooseWallpaper,
+
+        },
+        {
+            id: 2,
+            iconName: 'copy',
+            iconSize: 16,
+            iconColor: colors.blackVar1,
+            iconType: 'Feather',
+            text: 'Copy',
+            screenName: screenName.ChooseWallpaper,
+
+        },
+        {
+            id: 3,
+            iconName: 'pencil',
+            iconSize: 16,
+            iconColor: colors.blackVar1,
+            iconType: 'SimpleLineIcons',
+            text: 'Edit',
+            screenName: screenName.ChooseWallpaper,
+
+        },
+
+    ]
+    const [optionModal, setOptionModal] = useState(false);
+
+    const [SendMsgMdl, SetSendMsgMdl] = useState(false);
+    const handleOptionModal = () => {
+        if (messageType === 'sentmsg') {
+            SetSendMsgMdl(!SendMsgMdl);
+
+        }
+        else {
+            setOptionModal(!optionModal);
+        }
+    };
+    const OptionModalComponent = () => {
+        return (
+            <View>
+                {
+                    HaederChangechatViewModalData.map((item) => {
+                        return (
+                            <TouchableOpacity key={item.id} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
+                                <View style={flexRow}>
+                                    <View style={[alignItemsCenter, justyfyCenter]}>
+                                        <CustomIcon name={item.iconName} size={item.iconSize} color={item.iconColor} type={item.iconType} />
+                                    </View>
+                                    <View style={[alignItemsCenter, justyfyCenter, pl13]}>
+                                        <H15Grey>{item.text}</H15Grey>
+                                    </View>
+                                </View>
+                            </TouchableOpacity>
+                        )
+                    })
+                }
+            </View>
+        )
+    }
+    const SendMsgModal = () => {
+
+        const navigation =useNavigation()
+        return (
+            <View>
+                {
+                    SendMsgModalData.map((item) => {
+                        return (
+                            <TouchableOpacity key={item.id} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}
+                                onPress={() => {
+                                    if (item.id === 3) {
+                                     console.log('openModal')
+                                     SetSendMsgMdl(false)
+                                     EditModal(8);
+                                    } else {
+                                        // Navigate to the desired screen for other items
+                                        navigation.navigate(screenName.MessageInfo as never);
+                                    }
+                                }}
+                            >
+                                <View style={flexRow}>
+                                    <View style={[alignItemsCenter, justyfyCenter]}>
+                                        <CustomIcon name={item.iconName} size={item.iconSize} color={item.iconColor} type={item.iconType} />
+                                    </View>
+                                    <View style={[alignItemsCenter, justyfyCenter, pl13]}>
+                                        <H15Grey>{item.text}</H15Grey>
+                                    </View>
+                                </View>
+                            </TouchableOpacity>
+                        )
+                    })
+                }
+            </View>
+        )
+    }
 
     return (
 
         <View style={{ height: DevWidth / 4.2, backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, borderBottomRightRadius: 25, borderBottomLeftRadius: 25, elevation: 1 }}>
             <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
                 <View style={[flexRow]}>
-                    <View style={pt10} >
-                        <CustomIcon name='chevron-left' color={colors.black} size={20} type="entypo" />
-                    </View>
+
                     <View style={[flexRow, spaceBetween, flex1]}>
-                        <TouchableOpacity style={[pl10, flexRow]} >
-                            <Image source={GroupImg1Img} />
-
-
-                            <View style={pl13}>
-                                <Text style={{ fontSize: 15, fontWeight: '500', color: colors.black }}>Hi</Text>
-                                <Text style={{ color: colors.greyVar4, fontSize: 14, fontWeight: '400' }}>heloo</Text>
-
+                        <View style={[flexRow]} >
+                            <View style={pt5}>
+                                <CustomIcon name='chevron-left' color={colors.greyVar4} size={20} type="entypo" />
                             </View>
-                        </TouchableOpacity>
+                            <View style={[pl13, justyfyCenter]}>
+                                <Text style={{ fontWeight: '600', fontSize: 20, color: colors.blackVar2 }}>1</Text>
+                            </View>
+                        </View>
                         <View style={[flexRow, alignItemsCenter]}>
                             <TouchableOpacity style={pl10} >
-                                <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={20} color={colors.greyVar4} />
+                                <CustomIcon name='reply-outline' type="MaterialCommunityIcons" size={24} color={colors.greyVar4} />
                             </TouchableOpacity>
                             <TouchableOpacity style={pl10}>
-                                <CustomIcon name='phone' type="Feather" size={16} color={colors.greyVar4} />
+                                <CustomIcon name='star' color={colors.greyVar4} size={18} type="Feather" />
                             </TouchableOpacity>
-                            <TouchableOpacity style={pl10}>
+                            <TouchableOpacity style={pl10} >
+                                <CustomIcon name='trash-2' type="Feather" size={18} color={colors.greyVar4} />
+                            </TouchableOpacity>
+                            <TouchableOpacity style={pl10} >
+                                <CustomIcon name='share-outline' type="MaterialCommunityIcons" size={24} color={colors.greyVar4} />
+                            </TouchableOpacity>
+                            <TouchableOpacity style={pl10} onPress={handleOptionModal}>
                                 <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={20} color={colors.greyVar4} />
                             </TouchableOpacity>
                         </View>
                     </View>
                 </View>
             </View>
+
+            <CustomModal
+                isVisible={SendMsgMdl}
+                width={DevWidth * 0.47}
+                modalData={<SendMsgModal />}
+                marginTop={48}
+                onClose={handleOptionModal}
+            />
+            <CustomModal
+                isVisible={optionModal}
+                width={DevWidth * 0.47}
+                modalData={<OptionModalComponent />}
+                marginTop={48}
+                onClose={handleOptionModal}
+            />
+
+
         </View>
+
     )
 }
 export const FooterChatView = () => {
@@ -355,14 +500,14 @@ export const FooterChatView = () => {
                         style={{
                             justifyContent: 'flex-end',
                             alignItems: 'flex-end',
-                            bottom :50
+                            bottom: 50
                         }}
                     >
                         <View style={[{ backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, elevation: 4, borderRadius: 8, width: DevWidth * 0.47, padding: 10 }]}>
                             {
                                 attachmentData.map((item) => {
                                     return (
-                                        <TouchableOpacity key={item.id} onPress={() => {}} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
+                                        <TouchableOpacity key={item.id} onPress={() => { }} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
                                             <View style={[flexRow]}>
                                                 <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={isDark() ? colors.greyVar3 : colors.blackVar1} />
                                                 <View style={[alignItemsCenter, justyfyCenter, pl13]}>
@@ -441,14 +586,14 @@ export const ReplyFooterView = ({ onIconClick }: any) => {
                         style={{
                             justifyContent: 'flex-end',
                             alignItems: 'flex-end',
-                            bottom :50
+                            bottom: 50
                         }}
                     >
                         <View style={[{ backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, elevation: 4, borderRadius: 8, width: DevWidth * 0.47, padding: 10 }]}>
                             {
                                 attachmentData.map((item) => {
                                     return (
-                                        <TouchableOpacity key={item.id} onPress={() => {}} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
+                                        <TouchableOpacity key={item.id} onPress={() => { }} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
                                             <View style={[flexRow]}>
                                                 <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={isDark() ? colors.greyVar3 : colors.blackVar1} />
                                                 <View style={[alignItemsCenter, justyfyCenter, pl13]}>
@@ -574,7 +719,7 @@ export const sentMessage1 = (text: string) => {
         </View >
     );
 };
-export const sentMessage2 = () => {
+export const SentMessage2 = () => {
     return (
         <View style={{ alignItems: 'flex-end', marginHorizontal: 20, marginTop: 5 }}>
             <View style={[styles.sndMsgCard]}>
@@ -623,7 +768,7 @@ export const sentMessage4 = () => {
                         <Text style={{ fontSize: 14, color: colors.blackVar1, fontWeight: '400', lineHeight: 20 }}>You can check on this file</Text>
                     </View>
                 </View>
-                <Text style={[mt5,ml5, { fontSize: 14, fontWeight: '400', color: colors.blackVar1 }]}>Ok Mam</Text>
+                <Text style={[mt5, ml5, { fontSize: 14, fontWeight: '400', color: colors.blackVar1 }]}>Ok Mam</Text>
             </View>
         </View>
     );
