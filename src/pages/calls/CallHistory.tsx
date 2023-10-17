@@ -31,7 +31,7 @@ const CallHistory = (props: CallHistoryProps) => {
                         {
                             callHistoryTodaydata.map((item) => {
                                 return (
-                                    <TouchableOpacity key={item.id} style={[p10, mv10, styles.whiteCard]}>
+                                    <TouchableOpacity key={item.id} style={[p10, mv10, styles.whiteCard, {backgroundColor: isDark() ? colors.darkModeVar4 : colors.white,}]}>
                                         <View style={[flexRow]}>
                                             <View style = {[alignItemsCenter, justyfyCenter]}>
                                                 <Image source={item.img} style={styles.profileImg} />
@@ -61,7 +61,7 @@ const CallHistory = (props: CallHistoryProps) => {
                         {
                             callHistoryYesterdaydata.map((item) => {
                                 return (
-                                    <TouchableOpacity key={item.id} style={[p10, mv10, styles.whiteCard]}>
+                                    <TouchableOpacity key={item.id} style={[p10, mv10, styles.whiteCard, {backgroundColor: isDark() ? colors.darkModeVar4 : colors.white}]}>
                                         <View style={[flexRow]}>
                                             <View style = {[alignItemsCenter, justyfyCenter]}>
                                                 <Image source={item.img} style={styles.profileImg} />
@@ -91,7 +91,7 @@ const CallHistory = (props: CallHistoryProps) => {
                         {
                             callHistoryThirddata.map((item) => {
                                 return (
-                                    <TouchableOpacity key={item.id} style={[p10, mv10, styles.whiteCard]}>
+                                    <TouchableOpacity key={item.id} style={[p10, mv10, styles.whiteCard, {backgroundColor: isDark() ? colors.darkModeVar4 : colors.white}]}>
                                         <View style={[flexRow]}>
                                             <View style = {[alignItemsCenter, justyfyCenter]}>
                                                 <Image source={item.img} style={styles.profileImg} />
@@ -138,7 +138,6 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     whiteCard : {
-        backgroundColor: isDark() ? colors.darkModeVar4 : colors.white,
         height : 70,
         borderRadius : 5,
     }

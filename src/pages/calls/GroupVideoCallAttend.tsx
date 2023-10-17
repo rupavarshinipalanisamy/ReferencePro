@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, FlatList, Image, Text, TouchableOpacity } from 'react-native';
-import { H14Blackvar2Bold500 } from '../../components/commonText';
+import { H14Blackvar2Bold500, H14Blackvar2Bold500Same } from '../../components/commonText';
 import { CallCommonHeader } from '../../components/commonHeaders';
 import { callBottomDataThird, groupCallData, groupVideoCallData } from '../../utils/data/callsData';
 import { DevHeight, DevWidth } from '../../utils/device';
@@ -14,17 +14,13 @@ import { labels } from '../../utils/labels';
 const GroupVideoCallAttend = () => {
 
     const renderItem = ({ item }: any) => (
-        <View key={item.id} style={{ margin: 5}}>
-            <View style={{ height: DevHeight / 4, width: DevWidth / 2.35, backgroundColor:colors.white,borderColor:colors.blueVar3, borderRadius: 10, alignItems: 'center',justifyContent:'center',borderWidth:item.id === 4?2:0}}>
-                <Image source={item.image} style={{borderRadius:item.id ===4 ? 25:10,width: item.id === 1 || item.id === 2 || item.id === 3 ? DevWidth/2.35:40}}/>
-                {item.id ===4 && (
-                <H14Blackvar2Bold500 style={mt8}>{labels.JamesAlbert}</H14Blackvar2Bold500>
-
-
+        <View key={item.id} style={{ margin: 5 }}>
+            <View style={{ height: DevHeight / 4, width: DevWidth / 2.35, backgroundColor: colors.white, borderColor: colors.blueVar3, borderRadius: 10, alignItems: 'center', justifyContent: 'center', borderWidth: item.id === 4 ? 2 : 0 }}>
+                <Image source={item.image} style={{ borderRadius: item.id === 4 ? 25 : 10, width: item.id === 1 || item.id === 2 || item.id === 3 ? DevWidth / 2.35 : 40 }} />
+                {item.id === 4 && (
+                    <H14Blackvar2Bold500Same style={mt8}>{labels.JamesAlbert}</H14Blackvar2Bold500Same>
                 )}
-
             </View>
-
         </View>
     );
 

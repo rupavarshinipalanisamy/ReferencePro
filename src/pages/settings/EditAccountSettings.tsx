@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import { alignItemsCenter, alignSelfCenter, flex1, flexRow, justifyEnd, justifyStart, justyfyCenter, mh20, mh30, ml10, ml30, mr30, mt20, pv20 } from '../../components/commonStyles';
+import { alignItemsCenter, alignSelfCenter, flex1, flexRow, justifyEnd, justifyStart, justyfyCenter, mh10, mh15, mh20, mh30, mh5, ml10, ml30, ml5, mr30, mt20, mv20, pv20 } from '../../components/commonStyles';
 import { colors } from '../../utils/colors';
 import { DevHeight, DevWidth } from '../../utils/device';
 import CustomIcon from '../../utils/Icons';
@@ -15,6 +15,8 @@ import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
 import { SearchHeader } from '../Media/MediaCommonHeader';
 import { isDark } from '../../Theme/ThemeContext';
+import { UsFlagTmg } from '../../utils/png';
+import { SmallButton } from '../../components/commonButtons';
 
 export type EditAccountSettingsProps = {
 
@@ -24,13 +26,22 @@ export type EditAccountSettingsProps = {
 const EditAccountSettings = (props: EditAccountSettingsProps) => {
     const navigation = useNavigation();
     const [formData, setFormData] = useState({
-        name : labels.MarkVilliams,
-        hello : labels.HelloIamUsingDreamsChat,
-        email : labels.InfoEmail,
-        phoneNo : labels.PhoneNo,
-        dob : labels.Date,
-        country : labels.India,
+        name: labels.MarkVilliams,
+        hello: labels.HelloIamUsingDreamsChat,
+        email: labels.InfoEmail,
+        phoneNo: labels.PhoneNo,
+        dob: labels.Date,
+        country: labels.India,
     });
+    const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+    const handleCancelButton = () => {
+        setIsCancelButtonActive(true);
+        navigation.goBack();
+    };
+
+    const handleDeleteChatButton = () => {
+        setIsCancelButtonActive(false);
+    };
 
     const handleInputChange = (key: string, value: string) => {
         setFormData((prevData) => ({
@@ -76,55 +87,74 @@ const EditAccountSettings = (props: EditAccountSettingsProps) => {
             iconName: 'calendar-blank',
             iconType: 'MaterialCommunityIcons',
         },
-        
+
     ];
 
     return (
-        <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 :  colors.whiteVar0 }]} >
-            {/* <View style={[flexRow, justifyStart, alignSelfCenter, alignItemsCenter, { height: DevHeight * 0.12, width: DevWidth, backgroundColor: colors.white, borderBottomLeftRadius: 45, borderBottomRightRadius: 45 }]}>
-                <View style={[ml30]}>
-                    <CustomIcon name='arrow-back-ios' size={18} color={colors.blackVar2} type='MaterialIcons' />
-                </View>
-                <RowSpaceBetween style={[flex1, mr30]}>
-                    <H18BlackBoldText600 style={[ml10]}>{labels.CreateGroup}</H18BlackBoldText600>
-                    <CustomIcon size={20} name='search' type='Feather' color={colors.blackVar2} />
-                </RowSpaceBetween>
-            </View> */}
-             <SearchHeader headerText={labels.EditProfile} searchIcon={true} />
+        <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
+            <SearchHeader headerText={labels.EditProfile} searchIcon={true} />
             <View style={[flex1, mh30]}>
                 {
                     inputFields.map((field) => (
                         <View key={field.key}>
-                            <IconInputContainer>
-                                <View style={[justyfyCenter]}>
-                                    <CustomIcon name={field.iconName} size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type={field.iconType} />
-                                </View>
-                                <CustomTextInput style= {{fontSize : 14, fontWeight : '400', color : colors.red}}
-                                    value={formData[field.key]}
-                                    onChangeText={(text) => handleInputChange(field.key, text)}
-                                />
-                            </IconInputContainer>
+                            {
+                                field.key === 'phoneNo' ? (
+                                    <View>
+                                        <IconInputContainer style={{ borderBottomColor: isDark() ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
+                                            <View style={[justyfyCenter]}>
+                                                <CustomIcon name={field.iconName} size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type={field.iconType} />
+                                            </View>
+                                            <View style={[alignItemsCenter, justyfyCenter, flexRow, ml10]}>
+                                                <Image source={UsFlagTmg} style={{ height: 18, width: 18, borderRadius: 100 }} />
+                                                <View style={[ml5]}>
+                                                    <CustomIcon name='chevron-down-outline' type="Ionicons" color={isDark() ? colors.greyVar0 : colors.blackVar2} size={15} />
+                                                </View>
+                                            </View>
+                                            <CustomTextInput
+                                                textColor={isDark() ? colors.greyVar0 : colors.blackVar1}
+                                                value={formData[field.key]}
+                                                onChangeText={(text) => handleInputChange(field.key, text)}
+                                            />
+                                        </IconInputContainer>
+                                    </View>
+                                ) : (
+                                    <View>
+                                        <IconInputContainer style={{ borderBottomColor: isDark() ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
+                                            <View style={[justyfyCenter]}>
+                                                <CustomIcon name={field.iconName} size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type={field.iconType} />
+                                            </View>
+                                            <CustomTextInput
+                                                textColor={isDark() ? colors.greyVar0 : colors.blackVar1}
+                                                value={formData[field.key]}
+                                                onChangeText={(text) => handleInputChange(field.key, text)}
+                                            />
+                                        </IconInputContainer>
+                                    </View>
+                                )
+                            }
                         </View>
                     ))
                 }
-                {/* <View style={[flex1, justifyEnd]}>
-                    <ButtonContainer style={{ position: 'absolute', bottom: 20 }}>
-                        <ButtonSaveandCancel style={{
-                            backgroundColor: colors.white
-                        }}
-                            textStyle={{ color: colors.greyVar4 }}
-                            funCallback={() => { }}
-                            label={labels.cancel} />
 
-                        <ButtonSaveandCancel style={{
-                            backgroundColor: colors.purpleVar3,
-                        }}
-                            textStyle={{ color: colors.white }}
-                            funCallback={() => { navigation.navigate(screenName.CreateGroupUserSelect as never) }}
-                            label={labels.Next} />
-                    </ButtonContainer>
-                </View> */}
             </View>
+            <RowSpaceBetween style={[mv20, mh20]}>
+                <SmallButton
+                    title={labels.cancel}
+                    onChange={handleCancelButton}
+                    backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
+                    textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar3 : colors.greyVar4)}
+                    borderWidth={isCancelButtonActive ? 0 : 1}
+                    width={DevWidth / 2.3}
+                />
+                <SmallButton
+                    title={labels.saveChange}
+                    onChange={handleDeleteChatButton}
+                    backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
+                    textColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
+                    borderWidth={isCancelButtonActive ? 1 : 0}
+                    width={DevWidth / 2.3}
+                />
+            </RowSpaceBetween>
         </View>
     )
 }

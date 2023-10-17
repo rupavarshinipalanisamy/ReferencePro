@@ -198,6 +198,11 @@ export const H14Blackvar2Bold500 = styled(Text)`
   color : ${props => isDark() ? colors.greyVar0 : colors.blackVar2};
   ${fontRegular};
 `
+export const H14Blackvar2Bold500Same = styled(Text)`
+  ${h9};
+  ${blackvar2};
+  ${fontRegular};
+`
 export const H15GreySemiBold = styled(Text)`
   ${h8};
   ${textcolorGray};

@@ -46,24 +46,21 @@ const MissedCalls = ({ selectedCards, onCardSelection }: MissedCallsProps) => {
                                         <Image source={call.img} style={styles.profileImg} />
                                         {
                                             selectedCards.includes(call.id) ? (
-                                                <View style={[{ backgroundColor: colors.green }, styles.statusTick, alignItemsCenter, justyfyCenter]} >
+                                                <View style={[{ backgroundColor: colors.green, borderColor: isDark() ? colors.darkModeVar2 : colors.white, }, styles.statusTick, alignItemsCenter, justyfyCenter]} >
                                                     <CustomIcon name='check' size={10} color={colors.white} type='entypo' />
                                                 </View>
                                             ) : (
-                                                <View style={[{ backgroundColor: call.status === 'active' ? '#20c997' : '' }, call.status === 'active' ? styles.status : null]} />
+                                                <View style={[{ backgroundColor: call.status === 'active' ? '#20c997' : '', borderColor: isDark() ? colors.darkModeVar2 : colors.white, }, call.status === 'active' ? styles.status : null]} />
                                             )
                                         }
-                                        {/* <View style={[{ backgroundColor: call.status === 'active' ? '#20c997' : '' }, call.status === 'active' ? styles.status : null]} /> */}
                                     </View>
                                     <View style={[flex1]}>
                                         <RowSpaceBetween style={pb5}>
                                             <H15Blackvar2Bold500>{call.name}</H15Blackvar2Bold500>
                                             <CustomIcon name="video-outline" size={call.iconSize} color={colors.red} type='MaterialCommunityIcons' />
-                                            {/* <Text style={{ fontWeight: call.id === 4 ? '700' : 'normal' }}>{call.duration}</Text> */}
                                         </RowSpaceBetween>
                                         <RowSpaceBetween style={pb5}>
                                             <H14GreyVar4Bold400>{call.text}</H14GreyVar4Bold400>
-                                            {/* <CustomIcon name={call.iconName} size={call.iconSize} color={call.iconColor} type={call.iconType} /> */}
                                             <H14GreyVar4Bold400 style={{ color: colors.red }}>{labels.Missed}</H14GreyVar4Bold400>
                                         </RowSpaceBetween>
                                     </View>
@@ -95,7 +92,6 @@ const styles = StyleSheet.create({
     },
     status: {
         borderWidth: 3,
-        borderColor: isDark() ? colors.darkModeVar2 : colors.white,
         position: 'absolute',
         bottom: 2,
         right: 10,
@@ -105,7 +101,6 @@ const styles = StyleSheet.create({
     },
     statusTick: {
         borderWidth: 1.5,
-        borderColor: isDark() ? colors.darkModeVar2 : colors.white,
         position: 'absolute',
         bottom: 4,
         right: 10,

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
-import { alignItemsCenter, alignSelfCenter, borderRadius10, borderRadius15, flex1, flexRow, justifyStart, justyfyCenter, mh20, mh30, ml10, ml15, ml30, mr5, mt10, mt15, mt20, mt3, mt30, mt5, mv10, mv15, mv20, textCenter } from '../../components/commonStyles';
+import { alignItemsCenter, alignItemsLeft, alignSelfCenter, borderRadius10, borderRadius15, flex050, flex1, flexRow, justifyEnd, justifyStart, justyfyCenter, mh20, mh30, ml10, ml15, ml30, mr5, mt10, mt15, mt20, mt3, mt30, mt5, mv10, mv15, mv20, textCenter } from '../../components/commonStyles';
 import { colors } from '../../utils/colors';
 import { DevHeight, DevWidth } from '../../utils/device';
 import CustomIcon from '../../utils/Icons';
@@ -29,13 +29,6 @@ const DeleteAccount = (props: DeleteAccountProps) => {
         setPhoneNumber(phoneNumber);
     }
     return (
-        // <View style={[flex1, { backgroundColor: colors.whiteVar0 }]} >
-        //     <View style={[flexRow, justifyStart, alignSelfCenter, alignItemsCenter, { height: DevHeight * 0.12, width: DevWidth, backgroundColor: colors.white, borderBottomLeftRadius: 45, borderBottomRightRadius: 45 }]}>
-        //         <View style={[ml30]}>
-        //             <CustomIcon name='arrow-back-ios' size={18} color={colors.blackVar2} type='MaterialIcons' />
-        //         </View>
-        //         <H18BlackBoldText600 style={[ml10]}>{labels.DeleteThisAccount}</H18BlackBoldText600>
-        //     </View>
         <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
             <SearchHeader headerText={labels.DeleteThisAccount} searchIcon={true} />
             <View style={[alignSelfCenter, mt30, borderRadius10, { backgroundColor: isDark() ? colors.darkModeVar4 : colors.purpleVar1, height: DevHeight * 0.34, width: DevWidth * 0.85 }]}>
@@ -74,16 +67,24 @@ const DeleteAccount = (props: DeleteAccountProps) => {
                 <H14Blackvar2Bold500>To delete your account, confirm your country code and enter your phone number.</H14Blackvar2Bold500>
             </View>
             <View style={[mh30, mt20]}>
-                <IconInputContainer>
-                    <View style={[justyfyCenter]}>
-                        <CustomIcon name='globe' size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type="Feather" />
-                    </View>
-                    <CustomTextInput
-                        value={country}
-                        onChangeText={(text) => handleCountry(text)}
-                    />
+                <IconInputContainer style={{ borderBottomColor: isDark() ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
+                    <RowSpaceBetween style={{flex:1}}>
+                        <View style = {[flexRow]}>
+                            <View style={[justyfyCenter]}>
+                                <CustomIcon name='globe' size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type="Feather" />
+                            </View>
+                            <CustomTextInput
+                                textColor={isDark() ? colors.greyVar0 : colors.blackVar1}
+                                value={country}
+                                onChangeText={(text) => handleCountry(text)}
+                            />
+                        </View>
+                        <View style={[alignItemsCenter, justyfyCenter]}>
+                            <CustomIcon name='chevron-down' type="Feather" size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} />
+                        </View>
+                    </RowSpaceBetween>
                 </IconInputContainer>
-                <IconInputContainer>
+                <IconInputContainer style={{ borderBottomColor: isDark() ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
                     <View style={[justyfyCenter, alignItemsCenter, flexRow]}>
                         <CustomIcon name='phone' size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type="Feather" />
                         <View style={[flexRow, ml15]}>
@@ -92,12 +93,13 @@ const DeleteAccount = (props: DeleteAccountProps) => {
                         </View>
                     </View>
                     <CustomTextInput
+                        textColor={isDark() ? colors.greyVar0 : colors.blackVar1}
                         value={phoneNumber}
                         onChangeText={(text) => handlePhoneNumber(text)}
                     />
                 </IconInputContainer>
             </View>
-            <View style={[styles.longButtonRed, mh20]}>
+            <View style={[styles.longButtonRed, mh20, { backgroundColor: isDark() ? colors.redVar2 : colors.red }]}>
                 <H15font600>{labels.deleteAcc}</H15font600>
             </View>
         </View>
@@ -110,7 +112,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: colors.red,
+
         marginTop: 150,
         bottom: 15
     },

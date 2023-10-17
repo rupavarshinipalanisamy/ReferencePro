@@ -105,7 +105,7 @@ const CreateGroup = (props: CreateGroupProps) => {
                 {
                     inputFields.map((field) => (
                         <View key={field.key}>
-                            <IconInputContainer>
+                            <IconInputContainer style = {{borderBottomColor : isDark() ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor}}>
                                 <View style={[justyfyCenter]}>
                                     <CustomIcon name={field.iconName} size={20} color={colors.greyVar4} type={field.iconType} />
                                 </View>

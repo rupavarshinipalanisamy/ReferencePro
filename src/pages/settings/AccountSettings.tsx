@@ -82,8 +82,8 @@ const AccountSettings = (props: AccountSettingsProps) => {
                 isVisible={isImagePickerOpen}
                 onClose={() => setIsImagePickerOpen(false)}
                 contentComponent={<ImagePicker onImageSelect={handleImageSelect} />}
-                iconName='logout'
-                iconType='AntDesign'
+                iconName='image-plus'
+                iconType='MaterialCommunityIcons'
                 iconSize={24}
             />
         </View>

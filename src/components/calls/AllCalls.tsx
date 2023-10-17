@@ -20,7 +20,7 @@ export type AllCallsProps = {
 const AllCalls = ({ selectedCards, onCardSelection }: AllCallsProps) => {
     const navigation = useNavigation();
     return (
-        <View style={[flex1, mt20, styles.whiteBg, {backgroundColor: isDark() ? colors.darkModeVar2 : colors.white}]}>
+        <View style={[flex1, mt20, styles.whiteBg, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.white }]}>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={flex1}>
                     {AllCallsdata.map((call) => (
@@ -38,22 +38,21 @@ const AllCalls = ({ selectedCards, onCardSelection }: AllCallsProps) => {
                                     if (!selectedCards.includes(call.id)) {
                                         onCardSelection(call.id);
                                     }
-                                }} 
-                                style={[ph20, pv15, { backgroundColor: selectedCards.includes(call.id) ? (isDark() ? colors.darkModeVar4 : colors.purpleVar1) : (isDark() ? colors.darkModeVar2 : 'transparent') }]}  
-                                >
+                                }}
+                                style={[ph20, pv15, { backgroundColor: selectedCards.includes(call.id) ? (isDark() ? colors.darkModeVar4 : colors.purpleVar1) : (isDark() ? colors.darkModeVar2 : 'transparent') }]}
+                            >
                                 <View style={[flexRow]}>
                                     <View>
                                         <Image source={call.img} style={styles.profileImg} />
                                         {
                                             selectedCards.includes(call.id) ? (
-                                                <View style={[{ backgroundColor: colors.green }, styles.statusTick, alignItemsCenter, justyfyCenter]} >
+                                                <View style={[{ backgroundColor: colors.green, borderColor: isDark() ? colors.darkModeVar2 : colors.white, }, styles.statusTick, alignItemsCenter, justyfyCenter]} >
                                                     <CustomIcon name='check' size={10} color={colors.white} type='entypo' />
                                                 </View>
                                             ) : (
-                                                <View style={[{ backgroundColor: call.status === 'active' ? '#20c997' : '' }, call.status === 'active' ? styles.status : null]} />
+                                                <View style={[{ backgroundColor: call.status === 'active' ? '#20c997' : '', borderColor: isDark() ? colors.darkModeVar2 : colors.white, }, call.status === 'active' ? styles.status : null]} />
                                             )
                                         }
-                                        {/* <View style={[{ backgroundColor: call.status === 'active' ? '#20c997' : '' }, call.status === 'active' ? styles.status : null]} /> */}
                                     </View>
                                     <View style={[flex1]}>
                                         <RowSpaceBetween style={pb5}>
@@ -94,7 +93,6 @@ const styles = StyleSheet.create({
     },
     status: {
         borderWidth: 3,
-        borderColor: isDark() ? colors.darkModeVar2 : colors.white,
         position: 'absolute',
         bottom: 2,
         right: 10,
@@ -104,7 +102,6 @@ const styles = StyleSheet.create({
     },
     statusTick: {
         borderWidth: 1.5,
-        borderColor: isDark() ? colors.darkModeVar2 : colors.white,
         position: 'absolute',
         bottom: 4,
         right: 10,

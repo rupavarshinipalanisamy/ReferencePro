@@ -8,6 +8,7 @@ interface CustomTextInputProps extends TextInputProps {
   placeholder?: string;
   value?: string|undefined;
   onChangeText?: (text: string) => void;
+  textColor ?: string; 
 }
 
 export const CustomTextInput: React.FC<CustomTextInputProps> = ({
@@ -16,10 +17,12 @@ export const CustomTextInput: React.FC<CustomTextInputProps> = ({
   onChangeText,
   secureTextEntry,
   keyboardType,
+  textColor,
 }) => {
   return (
     <View >
       <InputData
+        style = {{color : textColor || colors.black}}
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}

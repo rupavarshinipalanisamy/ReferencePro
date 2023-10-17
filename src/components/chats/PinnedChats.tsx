@@ -44,14 +44,13 @@ const PinnedChats = ({ selectedCards, onCardSelection }: PinnedChatsProps) => {
                                 <View style={[flexRow]}>
                                     <View>
                                         <Image source={chat.profileImg} style={styles.profileImg} />
-                                        {/* <View style={[{ backgroundColor: chat.status === 'active' ? '#20c997' : '' }, chat.status === 'active' ? styles.status : null]} /> */}
                                         {
                                             selectedCards.includes(chat.id) ? (
-                                                <View style={[{ backgroundColor: colors.green }, styles.statusTick, alignItemsCenter, justyfyCenter]} >
+                                                <View style={[{ backgroundColor: colors.green, borderColor: isDark() ? colors.darkModeVar2 : colors.white, }, styles.statusTick, alignItemsCenter, justyfyCenter]} >
                                                     <CustomIcon name='check' size={10} color={colors.white} type='entypo' />
                                                 </View>
                                             ) : (
-                                                <View style={[{ backgroundColor: chat.status === 'active' ? '#20c997' : '' }, chat.status === 'active' ? styles.status : null]} />
+                                                <View style={[{ backgroundColor: chat.status === 'active' ? '#20c997' : '', borderColor: isDark() ? colors.darkModeVar2 : colors.white, }, chat.status === 'active' ? styles.status : null]} />
                                             )
                                         }
                                     </View>
@@ -199,7 +198,6 @@ const styles = StyleSheet.create({
     },
     status: {
         borderWidth: 3,
-        borderColor: isDark() ? colors.darkModeVar2 : colors.white,
         position: 'absolute',
         bottom: 5,
         right: 10,
@@ -209,7 +207,6 @@ const styles = StyleSheet.create({
     },
     statusTick: {
         borderWidth: 1.5,
-        borderColor: isDark() ? colors.darkModeVar2 : colors.white,
         position: 'absolute',
         bottom: 4,
         right: 10,

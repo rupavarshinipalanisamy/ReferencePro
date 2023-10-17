@@ -44,12 +44,11 @@ alignItems:center;
 `
 export const InputData = styled(TextInput)`
 font-size: 14px;
-color:${colors.black};
+
 padding:10px;
 `
 export const IconInputContainer = styled(View)`
 borderBottomWidth: 1px;
-borderBottomColor: ${ isDark() ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor};
 flexDirection: row;
 marginVertical:7px;
 `

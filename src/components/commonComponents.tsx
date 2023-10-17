@@ -218,7 +218,7 @@ export const TabControl: React.FC<TabControlProps> = ({ tabs, activeTab, onTabPr
                                     { backgroundColor: activeTab === tabInfo.label ? colors.white : (isDark() ? colors.greyVar3 : colors.purpleVar2) },
                                 ]}
                             >
-                                <Text style={styles.roundNumberText}>{tabInfo.count}</Text>
+                                <Text style={[styles.roundNumberText, {color: isDark() ? colors.darkModeVar1 : colors.purpleVar3,}]}>{tabInfo.count}</Text>
                             </View>
                         )}
                     </View>
@@ -644,7 +644,7 @@ export const BottomTabBar = () => {
                                 </View>
                                 {
                                     item.id === 1 || item.id == 2 ? (
-                                        <View style={styles.unredBadge}>
+                                        <View style={[styles.unredBadge, {backgroundColor: isDark() ? colors.redVar2 : colors.red,}]}>
                                             <Text style={styles.unredBadgeText}>2</Text>
                                         </View>
                                     ) : (
@@ -895,11 +895,9 @@ const styles = StyleSheet.create({
     },
     roundNumberText: {
         textAlign : 'center',
-        color: isDark() ? colors.darkModeVar1 : colors.purpleVar3,
         fontSize: 12,
     },
     unredBadge: {
-        backgroundColor: isDark() ? colors.redVar2 : colors.red,
         position: 'absolute',
         left: 20,
         bottom: 28,

@@ -26,7 +26,7 @@ const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
     return (
         <View style={[{ backgroundColor: isDark() ? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
             <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={[flexRow, spaceBetween, mt20, alignSelfCenter, p10, borderRadius10, styles.archiveCard, mb15]}>
+                <View style={[flexRow, spaceBetween, mt20, alignSelfCenter, p10, borderRadius10, styles.archiveCard, mb15, {backgroundColor: isDark() ? colors.darkModeVar4 : colors.purpleVar1,}]}>
                     <View style={[flexRow, spaceEvenly]}>
                         <ArchiveIconBlackIcon />
                         <H16GreyVar4Bold600Text style={[ml15, { letterSpacing: 0.5 }]}>{labels.Archived}</H16GreyVar4Bold600Text>
@@ -56,11 +56,11 @@ const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
                                         <Image source={chat.profileImg} style={styles.profileImg} />
                                         {
                                             selectedCards.includes(chat.id) ? (
-                                                <View style={[{ backgroundColor: colors.green }, styles.statusTick, alignItemsCenter, justyfyCenter]} >
+                                                <View style={[{ backgroundColor: colors.green, borderColor: isDark() ? colors.darkModeVar2 : colors.white, }, styles.statusTick, alignItemsCenter, justyfyCenter]} >
                                                     <CustomIcon name='check' size={10} color={colors.white} type='entypo' />
                                                 </View>
                                             ) : (
-                                                <View style={[{ backgroundColor: chat.status === 'active' ? '#20c997' : '' }, chat.status === 'active' ? styles.status : null]} />
+                                                <View style={[{ backgroundColor: chat.status === 'active' ? '#20c997' : '', borderColor: isDark() ? colors.darkModeVar2 : colors.white}, chat.status === 'active' ? styles.status : null]} />
                                             )
                                         }
                                     </View>
@@ -193,7 +193,6 @@ const styles = StyleSheet.create({
     },
     status: {
         borderWidth: 3,
-        borderColor: isDark() ? colors.darkModeVar2 : colors.white,
         position: 'absolute',
         bottom: 2,
         right: 10,
@@ -203,7 +202,6 @@ const styles = StyleSheet.create({
     },
     statusTick: {
         borderWidth: 1.5,
-        borderColor: isDark() ? colors.darkModeVar2 : colors.white,
         position: 'absolute',
         bottom: 4,
         right: 10,
@@ -214,7 +212,6 @@ const styles = StyleSheet.create({
     archiveCard: {
         height: 45,
         width: 0.90 * DevWidth,
-        backgroundColor: isDark() ? colors.darkModeVar4 : colors.purpleVar1,
         borderRadius: 10
     },
     profileImg: {
