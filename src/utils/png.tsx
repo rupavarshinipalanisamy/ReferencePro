@@ -30,3 +30,18 @@ export const MediaImg3 = require('../../assets/images/png/mediaImg3.png');
 export const MediaImg4 = require('../../assets/images/png/mediaImg4.png');
 export const QrCodeImg = require('../../assets/images/png/qrcode.png');
 export const UserImg = require('../../assets/images/png/userImg.png');
+export const StatusPic1 = require('../../assets/images/png/status-pic1.png');
+export const StatusPic2 = require('../../assets/images/png/status-pic2.png');
+export const StatusPic3 = require('../../assets/images/png/status-pic3.png');
+export const StatusPic4 = require('../../assets/images/png/status-pic4.png');
+export const StatusPic5 = require('../../assets/images/png/status-pic5.png');
+export const ViewPic1 = require('../../assets/images/png/view-pic1.png')
+export const ViewPic2 = require('../../assets/images/png/view-pic2.png')
+export const ViewPic3 = require('../../assets/images/png/view-pic3.png')
+export const MutePic1 = require('../../assets/images/png/mute-pic1.png')
+export const MutePic2 = require('../../assets/images/png/mute-pic2.png')
+export const StatusImg1 = require('../../assets/images/png/statusImg1.png')
+
+
+
+

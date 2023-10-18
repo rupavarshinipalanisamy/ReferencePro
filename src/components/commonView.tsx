@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: colors.greyVar4
+    // borderColor: colors.greyVar4
 
   }
 });

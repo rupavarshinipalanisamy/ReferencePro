@@ -297,33 +297,33 @@ export type CommonModalProps = {
 //   isVisible,
 //   onClose,
 // }) => {
-//   const [isChecked, setIsChecked] = useState<string | null>(null);
+  // const [isChecked, setIsChecked] = useState<string | null>(null);
 
 
-//   const toggleCheckbox = (status: string) => {
-//     setIsChecked(status);
-//   };
+  // const toggleCheckbox = (status: string) => {
+  //   setIsChecked(status);
+  // };
 
-//   const renderRadio = (status: string) => {
-//     return (
-//       <><RadioButton
-//         onPress={() => toggleCheckbox(status)}>
-//         <CheckBox style={{ backgroundColor: isChecked === status ? colors.purpleVar3 : 'transparent' }}>
-//           {isChecked && (
-//             <CustomIcon name="check" size={16} color={colors.white} type={'MaterialCommunityIcons'} />)}
-//         </CheckBox>
-//         <H16fontNormalGray style={[mh10, justyfyCenter]}>{status}</H16fontNormalGray>
-//       </RadioButton>
-//       </>
-//     );
-//   };
+  // const renderRadio = (status: string) => {
+  //   return (
+  //     <><RadioButton
+  //       onPress={() => toggleCheckbox(status)}>
+  //       <CheckBox style={{ backgroundColor: isChecked === status ? colors.purpleVar3 : 'transparent' }}>
+  //         {isChecked && (
+  //           <CustomIcon name="check" size={16} color={colors.white} type={'MaterialCommunityIcons'} />)}
+  //       </CheckBox>
+  //       <H16fontNormalGray style={[mh10, justyfyCenter]}>{status}</H16fontNormalGray>
+  //     </RadioButton>
+  //     </>
+  //   );
+  // };
 
-//   const buttonPress = () => {
-//     if (isChecked) {
-//       console.log(`Selected status: ${isChecked}`);
-//     }
-//     onClose();
-//   }
+  // const buttonPress = () => {
+  //   if (isChecked) {
+  //     console.log(`Selected status: ${isChecked}`);
+  //   }
+  //   onClose();
+  // }
 //   return (
 //     <View style={{ flex: 1 }}>
 //       <Modal transparent={true} animationType="slide" visible={isVisible}
@@ -337,19 +337,19 @@ export type CommonModalProps = {
 //             <View>
 //               <H18fontBoldBlack>{labels.clearAllChats1}</H18fontBoldBlack>
 //               <H16fontNormalGray>{labels.deleteMsg}</H16fontNormalGray>
-//               {clearAllChats.map((data, index) => {
-//                 return (
-//                   <View key={data.id} style={[flexRow, spaceBetween]}>
-//                     <View style={{ paddingVertical: 10 }}>
-//                       <TouchableOpacity>
-//                         <View key={data.id}>
-//                           {renderRadio(data.status)}
-//                         </View>
-//                       </TouchableOpacity>
-//                     </View>
-//                   </View>
-//                 );
-//               })}
+              // {clearAllChats.map((data, index) => {
+              //   return (
+              //     <View key={data.id} style={[flexRow, spaceBetween]}>
+              //       <View style={{ paddingVertical: 10 }}>
+              //         <TouchableOpacity>
+              //           <View key={data.id}>
+              //             {renderRadio(data.status)}
+              //           </View>
+              //         </TouchableOpacity>
+              //       </View>
+              //     </View>
+              //   );
+              // })}
 //             </View>
 
 //             <ButtonContainer1 >
@@ -588,24 +588,26 @@ interface CustomModalProps {
   isVisible: boolean;
   onClose: () => void;
   contentComponent: React.ReactNode;
-  image ? : React.ReactNode;
-  headingText ?: string;
+  iconName: string;
+  iconType: string;
+  iconSize: number;
 }
 
 
-export const CustomModal: React.FC<CustomModalProps> = ({ isVisible, onClose, contentComponent ,image,headingText}) => {
+export const IconModal: React.FC<CustomModalProps> = ({ isVisible, onClose, contentComponent, iconName, iconType, iconSize }) => {
   return (
     <Modal transparent={true} animationType="slide" visible={isVisible} onRequestClose={onClose}>
       <View style={{ flex: 1 }}>
         <ModalContainer>
           <HalfCircle2 />
-          <ModalContent1>
-          <View style={{ justifyContent: 'center', alignItems: 'center',bottom:10 }}>
-             {image}
+          <ModalContent1 style={{}}>
+            <View style={{ backgroundColor: colors.purpleVar3, height: 47, width: 47, borderRadius: 25, bottom: 25, alignSelf: 'center', justifyContent: 'center' }}>
+              <View style={[alignItemsCenter, justyfyCenter]}>
+                <CustomIcon name={iconName} size={iconSize} color={colors.white} type={iconType} />
+              </View>
             </View>
-            <H16font600Black style={[mh15]}>{headingText}</H16font600Black>
             {contentComponent}
-            </ModalContent1>
+          </ModalContent1>
         </ModalContainer>
       </View>
     </Modal>

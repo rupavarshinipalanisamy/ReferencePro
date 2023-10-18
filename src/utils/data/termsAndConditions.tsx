@@ -12,7 +12,7 @@ export type termsAndConditionsProps = {
 
 }
 
-const termText=()=>{
+export const termText=()=>{
     return(
         <H14font400Gray4 style={[justyfyCenter, { lineHeight: 20, letterSpacing: 1, marginVertical: 20 }]}>Lorem      ipsum     dolor   sit     amet,   consectetur{'\n'}
         adipiscing  elit, sed  do  eiusmod tempor incididunt{'\n'}ut  labore   et  dolore  magna    aliqua. Ut   enim  ad{'\n'}
@@ -21,7 +21,7 @@ const termText=()=>{
     )
 }
 
-const agreeText=(text1:string,text2:string)=>{
+export const agreeText=(text1:string,text2:string)=>{
     return(
         <View style={{flexDirection:'row',marginVertical:5}}>
         <CheckCircleIcon/>
@@ -49,8 +49,6 @@ const TermsAndConditions = (props: termsAndConditionsProps) => {
             {termText()}
             {agreeText(labels.agreeText,labels.termsandcondition1)}
             {agreeText(labels.agreeText,labels.privacyPolicy)}
-
-
             </View>
          
         </MainContainer>

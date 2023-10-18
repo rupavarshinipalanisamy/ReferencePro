@@ -52,4 +52,10 @@ export const screenName = {
     StatusOnlyShareWith : 'StatusOnlyShareWith',
     StatusMyContactExcept : 'StatusMyContactExcept',
     EditAccountSettings : 'EditAccountSettings',
+    Managedevices: 'ManageDevices',
+    PrivacyPolicy: 'PrivacyPolicy',
+    NoStatus: 'NoStatus',
+    StatusAdd:'StatusAdd',
+    MyStatus:'MyStatus',
+    FriendStatus:'FriendStatus',
 };

@@ -39,6 +39,8 @@ import ConImg7 from '../../assets/images/conImg7.svg'
 import ConImg8 from '../../assets/images/conImg8.svg'
 import ConImg9 from '../../assets/images/conImg9.svg'
 import CheckCircle from  '../../assets/images/check-circle.svg'
+import StatusPro from '../../assets/images/status-pic.svg'
+
 
 
 
@@ -158,4 +160,7 @@ export const ContactImg9 = () => (
 );
 export const CheckCircleIcon = () => (
     <CheckCircle />
+);
+export const MyStatusPic = () => (
+    <StatusPro />
 );

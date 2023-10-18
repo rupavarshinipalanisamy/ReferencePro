@@ -144,6 +144,16 @@ export const H15Red = styled(Text)`
   ${h8};
   ${letterSpacing03};
 `
+export const H14font500Gray4= styled(Text)`
+  ${textcolorGray};
+  ${h9};
+  ${fontRegular};
+`
+export const H14font400Black= styled(Text)`
+  ${black};
+  ${h9};
+  ${fontBold400};
+`
 export const H15Grey = styled(Text)`
   ${h8};
   ${textcolorGray};
@@ -226,6 +236,11 @@ export const H14BlackVar2Bold400Text = styled(Text)`
 export const H14purpleVar3Text = styled(Text)`
   ${h9};
   ${purpleVar3};
+`;
+
+export const H14redText = styled(Text)`
+  ${h9};
+  ${red};
 `;
 export const H14blueVar1Text = styled(Text)`
   ${h9};
@@ -327,6 +342,11 @@ ${h9};
 ${textcolorGray};
 ${fontBold400}
 `
+export const H14font400White = styled(Text)`
+${h9};
+${white};
+${fontBold400}
+`
 
 export const H20font600Black = styled(Text)`
   ${h5};
@@ -353,6 +373,12 @@ export const H16font600Black = styled(Text)`
   ${h7};
   ${fontBold600}
   ${black};
+`;
+
+export const H15font500White = styled(Text)`
+  ${h8};
+  ${fontRegular}
+  ${white};
 `;
 
 

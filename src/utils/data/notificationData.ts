@@ -5,44 +5,33 @@ export const notificationData1=[
         id:1,
         title:labels.notifiTone,
         subtitle:labels.bubble,
-        iconName: 'chevron-right',
-        iconType: "octicons", 
-        iconSize: 20,
+       
 
     },
     {
         id:2,
-        title:'',
-        subtitle:'',
-        iconName: 'chevron-right',
-        iconType: "octicons", 
-        iconSize: 20,
+        title:labels.vibrate,
+        subtitle:labels.default
+      
     },
-    {
-        id:3,
-        title:'',
-        function:''
-    },
-    {
-        id:4,
-        title:'',
-        function:''
-    },
+ 
 
 ]
 
 export const notificationData2=[
     {
         id:1,
-        title:'',
-        subtitle:'',
-        icon:''
+        title:labels.ringtone,
+        subtitle:labels.bubble,
+       
+
     },
     {
         id:2,
-        title:'',
-        subtitle:'',
-        icon:''
+        title:labels.vibrate,
+        subtitle:labels.default
+      
     },
+ 
 
 ]

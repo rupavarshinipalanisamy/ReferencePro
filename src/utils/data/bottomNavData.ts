@@ -24,7 +24,7 @@ export const bottomNavData = [
         iconName : 'record-circle-outline',
         iconType : "MaterialCommunityIcons",
         iconSize : 25,
-        screenName : screenName.ChatView,
+        screenName : screenName.NoStatus,
     },
     {
         id: 4,

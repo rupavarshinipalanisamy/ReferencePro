@@ -1,12 +1,11 @@
 import React, { Fragment, useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View,StatusBar } from 'react-native';
 import { IconBackground, MainContainer, TopContainerWhiteCard } from '../../components/commonView';
 import { colors } from '../../utils/colors';
-import { StatusBar } from 'react-native';
 import CustomIcon from '../../utils/Icons';
 import { StyleSheet } from 'react-native';
 import SettingAvatar from '../../../assets/images/settings-avatar.svg'
-import { justyfyCenter, ml10, alignItemsCenter, flexRow, ph10, mt20, m15 } from '../../components/commonStyles';
+import { justyfyCenter, ml10, alignItemsCenter, flexRow, ph10, mt20, m15, m30, mh15, mh25 } from '../../components/commonStyles';
 import { InputContainer1 } from '../../styledComponent/styledComponent';
 import { H14font400Gray4, H15font500Black, H16fontBoldBlack } from '../../components/commonText';
 import { ScrollView } from 'react-native';
@@ -39,7 +38,7 @@ const SettingsScreen = (props: settingsScreenProps) => {
                     </View>
                 </TopContainerWhiteCard>
                 <ScrollView>
-                    <View style={[m15]}>
+                    <View style={[mh25]}>
                         <View style={[{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }, styles.cardSurface]}>
                             <View style={{ flexDirection: 'row' }}>
                                 <SettingAvatar />

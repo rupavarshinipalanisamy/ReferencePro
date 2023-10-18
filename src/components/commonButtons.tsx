@@ -3,6 +3,7 @@ import { StyleProp, View, ViewStyle } from 'react-native';
 import { LongButton, TwoSmallButton } from './commonView';
 import { H15font600, H15fontBold600 } from './commonText';
 import { DevWidth } from '../utils/device';
+import { colors } from '../utils/colors';
 
 //================================ LONG BUTTON =============================//
 
@@ -32,6 +33,7 @@ type SmallButtonProps = {
   title: string;
   onChange: () => void;
   borderWidth?: number;
+  borderWidthColor?: string;
   backgroundColor: string;
   textColor: string;
   width?: string | number;
@@ -44,6 +46,9 @@ export const SmallButton: React.FC<SmallButtonProps> = ({
   backgroundColor,
   textColor,
   borderWidth,
+  borderWidthColor=colors.greyVar4,
+
+  // borderColor,
   width = DevWidth / 2.4
 }) => {
   return (
@@ -53,6 +58,7 @@ export const SmallButton: React.FC<SmallButtonProps> = ({
           backgroundColor: backgroundColor,
           borderWidth: borderWidth,
           width: width,
+          borderColor:borderWidthColor,
         }}
         onPress={onChange}>
         <H15fontBold600 style={{ color: textColor }}> {title}</H15fontBold600>
