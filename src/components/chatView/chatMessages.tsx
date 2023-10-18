@@ -1,15 +1,15 @@
 
-import React, { Fragment, useState, useRef } from 'react';
-import { Text, View, ImageBackground, StyleSheet, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Image, Animated, StatusBar } from 'react-native';
-import { flexRow, pb10, pl15, pl6, pt10, spaceBetween } from '../../components/commonStyles'
+import React, { useRef } from 'react';
+import { Text, View, TouchableOpacity, Animated } from 'react-native';
+import { pl6 } from '../../components/commonStyles'
 import {
     PanGestureHandler,
     State as GestureState,
-    GestureHandlerRootView,
 } from 'react-native-gesture-handler';
 import { colors } from '../../utils/colors';
+import CustomIcon from '../../utils/Icons';
 
-const ChatMessage = ({ message, onSwipeRight, onPress, hanldeLogPress, selectedCards, toggleCardSelection }) => {
+const ChatMessage = ({ message, onSwipeRight, onPress, hanldeLogPress, selectedCards, toggleCardSelection, editedMessageText }) => {
     const translateX = useRef(new Animated.Value(0)).current;
 
     const onSwipeGestureEvent = Animated.event(
@@ -75,6 +75,19 @@ const ChatMessage = ({ message, onSwipeRight, onPress, hanldeLogPress, selectedC
                 >
                     <View style={{ flexDirection: 'row' }}>
                         <Text style={{ fontSize: 14, color: colors.greyVar4 }}>{message.time}</Text>
+                        {message.id === 8 && (
+                            <>
+                                {editedMessageText == null ? (
+                                    <Text>{editedMessageText}</Text>
+                                ) : (
+                                    <View style={{ alignItems: 'center', justifyContent: 'center', marginRight: 5, marginLeft: 5 }}>
+                                        <CustomIcon name='circle' type="font-awesome" size={6} color={colors.greyVar3} />
+                                    </View>
+                                )}
+                            </>
+                        )} 
+
+                        {editedMessageText == null ? <Text>{editedMessageText}</Text> : <Text>{message.text}</Text>}
                         <Text style={pl6}> {message.icon}</Text>
                     </View>
                     <Text>{message.message}</Text>

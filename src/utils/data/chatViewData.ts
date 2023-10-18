@@ -11,7 +11,7 @@ export const chatMessages = [
     { id: 5, message: receiveMessage3(), type: "receivemsg", time: "8:16 PM" },
     { id: 6, message: sentMessage3(), type: "sentmsg", time: "8:17 PM", icon: Bluetick() ,msg:Reactmsg()},
     { id: 7, message: receiveMessage4(), type: "receivemsg", time: "8:16 PM" },
-    { id: 8, message: sentMessage4(), type: "sentmsg", time: "8:17 PM", icon: Tick() }
+    { id: 8, message: sentMessage4(), type: "sentmsg", time: "8:17 PM", icon: Tick(),text:'Edited',iconName:'circle',iconType:'font-awesome'}
   ];
 
   export const Emojidata = [

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, TouchableOpacity, View, StyleSheet, TouchableWithoutFeedback, Modal as RNmodal } from 'react-native';
+import { Text, TouchableOpacity, View, StyleSheet, TouchableWithoutFeedback, Modal as RNmodal, TextInput } from 'react-native';
 import CreatePasswordLogo from '../../assets/images/modal-logo.svg';
 import GalleryLogo from '../../assets/images/gallery-icon.svg';
 import OnlineLogo from '../../assets/images/lastseen-logo.svg';
@@ -22,7 +22,7 @@ import { LongPurpleButton, SmallButton } from './commonButtons';
 import { RadioBtn } from './commonComponents';
 import { useTheme } from '../Theme/ThemeContext';
 import { DevHeight, DevWidth } from '../utils/device';
-import { All, ReactMsgTabControl } from './chatViewComponents';
+import { All, EditFooterView, ReactMsgTabControl } from './chatViewComponents';
 import Modal from 'react-native-modal';
 import { FooterChatView } from '../pages/chatView/Messagecomponents/messages';
 
@@ -702,10 +702,7 @@ export const ReactModal = ({ isVisible, closeModal, selectedTab, handleTabPress,
     <Modal
       style={{ margin: 0, position: 'absolute', bottom: 0, width: '100%' }}
       isVisible={isVisible}
-      onBackdropPress={closeModal}
-
-
-    >
+      onBackdropPress={closeModal}>
       <TouchableWithoutFeedback onPress={closeModal}>
         <View style={{ flex: 1 }}>
           <View
@@ -732,7 +729,7 @@ export const ReactModal = ({ isVisible, closeModal, selectedTab, handleTabPress,
 };
 
 
-
+// =========================================================  EDIT MODAL  =======================================
 export const EditModal = ({ isVisible, onClose }) => {
   return (
     <Modal isVisible={isVisible} onBackdropPress={onClose} backdropOpacity={0.5} style={{ alignItems: 'flex-end', marginTop: DevHeight / 1.5 }}>
@@ -744,11 +741,31 @@ export const EditModal = ({ isVisible, onClose }) => {
     </Modal >
   );
 };
-export const EditModal2 = ({ isVisible, onClose }) => {
+export const EditModal2 = ({ isVisible, onClose,onEditModal2Press }) => {
+
+  const [inputText, setInputText] = useState('');
+  const handleDone = () => {
+    onEditModal2Press(inputText); // Pass the input text to the function in the parent component
+  };
   return (
     <Modal isVisible={isVisible} onBackdropPress={onClose} backdropOpacity={0} style={{ margin: 0, position: 'absolute', bottom: 0, width: '100%' }}>
-      <View >
-        <FooterChatView />
+      <View style={{ backgroundColor: colors.white, alignItems: 'center', height: DevHeight / 9.5, paddingHorizontal: 20, borderTopLeftRadius: 20, borderTopRightRadius: 20, flexDirection: 'row', justifyContent: 'center' }}>
+        <View style={{ width: DevWidth / 1.3, height: 40, backgroundColor: 'white', borderColor: colors.greyVar2, borderWidth: 2, borderRadius: 6, marginTop: 30, bottom: 8 }}>
+          <View style={{ flexDirection: 'row', width: '80%', height: 40, paddingHorizontal: 2, alignItems: 'center' }}>
+            <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginLeft: 15 }}>
+              <CustomIcon name='smiley' type="octicons" size={16} color={colors.greyVar4} />
+              <TextInput
+                style={{ flex: 1, marginLeft: 5, color: colors.greyVar4, fontSize: 14, fontWeight: '400' }}
+                placeholder="Type here..."
+              />
+            </View>
+          </View>
+        </View>
+        <TouchableOpacity style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', bottom: 15 }}
+        onPress={handleDone}
+        >
+          <CustomIcon name='done' type="MaterialIcons" color={colors.white} size={18} />
+        </TouchableOpacity>
       </View>
     </Modal>
   );
