@@ -292,6 +292,11 @@ export const labels = {
     viewContact:'View Contact',
     report:'Report',
     blockModalTitle:'Mute Horace Keene Status?',
+    editCont:'Edit Contact',
+    Horace1:'Horace',
+    Keene:'Keene',
+    addContact:'Add Contact',
+    termTextCon:'Lorem  ipsum  dolor sit amet,  consectetur  adipiscing  elit, sed do  eiusmod  tempor  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis  nostrud exercitation  ullamco  aliquip  ex  ea commodo  consequat.'
     
 
 

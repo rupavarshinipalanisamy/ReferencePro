@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { Fragment, useState } from 'react';
 import { StatusBar, Text, TouchableOpacity, View } from 'react-native';
-import { IconModal, } from '../../components/commonModal';
+import { IconModal, ThemeModal, } from '../../components/commonModal';
 import { flexRow, mt20, alignItemsCenter, ph15, mh20, spaceBetween, justyfyCenter, mh30, mh5, mt15, mt8, mv10, mv20, ph5, mt10, ph10, mt30 } from '../../components/commonStyles';
 import { H16font900Black, H16fontNormalGray4, H12fontNormalGray, H14font400Gray4, H14font500Gray4, H16font600Black } from '../../components/commonText';
 import { MainContainer, RowSpaceBetween, TopContainerWhiteCard } from '../../components/commonView';
@@ -15,6 +15,7 @@ import { SmallButton } from '../../components/commonButtons';
 import { DevWidth } from '../../utils/device';
 import { colors } from '../../utils/colors';
 import { CheckBox } from '../../styledComponent/styledComponent';
+import { isDark } from '../../Theme/ThemeContext';
 
 
 export type chatSettingsProps = {
@@ -289,7 +290,7 @@ const ChatSettings = (props: chatSettingsProps) => {
                             <CustomIcon
                                 name="chevron-left"
                                 size={20}
-                                color={colors.black}
+                                color={isDark()? colors.white:colors.black}
                                 type="octicons"
                             />
                             <H16font900Black style={[ph15]}>
@@ -299,6 +300,8 @@ const ChatSettings = (props: chatSettingsProps) => {
                     </View>
                 </TopContainerWhiteCard>
                 <View style={[mh20, mt20]}>
+
+                    <Text style={{color: isDark() ? colors.blueVar3 : colors.black}}>gjkjklkhlkh</Text>
 
                     <H16fontNormalGray4>{labels.theme} </H16fontNormalGray4>
                     <H12fontNormalGray>{labels.light}</H12fontNormalGray>
@@ -317,16 +320,21 @@ const ChatSettings = (props: chatSettingsProps) => {
                                     <ToggleSwitch value={toggleVisible} onToggle={handleToggle} />
 
                                 ) : (
-                                    <CustomIcon name='chevron-right' size={15} color={colors.greyVar4} type='octicons' />
+                                    <CustomIcon name='chevron-right' size={15} color={isDark()?colors.purpleVar2: colors.black} type='octicons' />
                                 )}
                             </View>
                         );
                     })}
                 </View>
                 {selectedModalId === 1 && (
-                    <IconModal isVisible={true}
-                        onClose={closeModal}
-                        contentComponent={<SettingsModal />} iconName={'image-plus'} iconType='MaterialCommunityIcons' iconSize={25} />
+                    <ThemeModal
+                    isVisible={true}
+                    onClose={closeModal}
+                    />
+
+                    // <IconModal isVisible={true}
+                    //     onClose={closeModal}
+                    //     contentComponent={<SettingsModal />} iconName={'image-plus'} iconType='MaterialCommunityIcons' iconSize={25} />
                 )}
 
                 {selectedModalId === 4 && (

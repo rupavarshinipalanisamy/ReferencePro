@@ -61,6 +61,7 @@ import NoStatus from './src/pages/status/noStatus';
 import StatusAdd from './src/pages/status/statusAdd';
 import MyStatus from './src/pages/status/myStatus';
 import FriendStatus from './src/pages/status/friendStatus';
+import EditContact from './src/pages/contact/editContact';
 
 const Stack = createNativeStackNavigator();
 
@@ -127,6 +128,7 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.StatusAdd} component={StatusAdd} />
             <Stack.Screen name={screenName.MyStatus} component={MyStatus} />
             <Stack.Screen name={screenName.FriendStatus} component={FriendStatus} />
+            <Stack.Screen name={screenName.EditContact} component={EditContact} />
         </Stack.Navigator>
     );
 };

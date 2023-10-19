@@ -1,190 +1,126 @@
-import React, { Fragment, useState } from 'react';
-import { ScrollView, StatusBar, Text, View } from 'react-native';
-import { MainContainer } from '../../components/commonView';
-import CustomIcon from '../../utils/Icons';
+import React, { useState } from 'react';
+import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { alignItemsCenter, alignSelfCenter, flex1, flexRow, justifyEnd, justifyStart, justyfyCenter, mh20, mh30, ml10, ml30, mr30, mt20, mv20, pv20 } from '../../components/commonStyles';
 import { colors } from '../../utils/colors';
-import { IconInputContainer } from '../../styledComponent/styledComponent';
-import { CustomTextInput } from '../../components/commonInputFields';
+import { DevHeight, DevWidth } from '../../utils/device';
+import CustomIcon from '../../utils/Icons';
+import { H18BlackBoldText600 } from '../../components/commonText';
 import { labels } from '../../utils/labels';
-import { justyfyCenter, ml10, ml15, mt15, pv20 } from '../../components/commonStyles';
-import { Controller, useForm } from 'react-hook-form';
-import { minLengthValidation, requiredValidation, validationSchema } from '../../utils/validationconfig';
-import { DevHeight } from '../../utils/device';
-import { ButtonNow } from '../../components/commonButtons';
+import { RowSpaceBetween } from '../../components/commonView';
+import { UserImg } from '../../utils/png';
+import { ButtonContainer, ButtonContainer1, IconInputContainer } from '../../styledComponent/styledComponent';
+import { CustomTextInput } from '../../components/commonInputFields';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
+import { SearchHeader } from '../Media/MediaCommonHeader';
+import { LongPurpleButton } from '../../components/commonButtons';
 
-export type addContactProps = {
+export type CreateGroupProps = {
 
 }
 
 
-const AddContact = (props: addContactProps) => {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [userName, setUserName] = useState('');
-    const [message, setMessage] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState<undefined>()
-    const [dob, setDOB] = useState<undefined>()
-    const navigation = useNavigation()
+const AddContact = (props: CreateGroupProps) => {
+    const navigation = useNavigation();
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phoneNo: '',
+        dob:'',
+        message:'',
+    });
 
-
-
-    const formKeys = {
-        name: 'Email',
-    };
-    const {
-        handleSubmit,
-        control,
-        formState: { errors },
-    } = useForm();
-
-    const saveContact = (details: any) => {
-        navigation.navigate(screenName.ContactPage as never);
+    const handleInputChange = (key: string, value: string) => {
+        setFormData((prevData) => ({
+            ...prevData,
+            [key]: value,
+        }));
     };
 
-    const handleFirstName = (newFirstName: string) => {
-        setFirstName(newFirstName);
+    const handleSaveContact = () =>{
+        navigation.navigate(screenName.ContactPage as never)
     }
 
-    const handleLastName = (newLastName: string) => {
-        setLastName(newLastName);
-    }
-
-    const handleUserName = (newUserName: string) => {
-        setUserName(newUserName);
-    }
-
-    const handleMessage = (newMessage: string) => {
-        setMessage(newMessage);
-    }
-
-    const handlePhoneNumber = (newPhoneNumber: undefined) => {
-        setPhoneNumber(newPhoneNumber);
-    }
-
-    const handleDOB = (newDOB: undefined) => {
-        setDOB(newDOB);
-    }
+    const inputFields = [
+        {
+            key: 'firstName',
+            label: labels.firstName,
+            iconName: 'user',
+            iconType: 'Feather',
+        },
+        {
+            key: 'lastName',
+            label: labels.lastName,
+            iconName: 'user',
+            iconType: 'Feather',
+        },
+        {
+            key: 'email',
+            label: labels.emailaddress,
+            iconName: 'envelope',
+            iconType: 'SimpleLineIcons',
+        },
+        {
+            key: 'phoneNo',
+            label: labels.phNumber,
+            iconName: 'phone',
+            iconType: 'Feather',
+        },
+        {
+            key: 'dob',
+            label: labels.dob,
+            iconName: 'calendar-blank',
+            iconType: 'MaterialCommunityIcons',
+        },
+        {
+            key: 'message',
+            label: labels.inivitemsg,
+            iconName: 'chatbox-ellipses-outline',
+            iconType: 'Ionicons',
+        },
+    ];
 
     return (
-        <Fragment>
-            <MainContainer>
-                <StatusBar backgroundColor={colors.white} />
+        <View style={[flex1, { backgroundColor: colors.whiteVar0 }]} >
+          <SearchHeader headerText={labels.addContact}  />
 
-                <View style={{ backgroundColor: 'white', borderBottomStartRadius: 25, borderBottomEndRadius: 25, elevation: 4, height: DevHeight / 10, justifyContent: 'center' }}>
-                    <View style={{ flexDirection: 'row', marginHorizontal: 20 }}>
-                        <CustomIcon name='chevron-back-sharp' size={20} color={colors.black} type='Ionicons' />
-                        <Text style={{ color: 'black', fontSize: 17, fontWeight: '900' }}> Add Contact </Text>
-                    </View>
-
-                </View>
-                <ScrollView>
-                <View style={{ marginHorizontal: 20, marginTop: 20 }}>
-                    <IconInputContainer>
-                        <View style={[justyfyCenter]}>
-                            <CustomIcon name='person' size={20} color={colors.greyVar4} type='octicons' />
-                        </View>
-                        <CustomTextInput
-                            placeholder={labels.firstName}
-                            value={firstName}
-                            onChangeText={handleFirstName}
-                        />
-                    </IconInputContainer>
-                    <View style={[pv20]}>
-                        <IconInputContainer>
-                            <View style={[justyfyCenter]}>
-                                <CustomIcon name='person' size={20} color={colors.greyVar4} type='octicons' />
-                            </View>
-                            <CustomTextInput
-                                placeholder={labels.lastName}
-                                value={lastName}
-                                onChangeText={handleLastName}
-                            />
-                        </IconInputContainer>
-                    </View>
-                    <IconInputContainer>
-                        <View style={[justyfyCenter]}>
-                            <CustomIcon name='email-outline' size={20} color={colors.greyVar4} type='MaterialCommunityIcons' />
-                        </View>
-                        <Controller
-                            name={formKeys.name}
-                            control={control}
-                            render={({ field: { onChange, value } }) => (
+           
+            <View style={[flex1, mh30]}>
+                {
+                    inputFields.map((field) => (
+                        <View key={field.key}>
+                            <IconInputContainer>
+                                <View style={[justyfyCenter]}>
+                                    <CustomIcon name={field.iconName} size={20} color={colors.greyVar4} type={field.iconType} />
+                                </View>
                                 <CustomTextInput
-                                    placeholder={labels.emailaddress}
-                                    value={value}
-                                    onChangeText={onChange}
-                                    errorMessage={errors[formKeys.name]?.message.toString()}
+                                    placeholder={field.label}
+                                    value={formData[field.key]}
+                                    onChangeText={(text) => handleInputChange(field.key, text)}
                                 />
-                            )}
-                            rules={{
-                                required: requiredValidation(("labels.emailOrUserName")),
-                                minLength: minLengthValidation(
-                                    validationSchema.name.minLength,
-                                ),
-                            }}
-                        />
-                    </IconInputContainer>
-                    <View style={[pv20]}>
-                        <IconInputContainer>
-                            <View style={[justyfyCenter]}>
-                                <CustomIcon name='person' size={20} color={colors.greyVar4} type='octicons' />
-                            </View>
-                            <CustomTextInput
-                                placeholder={labels.userName}
-                                value={userName}
-                                onChangeText={handleUserName}
-                            />
-                        </IconInputContainer>
-                    </View>
-                    <IconInputContainer>
-                        <View style={[justyfyCenter]}>
-                            <CustomIcon name='phone' size={20} color={colors.greyVar4} type='Feather' />
+                            </IconInputContainer>
                         </View>
+                    ))
+                }
+           
+             
+            </View>
+           <View style={[mv20,mh20]}>
+           <LongPurpleButton title={labels.saveContact} onChange={handleSaveContact} />
+           </View>
+        </View>
+    )
+}
 
-                        <CustomTextInput
-                            placeholder={labels.phNumber}
-                            value={phoneNumber}
-                            onChange={handlePhoneNumber}
-                            keyboardType='numeric'
-                        />
-                    </IconInputContainer>
-                    <View style={[pv20]}>
-                        <IconInputContainer>
-                            <View style={[justyfyCenter]}>
-                                <CustomIcon name='calendar-clear-outline' size={20} color={colors.greyVar4} type='Ionicons' />
-                            </View>
-                            <CustomTextInput
-                                placeholder={labels.dob}
-                                value={dob}
-                                onChangeText={handleDOB}
-                            />
-                        </IconInputContainer>
-                    </View>
-                    <IconInputContainer>
-                        <View style={[justyfyCenter]}>
-                            <CustomIcon name='message-text-outline' size={20} color={colors.greyVar4} type='MaterialCommunityIcons' />
-                        </View>
-                        <CustomTextInput
-                            placeholder={labels.inivitemsg}
-                            value={message}
-                            onChangeText={handleMessage}
-                        />
-                    </IconInputContainer>
+const styles = StyleSheet.create({
+    status: {
+        borderWidth: 3,
+        borderColor: colors.white,
+        position: 'absolute',
+        bottom: 0,
+        left: 45
+    }
+});
 
-                    <View style={{ marginTop: 90 }}>
-                        <ButtonNow
-                            style={{ backgroundColor: colors.purpleVar3 }}
-                            textStyle={{ color: colors.white }}
-                            funCallback={handleSubmit(saveContact)}
-                            label={labels.saveContact} />
-                    </View>
-                </View>
-                </ScrollView>
-            </MainContainer>
-        </Fragment>
-    );
-};
-
-export default AddContact;
+export default AddContact

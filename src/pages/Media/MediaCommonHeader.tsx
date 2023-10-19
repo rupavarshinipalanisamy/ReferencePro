@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import ImageScreen from './Image';
 import { colors } from '../../utils/colors';
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, mt3, pb10, pl10, pl13, pt10, spaceBetween } from '../../components/commonStyles';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mt20, mt3, mt30, mt8, pb10, pl10, pl13, pt10, spaceBetween } from '../../components/commonStyles';
 import { TopContainerWhiteCard1 } from '../../components/commonView';
 import CustomIcon from '../../utils/Icons';
 import { H15Grey, H16Black600Text, H18BlackText, H18GreyVar4Text } from '../../components/commonText';
@@ -285,7 +285,7 @@ export const SearchHeader = (props: SearchHeader) => {
             <TopContainerWhiteCard1 height={DevHeight / 7.5}{...props}>
                 <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
                     <View style={[flexRow, spaceBetween]}>
-                        <View style={[flexRow]}>
+                        <View style={[flexRow,mt30]}>
                             <TouchableOpacity style={[justyfyCenter, alignItemsCenter, { marginTop: 2 }]}
                             onPress={navigation.goBack}
                             >

@@ -44,7 +44,7 @@ const App = (props: AppProps) => {
   return (
     <ThemeProvider>
       <View style={{ flex: 1 }}>
-        <RootNavigation initialRouteName={screenName.FriendStatus} />
+        <RootNavigation initialRouteName={screenName.EditContact} />
       </View>
     </ThemeProvider>
   );

@@ -14,14 +14,14 @@ import { MyStatusPic } from "../../utils/svg";
 import CustomIcon from "../../utils/Icons";
 import StatusView1 from '../../../assets/images/status-view1.svg'
 import { CustomModal } from "../../components/commonComponents";
-import { CallThreeDotsOption } from "../../utils/data/modalData";
+import { threeDotIcon } from "../../utils/data/statusData";
 
 export const StatusOptionModalComponent = () => {
     const navigation = useNavigation()
     return (
         <View>
             {
-                CallThreeDotsOption.map((item) => {
+                threeDotIcon.map((item) => {
                     return (
                         <TouchableOpacity key={item.id} onPress={() => navigation.navigate(item.screenName as never)} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
                             <View style={[flexRow]}>

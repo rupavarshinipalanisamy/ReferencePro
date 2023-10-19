@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, ScrollView, TouchableOpacity, Image, StyleSheet ,TextInput, Text} from 'react-native';
+import { View, ScrollView, TouchableOpacity, Image, StyleSheet ,TextInput} from 'react-native';
 import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh10, mh20, mt20, mt5, pl13 } from '../../components/commonStyles';
 import { H14font400Black, H14font400Gray4, H15Grey, H15font500Black } from '../../components/commonText';
 import { BottomTabBar, CustomModal } from '../../components/commonComponents'
@@ -10,11 +10,9 @@ import { screenName } from '../../utils/screenName';
 import StatusView from '../../../assets/images/status-view.svg'
 import StatusView1 from '../../../assets/images/status-view1.svg'
 import { labels } from '../../utils/labels';
-import { CallThreeDotsOption } from '../../utils/data/modalData';
 import { DevHeight, DevWidth } from '../../utils/device';
-import { mutedStatusData, statusData, viewedStatusData } from '../../utils/data/statusData';
+import { mutedStatusData, statusData, threeDotIcon, viewedStatusData } from '../../utils/data/statusData';
 import { AfterNavigation, BeforeNavigation } from './statusContainer';
-
 
 export interface StatusData {
     id: number;
@@ -32,19 +30,15 @@ export interface RecentStatusItemProps {
 const handleStatusItemClick = (id: string) => {
 };
 
-
 export const StatusItem: React.FC<RecentStatusItemProps> = ({ data, onPress, statusView, isMuted }) => (
     <View>
             <View style={isMuted ? styles.card2 : styles.card1}>
         <TouchableOpacity onPress={onPress}>
-
-                
         <View style={{ alignItems: 'center', justifyContent: 'center' }}>
             {statusView}
                     <Image source={data.image} style={{ position: 'absolute', height: 40, width: 40, borderRadius: 100 }} />
                 </View>
         </TouchableOpacity>
-
                 <View style={[mh10, mt5]}>
                     <H15font500Black>{data.name}</H15font500Black>
                     <H14font400Gray4>{data.time}</H14font400Gray4>
@@ -80,14 +74,13 @@ const showSecondScreen = route.params?.showSecondScreen === true;
     const closeCallOptionModal = () => {
         setCallOptionModal(false);
     }
-    const StatusOptionModalComponent = () => {
-        const navigation = useNavigation();
+    const StatusIconOptionModalComponent = () => {
         return (
             <View>
                 {
-                    CallThreeDotsOption.map((item) => {
+                    threeDotIcon.map((item) => {
                         return (
-                            <TouchableOpacity key={item.id} onPress={() => navigation.navigate(item.screenName as never)} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
+                            <TouchableOpacity key={item.id} onPress={() => {} } style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
                                 <View style={[flexRow]}>
                                     <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={colors.blackVar1} />
                                     <View style={[alignItemsCenter, justyfyCenter, pl13]}>
@@ -142,14 +135,12 @@ const showSecondScreen = route.params?.showSecondScreen === true;
                 isVisible={callOptionModal}
                 width={DevWidth * 0.55}
                 height={DevHeight * 0.4}
-                modalData={<StatusOptionModalComponent />}
+                modalData={<StatusIconOptionModalComponent />}
                 marginTop={160}
                 onClose={closeCallOptionModal}
             />
 
             <BottomTabBar />
-
-
         </View >
     )
 }
@@ -249,26 +240,3 @@ export default AllStatus
 
 
 
-// import { useNavigation, useRoute ,} from '@react-navigation/native';
-// import React, { useState } from 'react';
-// import Modal from 'react-native-modal';
-
-// import { Text, View, TouchableOpacity,  } from 'react-native';
-// import { screenName } from '../../utils/screenName';
-// import { AfterNavigation, BeforeNavigation } from './statusContainer';
-
-// export type allStatusProps = {};
-
-
-// const AllStatus = (props: allStatusProps) => {
-//   const route = useRoute();
-
-//   // Check if the parameter 'showSecondScreen' is set to true
-
-//   return (
-//     <View>
-//     </View>
-//   );
-// };
-
-// export default AllStatus;

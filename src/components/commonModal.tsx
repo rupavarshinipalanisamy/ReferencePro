@@ -1,31 +1,22 @@
-import React, { useState } from 'react';
-import { Modal, Text, TouchableOpacity, View } from 'react-native';
-import CreatePasswordLogo from '../../assets/images/modal-logo.svg';
-import GalleryLogo from '../../assets/images/gallery-icon.svg';
-import OnlineLogo from '../../assets/images/lastseen-logo.svg';
-import GroupLogo from '../../assets/images/group-logo.svg';
-import ThemeLogo from '../../assets/images/theme-logo.svg';
-import ArchieveLogo from '../../assets/images/archieve-logo.svg';
-import DeleteLogo from '../../assets/images/delete1-logo.svg';
-// import { ButtonBook,  } from './commonButtons';
-import { colors } from '../utils/colors';
-import { labels } from '../utils/labels';
-import { ButtonContainer1, CheckBox, HalfCircle, HalfCircle2, ModalContainer, ModalContent, ModalContent1 } from '../styledComponent/styledComponent';
-import { alignItemsCenter, flexRow, justyfyCenter, mb15, mh10, mh15, mh5, mt20, p5, pl10, pr10, spaceBetween } from './commonStyles';
-import { useNavigation } from '@react-navigation/native';
-import { screenName } from '../utils/screenName';
-import { H14font400Gray4, H16font600Black, H16fontNormalGray, H16fontNormalGray4, H18fontBoldBlack } from './commonText';
-import { chooseTheme, clearAllChats, deleteAllChats, groupsData, lastSee, profilePic } from '../utils/data/modalData';
-import { RadioButton, RadioButtonRound, SelectedRadioBtn } from './commonView';
-import CustomIcon from '../utils/Icons';
-import { LongPurpleButton } from './commonButtons';
-import { RadioBtn } from './commonComponents';
+// import React from 'react';
+// import { Modal, View } from 'react-native';
+// import CreatePasswordLogo from '../../assets/images/modal-logo.svg';
+// // import { ButtonBook,  } from './commonButtons';
+// import { colors } from '../utils/colors';
+// import { labels } from '../utils/labels';
+// import { HalfCircle, HalfCircle2, ModalContainer, ModalContent, ModalContent1 } from '../styledComponent/styledComponent';
+// import { alignItemsCenter, justyfyCenter } from './commonStyles';
+// import { useNavigation } from '@react-navigation/native';
+// import { screenName } from '../utils/screenName';
+// import { H14font400Gray4, H18fontBoldBlack } from './commonText';
+// import CustomIcon from '../utils/Icons';
+// import { LongPurpleButton } from './commonButtons';
 
-export type CommonModalProps = {
-  isVisible: boolean;
-  onClose: () => void;
+// export type CommonModalProps = {
+//   isVisible: boolean;
+//   onClose: () => void;
 
-}
+// }
 
 
 // export const ThemeModal: React.FC<CommonModalProps> = ({
@@ -534,7 +525,118 @@ export type CommonModalProps = {
 //   );
 // };
 
+import React, { useState } from 'react';
+import { Text, TouchableOpacity, View, StyleSheet, TouchableWithoutFeedback, Modal as RNmodal, TextInput } from 'react-native';
+import CreatePasswordLogo from '../../assets/images/modal-logo.svg';
 
+import ThemeLogo from '../../assets/images/theme-logo.svg';
+// import { ButtonBook,  } from './commonButtons';
+import { colors } from '../utils/colors';
+import { labels } from '../utils/labels';
+import { ButtonContainer1, CheckBox, HalfCircle, HalfCircle2, ModalContainer, ModalContent, ModalContent1 } from '../styledComponent/styledComponent';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mb15, mh10, mh15, mh5, mt20, p5, pl10, pr10, spaceBetween } from './commonStyles';
+import { useNavigation } from '@react-navigation/native';
+import { screenName } from '../utils/screenName';
+import { H14BlackText, H14font400Gray4, H16font600Black, H16fontNormalGray, H16fontNormalGray4, H18fontBoldBlack } from './commonText';
+import { chooseTheme, clearAllChats, deleteAllChats, groupsData, lastSee, profilePic } from '../utils/data/modalData';
+import { RadioButton, RadioButtonRound, SelectedRadioBtn } from './commonView';
+import CustomIcon from '../utils/Icons';
+import { LongPurpleButton, SmallButton } from './commonButtons';
+import { useTheme } from '../Theme/ThemeContext';
+import Modal from 'react-native-modal';
+
+
+export type CommonModalProps = {
+  isVisible: boolean;
+  onClose: () => void;
+
+}
+export const ThemeModal: React.FC<CommonModalProps> = ({
+  isVisible,
+  onClose,
+}) => {
+  const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
+
+  const handleStatusSelect = (status: string) => {
+    setSelectedStatus(status);
+
+  };
+  const { toggleTheme } = useTheme();
+
+  const renderRadio = (status: string) => {
+    return (
+      <RadioButton
+        onPress={() => handleStatusSelect(status)}>
+        <RadioButtonRound style={{ borderColor: selectedStatus === status ? colors.purpleVar3 : colors.black }}>
+          {selectedStatus === status && (
+            <SelectedRadioBtn />
+          )}
+        </RadioButtonRound>
+        <H16fontNormalGray4 style={[mh10]}>{status}</H16fontNormalGray4>
+      </RadioButton>
+    );
+  };
+
+  const buttonPress = () => {
+    if (selectedStatus) {
+      console.log(`Selected status: ${selectedStatus}`);
+      if (selectedStatus === labels.dark) {
+        toggleTheme()
+        console.log("Changing to Dark Theme");
+      } else {
+        toggleTheme();
+        console.log("Changing to Light Theme");
+      }
+    }
+    onClose();
+  };
+
+  return (
+    <View style={{ flex: 1 }}>
+      <Modal transparent={true} animationType="slide" visible={isVisible}
+        onRequestClose={onClose}>
+        <ModalContainer>
+          <HalfCircle2 />
+          <ModalContent>
+            <View style={{ justifyContent: 'center', alignItems: 'center', bottom: 30 }}>
+              <ThemeLogo />
+            </View>
+            <View >
+              <H18fontBoldBlack>{labels.chooseTheme}</H18fontBoldBlack>
+              {chooseTheme.map((data, index) => {
+                return (
+                  <View key={data.id} style={[flexRow, spaceBetween]}>
+                    <View style={{ paddingVertical: 10 }}>
+                      <TouchableOpacity>
+                        <View key={data.id}>
+                          {renderRadio(data.status)}
+                        </View>
+                      </TouchableOpacity>
+                      
+                    </View>
+                  </View>
+                );
+              })}
+            </View>
+
+            <SmallButton
+              title='cancel'
+              onChange={buttonPress}
+              backgroundColor={colors.purpleVar1} textColor={'pink'}
+
+            />
+            <SmallButton
+              title='ok'
+              onChange={buttonPress}
+              backgroundColor={colors.white} textColor={'pink'}
+
+            />
+          </ModalContent>
+        </ModalContainer>
+      </Modal>
+    </View>
+  );
+};
 
 
 

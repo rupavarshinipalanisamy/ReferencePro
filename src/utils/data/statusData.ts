@@ -231,3 +231,21 @@ export const friendStatusModal =[
         iconSize:25,
     }
 ]
+
+export const threeDotIcon = [
+    {
+        id: 1,
+        name : labels.delete,
+        iconName : 'delete',
+        iconType : "AntDesign",
+        iconSize : 20,
+      
+    },
+    {
+        id: 5,
+        name : labels.forward,
+        iconName : 'arrow-undo-outline',
+        iconType : "Ionicons",
+        iconSize : 20,
+    },
+]
