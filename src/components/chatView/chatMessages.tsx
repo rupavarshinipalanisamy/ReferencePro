@@ -67,8 +67,8 @@ const ChatMessage = ({ message, onSwipeRight, onPress, hanldeLogPress, selectedC
                         }
                     }}
 
-                    onLongPress={ ()=> {
-                        hanldeLogPress();
+                    onLongPress={(event) => {
+                        hanldeLogPress(event,message.id);
                         if (!selectedCards.includes(message.id)) {
                           toggleCardSelection(message.id);
                         }

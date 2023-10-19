@@ -1,5 +1,5 @@
-import React, { Fragment, useState } from 'react';
-import { Text, View, ImageBackground, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
+import React, { Fragment, useState,useEffect } from 'react';
+import { Text, View, ImageBackground, StyleSheet, ScrollView, TouchableOpacity, StatusBar,Dimensions,Platform ,ScaledSize} from 'react-native';
 import { colors } from '../../utils/colors';
 import { pt10 } from '../../components/commonStyles';
 import { labels } from '../../utils/labels';
@@ -20,7 +20,6 @@ import ChatMessage from '../../components/chatView/chatMessages';
 const ChatView = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [selectedTab, setSelectedTab] = useState('All');
-  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const [selectedModalId, setSelectedModalId] = useState(null);
   const [selectedCards, setSelectedCards] = useState<number[]>([]);
   const [editModal, setEditModal] = useState(false);
@@ -62,22 +61,24 @@ const ChatView = () => {
   const handleReplyFooterIconClick = () => {
     setIsSwiped(false);
   };
-    const handleReactMsg = () => {
+  const handleReactMsg = () => {
     setModalVisible(true)
   }
-  const handleCardSelectionChange = () => {
-    setEmojiModal(true)
 
-    
-  };
-  
-    const handleEditModal2Press = (text) => {
+  const handleEditModal2Press = (text) => {
     setEditedMessageText(text);
     setEditModal2(false);
     setEditModal(false)
   };
 
-
+  const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
+  const handleCardSelectionChange = (event) => {
+    setModalPosition({ x: event.nativeEvent.pageX, y: event.nativeEvent.pageY });
+    setEmojiModal(true)
+  };
+  
+  
+  
   const renderHeader = () => {
     if (selectedCards.length > 0) {
       return (
@@ -156,15 +157,15 @@ const ChatView = () => {
           />
         )}
 
-        {editModal && <EditModal isVisible={editModal} onClose={() => setEditModal(false)}  />}
-        {editModal2 && <EditModal2 isVisible={editModal} onClose={() => setEditModal(false)}   onEditModal2Press={handleEditModal2Press}/>}
+        {editModal && <EditModal isVisible={editModal} onClose={() => setEditModal(false)} />}
+        {editModal2 && <EditModal2 isVisible={editModal} onClose={() => setEditModal(false)} onEditModal2Press={handleEditModal2Press} />}
 
         {emojiModal && (
           <Modal isVisible={emojiModal} onBackdropPress={() => setEmojiModal(false)} backdropOpacity={0}
             style={{
               position: 'absolute',
-              top: modalPosition.top,
-              left: modalPosition.left,
+              left: modalPosition.x,
+              top: modalPosition.y-80
             }}
           >
             <View style={styles.modalContent}>
@@ -217,7 +218,7 @@ const styles = StyleSheet.create({
   modal: {
     backgroundColor: 'white',
     height: 200,
-    margin: 0, 
+    margin: 0,
     alignItems: undefined,
     justifyContent: undefined,
   },
@@ -259,5 +260,6 @@ const styles = StyleSheet.create({
 });
 
 export default ChatView;
+
 
 
