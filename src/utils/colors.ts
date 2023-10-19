@@ -46,5 +46,6 @@ export const colors = {
     darkModeVar3: '#4E50724D',
     darkModeVar4:'#252728',
     darkModeVar5 : '#4E5072',
+    darkModeVar6 :'#343637'
 };
 

@@ -6,7 +6,7 @@ import { alignItemsCenter, flexRow, justyfyCenter, mb15, mr5, mt10, mt15, mt20, 
 import CustomIcon from '../../utils/Icons';
 import { DevHeight, DevWidth } from '../../utils/device';
 import { labels } from '../../utils/labels';
-import { H14BlackText, H14purpleVar3Text, H15Grey, H16BlackText, H18BlackText } from '../../components/commonText';
+import { H14BlackText, H14Blackvar2Bold500, H14purpleVar3Text, H15Grey, H16BlackText, H18BlackText } from '../../components/commonText';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
 import { CardHeaderText, CustomModal, ProfileCard } from '../../components/commonComponents';
@@ -14,6 +14,7 @@ import { IconModal } from '../../components/commonModal';
 import { BlockUserModal, ReportUserModal } from '../../ModalContents/IconModelContents';
 import { InfoCardData, colorIconsData, groupsData, mediaData } from '../../utils/data/profileData';
 import { Groups, Header, InfoCard, MediaCard } from '../../components/profile/profilecomponents';
+import { isDark } from '../../Theme/ThemeContext';
 
 export const ColorIconTab = ({ openModal }: any) => {
     const navigation = useNavigation()
@@ -22,8 +23,6 @@ export const ColorIconTab = ({ openModal }: any) => {
             {
                 colorIconsData.map((item) => {
                     return (
-
-
                         <TouchableOpacity
                             key={item.id}
                             onPress={() => {
@@ -37,14 +36,13 @@ export const ColorIconTab = ({ openModal }: any) => {
                                 }
                             }}
                         >
-                            <View style={[flexRow, spaceBetween, { paddingBottom: 15 }]}>
+                            <View style={[flexRow, spaceBetween, { paddingBottom: 12}]}>
                                 <View style={[flexRow]}>
-
-                                    <View style={{ height: 35, width: 35, borderRadius: 8, backgroundColor: item.bgcolor, alignItems: 'center', justifyContent: 'center' }}>
+                                    <View style={{ height: 26, width: 26, borderRadius: 6, backgroundColor: item.bgcolor, alignItems: 'center', justifyContent: 'center' }}>
                                         <CustomIcon name={item.iconName} size={item.iconSize} type={item.iconType} color={item.iconColor} />
                                     </View>
                                     <View style={[alignItemsCenter, justyfyCenter, pl13]}>
-                                        <H16BlackText>{item.name}</H16BlackText>
+                                        <H14Blackvar2Bold500>{item.name}</H14Blackvar2Bold500>
                                     </View>
                                 </View>
                                 {
@@ -53,15 +51,14 @@ export const ColorIconTab = ({ openModal }: any) => {
                                             <View >
                                                 <Text>10</Text>
                                             </View>
-                                            <View style={[{ transform: [{ rotate: '180deg' }] }]}
-                                            >
-                                                <CustomIcon name='chevron-back-sharp' color={colors.greyVar4} size={16} type="Ionicons"
+                                            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                                                <CustomIcon name='chevron-right' color={isDark() ? colors.greyVar0 : colors.greyVar4} size={24} type="MaterialIcons"
                                                 />
                                             </View>
                                         </View>
                                     ) : (
-                                        <TouchableOpacity style={[{ transform: [{ rotate: '180deg' }] }, flexRow, alignItemsCenter, justyfyCenter]}>
-                                            <CustomIcon name='chevron-back-sharp' color={colors.greyVar4} size={16} type="Ionicons"
+                                        <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center' }}>
+                                            <CustomIcon name='chevron-right' color={isDark() ? colors.greyVar0 : colors.greyVar4} size={24} type="MaterialIcons"
                                             />
                                         </TouchableOpacity>
                                     )
@@ -85,11 +82,11 @@ const UserProfile = () => {
     }
     return (
         <Fragment>
-            <MainContainer style={{ backgroundColor: colors.whiteVar0, flex: 1 }}>
+            <MainContainer style={{ backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0, flex: 1 }}>
                 <Header />
                 <ScrollView style={{ marginHorizontal: 20 }} showsVerticalScrollIndicator={false}>
                     <ProfileCard />
-                    <InfoCard/>
+                    <InfoCard />
                     <MediaCard />
                     <Groups />
                     <ColorIconTab openModal={openModal} />

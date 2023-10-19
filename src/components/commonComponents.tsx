@@ -11,7 +11,7 @@ import CustomIcon from '../utils/Icons';
 import { useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal';
 import { muteNotificationdata, threeDotsOption } from '../utils/data/modalData';
-import { H14BlackVar2Bold400Text, H14GreyVar4Bold400, H14blackVar1bold400Text, H14purpleVar3Text, H15Grey, H16font600Black, H16fontNormalGray, H16fontNormalGray4, H18BlackText, H18fontBoldBlack } from './commonText';
+import { H12purpleVar3Text, H14BlackVar2Bold400Text, H14GreyVar4Bold400, H14blackVar1bold400Text, H14purpleVar3Text, H15Grey, H16Black600Text, H16font600Black, H16fontNormalGray, H16fontNormalGray4, H18BlackText, H18fontBoldBlack } from './commonText';
 import { labels } from '../utils/labels';
 import { callBottomDataFourth } from '../utils/data/callsData';
 import { screenName } from '../utils/screenName';
@@ -881,13 +881,13 @@ export const CardHeaderText: React.FC<CardHeaderTextProps> = ({ text }) => {
     return (
         <View style={{ alignItems: 'flex-start', marginTop: 5 }}>
             <View style={{
-                backgroundColor: colors.purpleVar1,
-                borderRadius: 8,
-                padding: 10
+                backgroundColor: isDark()?colors.darkModeVar4:colors.purpleVar1,
+                borderRadius:4,
+                padding: 5
             }}>
-                <H14purpleVar3Text style={{ marginHorizontal: 10 }}>
+                <H12purpleVar3Text style={{ marginHorizontal: 7}}>
                     {text}
-                </H14purpleVar3Text>
+                </H12purpleVar3Text>
             </View>
 
 
@@ -903,18 +903,18 @@ export const ProfileCard = () => {
         <View>
             <View style={{ marginTop: 50 }}>
                 <View style={{
-                    backgroundColor: colors.white, height: DevHeight / 4.5, width: '100%', borderRadius: 20, elevation: 5, justifyContent: 'center',
+                    backgroundColor: isDark()?colors.darkModeVar4:colors.white, height: DevHeight / 4.5, width: '100%', borderRadius: 20, elevation: 5, justifyContent: 'center',
                     shadowOpacity: 1, shadowColor: colors.greyVar4
                 }}>
                     <View style={{ alignItems: 'center', marginTop: 40 }}>
-                        <H18BlackText>{labels.horaceKeene}</H18BlackText>
-                        <Text style={{ fontSize: 16, color: colors.greyVar4 }}>last seen at 7:15 PM</Text>
+                        <H16Black600Text>{labels.horaceKeene}</H16Black600Text>
+                        <H14GreyVar4Bold400>last seen at 7:15 PM</H14GreyVar4Bold400>
                         <View style={[flexRow, { marginTop: 10 }]}>
                             <View style={[{ alignItems: 'center', justifyContent: 'center' }]}>
-                                <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={22} color={colors.greyVar4} />
+                                <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={22} color={isDark()?colors.greyVar3:colors.greyVar4} />
                             </View>
                             <View style={[{ alignItems: 'center', justifyContent: 'center' }, pl10]}>
-                                <CustomIcon name='phone' type="Feather" size={18} color={colors.greyVar4} />
+                                <CustomIcon name='phone' type="Feather" size={16} color={isDark()?colors.greyVar3:colors.greyVar4} />
                             </View>
                             <View style={[{ alignItems: 'center', justifyContent: 'center' }, pl10]}>
                                 <MessageIcon />

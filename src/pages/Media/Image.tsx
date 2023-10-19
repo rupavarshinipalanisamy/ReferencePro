@@ -1,7 +1,7 @@
 
 import React from "react";
 import { View, Image, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
-import { H18BlackBoldText } from "../../components/commonText";
+import { H15Blackvar2Bold500, H18BlackBoldText } from "../../components/commonText";
 import { useNavigation } from "@react-navigation/native";
 import { screenName } from "../../utils/screenName";
 export const recentImages = [
@@ -59,12 +59,12 @@ const ImageScreen = () => {
 
     return (
         <View style={styles.container}>
-            <H18BlackBoldText style={{ marginVertical: 10, marginTop: 20, margin: 5 }}>Recent</H18BlackBoldText>
+            <H15Blackvar2Bold500 style={{ lineHeight:20, marginTop: 20,margin:5}}>Recent</H15Blackvar2Bold500>
             <View style={styles.gridContainer}>
                 {renderImages(recentImages)}
             </View>
 
-            <H18BlackBoldText style={{ marginTop: 10, marginVertical: 10, margin: 5 }}>Last week</H18BlackBoldText>
+            <H15Blackvar2Bold500 style={{lineHeight:20, marginTop: 20,margin:5}}>Last week</H15Blackvar2Bold500>
             <View style={styles.gridContainer}>
                 {renderImages(recentImages)}
             </View>

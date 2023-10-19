@@ -3,98 +3,29 @@ import { Text, View, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { CommonLineDividerGrey, MessageCard, TopContainerWhiteCard1 } from '../components/commonView';
 import { DevHeight, DevWidth } from '../utils/device';
 import CustomIcon from '../utils/Icons';
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, m5, mt15, p5, pb5, pl10, pl13, pl30, pl32, pl7, pt10, pt15, pt5, spaceBetween } from '../components/commonStyles';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, m5, mt15, mt3, p5, pb5, pl10, pl13, pl30, pl32, pl7, pt10, pt15, pt5, spaceBetween } from '../components/commonStyles';
 import { colors } from '../utils/colors';
-import { H14BlackText, H14blueVar1Text, H16BlackText, H18BlackText } from '../components/commonText';
-import AudioImg from '../../assets/images/Audio.svg'
-import SendImg2 from '../../assets/images/sendMsg1.svg'
+import { H12fontBold400GreyVar4, H14BlackText, H14BlackVar2Bold400Text, H14GreyVar4Bold400, H14blueVar1Text, H16BlackText, H18BlackText } from '../components/commonText';
 import { labels } from '../utils/labels';
 import { Chatimg1Img } from '../utils/png';
 import AlexProfile from '../../assets/images/starredProfile.svg'
 import { StarredAndVerifycodeHeader, TextInputHeader } from './Media/MediaCommonHeader';
+import { Card1, Card2, Card3, Card4 } from '../components/starredMessages/starredMessages';
+import { isDark } from '../Theme/ThemeContext';
 
-
-export type starredMessagesProps = {
-
-
-}
 
 interface HeaderProps {
     height?: number;
 }
-
-
 interface CardProps {
     backgroundColor?: string
 
 }
 
-export const Card1 = (props: CardProps) => {
-    return (
-        <View style={{ alignItems: 'flex-start' }}>
-            <MessageCard backgroundColor={colors.whiteVar1} {...props}>
-                <Text style={{ color: colors.black }}>Hello @Alex Thank you for the </Text>
-                <Text>beautiful web deisgn ahead schedule</Text>
-            </MessageCard>
-        </View>
-    )
-}
-
-
-export const Card2 = (props: CardProps) => {
-    return (
-        <View style={{ alignItems: 'flex-start' }}>
-            <MessageCard backgroundColor={colors.whiteVar1} {...props} style={flexRow}>
-                <CustomIcon name="play-circle-o" size={20} color={colors.purpleVar3} type="font-awesome" />
-                <View style={pl10}>
-                    <AudioImg />
-                </View>
-                <Text style={pl13}>00:30</Text>
-            </MessageCard>
-        </View>
-    )
-}
-
-export const Card3 = (props: CardProps) => {
-    return (
-        <View style={{ alignItems: 'flex-start' }}>
-            <MessageCard backgroundColor={colors.whiteVar1} {...props} >
-                <View style={[{ backgroundColor: colors.greyVar7, alignItems: 'center', padding: 10, width: DevWidth / 1.6, borderRadius: 8, margin: 5 }, flexRow, spaceBetween]}>
-                    <View style={[flexRow]}>
-                        <View style={justyfyCenter}>
-                            <CustomIcon name='document-text-outline' type="Ionicons" color={colors.greyVar4} size={20} />
-                        </View>
-                        <View style={pl13}>
-                            <H14BlackText>Design_Brief.pdf</H14BlackText>
-                            <H14BlackText>243 KB</H14BlackText>
-                        </View>
-                    </View>
-                    <CustomIcon name='download' type="Feather" color={colors.greyVar4} size={20} />
-                </View>
-                <View style={[{ margin: 5 }]}>
-                    <H14BlackText>{labels.checkThisFile}</H14BlackText>
-                </View>
-            </MessageCard>
-        </View >
-    )
-}
-
-export const Card4 = (props: CardProps) => {
-    return (
-        <View style={{ alignItems: 'flex-start' }}>
-            <MessageCard backgroundColor={colors.whiteVar1} {...props}>
-                <View style={m5}>
-                    <SendImg2 />
-                    <H14blueVar1Text style={p5}>{labels.chatLink}</H14blueVar1Text>
-                </View>
-            </MessageCard>
-        </View >
-    )
-}
 export const StarredMsg = [
     {
         id: 1,
-        renderItem: <Card1 />
+        renderItem: <Card1/>
 
     },
     {
@@ -117,7 +48,7 @@ export const StarredMsg = [
 
 
 
-const StarredMessages = (props: starredMessagesProps) => {
+const StarredMessages = () => {
     const [isTextInputHeader, setIsTextInputHeader] = useState(false);
     const handleonPress = () => {
         setIsTextInputHeader(true);
@@ -127,7 +58,7 @@ const StarredMessages = (props: starredMessagesProps) => {
         setIsTextInputHeader(false);
     }
     return (
-        <View style={[flex1, { backgroundColor: colors.whiteVar0 }]} >
+        <View style={[flex1, { backgroundColor:isDark()?colors.darkModeVar2: colors.whiteVar0 }]} >
             {isTextInputHeader ? <TextInputHeader onBack={handleBackToInitialHeader} /> :
                 <StarredAndVerifycodeHeader headerText='Starred Messages' isSearchDot={true} onPress={handleonPress} />
             }
@@ -135,17 +66,17 @@ const StarredMessages = (props: starredMessagesProps) => {
                 {StarredMsg.map((item, index) => (
                     <View key={index} style={{ marginHorizontal: 20 }}>
                         <View >
-                            <View style={[flexRow, spaceBetween, { marginTop: 25 }]}>
-                                <View style={flexRow}>
+                            <View style={[flexRow, spaceBetween ,{ marginTop: 25 }]}>
+                                <View style={[flexRow]}>
                                     <Image source={Chatimg1Img} style={{ borderRadius: 25 }} />
-                                    <H16BlackText style={pl13}>{labels.MarkVilliams}</H16BlackText>
-                                    <Text style={[{ fontSize: 15, color: colors.greyVar4 }, pl10]}>8:16 PM</Text>
+                                    <H14BlackVar2Bold400Text style={[pl13,{lineHeight:20}]}>{labels.MarkVilliams}</H14BlackVar2Bold400Text>
+                                    <H12fontBold400GreyVar4 style={[pl10,mt3]}>8:16 PM</H12fontBold400GreyVar4>
                                 </View>
                                 <View style={flexRow}>
-                                    <Text style={{ fontSize: 16, color: colors.greyVar4 }}>24 Aug 2023</Text>
+                                    <H12fontBold400GreyVar4>24 Aug 2023</H12fontBold400GreyVar4>
 
-                                    <View style={[{ paddingTop: 3 }, pl7]}>
-                                        <CustomIcon name='chevron-right' color={colors.greyVar4} size={16} type="Feather"
+                                    <View style={ [pl7,{bottom:3}]}>
+                                        <CustomIcon name='chevron-right' color={isDark()?colors.greyVar3:colors.greyVar4} size={24} type="Feather"
                                         />
                                     </View>
                                 </View>
@@ -154,9 +85,9 @@ const StarredMessages = (props: starredMessagesProps) => {
                             <View style={{ paddingLeft: 52 }}>
 
                                 {item.renderItem}
-                                <View style={flexRow}>
+                                <View style={[flexRow,pt10]}>
                                     <AlexProfile />
-                                    <H14BlackText style={[pl13, { paddingTop: 3 }]}>Alex Smith</H14BlackText>
+                                    <H14BlackVar2Bold400Text style={[pl13,mt3]}>Alex Smith</H14BlackVar2Bold400Text>
                                     <View style={[{ alignItems: 'center', justifyContent: 'center' }, pl10]}>
                                         <CustomIcon name='star' color={colors.yellow} size={18} type="font-awesome" />
                                     </View>

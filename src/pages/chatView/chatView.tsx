@@ -26,7 +26,8 @@ const ChatView = () => {
   const [editModal, setEditModal] = useState(false);
   const [editModal2, setEditModal2] = useState(false);
   const [isSwiped, setIsSwiped] = useState(false);
-  const [emojiModal, setEmojiModal] = useState(false)
+  const [emojiModal, setEmojiModal] = useState(false);
+  const [editedMessageText, setEditedMessageText] = useState(null);
 
 
   const toggleCardSelection = (cardId: number) => {
@@ -65,15 +66,12 @@ const ChatView = () => {
     setModalVisible(true)
   }
   const handleCardSelectionChange = () => {
-
     setEmojiModal(true)
+
+    
   };
-
-
-
-  const [editedMessageText, setEditedMessageText] = useState(null);
-
-  const handleEditModal2Press = (text) => {
+  
+    const handleEditModal2Press = (text) => {
     setEditedMessageText(text);
     setEditModal2(false);
     setEditModal(false)

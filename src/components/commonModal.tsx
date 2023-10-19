@@ -741,9 +741,10 @@ export const EditModal = ({ isVisible, onClose }) => {
     </Modal >
   );
 };
-export const EditModal2 = ({ isVisible, onClose,onEditModal2Press }) => {
+export const EditModal2 = ({ isVisible, onClose, onEditModal2Press }) => {
 
   const [inputText, setInputText] = useState('');
+  const [editText, setEditText] = useState('Thank You Mam')
   const handleDone = () => {
     onEditModal2Press(inputText); // Pass the input text to the function in the parent component
   };
@@ -755,14 +756,15 @@ export const EditModal2 = ({ isVisible, onClose,onEditModal2Press }) => {
             <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginLeft: 15 }}>
               <CustomIcon name='smiley' type="octicons" size={16} color={colors.greyVar4} />
               <TextInput
+                value={editText}
                 style={{ flex: 1, marginLeft: 5, color: colors.greyVar4, fontSize: 14, fontWeight: '400' }}
-                placeholder="Type here..."
+                placeholder=""
               />
             </View>
           </View>
         </View>
         <TouchableOpacity style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', bottom: 15 }}
-        onPress={handleDone}
+          onPress={handleDone}
         >
           <CustomIcon name='done' type="MaterialIcons" color={colors.white} size={18} />
         </TouchableOpacity>

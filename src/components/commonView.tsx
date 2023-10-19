@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    
+
   }
 });
 const {
@@ -284,7 +284,7 @@ interface TopContainerWhiteCardProps {
 
 export const TopContainerWhiteCard1 = styled(View) <TopContainerWhiteCardProps>`
 
-  background-color: ${props => isDark() ? colors.black : colors.white};
+  background-color: ${props => isDark() ? colors.darkModeVar1 : colors.white};
   border-bottom-start-radius: 25px;
   border-bottom-end-radius: 25px;
   ${({ height }) => height && `height: ${height}px;`}
@@ -292,9 +292,15 @@ export const TopContainerWhiteCard1 = styled(View) <TopContainerWhiteCardProps>`
   shadow-color: #000;
 `;
 
-export const CardSurface = styled(TouchableOpacity)`
-${cardSurface};
-elevation:4
+export const MediumCardSurface = styled(View)`
+background-color: ${props => isDark() ? colors.darkModeVar4 : colors.white};
+padding: 10px;
+elevation: ${props => isDark() ? 0 : 2};
+margin-top: 20px;
+flex-direction:row;
+border-radius: 8px;
+shadow-color:${colors.greyVar4};
+
 `
 export const LongButton = styled(TouchableOpacity)`
 ${longButton}

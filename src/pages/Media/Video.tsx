@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Dimensions, ImageBackground, TouchableOpacity } from 'react-native';
-import { H18BlackBoldText } from "../../components/commonText";
+import { H15Blackvar2Bold500, H18BlackBoldText } from "../../components/commonText";
 import { Text } from "react-native-svg";
 import CustomIcon from "../../utils/Icons";
 import { colors } from "../../utils/colors";
@@ -65,7 +65,7 @@ const ImageScreen = () => {
         }
     ]
 
-const navigation=useNavigation()
+    const navigation = useNavigation()
 
     const renderImages = (images: any) => {
         return images.map((item: any) => (
@@ -78,20 +78,20 @@ const navigation=useNavigation()
         ));
     };
     const handleVideoPress = () => {
-       navigation.navigate(screenName.VideoView as never)
+        navigation.navigate(screenName.VideoView as never)
     };
     return (
         <View style={styles.container}>
-            <H18BlackBoldText style={{ marginVertical: 10, marginTop: 20, margin: 5 }}>Recent</H18BlackBoldText>
-            <View style={styles.gridContainer}>
+            <H15Blackvar2Bold500 style={{ lineHeight: 20, marginTop: 20, margin: 5 }}>Recent</H15Blackvar2Bold500>          
+              <View style={styles.gridContainer}>
                 {renderImages(recentVideos)}
             </View>
 
-            <H18BlackBoldText style={{ marginTop: 10, marginVertical: 10, margin: 5 }}>Last Week</H18BlackBoldText>
+            <H15Blackvar2Bold500 style={{ lineHeight: 20, marginTop: 20, margin: 5 }}>Last Week</H15Blackvar2Bold500>
             <View style={styles.gridContainer}>
                 {renderImages(lastWeek)}
             </View>
-            <H18BlackBoldText style={{ marginTop: 10, marginVertical: 10, margin: 5 }}>Last Month</H18BlackBoldText>
+            <H15Blackvar2Bold500 style={{ lineHeight: 20, marginTop: 20, margin: 5 }}>Last Month</H15Blackvar2Bold500>
             <View style={styles.gridContainer}>
                 {renderImages(lastMonth)}
             </View>

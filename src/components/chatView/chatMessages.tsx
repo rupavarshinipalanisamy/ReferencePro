@@ -66,12 +66,14 @@ const ChatMessage = ({ message, onSwipeRight, onPress, hanldeLogPress, selectedC
                             toggleCardSelection(message.id); // Use the toggle function from props
                         }
                     }}
-                    onLongPress={() => {
-                        hanldeLogPress(true); // Use the function from props and pass any necessary parameters
+
+                    onLongPress={ ()=> {
+                        hanldeLogPress();
                         if (!selectedCards.includes(message.id)) {
-                            toggleCardSelection(message.id); // Use the toggle function from props
+                          toggleCardSelection(message.id);
                         }
-                    }}
+                      }}
+        
                 >
                     <View style={{ flexDirection: 'row' }}>
                         <Text style={{ fontSize: 14, color: colors.greyVar4 }}>{message.time}</Text>

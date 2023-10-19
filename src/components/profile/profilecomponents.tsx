@@ -3,26 +3,27 @@ import React, { Fragment, useState } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, Image, Dimensions } from 'react-native';
 import CustomIcon from '../../utils/Icons';
 import { colors } from '../../utils/colors';
-import { alignItemsCenter, flexRow, justyfyCenter, mb15, mr5, mt10, mt15, mt20, pl10, pl13, pt10, pt5, spaceBetween } from '../commonStyles';
+import { alignItemsCenter, flexRow, justyfyCenter, mb15, mr5, mt10, mt15, mt20, pl10, pl13, pl2, pr5, pt10, pt5, spaceBetween } from '../commonStyles';
 import { useNavigation } from '@react-navigation/native';
-import { H14BlackText, H15Grey } from '../commonText';
+import { H12font400Black, H12font400Grey, H14BlackText, H14GreyVar4Bold400Text, H14font400grey3black2, H15Blackvar2Bold500, H15Grey } from '../commonText';
 import { CardHeaderText, CustomModal } from '../commonComponents';
 import { DevWidth } from '../../utils/device';
 import { InfoCardData, groupsData, mediaData } from '../../utils/data/profileData';
-import { CommonLineDividerGrey } from '../commonView';
+import { CommonLineDividerGrey, MediumCardSurface } from '../commonView';
 import { screenName } from '../../utils/screenName';
-export const socialMediaIcon = () => {
+import { isDark } from '../../Theme/ThemeContext';
+export const SocialMediaIcon = () => {
     return (
         <>
             <View style={[flexRow]}>
                 <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                    <CustomIcon name='sc-facebook' type="EvilIcons" size={24} color={colors.black} />
+                    <CustomIcon name='sc-facebook' type="EvilIcons" size={20} color={isDark() ? colors.greyVar3 : colors.blackVar2} />
+                </View>
+                <View style={[{ alignItems: 'center', justifyContent: 'center' }]}>
+                    <CustomIcon name='twitter' type="entypo" size={18} color={isDark() ? colors.greyVar3 : colors.blackVar2} />
                 </View>
                 <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                    <CustomIcon name='twitter' type="entypo" size={20} color={colors.black} />
-                </View>
-                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                    <CustomIcon name='youtube' type="MaterialCommunityIcons" size={22} color={colors.black} />
+                    <CustomIcon name='youtube' type="MaterialCommunityIcons" size={20} color={isDark() ? colors.greyVar3 : colors.blackVar2} />
                 </View>
             </View>
 
@@ -79,13 +80,13 @@ export const InfoCard = () => {
         <View style={mt20}>
             <CardHeaderText text='Info' />
             <View style={mt10}>
-                <Text style={{ color: colors.greyVar4 }}>Bio</Text>
-                <H14BlackText style={pt10}>Hello, I am using DreamsChat</H14BlackText>
+                <H12font400Black>Bio</H12font400Black>
+                <H14font400grey3black2 style={pt10}>Hello, I am using DreamsChat</H14font400grey3black2>
                 {InfoCardData.map((item) =>
                     Object.entries(item).map(([key, value]) => (
                         <View style={[flexRow, spaceBetween, pt10]} key={key}>
-                            <Text style={{ color: colors.greyVar4 }}>{key}</Text>
-                            <H14BlackText>{value}</H14BlackText>
+                            <H12font400Black>{key}</H12font400Black>
+                            <H14font400grey3black2>{value}</H14font400grey3black2>
                         </View>
                     ))
                 )}
@@ -104,12 +105,12 @@ export const MediaCard = () => {
         <View>
             <TouchableOpacity style={[flexRow, spaceBetween]} onPress={() => navigation.navigate(screenName.Media as never)}>
                 <CardHeaderText text='Media' />
-                <View style={flexRow}>
-                    <View style={[styles.roundNumber, { backgroundColor: 'rgba(97, 97, 97, 0.15) ' }, mt10, mr5]}>
-                        <Text style={styles.roundNumberText}>68</Text>
+                <View style={[flexRow]}>
+                    <View style={[styles.roundNumber, { backgroundColor:isDark()?colors.darkModeVar6:'rgba(97, 97, 97, 0.15) ' }, mt10, mr5]}>
+                        <H12font400Grey>68</H12font400Grey>
                     </View>
-                    <View style={{ alignItems: 'center', justifyContent: 'center', transform: [{ rotate: '180deg' }] }}>
-                        <CustomIcon name='chevron-back-sharp' color={colors.greyVar4} size={16} type="Ionicons"
+                    <View style={{alignItems:'center',justifyContent:'center',marginTop:7}}>
+                        <CustomIcon name='chevron-right' color={isDark()?colors.greyVar0:colors.greyVar4} size={20} type="MaterialIcons"
                         />
                     </View>
                 </View>
@@ -143,13 +144,13 @@ export const Groups = () => {
         <View>
             <CardHeaderText text='2 Groups in common' />
             {groupsData.map((item, index) => (
-                <View key={index} style={styles.cardSurface}>
+                <MediumCardSurface key={index} >
                     <Image source={item.img} />
                     <View style={pl10}>
-                        <Text style={{ color: 'black', fontSize: 15, fontWeight: '500' }}>{item.grpName}</Text>
-                        <Text style={[{ color: colors.greyVar4 }, pt5]}>{item.personName}</Text>
+                        <H15Blackvar2Bold500 style={{lineHeight:23}}>{item.grpName}</H15Blackvar2Bold500>
+                        <H14GreyVar4Bold400Text style={{lineHeight:20}}>{item.personName}</H14GreyVar4Bold400Text>
                     </View>
-                </View>
+                </MediumCardSurface>
 
             ))}
             <View style={[mt20, mb15]}>
@@ -162,8 +163,8 @@ export const Groups = () => {
 
 const styles = StyleSheet.create({
     roundNumber: {
-        height: 24,
-        width: 24,
+        height: 20,
+        width: 20,
         borderRadius: 12,
         marginLeft: 10,
         alignItems: 'center',

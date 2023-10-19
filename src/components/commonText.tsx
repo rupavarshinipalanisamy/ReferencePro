@@ -135,7 +135,6 @@ export const H16SemiBoldBlack = styled(Text)`
   ${letterSpacing03}; 
 `
 export const H14GreyVar4Bold400 = styled(Text)`
-  ${greyVar4Color};
   color : ${props => isDark() ? colors.greyVar3 : colors.greyVar4};
   ${h9};
   ${fontBold400};
@@ -171,6 +170,11 @@ ${textcolorGray}
 `
 export const H12Grey = styled(Text)`
   ${h10};
+  color : ${props => isDark() ? colors.greyVar3 : colors.greyVar4};
+`
+export const H12font400Grey = styled(Text)`
+  ${h10};
+  ${fontBold400};
   color : ${props => isDark() ? colors.greyVar3 : colors.greyVar4};
 `
 export const H15BlackBold600 = styled(Text)`
@@ -229,7 +233,7 @@ export const H18BlackBoldText600 = styled(Text)`
   `
 export const H16Black600Text = styled(Text)`
   ${h7};
-  ${black};
+  color: ${props => isDark() ? colors.greyVar0 : colors.blackVar2};
   ${fontBold600}
 `;
 export const H16GreyVar4Bold600Text = styled(Text)`
@@ -256,6 +260,11 @@ export const H14BlackText = styled(Text)`
 export const H14BlackVar2Bold400Text = styled(Text)`
   ${h9};
   color : ${props => isDark() ? colors.greyVar0 : colors.blackVar2};
+  ${fontBold400};
+`;
+export const H14font400grey3black2 = styled(Text)`
+  ${h9};
+  color : ${props => isDark() ? colors.greyVar3 : colors.blackVar2};
   ${fontBold400};
 `;
 export const H14GreyVar4Bold400Text = styled(Text)`
@@ -338,6 +347,16 @@ export const H12fontNormalGray = styled(Text)`
   ${h10};
   ${fontNormal};
   ${greyVar3};
+`;
+export const H12font400Black = styled(Text)`
+  ${h10};
+  ${fontBold400};
+  color : ${props => isDark() ? colors.greyVar0 : colors.blackVar1};
+`;
+
+export const H12purpleVar3Text = styled(Text)`
+  ${h10};
+  color : ${props => isDark() ? colors.greyVar0 : colors.purpleVar3};
 `;
 export const H12fontBold400GreyVar4 = styled(Text)`
   ${h10};

@@ -6,38 +6,42 @@ import { Bluetick } from '../components/chatViewComponents';
 import { SentMessage2 } from './chatView/Messagecomponents/messages';
 import CustomIcon from '../utils/Icons';
 import { CommonLineDividerGrey } from '../components/commonView';
-import { alignItemsCenter, justyfyCenter } from '../components/commonStyles';
+import { alignItemsCenter, flexRow, justyfyCenter, mh20, mr5, mt10, mt15, mv10, pl13, pr10, pr13, pr7 } from '../components/commonStyles';
 import { MessageStatusData } from '../utils/data/chatViewData';
+import { H12fontBold400GreyVar4 } from '../components/commonText';
 
 
 const MessageInfo = () => {
     return (
         <View>
-            <SearchHeader headerText='Message Info' />
+            <SearchHeader headerText='Message Info'/>
             <View style={{ alignItems: 'flex-end' }}>
-                <View style={{ flexDirection: 'row' }}>
-                    <Text style={{ fontSize: 12, color: colors.greyVar3 }}>8:17 PM</Text>
+                <View style={[mh20, flexRow, mt15]}>
+                    <H12fontBold400GreyVar4 style={mr5}>8:17 PM</H12fontBold400GreyVar4>
                     <Bluetick />
+
+
+
                 </View>
                 <SentMessage2 />
             </View>
-            <View  style={{marginVertical:20}}>
+            <View style={{ marginVertical: 20 }}>
                 {MessageStatusData.map((item, index) => (
                     <View key={index}>
                         <CommonLineDividerGrey />
                         <View style={{ marginHorizontal: 25, margin: 12 }}>
 
                             <View style={{ flexDirection: 'row' }}>
-                                <View style={[alignItemsCenter,justyfyCenter]}>
-                                <CustomIcon color={item.iconColor} type={item.iconType} name={item.iconName}
-                                    size={18}
-                                />
-                                    </View>
+                                <View style={[alignItemsCenter, justyfyCenter, mr5]}>
+                                    <CustomIcon color={item.iconColor} type={item.iconType} name={item.iconName}
+                                        size={20}
+                                    />
+                                </View>
 
-                              
-                                <Text style={{fontSize:15,color:colors.blackVar2,fontWeight:'500',lineHeight:23}}>{item.status}</Text>
+
+                                <Text style={{ fontSize: 15, color: colors.blackVar2, fontWeight: '500', lineHeight: 23 }}>{item.status}</Text>
                             </View>
-                            <Text  style={{fontSize:14,color:colors.greyVar4,fontWeight:'400'}}>{item.time}</Text>
+                            <Text style={{ fontSize: 14, color: colors.greyVar4, fontWeight: '400' }}>{item.time}</Text>
                         </View>
 
                     </View>

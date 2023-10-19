@@ -5,7 +5,7 @@ import { colors } from '../../utils/colors';
 import { alignItemsCenter, flex1, flexRow, justyfyCenter, mt3, pb10, pl10, pl13, pl15, pt10, spaceBetween } from '../../components/commonStyles';
 import { TopContainerWhiteCard1 } from '../../components/commonView';
 import CustomIcon from '../../utils/Icons';
-import { H14blackVar1bold400Text, H15Grey, H16Black600Text, H18BlackText, H18GreyVar4Text } from '../../components/commonText';
+import { H14GreyVar4Bold400, H14blackVar1bold400Text, H15Blackvar2Bold500, H15Grey, H16Black600Text, H18BlackText, H18GreyVar4Text } from '../../components/commonText';
 import { labels } from '../../utils/labels';
 import { DevHeight, DevWidth } from '../../utils/device';
 import Docs from './Docs';
@@ -157,23 +157,23 @@ export const MediaHeader = (props: MediaHeaderProps) => {
                     <View style={[flexRow, spaceBetween]}>
                         <View style={[flexRow]}>
                             <View style={pt10}>
-                                <CustomIcon name='chevron-back-sharp' color={colors.black} size={16} type="Ionicons" />
+                                <CustomIcon name='chevron-back-sharp' color={isDark()?colors.white:colors.blackVar2} size={16} type="Ionicons" />
                             </View>
                             <View style={[flexRow]}>
-                                <TouchableOpacity style={[pl10, flexRow]}>
+                                <TouchableOpacity style={[pl10]}>
                                     <Image source={require('../../../assets/images/png/profile.png')} />
                                 </TouchableOpacity>
                                 <View style={pl13}>
-                                    <H18BlackText>{labels.horaceKeene}</H18BlackText>
-                                    <H18GreyVar4Text>{labels.online}</H18GreyVar4Text>
+                                    <H15Blackvar2Bold500 style={{lineHeight:23}}>{labels.horaceKeene}</H15Blackvar2Bold500>
+                                    <H14GreyVar4Bold400 style={{lineHeight:20}}>{labels.online}</H14GreyVar4Bold400>
                                 </View>
                             </View>
                         </View>
                         {props.startDot &&
                             <View style={[flexRow, alignItemsCenter]}>
-                                <CustomIcon name='star' color={colors.greyVar4} size={20} type="Feather" />
+                                <CustomIcon name='star' color={isDark()?colors.white:colors.greyVar4} size={20} type="Feather" />
                                 <TouchableOpacity style={pl10} onPress={handleOptionModal}>
-                                    <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={colors.greyVar4} />
+                                    <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={isDark()?colors.white:colors.greyVar4} />
                                 </TouchableOpacity>
                             </View>
                         }

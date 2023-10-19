@@ -1,4 +1,4 @@
-import { socialMediaIcon } from "../../components/profile/profilecomponents";
+import { SocialMediaIcon } from "../../components/profile/profilecomponents";
 import { colors } from "../colors";
 import { GrpImg_1, GrpImg_2 } from "../png";
 import { screenName } from "../screenName";
@@ -10,7 +10,7 @@ export const colorIconsData = [
         name: 'Starred Messages',
         iconName: 'star-outline',
         iconType: "Ionicons",
-        iconSize: 20,
+        iconSize: 14,
         iconColor: colors.yellow,
         bgcolor: colors.yellowVar1,
         screenName: screenName.StarredMsg,
@@ -20,7 +20,7 @@ export const colorIconsData = [
         name: 'Mute Notifications',
         iconName: 'microphone-off',
         iconType: "MaterialCommunityIcons",
-        iconSize: 20,
+        iconSize: 14,
         iconColor: colors.blueVar3,
         bgcolor: colors.blueVar4,
         screenName: screenName.Chats,
@@ -30,7 +30,7 @@ export const colorIconsData = [
         name: 'Encryption',
         iconName: 'lock',
         iconType: "FontAwesome",
-        iconSize: 20,
+        iconSize: 14,
         iconColor: colors.green,
         bgcolor: colors.greenVar1,
         screenName: screenName.VerifyCode,
@@ -40,7 +40,7 @@ export const colorIconsData = [
         name: 'Block User',
         iconName: 'block-flipped',
         iconType: "MaterialIcons",
-        iconSize: 20,
+        iconSize: 14,
         iconColor: colors.red,
         bgcolor: colors.redVar1,
 
@@ -50,7 +50,7 @@ export const colorIconsData = [
         name: 'Report User',
         iconName: 'thumbs-down',
         iconType: "Feather",
-        iconSize: 20,
+        iconSize: 14,
         iconColor: colors.purpleVar3,
         bgcolor: colors.purpleVar1,
     },
@@ -59,7 +59,7 @@ export const colorIconsData = [
         name: 'Delete Chat',
         iconName: 'delete',
         iconType: "AntDesign",
-        iconSize: 20,
+        iconSize: 14,
         iconColor: colors.red,
         bgcolor: colors.redVar1,
         screenName: screenName.ChatView,
@@ -102,5 +102,5 @@ export const groupsData = [{
 export const InfoCardData = [{
     "Phone": "9988776655",
     "Email Address": 'info@example.com',
-    "Social Media": socialMediaIcon()
+    "Social Media": SocialMediaIcon()
 }]

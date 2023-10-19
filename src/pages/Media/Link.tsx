@@ -5,10 +5,12 @@ import LinkImg1 from '../../../assets/images/linkimg1.svg';
 import LinkImg2 from '../../../assets/images/linkimg2.svg';
 import LinkImg3 from '../../../assets/images/linkimg3.svg';
 import LinkImg4 from '../../../assets/images/linkimg4.svg';
-import { flex1, flexRow, mh20, mt15, mt5, pt10, pt5 } from '../../components/commonStyles';
+import { flex1, flexRow, mh20, mt15, mt5, pt10, pt5, spaceBetween } from '../../components/commonStyles';
 import { colors } from '../../utils/colors';
-import { H18BlackBoldText } from '../../components/commonText';
+import { H12font400Grey, H14GreyVar4Bold400, H15Blackvar2Bold500, H18BlackBoldText } from '../../components/commonText';
 import { CommonLineDividerGrey } from '../../components/commonView';
+import CustomIcon from '../../utils/Icons';
+import { isDark } from '../../Theme/ThemeContext';
 
 // export type LinkProps = {};
 
@@ -68,36 +70,29 @@ const splitTextIntoLines = (text, maxLineLength) => {
 
 const Link = () => {
     return (
-        <View style={{ flex: 1 }}>
-            <H18BlackBoldText style={{ marginVertical: 10, marginTop: 20, marginHorizontal: 20 }}>Recent</H18BlackBoldText>
+        <View style={{ flex: 1,marginHorizontal:20 }}>
+            <H15Blackvar2Bold500 style={{ lineHeight:20, marginTop: 20}}>Recent</H15Blackvar2Bold500>
 
             {LinkData.map((item, index) => {
                 const lines = splitTextIntoLines(item.headertxt, 30);
                 return (
-                    <View key={index} style={{ marginHorizontal: 20, flex: 1 }}>
+                    <View key={index} style={{  flex: 1 }}>
                         <View style={{ flexDirection: 'row' }}>
                             <View style={mt15}>{item.img}</View>
                             <View style={{ flex: 1, paddingLeft: 15, paddingTop: 12 }}>
                                 {lines.map((line, lineIndex) => (
-                                    <Text
-                                        key={lineIndex}
-                                        style={{
-                                            fontSize: 16,
-                                            fontWeight: '600',
-                                            color: colors.black,
-                                            letterSpacing: 0.2,
-                                            lineHeight: 23,
-                                        }}
-                                    >
+                                    <H15Blackvar2Bold500 key={lineIndex} style={{lineHeight:23}}>
                                         {line}
-                                    </Text>
+                                    </H15Blackvar2Bold500>
                                 ))}
 
-                                <Text style={{ marginTop: 8, fontSize: 12, color: colors.greyVar4 }}>{item.website}</Text>
+                                <H12font400Grey style={{ marginTop:8}}>{item.website}</H12font400Grey>
                             </View>
                         </View>
-                        <View style={[flexRow, { paddingTop: 15 }]}>
-                            <Text style={{ fontSize: 14, color: colors.greyVar4 }}>{item.link}</Text>
+                        <View style={[flexRow, spaceBetween,{ paddingTop: 15 }]}>
+                            <H14GreyVar4Bold400>{item.link}</H14GreyVar4Bold400>
+                            <CustomIcon name='chevron-right' color={isDark()?colors.greyVar3:colors.greyVar4} size={20} type="MaterialIcons"/>
+
                         </View>
                         <View style={{ paddingTop: 15 }}>
                             <CommonLineDividerGrey />
