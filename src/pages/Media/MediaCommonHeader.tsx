@@ -286,22 +286,16 @@ export const StarredAndVerifycodeHeader = (props: StarredAndVerifycodeHeaderProp
     const StarMessageModal = () => {
         return (
             <View>
-
-
                 <TouchableOpacity style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
                     <View style={flexRow}>
                         <View style={[alignItemsCenter, justyfyCenter]}>
-                        <CustomIcon name='star-outline' color={colors.blackVar1} size={18} type="Ionicons" />
-
+                            <CustomIcon name='star-outline' color={colors.blackVar1} size={18} type="Ionicons" />
                         </View>
                         <View style={[alignItemsCenter, justyfyCenter, pl13]}>
                             <H14blackVar1bold400Text>Unstar All</H14blackVar1bold400Text>
                         </View>
                     </View>
                 </TouchableOpacity>
-
-
-
             </View>
         )
     }

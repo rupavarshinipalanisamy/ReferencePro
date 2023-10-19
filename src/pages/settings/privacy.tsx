@@ -141,10 +141,12 @@ const Privacy = (props: privacyProps) => {
         setStatusPrivacyOptionModal(!statusPrivacyOptionModal)
     }
 
-    const openModal = (id: number) => {
+    const openModal = (id: number, screenName : string|undefined) => {
         // setSelectedModalId(id);
         if (id === 4) {
             handleStatusPrivacyOptionModal();
+        } else{
+            navigation.navigate(screenName as never);
         }
     };
 
@@ -247,7 +249,7 @@ const Privacy = (props: privacyProps) => {
                             <View key={privacyDatas.id} style={[flexRow, spaceBetween]}>
                                 <View style={{ paddingVertical: 10 }}>
                                     <TouchableOpacity
-                                        onPress={() => openModal(privacyDatas.id)}
+                                        onPress={() => openModal(privacyDatas.id, privacyDatas.screenName)}
                                     >
                                         <H16fontNormalGray4>
                                             {privacyDatas.heading}
