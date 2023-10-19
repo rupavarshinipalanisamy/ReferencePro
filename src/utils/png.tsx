@@ -42,3 +42,18 @@ export const DocImg5= require('../../assets/images/png/DocsImg5.png');
 export const DocImg6= require('../../assets/images/png/DocsImg6.png');
 export const DocImg7= require('../../assets/images/png/DocsImg7.png');
 export const DocImg8= require('../../assets/images/png/DocsImg8.png');
+export const StatusPic1 = require('../../assets/images/png/status-pic1.png');
+export const StatusPic2 = require('../../assets/images/png/status-pic2.png');
+export const StatusPic3 = require('../../assets/images/png/status-pic3.png');
+export const StatusPic4 = require('../../assets/images/png/status-pic4.png');
+export const StatusPic5 = require('../../assets/images/png/status-pic5.png');
+export const ViewPic1 = require('../../assets/images/png/view-pic1.png')
+export const ViewPic2 = require('../../assets/images/png/view-pic2.png')
+export const ViewPic3 = require('../../assets/images/png/view-pic3.png')
+export const MutePic1 = require('../../assets/images/png/mute-pic1.png')
+export const MutePic2 = require('../../assets/images/png/mute-pic2.png')
+export const StatusImg1 = require('../../assets/images/png/statusImg1.png')
+
+
+
+

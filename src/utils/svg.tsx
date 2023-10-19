@@ -40,6 +40,8 @@ import ConImg8 from '../../assets/images/conImg8.svg'
 import ConImg9 from '../../assets/images/conImg9.svg'
 import MsgIcon from '../../assets/images/messageIcon.svg'
 import Profl from '../../assets/images/profileView.svg'
+import CheckCircle from  '../../assets/images/check-circle.svg'
+import StatusPro from '../../assets/images/status-pic.svg'
 
 
 
@@ -163,4 +165,10 @@ export const MessageIcon = () => (
 );
 export const Profile = () => (
     <Profl/>
+);
+export const CheckCircleIcon = () => (
+    <CheckCircle />
+);
+export const MyStatusPic = () => (
+    <StatusPro />
 );

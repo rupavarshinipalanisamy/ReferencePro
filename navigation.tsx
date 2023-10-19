@@ -46,6 +46,8 @@ import {
   DarkTheme,
 } from '@react-navigation/native';
 import ChooseWallper from './src/pages/ChooseWallper';
+import Notification from './src/pages/settings/notification';
+import TermsAndConditions from './src/utils/data/termsAndConditions';
 import CreateGroup from './src/pages/groups/CreateGroup';
 import CreateGroupUserSelect from './src/pages/groups/CreateGroupUserSelect';
 import AccountSettings from './src/pages/settings/AccountSettings';
@@ -59,6 +61,13 @@ import NewChat from './src/pages/chat/NewChat';
 import Forward from './src/pages/chat/Forward';
 import Invitefriend from './src/pages/Invitefriend';
 import MessageInfo from './src/pages/MessageInfo';
+import ManageDevices from './src/pages/settings/manageDevices';
+import PrivacyPolicy from './src/pages/settings/privacyPolicy';
+import NoStatus from './src/pages/status/noStatus';
+import StatusAdd from './src/pages/status/statusAdd';
+import MyStatus from './src/pages/status/myStatus';
+import FriendStatus from './src/pages/status/friendStatus';
+import EditContact from './src/pages/contact/editContact';
 
 const Stack = createNativeStackNavigator();
 
@@ -110,6 +119,8 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.GroupSettings} component={GroupSettings} />
             <Stack.Screen name={screenName.VerifyCode} component={VerifyCode} />
             <Stack.Screen name={screenName.ChooseWallpaper} component={ChooseWallper} />
+            <Stack.Screen name={screenName.Notification} component={Notification} />
+            <Stack.Screen name={screenName.TermsAndCondition} component={TermsAndConditions} />
             <Stack.Screen name={screenName.CreateGroup} component={CreateGroup} />
             <Stack.Screen name={screenName.CreateGroupUserSelect} component={CreateGroupUserSelect} />
             <Stack.Screen name={screenName.AccountSettings} component={AccountSettings} />
@@ -124,6 +135,13 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.InviteFriend} component={Invitefriend} />
             <Stack.Screen name={screenName.MessageInfo} component={MessageInfo} />
 
+            <Stack.Screen name={screenName.Managedevices} component={ManageDevices} />
+            <Stack.Screen name={screenName.PrivacyPolicy} component={PrivacyPolicy} />
+            <Stack.Screen name={screenName.NoStatus} component={NoStatus} />
+            <Stack.Screen name={screenName.StatusAdd} component={StatusAdd} />
+            <Stack.Screen name={screenName.MyStatus} component={MyStatus} />
+            <Stack.Screen name={screenName.FriendStatus} component={FriendStatus} />
+            <Stack.Screen name={screenName.EditContact} component={EditContact} />
         </Stack.Navigator>
     );
 };

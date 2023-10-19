@@ -70,7 +70,7 @@ const CreateNewPassword = (props: createNewPasswordProps) => {
                             <H14font400Gray4 style={{ marginTop: 8 }}>{labels.cpMsg}</H14font400Gray4>
                             <H14font400Gray4 >{labels.cpMsg1}</H14font400Gray4>
 
-                            <IconInputContainer>
+                            <IconInputContainer style={{borderBottomColor:colors.borderBottomColor}}>
                                 <InputContainer1>
                                     <View style={[flexRow, alignItemsCenter]}>
                                         <CustomIcon name='lock-outline' size={20} color={colors.greyVar4} type='MaterialIcons' />
@@ -104,7 +104,7 @@ const CreateNewPassword = (props: createNewPasswordProps) => {
                                     </View>
                                 </InputContainer1>
                             </IconInputContainer>
-                            <IconInputContainer>
+                            <IconInputContainer style={{borderBottomColor:colors.borderBottomColor}}>
                                 <InputContainer1>
                                     <View style={[flexRow, alignItemsCenter]}>
                                         <CustomIcon name='lock-outline' size={20} color={colors.greyVar4} type='MaterialIcons' />

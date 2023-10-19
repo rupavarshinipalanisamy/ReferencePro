@@ -34,6 +34,7 @@ type SmallButtonProps = {
   title: string;
   onChange: () => void;
   borderWidth?: number;
+  borderWidthColor?: string;
   backgroundColor: string;
   textColor: string;
   width?: string | number;
@@ -48,7 +49,7 @@ export const SmallButton: React.FC<SmallButtonProps> = ({
   textColor,
   borderWidth,
   width = DevWidth / 2.4,
-  borderColor
+  borderColor 
 }) => {
   return (
     <View>

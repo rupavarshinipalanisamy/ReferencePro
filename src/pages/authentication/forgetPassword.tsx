@@ -52,7 +52,7 @@ const ForgetPassword = (props: forgetPasswordProps) => {
                         <View style={[mh25]}>
                             <H20font600Black>{labels.forgetPassword1}</H20font600Black>
                             <H14font400Gray4 style={{marginVertical:8}}>{labels.fPmsg}</H14font400Gray4>
-                            <IconInputContainer>
+                            <IconInputContainer style={{borderBottomColor:colors.borderBottomColor}}>
                                 <View style={[justyfyCenter]}>
                                     <CustomIcon name='email-outline' size={20} color={colors.greyVar4} type='MaterialCommunityIcons' />
                                 </View>

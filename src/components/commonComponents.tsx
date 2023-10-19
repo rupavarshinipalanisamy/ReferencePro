@@ -1,5 +1,5 @@
 import React, { useState, ReactNode } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal, Switch, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal, Switch, Image ,TextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mh20, mh30, ml10, ml15, mr10, mt10, mt15, mt20, mt30, mt5, mv10, mv15, mv20, p10, p5, pl10, pl13, pl5, pr10, pt10, spaceAround, spaceBetween, textCenter, flex1 } from './commonStyles';
 import { colors } from '../utils/colors';
@@ -894,8 +894,22 @@ export const CardHeaderText: React.FC<CardHeaderTextProps> = ({ text }) => {
         </View >
     );
 };
+//   ====================  PasswordIcon  ====================
+
+ export const PasswordToggleIcon = ({ isVisible, toggleVisibility }) => {
+    const iconName = isVisible ? 'eye' : 'eye-closed';
+  
+    return (
+      <TouchableOpacity onPress={toggleVisibility}>
+        <CustomIcon name={iconName} size={20} color={colors.greyVar4} type='octicons' />
+      </TouchableOpacity>
+    );
+  };
 
 
+
+
+// ==================== Profile Card ==============================
 
 
 export const ProfileCard = () => {

@@ -171,7 +171,6 @@ export const HalfCircle = styled(View)`
   top: 15px;
   overflow: hidden;
 `;
-
 export const HalfCircle2 = styled(View)`
   background-color:  ${props => isDark() ? colors.darkModeVar4 : colors.white};
   border-top-left-radius: 100px;

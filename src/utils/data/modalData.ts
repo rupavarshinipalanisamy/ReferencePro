@@ -104,14 +104,14 @@ export const deleteAllChats =[
 export const CallThreeDotsOption = [
     {
         id: 1,
-        name : labels.RemoveFromCallLog,
+        name : labels.delete,
         iconName : 'delete',
         iconType : "AntDesign",
         iconSize : 16,
         screenName : screenName.ChatView,
     },
     {
-        id: 5,
+        id: 2,
         name : labels.Block,
         iconName : 'block',
         iconType : "entypo",

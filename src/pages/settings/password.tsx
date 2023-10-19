@@ -13,6 +13,9 @@ import { requiredValidation, minLengthValidation, validationSchema } from '../..
 import { SmallButton } from '../../components/commonButtons';
 // import { PasswordToggleIcon } from '../../components/commonComponents';
 import { CardHeaderText } from '../chatView/UserProfile';
+import { ToggleSwitch } from '../../components/commonComponents';
+import { SearchHeader } from '../Media/MediaCommonHeader';
+import { DevHeight } from '../../utils/device';
 
 export type socialProfilesProps = {};
 
@@ -22,8 +25,12 @@ const Password = (props: socialProfilesProps) => {
   const [newPassword, setNewPassword] = useState(true);
   const [confirmPassword, setConfirmPassword] = useState(true);
   const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+  const [toggleVisible, setToggleVisible] = useState(false);
 
 
+  const handleToggle = () => {
+    setToggleVisible(!toggleVisible);
+}
   const handleToggleClick = () => {
     setIsUnlocked((prevState) => !prevState);
   };
@@ -63,14 +70,8 @@ const Password = (props: socialProfilesProps) => {
       <MainContainer>
         <ScrollView style={{ flex: 1 }}>
           <StatusBar backgroundColor={colors.white} />
-          <TopContainerWhiteCard>
-            <View style={[flexRow, mt20, { margin: 15 }]}>
-              <View style={[flexRow, alignItemsCenter]}>
-                <CustomIcon name='chevron-left' size={20} color={colors.black} type='octicons' />
-                <H16font900Black style={[ph15]}>{labels.pwdandSec}</H16font900Black>
-              </View>
-            </View>
-          </TopContainerWhiteCard>
+          <SearchHeader headerText={labels.pwdandSec} height={DevHeight / 12} />
+         
           <View style={[ mt20,mh20]}>
             <CardHeaderText text='Security'/>
             <View style={[pv20, flexRow, { justifyContent: 'space-between' }]}>
@@ -80,10 +81,8 @@ const Password = (props: socialProfilesProps) => {
                 </IconBackground>
                 <H16fontBoldBlack style={[ph10]}>{labels.twofactor}</H16fontBoldBlack>
               </View>
-              <TouchableOpacity style={[alignItemsCenter, justyfyCenter]}
-                onPress={handleToggleClick}>
-                <CustomIcon name={isUnlocked ? 'toggle-on' : 'toggle-off'} size={30} color={colors.greyVar3} type='Fontisto' />
-              </TouchableOpacity>
+              <ToggleSwitch value={toggleVisible} onToggle={handleToggle} />
+             
             </View>
             <View style={[mt20]}>
             <CardHeaderText text={labels.changePwd} />
@@ -177,7 +176,7 @@ const Password = (props: socialProfilesProps) => {
           </View>
 
           <View style={{
-            marginTop: 250,
+            marginTop: 300,
             bottom: 20,
             marginHorizontal:20,
             justifyContent:'space-between',
