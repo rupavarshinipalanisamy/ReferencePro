@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Text, View, Image, ImageBackground, StyleSheet, TouchableOpacity, TextInput, Modal as RNModal, } from 'react-native';
 import { colors } from '../../../utils/colors';
-import { flex1, flexRow, pt10, pl10, spaceBetween, alignItemsCenter, justyfyCenter, pt5, pl13, p5, mt5, borderRadius10, spaceAround, mb20, ml5 } from '../../../components/commonStyles';
+import { flex1, flexRow, pt10, pl10, spaceBetween, alignItemsCenter, justyfyCenter, pt5, pl13, p5, mt5, borderRadius10, spaceAround, mb20, ml5, pt25, pt15, mt3 } from '../../../components/commonStyles';
 import CustomIcon from '../../..//utils/Icons';
-import { H14BlackText, H14GreyVar4Bold400, H14blackVar1bold400Text, H14blueVar1Text, H15Grey, H16WhiteText, H16fontNormalBlue, H16fontNormalGray, H16fontSemiBoldBluevar4, H16fontSemiBoldGreyvar4, H18WhiteText } from '../../../components/commonText';
+import { H12DefaultGreyVar3, H12GreyVar8, H14BlackText, H14GreyVar4Bold400, H14GreyVar4Bold400Text, H14blackVar1bold400Text, H14blueVar1Text, H14font400grey3black2, H15Blackvar2Bold500, H15Grey, H16WhiteText, H16fontNormalBlue, H16fontNormalGray, H16fontSemiBoldBluevar4, H16fontSemiBoldGreyvar4, H18WhiteText, H20font600BlackVar2 } from '../../../components/commonText';
 import { labels } from '../../../utils/labels';
 import { DevHeight, DevWidth } from '../../../utils/device';
 import AudioImg from '../../../../assets/images/Audio.svg'
@@ -13,94 +13,12 @@ import { useNavigation } from '@react-navigation/native';
 import { GroupImg1Img, ProfileImg } from '../../../utils/png';
 import { CustomModal } from '../../../components/commonComponents';
 import { GroupChatViewModalData } from '../../../utils/data/groupsData';
-import { CallThreeDotsOption } from '../../../utils/data/modalData';
+import { CallThreeDotsOption, HaederChangechatViewModalData, SendMsgModalData, chatViewModalData } from '../../../utils/data/modalData';
 import { isDark } from '../../../Theme/ThemeContext';
 import { screenName } from '../../../utils/screenName';
 import Modal from 'react-native-modal';
 import { attachmentData } from '../../../utils/data/chatsData';
 
-const chatViewModalData = [
-    {
-        id: 1,
-        iconName: 'person-circle-outline',
-        iconSize: 16,
-        iconColor: colors.blackVar1,
-        iconType: 'Ionicons',
-        text: labels.ViewContact,
-        screenName: screenName.ChooseWallpaper,
-
-    },
-    {
-        id: 2,
-        iconName: 'photo',
-        iconSize: 16,
-        iconColor: colors.blackVar1,
-        iconType: 'FontAwesome',
-        text: labels.Media,
-        screenName: screenName.ChooseWallpaper,
-
-    },
-    {
-        id: 3,
-        iconName: 'search',
-        iconSize: 16,
-        iconColor: colors.blackVar1,
-        iconType: 'Feather',
-        text: labels.Search,
-        screenName: screenName.ChooseWallpaper,
-
-    },
-    {
-        id: 4,
-        iconName: 'microphone-off',
-        iconSize: 16,
-        iconColor: colors.blackVar1,
-        iconType: 'MaterialCommunityIcons',
-        text: labels.MuteNotification,
-        screenName: screenName.ChooseWallpaper,
-
-    },
-    {
-        id: 5,
-        iconName: 'window-maximize',
-        iconSize: 16,
-        iconColor: colors.blackVar1,
-        iconType: 'FontAwesome',
-        text: labels.Wallpaper,
-        screenName: screenName.ChooseWallpaper,
-
-    },
-    {
-        id: 6,
-        iconName: 'thumbs-down',
-        iconSize: 16,
-        iconColor: colors.blackVar1,
-        iconType: 'Feather',
-        text: labels.Report,
-        screenName: screenName.ChooseWallpaper,
-
-    },
-    {
-        id: 7,
-        iconName: 'block-flipped',
-        iconSize: 16,
-        iconColor: colors.blackVar1,
-        iconType: 'MaterialIcons',
-        text: labels.Block,
-        screenName: screenName.ChooseWallpaper,
-
-    },
-    {
-        id: 8,
-        iconName: 'trash-2',
-        iconSize: 16,
-        iconColor: colors.blackVar1,
-        iconType: 'Feather',
-        text: labels.ClearChat,
-        screenName: screenName.ChooseWallpaper,
-
-    },
-]
 
 
 interface HeaderChatViewProps {
@@ -220,9 +138,9 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
         <View style={{ height: DevWidth / 4.2, backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, borderBottomRightRadius: 25, borderBottomLeftRadius: 25, elevation: 1 }}>
             <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
                 <View style={[flexRow]}>
-                    <TouchableOpacity onPress={() => navigation.goBack()} style={pt10} >
-                        <CustomIcon name='chevron-left' color={isDark() ? colors.white : colors.black} size={20} type="entypo" />
-                    </TouchableOpacity>
+                    <View style={{paddingTop:12}} >
+                        <CustomIcon name='chevron-left' color={isDark() ? colors.white : colors.black} size={15} type="entypo" />
+                    </View>
                     <View style={[flexRow, spaceBetween, flex1]}>
                         <TouchableOpacity style={[pl10, flexRow]} onPress={() => { navigation.navigate(props.profileNavigate as never) }}>
                             {props.groups ? <Image source={GroupImg1Img} /> :
@@ -230,20 +148,20 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
                             }
 
                             <View style={pl13}>
-                                <Text style={{ fontSize: 15, fontWeight: '500', color: colors.black }}>{props.title}</Text>
-                                <Text style={{ color: colors.greyVar4, fontSize: 14, fontWeight: '400' }}>{props.subTitle}</Text>
+                                <H15Blackvar2Bold500 style={{lineHeight:23}}>{props.title}</H15Blackvar2Bold500>
+                                <H14GreyVar4Bold400Text  style={{lineHeight:20}}>{props.subTitle}</H14GreyVar4Bold400Text>
 
                             </View>
                         </TouchableOpacity>
                         <View style={[flexRow, alignItemsCenter]}>
                             <TouchableOpacity style={pl10} onPress={() => { navigation.navigate(props.videoNavigate as never) }}>
-                                <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={20} color={colors.greyVar4} />
+                                <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={20} color={isDark()?colors.white:colors.greyVar4} />
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => navigation.navigate(props.audioNavigate as never)} style={pl10}>
-                                <CustomIcon name='phone' type="Feather" size={16} color={colors.greyVar4} />
+                                <CustomIcon name='phone' type="Feather" size={16} color={isDark()?colors.white:colors.greyVar4}/>
                             </TouchableOpacity>
                             <TouchableOpacity onPress={props.groups ? handleGroupOptionModal : (props.call ? handleCallOptionModal : handleOptionModal)} style={pl10}>
-                                <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={20} color={colors.greyVar4} />
+                                <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={20} color={isDark()?colors.white:colors.greyVar4} />
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -279,62 +197,8 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
 
 
 export const LongPressedHaeder = ({ messageType,EditModal }) => {
-    const HaederChangechatViewModalData = [
-        {
-            id: 1,
-            iconName: 'copy',
-            iconSize: 16,
-            iconColor: colors.blackVar1,
-            iconType: 'Feather',
-            text: 'Copy',
-            screenName: screenName.ChooseWallpaper,
 
-        },
-        {
-            id: 2,
-            iconName: 'thumbs-down',
-            iconSize: 16,
-            iconColor: colors.blackVar1,
-            iconType: 'Feather',
-            text: 'Report',
-            screenName: screenName.ChooseWallpaper,
 
-        },
-
-    ]
-    const SendMsgModalData = [
-        {
-            id: 1,
-            iconName: 'info',
-            iconSize: 16,
-            iconColor: colors.blackVar1,
-            iconType: 'Feather',
-            text: 'Info',
-            screenName: screenName.ChooseWallpaper,
-
-        },
-        {
-            id: 2,
-            iconName: 'copy',
-            iconSize: 16,
-            iconColor: colors.blackVar1,
-            iconType: 'Feather',
-            text: 'Copy',
-            screenName: screenName.ChooseWallpaper,
-
-        },
-        {
-            id: 3,
-            iconName: 'pencil',
-            iconSize: 16,
-            iconColor: colors.blackVar1,
-            iconType: 'SimpleLineIcons',
-            text: 'Edit',
-            screenName: screenName.ChooseWallpaper,
-
-        },
-
-    ]
     const [optionModal, setOptionModal] = useState(false);
 
     const [SendMsgMdl, SetSendMsgMdl] = useState(false);
@@ -404,6 +268,7 @@ export const LongPressedHaeder = ({ messageType,EditModal }) => {
             </View>
         )
     }
+    const navigation =useNavigation()
 
     return (
 
@@ -414,27 +279,27 @@ export const LongPressedHaeder = ({ messageType,EditModal }) => {
                     <View style={[flexRow, spaceBetween, flex1]}>
                         <View style={[flexRow]} >
                             <View style={pt5}>
-                                <CustomIcon name='chevron-left' color={colors.greyVar4} size={20} type="entypo" />
+                                <CustomIcon name='chevron-left' color={isDark()?colors.white:colors.greyVar4} size={20} type="entypo" />
                             </View>
                             <View style={[pl13, justyfyCenter]}>
-                                <Text style={{ fontWeight: '600', fontSize: 20, color: colors.blackVar2 }}>1</Text>
+                                <H20font600BlackVar2>1</H20font600BlackVar2>
                             </View>
                         </View>
                         <View style={[flexRow, alignItemsCenter]}>
                             <TouchableOpacity style={pl10} >
-                                <CustomIcon name='reply-outline' type="MaterialCommunityIcons" size={24} color={colors.greyVar4} />
+                                <CustomIcon name='reply-outline' type="MaterialCommunityIcons" size={24} color={isDark()?colors.white:colors.greyVar4} />
                             </TouchableOpacity>
                             <TouchableOpacity style={pl10}>
-                                <CustomIcon name='star' color={colors.greyVar4} size={18} type="Feather" />
+                                <CustomIcon name='star' color={isDark()?colors.white:colors.greyVar4} size={18} type="Feather" />
                             </TouchableOpacity>
-                            <TouchableOpacity style={pl10} >
-                                <CustomIcon name='trash-2' type="Feather" size={18} color={colors.greyVar4} />
+                            <TouchableOpacity style={pl10}> 
+                                <CustomIcon name='trash-2' type="Feather" size={18} color={isDark()?colors.white:colors.greyVar4} />
                             </TouchableOpacity>
-                            <TouchableOpacity style={pl10} >
-                                <CustomIcon name='share-outline' type="MaterialCommunityIcons" size={24} color={colors.greyVar4} />
+                            <TouchableOpacity style={pl10} onPress={()=>navigation.navigate(screenName.ForwardTo as never)} >
+                                <CustomIcon name='share-outline' type="MaterialCommunityIcons" size={24} color={isDark()?colors.white:colors.greyVar4} />
                             </TouchableOpacity>
                             <TouchableOpacity style={pl10} onPress={handleOptionModal}>
-                                <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={20} color={colors.greyVar4} />
+                                <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={20} color={isDark()?colors.white:colors.greyVar4} />
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -473,21 +338,21 @@ export const FooterChatView = () => {
     }
 
     return (
-        <View style={{ backgroundColor: colors.white, alignItems: 'center', height: DevHeight / 9.5, paddingHorizontal: 20, borderTopLeftRadius: 20, borderTopRightRadius: 20, flexDirection: 'row', justifyContent: 'center' }}>
-            <View style={{ width: DevWidth / 1.3, height: 40, backgroundColor: 'white', borderColor: colors.greyVar2, borderWidth: 2, borderRadius: 6, marginTop: 30, bottom: 8 }}>
+        <View style={{ backgroundColor:isDark()?colors.darkModeVar1: colors.white, alignItems: 'center', height: DevHeight / 9.5, paddingHorizontal: 20, borderTopLeftRadius: 20, borderTopRightRadius: 20, flexDirection: 'row', justifyContent: 'center' }}>
+            <View style={{ width: DevWidth / 1.3, height: 40,backgroundColor:isDark()?colors.darkModeVar6:colors.white, borderColor:isDark()?'rgba(78,80,114,0.5)': colors.greyVar2, borderWidth: 2, borderRadius: 6, marginTop: 30, bottom: 8 }}>
                 <View style={{ flexDirection: 'row', width: '80%', height: 40, paddingHorizontal: 2, alignItems: 'center' }}>
                     <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginLeft: 15 }}>
-                        <CustomIcon name='smiley' type="octicons" size={16} color={colors.greyVar4} />
+                        <CustomIcon name='smiley' type="octicons" size={16} color={isDark()?colors.greyVar3:colors.greyVar4} />
                         <TextInput
-                            style={{ flex: 1, marginLeft: 5, color: colors.greyVar4, fontSize: 14, fontWeight: '400' }}
+                            style={{ flex: 1, marginLeft: 5, fontSize: 14, fontWeight: '400',color:isDark()?colors.greyVar3:colors.greyVar4}}
                             placeholder="Type here..."
                         />
                     </View>
                     <View style={{ flexDirection: 'row' }}>
                         <TouchableOpacity onPress={openModal} style={{ marginRight: 10, transform: [{ rotate: '45deg' }] }}>
-                            <CustomIcon name='paperclip' type="Feather" size={18} color={colors.greyVar4} />
+                            <CustomIcon name='paperclip' type="Feather" size={18} color={isDark()?colors.greyVar3:colors.greyVar4} />
                         </TouchableOpacity>
-                        <CustomIcon name='camera-outline' type="MaterialCommunityIcons" size={20} color={colors.greyVar4} />
+                        <CustomIcon name='camera-outline' type="MaterialCommunityIcons" size={20} color={isDark()?colors.greyVar3:colors.greyVar4} />
                     </View>
                 </View>
             </View>
@@ -545,20 +410,20 @@ export const ReplyFooterView = ({ onIconClick }: any) => {
         setModalVisible(false);
     }
     return (
-        <View style={{ backgroundColor: colors.white, alignItems: 'center', height: DevHeight / 5, paddingHorizontal: 20, borderTopLeftRadius: 20, borderTopRightRadius: 20, flexDirection: 'row' }}>
-            <View style={{ width: '86%', height: 117, backgroundColor: 'white', borderColor: colors.greyVar2, borderWidth: 2, borderRadius: 10, marginTop: 30, bottom: 8 }}>
+        <View style={{ backgroundColor:isDark()?colors.darkModeVar1: colors.white, alignItems: 'center', height: DevHeight / 5, paddingHorizontal: 20, borderTopLeftRadius: 20, borderTopRightRadius: 20, flexDirection: 'row' }}>
+            <View style={{ width: '86%', height: 117, backgroundColor: isDark()?colors.darkModeVar6:colors.white,borderColor:isDark()?'rgba(78,80,114,0.5)': colors.greyVar2, borderWidth: 2, borderRadius: 10, marginTop: 30, bottom: 8 }}>
                 <View style={{
-                    width: '98%', height: 67, backgroundColor: colors.purpleVar1, marginTop: 5, borderRadius: 5, marginHorizontal: 3,
+                    width: '98%', height: 67, backgroundColor:isDark()?colors.darkModeVar4: colors.purpleVar1, marginTop: 5, borderRadius: 5, marginHorizontal: 3,
                     borderLeftWidth: 1.5, borderLeftColor: colors.purpleVar3
                 }}>
                     <View style={{ marginHorizontal: 10 }}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 5 }}>
                             <Text style={{ color: colors.purpleVar3, fontWeight: '500', fontSize: 15, lineHeight: 23 }}>Horace Keene</Text>
                             <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }} onPress={() => onIconClick()}  >
-                                <CustomIcon name='x' type="Feather" size={16} color={colors.greyVar4} />
+                                <CustomIcon name='x' type="Feather" size={16} color={isDark()?colors.greyVar3:colors.greyVar4} />
                             </TouchableOpacity>
                         </View>
-                        <Text style={{ fontSize: 14, color: colors.blackVar1, fontWeight: '400', lineHeight: 20 }}>Hello <Text style={{ color: colors.blueVar1 }}>@Alex</Text> Good Morning</Text>
+                        <H14GreyVar4Bold400>Hello <Text style={{ color: colors.blueVar1 }}>@Alex</Text> Good Morning</H14GreyVar4Bold400>
                     </View>
                 </View>
                 <View style={{ flexDirection: 'row', width: '80%', height: 40, paddingHorizontal: 2, alignItems: 'center' }}>
@@ -618,18 +483,7 @@ export const ReplyFooterView = ({ onIconClick }: any) => {
     );
 }
 
-// export const ReplyFooterView = ({onIconClick}: any) => {
-//     return (
-//         <View>
-//             <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }} onPress={() => onIconClick()}  >
-//                 <CustomIcon name='x' type="Feather" size={16} color={colors.greyVar4} />
-//             </TouchableOpacity>
 
-//         </View>
-
-
-//     );
-// }
 export const FooterAdminChatView = () => {
     return (
         <View style={[{ backgroundColor: colors.white, height: DevHeight / 8, borderTopLeftRadius: 20, borderTopRightRadius: 20, paddingTop: 20 }, alignItemsCenter]}>
@@ -645,22 +499,22 @@ export const receiveMessage1 = () => {
     return (
         <View style={{ alignItems: 'flex-start', marginHorizontal: 20, marginTop: 20 }}>
             <View style={[styles.receiveMsgCard]}>
-                <H14BlackText>
+                <H14font400grey3black2>
                     {labels.helloAlex}
-                </H14BlackText>
+                </H14font400grey3black2>
             </View>
         </View>
     );
 };
 export const receiveMessage2 = () => {
     return (
-        <View style={{ alignItems: 'flex-start', marginHorizontal: 20, marginTop: 20 }}>
+        <View style={{ alignItems: 'flex-start', marginHorizontal: 20, marginTop: 20,justifyContent:'space-between',flex:1 }}>
             <View style={[styles.receiveMsgCard, flexRow]}>
                 <CustomIcon name="play-circle-o" size={20} color={colors.purpleVar3} type="font-awesome" />
                 <View style={pl10}>
                     <AudioImg />
                 </View>
-                <Text style={pl13}>00:30</Text>
+                <H12DefaultGreyVar3 style={[mt3,pl13]}>00:30</H12DefaultGreyVar3>
             </View>
         </View >
     );
@@ -669,20 +523,20 @@ export const receiveMessage3 = () => {
     return (
         <View style={{ alignItems: 'flex-start', marginHorizontal: 20, marginTop: 20 }}>
             <View style={styles.receiveMsgCard}>
-                <View style={[{ backgroundColor: colors.whiteVar1, alignItems: 'center', padding: 10, width: DevWidth / 1.4, borderRadius: 8 }, flexRow, spaceBetween]}>
+                <View style={[{ backgroundColor: isDark()?colors.darkModeVar6:colors.whiteVar1, alignItems: 'center', padding: 10, width: DevWidth / 1.4, borderRadius: 8 }, flexRow, spaceBetween]}>
                     <View style={[flexRow]}>
                         <View style={justyfyCenter}>
-                            <CustomIcon name='document-text-outline' type="Ionicons" color={colors.greyVar4} size={20} />
+                            <CustomIcon name='document-text-outline' type="Ionicons" color={isDark()?colors.greyVar3:colors.greyVar4} size={16} />
                         </View>
                         <View style={pl13}>
-                            <H14BlackText>Design_Brief.pdf</H14BlackText>
-                            <H14BlackText>243 KB</H14BlackText>
+                            <H14blackVar1bold400Text>Design_Brief.pdf</H14blackVar1bold400Text>
+                            <H12GreyVar8>243 KB</H12GreyVar8>
                         </View>
                     </View>
-                    <CustomIcon name='download' type="Feather" color={colors.greyVar4} size={20} />
+                    <CustomIcon name='download' type="Feather" color={isDark()?colors.greyVar3:colors.greyVar4} size={16} />
                 </View>
                 <View style={pt5}>
-                    <H14BlackText>{labels.checkThisFile}</H14BlackText>
+                    <H14font400grey3black2>{labels.checkThisFile}</H14font400grey3black2>
                 </View>
             </View>
         </View >
@@ -718,9 +572,9 @@ export const sentMessage1 = (text: string) => {
     return (
         <View style={{ alignItems: 'flex-end', marginHorizontal: 20 }}>
             <View style={[styles.sndMsgCard]}>
-                <H14BlackText>
+                <H14font400grey3black2>
                     {text}
-                </H14BlackText>
+                </H14font400grey3black2>
             </View>
         </View >
     );
@@ -729,9 +583,9 @@ export const SentMessage2 = () => {
     return (
         <View style={{ alignItems: 'flex-end', marginHorizontal: 20, marginTop: 5 }}>
             <View style={[styles.sndMsgCard]}>
-                <H14BlackText>
+                <H14font400grey3black2>
                     This is my new website design
-                </H14BlackText>
+                </H14font400grey3black2>
             </View>
             <View style={pt10}>
                 <View style={[styles.sndMsgCard]}>
@@ -758,13 +612,13 @@ export const sentMessage4 = () => {
     return (
         <View style={{ alignItems: 'flex-end' }}>
             <View style={[styles.sndMsgCard]}>
-                <H14BlackText>
+                <H14font400grey3black2>
                     Thank You Mam
-                </H14BlackText>
+                </H14font400grey3black2>
             </View>
             <View style={[styles.sndMsgCard, { marginTop: 10 }]}>
                 <View style={{
-                    width: DevWidth * 0.65, height: 67, backgroundColor: colors.purpleVar4, marginTop: 5, borderRadius: 5, marginHorizontal: 3,
+                    width: DevWidth * 0.65, height: 67, backgroundColor:isDark()?colors.darkModeVar6:colors.purpleVar4, marginTop: 5, borderRadius: 5, marginHorizontal: 3,
                     borderLeftWidth: 1.5, borderLeftColor: colors.purpleVar3
                 }}>
                     <View style={{ marginHorizontal: 10 }}>
@@ -774,7 +628,7 @@ export const sentMessage4 = () => {
                         <Text style={{ fontSize: 14, color: colors.blackVar1, fontWeight: '400', lineHeight: 20 }}>You can check on this file</Text>
                     </View>
                 </View>
-                <Text style={[mt5, ml5, { fontSize: 14, fontWeight: '400', color: colors.blackVar1 }]}>Ok Mam</Text>
+                <H14font400grey3black2 style={[mt5, ml5]}>Ok Mam</H14font400grey3black2>
             </View>
         </View>
     );
@@ -786,14 +640,14 @@ const styles = StyleSheet.create({
         resizeMode: 'cover',
     },
     receiveMsgCard: {
-        backgroundColor: colors.white,
+        backgroundColor:isDark()?colors.darkModeVar4: colors.white,
         borderTopRightRadius: 8,
         borderBottomRightRadius: 8,
         borderBottomLeftRadius: 8,
         padding: 10
     },
     sndMsgCard: {
-        backgroundColor: colors.purpleVar1,
+        backgroundColor: isDark()?colors.darkModeVar4: colors.white,
         borderTopLeftRadius: 8,
         borderBottomRightRadius: 8,
         borderBottomLeftRadius: 8,

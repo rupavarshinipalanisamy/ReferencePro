@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { colors } from '../utils/colors';
 import styled from 'styled-components';
-import { DevHeight } from '../utils/device';
+import { DevHeight, DevWidth } from '../utils/device';
 import { isDark } from '../Theme/ThemeContext';
 
 const styles = StyleSheet.create({
@@ -165,6 +165,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // borderColor: colors.greyVar4
 
+  },
+  greyTabView: {
+    alignSelf: 'center',
+    marginTop: 15,
+    height: 5,
+    width: DevWidth * 0.2,
+    backgroundColor: colors.greyVar0
   }
 });
 const {
@@ -190,7 +197,8 @@ const {
   // receiveMsgCard,
   cardSurface,
   longButton,
-  smallButton
+  smallButton,
+  greyTabView
 
 
 
@@ -305,4 +313,8 @@ shadow-color:${colors.greyVar4};
 `
 export const LongButton = styled(TouchableOpacity)`
 ${longButton}
+`
+
+export const GreyTabView = styled(TouchableOpacity)`
+${greyTabView}
 `

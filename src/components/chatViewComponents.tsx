@@ -4,20 +4,21 @@ import { colors } from '../utils/colors';
 import { alignItemsCenter, flex1, flexRow, justyfyCenter, pb10, pl13, pl15, pl6, pt10, spaceBetween } from '../components/commonStyles'
 import { labels } from '../utils/labels';
 import CustomIcon from '../utils/Icons';
-import { H14BlackText, H14blackVar1bold400Text, H16BlackText } from './commonText';
+import { H12font400Black, H12font400Grey, H14BlackText, H14BlackVar2Bold400Text, H14GreyVar4Bold400, H14blackVar1bold400Text, H15Blackvar2Bold500, H16BlackText } from './commonText';
 import { ProfileImg } from '../utils/png';
 import { isDark } from '../Theme/ThemeContext';
 import { DevHeight, DevWidth } from '../utils/device';
 import { attachmentData } from '../utils/data/chatsData';
 import Modal from 'react-native-modal';
+import { GreyTabView } from './commonView';
 
 
 
 export const DayDetails = () => {
   return (
     <>
-      <View style={{ height: 28, backgroundColor: colors.white, width: 115, borderRadius: 20, alignItems: 'center', justifyContent: 'center', marginHorizontal: 100 }}>
-        <Text style={{ fontSize: 12, fontWeight: '400', color: '#0A0A0A' }}>{labels.chatViewToday}</Text>
+      <View style={{ height: 28, backgroundColor: isDark() ? colors.darkModeVar6 : colors.white, width: 115, borderRadius: 20, alignItems: 'center', justifyContent: 'center', marginHorizontal: 100 }}>
+        <H14BlackVar2Bold400Text>{labels.chatViewToday}</H14BlackVar2Bold400Text>
       </View>
     </>
   );
@@ -46,9 +47,13 @@ export const Tick = () => {
 export const Reactmsg = () => {
   return (
     <View style={{ paddingTop: 5 }} >
-      <View style={{ backgroundColor: colors.white, height: 22, width: 40, borderRadius: 10, justifyContent: "space-evenly", flexDirection: 'row', marginRight: 230 }}>
-        <H14BlackText>1</H14BlackText>
-        <H14BlackText>👍</H14BlackText>
+      <View style={{ backgroundColor: isDark() ? colors.darkModeVar4 : colors.white, height: 22, width: 40, borderRadius: 10, flexDirection: 'row', marginRight: 230 }}>
+        <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'space-evenly', flex: 1 }}>
+          <H12font400Grey >1</H12font400Grey>
+          <H12font400Black>👍</H12font400Black>
+
+        </View>
+
       </View>
     </View>
   )
@@ -58,20 +63,23 @@ export const Reactmsg = () => {
 
 export const All = () => {
   return (
-    <View style={{ marginHorizontal: 25, marginTop: 20 }}>
-      <View style={[flexRow, spaceBetween]}>
-        <View style={flexRow}>
-          <Image source={ProfileImg} />
-          <View style={[pl15, spaceBetween]}>
-            <H14BlackText>Horace Keene</H14BlackText>
-            <Text>Active 4Min Ago</Text>
+    
+      <View style={{ marginHorizontal: 25, marginTop: 20 }}>
+
+        <View style={[flexRow, spaceBetween]}>
+          <View style={flexRow}>
+            <Image source={ProfileImg} />
+            <View style={[pl15, spaceBetween]}>
+              <H15Blackvar2Bold500>Horace Keene</H15Blackvar2Bold500>
+              <H14GreyVar4Bold400>Active 4Min Ago</H14GreyVar4Bold400>
+            </View>
+          </View>
+          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+            <H16BlackText>👍</H16BlackText>
           </View>
         </View>
-        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-          <H16BlackText>👍</H16BlackText>
-        </View>
       </View>
-    </View>
+  
   )
 }
 
@@ -91,7 +99,7 @@ export const ReactMsgTabControl: React.FC<TabControlProps> = ({ tabs, activeTab,
           <TouchableOpacity
             style={[
               { borderBottomWidth: activeTab === tabInfo.label ? 3 : 0 },
-              { borderBottomColor: activeTab === tabInfo.label ? colors.purpleVar3 : "" },
+              { borderBottomColor: activeTab === tabInfo.label ?(isDark()?colors.white: colors.purpleVar3) : "" },
             ]}
             onPress={() => onTabPress(tabInfo.label)}
           >
@@ -99,7 +107,7 @@ export const ReactMsgTabControl: React.FC<TabControlProps> = ({ tabs, activeTab,
               <Text
                 style={[
                   styles.tabText,
-                  { color: activeTab === tabInfo.label ? colors.purpleVar3 : colors.purpleVar3 },
+                  { color: activeTab === tabInfo.label ? (isDark()?colors.white:colors.purpleVar3) : colors.purpleVar1 },
                 ]}
               >
                 {tabInfo.label}
@@ -107,7 +115,7 @@ export const ReactMsgTabControl: React.FC<TabControlProps> = ({ tabs, activeTab,
               {tabInfo.count !== undefined && tabInfo.count > 0 && (
                 <View
                   style={[
-                    styles.roundNumber, { backgroundColor: 'rgba(128, 0, 128, 0.2)' },
+                    styles.roundNumber, { backgroundColor: isDark()?colors.darkModeVar6:'rgba(128, 0, 128, 0.2)' },
                   ]}
                 >
                   <Text style={styles.roundNumberText}>{tabInfo.count}</Text>
@@ -132,7 +140,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   tabText: {
-    fontSize: 18,
+    fontSize:16,
     fontWeight: '500',
     flexDirection: 'row',
   },

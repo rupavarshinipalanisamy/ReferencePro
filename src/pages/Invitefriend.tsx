@@ -9,10 +9,8 @@ import CustomIcon from '../utils/Icons';
 import { SearchHeader } from './Media/MediaCommonHeader';
 
 
-export type AllChatsProps = {
 
-}
-const InviteFriend = ({ }: AllChatsProps) => {
+const InviteFriend = () => {
 
   const contactsByFirstLetter = contactList.reduce((acc, contact) => {
         const firstLetter = contact.contName.charAt(0).toUpperCase();

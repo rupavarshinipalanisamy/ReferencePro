@@ -32,12 +32,12 @@ export const TabControl: React.FC<TabControlProps> = ({ tabs, activeTab, onTabPr
         <View style={[styles.tabContainer]}>
             {tabs.map((tabInfo) => (
                 <View style={[flex1]} key={tabInfo.label}>
-                    <View style={{ borderBottomWidth: activeTab === tabInfo.label ? 0 : 2, borderBottomColor: colors.greyVar7 }}>
+                    <View style={{ borderBottomWidth: activeTab === tabInfo.label ? 0 : 2, borderBottomColor:(isDark()?colors.darkModeVar1:colors.greyVar7 ) }}>
 
                         <TouchableOpacity
                             style={[
                                 { borderBottomWidth: activeTab === tabInfo.label ? 2 : 0 },
-                                { borderBottomColor: activeTab === tabInfo.label ? colors.purpleVar3 : "" },
+                                { borderBottomColor: activeTab === tabInfo.label ? (isDark()?colors.white:colors.purpleVar3)  : "" },
 
                             ]}
                             onPress={() => onTabPress(tabInfo.label)}
@@ -46,7 +46,7 @@ export const TabControl: React.FC<TabControlProps> = ({ tabs, activeTab, onTabPr
                                 <Text
                                     style={[
                                         styles.tabText,
-                                        { color: activeTab === tabInfo.label ? colors.purpleVar3 : colors.greyVar4 },
+                                        { color: activeTab === tabInfo.label ? (isDark()?colors.white:colors.purpleVar3) :(isDark()?colors.blackVar1:colors.greyVar3)},
                                     ]}
                                 >
                                     {tabInfo.label}
@@ -241,14 +241,14 @@ export const TextInputHeader = (props: TextInputHeaderProps) => {
                                 onPress={props.onBack}
                             >
                                 <View style={{ top: 8 }}>
-                                    <CustomIcon name='chevron-back-sharp' color={colors.black} size={16} type="Ionicons" />
+                                    <CustomIcon name='chevron-back-sharp' color={isDark()?colors.white:colors.black} size={16} type="Ionicons" />
 
                                 </View>
                             </TouchableOpacity>
 
                             <View style={[pl13]}>
                                 <TextInput placeholder='Search...' style={{
-                                    borderBottomWidth: 1, borderBottomColor: colors.greyVar2, width: DevWidth / 1.35,
+                                    borderBottomWidth: 1, borderBottomColor:isDark()? 'rgba(78,80,114,0.5)':colors.greyVar2, width: DevWidth / 1.35,
                                     fontSize: 14, fontWeight: '400', color: colors.blackVar1
                                 }} />
 
@@ -257,7 +257,7 @@ export const TextInputHeader = (props: TextInputHeaderProps) => {
                         </View>
                         <View style={[flexRow, alignItemsCenter]}>
                             <TouchableOpacity style={pl10} >
-                                <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={colors.greyVar4} />
+                                <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={isDark()?colors.white:colors.greyVar4} />
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -354,7 +354,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 18,
     },
     tabText: {
-        fontSize: 17,
+        fontSize: 14,
         fontWeight: '500',
         flexDirection: 'row',
         marginLeft: 14,

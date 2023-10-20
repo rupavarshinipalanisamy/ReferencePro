@@ -14,11 +14,11 @@ import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../utils/screenName';
 import { H14BlackText, H14font400Gray4, H16font600Black, H16fontNormalGray, H16fontNormalGray4, H18fontBoldBlack } from './commonText';
 import { chooseTheme, clearAllChats, deleteAllChats, groupsData, lastSee, profilePic } from '../utils/data/modalData';
-import { RadioButton, RadioButtonRound, SelectedRadioBtn } from './commonView';
+import { GreyTabView, RadioButton, RadioButtonRound, SelectedRadioBtn } from './commonView';
 import CustomIcon from '../utils/Icons';
 import { LongPurpleButton, SmallButton } from './commonButtons';
 import { RadioBtn } from './commonComponents';
-import { useTheme } from '../Theme/ThemeContext';
+import { isDark, useTheme } from '../Theme/ThemeContext';
 import { DevHeight, DevWidth } from '../utils/device';
 import { All, EditFooterView, ReactMsgTabControl } from './chatViewComponents';
 import Modal from 'react-native-modal';
@@ -794,18 +794,23 @@ export const ReactModal = ({ isVisible, closeModal, selectedTab, handleTabPress,
       style={{ margin: 0, position: 'absolute', bottom: 0, width: '100%' }}
       isVisible={isVisible}
       onBackdropPress={closeModal}>
+
       <TouchableWithoutFeedback onPress={closeModal}>
+       
         <View style={{ flex: 1 }}>
+       
           <View
             style={{
               height: DevHeight / 3.3,
-              backgroundColor: colors.white,
-              paddingTop: 40,
+              backgroundColor: isDark()?colors.darkModeVar4: colors.white,
+             
               borderTopLeftRadius: 30,
               borderTopRightRadius: 30
             }}
           >
-            <View>
+             <GreyTabView />
+
+            <View style={{paddingTop:20}}>
               <ReactMsgTabControl tabs={tabs} activeTab={selectedTab} onTabPress={handleTabPress} />
               {selectedTab === "All" && (
                 <All />

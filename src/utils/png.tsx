@@ -53,7 +53,36 @@ export const ViewPic3 = require('../../assets/images/png/view-pic3.png')
 export const MutePic1 = require('../../assets/images/png/mute-pic1.png')
 export const MutePic2 = require('../../assets/images/png/mute-pic2.png')
 export const StatusImg1 = require('../../assets/images/png/statusImg1.png')
-
-
-
-
+export const ImageImg1= require('../../assets/images/png/recentimg1.png');
+export const ImageImg2= require('../../assets/images/png/recentimg2.png');
+export const ImageImg3= require('../../assets/images/png/recentimg3.png');
+export const ImageImg4= require('../../assets/images/png/recentimg4.png');
+export const ImageImg5= require('../../assets/images/png/recentimg5.png');
+export const ImageImg6= require('../../assets/images/png/recentimg6.png');
+export const ImageImg7= require('../../assets/images/png/recentimg7.png');
+export const Videoimg1=require('../../assets/images/png/videoimg1.png')
+export const Videoimg2=require('../../assets/images/png/videoimg2.png')
+export const Videoimg3=require('../../assets/images/png/videoimg3.png')
+export const Videoimg4=require('../../assets/images/png/videoimg4.png')
+export const Videoimg5=require('../../assets/images/png/videoimg5.png')
+export const Videoimg6=require('../../assets/images/png/videoimg6.png')
+export const Videoimg7=require('../../assets/images/png/videoimg7.png')
+export const Videoimg8=require('../../assets/images/png/videoimg8.png')
+export const Videoimg9=require('../../assets/images/png/videoimg9.png')
+export const Videoimg10=require('../../assets/images/png/videoimg10.png')
+export const Linkimg1=require('../../assets/images/png/linkimg1.png')
+export const Linkimg2=require('../../assets/images/png/linkimg2.png')
+export const Linkimg3=require('../../assets/images/png/linkimg3.png')
+export const Linkimg4=require('../../assets/images/png/linkimg4.png')
+export const Wallpaper1=require('../../assets/images/png/wallpaper1.png')
+export const Wallpaper2=require('../../assets/images/png/wallpaper2.png')
+export const Wallpaper3=require('../../assets/images/png/wallpaper3.png')
+export const Wallpaper4=require('../../assets/images/png/wallpaper4.png')
+export const Wallpaper5=require('../../assets/images/png/wallpaper5.png')
+export const Wallpaper6=require('../../assets/images/png/wallpaper6.png')
+export const Wallpaper7=require('../../assets/images/png/wallpaper7.png')
+export const Wallpaper8=require('../../assets/images/png/wallpaper8.png')
+export const Wallpaper9=require('../../assets/images/png/wallpaper9.png')
+export const Wallpaper10=require('../../assets/images/png/wallpaper10.png')
+export const Wallpaper11=require('../../assets/images/png/wallpaper11.png')
+export const Wallpaper12=require('../../assets/images/png/wallpaper12.png')

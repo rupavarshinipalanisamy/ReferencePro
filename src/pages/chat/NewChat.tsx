@@ -12,6 +12,8 @@ import { H14GreyVar4Bold400, H15Blackvar2Bold500, H18BlackBoldText600 } from '..
 import { createGroupUserSelectData } from '../../utils/data/groupsData';
 import { SmallButton } from '../../components/commonButtons';
 import { newChatData } from '../../utils/data/chatsData';
+import { SearchHeader } from '../Media/MediaCommonHeader';
+import { isDark } from '../../Theme/ThemeContext';
 
 export type NewChatProps = {
 
@@ -22,26 +24,18 @@ const NewChat = (props: NewChatProps) => {
     const navigation = useNavigation();
 
     return (
-        <View style={[flex1, { backgroundColor: colors.whiteVar0 }]} >
-            <View style={[flexRow, justifyStart, alignSelfCenter, alignItemsCenter, { height: DevHeight * 0.12, width: DevWidth, backgroundColor: colors.white, borderBottomLeftRadius: 45, borderBottomRightRadius: 45 }]}>
-                <View style={[ml30]}>
-                    <CustomIcon name='arrow-back-ios' size={18} color={colors.blackVar2} type='MaterialIcons' />
-                </View>
-                <RowSpaceBetween style={[flex1, mr30]}>
-                    <H18BlackBoldText600 style={[ml10]}>{labels.NewChat}</H18BlackBoldText600>
-                    <CustomIcon size={20} name='search' type='Feather' color={colors.blackVar2} />
-                </RowSpaceBetween>
-            </View>
+        <View style={[flex1, { backgroundColor:isDark()?colors.darkModeVar2: colors.whiteVar0 }]} >
+       <SearchHeader headerText='New Chat' searchIcon={true}/>
             <ScrollView showsVerticalScrollIndicator={false} >
                 <View style={[flex1, mh20, mt15]}>
                     {
                         newChatData.map((item) => {
                             return (
-                                <View key={item.id} style={[p10, mv10, styles.whiteCard]}>
+                                <View key={item.id} style={[p10, mv10, styles.whiteCard, { backgroundColor:isDark() ? colors.darkModeVar4 : colors.white }]}>
                                     <View style={[flexRow]}>
                                         <View style={[alignItemsCenter, justyfyCenter]}>
                                             <Image source={item.img} style={styles.profileImg} />
-                                            <View style={[{ backgroundColor: item.status === 'active' ? '#20c997' : '' }, item.status === 'active' ? styles.status : null]} />
+                                            <View style={[{ backgroundColor: item.status === 'active' ?  (isDark()?colors.greenVar2:colors.green) : '' }, item.status === 'active' ? styles.status : null]} />
                                         </View>
                                         <View style={[flex1]}>
                                             <RowSpaceBetween style={[pb5]}>
@@ -72,7 +66,7 @@ const styles = StyleSheet.create({
     },
     status: {
         borderWidth: 3,
-        borderColor: colors.white,
+        borderColor: isDark()?colors.darkModeVar4:colors.white,
         position: 'absolute',
         bottom: 0,
         right: 10,

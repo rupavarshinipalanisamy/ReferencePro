@@ -8,6 +8,7 @@ import {
 } from 'react-native-gesture-handler';
 import { colors } from '../../utils/colors';
 import CustomIcon from '../../utils/Icons';
+import { isDark } from '../../Theme/ThemeContext';
 
 const ChatMessage = ({ message, onSwipeRight, onPress, hanldeLogPress, selectedCards, toggleCardSelection, editedMessageText }) => {
     const translateX = useRef(new Animated.Value(0)).current;
@@ -48,7 +49,7 @@ const ChatMessage = ({ message, onSwipeRight, onPress, hanldeLogPress, selectedC
             <Animated.View
                 style={[
                     {
-                        backgroundColor: selectedCards.includes(message.id) ? colors.purpleVar4 : 'transparent', // Use the prop here
+                        backgroundColor: selectedCards.includes(message.id) ? (isDark()?colors.darkModeVar6:colors.purpleVar4 ): 'transparent', // Use the prop here
                         transform: [{ translateX: translateX }],
                     },
                 ]}
@@ -67,8 +68,8 @@ const ChatMessage = ({ message, onSwipeRight, onPress, hanldeLogPress, selectedC
                         }
                     }}
 
-                    onLongPress={ ()=> {
-                        hanldeLogPress();
+                    onLongPress={(event) => {
+                        hanldeLogPress(event,message.id);
                         if (!selectedCards.includes(message.id)) {
                           toggleCardSelection(message.id);
                         }
