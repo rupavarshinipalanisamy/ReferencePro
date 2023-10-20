@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { Fragment, useState } from 'react';
-import { StatusBar, Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { colors } from 'react-native-elements';
 import { CustomModal, ThemeModal, } from '../../components/commonModal';
 import { flexRow, mt20, alignItemsCenter, ph15, mh20, spaceBetween, justyfyCenter } from '../../components/commonStyles';
@@ -58,7 +58,6 @@ const ChatSettings = (props: chatSettingsProps) => {
     return (
         <Fragment>
             <MainContainer>
-                <StatusBar backgroundColor={colors.white} />
                 <TopContainerWhiteCard>
                     <View style={[flexRow, mt20, { margin: 15 }]}>
                         <View style={[flexRow, alignItemsCenter]}>

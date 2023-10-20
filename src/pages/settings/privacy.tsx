@@ -91,7 +91,7 @@
 
 // export default Privacy
 import React, { Fragment, useState, useEffect } from 'react';
-import { StatusBar, View, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
 import {
     flexRow,
     mt20,
@@ -227,7 +227,6 @@ const Privacy = (props: privacyProps) => {
     return (
         <Fragment>
             <MainContainer>
-                <StatusBar backgroundColor={colors.white} />
                 <TopContainerWhiteCard>
                     <View style={[flexRow, mt20, { margin: 15 }]}>
                         <View style={[flexRow, alignItemsCenter]}>

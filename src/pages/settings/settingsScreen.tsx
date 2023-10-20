@@ -2,7 +2,6 @@ import React, { Fragment, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { CommonLineDividerGrey, IconBackground, MainContainer, RowSpaceBetween, TopContainerWhiteCard } from '../../components/commonView';
 import { colors } from '../../utils/colors';
-import { StatusBar } from 'react-native';
 import CustomIcon from '../../utils/Icons';
 import { StyleSheet } from 'react-native';
 import SettingAvatar from '../../../assets/images/settings-avatar.svg'
@@ -105,7 +104,6 @@ const SettingsScreen = (props: settingsScreenProps) => {
     return (
         <Fragment>
             <MainContainer>
-                <StatusBar backgroundColor={colors.white} />
                 <TopContainerWhiteCard>
                     <View style={{ flexDirection: 'row', marginHorizontal: 20, justifyContent: 'space-between' }}>
                         <Text style={{ color: 'black', fontSize: 17, fontWeight: '900' }}> Settings</Text>

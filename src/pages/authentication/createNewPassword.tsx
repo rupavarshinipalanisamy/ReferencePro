@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { Fragment, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { ImageBackground, StatusBar, TouchableOpacity, View } from 'react-native';
+import { ImageBackground, TouchableOpacity, View } from 'react-native';
 import { CustomTextInput } from '../../components/commonInputFields';
 import { m30, ph30, pv8, justyfyCenter, alignItemsCenter, flexRow, mh25 } from '../../components/commonStyles';
 import { H14font400Gray4, H18fontNormalGray, H20font600Black, } from '../../components/commonText';
@@ -23,11 +23,9 @@ const CreateNewPassword = (props: createNewPasswordProps) => {
     const [showPassword, setShowPassword] = useState(true);
     const [shownewPassword, setShowNewPassword] = useState(true);
     const [isModalVisible, setModalVisible] = useState(false);
-    const [statusBarColor, setStatusBarColor] = useState('transparent');
 
     const toggleModal = () => {
         setModalVisible(!isModalVisible);
-        setStatusBarColor(isModalVisible ? 'transparent' : 'rgba(0, 0, 0, 0.5)');
     };
 
     const formKeys = {

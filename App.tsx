@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Image, StatusBar } from 'react-native';
+import { View, Image, StatusBar, Platform } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import RootNavigation from './navigation';
 import { screenName } from './src/utils/screenName';
@@ -8,11 +8,15 @@ import { getData, storageKeys } from './src/common/asyncStorage';
 import { SplashScreenContainer } from './src/styledComponent/styledComponent';
 import { h100, w100 } from './src/components/commonStyles';
 import { ThemeProvider } from './src/Theme/ThemeContext';
+import { colors } from './src/utils/colors';
 
 export type AppProps = {};
 
 const App = (props: AppProps) => {
   const [isLoading, setIsLoading] = React.useState<boolean>(true);
+
+  const STATUS_BAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBar.currentHeight;
+  const HEADER_HEIGHT = Platform.OS === "ios" ? 44 : 56;
 
   useEffect(() => {
     initialCall();
@@ -34,7 +38,7 @@ const App = (props: AppProps) => {
   if (isLoading) {
     return (
       <SplashScreenContainer>
-        <StatusBar translucent backgroundColor="transparent" />
+        {/* <StatusBar translucent backgroundColor="transparent" /> */}
         <Image source={require('./assets/images/png/splash_image.png')} style={[w100, h100]} />
       </SplashScreenContainer>
     );
@@ -43,6 +47,13 @@ const App = (props: AppProps) => {
   return (
     <ThemeProvider>
       <View style={{ flex: 1 }}>
+        <View style={{ height: STATUS_BAR_HEIGHT, backgroundColor: colors.purpleVar3 }}>
+          <StatusBar
+            translucent
+            backgroundColor={colors.purpleVar3}
+            barStyle="light-content"
+          />
+        </View>
         <RootNavigation initialRouteName={screenName.LoginEmail} />
       </View>
     </ThemeProvider>

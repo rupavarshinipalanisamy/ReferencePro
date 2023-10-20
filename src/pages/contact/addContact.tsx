@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { ScrollView, StatusBar, Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { MainContainer } from '../../components/commonView';
 import CustomIcon from '../../utils/Icons';
 import { colors } from '../../utils/colors';
@@ -70,117 +70,114 @@ const AddContact = (props: addContactProps) => {
     return (
         <Fragment>
             <MainContainer>
-                <StatusBar backgroundColor={colors.white} />
-
                 <View style={{ backgroundColor: 'white', borderBottomStartRadius: 25, borderBottomEndRadius: 25, elevation: 4, height: DevHeight / 10, justifyContent: 'center' }}>
                     <View style={{ flexDirection: 'row', marginHorizontal: 20 }}>
                         <CustomIcon name='chevron-back-sharp' size={20} color={colors.black} type='Ionicons' />
                         <Text style={{ color: 'black', fontSize: 17, fontWeight: '900' }}> Add Contact </Text>
                     </View>
-
                 </View>
                 <ScrollView>
-                <View style={{ marginHorizontal: 20, marginTop: 20 }}>
-                    <IconInputContainer>
-                        <View style={[justyfyCenter]}>
-                            <CustomIcon name='person' size={20} color={colors.greyVar4} type='octicons' />
-                        </View>
-                        <CustomTextInput
-                            placeholder={labels.firstName}
-                            value={firstName}
-                            onChangeText={handleFirstName}
-                        />
-                    </IconInputContainer>
-                    <View style={[pv20]}>
+                    <View style={{ marginHorizontal: 20, marginTop: 20 }}>
                         <IconInputContainer>
                             <View style={[justyfyCenter]}>
                                 <CustomIcon name='person' size={20} color={colors.greyVar4} type='octicons' />
                             </View>
                             <CustomTextInput
-                                placeholder={labels.lastName}
-                                value={lastName}
-                                onChangeText={handleLastName}
+                                placeholder={labels.firstName}
+                                value={firstName}
+                                onChangeText={handleFirstName}
                             />
                         </IconInputContainer>
-                    </View>
-                    <IconInputContainer>
-                        <View style={[justyfyCenter]}>
-                            <CustomIcon name='email-outline' size={20} color={colors.greyVar4} type='MaterialCommunityIcons' />
-                        </View>
-                        <Controller
-                            name={formKeys.name}
-                            control={control}
-                            render={({ field: { onChange, value } }) => (
+                        <View style={[pv20]}>
+                            <IconInputContainer>
+                                <View style={[justyfyCenter]}>
+                                    <CustomIcon name='person' size={20} color={colors.greyVar4} type='octicons' />
+                                </View>
                                 <CustomTextInput
-                                    placeholder={labels.emailaddress}
-                                    value={value}
-                                    onChangeText={onChange}
-                                    errorMessage={errors[formKeys.name]?.message.toString()}
+                                    placeholder={labels.lastName}
+                                    value={lastName}
+                                    onChangeText={handleLastName}
                                 />
-                            )}
-                            rules={{
-                                required: requiredValidation(("labels.emailOrUserName")),
-                                minLength: minLengthValidation(
-                                    validationSchema.name.minLength,
-                                ),
-                            }}
-                        />
-                    </IconInputContainer>
-                    <View style={[pv20]}>
+                            </IconInputContainer>
+                        </View>
                         <IconInputContainer>
                             <View style={[justyfyCenter]}>
-                                <CustomIcon name='person' size={20} color={colors.greyVar4} type='octicons' />
+                                <CustomIcon name='email-outline' size={20} color={colors.greyVar4} type='MaterialCommunityIcons' />
                             </View>
-                            <CustomTextInput
-                                placeholder={labels.userName}
-                                value={userName}
-                                onChangeText={handleUserName}
+                            <Controller
+                                name={formKeys.name}
+                                control={control}
+                                render={({ field: { onChange, value } }) => (
+                                    <CustomTextInput
+                                        placeholder={labels.emailaddress}
+                                        value={value}
+                                        onChangeText={onChange}
+                                        errorMessage={errors[formKeys.name]?.message.toString()}
+                                    />
+                                )}
+                                rules={{
+                                    required: requiredValidation(("labels.emailOrUserName")),
+                                    minLength: minLengthValidation(
+                                        validationSchema.name.minLength,
+                                    ),
+                                }}
                             />
                         </IconInputContainer>
-                    </View>
-                    <IconInputContainer>
-                        <View style={[justyfyCenter]}>
-                            <CustomIcon name='phone' size={20} color={colors.greyVar4} type='Feather' />
+                        <View style={[pv20]}>
+                            <IconInputContainer>
+                                <View style={[justyfyCenter]}>
+                                    <CustomIcon name='person' size={20} color={colors.greyVar4} type='octicons' />
+                                </View>
+                                <CustomTextInput
+                                    placeholder={labels.userName}
+                                    value={userName}
+                                    onChangeText={handleUserName}
+                                />
+                            </IconInputContainer>
                         </View>
-
-                        <CustomTextInput
-                            placeholder={labels.phNumber}
-                            value={phoneNumber}
-                            onChange={handlePhoneNumber}
-                            keyboardType='numeric'
-                        />
-                    </IconInputContainer>
-                    <View style={[pv20]}>
                         <IconInputContainer>
                             <View style={[justyfyCenter]}>
-                                <CustomIcon name='calendar-clear-outline' size={20} color={colors.greyVar4} type='Ionicons' />
+                                <CustomIcon name='phone' size={20} color={colors.greyVar4} type='Feather' />
                             </View>
+
                             <CustomTextInput
-                                placeholder={labels.dob}
-                                value={dob}
-                                onChangeText={handleDOB}
+                                placeholder={labels.phNumber}
+                                value={phoneNumber}
+                                onChange={handlePhoneNumber}
+                                keyboardType='numeric'
                             />
                         </IconInputContainer>
-                    </View>
-                    <IconInputContainer>
-                        <View style={[justyfyCenter]}>
-                            <CustomIcon name='message-text-outline' size={20} color={colors.greyVar4} type='MaterialCommunityIcons' />
+                        <View style={[pv20]}>
+                            <IconInputContainer>
+                                <View style={[justyfyCenter]}>
+                                    <CustomIcon name='calendar-clear-outline' size={20} color={colors.greyVar4} type='Ionicons' />
+                                </View>
+                                <CustomTextInput
+                                    placeholder={labels.dob}
+                                    value={dob}
+                                    onChangeText={handleDOB}
+                                />
+                            </IconInputContainer>
                         </View>
-                        <CustomTextInput
-                            placeholder={labels.inivitemsg}
-                            value={message}
-                            onChangeText={handleMessage}
-                        />
-                    </IconInputContainer>
+                        <IconInputContainer>
+                            <View style={[justyfyCenter]}>
+                                <CustomIcon name='message-text-outline' size={20} color={colors.greyVar4} type='MaterialCommunityIcons' />
+                            </View>
+                            <CustomTextInput
+                                placeholder={labels.inivitemsg}
+                                value={message}
+                                onChangeText={handleMessage}
+                            />
+                        </IconInputContainer>
 
-                    <View style={{ marginTop: 90 }}>
-                        <ButtonNow
-                            style={{ backgroundColor: colors.purpleVar3 }}
-                            textStyle={{ color: colors.white }}
-                            funCallback={handleSubmit(saveContact)}
-                            label={labels.saveContact} />
+                        <View style={{ marginTop: 90 }}>
+                            <ButtonNow
+                                style={{ backgroundColor: colors.purpleVar3 }}
+                                textStyle={{ color: colors.white }}
+                                funCallback={handleSubmit(saveContact)}
+                                label={labels.saveContact} />
+                        </View>
                     </View>
-                </View>
                 </ScrollView>
             </MainContainer>
         </Fragment>

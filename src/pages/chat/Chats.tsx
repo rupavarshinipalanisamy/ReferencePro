@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { View, StatusBar, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { PurpleMainContainer } from '../../components/commonView';
 import { colors } from '../../utils/colors';
 import AllChats from '../../components/chats/AllChats';
@@ -70,7 +70,6 @@ const Chats = (props: chatProps) => {
     return (
         <Fragment>
             <PurpleMainContainer>
-                <StatusBar backgroundColor={isDark() ? colors.darkModeVar1 : colors.purpleVar3} />
                 <Header
                     selectedTab={selectedTab}
                     selectedCards={selectedCards}

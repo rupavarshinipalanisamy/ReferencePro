@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { StatusBar, TouchableOpacity, View, KeyboardAvoidingView, TextInput, ScrollView } from 'react-native';
+import { TouchableOpacity, View, KeyboardAvoidingView, TextInput, ScrollView } from 'react-native';
 import { IconBackground, MainContainer, TopContainerWhiteCard } from '../../components/commonView';
 import { colors } from '../../utils/colors';
 import { labels } from '../../utils/labels';
@@ -62,7 +62,6 @@ const Password = (props: socialProfilesProps) => {
     <Fragment>
       <MainContainer>
         <ScrollView style={{ flex: 1 }}>
-          <StatusBar backgroundColor={colors.white} />
           <TopContainerWhiteCard>
             <View style={[flexRow, mt20, { margin: 15 }]}>
               <View style={[flexRow, alignItemsCenter]}>

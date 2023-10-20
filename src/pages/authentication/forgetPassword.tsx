@@ -1,7 +1,7 @@
 import React, { Fragment, } from 'react';
 import PasswordLogo from '../../../assets/images/forget-password.svg';
 import { Controller, useForm } from 'react-hook-form';
-import { ImageBackground, StatusBar, TouchableOpacity, View } from 'react-native';
+import { ImageBackground, TouchableOpacity, View } from 'react-native';
 import { ButtonNow, LongPurpleButton } from '../../components/commonButtons';
 import { CustomTextInput } from '../../components/commonInputFields';
 import { m30, ph30, pv8, justyfyCenter, mh25 } from '../../components/commonStyles';
