@@ -138,9 +138,9 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
         <View style={{ height: DevWidth / 4.2, backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, borderBottomRightRadius: 25, borderBottomLeftRadius: 25, elevation: 1 }}>
             <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
                 <View style={[flexRow]}>
-                    <TouchableOpacity onPress={() => navigation.goBack()} style={pt10} >
-                        <CustomIcon name='chevron-left' color={isDark() ? colors.white : colors.black} size={20} type="entypo" />
-                    </TouchableOpacity>
+                    <View style={{paddingTop:12}} >
+                        <CustomIcon name='chevron-left' color={isDark() ? colors.white : colors.black} size={15} type="entypo" />
+                    </View>
                     <View style={[flexRow, spaceBetween, flex1]}>
                         <TouchableOpacity style={[pl10, flexRow]} onPress={() => { navigation.navigate(props.profileNavigate as never) }}>
                             {props.groups ? <Image source={GroupImg1Img} /> :
