@@ -43,6 +43,8 @@ export const screenName = {
     GroupSettings : 'GroupSettings',
     VerifyCode:'VerifyCode',
     ChooseWallpaper:'ChooseWallpaper',
+    Notification: 'Notification',
+    TermsAndCondition: 'TermsAndCondition',
     CreateGroup : 'CreateGroup',
     CreateGroupUserSelect : 'CreateGroupUserSelect',
     AccountSettings : 'AccountSettings',
@@ -55,5 +57,12 @@ export const screenName = {
     NewChat : 'New Chats',
     ForwardTo : 'ForwardTo',
     InviteFriend:'InviteFriend',
-    MessageInfo:'MessageInfo'
+    MessageInfo:'MessageInfo',
+    Managedevices: 'ManageDevices',
+    PrivacyPolicy: 'PrivacyPolicy',
+    NoStatus: 'NoStatus',
+    StatusAdd:'StatusAdd',
+    MyStatus:'MyStatus',
+    FriendStatus:'FriendStatus',
+    EditContact:'EditContact'
 };

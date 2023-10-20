@@ -48,7 +48,9 @@ export const Header = () => {
     return (
         <View style={{ marginVertical: 20 }}>
             <View style={[flexRow, spaceBetween, { marginHorizontal: 25 }]}>
-                <CustomIcon name='chevron-back-sharp' color={colors.greyVar4} size={16} type="Ionicons" />
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <CustomIcon name='chevron-back-sharp' color={colors.greyVar4} size={16} type="Ionicons" />
+                </TouchableOpacity>
                 <TouchableOpacity onPress={handleOptionModal}>
                     <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={colors.greyVar4} />
                 </TouchableOpacity>
@@ -300,7 +302,7 @@ export const ColorIconTabSecond = () => {
                     <SmallButton
                         title={labels.cancel}
                         onChange={handleCancelButton}
-                        backgroundColor={isCancelButtonActive ? colors.red : ( isDark() ? `rgba(200, 16, 46, 0.2)` :  colors.white)}
+                        backgroundColor={isCancelButtonActive ? colors.red : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
                         textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar3 : colors.greyVar4)}
                         borderWidth={isCancelButtonActive ? 0 : 1}
                         width={DevWidth / 3.15}

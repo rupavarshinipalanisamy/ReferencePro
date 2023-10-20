@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { Fragment, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { ImageBackground, ScrollView, StatusBar, TouchableOpacity, View } from 'react-native';
+import { ImageBackground, ScrollView, TouchableOpacity, View } from 'react-native';
 import LoginLogo from '../../../assets/images/signup-logo.svg';
 import Google from '../../../assets/images/google.svg';
 import FaceBook from '../../../assets/images/facebook.svg';

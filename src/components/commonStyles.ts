@@ -97,6 +97,9 @@ const styles = StyleSheet.create({
   mh30: {
     marginHorizontal: 30,
   },
+  mv3: {
+    marginVertical: 3,
+  },
   mv5: {
     marginVertical: 5,
   },
@@ -111,6 +114,9 @@ const styles = StyleSheet.create({
   },
   mv20: {
     marginVertical: 20,
+  },
+  mv30: {
+    marginVertical: 30,
   },
   mt15: {
     marginTop: 15,
@@ -147,6 +153,9 @@ const styles = StyleSheet.create({
   },
   mb50:{
     marginBottom:90,
+  },
+  mb40: {
+    marginBottom: 40,
   },
   b50: {
     bottom: 50,
@@ -489,9 +498,11 @@ export const {
   m15,
   m30,
   mv5,
+  mv3,
   mv10,
   mv15,
   mv20,
+  mv30,
   mh1,
   mh2,
   mh5,
@@ -518,6 +529,8 @@ export const {
   ml30,
   mt15,
   mb20,
+  mb40,
+
   mb50,
   mt10,
   mt3,

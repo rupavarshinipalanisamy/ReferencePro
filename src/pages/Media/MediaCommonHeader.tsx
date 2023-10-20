@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, TextInput } from 'react-native';
 import ImageScreen from './Image';
 import { colors } from '../../utils/colors';
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, mt3, pb10, pl10, pl13, pl15, pt10, spaceBetween } from '../../components/commonStyles';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mt20, mt3, mt30, mt8, pb10, pl10, pl13, pl15, pt10, spaceBetween } from '../../components/commonStyles';
 import { TopContainerWhiteCard1 } from '../../components/commonView';
 import CustomIcon from '../../utils/Icons';
 import { H14GreyVar4Bold400, H14blackVar1bold400Text, H15Blackvar2Bold500, H15Grey, H16Black600Text, H18BlackText, H18GreyVar4Text } from '../../components/commonText';
@@ -286,22 +286,16 @@ export const StarredAndVerifycodeHeader = (props: StarredAndVerifycodeHeaderProp
     const StarMessageModal = () => {
         return (
             <View>
-
-
                 <TouchableOpacity style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
                     <View style={flexRow}>
                         <View style={[alignItemsCenter, justyfyCenter]}>
                             <CustomIcon name='star-outline' color={colors.blackVar1} size={18} type="Ionicons" />
-
                         </View>
                         <View style={[alignItemsCenter, justyfyCenter, pl13]}>
                             <H14blackVar1bold400Text>Unstar All</H14blackVar1bold400Text>
                         </View>
                     </View>
                 </TouchableOpacity>
-
-
-
             </View>
         )
     }
@@ -383,7 +377,7 @@ export const SearchHeader = (props: SearchHeader) => {
             <TopContainerWhiteCard1 height={DevHeight / 7.5}{...props}>
                 <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
                     <View style={[flexRow, spaceBetween]}>
-                        <View style={[flexRow]}>
+                        <View style={[flexRow,mt30]}>
                             <TouchableOpacity style={[justyfyCenter, alignItemsCenter, { marginTop: 2 }]}
                                 onPress={navigation.goBack}
                             >

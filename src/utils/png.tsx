@@ -75,3 +75,18 @@ export const Wallpaper9=require('../../assets/images/png/wallpaper9.png')
 export const Wallpaper10=require('../../assets/images/png/wallpaper10.png')
 export const Wallpaper11=require('../../assets/images/png/wallpaper11.png')
 export const Wallpaper12=require('../../assets/images/png/wallpaper12.png')
+export const StatusPic1 = require('../../assets/images/png/status-pic1.png');
+export const StatusPic2 = require('../../assets/images/png/status-pic2.png');
+export const StatusPic3 = require('../../assets/images/png/status-pic3.png');
+export const StatusPic4 = require('../../assets/images/png/status-pic4.png');
+export const StatusPic5 = require('../../assets/images/png/status-pic5.png');
+export const ViewPic1 = require('../../assets/images/png/view-pic1.png')
+export const ViewPic2 = require('../../assets/images/png/view-pic2.png')
+export const ViewPic3 = require('../../assets/images/png/view-pic3.png')
+export const MutePic1 = require('../../assets/images/png/mute-pic1.png')
+export const MutePic2 = require('../../assets/images/png/mute-pic2.png')
+export const StatusImg1 = require('../../assets/images/png/statusImg1.png')
+
+
+
+

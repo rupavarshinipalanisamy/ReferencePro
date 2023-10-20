@@ -1,7 +1,7 @@
 import React, { Fragment, } from 'react';
 import PasswordLogo from '../../../assets/images/forget-password.svg';
 import { Controller, useForm } from 'react-hook-form';
-import { ImageBackground, StatusBar, TouchableOpacity, View } from 'react-native';
+import { ImageBackground, TouchableOpacity, View } from 'react-native';
 import { ButtonNow, LongPurpleButton } from '../../components/commonButtons';
 import { CustomTextInput } from '../../components/commonInputFields';
 import { m30, ph30, pv8, justyfyCenter, mh25 } from '../../components/commonStyles';
@@ -52,7 +52,7 @@ const ForgetPassword = (props: forgetPasswordProps) => {
                         <View style={[mh25]}>
                             <H20font600Black>{labels.forgetPassword1}</H20font600Black>
                             <H14font400Gray4 style={{marginVertical:8}}>{labels.fPmsg}</H14font400Gray4>
-                            <IconInputContainer>
+                            <IconInputContainer style={{borderBottomColor:colors.borderBottomColor}}>
                                 <View style={[justyfyCenter]}>
                                     <CustomIcon name='email-outline' size={20} color={colors.greyVar4} type='MaterialCommunityIcons' />
                                 </View>

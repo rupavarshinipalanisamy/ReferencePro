@@ -1,15 +1,14 @@
 import React, { Fragment, useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
 import { CommonLineDividerGrey, IconBackground, MainContainer, RowSpaceBetween, TopContainerWhiteCard } from '../../components/commonView';
 import { colors } from '../../utils/colors';
-import { StatusBar } from 'react-native';
 import CustomIcon from '../../utils/Icons';
 import { StyleSheet } from 'react-native';
+import { ScrollView } from 'react-native';
+import { Text, TouchableOpacity, View} from 'react-native';
 import SettingAvatar from '../../../assets/images/settings-avatar.svg'
-import { justyfyCenter, ml10, alignItemsCenter, flexRow, ph10, mt20, m15, mh20, mt15, mv20, justifyStart, alignSelfCenter, ml30, flex1, mr30, ml15 } from '../../components/commonStyles';
+import { justyfyCenter, ml10, alignItemsCenter, flexRow, ph10, mt20, m15, mh20, mt15, mv20, justifyStart, alignSelfCenter, ml30, flex1, mr30, ml15, mh25 } from '../../components/commonStyles';
 import { InputContainer1 } from '../../styledComponent/styledComponent';
 import { H14BlackVar2Bold400Text, H14blackVar1bold400Text, H14font400Gray4, H15font500Black, H16font600Black, H16fontBoldBlack, H18BlackBoldText600 } from '../../components/commonText';
-import { ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal'
 import { DevHeight, DevWidth } from '../../utils/device';
@@ -105,7 +104,6 @@ const SettingsScreen = (props: settingsScreenProps) => {
     return (
         <Fragment>
             <MainContainer>
-                <StatusBar backgroundColor={colors.white} />
                 <TopContainerWhiteCard>
                     <View style={{ flexDirection: 'row', marginHorizontal: 20, justifyContent: 'space-between' }}>
                         <Text style={{ color: 'black', fontSize: 17, fontWeight: '900' }}> Settings</Text>
@@ -113,7 +111,7 @@ const SettingsScreen = (props: settingsScreenProps) => {
                     </View>
                 </TopContainerWhiteCard>
                 <ScrollView>
-                    <View style={[m15]}>
+                    <View style={[mh25]}>
                         <View style={[{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }, styles.cardSurface]}>
                             <View style={{ flexDirection: 'row' }}>
                                 <SettingAvatar />

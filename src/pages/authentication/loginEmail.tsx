@@ -5,8 +5,8 @@ import Google from '../../../assets/images/google.svg';
 import FaceBook from '../../../assets/images/facebook.svg';
 import Apple from '../../../assets/images/apple.svg';
 import { BottomStyle, CheckBox, CheckBoxContainer, CheckBoxContainer1, IconInputContainer, InputContainer1, LoginLogoBigCircle, LoginLogoCircle, SocialLogoCircle, SocialLogoContainer, TextContainer } from '../../styledComponent/styledComponent';
-import { alignItemsCenter, flexRow, justyfyCenter, m30, mh20, mh25, ph30, ph5, pv30, pv8 } from '../../components/commonStyles';
-import { H14font400Blue, H14font400Gray4, H16fontNormalGray, H18fontNormalGray, H20font600Black, } from '../../components/commonText';
+import { alignItemsCenter, flexRow, justyfyCenter, mh25, ph5 } from '../../components/commonStyles';
+import { H14font400Blue, H14font400Gray4, H20font600Black, } from '../../components/commonText';
 import { labels } from '../../utils/labels';
 import { MainContainer } from '../../components/commonView';
 import CustomIcon from '../../utils/Icons';
@@ -64,7 +64,7 @@ const LoginEmail = (props: loginEmailProps) => {
                             <View style={[mh25]}>
                                 <H20font600Black>{labels.logIn}</H20font600Black>
                                 <H14font400Gray4 style={{marginVertical:8}}>{labels.message}</H14font400Gray4>
-                                <IconInputContainer style={{}}>
+                                <IconInputContainer style={{borderBottomColor:colors.borderBottomColor}}>
                                     <View style={[justyfyCenter]}>
                                         <CustomIcon name='email-outline' size={20} color={colors.greyVar4} type='MaterialCommunityIcons' />
                                     </View>
@@ -87,7 +87,7 @@ const LoginEmail = (props: loginEmailProps) => {
                                     />
                                 </IconInputContainer>
 
-                                <IconInputContainer>
+                                <IconInputContainer style={{borderBottomColor:colors.borderBottomColor}}>
                                     <InputContainer1>
                                         <View style={[flexRow, alignItemsCenter]}>
                                             <CustomIcon name='lock-outline' size={20} color={colors.greyVar4} type='MaterialIcons' />

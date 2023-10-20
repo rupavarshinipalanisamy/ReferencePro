@@ -5,8 +5,6 @@ import GalleryLogo from '../../assets/images/gallery-icon.svg';
 import OnlineLogo from '../../assets/images/lastseen-logo.svg';
 import GroupLogo from '../../assets/images/group-logo.svg';
 import ThemeLogo from '../../assets/images/theme-logo.svg';
-import ArchieveLogo from '../../assets/images/archieve-logo.svg';
-import DeleteLogo from '../../assets/images/delete1-logo.svg';
 // import { ButtonBook,  } from './commonButtons';
 import { colors } from '../utils/colors';
 import { labels } from '../utils/labels';
@@ -27,11 +25,11 @@ import Modal from 'react-native-modal';
 import { FooterChatView } from '../pages/chatView/Messagecomponents/messages';
 
 
-export type CommonModalProps = {
-  isVisible: boolean;
-  onClose: () => void;
+// export type CommonModalProps = {
+//   isVisible: boolean;
+//   onClose: () => void;
 
-}
+// }
 
 
 
@@ -374,33 +372,33 @@ export const ThemeModal: React.FC<CommonModalProps> = ({
 //   isVisible,
 //   onClose,
 // }) => {
-//   const [isChecked, setIsChecked] = useState<string | null>(null);
+  // const [isChecked, setIsChecked] = useState<string | null>(null);
 
 
-//   const toggleCheckbox = (status: string) => {
-//     setIsChecked(status);
-//   };
+  // const toggleCheckbox = (status: string) => {
+  //   setIsChecked(status);
+  // };
 
-//   const renderRadio = (status: string) => {
-//     return (
-//       <><RadioButton
-//         onPress={() => toggleCheckbox(status)}>
-//         <CheckBox style={{ backgroundColor: isChecked === status ? colors.purpleVar3 : 'transparent' }}>
-//           {isChecked && (
-//             <CustomIcon name="check" size={16} color={colors.white} type={'MaterialCommunityIcons'} />)}
-//         </CheckBox>
-//         <H16fontNormalGray style={[mh10, justyfyCenter]}>{status}</H16fontNormalGray>
-//       </RadioButton>
-//       </>
-//     );
-//   };
+  // const renderRadio = (status: string) => {
+  //   return (
+  //     <><RadioButton
+  //       onPress={() => toggleCheckbox(status)}>
+  //       <CheckBox style={{ backgroundColor: isChecked === status ? colors.purpleVar3 : 'transparent' }}>
+  //         {isChecked && (
+  //           <CustomIcon name="check" size={16} color={colors.white} type={'MaterialCommunityIcons'} />)}
+  //       </CheckBox>
+  //       <H16fontNormalGray style={[mh10, justyfyCenter]}>{status}</H16fontNormalGray>
+  //     </RadioButton>
+  //     </>
+  //   );
+  // };
 
-//   const buttonPress = () => {
-//     if (isChecked) {
-//       console.log(`Selected status: ${isChecked}`);
-//     }
-//     onClose();
-//   }
+  // const buttonPress = () => {
+  //   if (isChecked) {
+  //     console.log(`Selected status: ${isChecked}`);
+  //   }
+  //   onClose();
+  // }
 //   return (
 //     <View style={{ flex: 1 }}>
 //       <Modal transparent={true} animationType="slide" visible={isVisible}
@@ -414,19 +412,19 @@ export const ThemeModal: React.FC<CommonModalProps> = ({
 //             <View>
 //               <H18fontBoldBlack>{labels.clearAllChats1}</H18fontBoldBlack>
 //               <H16fontNormalGray>{labels.deleteMsg}</H16fontNormalGray>
-//               {clearAllChats.map((data, index) => {
-//                 return (
-//                   <View key={data.id} style={[flexRow, spaceBetween]}>
-//                     <View style={{ paddingVertical: 10 }}>
-//                       <TouchableOpacity>
-//                         <View key={data.id}>
-//                           {renderRadio(data.status)}
-//                         </View>
-//                       </TouchableOpacity>
-//                     </View>
-//                   </View>
-//                 );
-//               })}
+              // {clearAllChats.map((data, index) => {
+              //   return (
+              //     <View key={data.id} style={[flexRow, spaceBetween]}>
+              //       <View style={{ paddingVertical: 10 }}>
+              //         <TouchableOpacity>
+              //           <View key={data.id}>
+              //             {renderRadio(data.status)}
+              //           </View>
+              //         </TouchableOpacity>
+              //       </View>
+              //     </View>
+              //   );
+              // })}
 //             </View>
 
 //             <ButtonContainer1 >
@@ -614,6 +612,99 @@ export const ThemeModal: React.FC<CommonModalProps> = ({
 
 
 
+export type CommonModalProps = {
+  isVisible: boolean;
+  onClose: () => void;
+
+}
+// export const ThemeModal: React.FC<CommonModalProps> = ({
+//   isVisible,
+//   onClose,
+// }) => {
+//   const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
+
+//   const handleStatusSelect = (status: string) => {
+//     setSelectedStatus(status);
+
+//   };
+//   const { toggleTheme } = useTheme();
+
+//   const renderRadio = (status: string) => {
+//     return (
+//       <RadioButton
+//         onPress={() => handleStatusSelect(status)}>
+//         <RadioButtonRound style={{ borderColor: selectedStatus === status ? colors.purpleVar3 : colors.black }}>
+//           {selectedStatus === status && (
+//             <SelectedRadioBtn />
+//           )}
+//         </RadioButtonRound>
+//         <H16fontNormalGray4 style={[mh10]}>{status}</H16fontNormalGray4>
+//       </RadioButton>
+//     );
+//   };
+
+//   const buttonPress = () => {
+//     if (selectedStatus) {
+//       console.log(`Selected status: ${selectedStatus}`);
+//       if (selectedStatus === labels.dark) {
+//         toggleTheme()
+//         console.log("Changing to Dark Theme");
+//       } else {
+//         toggleTheme();
+//         console.log("Changing to Light Theme");
+//       }
+//     }
+//     onClose();
+//   };
+
+//   return (
+//     <View style={{ flex: 1 }}>
+//       <Modal transparent={true} animationType="slide" visible={isVisible}
+//         onRequestClose={onClose}>
+//         <ModalContainer>
+//           <HalfCircle2 />
+//           <ModalContent>
+//             <View style={{ justifyContent: 'center', alignItems: 'center', bottom: 30 }}>
+//               <ThemeLogo />
+//             </View>
+//             <View >
+//               <H18fontBoldBlack>{labels.chooseTheme}</H18fontBoldBlack>
+//               {chooseTheme.map((data, index) => {
+//                 return (
+//                   <View key={data.id} style={[flexRow, spaceBetween]}>
+//                     <View style={{ paddingVertical: 10 }}>
+//                       <TouchableOpacity>
+//                         <View key={data.id}>
+//                           {renderRadio(data.status)}
+//                         </View>
+//                       </TouchableOpacity>
+                      
+//                     </View>
+//                   </View>
+//                 );
+//               })}
+//             </View>
+
+//             <SmallButton
+//               title='cancel'
+//               onChange={buttonPress}
+//               backgroundColor={colors.purpleVar1} textColor={'pink'}
+
+//             />
+//             <SmallButton
+//               title='ok'
+//               onChange={buttonPress}
+//               backgroundColor={colors.white} textColor={'pink'}
+
+//             />
+//           </ModalContent>
+//         </ModalContainer>
+//       </Modal>
+//     </View>
+//   );
+// };
+
+
 
 
 export const CommonModal: React.FC<CommonModalProps> = ({
@@ -629,7 +720,7 @@ export const CommonModal: React.FC<CommonModalProps> = ({
 
   return (
     <View style={{ flex: 1 }}>
-      <Modal transparent={true} animationType="slide" visible={isVisible}
+      <RNmodal transparent={true} animationType="none" visible={isVisible}
         onRequestClose={onClose}>
         <ModalContainer>
           <HalfCircle />
@@ -654,7 +745,7 @@ export const CommonModal: React.FC<CommonModalProps> = ({
             </View>
           </ModalContent>
         </ModalContainer>
-      </Modal>
+      </RNmodal>
     </View>
   );
 };
