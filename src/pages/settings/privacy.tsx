@@ -1,5 +1,5 @@
-import React, { Fragment, useState } from 'react';
-import { StatusBar, View, TouchableOpacity, Text } from 'react-native';
+import React, { Fragment, useState, useEffect } from 'react';
+import { View, TouchableOpacity, Text } from 'react-native';
 import {
     flexRow,
     mt20,
@@ -65,7 +65,7 @@ export type privacyProps = {};
 
 
 
- const LastSeenModal = () => {
+const LastSeenModal = () => {
     const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
     const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
     const [isModalVisible, setIsModalVisible] = useState(false); // New state for modal visibility
@@ -75,7 +75,7 @@ export type privacyProps = {};
     };
     const handleCancelButtonClick = () => {
         setIsCancelButtonActive(true);
-        setIsModalVisible(false); 
+        setIsModalVisible(false);
     };
 
     const handleSaveChangesClick = () => {
@@ -92,7 +92,7 @@ export type privacyProps = {};
                         <View key={data.id}  >
                             <TouchableOpacity>
 
-                                <View style={[mv10,flexRow]}  >
+                                <View style={[mv10, flexRow]}  >
                                     <RadioBtn
                                         key={data.id}
 
@@ -114,7 +114,7 @@ export type privacyProps = {};
                         <View key={data.id}  >
                             <TouchableOpacity>
 
-                                <View style={[mv10,flexRow]}  >
+                                <View style={[mv10, flexRow]}  >
                                     <RadioBtn
                                         key={data.id}
 
@@ -152,7 +152,7 @@ export type privacyProps = {};
     )
 }
 
- const GroupsModal = () => {
+const GroupsModal = () => {
     const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
     const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
     const [isModalVisible, setIsModalVisible] = useState(false); // New state for modal visibility
@@ -162,7 +162,7 @@ export type privacyProps = {};
     };
     const handleCancelButtonClick = () => {
         setIsCancelButtonActive(true);
-        setIsModalVisible(false); 
+        setIsModalVisible(false);
     };
 
     const handleSaveChangesClick = () => {
@@ -179,7 +179,7 @@ export type privacyProps = {};
                         <View key={data.id}  >
                             <TouchableOpacity>
 
-                                <View style={[mv10,flexRow]}  >
+                                <View style={[mv10, flexRow]}  >
                                     <RadioBtn
                                         key={data.id}
 
@@ -195,7 +195,7 @@ export type privacyProps = {};
                 })}
             </View>
 
-            <RowSpaceBetween style={[mv20,mb40]}>
+            <RowSpaceBetween style={[mv20, mb40]}>
                 <SmallButton
                     width={DevWidth / 2.9}
                     title={labels.cancel}
@@ -216,7 +216,7 @@ export type privacyProps = {};
     )
 }
 
- const SettingsModal = () => {
+const SettingsModal = () => {
     const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
     const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
     const [isModalVisible, setIsModalVisible] = useState(false); // New state for modal visibility
@@ -226,7 +226,7 @@ export type privacyProps = {};
     };
     const handleCancelButtonClick = () => {
         setIsCancelButtonActive(true);
-        setIsModalVisible(false); 
+        setIsModalVisible(false);
     };
 
     const handleSaveChangesClick = () => {
@@ -243,7 +243,7 @@ export type privacyProps = {};
                         <View key={data.id}  >
                             <TouchableOpacity>
 
-                                <View style={[mv10,flexRow]}  >
+                                <View style={[mv10, flexRow]}  >
                                     <RadioBtn
                                         key={data.id}
 
@@ -287,154 +287,153 @@ const Privacy = (props: privacyProps) => {
 
     const handleStatusPrivacyOptionModal = () => {
         setStatusPrivacyOptionModal(!statusPrivacyOptionModal)
-    const [toggleVisible, setToggleVisible] = useState(false);
-    const handleToggle = () => {
-        setToggleVisible(!toggleVisible);
-    }
-
-    const openModal = (id: number) => {
-        // setSelectedModalId(id);
-        if (id === 4) {
-            handleStatusPrivacyOptionModal();
+        const [toggleVisible, setToggleVisible] = useState(false);
+        const handleToggle = () => {
+            setToggleVisible(!toggleVisible);
         }
-    };
 
-    const closeModal = () => {
-        setSelectedModalId(null);
-        setStatusPrivacyOptionModal(false);
-    };
+        const openModal = (id: number, screenName: string | undefined) => {
+            // setSelectedModalId(id);
+            if (id === 4) {
+                handleStatusPrivacyOptionModal();
+            } else {
+                navigation.navigate(screenName as never);
+            }
+        };
 
-    const StatusPrivacyOption = () => {
-        const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
-        const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
-
-        const handleCancelButton = () => {
-            setIsCancelButtonActive(true);
+        const closeModal = () => {
+            setSelectedModalId(null);
             setStatusPrivacyOptionModal(false);
         };
 
-        const handleDeleteChatButton = () => {
-            setIsCancelButtonActive(false);
-        };
+        const StatusPrivacyOption = () => {
+            const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+            const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
 
-        const handleStatusSelect = (status: string, id: number) => {
-            setSelectedStatus(status);
-            if (id === 2) {
-                navigation.navigate(screenName.StatusMyContactExcept as never);
-                setStatusPrivacyOptionModal(false)
-            }
-            else if (id === 3) {
-                navigation.navigate(screenName.StatusOnlyShareWith as never);
-                setStatusPrivacyOptionModal(false)
-            }
-        };
+            const handleCancelButton = () => {
+                setIsCancelButtonActive(true);
+                setStatusPrivacyOptionModal(false);
+            };
+
+            const handleDeleteChatButton = () => {
+                setIsCancelButtonActive(false);
+            };
+
+            const handleStatusSelect = (status: string, id: number) => {
+                setSelectedStatus(status);
+                if (id === 2) {
+                    navigation.navigate(screenName.StatusMyContactExcept as never);
+                    setStatusPrivacyOptionModal(false)
+                }
+                else if (id === 3) {
+                    navigation.navigate(screenName.StatusOnlyShareWith as never);
+                    setStatusPrivacyOptionModal(false)
+                }
+            };
+
+            return (
+                <View style={[mh20]} >
+                    <H16font600Black>Status Privacy</H16font600Black>
+                    <H14GreyVar4Bold400 style={[mt20]}>Who can see my status updates</H14GreyVar4Bold400>
+                    <View style={[mt15]}>
+                        {
+                            statusPrivacydata.map((item) => {
+                                return (
+                                    <View style={[flexRow, mv10]} key={item.id}>
+                                        <View>
+                                            <RadioBtn
+                                                key={item.id}
+                                                selected={selectedStatus === item.name}
+                                                onPress={() => handleStatusSelect(item.name, item.id)}
+                                            />
+                                        </View>
+                                        <H14BlackVar2Bold400Text style={[ml10]}>{item.name}</H14BlackVar2Bold400Text>
+                                    </View>
+                                )
+                            })
+                        }
+                    </View>
+                    <RowSpaceBetween style={[mv20]}>
+                        <SmallButton
+                            title={labels.cancel}
+                            onChange={handleCancelButton}
+                            backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
+                            textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar3 : colors.greyVar4)}
+                            borderWidth={isCancelButtonActive ? 0 : 1}
+                            width={DevWidth / 3.15}
+                        />
+                        <SmallButton
+                            title={labels.SaveChanges}
+                            onChange={handleDeleteChatButton}
+                            backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
+                            textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
+                            borderWidth={isCancelButtonActive ? 1 : 0}
+                            width={DevWidth / 3.15}
+                        />
+                    </RowSpaceBetween>
+                </View>
+            )
+        }
+
 
         return (
-            <View style={[mh20]} >
-                <H16font600Black>Status Privacy</H16font600Black>
-                <H14GreyVar4Bold400 style={[mt20]}>Who can see my status updates</H14GreyVar4Bold400>
-                <View style={[mt15]}>
-                    {
-                        statusPrivacydata.map((item) => {
+            <Fragment>
+                <MainContainer>
+                    <SearchHeader headerText={labels.privacy} height={DevHeight / 12} />
+                    <View style={[mh20, mt20]}>
+                        {privacyData.map((privacyDatas, index) => {
                             return (
-                                <View style={[flexRow, mv10]} key={item.id}>
-                                    <View>
-                                        <RadioBtn
-                                            key={item.id}
-                                            selected={selectedStatus === item.name}
-                                            onPress={() => handleStatusSelect(item.name, item.id)}
-                                        />
+                                <View key={privacyDatas.id} style={[flexRow, spaceBetween]}>
+                                    <View style={{ paddingVertical: 10 }}>
+                                        <TouchableOpacity
+                                            onPress={() => openModal(privacyDatas.id, privacyDatas.screenName)}
+                                        >
+                                            <H16fontNormalGray4>
+                                                {privacyDatas.heading}
+                                            </H16fontNormalGray4>
+                                        </TouchableOpacity>
+                                        <H12fontNormalGray>{privacyDatas.status}</H12fontNormalGray>
                                     </View>
-                                    <H14BlackVar2Bold400Text style={[ml10]}>{item.name}</H14BlackVar2Bold400Text>
+                                    {index === 4 ? (
+                                        <ToggleSwitch value={toggleVisible} onToggle={handleToggle} />
+
+                                    ) : (
+                                        <CustomIcon name='chevron-right' size={15} color={colors.greyVar2} type='octicons' />
+                                    )}
                                 </View>
-                            )
-                        })
-                    }
-                </View>
-                <RowSpaceBetween style={[mv20]}>
-                    <SmallButton
-                        title={labels.cancel}
-                        onChange={handleCancelButton}
-                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
-                        textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar3 : colors.greyVar4)}
-                        borderWidth={isCancelButtonActive ? 0 : 1}
-                        width={DevWidth / 3.15}
+                            );
+                        })}
+                    </View>
+                    <IconModal
+                        isVisible={statusPrivacyOptionModal}
+                        onClose={() => handleStatusPrivacyOptionModal()}
+                        contentComponent={<StatusPrivacyOption />}
+                        iconName='stop-circle-outline'
+                        iconType='MaterialCommunityIcons'
+                        iconSize={24}
                     />
-                    <SmallButton
-                        title={labels.SaveChanges}
-                        onChange={handleDeleteChatButton}
-                        backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
-                        textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
-                        borderWidth={isCancelButtonActive ? 1 : 0}
-                        width={DevWidth / 3.15}
-                    />
-                </RowSpaceBetween>
-            </View>
-        )
-    }
+                    {/* Conditionally render the modals based on selectedModalId */}
+                    {selectedModalId === 1 && (
+                        <IconModal isVisible={true}
+                            onClose={closeModal}
+                            contentComponent={<SettingsModal />} iconName={'image-plus'} iconType='MaterialCommunityIcons' iconSize={25} />
+                    )}
 
+                    {selectedModalId === 2 && (
+                        <IconModal isVisible={true}
+                            onClose={closeModal}
+                            contentComponent={<LastSeenModal />} iconName={'stop-circle-outline'} iconType={'MaterialCommunityIcons'} iconSize={25} />
+                    )}
 
-    return (
-        <Fragment>
-            <MainContainer>
-                <StatusBar backgroundColor={colors.white} />
-                <SearchHeader headerText={labels.privacy} height={DevHeight / 12} />
-
-
-                <View style={[mh20, mt20]}>
-                    {privacyData.map((privacyDatas, index) => {
-                        return (
-                            <View key={privacyDatas.id} style={[flexRow, spaceBetween]}>
-                                <View style={{ paddingVertical: 10 }}>
-                                    <TouchableOpacity
-                                        onPress={() => openModal(privacyDatas.id)}
-                                    >
-                                        <H16fontNormalGray4>
-                                            {privacyDatas.heading}
-                                        </H16fontNormalGray4>
-                                    </TouchableOpacity>
-                                    <H12fontNormalGray>{privacyDatas.status}</H12fontNormalGray>
-                                </View>
-                                {index === 4 ? (
-                                    <ToggleSwitch value={toggleVisible} onToggle={handleToggle} />
-
-                                ) : (
-                                    <CustomIcon name='chevron-right' size={15} color={colors.greyVar2} type='octicons' />
-                                )}
-                            </View>
-                        );
-                    })}
-                </View>
-                <IconModal
-                    isVisible={statusPrivacyOptionModal}
-                    onClose={() => handleStatusPrivacyOptionModal()}
-                    contentComponent={<StatusPrivacyOption />}
-                    iconName='stop-circle-outline'
-                    iconType='MaterialCommunityIcons'
-                    iconSize={24}
-                />
-                {/* Conditionally render the modals based on selectedModalId */}
-                {selectedModalId === 1 && (
-                    <IconModal isVisible={true}
-                        onClose={closeModal}
-                        contentComponent={<SettingsModal />} iconName={'image-plus'} iconType='MaterialCommunityIcons' iconSize={25} />
-                )}
-
-                {selectedModalId === 2 && (
-                   <IconModal isVisible={true}
-                   onClose={closeModal}
-                   contentComponent={<LastSeenModal />} iconName={'stop-circle-outline'} iconType={'MaterialCommunityIcons'} iconSize={25} />
-           )}
-
-{selectedModalId === 3 && (
-                   <IconModal isVisible={true}
-                   onClose={closeModal}
-                   contentComponent={<GroupsModal />} iconName={'group'} iconType={'MaterialIcons'} iconSize={25} />
-           )}
-            </MainContainer>
-        </Fragment>
-    );
-};
+                    {selectedModalId === 3 && (
+                        <IconModal isVisible={true}
+                            onClose={closeModal}
+                            contentComponent={<GroupsModal />} iconName={'group'} iconType={'MaterialIcons'} iconSize={25} />
+                    )}
+                </MainContainer>
+            </Fragment>
+        );
+    };
 
 }
 export default Privacy

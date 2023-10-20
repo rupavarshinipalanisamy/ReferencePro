@@ -1,5 +1,5 @@
 import React, {useState, Fragment} from 'react';
-import { Text, View, StatusBar } from 'react-native';
+import { Text, View } from 'react-native';
 import { labels } from '../../utils/labels';
 import { PurpleMainContainer } from '../../components/commonView';
 import { colors } from '../../utils/colors';
@@ -31,7 +31,6 @@ const Groups = (props: GroupsProps) => {
     return (
         <Fragment>
             <PurpleMainContainer>
-                <StatusBar backgroundColor={isDark() ? colors.darkModeVar1 : colors.purpleVar3} />
                 <ChatHeader title={labels.Groups} icon3Navigate={screenName.CreateGroup} />
                 <View style={flex1}>
                     <TabControl tabs={tabs} activeTab={selectedTab} onTabPress={handleTabPress} />

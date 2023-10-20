@@ -1,5 +1,5 @@
-import React, { useState, ReactNode } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal, Switch, Image ,TextInput} from 'react-native';
+import React, { useState, ReactNode, useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal, Switch, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mh20, mh30, ml10, ml15, mr10, mt10, mt15, mt20, mt30, mt5, mv10, mv15, mv20, p10, p5, pl10, pl13, pl5, pr10, pt10, spaceAround, spaceBetween, textCenter, flex1 } from './commonStyles';
 import { colors } from '../utils/colors';
@@ -8,7 +8,7 @@ import { DevHeight, DevWidth } from '../utils/device';
 import { RadioButton, RadioButtonRound, RowSpaceBetween, SelectedRadioBtn } from './commonView';
 import { bottomNavData } from '../utils/data/bottomNavData';
 import CustomIcon from '../utils/Icons';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import Modal from 'react-native-modal';
 import { muteNotificationdata, threeDotsOption } from '../utils/data/modalData';
 import { H12purpleVar3Text, H14BlackVar2Bold400Text, H14GreyVar4Bold400, H14blackVar1bold400Text, H14purpleVar3Text, H15Grey, H16Black600Text, H16font600Black, H16fontNormalGray, H16fontNormalGray4, H18BlackText, H18fontBoldBlack } from './commonText';
@@ -286,6 +286,7 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
     const [isModalVisible, setModalVisible] = useState(false);
     const [deleteOptionModal, setDeleteOptionModal] = useState(false);
     const [muteOptionModal, setMuteOptionModal] = useState(false);
+    const navigation = useNavigation();
 
     const handleDeleteOptionModal = () => {
         setDeleteOptionModal(!deleteOptionModal)
@@ -438,7 +439,9 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
     return (
         <View style={[flexRow, spaceBetween, mh20, mv15, pt10]}>
             <View style={flexRow}>
-                <LeftArrowWhiteIcon />
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <LeftArrowWhiteIcon />
+                </TouchableOpacity>
                 <View style={{ backgroundColor: isDark() ? colors.purpleVar3 : 'rgba(0, 0, 0, 0.3)', height: 20, width: 20, borderRadius: 20, }}>
                     <Text style={{ textAlign: 'center', color: colors.white, fontSize: 14 }}>{text}</Text>
                 </View>
@@ -554,7 +557,6 @@ export const CustomActionBarSecond: React.FC<CustomActionBarSecondProps> = ({
                     />
                 </RowSpaceBetween>
             </View>
-
         )
     }
 
@@ -604,10 +606,13 @@ export const CustomcallActionBar: React.FC<CustomCallActionBarProps> = ({
     onDeletePress,
     selectedCardsCount,
 }) => {
+    const navigation = useNavigation();
     return (
         <View style={[flexRow, spaceBetween, mh20, mv15, pt10]}>
             <View style={flexRow}>
-                <LeftArrowWhiteIcon />
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <LeftArrowWhiteIcon />
+                </TouchableOpacity>
                 <View style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)', height: 20, width: 20, borderRadius: 20, }}>
                     <Text style={{ textAlign: 'center', color: colors.white, fontSize: 14 }}>{text}</Text>
                 </View>
@@ -625,11 +630,18 @@ export const CustomcallActionBar: React.FC<CustomCallActionBarProps> = ({
 // ====================   Bottom Nav Bar   ====================
 
 export const BottomTabBar = () => {
-    const [selectedTab, setSelectedTab] = useState(1);
+    const [selectedTab, setSelectedTab] = useState('Chats');
     const navigation = useNavigation();
+    const route = useRoute();
+
+    useEffect(() => {
+        if (route.name) {
+            setSelectedTab(route.name);
+        }
+    }, [route.name]);
 
     const handleTabPress = (tabId: number, screenNameNavigate: string) => {
-        setSelectedTab(tabId);
+        setSelectedTab(screenNameNavigate);
         navigation.navigate(screenNameNavigate as never)
     };
 
@@ -638,7 +650,7 @@ export const BottomTabBar = () => {
             <RowSpaceBetween style={[alignItemsCenter, mv10, mh20]}>
                 {
                     bottomNavData.map((item) => {
-                        const isSelected = item.id === selectedTab;
+                        const isSelected = item.screenName === selectedTab;
                         return (
                             <TouchableOpacity key={item.id} onPress={() => handleTabPress(item.id, item.screenName)}>
                                 <View style={alignItemsCenter}>

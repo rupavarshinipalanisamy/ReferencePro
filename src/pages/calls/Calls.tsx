@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react';
-import { Text, View, StatusBar } from 'react-native';
+import { Text, View } from 'react-native';
 import { labels } from '../../utils/labels';
 import { PurpleMainContainer } from '../../components/commonView';
 import { colors } from '../../utils/colors';
@@ -67,8 +67,6 @@ const Calls = (props: CallsProps) => {
     return (
         <Fragment>
             <PurpleMainContainer>
-                <StatusBar backgroundColor={isDark() ? colors.darkModeVar1 : colors.purpleVar3} />
-                {/* <CallHeader title={labels.Groups} /> */}
                 <Header selectedTab={selectedTab} selectedCards={selectedCards} handleTabPress={handleTabPress} />
                 <View style={flex1}>
                     <TabControl tabs={tabs} activeTab={selectedTab} onTabPress={handleTabPress} />

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ImageBackground, View } from 'react-native';
+import React, { useState, Fragment } from 'react';
+import { View, Image, ImageBackground, } from 'react-native';
 import ToddleImage from '../../../assets/images/welcomepage_center.svg';
 import Logo from '../../../assets/images/logo.svg';
 import { ButtonContainer, LogoContainer } from '../../styledComponent/styledComponent';

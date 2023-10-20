@@ -1,5 +1,5 @@
 import React, { Fragment, useState, } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, StatusBar } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { colors } from '../../utils/colors';
 import { alignItemsCenter, alignSelfCenter, borderRadius10, flex1, flexRow, justyfyCenter, m15, mb15, mh20, ml15, mr5, mt20, mt3, mt5, mv10, p10, pb5, ph10, ph20, ph5, pv15, spaceBetween, spaceEvenly } from '../../components/commonStyles';
 import { PinnedChatsdata, allChatsData } from '../../utils/data/chatsData';
@@ -70,7 +70,6 @@ const ContactPage = ({ }: AllChatsProps) => {
 
     return (
         <Fragment>
-            <StatusBar backgroundColor={colors.purpleVar3} />
             <PurpleMainContainer>
                 <Header
                     selectedTab={selectedTab}

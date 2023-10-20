@@ -1,5 +1,5 @@
 import React, { Fragment, useRef, useState } from 'react';
-import { ImageBackground, StatusBar, TouchableOpacity, View, TextInput } from 'react-native';
+import { ImageBackground, TouchableOpacity, View, TextInput } from 'react-native';
 import {
     m30,
     ph30,

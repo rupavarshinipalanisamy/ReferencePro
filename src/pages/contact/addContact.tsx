@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { alignItemsCenter, alignSelfCenter, flex1, flexRow, justifyEnd, justifyStart, justyfyCenter, mh20, mh30, ml10, ml30, mr30, mt20, mv20, pv20 } from '../../components/commonStyles';
+import { MainContainer } from '../../components/commonView';
 import { colors } from '../../utils/colors';
 import { DevHeight, DevWidth } from '../../utils/device';
 import CustomIcon from '../../utils/Icons';
