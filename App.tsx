@@ -53,7 +53,7 @@ const App = (props: AppProps) => {
             barStyle="light-content"
           />
         </View>
-        <RootNavigation initialRouteName={screenName.LoginEmail} />
+        <RootNavigation initialRouteName={screenName.Chats} />
       </View>
     </ThemeProvider>
   );
