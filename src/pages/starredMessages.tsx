@@ -75,8 +75,8 @@ const StarredMessages = () => {
                                 <View style={flexRow}>
                                     <H12fontBold400GreyVar4>24 Aug 2023</H12fontBold400GreyVar4>
 
-                                    <View style={ [pl7,{bottom:3}]}>
-                                        <CustomIcon name='chevron-right' color={isDark()?colors.greyVar3:colors.greyVar4} size={24} type="Feather"
+                                    <View style={ [pl7,{bottom:2}]}>
+                                        <CustomIcon name='chevron-right' color={isDark()?colors.greyVar3:colors.greyVar4} size={20} type="Feather"
                                         />
                                     </View>
                                 </View>

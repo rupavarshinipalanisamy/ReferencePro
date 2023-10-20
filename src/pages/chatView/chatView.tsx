@@ -1,5 +1,5 @@
-import React, { Fragment, useState,useEffect } from 'react';
-import { Text, View, ImageBackground, StyleSheet, ScrollView, TouchableOpacity, StatusBar,Dimensions,Platform ,ScaledSize} from 'react-native';
+import React, { Fragment, useState, useEffect } from 'react';
+import { Text, View, ImageBackground, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Dimensions, Platform, ScaledSize } from 'react-native';
 import { colors } from '../../utils/colors';
 import { pt10 } from '../../components/commonStyles';
 import { labels } from '../../utils/labels';
@@ -72,13 +72,19 @@ const ChatView = () => {
   };
 
   const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
-  const handleCardSelectionChange = (event) => {
-    setModalPosition({ x: event.nativeEvent.pageX, y: event.nativeEvent.pageY });
-    setEmojiModal(true)
+ 
+  const handleCardSelectionChange = (event, cardId) => {
+    if (event && event.nativeEvent) {
+      const isSentMsg = chatMessages.find((message) => message.id === cardId)?.type === 'sentmsg';
+      const modalTop = event.nativeEvent.pageY ;
+      const modalLeft = isSentMsg ? DevWidth/3 : 20; 
+      setModalPosition({ x: modalLeft, y: modalTop });
+      setEmojiModal(true);
+    }
   };
-  
-  
-  
+
+
+
   const renderHeader = () => {
     if (selectedCards.length > 0) {
       return (
@@ -105,17 +111,18 @@ const ChatView = () => {
   return (
     <Fragment>
       <StatusBar backgroundColor={colors.purpleVar3} />
-      <GestureHandlerRootView style={{ flex: 1, backgroundColor: isDark() ? colors.black : colors.white }}>
+      <GestureHandlerRootView style={{ flex: 1}}>
         <View style={{ flex: 1 }}>
           <ImageBackground
             source={ChatBackgroundImg}
             style={styles.backgroundImage}
-            imageStyle={{ opacity: 0.1, backgroundColor: 'rgba(200, 150, 255, 0.1)' }} >
+            imageStyle={{ opacity: 0.1, backgroundColor: isDark()?'rgba(194, 194, 194,1)':'rgba(220, 198, 224, 0.1)' }} >
             {renderHeader()}
             <ScrollView style={{ flex: 1 }}>
               <View style={[{ alignItems: 'center' }, pt10]}>
                 <DayDetails />
               </View>
+              
               {chatMessages.map((message) => (
                 <ChatMessage key={message.id} message={message}
                   onSwipeRight={handleSwipeAction}
@@ -161,11 +168,12 @@ const ChatView = () => {
         {editModal2 && <EditModal2 isVisible={editModal} onClose={() => setEditModal(false)} onEditModal2Press={handleEditModal2Press} />}
 
         {emojiModal && (
-          <Modal isVisible={emojiModal} onBackdropPress={() => setEmojiModal(false)} backdropOpacity={0}
+          <Modal isVisible={emojiModal} onBackdropPress={() => setEmojiModal(false)} backdropOpacity={0} animationIn={ chatMessages.find((message) => message.id === selectedCards[0])?.type === 'sentmsg' ? 'fadeInRight' : 'fadeInLeft'}
             style={{
               position: 'absolute',
               left: modalPosition.x,
-              top: modalPosition.y-80
+              top: modalPosition.y - 80,
+              alignItems: chatMessages.find((message) => message.id === selectedCards[0])?.type === 'sentmsg' ? 'flex-start' : 'flex-end',
             }}
           >
             <View style={styles.modalContent}>
@@ -247,7 +255,7 @@ const styles = StyleSheet.create({
   modalContent: {
     height: 40,
     width: 200,
-    backgroundColor: colors.white,
+    backgroundColor:isDark()?colors.darkModeVar4:colors.white,
     padding: 10,
     borderRadius: 20,
     alignSelf: 'center',

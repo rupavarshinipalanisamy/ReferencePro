@@ -42,6 +42,9 @@ const styles = StyleSheet.create({
   greyVar4Color: {
     color: colors.greyVar4,
   },
+  greyVar8Color: {
+    color: colors.greyVar8,
+  },
   blueVar2: {
     color: colors.blueVar2,
   },
@@ -102,7 +105,7 @@ const styles = StyleSheet.create({
 
 
 });
-const { green, red, textcolorGray, black, blackvar2, white, purpleVar3, blackvar1, blueVar1, greyVar3, greyVar4Color, blueVar2, greyVar4 } = styles;
+const { green, red, textcolorGray, black, blackvar2, white, purpleVar3, blackvar1, blueVar1, greyVar3, greyVar4Color, blueVar2, greyVar8Color } = styles;
 const { fontBold, fontRegular, fontBold400, fontBold600, fontBold700, fontBold800, fontNormal, fontBold900 } = styles;
 const {
   h1,
@@ -139,6 +142,7 @@ export const H14GreyVar4Bold400 = styled(Text)`
   ${h9};
   ${fontBold400};
 `
+
 export const H15Green = styled(Text)`
   ${green};
   ${h8};
@@ -272,6 +276,11 @@ export const H14GreyVar4Bold400Text = styled(Text)`
   color : ${props => isDark() ? colors.greyVar3 : colors.greyVar4};
   ${fontBold400};
 `;
+export const H14GreyVar3Bold500Text = styled(Text)`
+  ${h9};
+  color : ${props => isDark() ? colors.blackVar1 : colors.greyVar3};
+  ${fontRegular};
+`;
 export const H14purpleVar3Text = styled(Text)`
   ${h9};
   color : ${props => isDark() ? colors.greyVar3 : colors.purpleVar3};
@@ -279,6 +288,11 @@ export const H14purpleVar3Text = styled(Text)`
 export const H14blueVar1Text = styled(Text)`
   ${h9};
   ${blueVar1};
+`;
+export const H12GreyVar8 = styled(Text)`
+  ${h9};
+  color : ${props => isDark() ? colors.greyVar3 : colors.greyVar8};
+  ${fontBold400};
 `;
 export const H14blackVar1bold400Text = styled(Text)`
   ${h9};
@@ -346,6 +360,11 @@ export const H16font900Black = styled(Text)`
 export const H12fontNormalGray = styled(Text)`
   ${h10};
   ${fontNormal};
+  ${greyVar3};
+`;
+export const H12DefaultGreyVar3 = styled(Text)`
+  ${h10};
+  ${fontBold400};
   ${greyVar3};
 `;
 export const H12font400Black = styled(Text)`
@@ -416,6 +435,11 @@ export const H20font600Black = styled(Text)`
   ${h5};
   ${fontBold600};
   ${black};
+`;
+export const H20font600BlackVar2 = styled(Text)`
+  ${h5};
+  ${fontBold600};
+  color : ${props => isDark() ? colors.white : colors.blackVar2};
 `;
 
 export const H15font600 = styled(Text)`

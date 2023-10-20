@@ -1,49 +1,16 @@
 
 import React from 'react';
 import { View, Text } from 'react-native';
-import LinkImg1 from '../../../assets/images/linkimg1.svg';
-import LinkImg2 from '../../../assets/images/linkimg2.svg';
-import LinkImg3 from '../../../assets/images/linkimg3.svg';
-import LinkImg4 from '../../../assets/images/linkimg4.svg';
 import { flex1, flexRow, mh20, mt15, mt5, pt10, pt5, spaceBetween } from '../../components/commonStyles';
 import { colors } from '../../utils/colors';
 import { H12font400Grey, H14GreyVar4Bold400, H15Blackvar2Bold500, H18BlackBoldText } from '../../components/commonText';
 import { CommonLineDividerGrey } from '../../components/commonView';
 import CustomIcon from '../../utils/Icons';
 import { isDark } from '../../Theme/ThemeContext';
+import { LinkData } from '../../utils/data/MediaData';
+import { Image } from 'react-native-elements';
 
-// export type LinkProps = {};
 
-export const LinkData = [
-    {
-        id: 1,
-        img: <LinkImg1 />,
-        headertxt: 'Figma for Edu: Advanced proptotyping workshop',
-        website: 'Workshop file here:https://www.figma.co',
-        link: 'https://youtu.be/LfldqERs0aw?feature=sh..',
-    },
-    {
-        id: 2,
-        img: <LinkImg2 />,
-        headertxt: 'Architecture Studio Landing Page',
-        website: 'dribble.com',
-        link: 'Studio Design Sample',
-    },
-    {
-        id: 3,
-        img: <LinkImg3 />,
-        headertxt: 'Accounting Software Landing Page',
-        website: 'behance.net',
-        link: 'Accounting Landing Page',
-    },
-    {
-        id: 4,
-        img: <LinkImg4 />,
-        headertxt: 'Awesome Skills UI UX Designing #youtubeshorts #design',
-        website: 'youtube.com',
-        link: 'UI UX Design Skills',
-    },
-];
 
 const splitTextIntoLines = (text, maxLineLength) => {
     const words = text.split(' ');
@@ -78,7 +45,7 @@ const Link = () => {
                 return (
                     <View key={index} style={{  flex: 1 }}>
                         <View style={{ flexDirection: 'row' }}>
-                            <View style={mt15}>{item.img}</View>
+                            <Image source={item.img} style={[{height:70,width:70},mt15]}/>
                             <View style={{ flex: 1, paddingLeft: 15, paddingTop: 12 }}>
                                 {lines.map((line, lineIndex) => (
                                     <H15Blackvar2Bold500 key={lineIndex} style={{lineHeight:23}}>

@@ -4,41 +4,8 @@ import { View, Image, StyleSheet, Dimensions, TouchableOpacity } from 'react-nat
 import { H15Blackvar2Bold500, H18BlackBoldText } from "../../components/commonText";
 import { useNavigation } from "@react-navigation/native";
 import { screenName } from "../../utils/screenName";
-export const recentImages = [
-    {
-        id: 1,
-        img: require('../../../assets/images/png/recentimg1.png')
-    },
-    {
-        id: 2,
-        img: require('../../../assets/images/png/recentimg2.png')
-    },
-    {
-        id: 3,
-        img: require('../../../assets/images/png/recentimg3.png')
-    },
-    {
-        id: 4,
-        img: require('../../../assets/images/png/recentimg4.png')
-    },
-    {
-        id: 5,
-        img: require('../../../assets/images/png/recentimg5.png')
-    },
-    {
-        id: 6,
-        img: require('../../../assets/images/png/recentimg6.png')
-    },
-    {
-        id: 7,
-        img: require('../../../assets/images/png/recentimg7.png')
-    },
-    {
-        id: 8,
-        img: require('../../../assets/images/png/recentimg7.png')
-    },
+import { recentImages } from "../../utils/data/MediaData";
 
-]
 
 const ImageScreen = () => {
 

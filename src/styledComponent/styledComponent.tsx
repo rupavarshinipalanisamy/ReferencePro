@@ -206,12 +206,10 @@ color:${colors.purpleVar3}
 `
 export const QrImgView = styled(View)`
 backgroundColor:${colors.white};
-padding: 15px;
+padding: 10px;
 elevation: 4;
 marginTop: 35px;
-flexDirection:row;
-borderRadius: 8px;
+borderRadius:10px;
 shadowColor:${colors.greyVar3};
-width: ${DevWidth / 2.1}px;
 alignSelf:center;
 `

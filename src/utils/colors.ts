@@ -11,6 +11,7 @@ export const colors = {
     blackVar1: '#424242',
     blackVar2: '#0A0A0A',
     //grey
+    greyVar8:'#757575',
     greyVar7: '#EDEDED',
     greyVar6: '#333333',
     greyVar5: '#494949',
@@ -46,6 +47,8 @@ export const colors = {
     darkModeVar3: '#4E50724D',
     darkModeVar4:'#252728',
     darkModeVar5 : '#4E5072',
-    darkModeVar6 :'#343637'
+    darkModeVar6 :'#343637',
+  
+
 };
 

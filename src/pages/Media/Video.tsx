@@ -6,64 +6,10 @@ import CustomIcon from "../../utils/Icons";
 import { colors } from "../../utils/colors";
 import { useNavigation } from "@react-navigation/native";
 import { screenName } from "../../utils/screenName";
+import { lastMonth, lastWeek, recentVideos } from "../../utils/data/MediaData";
 
 const ImageScreen = () => {
 
-    const recentVideos = [
-        {
-            id: 1,
-            img: require('../../../assets/images/png/videoimg1.png')
-        },
-        {
-            id: 2,
-            img: require('../../../assets/images/png/videoimg2.png')
-        },
-        {
-            id: 3,
-            img: require('../../../assets/images/png/videoimg3.png')
-        },
-    ]
-
-    const lastWeek = [
-
-        {
-            id: 1,
-            img: require('../../../assets/images/png/videoimg4.png')
-        },
-        {
-            id: 2,
-            img: require('../../../assets/images/png/videoimg5.png')
-        },
-        {
-            id: 3,
-            img: require('../../../assets/images/png/videoimg6.png')
-        },
-        {
-            id: 4,
-            img: require('../../../assets/images/png/videoimg7.png')
-
-        },
-
-    ]
-
-    const lastMonth = [
-        {
-            id: 1,
-            img: require('../../../assets/images/png/videoimg8.png')
-
-        },
-
-        {
-            id: 2,
-            img: require('../../../assets/images/png/videoimg9.png')
-
-        },
-        {
-            id: 3,
-            img: require('../../../assets/images/png/videoimg10.png')
-
-        }
-    ]
 
     const navigation = useNavigation()
 

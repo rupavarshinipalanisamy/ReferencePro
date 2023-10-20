@@ -1,3 +1,4 @@
+import { colors } from "../colors";
 import { labels } from "../labels";
 import { screenName } from "../screenName";
 
@@ -164,4 +165,145 @@ export const statusPrivacydata = [
         id : 3,
         name : 'Only Share with',
     },
+]
+
+export const chatViewModalData = [
+    {
+        id: 1,
+        iconName: 'person-circle-outline',
+        iconSize: 16,
+        iconColor: colors.blackVar1,
+        iconType: 'Ionicons',
+        text: labels.ViewContact,
+        screenName: screenName.ChooseWallpaper,
+
+    },
+    {
+        id: 2,
+        iconName: 'photo',
+        iconSize: 16,
+        iconColor: colors.blackVar1,
+        iconType: 'FontAwesome',
+        text: labels.Media,
+        screenName: screenName.ChooseWallpaper,
+
+    },
+    {
+        id: 3,
+        iconName: 'search',
+        iconSize: 16,
+        iconColor: colors.blackVar1,
+        iconType: 'Feather',
+        text: labels.Search,
+        screenName: screenName.ChooseWallpaper,
+
+    },
+    {
+        id: 4,
+        iconName: 'microphone-off',
+        iconSize: 16,
+        iconColor: colors.blackVar1,
+        iconType: 'MaterialCommunityIcons',
+        text: labels.MuteNotification,
+        screenName: screenName.ChooseWallpaper,
+
+    },
+    {
+        id: 5,
+        iconName: 'window-maximize',
+        iconSize: 16,
+        iconColor: colors.blackVar1,
+        iconType: 'FontAwesome',
+        text: labels.Wallpaper,
+        screenName: screenName.ChooseWallpaper,
+
+    },
+    {
+        id: 6,
+        iconName: 'thumbs-down',
+        iconSize: 16,
+        iconColor: colors.blackVar1,
+        iconType: 'Feather',
+        text: labels.Report,
+        screenName: screenName.ChooseWallpaper,
+
+    },
+    {
+        id: 7,
+        iconName: 'block-flipped',
+        iconSize: 16,
+        iconColor: colors.blackVar1,
+        iconType: 'MaterialIcons',
+        text: labels.Block,
+        screenName: screenName.ChooseWallpaper,
+
+    },
+    {
+        id: 8,
+        iconName: 'trash-2',
+        iconSize: 16,
+        iconColor: colors.blackVar1,
+        iconType: 'Feather',
+        text: labels.ClearChat,
+        screenName: screenName.ChooseWallpaper,
+
+    },
+]
+
+export const HaederChangechatViewModalData = [
+    {
+        id: 1,
+        iconName: 'copy',
+        iconSize: 16,
+        iconColor: colors.blackVar1,
+        iconType: 'Feather',
+        text: 'Copy',
+        screenName: screenName.ChooseWallpaper,
+
+    },
+    {
+        id: 2,
+        iconName: 'thumbs-down',
+        iconSize: 16,
+        iconColor: colors.blackVar1,
+        iconType: 'Feather',
+        text: 'Report',
+        screenName: screenName.ChooseWallpaper,
+
+    },
+
+]
+
+export const SendMsgModalData = [
+    {
+        id: 1,
+        iconName: 'info',
+        iconSize: 16,
+        iconColor: colors.blackVar1,
+        iconType: 'Feather',
+        text: 'Info',
+        screenName: screenName.ChooseWallpaper,
+
+    },
+    {
+        id: 2,
+        iconName: 'copy',
+        iconSize: 16,
+        iconColor: colors.blackVar1,
+        iconType: 'Feather',
+        text: 'Copy',
+        screenName: screenName.ChooseWallpaper,
+
+    },
+    {
+        id: 3,
+        iconName: 'pencil',
+        iconSize: 16,
+        iconColor: colors.blackVar1,
+        iconType: 'SimpleLineIcons',
+        text: 'Edit',
+        screenName: screenName.ChooseWallpaper,
+
+    },
+
 ]

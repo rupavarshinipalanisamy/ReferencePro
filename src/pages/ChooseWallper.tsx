@@ -6,63 +6,14 @@ import { useNavigation } from '@react-navigation/native';
 import { LongPurpleButton } from '../components/commonButtons';
 import { isDark } from '../Theme/ThemeContext';
 import { colors } from '../utils/colors';
+import { ChooseWallperData } from '../utils/data/wallpaperData';
 
 export type ChooseWallperProps = {
 
 }
 
 
-export const ChooseWallperData = [
-    {
-        id: 1,
-        img: require('../../assets/images/png/wallpaper1.png')
-    },
-    {
-        id: 2,
-        img: require('../../assets/images/png/wallpaper2.png')
-    },
-    {
-        id: 3,
-        img: require('../../assets/images/png/wallpaper3.png')
-    },
-    {
-        id: 4,
-        img: require('../../assets/images/png/wallpaper4.png')
-    },
-    {
-        id: 5,
-        img: require('../../assets/images/png/wallpaper5.png')
-    },
-    {
-        id: 6,
-        img: require('../../assets/images/png/wallpaper6.png')
-    },
-    {
-        id: 7,
-        img: require('../../assets/images/png/wallpaper7.png')
-    },
-    {
-        id: 8,
-        img: require('../../assets/images/png/wallpaper8.png')
-    },
-    {
-        id: 9,
-        img: require('../../assets/images/png/wallpaper9.png')
-    },
-    {
-        id: 10,
-        img: require('../../assets/images/png/wallpaper10.png')
-    },
-    {
-        id: 11,
-        img: require('../../assets/images/png/wallpaper11.png')
-    },
-    {
-        id: 12,
-        img: require('../../assets/images/png/wallpaper12.png')
-    },
 
-]
 
 const ChooseWallper = (props: ChooseWallperProps) => {
     const navigation = useNavigation()
