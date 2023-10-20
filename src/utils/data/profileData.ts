@@ -1,6 +1,6 @@
 import { SocialMediaIcon } from "../../components/profile/profilecomponents";
 import { colors } from "../colors";
-import { GrpImg_1, GrpImg_2 } from "../png";
+import { GrpImg_1, GrpImg_2, MediaImg1, MediaImg2, MediaImg3, MediaImg4 } from "../png";
 import { screenName } from "../screenName";
 
 
@@ -68,19 +68,19 @@ export const colorIconsData = [
 export const mediaData = [
     {
         id: 1,
-        image: require('../../../assets/images/png/mediaImg2.png')
+        image:MediaImg1
     },
     {
         id: 2,
-        image: require('../../../assets/images/png/mediaImg2.png')
+        image:MediaImg2
     },
     {
         id: 3,
-        image: require('../../../assets/images/png/mediaImg3.png')
+        image:MediaImg3
     },
     {
         id: 4,
-        image: require('../../../assets/images/png/mediaImg4.png')
+        image: MediaImg4
     }
 ]
 
