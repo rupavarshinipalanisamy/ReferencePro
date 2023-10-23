@@ -39,11 +39,10 @@ const App = (props: AppProps) => {
       </SplashScreenContainer>
     );
   }
-
   return (
     <ThemeProvider>
       <View style={{ flex: 1 }}>
-        <RootNavigation initialRouteName={screenName.AddContact} />
+        <RootNavigation initialRouteName={screenName.SettingsScreen} />
       </View>
     </ThemeProvider>
   );

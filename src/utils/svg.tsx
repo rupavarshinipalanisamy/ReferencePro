@@ -42,8 +42,27 @@ import MsgIcon from '../../assets/images/messageIcon.svg'
 import Profl from '../../assets/images/profileView.svg'
 import CheckCircle from  '../../assets/images/check-circle.svg'
 import StatusPro from '../../assets/images/status-pic.svg'
-
-
+import WelcomeLogo from '../../assets/images/logo.svg'
+import ToodleImg from '../../assets/images/welcomepage_center.svg'
+import ToodleImg1 from '../../assets/images/toodleImg.svg'
+import WelcomeLogo1 from '../../assets/images/logo-dark.svg'
+import LoginLogo from '../../assets/images/login-logo.svg';
+import Google from '../../assets/images/google.svg';
+import FaceBook from '../../assets/images/facebook.svg';
+import Apple from '../../assets/images/apple.svg';
+import Apple1 from '../../assets/images/apple1.svg';
+import Google1 from '../../assets/images/google1.svg';
+import Password from '../../assets/images/forget-password.svg';
+import Verification from '../../assets/images/verification-logo.svg';
+import CreatePassword from '../../assets/images/create-password.svg';
+import Status from '../../assets/images/status-view.svg'
+import Status1 from '../../assets/images/status-view1.svg'
+import StatusUpload from '../../assets/images/status-image1.svg'
+import SignUp from '../../assets/images/signup-logo.svg';
+import Country from '../../assets/images/counrty-logo.svg';
+import Share from '../../assets/images/share-icon.svg';
+import Avatar from '../../assets/images/settings-avatar.svg'
+import CreatePassword from '../assets/images/modal-logo.svg';
 
 
 export const LeftArrowWhiteIcon = () => (
@@ -171,4 +190,81 @@ export const CheckCircleIcon = () => (
 );
 export const MyStatusPic = () => (
     <StatusPro />
+);
+export const WelcomePageLogo = () => (
+    <WelcomeLogo />
+); 
+
+export const ToodleImageLight = () => (
+    <ToodleImg />
+); 
+export const WelcomePageLogoDark = () => (
+    <WelcomeLogo1 />
+); 
+
+export const LoginPageLogo = () => (
+    <LoginLogo />
+); 
+export const GoogleIcon = () => (
+    <Google />
+); 
+export const FaceBookIcon = () => (
+    <FaceBook />
+); 
+export const AppleIcon = () => (
+    <Apple />
+); 
+export const ToodleImageDark = () => (
+    <ToodleImg1 />
+); 
+
+export const AppleIconDark = () => (
+    <Apple1 />
+);
+export const GoogleIconDark = () => (
+    <Google1 />
+); 
+
+export const PasswordLogo = () => (
+    <Password />
+); 
+
+export const VerificationLogo = () => (
+    <Verification />
+); 
+
+export const StatusView = () => (
+    <Status />
+); 
+
+export const StatusView1 = () => (
+    <Status1 />
+); 
+
+export const CreatePasswordLogo = () => (
+    <CreatePassword />
+);
+
+export const StatusUploadImg = () => (
+    <StatusUpload />
+); 
+
+export const SignUpLogo = () => (
+    <SignUp />
+); 
+
+export const CountryLogo = () => (
+    <Country />
+); 
+
+export const ShareIcon = () => (
+    <Share />
+);
+
+export const SettingAvatar = () => (
+    <Avatar />
+);
+
+export const CreatePasswordLogo2 = () => (
+    <CreatePassword />
 );

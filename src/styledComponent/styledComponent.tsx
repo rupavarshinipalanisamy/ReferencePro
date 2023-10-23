@@ -6,6 +6,7 @@ import { isDark } from "../Theme/ThemeContext";
 
 export const LogoContainer = styled(View)`
 alignItems:center;
+marginTop:50px;
 `
 export const ButtonContainer = styled(View)`
 flexDirection:row;
@@ -21,7 +22,7 @@ export const LoginLogoBigCircle = styled(View)`
 height: 110px;
 width: 110px;
 border-radius: 100px;
-background-color: rgba(248, 236, 258, 0.7);
+background-color: ${props => isDark() ? colors.darkModeVar4 : 'rgba(248, 236, 258, 0.7)' };
 alignItems:center;
 justify-content: center;
 margin-top:30px;
@@ -30,7 +31,7 @@ export const LoginLogoCircle = styled(View)`
 height: 80px;
 width: 80px;
 border-radius: 100px;
-background-color: rgba(90, 7, 139, 0.03);
+background-color:${props => isDark() ? colors.darkModeVar6 : 'rgba(90, 7, 139, 0.03)' };
 justify-content: center;
 alignItems:center;
 `
@@ -38,7 +39,7 @@ export const SocialLogoCircle = styled(View)`
 height: 60px;
 width: 60px;
 border-radius: 100px;
-background-color:${colors.purpleVar1};
+background-color:${props => isDark() ? colors.darkModeVar6 : colors.purpleVar1 };
 justify-content: center;
 alignItems:center;
 `
@@ -79,7 +80,7 @@ alignItems: center;
 `
 export const BottomStyle = styled(View)`
 borderBottomWidth: 1px;
-borderBottomColor: ${colors.borderBottomColor};
+borderBottomColor:  ${props => isDark() ? 'rgba(78, 80, 114, 0.3)' : colors.borderBottomColor};
 width: 30%;
 `
 export const SocialLogoContainer = styled(View)`
@@ -162,7 +163,7 @@ borderRadius: 10px;
 
 
 export const HalfCircle = styled(View)`
-  background-color: ${colors.white};
+  background-color:  ${props => isDark() ? colors.darkModeVar4 : colors.white};
   border-top-left-radius: 100px;
   border-top-right-radius: 100px;
   width: 30%;
@@ -213,4 +214,51 @@ borderRadius: 8px;
 shadowColor:${colors.greyVar3};
 width: ${DevWidth / 2.1}px;
 alignSelf:center;
+`
+export const BtnConatiner = styled(View)`
+marginTop:330px;
+bottom:20px;
+marginHorizontal: 20px;
+justifyContent: space-between;
+flexDirection:row;
+`
+export const ModalBg = styled(View)`
+borderRadius: 15px;
+background-color: ${props => isDark() ? colors.darkModeVar6 : colors.purpleVar1};
+`
+
+export const Card1 = styled(View)`
+padding: 10px;
+elevation: 2;
+marginHorizontal: 20px;
+marginTop: 18px;
+flexDirection: row;
+borderRadius: 6px;
+background-color: ${props => isDark() ? colors.darkModeVar7 : colors.purpleVar1};
+`
+
+export const TopCard = styled(View)`
+padding: 10px;
+margin:20px;
+background-color: ${props => isDark() ? colors.darkModeVar7 : colors.purpleVar1};
+`
+export const CircleBg = styled(View)`
+position: absolute;
+top: 25px;
+left: 27px;
+height: 13px; 
+width: 13px; 
+borderRadius: 13px;
+justifyContent: center;
+alignItems: center;
+background-color: ${props => isDark() ? colors.darkModeVar7 : colors.white};
+`
+
+export const CircleBg1 = styled(View)`
+
+height: 10px; 
+width: 10px; 
+borderRadius: 10px;
+alignItems: center;
+background-color: ${colors.green};
 `

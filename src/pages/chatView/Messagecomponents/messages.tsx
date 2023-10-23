@@ -473,21 +473,23 @@ export const FooterChatView = () => {
     }
 
     return (
-        <View style={{ backgroundColor: colors.white, alignItems: 'center', height: DevHeight / 9.5, paddingHorizontal: 20, borderTopLeftRadius: 20, borderTopRightRadius: 20, flexDirection: 'row', justifyContent: 'center' }}>
-            <View style={{ width: DevWidth / 1.3, height: 40, backgroundColor: 'white', borderColor: colors.greyVar2, borderWidth: 2, borderRadius: 6, marginTop: 30, bottom: 8 }}>
+        <View style={{ backgroundColor: isDark() ? colors.darkModeVar1 : colors.white , alignItems: 'center', height: DevHeight / 9.5, paddingHorizontal: 20, borderTopLeftRadius: 20, borderTopRightRadius: 20, flexDirection: 'row', justifyContent: 'center' }}>
+            <View style={{ width: DevWidth / 1.3, height: 40, backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, borderColor: isDark() ? colors.darkModeVar6 : colors.greyVar2 , borderWidth: 2, borderRadius: 6, marginTop: 30, bottom: 8 }}>
                 <View style={{ flexDirection: 'row', width: '80%', height: 40, paddingHorizontal: 2, alignItems: 'center' }}>
                     <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginLeft: 15 }}>
-                        <CustomIcon name='smiley' type="octicons" size={16} color={colors.greyVar4} />
+                        <CustomIcon name='smiley' type="octicons" size={16} color={isDark() ? colors.greyVar3 : colors.greyVar4} />
                         <TextInput
                             style={{ flex: 1, marginLeft: 5, color: colors.greyVar4, fontSize: 14, fontWeight: '400' }}
                             placeholder="Type here..."
+                            placeholderTextColor={isDark() ? colors.greyVar3 : colors.greyVar4}
+
                         />
                     </View>
                     <View style={{ flexDirection: 'row' }}>
                         <TouchableOpacity onPress={openModal} style={{ marginRight: 10, transform: [{ rotate: '45deg' }] }}>
-                            <CustomIcon name='paperclip' type="Feather" size={18} color={colors.greyVar4} />
+                            <CustomIcon name='paperclip' type="Feather" size={18} color={isDark() ? colors.greyVar3 : colors.greyVar4} />
                         </TouchableOpacity>
-                        <CustomIcon name='camera-outline' type="MaterialCommunityIcons" size={20} color={colors.greyVar4} />
+                        <CustomIcon name='camera-outline' type="MaterialCommunityIcons" size={20}color={isDark() ? colors.greyVar3 : colors.greyVar4} />
                     </View>
                 </View>
             </View>
@@ -618,18 +620,6 @@ export const ReplyFooterView = ({ onIconClick }: any) => {
     );
 }
 
-// export const ReplyFooterView = ({onIconClick}: any) => {
-//     return (
-//         <View>
-//             <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }} onPress={() => onIconClick()}  >
-//                 <CustomIcon name='x' type="Feather" size={16} color={colors.greyVar4} />
-//             </TouchableOpacity>
-
-//         </View>
-
-
-//     );
-// }
 export const FooterAdminChatView = () => {
     return (
         <View style={[{ backgroundColor: colors.white, height: DevHeight / 8, borderTopLeftRadius: 20, borderTopRightRadius: 20, paddingTop: 20 }, alignItemsCenter]}>

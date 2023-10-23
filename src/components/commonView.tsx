@@ -96,7 +96,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   iconBackground: {
-    backgroundColor: colors.purpleVar4,
     width: 38,
     borderRadius: 5,
     justifyContent: 'center',
@@ -125,7 +124,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: colors.greyVar2
   },
   selectedRadioBtn: {
     width: 10,
@@ -242,7 +240,7 @@ export const TwoSmallButton = styled(TouchableOpacity)`
   `
 
 export const TopContainerWhiteCard = styled(View)`
-backgroundColor: white;
+backgroundColor:  ${props => isDark() ? colors.darkModeVar1 : colors.white};
 borderBottomStartRadius: 25px;
 borderBottomEndRadius: 25px;
 elevation: 4;

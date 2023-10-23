@@ -52,7 +52,11 @@ export const ViewPic2 = require('../../assets/images/png/view-pic2.png')
 export const ViewPic3 = require('../../assets/images/png/view-pic3.png')
 export const MutePic1 = require('../../assets/images/png/mute-pic1.png')
 export const MutePic2 = require('../../assets/images/png/mute-pic2.png')
-export const StatusImg1 = require('../../assets/images/png/statusImg1.png')
+export const StatusImg1 = require('../../assets/images/png/statusImg1.png');
+export const AuthImageBg =require('../../assets/images/png/background-image.png');
+export const AuthImageBottom =require('../../assets/images/png/welcomepage_bottom.png');
+
+
 
 
 

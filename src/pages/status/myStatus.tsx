@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, Image, TouchableHighlight, StyleSheet, TouchableOpacity, PanResponder, Animated, TouchableWithoutFeedback } from 'react-native';
+import { Text, View, Image, TouchableHighlight, StyleSheet, TouchableOpacity, PanResponder, Animated } from 'react-native';
 import { MainContainer } from '../../components/commonView';
 import { StatusImg1 } from '../../utils/png';
 import ProgressBar from 'react-native-progress/Bar';
@@ -7,17 +7,18 @@ import { colors } from '../../utils/colors';
 import CustomIcon from '../../utils/Icons';
 import { labels } from '../../utils/labels';
 import { MyStatusPic } from '../../utils/svg';
-import { StatusItem } from './allStatus';
-import { myStatusView, viewedStatusData } from '../../utils/data/statusData';
-import { H14font400Gray4, H14font400White, H15font500Black, H15font500White, H16font500Black } from '../../components/commonText';
+import { myStatusView } from '../../utils/data/statusData';
+import { H14font400Gray4, H14font400White, H15font500Black, H15font500White, H16font500Black, H16font500White } from '../../components/commonText';
 import { CustomModal } from '../../components/commonComponents';
 import { DevWidth, DevHeight } from '../../utils/device';
 import { StatusOptionModalComponent } from './statusContainer';
-import { mt10, mt20, mt30 } from '../../components/commonStyles';
+import { alignItemsCenter, flex1, flexRow, mb30, mh10, mh20, mh8, ml15, mt10, mv10, spaceBetween } from '../../components/commonStyles';
+import { isDark } from '../../Theme/ThemeContext';
+import { useNavigation } from '@react-navigation/native';
 
 export type MyStatusProps = {};
 
-export const MyStatusView = ({ image }) => {
+export const MyStatusView = ({image}) => {
   return (
     <View>{image}</View>
   )
@@ -28,7 +29,8 @@ const MyStatus = (props: MyStatusProps) => {
   const [progress1, setProgress1] = useState(0);
   const [progress2, setProgress2] = useState(0);
   const [callOptionModal, setCallOptionModal] = useState(false);
-  
+  const navigation=useNavigation();
+
   const handleCallOptionModal = () => {
     setCallOptionModal(!callOptionModal);
   }
@@ -84,24 +86,16 @@ const MyStatus = (props: MyStatusProps) => {
     Animated.timing(translateY, { toValue: 0, duration: 300, useNativeDriver: false }).start();
   };
 
-  const TextA =()=>{
-    return(
-      <View>
-        <Text>hi</Text>
-      </View>
-    )
-  }
-
   return (
     <MainContainer>
-      <TouchableHighlight onPress={closeCard} style={{ flex: 1 }}>
+      <TouchableHighlight onPress={closeCard} style={[flex1]}>
         <Image source={StatusImg1} style={styles.image} />
       </TouchableHighlight>
       <View style={styles.progressBarsContainer}>
-        <View style={{ flexDirection: 'row', flex: 1 }}>
+        <View style={[flex1, flexRow]}>
           <View style={styles.progressBarContainer}>
             <ProgressBar
-              progress={progress1} // Adjust the progress as needed
+              progress={progress1} 
               width={null}
               height={4}
               color={'white'}
@@ -120,59 +114,52 @@ const MyStatus = (props: MyStatusProps) => {
             />
           </View>
         </View>
-        <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10, marginLeft: 15 }}>
+        <View style={[flexRow,alignItemsCenter,ml15,mt10]}>
+          <TouchableOpacity onPress={()=>navigation.goBack()}>
           <CustomIcon name='chevron-left' size={15} color={colors.white} type='octicons' />
-          <View style={{ marginHorizontal: 10 }}>
+          </TouchableOpacity>
+          <View style={[mh10]}>
             <MyStatusView image={<MyStatusPic />} />
           </View>
           <View>
-            <H15font500White>My Status</H15font500White>
-           <H14font400White>{labels.muteTime1}</H14font400White>
-
+            <H15font500White>{labels.MyStatus}</H15font500White>
+            <H14font400White>{labels.muteTime1}</H14font400White>
           </View>
         </View>
       </View>
       {cardOpen ? (
-
-        <View style={{
-          backgroundColor: 'white', position: 'absolute', bottom: 0, width: '100%',
-          borderTopRightRadius: 25, borderTopLeftRadius: 25
-        }} >
-          <View style={{ height: 42, backgroundColor: colors.purpleVar1, marginTop: 20, width: '90%', alignSelf: 'center', borderRadius: 6,justifyContent:'center' ,}}>
-            <View style={{flexDirection:'row',justifyContent:'space-between',marginHorizontal:10}}>
-              <H16font500Black>Viewed By 15</H16font500Black>
+        <View style={[styles.viewContainer, { backgroundColor: isDark()?colors.darkModeVar4: colors.white }]} >
+          <View style={[styles.viewTopContainer,{backgroundColor:isDark()?colors.darkModeVar6:colors.purpleVar1}]}>
+            <View style={[mh10, spaceBetween, flexRow]}>
+              <H16font500Black>{labels.viewedBy15}</H16font500Black>
               <TouchableOpacity
-          
-            onPress={handleCallOptionModal}
-          >
-            <CustomIcon name='dots-three-vertical' type='entypo' color={colors.greyVar4} size={15} />
-          </TouchableOpacity>
-
+                onPress={handleCallOptionModal}
+              >
+                <CustomIcon name='dots-three-vertical' type='entypo' color={isDark()?colors.white:colors.greyVar4} size={15} />
+              </TouchableOpacity>
             </View>
-            
           </View>
-          <View style={[mt10,{marginBottom:30}]}>
+          <View style={[mt10,mb30]}>
             {myStatusView.map((item) => {
               return (
-                <View key={item.id} style={{ flexDirection: 'row', alignItems: 'center',marginHorizontal:20,marginVertical:10 }}>
+                <View key={item.id} style={ [flexRow,mh20,mv10,alignItemsCenter]}>
                   <Image style={{ height: 42, width: 42 }} source={item.image} />
-                  <View style={{ marginHorizontal: 8 }}>
+                  <View style={[mh8]}>
                     <H15font500Black>{item.name}</H15font500Black>
                     <H14font400Gray4>{item.time}</H14font400Gray4>
                   </View>
-
                 </View>
               )
             })}
           </View>
           <CustomModal
-          isVisible={callOptionModal}
-          width={DevWidth * 0.50}
-          height={DevHeight * 0.4}
-          modalData={<StatusOptionModalComponent /> }
-          marginTop={350}
-          onClose={closeCallOptionModal}
-        />
+            isVisible={callOptionModal}
+            width={DevWidth * 0.50}
+            height={DevHeight * 0.4}
+            modalData={<StatusOptionModalComponent />}
+            marginTop={350}
+            onClose={closeCallOptionModal}
+          />
 
         </View>
       ) : (
@@ -183,7 +170,7 @@ const MyStatus = (props: MyStatusProps) => {
           <TouchableOpacity style={{ flex: 1 }} onPress={toggleCard}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <CustomIcon name='eye' size={20} color={colors.white} type='octicons' />
-              <Text style={{ color: colors.white }}>25</Text>
+              <H16font500White style={{ color: colors.white }}>{labels.No25}</H16font500White>
             </View>
           </TouchableOpacity>
         </Animated.View>
@@ -214,6 +201,22 @@ const styles = StyleSheet.create({
     bottom: 20,
     alignSelf: 'center',
   },
+  viewContainer: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    borderTopRightRadius: 25,
+    borderTopLeftRadius: 25
+  },
+  viewTopContainer: {
+    height: 42, 
+    backgroundColor: colors.purpleVar1, 
+    marginTop: 20, 
+    width: '90%', 
+    alignSelf: 'center', 
+    borderRadius: 6, 
+    justifyContent: 'center',
+  }
 });
 
 export default MyStatus;

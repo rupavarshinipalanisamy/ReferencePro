@@ -1,25 +1,23 @@
 import React, { Fragment, useState } from 'react';
-import { StatusBar, TouchableOpacity, View, KeyboardAvoidingView, TextInput, ScrollView } from 'react-native';
-import { IconBackground, MainContainer, TopContainerWhiteCard } from '../../components/commonView';
+import { StatusBar, View, ScrollView } from 'react-native';
+import { IconBackground, RowSpaceBetween } from '../../components/commonView';
 import { colors } from '../../utils/colors';
 import { labels } from '../../utils/labels';
-import { H16font900Black, H16fontBoldBlack } from '../../components/commonText';
+import { H16fontBoldBlack } from '../../components/commonText';
 import CustomIcon from '../../utils/Icons';
-import { flexRow, mt20, alignItemsCenter, ph10, justyfyCenter, ph15, pv20, mh20 } from '../../components/commonStyles';
-import { IconInputContainer, InputContainer1, Textwithg } from '../../styledComponent/styledComponent';
+import { flexRow, mt20, alignItemsCenter, ph10, justyfyCenter, pv20, mh20, spaceBetween, flex1 } from '../../components/commonStyles';
+import { IconInputContainer, InputContainer1 } from '../../styledComponent/styledComponent';
 import { Controller, useForm } from 'react-hook-form';
 import { CustomTextInput } from '../../components/commonInputFields';
 import { requiredValidation, minLengthValidation, validationSchema } from '../../utils/validationconfig';
 import { SmallButton } from '../../components/commonButtons';
-// import { PasswordToggleIcon } from '../../components/commonComponents';
-import { CardHeaderText } from '../chatView/UserProfile';
-import { ToggleSwitch } from '../../components/commonComponents';
+import { CardHeaderText, PasswordToggleIcon, ToggleSwitch } from '../../components/commonComponents';
 import { SearchHeader } from '../Media/MediaCommonHeader';
-import { DevHeight } from '../../utils/device';
+import { isDark } from '../../Theme/ThemeContext';
 
-export type socialProfilesProps = {};
+export type SocialProfilesProps = {};
 
-const Password = (props: socialProfilesProps) => {
+const Password = (props: SocialProfilesProps) => {
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [currentPassword, setCurrentPassword] = useState(true);
   const [newPassword, setNewPassword] = useState(true);
@@ -27,10 +25,9 @@ const Password = (props: socialProfilesProps) => {
   const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
   const [toggleVisible, setToggleVisible] = useState(false);
 
-
   const handleToggle = () => {
     setToggleVisible(!toggleVisible);
-}
+  }
   const handleToggleClick = () => {
     setIsUnlocked((prevState) => !prevState);
   };
@@ -67,32 +64,28 @@ const Password = (props: socialProfilesProps) => {
 
   return (
     <Fragment>
-      <MainContainer>
+      <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
+        <StatusBar backgroundColor={isDark() ? colors.darkModeVar1 : colors.white} />
         <ScrollView style={{ flex: 1 }}>
-          <StatusBar backgroundColor={colors.white} />
-          <SearchHeader headerText={labels.pwdandSec} height={DevHeight / 12} />
-         
-          <View style={[ mt20,mh20]}>
-            <CardHeaderText text='Security'/>
-            <View style={[pv20, flexRow, { justifyContent: 'space-between' }]}>
+          <SearchHeader headerText={labels.pwdandSec} />
+          <View style={[mt20, mh20]}>
+            <CardHeaderText text='Security' />
+            <View style={[pv20, flexRow, spaceBetween]}>
               <View style={[flexRow, alignItemsCenter]}>
-                <IconBackground>
-                  <CustomIcon name='smartphone' size={20} color={colors.purpleVar3} type='Feather' />
+                <IconBackground style={{ backgroundColor: isDark() ? colors.darkModeVar7 : colors.purpleVar4 }}>
+                  <CustomIcon name='smartphone' size={20} color={isDark() ? colors.greyVar3 : colors.purpleVar3} type='Feather' />
                 </IconBackground>
                 <H16fontBoldBlack style={[ph10]}>{labels.twofactor}</H16fontBoldBlack>
               </View>
               <ToggleSwitch value={toggleVisible} onToggle={handleToggle} />
-             
             </View>
             <View style={[mt20]}>
-            <CardHeaderText text={labels.changePwd} />
-
+              <CardHeaderText text={labels.changePwd} />
             </View>
-
-            <IconInputContainer>
+            <IconInputContainer style={{ borderBottomColor: isDark() ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
               <InputContainer1>
                 <View style={[flexRow, alignItemsCenter]}>
-                  <CustomIcon name='lock-outline' size={20} color={colors.greyVar4} type='MaterialIcons' />
+                  <CustomIcon name='lock-outline' size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type='MaterialIcons' />
                   <Controller
                     name={formKeys.currentPassword}
                     control={control}
@@ -112,15 +105,14 @@ const Password = (props: socialProfilesProps) => {
                   />
                 </View>
                 <View style={[justyfyCenter]}>
-                  {/* <PasswordToggleIcon isVisible={!currentPassword} toggleVisibility={handleCurrentPassword} /> */}
+                  <PasswordToggleIcon isVisible={!confirmPassword} toggleVisibility={handleCurrentPassword} />
                 </View>
               </InputContainer1>
             </IconInputContainer>
-
-            <IconInputContainer>
+            <IconInputContainer style={{ borderBottomColor: isDark() ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
               <InputContainer1 >
                 <View style={[flexRow, alignItemsCenter]}>
-                  <CustomIcon name='lock-outline' size={20} color={colors.greyVar4} type='MaterialIcons' />
+                  <CustomIcon name='lock-outline' size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type='MaterialIcons' />
                   <Controller
                     name={formKeys.newpassword}
                     control={control}
@@ -140,15 +132,15 @@ const Password = (props: socialProfilesProps) => {
                   />
                 </View>
                 <View style={[justyfyCenter]}>
-                  {/* <PasswordToggleIcon isVisible={!newPassword} toggleVisibility={handleNewPassword} /> */}
+                  <PasswordToggleIcon isVisible={!confirmPassword} toggleVisibility={handleNewPassword} />
                 </View>
               </InputContainer1>
             </IconInputContainer>
 
-            <IconInputContainer>
+            <IconInputContainer style={{ borderBottomColor: isDark() ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
               <InputContainer1 >
                 <View style={[flexRow, alignItemsCenter]}>
-                  <CustomIcon name='lock-outline' size={20} color={colors.greyVar4} type='MaterialIcons' />
+                  <CustomIcon name='lock-outline' size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type='MaterialIcons' />
                   <Controller
                     name={formKeys.confirmpassword}
                     control={control}
@@ -168,40 +160,30 @@ const Password = (props: socialProfilesProps) => {
                   />
                 </View>
                 <View style={[justyfyCenter]}>
-                  {/* <PasswordToggleIcon isVisible={!confirmPassword} toggleVisibility={handleConfirmPassword} /> */}
+                  <PasswordToggleIcon isVisible={!confirmPassword} toggleVisibility={handleConfirmPassword} />
                 </View>
               </InputContainer1>
             </IconInputContainer>
 
           </View>
-
-          <View style={{
-            marginTop: 300,
-            bottom: 20,
-            marginHorizontal:20,
-            justifyContent:'space-between',
-       
-            flexDirection: 'row',
-            
-          }}>
-            <SmallButton
-              title={labels.cancel}
-              backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
-              textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
-              onChange={handleCancelButtonClick}
-              borderWidth={isCancelButtonActive ? 0 : 1} />
-            <SmallButton
-              title={labels.saveChange}
-              backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
-              textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
-              onChange={handleSaveChangesClick}
-              borderWidth={isCancelButtonActive ? 1 : 0} />
-          </View>
         </ScrollView>
-      </MainContainer>
+        <RowSpaceBetween style={[mh20, { bottom: 20 }]}>
+          <SmallButton
+            title={labels.cancel}
+            backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
+            textColor={isCancelButtonActive ? colors.white : isDark() ? colors.redVar3 : colors.greyVar4}
+            onChange={handleCancelButtonClick}
+            borderWidth={isCancelButtonActive ? 0 : 1} />
+          <SmallButton
+            title={labels.saveChange}
+            backgroundColor={isCancelButtonActive ? (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white) : colors.purpleVar3}
+            textColor={isCancelButtonActive ? isDark() ? colors.redVar3 : colors.greyVar4 : colors.white}
+            onChange={handleSaveChangesClick}
+            borderWidth={isCancelButtonActive ? 1 : 0} />
+        </RowSpaceBetween>
+      </View>
     </Fragment>
   );
 };
 
 export default Password;
-

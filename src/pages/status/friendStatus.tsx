@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, Image, TouchableHighlight, StyleSheet, TouchableOpacity, PanResponder, Animated } from 'react-native';
+import { View, Image, TouchableHighlight, StyleSheet, TouchableOpacity, PanResponder, Animated } from 'react-native';
 import { MainContainer, RowSpaceBetween } from '../../components/commonView';
 import { StatusImg1, StatusPic3 } from '../../utils/png';
 import ProgressBar from 'react-native-progress/Bar';
@@ -7,121 +7,41 @@ import { colors } from '../../utils/colors';
 import CustomIcon from '../../utils/Icons';
 import { labels } from '../../utils/labels';
 import { friendStatusModal } from '../../utils/data/statusData';
-import { H14font400White, H15Grey, H15font500White, H16font600Black } from '../../components/commonText';
+import { H14font400Gray4, H14font400White, H15Grey, H15font500White, H16font500White, H16font600Black } from '../../components/commonText';
 import { CustomModal } from '../../components/commonComponents';
-import { DevWidth, DevHeight } from '../../utils/device';
+import { DevWidth } from '../../utils/device';
 import { alignItemsCenter, flexRow, justyfyCenter, mh20, mt20, mv20, pl13 } from '../../components/commonStyles';
 import { FooterChatView } from '../chatView/Messagecomponents/messages';
 import { IconModal } from '../../components/commonModal';
 import { SmallButton } from '../../components/commonButtons';
+import { useNavigation } from '@react-navigation/native';
+import { isDark } from '../../Theme/ThemeContext';
 
-export type MyStatusProps = {};
-
-
-export const FrndStatusOptionModalComponent = () => {
-
-    // const [showIconModal, setShowIconModal] = useState(false);
-    const [muteOptionalModal, setMuteOptionalModal] = useState(false);
-
-
-    const handleMuteOptionModalOpen = () => {
-        setMuteOptionalModal(!muteOptionalModal)
-    }
-
-
-
-    const ModalContent1 = ({ }) => {
-        const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
-
-        const handleCancelButton = () => {
-            setIsCancelButtonActive(true);
-            setMuteOptionalModal(false)
-        };
-
-        const handleMuteButton = () => {};
-
-        return (
-            <View style={[mh20]}>
-                <H16font600Black>{labels.blockModalTitle}</H16font600Black>
-                <Text style={[mt20]}>New Status updates from Horace Keene {'\n'}won’t appear under recent updates {'\n'}anymore.</Text>
-                <RowSpaceBetween style={[mv20]}>
-                    <SmallButton
-                        title={labels.cancel}
-                        onChange={handleCancelButton}
-                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
-                        textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
-                        borderWidth={isCancelButtonActive ? 0 : 1}
-                        width={DevWidth / 3.15}
-                    />
-                    <SmallButton
-                        title={labels.mute}
-                        onChange={handleMuteButton}
-                        backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
-                        textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
-                        borderWidth={isCancelButtonActive ? 1 : 0}
-                        width={DevWidth / 3.15}
-                    />
-                </RowSpaceBetween>
-            </View>
-        )
-    }
-
-    const selectedItemId = 1;
-    return (
-        <View>
-            {
-                friendStatusModal.map((item) => {
-                    return (
-                        <TouchableOpacity key={item.id} onPress={() => {
-                            if (item.id === selectedItemId) {
-                                handleMuteOptionModalOpen()
-                            }
-                        }} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
-                            <View style={[flexRow]}>
-                                <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={colors.blackVar1} />
-                                <View style={[alignItemsCenter, justyfyCenter, pl13]}>
-                                    <H15Grey>{item.title}</H15Grey>
-                                </View>
-                            </View>
-                        </TouchableOpacity>
-                    )
-                })
-            }
-
-            <IconModal
-                isVisible={muteOptionalModal}
-                onClose={() => handleMuteOptionModalOpen()}
-                contentComponent={<ModalContent1 />}
-                iconName='block-flipped'
-                iconType='MaterialIcons'
-                iconSize={25}
-            />
-        </View>
-    )
-}
-
-
-
-
-
-
-export const MyStatusView = ({ image }) => {
-    return (
-        <View>{image}</View>
-    )
+export type MyStatusProps = {
 };
 
 const FriendStatus = (props: MyStatusProps) => {
+    const navigation = useNavigation();
     const [cardOpen, setCardOpen] = useState(false);
     const [progress1, setProgress1] = useState(0);
     const [progress2, setProgress2] = useState(0);
-    const [callOptionModal, setCallOptionModal] = useState(false);
+    const [optionModal, setOptionModal] = useState(false);
+    const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+    const [statusPrivacyOptionModal, setStatusPrivacyOptionModal] = useState(false);
+
+    const handleCancelButtonClick = () => {
+        setIsCancelButtonActive(true);
+
+    };
+
+    const handleSaveChangesClick = () => {
+        setIsCancelButtonActive(false);
+        setStatusPrivacyOptionModal(false)
+
+    };
 
     const handleCallOptionModal = () => {
-        setCallOptionModal(!callOptionModal);
-    }
-    const closeCallOptionModal = () => {
-        setCallOptionModal(false);
+        setOptionModal(!optionModal);
     }
 
     const translateY = new Animated.Value(0);
@@ -160,10 +80,10 @@ const FriendStatus = (props: MyStatusProps) => {
     const toggleCard = () => {
         if (translateY._value === 0) {
             setCardOpen(false);
-            Animated.timing(translateY, { toValue: 0, duration: 300, useNativeDriver: false }).start();
+            Animated.timing(translateY, { toValue: 0, duration: 10, useNativeDriver: false }).start();
         } else {
             setCardOpen(true);
-            Animated.timing(translateY, { toValue: -200, duration: 300, useNativeDriver: false }).start();
+            Animated.timing(translateY, { toValue: -200, duration: 10, useNativeDriver: false }).start();
         }
     };
 
@@ -171,6 +91,58 @@ const FriendStatus = (props: MyStatusProps) => {
         setCardOpen(false);
         Animated.timing(translateY, { toValue: 0, duration: 300, useNativeDriver: false }).start();
     };
+
+    const OptionModalComponent = () => {
+        return (
+            <View>
+                {friendStatusModal.map((item) => {
+                    return (
+                        <TouchableOpacity key={item.id} onPress={() => {
+                            if (item.id === 1) {
+                                setOptionModal(false)
+                                setStatusPrivacyOptionModal(true)
+                            }
+                        }} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
+                            <View style={[flexRow]}>
+                                <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={colors.blackVar1} />
+                                <View style={[alignItemsCenter, justyfyCenter, pl13]}>
+                                    <H15Grey>{item.title}</H15Grey>
+                                </View>
+                            </View>
+                        </TouchableOpacity>
+                    )
+                })
+                }
+            </View>
+        )
+    }
+
+    const GroupsModal = () => {
+        return (
+            <View style={[mh20]}>
+                <H16font600Black>{labels.blockModalTitle}</H16font600Black>
+                <H14font400Gray4 style={[mt20]}>New Status updates from Horace Keene {'\n'}won’t appear under recent updates {'\n'}anymore.</H14font400Gray4>
+                <RowSpaceBetween style={[mv20]}>
+                    <SmallButton
+                        title={labels.cancel}
+                        onChange={handleSaveChangesClick}
+                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
+                        textColor={isCancelButtonActive ? colors.white : isDark() ? colors.redVar3 : colors.greyVar4}
+                        borderWidth={isCancelButtonActive ? 0 : 1}
+                        width={DevWidth / 3.15}
+                    />
+                    <SmallButton
+                        title={labels.mute}
+                        onChange={handleCancelButtonClick}
+                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
+                        textColor={isCancelButtonActive ? isDark() ? colors.redVar3 : colors.greyVar4 : colors.white}
+                        borderWidth={isCancelButtonActive ? 1 : 0}
+                        width={DevWidth / 3.15}
+                    />
+                </RowSpaceBetween>
+            </View>
+        )
+    }
 
     return (
         <MainContainer>
@@ -202,7 +174,9 @@ const FriendStatus = (props: MyStatusProps) => {
                 </View>
                 <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center' }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10, marginLeft: 15 }}>
-                        <CustomIcon name='chevron-left' size={15} color={colors.white} type='octicons' />
+                        <TouchableOpacity onPress={() => navigation.goBack()}>
+                            <CustomIcon name='chevron-left' size={15} color={colors.white} type='octicons' />
+                        </TouchableOpacity>
                         <View style={{ marginHorizontal: 10 }}>
                             <Image source={StatusPic3} style={{ height: 42, width: 42 }} />
                         </View>
@@ -220,18 +194,14 @@ const FriendStatus = (props: MyStatusProps) => {
                     </View>
                 </View>
                 <CustomModal
-                    isVisible={callOptionModal}
-                    width={DevWidth * 0.50}
-                    height={DevHeight * 0.4}
-                    modalData={<FrndStatusOptionModalComponent />}
-                    marginTop={40}
-
-                    onClose={closeCallOptionModal}
+                    isVisible={optionModal}
+                    width={DevWidth * 0.47}
+                    modalData={<OptionModalComponent />}
+                    marginTop={48}
+                    onClose={() => setOptionModal(false)}
                 />
-
             </View>
             {cardOpen ? (
-
                 <View style={{
                     backgroundColor: 'white', position: 'absolute', bottom: 0, width: '100%',
                     borderTopRightRadius: 25, borderTopLeftRadius: 25
@@ -246,11 +216,19 @@ const FriendStatus = (props: MyStatusProps) => {
                     <TouchableOpacity style={{ flex: 1 }} onPress={toggleCard}>
                         <View style={{ alignItems: 'center' }}>
                             <CustomIcon name='chevron-up' size={20} color={colors.white} type='octicons' />
-                            <Text style={{ color: colors.white }}>Reply</Text>
+                            <H16font500White>Reply</H16font500White>
                         </View>
                     </TouchableOpacity>
                 </Animated.View>
             )}
+            <IconModal
+                isVisible={statusPrivacyOptionModal}
+                onClose={() => setStatusPrivacyOptionModal(false)}
+                contentComponent={<GroupsModal />}
+                iconName='block-flipped'
+                iconType='MaterialIcons'
+                iconSize={24}
+            />
         </MainContainer>
     );
 };
@@ -279,4 +257,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default FriendStatus;
+export default FriendStatus

@@ -1,24 +1,21 @@
 import React, { useState, Fragment, useEffect } from 'react';
-import { Text, View, StatusBar } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import { labels } from '../../utils/labels';
 import { PurpleMainContainer } from '../../components/commonView';
 import { colors } from '../../utils/colors';
-import { CallHeader, ChatHeader, CustomcallActionBar, TabControl } from '../../components/commonComponents';
+import { ChatHeader, TabControl } from '../../components/commonComponents';
 import { flex1 } from '../../components/commonStyles';
-import AllCalls from '../../components/calls/AllCalls';
-import IncomingCalls from '../../components/calls/IncomingCalls';
-import OutgoingCalls from '../../components/calls/OutgoingCalls';
-import MissedCalls from '../../components/calls/MissedCalls';
 import AllStatus from './allStatus';
 import RecentStatusScreen from './recentStatus';
 import ViewedStatusScreen from './viewedStatus';
 import MutedStatusScreen from './mutedStatus';
+import { isDark } from '../../Theme/ThemeContext';
 
-export type CallsProps = {
-  changeButtonText: (text: string) => void; // Add this prop
+export type NoStatusProps = {
+  changeButtonText: (text: string) => void; 
 }
 
-const NoStatus = (props: CallsProps) => {
+const NoStatus = (props: NoStatusProps) => {
   const [selectedTab, setSelectedTab] = useState(labels.allStatus);
   const [selectedCards, setSelectedCards] = useState<number[]>([]);
 
@@ -44,26 +41,6 @@ const NoStatus = (props: CallsProps) => {
     }
 
     setSelectedCards(updatedSelectedCards);
-  };
-
-  interface HeaderProps {
-    selectedTab: string;
-    selectedCards: number[];
-    handleTabPress: (tab: string) => void;
-  }
-
-  const Header = ({ selectedTab, selectedCards, handleTabPress }: HeaderProps) => {
-    const isCustomActionBar = selectedCards.length > 0;
-
-    return (
-      <>
-        {isCustomActionBar ? (
-          <CustomcallActionBar text={selectedCards.length} selectedCardsCount={selectedCards.length} />
-        ) : (
-          <ChatHeader title={labels.Calls} isCall={true} />
-        )}
-      </>
-    );
   };
 
   useEffect(() => {

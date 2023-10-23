@@ -37,9 +37,18 @@ const styles = StyleSheet.create({
   m30: {
     margin: 30,
   },
+  m28: {
+    margin: 28,
+  },
   mt0: {
     marginTop: 0,
   },
+  mt50: {
+    marginTop:50
+    },
+    mt70: {
+      marginTop: 70
+    },
   mb0: {
     marginBottom: 0,
   },
@@ -82,6 +91,9 @@ const styles = StyleSheet.create({
   mh5: {
     marginHorizontal: 5,
   },
+  mh8: {
+    marginHorizontal: 8,
+  },
   mh10: {
     marginHorizontal: 10,
   },
@@ -102,6 +114,9 @@ const styles = StyleSheet.create({
   },
   mv5: {
     marginVertical: 5,
+  },
+  mv8: {
+    marginVertical: 8
   },
   mv10: {
     marginVertical: 10,
@@ -156,6 +171,9 @@ const styles = StyleSheet.create({
   },
   mb40: {
     marginBottom: 40,
+  },
+  mb30: {
+    marginBottom: 30,
   },
   b50: {
     bottom: 50,
@@ -497,7 +515,9 @@ export const {
   m10,
   m15,
   m30,
+  m28,
   mv5,
+  mv8,
   mv3,
   mv10,
   mv15,
@@ -519,6 +539,7 @@ export const {
   m90,
   ml10,
   ml20,
+  mh8,
   mh20,
   mh25,
   mh30,
@@ -529,6 +550,7 @@ export const {
   ml30,
   mt15,
   mb20,
+  mb30,
   mb40,
 
   mb50,
@@ -536,6 +558,8 @@ export const {
   mt3,
   mt5,
   mt8,
+  mt50,
+  mt70,
   mr5,
   mb15
 } = styles;
