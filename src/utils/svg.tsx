@@ -63,6 +63,9 @@ import Country from '../../assets/images/counrty-logo.svg';
 import Share from '../../assets/images/share-icon.svg';
 import Avatar from '../../assets/images/settings-avatar.svg'
 import CreatePassword1 from '../../assets/images/modal-logo.svg';
+import DarkThmMsgIcon from '../../assets/images/darkThememsgIcon.svg'
+
+
 
 
 export const LeftArrowWhiteIcon = () => (
@@ -181,6 +184,9 @@ export const ContactImg9 = () => (
 );
 export const MessageIcon = () => (
     <MsgIcon />
+);
+export const DarkThemeMessageIcon = () => (
+    <DarkThmMsgIcon />
 );
 export const Profile = () => (
     <Profl/>

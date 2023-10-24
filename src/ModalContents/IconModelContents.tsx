@@ -161,16 +161,16 @@ export const ClearChatModal = () => {
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 20, marginBottom: 15, marginTop: 18 }}>
         <SmallButton
           title={labels.cancel}
-          backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
-          textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
+          backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
+          textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar3 : colors.greyVar4)}
           onChange={handleCancelButtonClick}
           borderWidth={isCancelButtonActive ? 0 : 2}
           width={DevWidth / 3.15}
         />
         <SmallButton
           title={labels.ClearChat}
-          backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
-          textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
+          backgroundColor={isCancelButtonActive ? (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white) : colors.purpleVar3}
+          textColor={isCancelButtonActive ? (isDark() ? colors.redVar3 : colors.purpleVar3) : colors.white}
           onChange={handleSaveChangesClick}
           borderWidth={isCancelButtonActive ? 2 : 0}
           width={DevWidth / 3.15}

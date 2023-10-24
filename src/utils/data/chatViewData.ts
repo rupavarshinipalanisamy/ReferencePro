@@ -1,4 +1,4 @@
-import { Bluetick, Tick } from "../../components/chatViewComponents";
+import { AddView, Bluetick, Tick } from "../../components/chatViewComponents";
 import { SentMessage2, receiveMessage1, receiveMessage2, receiveMessage3, receiveMessage4, sentMessage1, sentMessage3, sentMessage4 } from "../../pages/chatView/Messagecomponents/messages";
 import { Reactmsg } from "../../components/chatViewComponents";
 import { colors } from "../colors";
@@ -20,7 +20,7 @@ export const chatMessages = [
     { id: 3, emoji: '👍' },
     { id: 4, emoji: '😎' },
     { id: 5, emoji: '😍' },
-    { id: 6, emoji: '😎' },
+    { id: 7, emoji: AddView() },
   ];
 
   export const tabs = [

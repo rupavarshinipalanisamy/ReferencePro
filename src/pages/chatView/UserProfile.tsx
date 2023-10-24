@@ -6,7 +6,7 @@ import { alignItemsCenter, flexRow, justyfyCenter, mb15, mr5, mt10, mt15, mt20, 
 import CustomIcon from '../../utils/Icons';
 import { DevHeight, DevWidth } from '../../utils/device';
 import { labels } from '../../utils/labels';
-import { H14BlackText, H14Blackvar2Bold500, H14purpleVar3Text, H15Grey, H16BlackText, H18BlackText } from '../../components/commonText';
+import { H12font400Grey, H14BlackText, H14Blackvar2Bold500, H14GreyVar4Bold400, H14purpleVar3Text, H15Grey, H16BlackText, H18BlackText } from '../../components/commonText';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
 import { CardHeaderText, CustomModal, ProfileCard } from '../../components/commonComponents';
@@ -36,7 +36,7 @@ export const ColorIconTab = ({ openModal }: any) => {
                                 }
                             }}
                         >
-                            <View style={[flexRow, spaceBetween, { paddingBottom: 12}]}>
+                            <View style={[flexRow, spaceBetween, { paddingBottom: 12 }]}>
                                 <View style={[flexRow]}>
                                     <View style={{ height: 26, width: 26, borderRadius: 6, backgroundColor: item.bgcolor, alignItems: 'center', justifyContent: 'center' }}>
                                         <CustomIcon name={item.iconName} size={item.iconSize} type={item.iconType} color={item.iconColor} />
@@ -48,8 +48,8 @@ export const ColorIconTab = ({ openModal }: any) => {
                                 {
                                     item.id === 1 ? (
                                         <View style={[flexRow, alignItemsCenter, justyfyCenter]}>
-                                            <View >
-                                                <Text>10</Text>
+                                            <View style={[styles.roundNumber, { backgroundColor: isDark() ? colors.darkModeVar6 : 'rgba(97, 97, 97, 0.15) ' },mr5]}>
+                                                <H14GreyVar4Bold400>10</H14GreyVar4Bold400>
                                             </View>
                                             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                                                 <CustomIcon name='chevron-right' color={isDark() ? colors.greyVar0 : colors.greyVar4} size={24} type="MaterialIcons"
@@ -117,5 +117,17 @@ const UserProfile = () => {
     )
 }
 
+
+const styles = StyleSheet.create({
+    roundNumber: {
+        height:24,
+        width: 24,
+        borderRadius: 15,
+        marginLeft: 10,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+
+})
 
 export default UserProfile

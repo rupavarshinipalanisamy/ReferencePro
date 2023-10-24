@@ -5,18 +5,19 @@ import CustomIcon from '../../utils/Icons';
 import { colors } from '../../utils/colors';
 import { alignItemsCenter, flexRow, justyfyCenter, mb15, mr5, mt10, mt15, mt20, pl10, pl13, pl2, pr5, pt10, pt5, spaceBetween } from '../commonStyles';
 import { useNavigation } from '@react-navigation/native';
-import { H12font400Black, H12font400Grey, H14BlackText, H14GreyVar4Bold400Text, H14font400grey3black2, H15Blackvar2Bold500, H15Grey } from '../commonText';
+import { H12font400Black, H12font400Grey, H14BlackText, H14GreyVar4Bold400Text, H14blackVar1bold400Text, H14font400grey3black2, H15Blackvar2Bold500, H15Grey } from '../commonText';
 import { CardHeaderText, CustomModal } from '../commonComponents';
 import { DevWidth } from '../../utils/device';
 import { InfoCardData, groupsData, mediaData } from '../../utils/data/profileData';
 import { CommonLineDividerGrey, MediumCardSurface } from '../commonView';
 import { screenName } from '../../utils/screenName';
 import { isDark, useTheme } from '../../Theme/ThemeContext';
+import { labels } from '../../utils/labels';
 export const SocialMediaIcon = () => {
     return (
         <>
             <View style={[flexRow]}>
-                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                <View style={[{ alignItems: 'center', justifyContent: 'center'}]}>
                     <CustomIcon name='sc-facebook' type="EvilIcons" size={20} color={isDark() ? colors.greyVar3 : colors.blackVar2} />
                 </View>
                 <View style={[{ alignItems: 'center', justifyContent: 'center' }]}>
@@ -42,11 +43,11 @@ export const Header = () => {
         return (
             <View>
 
-                <TouchableOpacity style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
-                    <View style={flexRow}>
-                        <CustomIcon name="pencil" size={20} color={colors.blackVar1} type="octicons" />
-                        <View style={[alignItemsCenter, justyfyCenter, pl13]}>
-                            <H15Grey>Edit</H15Grey>
+                <TouchableOpacity style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10}}>
+                    <View style={[flexRow,alignItemsCenter]}>
+                        <CustomIcon name="pencil" size={16} color={isDark() ? colors.greyVar3 : colors.blackVar1} type="octicons" />
+                        <View style={[ pl13]}>
+                        <H14blackVar1bold400Text>Edit</H14blackVar1bold400Text>
                         </View>
                     </View>
                 </TouchableOpacity>
@@ -56,9 +57,9 @@ export const Header = () => {
     return (
         <View style={{ marginVertical: 20 }}>
             <View style={[flexRow, spaceBetween, { marginHorizontal: 25 }]}>
-                <CustomIcon name='chevron-back-sharp' color={colors.greyVar4} size={16} type="Ionicons" />
+                <CustomIcon name='chevron-back-sharp' color={isDark()?colors.white:colors.greyVar4} size={16} type="Ionicons" />
                 <TouchableOpacity onPress={handleOptionModal}>
-                    <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={colors.greyVar4} />
+                    <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={isDark()?colors.white:colors.greyVar4} />
 
 
                 </TouchableOpacity>

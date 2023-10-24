@@ -67,5 +67,3 @@ export const ThemeProvider: React.FC = ({ children }) => {
 
 export const isDark = () => globalTheme === 'dark';
 
-// ThemeModal.tsx remains the same
-

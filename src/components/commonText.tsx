@@ -48,6 +48,9 @@ const styles = StyleSheet.create({
   blueVar2: {
     color: colors.blueVar2,
   },
+  darkModeVar4: {
+    color: colors.darkModeVar4,
+  },
   h1: {
     fontSize: 25,
   },
@@ -295,6 +298,11 @@ export const H14BlackText = styled(Text)`
   color : ${props => isDark() ? colors.greyVar0 : colors.black};
 
 `;
+export const H12BlackText = styled(Text)`
+  ${h10};
+  ${fontBold400};
+  color : ${props => isDark() ? colors.darkModeVar4 : colors.white};
+`;
 export const H14BlackVar2Bold400Text = styled(Text)`
   ${h9};
   color : ${props => isDark() ? colors.greyVar0 : colors.blackVar2};
@@ -513,6 +521,14 @@ export const H15font500White = styled(Text)`
   ${h8};
   ${fontRegular}
   ${white};
+`;
+
+export const H15PurpletoGrey = styled(Text)`
+  ${h8};
+  ${fontRegular}
+  color:  ${props => isDark() ? colors.greyVar0 : colors.purpleVar3};
+
+
 `;
 
 
