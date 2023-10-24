@@ -1,9 +1,9 @@
 
 import React, { Fragment, useState } from 'react';
-import { Text, View, StyleSheet, ScrollView, TouchableOpacity, Image, Dimensions } from 'react-native';
+import { Text, View, StyleSheet, ScrollView, TouchableOpacity, Image, Dimensions, Platform } from 'react-native';
 import CustomIcon from '../../utils/Icons';
 import { colors } from '../../utils/colors';
-import { alignItemsCenter, flexRow, justyfyCenter, mb15, mr5, mt10, mt15, mt20, pl10, pl13, pl2, pr5, pt10, pt5, spaceBetween } from '../commonStyles';
+import { alignItemsCenter, flexRow, justyfyCenter, mb15, mr5, mt10, mt15, mt20, pl10, pl13, pl2, pl5, pr5, pt10, pt5, spaceBetween } from '../commonStyles';
 import { useNavigation } from '@react-navigation/native';
 import { H12font400Black, H12font400Grey, H14BlackText, H14GreyVar4Bold400Text, H14font400grey3black2, H15Blackvar2Bold500, H15Grey } from '../commonText';
 import { CardHeaderText, CustomModal } from '../commonComponents';
@@ -16,13 +16,13 @@ export const SocialMediaIcon = () => {
     return (
         <>
             <View style={[flexRow]}>
-                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                <View style={[{ alignItems: 'center', justifyContent: 'center'},pl5]}>
                     <CustomIcon name='sc-facebook' type="EvilIcons" size={20} color={isDark() ? colors.greyVar3 : colors.blackVar2} />
                 </View>
-                <View style={[{ alignItems: 'center', justifyContent: 'center' }]}>
+                <View style={[{ alignItems: 'center', justifyContent: 'center' },pl5]}>
                     <CustomIcon name='twitter' type="entypo" size={18} color={isDark() ? colors.greyVar3 : colors.blackVar2} />
                 </View>
-                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                <View style={[{ alignItems: 'center', justifyContent: 'center' },pl5]}>
                     <CustomIcon name='youtube' type="MaterialCommunityIcons" size={20} color={isDark() ? colors.greyVar3 : colors.blackVar2} />
                 </View>
             </View>
@@ -67,7 +67,7 @@ export const Header = () => {
                 isVisible={optionModal}
                 width={DevWidth * 0.49}
                 modalData={<OptionModalComponent />}
-                marginTop={48}
+                marginTop={Platform.OS === 'ios' ? 100 : 48}
                 onClose={() => setOptionModal(false)}
             />
         </View>

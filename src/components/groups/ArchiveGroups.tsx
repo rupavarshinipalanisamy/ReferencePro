@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, ScrollView, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { flex1, flexRow, mr5, mt20, mt3, mv10, pb5, ph20, pv15 } from '../commonStyles';
-import { ArchiveIconBlackIcon, FileBlackIcon, MikeBlackIcon, PictureBlackIcon, PinBlackIcon, StickerGreyIcon, VideoBlackIcon } from '../../utils/svg';
+import { ArchiveIconBlackIcon, FileBlackIcon, FileDarkIcon, ImageDarkIcon, MicrophoneDarkIcon, MikeBlackIcon, PictureBlackIcon, PinBlackIcon, StickerDarkIcon, StickerGreyIcon, VideoBlackIcon, VideoDarkIcon } from '../../utils/svg';
 import { CommonLineDividerGrey, RowSpaceBetween, RowSpaceEvenly } from '../commonView';
 import { H12fontBold400GreyVar4, H12fontBold400blackVar2, H14GreenBold400, H14GreyVar4Bold400, H15Blackvar2Bold500, H15Green, H15Grey, H16SemiBoldBlack } from '../commonText';
 import { labels } from '../../utils/labels';
@@ -68,8 +68,8 @@ const ArchiveGroups = (props: ArchiveGroupsProps) => {
                                             <RowSpaceBetween>
                                                 <RowSpaceEvenly>
                                                     <H14GreyVar4Bold400 style={mr5}>{labels.James}</H14GreyVar4Bold400>
-                                                    <View style={[mr5, mt3]}>
-                                                        <VideoBlackIcon />
+                                                    <View style={[mr5]}>
+                                                        {isDarkTheme ? <VideoDarkIcon /> : <VideoBlackIcon />}
                                                     </View>
                                                     <H14GreyVar4Bold400>{labels.Video}</H14GreyVar4Bold400>
                                                 </RowSpaceEvenly>
@@ -79,8 +79,8 @@ const ArchiveGroups = (props: ArchiveGroupsProps) => {
                                             <RowSpaceBetween>
                                                 <RowSpaceEvenly>
                                                     <H14GreyVar4Bold400 style={mr5}>{labels.Hollis}</H14GreyVar4Bold400>
-                                                    <View style={[mr5, mt3]}>
-                                                        <MikeBlackIcon />
+                                                    <View style={[mr5]}>
+                                                        {isDarkTheme ? <MicrophoneDarkIcon /> : <MikeBlackIcon />}
                                                     </View>
                                                     <H14GreyVar4Bold400>{labels.Audio}</H14GreyVar4Bold400>
                                                 </RowSpaceEvenly>
@@ -100,8 +100,8 @@ const ArchiveGroups = (props: ArchiveGroupsProps) => {
                                             <RowSpaceBetween>
                                                 <RowSpaceEvenly>
                                                     <H14GreyVar4Bold400 style={mr5}>{labels.Horace}</H14GreyVar4Bold400>
-                                                    <View style={[mr5, mt3]}>
-                                                        <PictureBlackIcon />
+                                                    <View style={[mr5]}>
+                                                        {isDarkTheme ? <ImageDarkIcon /> : <PictureBlackIcon />}
                                                     </View>
                                                     <H14GreyVar4Bold400>{labels.Image}</H14GreyVar4Bold400>
                                                 </RowSpaceEvenly>
@@ -112,7 +112,7 @@ const ArchiveGroups = (props: ArchiveGroupsProps) => {
                                                 <View style={flexRow}>
                                                     <H14GreyVar4Bold400 style={mr5}>{labels.Smith}</H14GreyVar4Bold400>
                                                     <View style={[mr5]} >
-                                                        <FileBlackIcon />
+                                                        {isDarkTheme ? <FileDarkIcon /> : <FileBlackIcon />}
                                                     </View>
                                                     <H14GreyVar4Bold400>{labels.guidelinespdf}</H14GreyVar4Bold400>
                                                 </View>
@@ -121,8 +121,8 @@ const ArchiveGroups = (props: ArchiveGroupsProps) => {
                                         ) : group.id === 7 ? (
                                             <RowSpaceBetween><View style={[flexRow]}>
                                                 <H14GreyVar4Bold400 style={mr5}>{labels.Alex}</H14GreyVar4Bold400>
-                                                <View style={[mr5, mt3]} >
-                                                    <StickerGreyIcon />
+                                                <View style={[mr5]} >
+                                                    {isDarkTheme ? <StickerDarkIcon /> : <StickerGreyIcon />}
                                                 </View>
                                                 <H14GreyVar4Bold400>{labels.Sticker}</H14GreyVar4Bold400>
                                             </View>

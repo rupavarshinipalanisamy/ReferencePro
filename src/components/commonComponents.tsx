@@ -18,7 +18,7 @@ import { screenName } from '../utils/screenName';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { IconModal } from './commonModal';
 import { SmallButton } from './commonButtons';
-import { isDark } from '../Theme/ThemeContext';
+import { isDark, useTheme } from '../Theme/ThemeContext';
 import { color } from 'react-native-elements/dist/helpers';
 
 // ====================   Chat based Header Component   ====================
@@ -193,6 +193,8 @@ interface TabControlProps {
 }
 
 export const TabControl: React.FC<TabControlProps> = ({ tabs, activeTab, onTabPress }) => {
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
     return (
         <View style={styles.tabContainer}>
             {tabs.map((tabInfo) => (
@@ -209,7 +211,7 @@ export const TabControl: React.FC<TabControlProps> = ({ tabs, activeTab, onTabPr
                         <Text
                             style={[
                                 styles.tabText,
-                                { color: activeTab === tabInfo.label ? colors.white : (isDark() ? colors.greyVar3 : colors.purpleVar2) },
+                                { color: activeTab === tabInfo.label ? colors.white : (isDarkTheme ? colors.greyVar3 : colors.purpleVar2) },
                             ]}
                         >
                             {tabInfo.label}
@@ -218,10 +220,10 @@ export const TabControl: React.FC<TabControlProps> = ({ tabs, activeTab, onTabPr
                             <View
                                 style={[
                                     styles.roundNumber,
-                                    { backgroundColor: activeTab === tabInfo.label ? colors.white : (isDark() ? colors.greyVar3 : colors.purpleVar2) },
+                                    { backgroundColor: activeTab === tabInfo.label ? colors.white : (isDarkTheme ? colors.greyVar3 : colors.purpleVar2) },
                                 ]}
                             >
-                                <Text style={[styles.roundNumberText, { color: isDark() ? colors.darkModeVar1 : colors.purpleVar3, }]}>{tabInfo.count}</Text>
+                                <Text style={[styles.roundNumberText, { color: isDarkTheme ? colors.darkModeVar1 : colors.purpleVar3, }]}>{tabInfo.count}</Text>
                             </View>
                         )}
                     </View>
@@ -445,7 +447,7 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                     <LeftArrowWhiteIcon />
                 </TouchableOpacity>
-                <View style={{ backgroundColor: isDark() ? colors.purpleVar3 : 'rgba(0, 0, 0, 0.3)', height: 20, width: 20, borderRadius: 20, }}>
+                <View style={[{ backgroundColor: isDark() ? colors.purpleVar3 : 'rgba(0, 0, 0, 0.3)', height: 20, width: 20, borderRadius: 20, }, alignItemsCenter, justyfyCenter]}>
                     <Text style={{ textAlign: 'center', color: colors.white, fontSize: 14 }}>{text}</Text>
                 </View>
             </View>
@@ -736,6 +738,8 @@ export const BottomTabBar = () => {
     const [selectedTab, setSelectedTab] = useState('Chats');
     const navigation = useNavigation();
     const route = useRoute();
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
 
     useEffect(() => {
         if (route.name) {
@@ -749,7 +753,7 @@ export const BottomTabBar = () => {
     };
 
     return (
-        <View style={[alignSelfCenter, borderRadius10, { height: DevHeight * 0.07, width: DevWidth * 0.9, backgroundColor: isDark() ? colors.darkModeVar1 : colors.purpleVar3, position: 'absolute', bottom: 10 }]}>
+        <View style={[alignSelfCenter, borderRadius10, { height: DevHeight * 0.07, width: DevWidth * 0.9, backgroundColor: isDarkTheme ? colors.darkModeVar1 : colors.purpleVar3, position: 'absolute', bottom: 10 }]}>
             <RowSpaceBetween style={[alignItemsCenter, mv10, mh20]}>
                 {
                     bottomNavData.map((item) => {
@@ -757,18 +761,18 @@ export const BottomTabBar = () => {
                         return (
                             <TouchableOpacity key={item.id} onPress={() => handleTabPress(item.id, item.screenName)}>
                                 <View style={alignItemsCenter}>
-                                    <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={isSelected ? colors.white : (isDark() ? colors.greyVar3 : colors.purpleVar2)} />
+                                    <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={isSelected ? colors.white : (isDarkTheme ? colors.greyVar3 : colors.purpleVar2)} />
                                 </View>
                                 {
                                     item.id === 1 || item.id == 2 ? (
-                                        <View style={[styles.unredBadge, { backgroundColor: isDark() ? colors.redVar2 : colors.red, }]}>
+                                        <View style={[styles.unredBadge, { backgroundColor: isDarkTheme ? colors.redVar2 : colors.red, }]}>
                                             <Text style={styles.unredBadgeText}>2</Text>
                                         </View>
                                     ) : (
                                         <View />
                                     )
                                 }
-                                <Text style={[{ color: isSelected ? colors.white : (isDark() ? colors.greyVar3 : colors.purpleVar2), fontSize: 14, fontWeight: '500', letterSpacing: 0.5 }, textCenter]}>{item.name}</Text>
+                                <Text style={[{ color: isSelected ? colors.white : (isDarkTheme ? colors.greyVar3 : colors.purpleVar2), fontSize: 14, fontWeight: '500', letterSpacing: 0.5 }, textCenter]}>{item.name}</Text>
                             </TouchableOpacity>
                         )
                     })

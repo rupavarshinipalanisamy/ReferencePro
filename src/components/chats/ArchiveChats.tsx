@@ -1,11 +1,11 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, mr5, mt20, mt5, mv10, pb5, ph20, pv15 } from '../commonStyles';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mr5, mt0, mt20, mt5, mv10, pb5, ph20, pv15 } from '../commonStyles';
 import { PinnedChatsdata } from '../../utils/data/chatsData';
 import { CommonLineDividerGrey, RowSpaceBetween, RowSpaceEvenly } from '../commonView';
 import { H12fontBold400GreyVar4, H12fontBold400blackVar2, H14GreenBold400, H14GreyVar4Bold400, H14RedBold400, H15Blackvar2Bold500, H15Green, H15Grey, H15Red, H16SemiBoldBlack } from '../commonText';
 import { labels } from '../../utils/labels';
-import { ArchiveIconBlackIcon, BlackDoubleTickIcon, BlackSingleTickIcon, BlueDoubleTickIcon, FileBlackIcon, MikeBlackIcon, PhoneIncomingRedIcon, PictureBlackIcon, VideoBlackIcon } from '../../utils/svg';
+import { ArchiveIconBlackIcon, BlackDoubleTickIcon, BlackSingleTickIcon, BlueDoubleTickIcon, DoubleTickDarkIcon, FileBlackIcon, FileDarkIcon, ImageDarkIcon, MicrophoneDarkIcon, MikeBlackIcon, PhoneIncomingDarkIcon, PhoneIncomingRedIcon, PictureBlackIcon, SingleTickDarkIcon, VideoBlackIcon, VideoDarkIcon } from '../../utils/svg';
 import { colors } from '../../utils/colors';
 import { DevWidth } from '../../utils/device';
 import { BottomTabBar } from '../commonComponents';
@@ -83,7 +83,7 @@ const ArchiveChats = ({ selectedCards, onCardSelection }: ArchiveChatsProps) => 
                                             <RowSpaceBetween>
                                                 <RowSpaceEvenly>
                                                     <View style={mr5}>
-                                                        <VideoBlackIcon />
+                                                        {isDarkTheme ? <VideoDarkIcon /> : <VideoBlackIcon />}
                                                     </View>
                                                     <H14GreyVar4Bold400>{labels.Video}</H14GreyVar4Bold400>
                                                 </RowSpaceEvenly>
@@ -98,13 +98,13 @@ const ArchiveChats = ({ selectedCards, onCardSelection }: ArchiveChatsProps) => 
                                             <RowSpaceBetween>
                                                 <RowSpaceEvenly>
                                                     <View style={mr5}>
-                                                        <MikeBlackIcon />
+                                                        {isDarkTheme ? <MicrophoneDarkIcon /> : <MikeBlackIcon />}
                                                     </View>
                                                     <H14GreyVar4Bold400>{labels.Audio}</H14GreyVar4Bold400>
                                                 </RowSpaceEvenly>
                                                 <RowSpaceEvenly>
                                                     <View style={mr5}>
-                                                        <BlackSingleTickIcon />
+                                                        {isDarkTheme ? <SingleTickDarkIcon /> : <BlackSingleTickIcon />}
                                                     </View>
                                                     <ArchiveIconBlackIcon />
                                                 </RowSpaceEvenly>
@@ -123,13 +123,13 @@ const ArchiveChats = ({ selectedCards, onCardSelection }: ArchiveChatsProps) => 
                                             <RowSpaceBetween>
                                                 <RowSpaceEvenly>
                                                     <View style={mr5}>
-                                                        <PictureBlackIcon />
+                                                        {isDarkTheme ? <ImageDarkIcon /> : <PictureBlackIcon />}
                                                     </View>
                                                     <H14GreyVar4Bold400>{labels.Image}</H14GreyVar4Bold400>
                                                 </RowSpaceEvenly>
                                                 <RowSpaceBetween>
-                                                    <View style={[mr5, mt5]}>
-                                                        <BlackDoubleTickIcon />
+                                                    <View style={[mr5,isDarkTheme ? mt0 : mt5]}>
+                                                        {isDarkTheme ? <DoubleTickDarkIcon /> : <BlackDoubleTickIcon />}
                                                     </View>
                                                     <ArchiveIconBlackIcon />
                                                 </RowSpaceBetween>
@@ -138,7 +138,7 @@ const ArchiveChats = ({ selectedCards, onCardSelection }: ArchiveChatsProps) => 
                                             <RowSpaceBetween>
                                                 <RowSpaceBetween>
                                                     <View style={mr5} >
-                                                        <FileBlackIcon />
+                                                        {isDarkTheme ? <FileDarkIcon /> : <FileBlackIcon />}
                                                     </View>
                                                     <H14GreyVar4Bold400>{labels.guidelinespdf}</H14GreyVar4Bold400>
                                                 </RowSpaceBetween>
@@ -148,7 +148,7 @@ const ArchiveChats = ({ selectedCards, onCardSelection }: ArchiveChatsProps) => 
                                             <RowSpaceBetween>
                                                 <RowSpaceBetween>
                                                     <View style={mr5} >
-                                                        <PhoneIncomingRedIcon />
+                                                        {isDarkTheme ? <PhoneIncomingDarkIcon /> : <PhoneIncomingRedIcon />}
                                                     </View>
                                                     <H14RedBold400>{labels.MissedVoiceCall}</H14RedBold400>
                                                 </RowSpaceBetween>
@@ -158,7 +158,7 @@ const ArchiveChats = ({ selectedCards, onCardSelection }: ArchiveChatsProps) => 
                                             <RowSpaceBetween>
                                                 <RowSpaceBetween>
                                                     <View style={mr5} >
-                                                        <PhoneIncomingRedIcon />
+                                                    {isDarkTheme ? <PhoneIncomingDarkIcon /> : <PhoneIncomingRedIcon />}
                                                     </View>
                                                     <H14RedBold400>{labels.MissedVideoCall}</H14RedBold400>
                                                 </RowSpaceBetween>

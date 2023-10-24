@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, TextInput } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, TextInput, Platform } from 'react-native';
 import ImageScreen from './Image';
 import { colors } from '../../utils/colors';
 import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh10, mh20, mt20, mt3, mt30, mt8, mv20, pb10, pl10, pl13, pl15, pt10, spaceBetween } from '../../components/commonStyles';
@@ -218,7 +218,7 @@ export const MediaHeader = (props: MediaHeaderProps) => {
                 isVisible={optionModal}
                 width={DevWidth * 0.47}
                 modalData={<OptionModalComponent />}
-                marginTop={60}
+                marginTop={Platform.OS === 'ios' ? 120 : 60}
                 onClose={() => setOptionModal(false)}
             />
         </View>
@@ -345,7 +345,7 @@ export const StarredAndVerifycodeHeader = (props: StarredAndVerifycodeHeaderProp
                 isVisible={optionModal}
                 width={DevWidth * 0.47}
                 modalData={<StarMessageModal />}
-                marginTop={48}
+                marginTop={Platform.OS === 'ios' ? 100 : 48}
                 onClose={() => setOptionModal(false)}
             />
         </View>

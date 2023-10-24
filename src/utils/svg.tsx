@@ -3,6 +3,21 @@ import React from 'react';
 import LeftArrowWhite from '../../assets/images/leftArrowWhite.svg';
 import ArchiveIconBlack from '../../assets/images/archive-icon.svg'
 import ArchiveIconWhite from '../../assets/images/archiveWhite.svg'
+import ArchiveIconDarkShade1 from '../../assets/images/archivedarkshade1.svg'
+import ArchiveIconDarkShade2 from '../../assets/images/archiveDarkShade2.svg'
+import DoubleTickDark from '../../assets/images/doubleTickDark.svg'
+import FileDark from '../../assets/images/fileDark.svg'
+import ImageDark from '../../assets/images/imageDark.svg'
+import MicrophoneDark from '../../assets/images/microphoneDark.svg'
+import PhoneIncomingDark from '../../assets/images/phone-incomingDark.svg'
+import PinDark from '../../assets/images/pinDark.svg'
+import SingleTickDark from '../../assets/images/singleTickDark.svg'
+import VideoDark from '../../assets/images/videoDark.svg'
+import IncomingGreenDark from '../../assets/images/incomingGreenDark.svg'
+import OutgoingGreenDark from '../../assets/images/outgoingGreenDark.svg'
+import StickerDark from '../../assets/images/stickerDark.svg'
+import VideoGreenDark from '../../assets/images/videoGreenDark.svg'
+import VideoRedDark from '../../assets/images/VideoRedDark.svg'
 import BlackDoubleTick from '../../assets/images/blackDoubleTick.svg'
 import BlackSingleTick from '../../assets/images/blacksingleTick.svg'
 import BlueDoubleTick from '../../assets/images/blueDoubleTick.svg'
@@ -267,4 +282,49 @@ export const SettingAvatar = () => (
 
 export const CreatePasswordLogo2 = () => (
     <CreatePassword1 />
+);
+export const ArchiveIconDarkShade1Icon = () => (
+    <ArchiveIconDarkShade1 />
+);
+export const ArchiveIconDarkShade2Icon = () => (
+    <ArchiveIconDarkShade2 />
+);
+export const VideoDarkIcon = () => (
+    <VideoDark />
+);
+export const SingleTickDarkIcon = () => (
+    <SingleTickDark />
+);
+export const PinDarkIcon = () => (
+    <PinDark />
+);
+export const PhoneIncomingDarkIcon = () => (
+    <PhoneIncomingDark />
+);
+export const MicrophoneDarkIcon = () => (
+    <MicrophoneDark />
+);
+export const ImageDarkIcon = () => (
+    <ImageDark />
+);
+export const FileDarkIcon = () => (
+    <FileDark />
+);
+export const DoubleTickDarkIcon = () => (
+    <DoubleTickDark />
+);
+export const IncomingGreenDarkIcon = () => (
+    <IncomingGreenDark />
+);
+export const OutgoingGreenDarkIcon = () => (
+    <OutgoingGreenDark />
+);
+export const StickerDarkIcon = () => (
+    <StickerDark />
+);
+export const VideoGreenDarkIcon = () => (
+    <VideoGreenDark />
+);
+export const VideoRedDarkIcon = () => (
+    <VideoRedDark />
 );
