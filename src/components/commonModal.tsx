@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, TouchableOpacity, View, StyleSheet, TouchableWithoutFeedback, Modal as RNmodal, TextInput } from 'react-native';
+import { Text, TouchableOpacity, View, StyleSheet, TouchableWithoutFeedback, Modal as RNmodal, TextInput, Platform } from 'react-native';
 import CreatePasswordLogo from '../../assets/images/modal-logo.svg';
 import GalleryLogo from '../../assets/images/gallery-icon.svg';
 import OnlineLogo from '../../assets/images/lastseen-logo.svg';
@@ -9,10 +9,10 @@ import ThemeLogo from '../../assets/images/theme-logo.svg';
 import { colors } from '../utils/colors';
 import { labels } from '../utils/labels';
 import { ButtonContainer1, CheckBox, HalfCircle, HalfCircle2, ModalContainer, ModalContent, ModalContent1 } from '../styledComponent/styledComponent';
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, mb15, mh10, mh15, mh5, mt20, p5, pl10, pr10, spaceBetween } from './commonStyles';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mb15, mh10, mh15, mh5, mr5, mt20, p5, pl10, pr10, pr13, spaceBetween } from './commonStyles';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../utils/screenName';
-import { H14BlackText, H14font400Gray4, H16font600Black, H16fontNormalGray, H16fontNormalGray4, H18fontBoldBlack } from './commonText';
+import { H12font400Grey, H14BlackText, H14font400Gray4, H14font400grey3black2, H16font600Black, H16fontNormalGray, H16fontNormalGray4, H18fontBoldBlack } from './commonText';
 import { chooseTheme, clearAllChats, deleteAllChats, groupsData, lastSee, profilePic } from '../utils/data/modalData';
 import { GreyTabView, RadioButton, RadioButtonRound, SelectedRadioBtn } from './commonView';
 import CustomIcon from '../utils/Icons';
@@ -20,7 +20,7 @@ import { LongPurpleButton, SmallButton } from './commonButtons';
 import { RadioBtn } from './commonComponents';
 import { isDark, useTheme } from '../Theme/ThemeContext';
 import { DevHeight, DevWidth } from '../utils/device';
-import { All, EditFooterView, ReactMsgTabControl } from './chatViewComponents';
+import { All, ReactMsgTabControl, Tick } from './chatViewComponents';
 import Modal from 'react-native-modal';
 import { FooterChatView } from '../pages/chatView/Messagecomponents/messages';
 
@@ -372,33 +372,33 @@ export const ThemeModal: React.FC<CommonModalProps> = ({
 //   isVisible,
 //   onClose,
 // }) => {
-  // const [isChecked, setIsChecked] = useState<string | null>(null);
+// const [isChecked, setIsChecked] = useState<string | null>(null);
 
 
-  // const toggleCheckbox = (status: string) => {
-  //   setIsChecked(status);
-  // };
+// const toggleCheckbox = (status: string) => {
+//   setIsChecked(status);
+// };
 
-  // const renderRadio = (status: string) => {
-  //   return (
-  //     <><RadioButton
-  //       onPress={() => toggleCheckbox(status)}>
-  //       <CheckBox style={{ backgroundColor: isChecked === status ? colors.purpleVar3 : 'transparent' }}>
-  //         {isChecked && (
-  //           <CustomIcon name="check" size={16} color={colors.white} type={'MaterialCommunityIcons'} />)}
-  //       </CheckBox>
-  //       <H16fontNormalGray style={[mh10, justyfyCenter]}>{status}</H16fontNormalGray>
-  //     </RadioButton>
-  //     </>
-  //   );
-  // };
+// const renderRadio = (status: string) => {
+//   return (
+//     <><RadioButton
+//       onPress={() => toggleCheckbox(status)}>
+//       <CheckBox style={{ backgroundColor: isChecked === status ? colors.purpleVar3 : 'transparent' }}>
+//         {isChecked && (
+//           <CustomIcon name="check" size={16} color={colors.white} type={'MaterialCommunityIcons'} />)}
+//       </CheckBox>
+//       <H16fontNormalGray style={[mh10, justyfyCenter]}>{status}</H16fontNormalGray>
+//     </RadioButton>
+//     </>
+//   );
+// };
 
-  // const buttonPress = () => {
-  //   if (isChecked) {
-  //     console.log(`Selected status: ${isChecked}`);
-  //   }
-  //   onClose();
-  // }
+// const buttonPress = () => {
+//   if (isChecked) {
+//     console.log(`Selected status: ${isChecked}`);
+//   }
+//   onClose();
+// }
 //   return (
 //     <View style={{ flex: 1 }}>
 //       <Modal transparent={true} animationType="slide" visible={isVisible}
@@ -412,19 +412,19 @@ export const ThemeModal: React.FC<CommonModalProps> = ({
 //             <View>
 //               <H18fontBoldBlack>{labels.clearAllChats1}</H18fontBoldBlack>
 //               <H16fontNormalGray>{labels.deleteMsg}</H16fontNormalGray>
-              // {clearAllChats.map((data, index) => {
-              //   return (
-              //     <View key={data.id} style={[flexRow, spaceBetween]}>
-              //       <View style={{ paddingVertical: 10 }}>
-              //         <TouchableOpacity>
-              //           <View key={data.id}>
-              //             {renderRadio(data.status)}
-              //           </View>
-              //         </TouchableOpacity>
-              //       </View>
-              //     </View>
-              //   );
-              // })}
+// {clearAllChats.map((data, index) => {
+//   return (
+//     <View key={data.id} style={[flexRow, spaceBetween]}>
+//       <View style={{ paddingVertical: 10 }}>
+//         <TouchableOpacity>
+//           <View key={data.id}>
+//             {renderRadio(data.status)}
+//           </View>
+//         </TouchableOpacity>
+//       </View>
+//     </View>
+//   );
+// })}
 //             </View>
 
 //             <ButtonContainer1 >
@@ -678,7 +678,7 @@ export type CommonModalProps = {
 //                           {renderRadio(data.status)}
 //                         </View>
 //                       </TouchableOpacity>
-                      
+
 //                     </View>
 //                   </View>
 //                 );
@@ -796,21 +796,19 @@ export const ReactModal = ({ isVisible, closeModal, selectedTab, handleTabPress,
       onBackdropPress={closeModal}>
 
       <TouchableWithoutFeedback onPress={closeModal}>
-       
         <View style={{ flex: 1 }}>
-       
           <View
             style={{
               height: DevHeight / 3.3,
-              backgroundColor: isDark()?colors.darkModeVar4: colors.white,
-             
+              backgroundColor: isDark() ? colors.darkModeVar4 : colors.white,
+
               borderTopLeftRadius: 30,
               borderTopRightRadius: 30
             }}
           >
-             <GreyTabView />
+            <GreyTabView />
 
-            <View style={{paddingTop:20}}>
+            <View style={{ paddingTop: 20 }}>
               <ReactMsgTabControl tabs={tabs} activeTab={selectedTab} onTabPress={handleTabPress} />
               {selectedTab === "All" && (
                 <All />
@@ -829,10 +827,16 @@ export const ReactModal = ({ isVisible, closeModal, selectedTab, handleTabPress,
 export const EditModal = ({ isVisible, onClose }) => {
   return (
     <Modal isVisible={isVisible} onBackdropPress={onClose} backdropOpacity={0.5} style={{ alignItems: 'flex-end', marginTop: DevHeight / 1.5 }}>
-      <View style={{ backgroundColor: colors.purpleVar1, borderTopLeftRadius: 8, borderBottomRightRadius: 8, borderBottomLeftRadius: 8, padding: 10 }}>
-        <H14BlackText>
+      <View style={[flexRow]}>
+        <H12font400Grey style={pr10}>8:17 PM</H12font400Grey>
+        <Tick />
+
+      </View>
+
+      <View style={{ backgroundColor: isDark() ? colors.darkModeVar4 : colors.purpleVar1, borderTopLeftRadius: 8, borderBottomRightRadius: 8, borderBottomLeftRadius: 8, padding: 10,marginTop:5}}>
+        <H14font400grey3black2>
           Thank You Mam
-        </H14BlackText>
+        </H14font400grey3black2>
       </View>
     </Modal >
   );
@@ -846,20 +850,19 @@ export const EditModal2 = ({ isVisible, onClose, onEditModal2Press }) => {
   };
   return (
     <Modal isVisible={isVisible} onBackdropPress={onClose} backdropOpacity={0} style={{ margin: 0, position: 'absolute', bottom: 0, width: '100%' }}>
-      <View style={{ backgroundColor: colors.white, alignItems: 'center', height: DevHeight / 9.5, paddingHorizontal: 20, borderTopLeftRadius: 20, borderTopRightRadius: 20, flexDirection: 'row', justifyContent: 'center' }}>
-        <View style={{ width: DevWidth / 1.3, height: 40, backgroundColor: 'white', borderColor: colors.greyVar2, borderWidth: 2, borderRadius: 6, marginTop: 30, bottom: 8 }}>
+      <View style={{ backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, alignItems: 'center', height: DevHeight / 9.5, paddingHorizontal: 20, borderTopLeftRadius: 20, borderTopRightRadius: 20, flexDirection: 'row', justifyContent: 'center' }}>
+        <View style={{ width: DevWidth / 1.3, height: 40, backgroundColor: isDark() ? colors.darkModeVar6 : colors.white, borderColor: isDark() ? 'rgba(78,80,114,0.5)' : colors.greyVar2, borderWidth: 2, borderRadius: 6, marginTop: 30, bottom: 8 }}>
           <View style={{ flexDirection: 'row', width: '80%', height: 40, paddingHorizontal: 2, alignItems: 'center' }}>
             <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginLeft: 15 }}>
-              <CustomIcon name='smiley' type="octicons" size={16} color={colors.greyVar4} />
+              <CustomIcon name='smiley' type="octicons" size={16} color={isDark() ? colors.greyVar3 : colors.greyVar4} />
               <TextInput
                 value={editText}
-                style={{ flex: 1, marginLeft: 5, color: colors.greyVar4, fontSize: 14, fontWeight: '400' }}
-                placeholder=""
+                style={{ flex: 1, marginLeft: 5, color: isDark() ? colors.greyVar3 : colors.greyVar4, fontSize: 14, fontWeight: '400' }}
               />
             </View>
           </View>
         </View>
-        <TouchableOpacity style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', bottom: 15 }}
+        <TouchableOpacity style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', bottom: Platform.OS === 'ios' ? 8 : 15 }}
           onPress={handleDone}
         >
           <CustomIcon name='done' type="MaterialIcons" color={colors.white} size={18} />

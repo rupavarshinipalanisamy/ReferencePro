@@ -8,7 +8,7 @@ import CustomIcon from '../utils/Icons';
 import { CommonLineDividerGrey } from '../components/commonView';
 import { alignItemsCenter, flexRow, justyfyCenter, mh20, mr5, mt10, mt15, mv10, pl13, pr10, pr13, pr7 } from '../components/commonStyles';
 import { MessageStatusData } from '../utils/data/chatViewData';
-import { H12fontBold400GreyVar4 } from '../components/commonText';
+import { H12fontBold400GreyVar4, H14GreyVar4Bold400Text, H15Blackvar2Bold500 } from '../components/commonText';
 
 
 const MessageInfo = () => {
@@ -39,9 +39,9 @@ const MessageInfo = () => {
                                 </View>
 
 
-                                <Text style={{ fontSize: 15, color: colors.blackVar2, fontWeight: '500', lineHeight: 23 }}>{item.status}</Text>
+                                <H15Blackvar2Bold500 style={{lineHeight: 23 }}>{item.status}</H15Blackvar2Bold500>
                             </View>
-                            <Text style={{ fontSize: 14, color: colors.greyVar4, fontWeight: '400' }}>{item.time}</Text>
+                            <H14GreyVar4Bold400Text>{item.time}</H14GreyVar4Bold400Text>
                         </View>
 
                     </View>

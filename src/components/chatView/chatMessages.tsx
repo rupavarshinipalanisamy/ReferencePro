@@ -9,6 +9,7 @@ import {
 import { colors } from '../../utils/colors';
 import CustomIcon from '../../utils/Icons';
 import { isDark } from '../../Theme/ThemeContext';
+import { H12font400Grey } from '../commonText';
 
 const ChatMessage = ({ message, onSwipeRight, onPress, hanldeLogPress, selectedCards, toggleCardSelection, editedMessageText }) => {
     const translateX = useRef(new Animated.Value(0)).current;
@@ -49,7 +50,8 @@ const ChatMessage = ({ message, onSwipeRight, onPress, hanldeLogPress, selectedC
             <Animated.View
                 style={[
                     {
-                        backgroundColor: selectedCards.includes(message.id) ? (isDark()?colors.darkModeVar6:colors.purpleVar4 ): 'transparent', // Use the prop here
+                        backgroundColor: selectedCards.includes(message.id) ? (isDark()?colors.darkModeVar6:colors.purpleVar4 ): 'transparent',
+                        marginVertical:2, 
                         transform: [{ translateX: translateX }],
                     },
                 ]}
@@ -57,7 +59,7 @@ const ChatMessage = ({ message, onSwipeRight, onPress, hanldeLogPress, selectedC
                 <TouchableOpacity
                     style={[
                         message.type === 'sentmsg' ? { alignItems: 'flex-end' } : { alignItems: 'flex-start' },
-                        { paddingTop: 10, marginHorizontal: 20, position: 'relative' },
+                        { paddingTop:5, marginHorizontal: 20, position: 'relative' ,marginBottom:4},
                     ]}
                     key={message.id}
                     onPress={() => {
@@ -77,20 +79,20 @@ const ChatMessage = ({ message, onSwipeRight, onPress, hanldeLogPress, selectedC
         
                 >
                     <View style={{ flexDirection: 'row' }}>
-                        <Text style={{ fontSize: 14, color: colors.greyVar4 }}>{message.time}</Text>
+                        <H12font400Grey>{message.time}</H12font400Grey>
                         {message.id === 8 && (
                             <>
                                 {editedMessageText == null ? (
                                     <Text>{editedMessageText}</Text>
                                 ) : (
-                                    <View style={{ alignItems: 'center', justifyContent: 'center', marginRight: 5, marginLeft: 5 }}>
+                                    <View style={{ justifyContent: 'center', marginRight:8, marginLeft:8,bottom:1 }}>
                                         <CustomIcon name='circle' type="font-awesome" size={6} color={colors.greyVar3} />
                                     </View>
                                 )}
                             </>
                         )} 
 
-                        {editedMessageText == null ? <Text>{editedMessageText}</Text> : <Text>{message.text}</Text>}
+                        {editedMessageText == null ? <Text>{editedMessageText}</Text> : <H12font400Grey>{message.text}</H12font400Grey>}
                         <Text style={pl6}> {message.icon}</Text>
                     </View>
                     <Text>{message.message}</Text>

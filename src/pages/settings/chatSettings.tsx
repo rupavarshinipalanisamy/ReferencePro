@@ -302,7 +302,7 @@ const ChatSettings = (props: chatSettingsProps) => {
                     <Text style={{ color: isDark() ? colors.blueVar3 : colors.black }}>gjkjklkhlkh</Text>
 
                     <H16fontNormalGray4>{labels.theme} </H16fontNormalGray4>
-                    <H12fontNormalGray>{labels.light}</H12fontNormalGray>
+                    <H12fontNormalGray>light</H12fontNormalGray>
                     {chatSettings.map((data, index) => {
                         return (
                             <View key={data.id} style={[flexRow, spaceBetween]}>

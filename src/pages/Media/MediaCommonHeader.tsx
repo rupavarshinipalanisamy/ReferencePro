@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, TextInput } from 'react-native';
 import ImageScreen from './Image';
 import { colors } from '../../utils/colors';
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, mt20, mt3, mt30, mt8, pb10, pl10, pl13, pl15, pt10, spaceBetween } from '../../components/commonStyles';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mt10, mt20, mt3, mt30, mt8, pb10, pl10, pl13, pl15, pt10, spaceBetween } from '../../components/commonStyles';
 import { TopContainerWhiteCard1 } from '../../components/commonView';
 import CustomIcon from '../../utils/Icons';
 import { H14GreyVar4Bold400, H14blackVar1bold400Text, H15Blackvar2Bold500, H15Grey, H16Black600Text, H18BlackText, H18GreyVar4Text } from '../../components/commonText';
@@ -84,8 +84,8 @@ export const MediaHeader = (props: MediaHeaderProps) => {
     const imageViewModalData = [
         {
             id: 1,
-            iconName: 'mail-forward',
-            iconType: 'FontAwesome',
+            iconName:'reply-outline',
+            iconType: "MaterialCommunityIcons",
             text: labels.Forward,
         },
         {
@@ -102,13 +102,14 @@ export const MediaHeader = (props: MediaHeaderProps) => {
         },
         {
             id: 4,
-            iconName: 'delete',
-            iconType: 'AntDesign',
+            iconName: 'trash-2',
+            iconType: 'Feather',
             text: labels.Delete,
         },
 
 
     ]
+
     const [optionModal, setOptionModal] = useState(false);
 
     const handleOptionModal = () => {
@@ -256,7 +257,7 @@ export const TextInputHeader = (props: TextInputHeaderProps) => {
                             </View>
                         </View>
                         <View style={[flexRow, alignItemsCenter]}>
-                            <TouchableOpacity style={pl10} >
+                            <TouchableOpacity style={[pl10,mt10]} >
                                 <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={isDark()?colors.white:colors.greyVar4} />
                             </TouchableOpacity>
                         </View>
@@ -289,7 +290,7 @@ export const StarredAndVerifycodeHeader = (props: StarredAndVerifycodeHeaderProp
                 <TouchableOpacity style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
                     <View style={flexRow}>
                         <View style={[alignItemsCenter, justyfyCenter]}>
-                            <CustomIcon name='star-outline' color={colors.blackVar1} size={18} type="Ionicons" />
+                            <CustomIcon name='star' color={isDark()?colors.greyVar4:colors.blackVar1} size={18} type="Feather" />
                         </View>
                         <View style={[alignItemsCenter, justyfyCenter, pl13]}>
                             <H14blackVar1bold400Text>Unstar All</H14blackVar1bold400Text>
@@ -377,7 +378,7 @@ export const SearchHeader = (props: SearchHeader) => {
             <TopContainerWhiteCard1 height={DevHeight / 7.5}{...props}>
                 <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
                     <View style={[flexRow, spaceBetween]}>
-                        <View style={[flexRow,mt30]}>
+                        <View style={[flexRow]}>
                             <TouchableOpacity style={[justyfyCenter, alignItemsCenter, { marginTop: 2 }]}
                                 onPress={navigation.goBack}
                             >

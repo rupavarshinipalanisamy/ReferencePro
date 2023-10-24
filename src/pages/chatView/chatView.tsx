@@ -172,14 +172,14 @@ const ChatView = () => {
             style={{
               position: 'absolute',
               left: modalPosition.x,
-              top: modalPosition.y - 80,
+              top: modalPosition.y -100,
               alignItems: chatMessages.find((message) => message.id === selectedCards[0])?.type === 'sentmsg' ? 'flex-start' : 'flex-end',
             }}
           >
             <View style={styles.modalContent}>
               {Emojidata.map((item) => (
-                <TouchableOpacity key={item.id} >
-                  <Text style={{ fontSize: 15, color: colors.yellow }}>{item.emoji}</Text>
+                <TouchableOpacity key={item.id}  >
+                  <Text style={{ fontSize: 18, color: colors.yellow ,margin:5}}>{item.emoji}</Text>
                 </TouchableOpacity>
               ))}
             </View>
@@ -253,11 +253,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   modalContent: {
-    height: 40,
-    width: 200,
+    height: 42,
+    width: 221,
     backgroundColor:isDark()?colors.darkModeVar4:colors.white,
-    padding: 10,
     borderRadius: 20,
+    padding:4,
     alignSelf: 'center',
     justifyContent: 'space-between',
     flexDirection: 'row',

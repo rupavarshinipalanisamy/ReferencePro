@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal, Switch, Ima
 import Icon from 'react-native-vector-icons/Ionicons';
 import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mh20, mh30, ml10, ml15, mr10, mt10, mt15, mt20, mt30, mt5, mv10, mv15, mv20, p10, p5, pl10, pl13, pl5, pr10, pt10, spaceAround, spaceBetween, textCenter, flex1 } from './commonStyles';
 import { colors } from '../utils/colors';
-import { ArchiveIconBlackIcon, ArchiveIconWhiteIcon, DeleteWhiteIcon, LeftArrowWhiteIcon, MessageIcon, MikeWhiteIcon, PinWhiteIcon, Profile, ProfileAvatarIcon, ThreeDotsWhiteIcon } from '../utils/svg';
+import { ArchiveIconBlackIcon, ArchiveIconWhiteIcon, DarkThemeMessageIcon, DeleteWhiteIcon, LeftArrowWhiteIcon, MessageIcon, MikeWhiteIcon, PinWhiteIcon, Profile, ProfileAvatarIcon, ThreeDotsWhiteIcon } from '../utils/svg';
 import { DevHeight, DevWidth } from '../utils/device';
 import { RadioButton, RadioButtonRound, RowSpaceBetween, SelectedRadioBtn } from './commonView';
 import { bottomNavData } from '../utils/data/bottomNavData';
@@ -258,7 +258,7 @@ export const CustomModal: React.FC<ModalProps> = ({ isVisible, width, modalData,
                         alignItems: 'flex-end',
                     }}
                 >
-                    <View style={[{ backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, elevation: 4, borderRadius: 8, width: width || DevWidth * 0.5, padding: 10, marginTop: marginTop || 30, marginLeft: marginLeft || 0 }]}>{modalData}</View>
+                    <View style={[{ backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, elevation: 4, borderRadius: 8, width: width || DevWidth * 0.5, padding: 10, marginTop: marginTop || 30, marginLeft: marginLeft || 0 ,borderWidth:2,borderColor:isDark()?'rgba(78,80,114,0.2)':colors.greyVar7}]}>{modalData}</View>
                 </Modal>
             </View>
         </RNModal>
@@ -943,7 +943,9 @@ export const ProfileCard = () => {
                                 <CustomIcon name='phone' type="Feather" size={16} color={isDark()?colors.greyVar3:colors.greyVar4} />
                             </View>
                             <View style={[{ alignItems: 'center', justifyContent: 'center' }, pl10]}>
-                                <MessageIcon />
+                                {isDark()? <DarkThemeMessageIcon/>:<MessageIcon/>}
+                               
+                                
                             </View>
                         </View>
                     </View>

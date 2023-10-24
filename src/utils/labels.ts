@@ -27,7 +27,7 @@ export const labels = {
     online: 'Online',
     horaceKeene: 'Horace Keene',
     chatViewToday: 'Today, July 24',
-    chatLink: "https://www.figma.com/file/QamN",
+    chatLink: "https://www.figma.com/file/QamN...",
     checkThisFile: "You can check on this file.",
     helloAlex: "Hello @Alex Good Morning",
     message: 'Hi, there nice to see you again',

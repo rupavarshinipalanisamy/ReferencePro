@@ -42,6 +42,7 @@ import MsgIcon from '../../assets/images/messageIcon.svg'
 import Profl from '../../assets/images/profileView.svg'
 import CheckCircle from  '../../assets/images/check-circle.svg'
 import StatusPro from '../../assets/images/status-pic.svg'
+import DarkThmMsgIcon from '../../assets/images/darkThememsgIcon.svg'
 
 
 
@@ -162,6 +163,9 @@ export const ContactImg9 = () => (
 );
 export const MessageIcon = () => (
     <MsgIcon />
+);
+export const DarkThemeMessageIcon = () => (
+    <DarkThmMsgIcon />
 );
 export const Profile = () => (
     <Profl/>
