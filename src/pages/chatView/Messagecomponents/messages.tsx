@@ -360,7 +360,7 @@ export const FooterChatView = () => {
                     </View>
                 </View>
             </View>
-            <View style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end',bottom: Platform.OS === 'ios' ?8:15}}>
+            <View style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end',bottom: Platform.OS === 'ios' ?20:8}}>
                 <CustomIcon name='microphone-outline' type="MaterialCommunityIcons" color={colors.white} size={18} />
             </View>
             <RNModal transparent={true} visible={isModalVisible} onRequestClose={closeModal}>
@@ -447,7 +447,7 @@ export const ReplyFooterView = ({ onIconClick }: any) => {
                     </View>
                 </View>
             </View>
-            <View style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end',bottom: Platform.OS === 'ios' ?8:15 }}>
+            <View style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end',bottom: Platform.OS === 'ios' ?25:8 }}>
                 <CustomIcon name='paper-plane' type="font-awesome" color={colors.white} size={14} />
             </View>
             <RNModal transparent={true} visible={isModalVisible} onRequestClose={closeModal}>

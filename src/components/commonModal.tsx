@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, View, StyleSheet, TouchableWithoutFeedback, Mod
 import { colors } from '../utils/colors';
 import { labels } from '../utils/labels';
 import { ButtonContainer1, CheckBox, HalfCircle, HalfCircle2, ModalBg, ModalContainer, ModalContent, ModalContent1 } from '../styledComponent/styledComponent';
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, mb15, mh10, mh15, mh5, mr5, mt20, p5, pl10, pr10, pr13, spaceBetween } from './commonStyles';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mb15, mh10, mh15, mh5, mr5, mt15, mt20, p5, pl10, pr10, pr13, spaceBetween } from './commonStyles';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../utils/screenName';
 import { H12font400Grey, H14BlackText, H14font400Gray4, H14font400grey3black2, H16font600Black, H16fontNormalGray, H16fontNormalGray4, H18fontBoldBlack } from './commonText';
@@ -117,7 +117,7 @@ export const ThemeModal: React.FC<CommonModalProps & { onThemeSelect: (themeName
               </View>
             </View>
 
-            <RowSpaceBetween style={[mt14]}>
+            <RowSpaceBetween style={[mt15]}>
               <SmallButton
                 width={DevWidth / 3.15}
                 title={labels.cancel}
@@ -308,7 +308,7 @@ export const EditModal2 = ({ isVisible, onClose, onEditModal2Press }) => {
             </View>
           </View>
         </View>
-        <TouchableOpacity style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', bottom: Plat.OS === 'ios' ? 8 : 15 }}
+        <TouchableOpacity style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', bottom: Platform.OS === 'ios' ? 15: 8 }}
           onPress={handleDone}
         >
           <CustomIcon name='done' type="MaterialIcons" color={colors.white} size={18} />
