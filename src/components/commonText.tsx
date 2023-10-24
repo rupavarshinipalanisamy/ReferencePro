@@ -311,11 +311,7 @@ export const H12BlackText = styled(Text)`
   ${fontBold400};
   color : ${props => isDark() ? colors.darkModeVar4 : colors.white};
 `;
-export const H12BlackText = styled(Text)`
-  ${h10};
-  ${fontBold400};
-  color : ${props => isDark() ? colors.darkModeVar4 : colors.white};
-`;
+
 export const H14BlackVar2Bold400Text = styled(Text)`
   ${h9};
   color : ${props => isDark() ? colors.greyVar0 : colors.blackVar2};

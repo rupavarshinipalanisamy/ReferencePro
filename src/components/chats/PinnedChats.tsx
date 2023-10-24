@@ -1,11 +1,11 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, mr5, mt20, mt3, mt5, mv10, pb5, ph20, pv15 } from '../commonStyles';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mr5, mt0, mt20, mt3, mt5, mv10, pb5, ph20, pv15 } from '../commonStyles';
 import { PinnedChatsdata } from '../../utils/data/chatsData';
 import { CommonLineDividerGrey, RowSpaceBetween, RowSpaceEvenly } from '../commonView';
 import { H12fontBold400GreyVar4, H12fontBold400blackVar2, H14GreenBold400, H14GreyVar4Bold400, H14RedBold400, H15Blackvar2Bold500, H15Green, H15Grey, H15Red, H16SemiBoldBlack } from '../commonText';
 import { labels } from '../../utils/labels';
-import { BlackDoubleTickIcon, BlackSingleTickIcon, BlueDoubleTickIcon, FileBlackIcon, MikeBlackIcon, PhoneIncomingRedIcon, PictureBlackIcon, PinBlackIcon, VideoBlackIcon, VideoRedIcon } from '../../utils/svg';
+import { BlackDoubleTickIcon, BlackSingleTickIcon, BlueDoubleTickIcon, DoubleTickDarkIcon, FileBlackIcon, FileDarkIcon, ImageDarkIcon, MicrophoneDarkIcon, MikeBlackIcon, PhoneIncomingDarkIcon, PhoneIncomingRedIcon, PictureBlackIcon, PinBlackIcon, PinDarkIcon, SingleTickDarkIcon, VideoBlackIcon, VideoDarkIcon, VideoRedDarkIcon, VideoRedIcon } from '../../utils/svg';
 import { colors } from '../../utils/colors';
 import { DevWidth } from '../../utils/device';
 import { BottomTabBar } from '../commonComponents';
@@ -75,14 +75,14 @@ const PinnedChats = ({ selectedCards, onCardSelection }: PinnedChatsProps) => {
                                                     <View style={mr5}>
                                                         <BlueDoubleTickIcon />
                                                     </View>
-                                                    <PinBlackIcon />
+                                                    {isDarkTheme ? <PinDarkIcon /> : <PinBlackIcon />}
                                                 </RowSpaceEvenly>
                                             </RowSpaceBetween>
                                         ) : chat.id === 2 ? (
                                             <RowSpaceBetween>
                                                 <RowSpaceEvenly>
                                                     <View style={mr5}>
-                                                        <VideoBlackIcon />
+                                                        {isDarkTheme ? <VideoDarkIcon /> : <VideoBlackIcon />}
                                                     </View>
                                                     <H14GreyVar4Bold400>{labels.Video}</H14GreyVar4Bold400>
                                                 </RowSpaceEvenly>
@@ -90,22 +90,22 @@ const PinnedChats = ({ selectedCards, onCardSelection }: PinnedChatsProps) => {
                                                     <View style={mr5}>
                                                         <BlueDoubleTickIcon />
                                                     </View>
-                                                    <PinBlackIcon />
+                                                    {isDarkTheme ? <PinDarkIcon /> : <PinBlackIcon />}
                                                 </RowSpaceEvenly>
                                             </RowSpaceBetween>
                                         ) : chat.id === 3 ? (
                                             <RowSpaceBetween>
                                                 <RowSpaceEvenly>
                                                     <View style={mr5}>
-                                                        <MikeBlackIcon />
+                                                        {isDarkTheme ? <MicrophoneDarkIcon /> : <MikeBlackIcon />}
                                                     </View>
                                                     <H14GreyVar4Bold400>{labels.Audio}</H14GreyVar4Bold400>
                                                 </RowSpaceEvenly>
                                                 <RowSpaceEvenly>
                                                     <View style={mr5}>
-                                                        <BlackSingleTickIcon />
+                                                        {isDarkTheme ? <SingleTickDarkIcon /> : <BlackSingleTickIcon />}
                                                     </View>
-                                                    <PinBlackIcon />
+                                                    {isDarkTheme ? <PinDarkIcon /> : <PinBlackIcon />}
                                                 </RowSpaceEvenly>
                                             </RowSpaceBetween>
                                         ) : chat.id === 4 ? (
@@ -116,7 +116,7 @@ const PinnedChats = ({ selectedCards, onCardSelection }: PinnedChatsProps) => {
                                                         <Text style={styles.roundNumberText}>3</Text>
                                                     </View>
                                                     <View style={mt5}>
-                                                        <PinBlackIcon />
+                                                    {isDarkTheme ? <PinDarkIcon /> : <PinBlackIcon />}
                                                     </View>
                                                 </RowSpaceEvenly>
                                             </RowSpaceBetween>
@@ -124,46 +124,46 @@ const PinnedChats = ({ selectedCards, onCardSelection }: PinnedChatsProps) => {
                                             <RowSpaceBetween>
                                                 <RowSpaceEvenly>
                                                     <View style={mr5}>
-                                                        <PictureBlackIcon />
+                                                        {isDarkTheme ? <ImageDarkIcon /> : <PictureBlackIcon />}
                                                     </View>
                                                     <H14GreyVar4Bold400>{labels.Image}</H14GreyVar4Bold400>
                                                 </RowSpaceEvenly>
                                                 <RowSpaceBetween>
                                                     <View style={mr5}>
-                                                        <BlackDoubleTickIcon />
+                                                        {isDarkTheme ? <DoubleTickDarkIcon /> : <BlackDoubleTickIcon />}
                                                     </View>
-                                                    <PinBlackIcon />
+                                                    {isDarkTheme ? <PinDarkIcon /> : <PinBlackIcon />}
                                                 </RowSpaceBetween>
                                             </RowSpaceBetween>
                                         ) : chat.id === 6 ? (
                                             <RowSpaceBetween>
                                                 <RowSpaceBetween>
                                                     <View style={mr5} >
-                                                        <FileBlackIcon />
+                                                        {isDarkTheme ? <FileDarkIcon /> : <FileBlackIcon />}
                                                     </View>
                                                     <H14GreyVar4Bold400>{labels.guidelinespdf}</H14GreyVar4Bold400>
                                                 </RowSpaceBetween>
-                                                <PinBlackIcon />
+                                                {isDarkTheme ? <PinDarkIcon /> : <PinBlackIcon />}
                                             </RowSpaceBetween>
                                         ) : chat.id === 7 ? (
                                             <RowSpaceBetween>
                                                 <RowSpaceBetween>
                                                     <View style={mr5} >
-                                                        <PhoneIncomingRedIcon />
+                                                        {isDarkTheme ? <PhoneIncomingDarkIcon /> : <PhoneIncomingRedIcon />}
                                                     </View>
                                                     <H14RedBold400>{labels.MissedVoiceCall}</H14RedBold400>
                                                 </RowSpaceBetween>
-                                                <PinBlackIcon />
+                                                {isDarkTheme ? <PinDarkIcon /> : <PinBlackIcon />}
                                             </RowSpaceBetween>
                                         ) : (
                                             <RowSpaceBetween>
                                                 <RowSpaceBetween>
-                                                    <View style={[mr5, mt3]} >
-                                                        <VideoRedIcon />
+                                                    <View style={[mr5, isDarkTheme ? mt0 : mt3]} >
+                                                        {isDarkTheme ? <VideoRedDarkIcon /> : <VideoRedIcon />}
                                                     </View>
                                                     <H14RedBold400>{labels.MissedVideoCall}</H14RedBold400>
                                                 </RowSpaceBetween>
-                                                <PinBlackIcon />
+                                                {isDarkTheme ? <PinDarkIcon /> : <PinBlackIcon />}
                                             </RowSpaceBetween>
                                         )
                                         }
