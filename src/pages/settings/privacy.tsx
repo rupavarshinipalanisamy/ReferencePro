@@ -1,30 +1,19 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
+import React, { Fragment, useState } from 'react';
+import { StatusBar, View, TouchableOpacity } from 'react-native';
 import {
     flexRow,
     mt20,
-    alignItemsCenter,
-    ph15,
-    spaceBetween,
     mh20,
-    mh15,
-    mt10,
-    pv10,
-    mv5,
     mh5,
-    mv3,
-    mt30,
     mt15,
     mt8,
-    mh25,
     mh30,
     mv20,
     mv10,
     mv30,
-    mb20,
-    mb50,
-    mb40,
     ml10,
+    pv10,
+    flex1,
 } from '../../components/commonStyles';
 import {
     H12fontNormalGray,
@@ -33,261 +22,55 @@ import {
     H14font400Gray4,
     H14font500Gray4,
     H16font600Black,
-    H16font900Black,
     H16fontNormalGray4,
 } from '../../components/commonText';
-import {
-    MainContainer,
-    RadioButton,
-    RowSpaceBetween,
-    TopContainerWhiteCard,
-} from '../../components/commonView';
+import { RowSpaceBetween, } from '../../components/commonView';
 import CustomIcon from '../../utils/Icons';
 import { labels } from '../../utils/labels';
 import { useNavigation } from '@react-navigation/native';
 import { privacyData } from '../../utils/data/privacyData';
-
-import { muteNotificationdata, statusPrivacydata } from '../../utils/data/modalData';
-
+import { statusPrivacydata } from '../../utils/data/modalData';
 import { screenName } from '../../utils/screenName';
 import { isDark } from '../../Theme/ThemeContext';
-// import { GroupsModal, LastSeenModal, SettingsModal } from '../../components/commonModal';
 import { SearchHeader } from '../Media/MediaCommonHeader';
 import { DevHeight, DevWidth } from '../../utils/device';
-import { CustomModal, RadioBtn, ToggleSwitch } from '../../components/commonComponents';
+import { RadioBtn, ToggleSwitch } from '../../components/commonComponents';
 import { IconModal } from '../../components/commonModal';
 import { groupsData, lastSee, profilePic } from '../../utils/data/modalData';
 import { SmallButton } from '../../components/commonButtons';
 import { colors } from '../../utils/colors';
 
-export type privacyProps = {};
+export type PrivacyProps = {};
 
-
-
-
-const LastSeenModal = () => {
-    const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
-    const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
-    const [isModalVisible, setIsModalVisible] = useState(false); // New state for modal visibility
-
-    const handleStatusSelect = (status: string) => {
-        setSelectedStatus(status);
-    };
-    const handleCancelButtonClick = () => {
-        setIsCancelButtonActive(true);
-        setIsModalVisible(false);
-    };
-
-    const handleSaveChangesClick = () => {
-        setIsCancelButtonActive(false);
-    };
-
-    return (
-        <View style={[mh30]}>
-            <H16font600Black >{labels.lastSeenandOnline}</H16font600Black>
-            <H14font400Gray4 style={[mt8]}>{labels.lastseenCon}</H14font400Gray4>
-            <View style={[mt15]}>
-                {profilePic.map((data, index) => {
-                    return (
-                        <View key={data.id}  >
-                            <TouchableOpacity>
-
-                                <View style={[mv10, flexRow]}  >
-                                    <RadioBtn
-                                        key={data.id}
-
-                                        selected={selectedStatus === data.status}
-                                        onPress={() => handleStatusSelect(data.status)}
-                                    />
-                                    <H14font500Gray4 style={[mh5]}>{data.status}</H14font500Gray4>
-                                </View>
-
-                            </TouchableOpacity>
-                        </View>
-                    );
-                })}
-            </View>
-            <H14font400Gray4 style={[mt8]}>{labels.onlineCon}</H14font400Gray4>
-            <View style={[mt15]}>
-                {lastSee.map((data, index) => {
-                    return (
-                        <View key={data.id}  >
-                            <TouchableOpacity>
-
-                                <View style={[mv10, flexRow]}  >
-                                    <RadioBtn
-                                        key={data.id}
-
-                                        selected={selectedStatus === data.status}
-                                        onPress={() => handleStatusSelect(data.status)}
-                                    />
-                                    <H14font500Gray4 style={[mh5]}>{data.status}</H14font500Gray4>
-                                </View>
-
-                            </TouchableOpacity>
-                        </View>
-                    );
-                })}
-            </View>
-
-
-            <RowSpaceBetween style={[mv30]}>
-                <SmallButton
-                    width={DevWidth / 2.9}
-                    title={labels.cancel}
-                    backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
-                    textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
-                    onChange={handleCancelButtonClick}
-                    borderWidth={isCancelButtonActive ? 0 : 1} />
-                <SmallButton
-                    width={DevWidth / 2.9}
-
-                    title={labels.saveChange}
-                    backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
-                    textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
-                    onChange={handleSaveChangesClick}
-                    borderWidth={isCancelButtonActive ? 1 : 0} />
-            </RowSpaceBetween>
-        </View>
-    )
-}
-
-const GroupsModal = () => {
-    const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
-    const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
-    const [isModalVisible, setIsModalVisible] = useState(false); // New state for modal visibility
-
-    const handleStatusSelect = (status: string) => {
-        setSelectedStatus(status);
-    };
-    const handleCancelButtonClick = () => {
-        setIsCancelButtonActive(true);
-        setIsModalVisible(false);
-    };
-
-    const handleSaveChangesClick = () => {
-        setIsCancelButtonActive(false);
-    };
-
-    return (
-        <View style={[mh30]}>
-            <H16font600Black >{labels.Groups}</H16font600Black>
-            <H14font400Gray4 style={[mt8]}>{labels.groupsCont}</H14font400Gray4>
-            <View style={[mt15]}>
-                {groupsData.map((data, index) => {
-                    return (
-                        <View key={data.id}  >
-                            <TouchableOpacity>
-
-                                <View style={[mv10, flexRow]}  >
-                                    <RadioBtn
-                                        key={data.id}
-
-                                        selected={selectedStatus === data.status}
-                                        onPress={() => handleStatusSelect(data.status)}
-                                    />
-                                    <H14font500Gray4 style={[mh5]}>{data.status}</H14font500Gray4>
-                                </View>
-
-                            </TouchableOpacity>
-                        </View>
-                    );
-                })}
-            </View>
-
-            <RowSpaceBetween style={[mv20, mb40]}>
-                <SmallButton
-                    width={DevWidth / 2.9}
-                    title={labels.cancel}
-                    backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
-                    textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
-                    onChange={handleCancelButtonClick}
-                    borderWidth={isCancelButtonActive ? 0 : 1} />
-                <SmallButton
-                    width={DevWidth / 2.9}
-
-                    title={labels.saveChange}
-                    backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
-                    textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
-                    onChange={handleSaveChangesClick}
-                    borderWidth={isCancelButtonActive ? 1 : 0} />
-            </RowSpaceBetween>
-        </View>
-    )
-}
-
-const SettingsModal = () => {
-    const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
-    const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
-    const [isModalVisible, setIsModalVisible] = useState(false); // New state for modal visibility
-
-    const handleStatusSelect = (status: string) => {
-        setSelectedStatus(status);
-    };
-    const handleCancelButtonClick = () => {
-        setIsCancelButtonActive(true);
-        setIsModalVisible(false);
-    };
-
-    const handleSaveChangesClick = () => {
-        setIsCancelButtonActive(false);
-    };
-
-    return (
-        <View style={[mh30]}>
-            <H16font600Black >{labels.profilePhoto}</H16font600Black>
-            <H14font400Gray4 style={[mt8]}>{labels.profilePicContent}</H14font400Gray4>
-            <View style={[mt15]}>
-                {profilePic.map((data, index) => {
-                    return (
-                        <View key={data.id}  >
-                            <TouchableOpacity>
-
-                                <View style={[mv10, flexRow]}  >
-                                    <RadioBtn
-                                        key={data.id}
-
-                                        selected={selectedStatus === data.status}
-                                        onPress={() => handleStatusSelect(data.status)}
-                                    />
-                                    <H14font500Gray4 style={[mh5]}>{data.status}</H14font500Gray4>
-                                </View>
-
-                            </TouchableOpacity>
-                        </View>
-                    );
-                })}
-            </View>
-
-            <RowSpaceBetween style={[mv20]}>
-                <SmallButton
-                    width={DevWidth / 2.9}
-                    title={labels.cancel}
-                    backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
-                    textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
-                    onChange={handleCancelButtonClick}
-                    borderWidth={isCancelButtonActive ? 0 : 1} />
-                <SmallButton
-                    width={DevWidth / 2.9}
-
-                    title={labels.saveChange}
-                    backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
-                    textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
-                    onChange={handleSaveChangesClick}
-                    borderWidth={isCancelButtonActive ? 1 : 0} />
-            </RowSpaceBetween>
-        </View>
-    )
-}
-
-const Privacy = (props: privacyProps) => {
+const Privacy = (props: PrivacyProps) => {
     const navigation = useNavigation();
-    const [selectedModalId, setSelectedModalId] = useState(null); // State to store the selected modal ID
+    const [toggleVisible, setToggleVisible] = useState(false);
+    const [selectedModalId, setSelectedModalId] = useState(null);
     const [statusPrivacyOptionModal, setStatusPrivacyOptionModal] = useState(false);
+    const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
+    const [lastSeenOptionModal, setLastSeenOPtionModal] = useState(false);
+    const [profileOptionModal, setProfileOptionModal] = useState(false);
+    const [groupModal, setGroupModal] = useState(false);
+    const handleStatusSelect = (status: string) => {
+        setSelectedStatus(status);
+    };
+
+    const handleLastSeenModal = () => {
+        setLastSeenOPtionModal(!lastSeenOptionModal)
+    };
+
+    const handleProfilePicModal = () => {
+        setProfileOptionModal(!profileOptionModal)
+    };
+
+    const handleGroupModal = () => {
+        setGroupModal(!groupModal)
+    };
 
     const handleStatusPrivacyOptionModal = () => {
         setStatusPrivacyOptionModal(!statusPrivacyOptionModal)
-        const [toggleVisible, setToggleVisible] = useState(false);
+
+    };
         const handleToggle = () => {
             setToggleVisible(!toggleVisible);
         }
@@ -296,16 +79,17 @@ const Privacy = (props: privacyProps) => {
             // setSelectedModalId(id);
             if (id === 4) {
                 handleStatusPrivacyOptionModal();
-            } else {
+            } else if(id ===1) {
+                handleProfilePicModal();
+            } else if (id ===2){
+                handleLastSeenModal()
+            } else if (id ===3){
+                handleGroupModal();
+            } else{
                 navigation.navigate(screenName as never);
             }
         };
-
-        const closeModal = () => {
-            setSelectedModalId(null);
-            setStatusPrivacyOptionModal(false);
-        };
-
+  
         const StatusPrivacyOption = () => {
             const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
             const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
@@ -376,64 +160,255 @@ const Privacy = (props: privacyProps) => {
         }
 
 
-        return (
-            <Fragment>
-                <MainContainer>
-                    <SearchHeader headerText={labels.privacy} height={DevHeight / 12} />
-                    <View style={[mh20, mt20]}>
-                        {privacyData.map((privacyDatas, index) => {
-                            return (
-                                <View key={privacyDatas.id} style={[flexRow, spaceBetween]}>
-                                    <View style={{ paddingVertical: 10 }}>
-                                        <TouchableOpacity
-                                            onPress={() => openModal(privacyDatas.id, privacyDatas.screenName)}
-                                        >
-                                            <H16fontNormalGray4>
-                                                {privacyDatas.heading}
-                                            </H16fontNormalGray4>
-                                        </TouchableOpacity>
-                                        <H12fontNormalGray>{privacyDatas.status}</H12fontNormalGray>
-                                    </View>
-                                    {index === 4 ? (
-                                        <ToggleSwitch value={toggleVisible} onToggle={handleToggle} />
+      
 
-                                    ) : (
-                                        <CustomIcon name='chevron-right' size={15} color={colors.greyVar2} type='octicons' />
-                                    )}
+    const GroupsModal = () => {
+        const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+
+        const handleStatusSelect = (status: string) => {
+            setSelectedStatus(status);
+        };
+        const handleCancelButtonClick = () => {
+            setIsCancelButtonActive(true);
+            setGroupModal(false)
+        };
+
+        const handleSaveChangesClick = () => {
+            setIsCancelButtonActive(true);
+        };
+
+        return (
+            <View>
+                <View style={[mh30]}>
+                    <H16font600Black >{labels.Groups}</H16font600Black>
+                    <H14font400Gray4 style={[mt8]}>{labels.groupsCont}</H14font400Gray4>
+                    <View style={[mt15]}>
+                        {groupsData.map((data, index) => {
+                            return (
+                                <View key={data.id}  >
+                                    <TouchableOpacity>
+                                        <View style={[mv10, flexRow]}  >
+                                            <RadioBtn
+                                                key={data.id}
+                                                selected={selectedStatus === data.status}
+                                                onPress={() => handleStatusSelect(data.status)}
+                                            />
+                                            <H14font500Gray4 style={[mh5]}>{data.status}</H14font500Gray4>
+                                        </View>
+                                    </TouchableOpacity>
                                 </View>
                             );
                         })}
                     </View>
-                    <IconModal
-                        isVisible={statusPrivacyOptionModal}
-                        onClose={() => handleStatusPrivacyOptionModal()}
-                        contentComponent={<StatusPrivacyOption />}
-                        iconName='stop-circle-outline'
-                        iconType='MaterialCommunityIcons'
-                        iconSize={24}
-                    />
-                    {/* Conditionally render the modals based on selectedModalId */}
-                    {selectedModalId === 1 && (
-                        <IconModal isVisible={true}
-                            onClose={closeModal}
-                            contentComponent={<SettingsModal />} iconName={'image-plus'} iconType='MaterialCommunityIcons' iconSize={25} />
-                    )}
+                </View>
+                <RowSpaceBetween style={[mv30, mh20]}>
+                    <SmallButton
+                        width={DevWidth / 3.15}
+                        title={labels.cancel}
+                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
+                        textColor={isCancelButtonActive ? colors.white : isDark() ? colors.redVar3 : colors.greyVar4}
+                        onChange={handleCancelButtonClick}
+                        borderWidth={isCancelButtonActive ? 0 : 1} />
+                    <SmallButton
+                        width={DevWidth / 3.15}
+                        title={labels.saveChange}
+                        backgroundColor={isCancelButtonActive ? (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white) : colors.purpleVar3}
+                        textColor={isCancelButtonActive ? isDark() ? colors.redVar3 : colors.greyVar4 : colors.white}
+                        onChange={handleSaveChangesClick}
+                        borderWidth={isCancelButtonActive ? 1 : 0} />
+                </RowSpaceBetween>
+            </View>
+        )
+    }
 
-                    {selectedModalId === 2 && (
-                        <IconModal isVisible={true}
-                            onClose={closeModal}
-                            contentComponent={<LastSeenModal />} iconName={'stop-circle-outline'} iconType={'MaterialCommunityIcons'} iconSize={25} />
-                    )}
+    const SettingsModal = () => {
+        const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
 
-                    {selectedModalId === 3 && (
-                        <IconModal isVisible={true}
-                            onClose={closeModal}
-                            contentComponent={<GroupsModal />} iconName={'group'} iconType={'MaterialIcons'} iconSize={25} />
-                    )}
-                </MainContainer>
-            </Fragment>
-        );
-    };
+        const handleStatusSelect = (status: string) => {
+            setSelectedStatus(status);
+        };
+        const handleCancelButtonClick = () => {
+            setIsCancelButtonActive(true);
+            setProfileOptionModal(false)
+        };
 
-}
+        const handleSaveChangesClick = () => {
+            setIsCancelButtonActive(true);
+        };
+
+        return (
+            <View>
+                <View style={[mh30]}>
+                    <H16font600Black >{labels.profilePhoto}</H16font600Black>
+                    <H14font400Gray4 style={[mt8]}>{labels.profilePicContent}</H14font400Gray4>
+                    <View style={[mt15]}>
+                        {profilePic.map((data, index) => {
+                            return (
+                                <View key={data.id}  >
+                                    <TouchableOpacity>
+                                        <View style={[mv10, flexRow]}  >
+                                            <RadioBtn
+                                                key={data.id}
+                                                selected={selectedStatus === data.status}
+                                                onPress={() => handleStatusSelect(data.status)}
+                                            />
+                                            <H14font500Gray4 style={[mh5]}>{data.status}</H14font500Gray4>
+                                        </View>
+                                    </TouchableOpacity>
+                                </View>
+                            );
+                        })}
+                    </View>
+                </View>
+                <RowSpaceBetween style={[mv20, mh20]}>
+                    <SmallButton
+                        width={DevWidth / 3.15}
+                        title={labels.cancel}
+                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
+                        textColor={isCancelButtonActive ? colors.white : isDark() ? colors.redVar3 : colors.greyVar4}
+                        onChange={handleCancelButtonClick}
+                        borderWidth={isCancelButtonActive ? 0 : 1} />
+                    <SmallButton
+                        width={DevWidth / 3.15}
+                        title={labels.saveChange}
+                        backgroundColor={isCancelButtonActive ? (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white) : colors.purpleVar3}
+                        textColor={isCancelButtonActive ? isDark() ? colors.redVar3 : colors.greyVar4 : colors.white}
+                        onChange={handleSaveChangesClick}
+                        borderWidth={isCancelButtonActive ? 1 : 0} />
+                </RowSpaceBetween>
+            </View>
+        )
+    }
+
+    const LastSeenModal = () => {
+        const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+
+        const handleCancelButton = () => {
+            setIsCancelButtonActive(true);
+            setLastSeenOPtionModal(false);
+        };
+
+        const handleSaveChangesClick = () => {
+            setIsCancelButtonActive(true);
+        };
+        return (
+            <View>
+                <View style={[mh30]}>
+                    <H16font600Black >{labels.lastSeenandOnline}</H16font600Black>
+                    <H14font400Gray4 style={[mt8]}>{labels.lastseenCon}</H14font400Gray4>
+                    <View style={[mt15]}>
+                        {profilePic.map((data, index) => {
+                            return (
+                                <View key={data.id}  >
+                                    <TouchableOpacity>
+                                        <View style={[mv10, flexRow]}  >
+                                            <RadioBtn
+                                                key={data.id}
+                                                selected={selectedStatus === data.status}
+                                                onPress={() => handleStatusSelect(data.status)}
+                                            />
+                                            <H14font500Gray4 style={[mh5]}>{data.status}</H14font500Gray4>
+                                        </View>
+                                    </TouchableOpacity>
+                                </View>
+                            );
+                        })}
+                    </View>
+                    <H14font400Gray4 style={[mt8]}>{labels.onlineCon}</H14font400Gray4>
+                    <View style={[mt15]}>
+                        {lastSee.map((data, index) => {
+                            return (
+                                <View key={data.id}  >
+                                    <TouchableOpacity>
+                                        <View style={[mv10, flexRow]}  >
+                                            <RadioBtn
+                                                key={data.id}
+                                                selected={selectedStatus === data.status}
+                                                onPress={() => handleStatusSelect(data.status)}
+                                            />
+                                            <H14font500Gray4 style={[mh5]}>{data.status}</H14font500Gray4>
+                                        </View>
+                                    </TouchableOpacity>
+                                </View>
+                            );
+                        })}
+                    </View>
+                </View>
+                <RowSpaceBetween style={[mv30, mh20]}>
+                    <SmallButton
+                        width={DevWidth / 3.15}
+                        title={labels.cancel}
+                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
+                        textColor={isCancelButtonActive ? colors.white : isDark() ? colors.redVar3 : colors.greyVar4}
+                        onChange={handleCancelButton}
+                        borderWidth={isCancelButtonActive ? 0 : 1} />
+                    <SmallButton
+                        width={DevWidth / 3.15}
+                        title={labels.saveChange}
+                        backgroundColor={isCancelButtonActive ? (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white) : colors.purpleVar3}
+                        textColor={isCancelButtonActive ? isDark() ? colors.redVar3 : colors.greyVar4 : colors.white}
+                        onChange={handleSaveChangesClick}
+                        borderWidth={isCancelButtonActive ? 1 : 0} />
+                </RowSpaceBetween>
+            </View>
+        )
+    }
+    return (
+        <Fragment>
+            <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
+                <SearchHeader headerText={labels.privacy} />
+                <View style={[mh20, mt20]}>
+                    {privacyData.map((data, index) => {
+                        return (
+                            <RowSpaceBetween key={data.id}>
+                                <View style={[pv10]}>
+                                    <TouchableOpacity
+                                        onPress={() => openModal(data.id, data.screenName)}>
+                                        <H16fontNormalGray4>{data.heading}</H16fontNormalGray4>
+                                    </TouchableOpacity>
+                                    <H12fontNormalGray>{data.status}</H12fontNormalGray>
+                                </View>
+                                {index === 4 ? (
+                                    <ToggleSwitch value={toggleVisible} onToggle={handleToggle} />
+
+                                ) : (
+                                    <CustomIcon name='chevron-right' size={15} color={colors.greyVar2} type='octicons' />
+                                )}
+                            </RowSpaceBetween>
+                        )
+                    })}
+                </View>
+                <IconModal
+                    isVisible={statusPrivacyOptionModal}
+                    onClose={() => handleStatusPrivacyOptionModal()}
+                    contentComponent={<StatusPrivacyOption />}
+                    iconName='stop-circle-outline'
+                    iconType='MaterialCommunityIcons'
+                    iconSize={24}
+                />
+                <IconModal isVisible={profileOptionModal}
+                    onClose={() => handleProfilePicModal()}
+                    contentComponent={<SettingsModal />}
+                    iconName={'image-plus'}
+                    iconType='MaterialCommunityIcons'
+                    iconSize={25}
+                />
+                <IconModal isVisible={lastSeenOptionModal}
+                    onClose={() => handleLastSeenModal()}
+                    contentComponent={<LastSeenModal />}
+                    iconName={'stop-circle-outline'}
+                    iconType={'MaterialCommunityIcons'}
+                    iconSize={25}
+                />
+                <IconModal isVisible={groupModal}
+                    onClose={() => handleGroupModal()}
+                    contentComponent={<GroupsModal />}
+                    iconName={'group'}
+                    iconType={'MaterialIcons'}
+                    iconSize={25} />
+            </View>
+        </Fragment>
+    );
+};
+
 export default Privacy

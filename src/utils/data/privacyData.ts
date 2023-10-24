@@ -33,6 +33,6 @@ export const privacyData = [
         id: 6,
         heading:labels.blockCon,
         status:labels.blockNum,
-        screenName:screenName.BlockedContacts,
+        screenName:screenName.BlockedContacts
     },
 ];

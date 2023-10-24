@@ -1,14 +1,13 @@
 import React, { Fragment, useState } from 'react';
-import { CommonLineDividerGrey, IconBackground, MainContainer, RowSpaceBetween, TopContainerWhiteCard } from '../../components/commonView';
-import { colors } from '../../utils/colors';
-import CustomIcon from '../../utils/Icons';
+import { CommonLineDividerGrey, IconBackground, RowSpaceBetween, TopContainerWhiteCard } from '../../components/commonView';
 import { StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native';
-import { Text, TouchableOpacity, View} from 'react-native';
-import SettingAvatar from '../../../assets/images/settings-avatar.svg'
-import { justyfyCenter, ml10, alignItemsCenter, flexRow, ph10, mt20, m15, mh20, mt15, mv20, justifyStart, alignSelfCenter, ml30, flex1, mr30, ml15, mh25 } from '../../components/commonStyles';
+import { TouchableOpacity, View, StatusBar, } from 'react-native';
+import { colors } from '../../utils/colors';
+import CustomIcon from '../../utils/Icons';
+import { justyfyCenter, ml10, alignItemsCenter, flexRow, ph10, mt20, mh20, mv20, ml30, flex1, mr30, ml15, mh25, pl13, ph15 } from '../../components/commonStyles';
 import { InputContainer1 } from '../../styledComponent/styledComponent';
-import { H14BlackVar2Bold400Text, H14blackVar1bold400Text, H14font400Gray4, H15font500Black, H16font600Black, H16fontBoldBlack, H18BlackBoldText600 } from '../../components/commonText';
+import { H14BlackVar2Bold400Text, H14blackVar1bold400Text, H14font400Gray4, H15font500Black, H16font600Black, H18BlackText } from '../../components/commonText';
 import { useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal'
 import { DevHeight, DevWidth } from '../../utils/device';
@@ -18,6 +17,7 @@ import { labels } from '../../utils/labels';
 import { IconModal } from '../../components/commonModal';
 import { screenName } from '../../utils/screenName';
 import { isDark } from '../../Theme/ThemeContext';
+import { SettingAvatar } from '../../utils/svg';
 
 export type settingsScreenProps = {
 
@@ -103,27 +103,27 @@ const SettingsScreen = (props: settingsScreenProps) => {
 
     return (
         <Fragment>
-            <MainContainer>
+            <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
                 <TopContainerWhiteCard>
                     <View style={{ flexDirection: 'row', marginHorizontal: 20, justifyContent: 'space-between' }}>
-                        <Text style={{ color: 'black', fontSize: 17, fontWeight: '900' }}> Settings</Text>
-                        <CustomIcon name='search-outline' size={20} color={colors.black} type='Ionicons' />
+                        <H18BlackText style={pl13}>Settings</H18BlackText>
+                        <CustomIcon name='search-outline' size={20} color={isDark()?colors.white:colors.black} type='Ionicons' />
                     </View>
                 </TopContainerWhiteCard>
                 <ScrollView>
                     <View style={[mh25]}>
-                        <View style={[{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }, styles.cardSurface]}>
-                            <View style={{ flexDirection: 'row' }}>
+                        <RowSpaceBetween style={[{ backgroundColor: isDark() ? colors.darkModeVar4 : colors.purpleVar1 }, flex1, styles.cardSurface]}>
+                            <View style={flexRow}>
                                 <SettingAvatar />
-                                <View style={{ paddingHorizontal: 15, }}>
+                                <View style={[ph15]}>
                                     <H15font500Black>Mark Villiams</H15font500Black>
                                     <H14font400Gray4>Hello, I am using Dreamschat</H14font400Gray4>
                                 </View>
                             </View>
-                            <IconBackground >
+                            <IconBackground style={{ backgroundColor: isDark() ? colors.darkModeVar7 : colors.purpleVar4 }}>
                                 <CustomIcon name='qr-code' size={20} color={colors.black} type='MaterialIcons' />
                             </IconBackground>
-                        </View>
+                        </RowSpaceBetween>
                         <View>
                             {settingsData.map((settingsDatas) => {
                                 const isSelected = settingsDatas.id === selectScreen
@@ -131,8 +131,8 @@ const SettingsScreen = (props: settingsScreenProps) => {
                                     <View key={settingsDatas.id} style={[flexRow, mt20]}>
                                         <InputContainer1>
                                             <View style={[flexRow, alignItemsCenter]}>
-                                                <IconBackground>
-                                                    <CustomIcon name={settingsDatas.iconName} type={settingsDatas.iconType} size={settingsDatas.iconSize} color={colors.purpleVar3} />
+                                                <IconBackground style={{ backgroundColor: isDark() ? colors.darkModeVar7 : colors.purpleVar4 }}>
+                                                    <CustomIcon name={settingsDatas.iconName} type={settingsDatas.iconType} size={settingsDatas.iconSize} color={isDark() ? colors.greyVar3 : colors.purpleVar3} />
                                                 </IconBackground>
                                                 <TouchableOpacity key={settingsDatas.id} onPress={() => handleTabPress(settingsDatas.id, settingsDatas.screenName)}>
                                                     <H15font500Black style={[ph10]}>{settingsDatas.name}</H15font500Black>
@@ -140,7 +140,7 @@ const SettingsScreen = (props: settingsScreenProps) => {
                                             </View>
                                             <View style={[justyfyCenter]}>
                                                 <TouchableOpacity>
-                                                    <CustomIcon name={settingsDatas.iconName1} type={settingsDatas.iconType1} size={settingsDatas.iconSize} color={colors.black} />
+                                                    <CustomIcon name={settingsDatas.iconName1} type={settingsDatas.iconType1} size={settingsDatas.iconSize} color={isDark() ? colors.greyVar3 : colors.black} />
                                                 </TouchableOpacity>
                                             </View>
                                         </InputContainer1>
@@ -150,7 +150,7 @@ const SettingsScreen = (props: settingsScreenProps) => {
                         </View>
                     </View>
                 </ScrollView>
-            </MainContainer>
+            </View>
             <IconModal
                 isVisible={logoutOptionModal}
                 onClose={() => handleLogoutOptionModal()}
@@ -186,7 +186,7 @@ const SettingsScreen = (props: settingsScreenProps) => {
                                     </TouchableOpacity>
                                 </RowSpaceBetween>
                             </View>
-                            <CommonLineDividerGrey style = {[mv20]} />
+                            <CommonLineDividerGrey style={[mv20]} />
                             <View style={[flex1]}>
                                 <RowSpaceBetween>
                                     <View style={{ flex: 0.85 }} />
@@ -195,7 +195,7 @@ const SettingsScreen = (props: settingsScreenProps) => {
                                             <SmallButton
                                                 title={labels.cancel}
                                                 onChange={handleCancelButton}
-                                                backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` :  colors.white)}
+                                                backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
                                                 textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar3 : colors.greyVar4)}
                                                 borderWidth={isCancelButtonActive ? 0 : 1}
                                                 width={DevWidth / 4.5}
@@ -224,17 +224,13 @@ const SettingsScreen = (props: settingsScreenProps) => {
 
 export default SettingsScreen
 
-
 const styles = StyleSheet.create({
-
     cardSurface: {
-        backgroundColor: colors.purpleVar1,
         padding: 10,
         elevation: 4,
         marginTop: 20,
         flexDirection: 'row',
         borderRadius: 8,
-        shadowColor: colors.greyVar3
     },
     topContainerWhiteCard: {
         backgroundColor: 'white',
@@ -246,4 +242,3 @@ const styles = StyleSheet.create({
     }
 
 })
-

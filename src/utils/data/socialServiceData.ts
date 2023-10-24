@@ -7,7 +7,7 @@ export const socilProfile = [
         link: labels.fbLink,
         iconName: 'facebook-f',
         iconType: "FontAwesome",  
-        iconSize: 25,
+        iconSize: 20,
 
     },
     {
@@ -16,7 +16,7 @@ export const socilProfile = [
         link: labels.googleLink,
         iconName: 'googleplus',
         iconType: "AntDesign",
-        iconSize: 25,
+        iconSize: 20,
     },
     {
         id: 3,
@@ -24,7 +24,7 @@ export const socilProfile = [
         link:labels.twitterLink,
         iconName: 'twitter',
         iconType: "AntDesign",
-        iconSize: 25,
+        iconSize: 20,
     },
     {
         id: 4,
@@ -32,7 +32,7 @@ export const socilProfile = [
         link:labels.linkedinLink,
         iconName: 'linkedin',
         iconType: "Entypo",
-        iconSize: 25,
+        iconSize: 20,
     },
     {
         id: 5,
@@ -40,6 +40,6 @@ export const socilProfile = [
         link:labels.youtubeLink,
         iconName: 'youtube',
         iconType: "AntDesign",
-        iconSize: 25,
+        iconSize: 20,
     },
 ]
