@@ -15,7 +15,7 @@ export type AppProps = {};
 const App = (props: AppProps) => {
   const [isLoading, setIsLoading] = React.useState<boolean>(true);
 
-  const STATUS_BAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBar.currentHeight;
+  const STATUS_BAR_HEIGHT = Platform.OS === "ios" ? 50 : StatusBar.currentHeight;
   const HEADER_HEIGHT = Platform.OS === "ios" ? 44 : 56;
 
   useEffect(() => {

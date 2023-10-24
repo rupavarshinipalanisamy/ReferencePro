@@ -11,7 +11,7 @@ import { Chatimg1Img } from '../utils/png';
 import AlexProfile from '../../assets/images/starredProfile.svg'
 import { StarredAndVerifycodeHeader, TextInputHeader } from './Media/MediaCommonHeader';
 import { Card1, Card2, Card3, Card4 } from '../components/starredMessages/starredMessages';
-import { isDark } from '../Theme/ThemeContext';
+import { isDark, useTheme } from '../Theme/ThemeContext';
 
 
 interface HeaderProps {
@@ -50,6 +50,9 @@ export const StarredMsg = [
 
 const StarredMessages = () => {
     const [isTextInputHeader, setIsTextInputHeader] = useState(false);
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
+
     const handleonPress = () => {
         setIsTextInputHeader(true);
     }
@@ -96,7 +99,7 @@ const StarredMessages = () => {
 
                             </View>
                             <View style={[mt15]}>
-                                <CommonLineDividerGrey />
+                                <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />
                             </View>
 
                         </View>

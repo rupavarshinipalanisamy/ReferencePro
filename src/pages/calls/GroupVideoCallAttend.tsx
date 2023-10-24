@@ -16,11 +16,23 @@ const GroupVideoCallAttend = () => {
     const renderItem = ({ item }: any) => (
         <View key={item.id} style={{ margin: 5 }}>
             <View style={{ height: DevHeight / 4, width: DevWidth / 2.35, backgroundColor: colors.white, borderColor: colors.blueVar3, borderRadius: 10, alignItems: 'center', justifyContent: 'center', borderWidth: item.id === 4 ? 2 : 0 }}>
+                {
+                    item.id === 4 ? (
+                        <View>
+                            <Image source={item.image} style={[{ borderRadius: item.id === 4 ? 25 : 10, width: item.id === 1 || item.id === 2 || item.id === 3 ? DevWidth / 2.35 : 40 }, alignSelfCenter]} />
+                            <H14Blackvar2Bold500Same style={mt8}>{labels.JamesAlbert}</H14Blackvar2Bold500Same>
+                        </View>
+                    ) : (
+                        <Image source={item.image} style={{ borderRadius: item.id === 4 ? 25 : 10, width: item.id === 1 || item.id === 2 || item.id === 3 ? DevWidth / 2.35 : 40, height : '100%' }} />
+                    )
+                }
+            </View>
+            {/* <View style={{ height: DevHeight / 4, width: DevWidth / 2.35, backgroundColor: colors.white, borderColor: colors.blueVar3, borderRadius: 10, alignItems: 'center', justifyContent: 'center', borderWidth: item.id === 4 ? 2 : 0 }}>
                 <Image source={item.image} style={{ borderRadius: item.id === 4 ? 25 : 10, width: item.id === 1 || item.id === 2 || item.id === 3 ? DevWidth / 2.35 : 40 }} />
                 {item.id === 4 && (
                     <H14Blackvar2Bold500Same style={mt8}>{labels.JamesAlbert}</H14Blackvar2Bold500Same>
                 )}
-            </View>
+            </View> */}
         </View>
     );
 

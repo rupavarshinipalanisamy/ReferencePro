@@ -15,7 +15,7 @@ import { screenName } from '../../utils/screenName';
 import { colorIconsData, colorIconsDataSecond, groupMediaData, groupsData } from '../../utils/data/groupsData';
 import { IconModal } from '../../components/commonModal';
 import { SmallButton } from '../../components/commonButtons';
-import { isDark } from '../../Theme/ThemeContext';
+import { isDark, useTheme } from '../../Theme/ThemeContext';
 
 export type GroupInfoProps = {
 
@@ -100,6 +100,9 @@ export const GroupProfileCard = () => {
 }
 
 export const GroupInfoCard = () => {
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
+
     const socialMediaIcon = () => {
         return (
             <>
@@ -139,7 +142,7 @@ export const GroupInfoCard = () => {
                 <Text style={[{ color: colors.greyVar4 }, mt5]}>{labels.DummyText}</Text>
             </View>
             <View style={[mt15, mb15]}>
-                <CommonLineDividerGrey />
+                <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />
             </View>
         </View>
     );
@@ -147,6 +150,8 @@ export const GroupInfoCard = () => {
 
 export const MediaCard = () => {
     const navigation = useNavigation();
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
     return (
         <View>
             <TouchableOpacity style={[flexRow, spaceBetween]} onPress={() => { }}>
@@ -179,13 +184,15 @@ export const MediaCard = () => {
                 ))}
             </View>
             <View style={[mt15, mb15]}>
-                <CommonLineDividerGrey />
+                <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />
             </View>
         </View>
     )
 }
 
 export const Groups = () => {
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
     return (
         <View>
             <RowSpaceBetween>
@@ -208,7 +215,7 @@ export const Groups = () => {
 
             ))}
             <View style={[mt20, mb15]}>
-                <CommonLineDividerGrey />
+                <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />
             </View>
         </View>
 
@@ -217,7 +224,8 @@ export const Groups = () => {
 
 const ColorIconTab = () => {
     const navigation = useNavigation()
-
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
 
     return (
         <View>
@@ -260,7 +268,7 @@ const ColorIconTab = () => {
                 })
             }
             <View style={[mt10, mb15]}>
-                <CommonLineDividerGrey />
+                <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />
             </View>
         </View>
     )

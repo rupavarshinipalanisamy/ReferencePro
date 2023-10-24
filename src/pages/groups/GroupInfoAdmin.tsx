@@ -9,6 +9,7 @@ import CustomIcon from '../../utils/Icons';
 import { H16BlackText } from '../../components/commonText';
 import { colorIconsAdminData } from '../../utils/data/groupsData';
 import { ToggleSwitch } from '../../components/commonComponents';
+import { useTheme } from '../../Theme/ThemeContext';
 
 export type GroupInfoAdminProps = {
 
@@ -17,6 +18,8 @@ export type GroupInfoAdminProps = {
 const ColorIconTab = () => {
     const navigation = useNavigation();
     const [toggleVisible, setToggleVisible] = useState(false);
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
 
     const handleToggleChange = () => {
         setToggleVisible(!toggleVisible);
@@ -67,7 +70,7 @@ const ColorIconTab = () => {
                 })
             }
             <View style={[mt10, mb15]}>
-                <CommonLineDividerGrey />
+                <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />
             </View>
         </View>
     )

@@ -1,5 +1,5 @@
 import React, { useState, ReactNode, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal, Switch, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal, Switch, Image, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mh20, mh30, ml10, ml15, mr10, mt10, mt15, mt20, mt30, mt5, mv10, mv15, mv20, p10, p5, pl10, pl13, pl5, pr10, pt10, spaceAround, spaceBetween, textCenter, flex1 } from './commonStyles';
 import { colors } from '../utils/colors';
@@ -26,9 +26,9 @@ import { color } from 'react-native-elements/dist/helpers';
 interface ChatHeaderProps {
     title: string;
     isCall?: boolean;
-    icon1Navigate?: string;
-    icon2Navigate?: string;
-    icon3Navigate?: string;
+    icon1Navigate?: () => void;
+    icon2Navigate?: () => void;
+    icon3Navigate?: () => void;
 }
 
 export const ChatHeader: React.FC<ChatHeaderProps> = ({ title, isCall, icon1Navigate, icon2Navigate, icon3Navigate }) => {
@@ -107,13 +107,13 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({ title, isCall, icon1Navi
                     </View>
                 ) : (
                     <View style={[flexRow, spaceBetween]}>
-                        <TouchableOpacity onPress={() => { navigation.navigate(icon1Navigate as never) }} style={mh10}>
+                        <TouchableOpacity onPress={icon1Navigate} style={mh10}>
                             <CustomIcon name="camera-outline" size={20} color={colors.white} type='Ionicons' />
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() => { navigation.navigate(icon2Navigate as never) }} style={mh10}>
+                        <TouchableOpacity onPress={icon2Navigate} style={mh10}>
                             <CustomIcon name='search' color={colors.white} type='Ionicons' size={20} />
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() => { navigation.navigate(icon3Navigate as never) }} style={mh10}>
+                        <TouchableOpacity onPress={icon3Navigate} style={mh10}>
                             <CustomIcon name='add' type='Ionicons' size={20} color={colors.white} />
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => { navigation.navigate(screenName.SettingsScreen as never) }} style={mh10}>
@@ -158,22 +158,25 @@ export const CallHeader: React.FC<ChatHeaderProps> = ({ title }) => {
 
 // ====================   Contact based Header Component   ====================
 
-interface ChatHeaderProps {
+interface ContactHeaderProps {
     title: string;
+    icon1Navigate ?: () => void;
+    icon2Navigate ?: () => void;
+    profileAvatar ?: () => void;
 }
 
-export const ContactHeader: React.FC<ChatHeaderProps> = ({ title }) => {
+export const ContactHeader: React.FC<ContactHeaderProps> = ({ title, icon1Navigate, icon2Navigate, profileAvatar }) => {
     return (
         <View style={[flexRow, spaceBetween, mh20, mv15]}>
             <Text style={styles.chatHeaderText}>{title}</Text>
             <View style={[flexRow, spaceBetween]}>
-                <TouchableOpacity onPress={() => { }}>
+                <TouchableOpacity onPress={icon1Navigate}>
                     <Icon name="search" size={22} color={colors.white} style={mh10} />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => { }}>
+                <TouchableOpacity onPress={icon2Navigate}>
                     <Icon name="add-outline" size={25} color={colors.white} style={mh10} />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => { }}>
+                <TouchableOpacity onPress={profileAvatar}>
                     <ProfileAvatarIcon />
                 </TouchableOpacity>
             </View>
@@ -202,7 +205,7 @@ export const TabControl: React.FC<TabControlProps> = ({ tabs, activeTab, onTabPr
                     ]}
                     onPress={() => onTabPress(tabInfo.label)}
                 >
-                    <View style={[flexRow, spaceBetween]}>
+                    <View style={[flexRow, spaceBetween, alignItemsCenter, justyfyCenter]}>
                         <Text
                             style={[
                                 styles.tabText,
@@ -468,7 +471,7 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
                 // height={80}
                 width={DevWidth * 0.47}
                 modalData={<PinChatOption />}
-                marginTop={48}
+                marginTop={ Platform.OS === 'ios' ? 100 : 48}
                 onClose={() => setModalVisible(false)}
             />
             <IconModal
@@ -646,7 +649,7 @@ export const BottomTabBar = () => {
     };
 
     return (
-        <View style={[alignSelfCenter, borderRadius10, { height: DevHeight * 0.08, width: DevWidth * 0.9, backgroundColor: isDark() ? colors.darkModeVar1 : colors.purpleVar3, position: 'absolute', bottom: 10 }]}>
+        <View style={[alignSelfCenter, borderRadius10, { height: DevHeight * 0.07, width: DevWidth * 0.9, backgroundColor: isDark() ? colors.darkModeVar1 : colors.purpleVar3, position: 'absolute', bottom: 10 }]}>
             <RowSpaceBetween style={[alignItemsCenter, mv10, mh20]}>
                 {
                     bottomNavData.map((item) => {
@@ -782,18 +785,23 @@ export const MultiSelectOption: React.FC<MultiSelectProps> = ({
 };
 
 
-// =============== Multi select option component======================
+// =============== Image picker component======================
 
 type ImagePickerProps = {
     onImageSelect: (base64Image: string) => void;
+    cameraOption ?: () => void;
 };
 
-export const ImagePicker: React.FC<ImagePickerProps> = ({ onImageSelect }) => {
+export const ImagePicker: React.FC<ImagePickerProps> = ({ onImageSelect, cameraOption}) => {
     const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
 
     const handleCancelButton = () => {
         setIsCancelButtonActive(true);
-        openCamera();
+        if (Platform.OS === "ios"){
+            cameraOption;
+        }else {
+            openCamera();
+        }
     };
 
     const handleDeleteChatButton = () => {
@@ -855,10 +863,11 @@ export const ImagePicker: React.FC<ImagePickerProps> = ({ onImageSelect }) => {
                 <SmallButton
                     title={labels.Gallery}
                     onChange={handleDeleteChatButton}
-                    backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
-                    textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
+                    backgroundColor={isCancelButtonActive ? (isDark() ? colors.darkModeVar4 : colors.white) : colors.purpleVar3}
+                    textColor={isCancelButtonActive ? (isDark() ? colors.greyVar3 : colors.greyVar4) : colors.white}
                     borderWidth={isCancelButtonActive ? 1 : 0}
                     width={DevWidth / 3.15}
+                    borderColor={`rgba(78, 80, 114, 0.3)`}
                 />
             </RowSpaceBetween>
         </View>
@@ -975,7 +984,6 @@ const styles = StyleSheet.create({
         height: 18,
         width: 18,
         borderRadius: 20,
-        top: 3,
         left: 5,
     },
     roundNumberText: {

@@ -6,7 +6,7 @@ import { colors } from '../../utils/colors';
 import { H12font400Grey, H14GreyVar4Bold400, H15Blackvar2Bold500, H18BlackBoldText } from '../../components/commonText';
 import { CommonLineDividerGrey } from '../../components/commonView';
 import CustomIcon from '../../utils/Icons';
-import { isDark } from '../../Theme/ThemeContext';
+import { isDark, useTheme } from '../../Theme/ThemeContext';
 import { LinkData } from '../../utils/data/MediaData';
 import { Image } from 'react-native-elements';
 
@@ -16,6 +16,8 @@ const splitTextIntoLines = (text, maxLineLength) => {
     const words = text.split(' ');
     const lines = [];
     let currentLine = '';
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
 
     for (let i = 0; i < words.length; i++) {
         const word = words[i];
@@ -36,6 +38,8 @@ const splitTextIntoLines = (text, maxLineLength) => {
 };
 
 const Link = () => {
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
     return (
         <View style={{ flex: 1,marginHorizontal:20 }}>
             <H15Blackvar2Bold500 style={{ lineHeight:20, marginTop: 20}}>Recent</H15Blackvar2Bold500>
@@ -62,7 +66,7 @@ const Link = () => {
 
                         </View>
                         <View style={{ paddingTop: 15 }}>
-                            <CommonLineDividerGrey />
+                            <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />
                         </View>
 
                     </View>

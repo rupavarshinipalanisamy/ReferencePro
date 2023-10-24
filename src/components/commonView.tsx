@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   },
   purpleMainContainer: {
     flex: 1,
-    backgroundColor: isDark() ? colors.darkModeVar1 : colors.purpleVar3,
+    // backgroundColor: isDark() ? colors.darkModeVar1 : colors.purpleVar3,
   },
   subContainer: {
     flex: 1,
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     width: '88%',
     alignSelf: 'center',
     height: 1,
-    backgroundColor: isDark() ? colors.darkModeVar3 : colors.greyVar0,
+    // backgroundColor: isDark() ? colors.darkModeVar3 : colors.greyVar0,
   },
   commonLineDividerPurple: {
     width: '88%',

@@ -50,7 +50,7 @@ padding:10px;
 export const IconInputContainer = styled(View)`
 borderBottomWidth: 1px;
 flexDirection: row;
-marginVertical:7px;
+marginVertical:10px;
 `
 export const InputContainer1 = styled(View)`
 flexDirection: row;

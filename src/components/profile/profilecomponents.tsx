@@ -11,7 +11,7 @@ import { DevWidth } from '../../utils/device';
 import { InfoCardData, groupsData, mediaData } from '../../utils/data/profileData';
 import { CommonLineDividerGrey, MediumCardSurface } from '../commonView';
 import { screenName } from '../../utils/screenName';
-import { isDark } from '../../Theme/ThemeContext';
+import { isDark, useTheme } from '../../Theme/ThemeContext';
 export const SocialMediaIcon = () => {
     return (
         <>
@@ -76,6 +76,8 @@ export const Header = () => {
 }
 
 export const InfoCard = () => {
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
     return (
         <View style={mt20}>
             <CardHeaderText text='Info' />
@@ -92,7 +94,7 @@ export const InfoCard = () => {
                 )}
             </View>
             <View style={[mt15, mb15]}>
-                <CommonLineDividerGrey />
+                <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />
             </View>
         </View>
     );
@@ -101,6 +103,8 @@ export const InfoCard = () => {
 
 export const MediaCard = () => {
     const navigation = useNavigation();
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
     return (
         <View>
             <TouchableOpacity style={[flexRow, spaceBetween]} onPress={() => navigation.navigate(screenName.Media as never)}>
@@ -132,7 +136,7 @@ export const MediaCard = () => {
                 ))}
             </View>
             <View style={[mt15, mb15]}>
-                <CommonLineDividerGrey />
+                <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />
             </View>
         </View>
 
@@ -140,6 +144,8 @@ export const MediaCard = () => {
 }
 
 export const Groups = () => {
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
     return (
         <View>
             <CardHeaderText text='2 Groups in common' />
@@ -154,7 +160,7 @@ export const Groups = () => {
 
             ))}
             <View style={[mt20, mb15]}>
-                <CommonLineDividerGrey />
+                <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />
             </View>
         </View>
 

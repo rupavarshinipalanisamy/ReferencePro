@@ -13,6 +13,7 @@ import AllStatus from './allStatus';
 import RecentStatusScreen from './recentStatus';
 import ViewedStatusScreen from './viewedStatus';
 import MutedStatusScreen from './mutedStatus';
+import { useTheme } from '../../Theme/ThemeContext';
 
 export type CallsProps = {
   changeButtonText: (text: string) => void; // Add this prop
@@ -21,6 +22,8 @@ export type CallsProps = {
 const NoStatus = (props: CallsProps) => {
   const [selectedTab, setSelectedTab] = useState(labels.allStatus);
   const [selectedCards, setSelectedCards] = useState<number[]>([]);
+  const {theme} = useTheme();
+  const isDarkTheme = theme === 'dark';
 
   const tabs = [
     { label: labels.allStatus },
@@ -74,7 +77,7 @@ const NoStatus = (props: CallsProps) => {
 
   return (
     <Fragment>
-      <PurpleMainContainer>
+      <PurpleMainContainer style = {{backgroundColor: isDarkTheme ? colors.darkModeVar1 : colors.purpleVar3}}>
         <StatusBar backgroundColor={colors.purpleVar3} />
         <ChatHeader title={labels.status} />
         <View style={flex1}>

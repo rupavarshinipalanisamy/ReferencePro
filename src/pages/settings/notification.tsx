@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { Text, View, StatusBar, ScrollView } from 'react-native';
-import { ToggleSwitch } from '../../components/commonComponents';
+import { CardHeaderText, ToggleSwitch } from '../../components/commonComponents';
 import { MainContainer, RowSpaceBetween } from '../../components/commonView';
 import { SearchHeader } from '../Media/MediaCommonHeader';
 import { labels } from '../../utils/labels';
@@ -8,7 +8,6 @@ import { DevHeight } from '../../utils/device';
 import { colors } from '../../utils/colors';
 import { flexRow, justyfyCenter, mh20, mt15, mt20, mv20, spaceBetween } from '../../components/commonStyles';
 import { H12Grey, H14font500Gray4 } from '../../components/commonText';
-import { CardHeaderText } from '../chatView/UserProfile';
 import { notificationData1, notificationData2 } from '../../utils/data/notificationData';
 import CustomIcon from '../../utils/Icons';
 import styled from 'styled-components';

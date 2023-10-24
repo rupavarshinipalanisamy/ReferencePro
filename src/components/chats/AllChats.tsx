@@ -11,7 +11,7 @@ import { ArchiveIconBlackIcon, BlackDoubleTickIcon, BlackSingleTickIcon, BlueDou
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
 import { BottomTabBar } from '../commonComponents';
-import { isDark } from '../../Theme/ThemeContext';
+import { isDark, useTheme } from '../../Theme/ThemeContext';
 import CustomIcon from '../../utils/Icons';
 
 
@@ -22,7 +22,10 @@ export type AllChatsProps = {
 
 
 const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
-    const navigation = useNavigation()
+    const navigation = useNavigation();
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
+
     return (
         <View style={[{ backgroundColor: isDark() ? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -38,7 +41,7 @@ const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
                 <View style={flex1}>
                     {allChatsData.map((chat) => (
                         <View key={chat.id}>
-                            <CommonLineDividerGrey />
+                            <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />
                             <TouchableOpacity onPress={() => {
                                 if (selectedCards.length === 0) {
                                     navigation.navigate(screenName.ChatView as never);

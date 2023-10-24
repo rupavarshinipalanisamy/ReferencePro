@@ -9,7 +9,7 @@ import AllCalls from '../../components/calls/AllCalls';
 import IncomingCalls from '../../components/calls/IncomingCalls';
 import OutgoingCalls from '../../components/calls/OutgoingCalls';
 import MissedCalls from '../../components/calls/MissedCalls';
-import { isDark } from '../../Theme/ThemeContext';
+import { isDark, useTheme } from '../../Theme/ThemeContext';
 
 export type CallsProps = {
 
@@ -19,6 +19,8 @@ export type CallsProps = {
 const Calls = (props: CallsProps) => {
     const [selectedTab, setSelectedTab] = useState(labels.AllCalls);
     const [selectedCards, setSelectedCards] = useState<number[]>([]);
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
 
     const tabs = [
         { label: labels.AllCalls },
@@ -66,7 +68,7 @@ const Calls = (props: CallsProps) => {
 
     return (
         <Fragment>
-            <PurpleMainContainer>
+            <PurpleMainContainer style = {{backgroundColor: isDarkTheme ? colors.darkModeVar1 : colors.purpleVar3}}>
                 <Header selectedTab={selectedTab} selectedCards={selectedCards} handleTabPress={handleTabPress} />
                 <View style={flex1}>
                     <TabControl tabs={tabs} activeTab={selectedTab} onTabPress={handleTabPress} />

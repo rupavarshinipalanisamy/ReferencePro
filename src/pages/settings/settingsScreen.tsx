@@ -17,7 +17,7 @@ import { SmallButton } from '../../components/commonButtons';
 import { labels } from '../../utils/labels';
 import { IconModal } from '../../components/commonModal';
 import { screenName } from '../../utils/screenName';
-import { isDark } from '../../Theme/ThemeContext';
+import { isDark, useTheme } from '../../Theme/ThemeContext';
 
 export type settingsScreenProps = {
 
@@ -29,6 +29,8 @@ const SettingsScreen = (props: settingsScreenProps) => {
     const [logoutOptionModal, setLogoutOptionModal] = useState(false);
     const [isLanguageModalVisible, setLanguageModalVisible] = useState(false);
     const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
 
     const handleCancelButton = () => {
         setIsCancelButtonActive(true);
@@ -186,7 +188,7 @@ const SettingsScreen = (props: settingsScreenProps) => {
                                     </TouchableOpacity>
                                 </RowSpaceBetween>
                             </View>
-                            <CommonLineDividerGrey style = {[mv20]} />
+                            <CommonLineDividerGrey style = {[{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}, mv20]} />
                             <View style={[flex1]}>
                                 <RowSpaceBetween>
                                     <View style={{ flex: 0.85 }} />

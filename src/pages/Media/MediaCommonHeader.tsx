@@ -374,10 +374,10 @@ export const SearchHeader = (props: SearchHeader) => {
     const navigation = useNavigation()
     return (
         <View>
-            <TopContainerWhiteCard1 height={DevHeight / 7.5}{...props}>
+            <TopContainerWhiteCard1 height={DevHeight / 10}{...props}>
                 <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
                     <View style={[flexRow, spaceBetween]}>
-                        <View style={[flexRow,mt30]}>
+                        <View style={[flexRow]}>
                             <TouchableOpacity style={[justyfyCenter, alignItemsCenter, { marginTop: 2 }]}
                                 onPress={navigation.goBack}
                             >

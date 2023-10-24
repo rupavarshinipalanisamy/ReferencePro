@@ -9,9 +9,12 @@ import { CommonLineDividerGrey } from '../components/commonView';
 import { alignItemsCenter, flexRow, justyfyCenter, mh20, mr5, mt10, mt15, mv10, pl13, pr10, pr13, pr7 } from '../components/commonStyles';
 import { MessageStatusData } from '../utils/data/chatViewData';
 import { H12fontBold400GreyVar4 } from '../components/commonText';
+import { useTheme } from '../Theme/ThemeContext';
 
 
 const MessageInfo = () => {
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
     return (
         <View>
             <SearchHeader headerText='Message Info'/>
@@ -28,7 +31,7 @@ const MessageInfo = () => {
             <View style={{ marginVertical: 20 }}>
                 {MessageStatusData.map((item, index) => (
                     <View key={index}>
-                        <CommonLineDividerGrey />
+                        <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />
                         <View style={{ marginHorizontal: 25, margin: 12 }}>
 
                             <View style={{ flexDirection: 'row' }}>

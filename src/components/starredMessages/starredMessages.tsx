@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, Image, ScrollView } from 'react-native';
-import { CommonLineDividerGrey, MessageCard, TopContainerWhiteCard1 } from '../commonView';
+import { MessageCard, TopContainerWhiteCard1 } from '../commonView';
 import { colors } from '../../utils/colors';
 import CustomIcon from '../../utils/Icons';
 import AudioImg from '../../../assets/images/Audio.svg'

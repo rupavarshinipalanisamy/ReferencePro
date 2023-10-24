@@ -13,6 +13,7 @@ import { screenName } from '../../utils/screenName';
 import { BottomTabBar, ChatHeader, ContactHeader, CustomActionBar, CustomActionBarSecond } from '../../components/commonComponents'
 import { contactList } from '../../utils/data/contactData';
 import CustomIcon from '../../utils/Icons';
+import { useTheme } from '../../Theme/ThemeContext';
 
 
 export type AllChatsProps = {
@@ -23,7 +24,8 @@ const ContactPage = ({ }: AllChatsProps) => {
     const navigation = useNavigation();
     const [selectedCards, setSelectedCards] = useState<number[]>([]);
     const [selectedTab, setSelectedTab] = useState(labels.Contact);
-
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
 
     const toggleCardSelection = (cardId: number) => {
         if (selectedCards.includes(cardId)) {
@@ -53,7 +55,7 @@ const ContactPage = ({ }: AllChatsProps) => {
                 {showCustomActionBarSecond ? (
                     <CustomActionBarSecond itemNumber={selectedCards.length} />
                 ) : (
-                    <ContactHeader title={labels.Contact} />
+                    <ContactHeader title={labels.Contact} icon2Navigate={() => {navigation.navigate(screenName.AddContact as never)}} profileAvatar={() => {navigation.navigate(screenName.SettingsScreen as never)}} />
                 )}
             </>
         );
@@ -70,7 +72,7 @@ const ContactPage = ({ }: AllChatsProps) => {
 
     return (
         <Fragment>
-            <PurpleMainContainer>
+            <PurpleMainContainer style = {{backgroundColor: isDarkTheme ? colors.darkModeVar1 : colors.purpleVar3}}>
                 <Header
                     selectedTab={selectedTab}
                     selectedCards={selectedCards}
