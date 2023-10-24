@@ -37,7 +37,7 @@ const EditContact = (props: EditContactProps) => {
     };
 
     const handleSaveChanges = () => {
-        navigation.navigate(screenName.AddContact as never)
+        navigation.navigate(screenName.ContactDetails as never)
     }
 
     return (

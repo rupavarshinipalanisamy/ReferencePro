@@ -12,6 +12,7 @@ import { AfterNavigation, BeforeNavigation, StatusOptionModalComponent } from '.
 import { screenName } from '../../utils/screenName';
 import { StatusView1 } from '../../utils/svg';
 import { isDark } from '../../Theme/ThemeContext';
+import { Platform } from 'react-native';
 
 export type ViewedStatusProps = {
     selectedCards: number[];
@@ -50,7 +51,7 @@ const ViewedStatusScreen = (props: ViewedStatusProps) => {
                 width={DevWidth * 0.55}
                 height={DevHeight * 0.4}
                 modalData={<StatusOptionModalComponent />}
-                marginTop={160}
+                marginTop={Platform.OS === 'ios' ? 100 : 160}
                 onClose={closeCallOptionModal}
             />
             <BottomTabBar />

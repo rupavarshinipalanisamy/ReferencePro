@@ -13,6 +13,7 @@ import { AfterNavigation, BeforeNavigation, StatusOptionModalComponent } from '.
 import { screenName } from '../../utils/screenName';
 import { isDark } from '../../Theme/ThemeContext';
 import { StatusView, StatusView1 } from '../../utils/svg';
+import { Platform } from 'react-native';
 export interface StatusData {
   id: number;
   image: any;
@@ -106,7 +107,7 @@ const AllStatus = (props: AllStatusProps) => {
         width={DevWidth * 0.55}
         height={DevHeight * 0.4}
         modalData={<StatusOptionModalComponent />}
-        marginTop={160}
+        marginTop={Platform.OS === 'ios' ? 100 : 160}
         onClose={closeCallOptionModal}
       />
       <BottomTabBar />

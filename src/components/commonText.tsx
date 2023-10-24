@@ -140,8 +140,16 @@ export const H16SemiBoldBlack = styled(Text)`
   ${fontRegular};
   ${letterSpacing03}; 
 `
+
+
+export const H16SemiBoldBlack1 = styled(Text)`
+  ${h7};
+  color : ${props => isDark() ? colors.greyVar0 : colors.black};
+  ${fontRegular};
+  ${letterSpacing03}; 
+`
 export const H14GreyVar4Bold400 = styled(Text)`
-  color : ${props => isDark() ? colors.greyVar0 : colors.greyVar4};
+  color : ${props => isDark() ? colors.greyVar0 : colors.black};
   ${h9};
   ${fontBold400};
 `
@@ -487,7 +495,7 @@ ${fontBold400}
 export const H20font600Black = styled(Text)`
   ${h5};
   ${fontBold600};
-  color:  ${props => isDark() ? colors.white : colors.black};
+  color:  ${props => isDark() ? colors.white : colors.black}; 
 `;
 export const H20font600BlackVar2 = styled(Text)`
   ${h5};

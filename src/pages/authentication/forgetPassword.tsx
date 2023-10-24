@@ -13,7 +13,7 @@ import { requiredValidation, minLengthValidation, validationSchema } from '../..
 import { useNavigation } from '@react-navigation/native';
 import { colors } from '../../utils/colors';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { isDark } from '../../Theme/ThemeContext';
+import { useTheme } from '../../Theme/ThemeContext';
 import { AuthImageBg } from '../../utils/png';
 import { PasswordLogo } from '../../utils/svg';
 import { topLogo } from './loginEmail';
@@ -23,6 +23,9 @@ export type ForgetPasswordProps = {
 
 const ForgetPassword = (props: ForgetPasswordProps) => {
     const navigation = useNavigation()
+    const { theme } = useTheme();
+
+    const isDarkTheme = theme === 'dark';
 
     const formKeys = {
         name: 'Email',
@@ -39,7 +42,7 @@ const ForgetPassword = (props: ForgetPasswordProps) => {
     return (
         <Fragment>
             <View style={[flex1]}>
-                <GestureHandlerRootView style={{ flex: 1, backgroundColor: isDark() ? colors.darkModeVar2 : colors.white }}>
+                <GestureHandlerRootView style={{ flex: 1, backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.white }}>
                     <ImageBackground source={AuthImageBg} style={[flex1]}>
                         <View style={[m28]}>
                             <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -49,11 +52,11 @@ const ForgetPassword = (props: ForgetPasswordProps) => {
                         </View>
                         <View>
                             <View style={[mh25]}>
-                                <H20font600Black>{labels.forgetPassword1}</H20font600Black>
-                                <H14font400Gray4 style={[mv8]}>{labels.fPmsg}</H14font400Gray4>
-                                <IconInputContainer style={{ borderBottomColor: isDark() ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
+                                <H20font600Black style={{ color: isDarkTheme ? colors.white : colors.black }}>{labels.forgetPassword1}</H20font600Black>
+                                <H14font400Gray4 style={[mv8, { color: isDarkTheme ? colors.greyVar3 : colors.greyVar4 }]}>{labels.fPmsg}</H14font400Gray4>
+                                <IconInputContainer style={{ borderBottomColor: isDarkTheme ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
                                     <View style={[justyfyCenter]}>
-                                        <CustomIcon name='email-outline' size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type='MaterialCommunityIcons' />
+                                        <CustomIcon name='email-outline' size={20} color={isDarkTheme ? colors.greyVar3 : colors.greyVar4} type='MaterialCommunityIcons' />
                                     </View>
                                     <Controller
                                         name={formKeys.name}
@@ -81,7 +84,7 @@ const ForgetPassword = (props: ForgetPasswordProps) => {
                                 </View>
                             </View>
                             <TextContainer1>
-                                <H14font400Gray4>{labels.remeberyourPassword}</H14font400Gray4>
+                                <H14font400Gray4 style={{ color: isDarkTheme ? colors.greyVar3 : colors.greyVar4 }}>{labels.remeberyourPassword}</H14font400Gray4>
                                 <TouchableOpacity
                                     onPress={() => { navigation.navigate(screenName.LoginEmail as never) }}>
                                     <H14font400Blue >{labels.logIn}</H14font400Blue>

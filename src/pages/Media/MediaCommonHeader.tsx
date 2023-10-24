@@ -19,6 +19,7 @@ import { friendStatusModal } from '../../utils/data/statusData';
 import { SmallButton } from '../../components/commonButtons';
 import { IconModal } from '../../components/commonModal';
 import { contactThreeDotIcon } from '../../utils/data/contactData';
+import { Platform } from 'react-native';
 
 export type MediaProps = {
 
@@ -498,7 +499,7 @@ const handleCallOptionModal = () => {
                     isVisible={optionModal}
                     width={DevWidth * 0.47}
                     modalData={<OptionModalComponent />}
-                    marginTop={48}
+                    marginTop={Platform.OS === 'ios' ? 100 : 48}
                     onClose={() => setOptionModal(false)}
                 />
                <IconModal

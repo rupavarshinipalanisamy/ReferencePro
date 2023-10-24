@@ -5,10 +5,10 @@ import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh10, mh20, mh5, mt10,
 import { DevWidth } from '../../utils/device';
 import { PurpleMainContainer } from '../../components/commonView'
 import { labels } from '../../utils/labels';
-import { H15Grey1, H16SemiBoldBlack, H18BlackBoldText600 } from '../../components/commonText';
+import { H15Grey1, H16SemiBoldBlack, H16SemiBoldBlack1, H18BlackBoldText600 } from '../../components/commonText';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
-import { BottomTabBar, ChatHeader, CustomActionBar1, CustomActionBarSecond } from '../../components/commonComponents'
+import { BottomTabBar, ChatHeader, ContactHeader, CustomActionBar1, CustomActionBarSecond } from '../../components/commonComponents'
 import { contactList } from '../../utils/data/contactData';
 import CustomIcon from '../../utils/Icons';
 import { useTheme, isDark  } from '../../Theme/ThemeContext';
@@ -82,12 +82,12 @@ const ContactPage = ({ }: AllChatsProps) => {
                     selectedCards={selectedCards}
                     handleTabPress={handleTabPress}
                 />
-                <View style={[flex1, mt20, styles.whiteBg,{backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0}]}>
+                <View style={[flex1, mt20, styles.whiteBg,{backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.whiteVar0}]}>
                     <View style={flex1}>
                         <ScrollView showsVerticalScrollIndicator={false}>
                             {Object.keys(contactsByFirstLetter).map((letter) => (
                                 <View key={letter}>
-                                    <H18BlackBoldText600  style={[mt10,mh20]}>{letter}</H18BlackBoldText600>
+                                    <H18BlackBoldText600  style={[mt10,mh20,{color:isDarkTheme?colors.greyVar0:colors.black}]}>{letter}</H18BlackBoldText600>
                                     {contactsByFirstLetter[letter].map((data) => (
                                         <View  key={data.id}>
                                         <TouchableOpacity
@@ -105,9 +105,9 @@ const ContactPage = ({ }: AllChatsProps) => {
                                                 }
                                             }}
                                             style={
-                                                selectedCards.includes(data.id) ? [styles.selectedCardContainer,{backgroundColor:isDark()?colors.darkModeVar6:colors.purpleVar1} ]
+                                                selectedCards.includes(data.id) ? [styles.selectedCardContainer,{backgroundColor:isDarkTheme?colors.darkModeVar6:colors.purpleVar1} ]
                                                 : 
-                                                [styles.cardContainer,{backgroundColor:isDark()?colors.darkModeVar4:colors.white}]
+                                                [styles.cardContainer,{backgroundColor:isDarkTheme?colors.darkModeVar4:colors.white}]
                                             }
                                         >
                                             <View>
@@ -117,23 +117,23 @@ const ContactPage = ({ }: AllChatsProps) => {
                                                 {
                                                     selectedCards.includes(data.id) && (
                                                         <View style={[{ backgroundColor: colors.green }, styles.status, alignItemsCenter, justyfyCenter]} >
-                                                            <CustomIcon name='check' size={10} color={isDark()?colors.darkModeVar2:colors.white} type='entypo' />
+                                                            <CustomIcon name='check' size={10} color={isDarkTheme?colors.darkModeVar2:colors.white} type='entypo' />
                                                         </View>
                                                     )
                                                 }
                                             </View>
                                             <View style={[mh10]}>
-                                                <H16SemiBoldBlack style={[ph10]}>
+                                                <H16SemiBoldBlack1 style={[ph10,{color:isDarkTheme?colors.greyVar0:colors.black}]}>
                                                     {data.contName}
-                                                </H16SemiBoldBlack>
+                                                </H16SemiBoldBlack1>
                                                 <View style={[flexRow, ph5, mt3]}>
                                                     <CustomIcon
                                                         name="location-outline"
                                                         size={18}
-                                                        color={isDark()?colors.greyVar3:colors.greyVar4}
+                                                        color={isDarkTheme?colors.greyVar3:colors.greyVar4}
                                                         type="Ionicons"
                                                     />
-                                                    <H15Grey1 style={[mh5]}>{data.location}</H15Grey1>
+                                                    <H15Grey1 style={[mh5,{color:isDarkTheme?colors.greyVar3:colors.greyVar4}]}>{data.location}</H15Grey1>
                                                 </View>
                                             </View>
                                         </TouchableOpacity>

@@ -290,7 +290,6 @@ interface TopContainerWhiteCardProps {
 
 
 export const TopContainerWhiteCard1 = styled(View) <TopContainerWhiteCardProps>`
-
   background-color: ${props => isDark() ? colors.darkModeVar1 : colors.white};
   border-bottom-start-radius: 25px;
   border-bottom-end-radius: 25px;

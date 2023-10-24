@@ -22,7 +22,6 @@ export const LoginLogoBigCircle = styled(View)`
 height: 110px;
 width: 110px;
 border-radius: 100px;
-background-color: ${props => isDark() ? colors.darkModeVar4 : 'rgba(248, 236, 258, 0.7)' };
 alignItems:center;
 justify-content: center;
 margin-top:30px;
@@ -31,7 +30,6 @@ export const LoginLogoCircle = styled(View)`
 height: 80px;
 width: 80px;
 border-radius: 100px;
-background-color:${props => isDark() ? colors.darkModeVar6 : 'rgba(90, 7, 139, 0.03)' };
 justify-content: center;
 alignItems:center;
 `
@@ -39,7 +37,6 @@ export const SocialLogoCircle = styled(View)`
 height: 60px;
 width: 60px;
 border-radius: 100px;
-background-color:${props => isDark() ? colors.darkModeVar6 : colors.purpleVar1 };
 justify-content: center;
 alignItems:center;
 `
@@ -80,7 +77,6 @@ alignItems: center;
 `
 export const BottomStyle = styled(View)`
 borderBottomWidth: 1px;
-borderBottomColor:  ${props => isDark() ? 'rgba(78, 80, 114, 0.3)' : colors.borderBottomColor};
 width: 30%;
 `
 export const SocialLogoContainer = styled(View)`

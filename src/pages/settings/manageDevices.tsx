@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { View, ScrollView, StatusBar, StyleSheet } from 'react-native';
+import { View, ScrollView, StyleSheet } from 'react-native';
 import { labels } from '../../utils/labels';
 import { colors } from '../../utils/colors';
 import { H14font400Gray4, H14redText, H15font500Black } from '../../components/commonText';
@@ -15,7 +15,7 @@ interface CardHeaderTextProps {
 
 export const CardHeaderText1: React.FC<CardHeaderTextProps> = ({ text }) => {
     return (
-        <View style={[mt5,{ alignItems: 'flex-start'}]}>
+        <View style={[mt5, { alignItems: 'flex-start' }]}>
             <View style={[styles.headerCard, {
                 backgroundColor: (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.redVar1),
             }]}>
@@ -33,7 +33,7 @@ export const cardDetails = () => {
             {manageDevicesdata.map((item) => {
                 return (
                     <View key={item.id}>
-                        <View style={[styles.cardContainer,{
+                        <View style={[styles.cardContainer, {
                             backgroundColor: isDark() ? colors.darkModeVar4 : colors.white,
                             borderColor: isDark() ? colors.darkModeVar5 : colors.greyVar0
                         }]} >

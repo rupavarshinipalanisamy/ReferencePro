@@ -16,6 +16,7 @@ import { IconModal } from '../../components/commonModal';
 import { SmallButton } from '../../components/commonButtons';
 import { useNavigation } from '@react-navigation/native';
 import { isDark } from '../../Theme/ThemeContext';
+import { Platform } from 'react-native';
 
 export type MyStatusProps = {
 };
@@ -197,7 +198,7 @@ const FriendStatus = (props: MyStatusProps) => {
                     isVisible={optionModal}
                     width={DevWidth * 0.47}
                     modalData={<OptionModalComponent />}
-                    marginTop={48}
+                    marginTop={Platform.OS === 'ios' ? 100 : 48}
                     onClose={() => setOptionModal(false)}
                 />
             </View>

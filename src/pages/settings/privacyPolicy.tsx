@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { View, ScrollView, StatusBar } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { SearchHeader } from '../Media/MediaCommonHeader';
 import { labels } from '../../utils/labels';
 import { privacyContentData } from '../../utils/data/termsAndConditions';
