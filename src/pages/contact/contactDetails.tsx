@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, StatusBar } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { colors } from '../../utils/colors';
 import { flex1, flexRow, mh15, mt30, mv10, spaceBetween } from '../../components/commonStyles';
 import { labels } from '../../utils/labels';

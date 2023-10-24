@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { StatusBar, View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import {
     flexRow,
     mt20,
@@ -33,7 +33,7 @@ import { statusPrivacydata } from '../../utils/data/modalData';
 import { screenName } from '../../utils/screenName';
 import { isDark } from '../../Theme/ThemeContext';
 import { SearchHeader } from '../Media/MediaCommonHeader';
-import { DevHeight, DevWidth } from '../../utils/device';
+import { DevWidth } from '../../utils/device';
 import { RadioBtn, ToggleSwitch } from '../../components/commonComponents';
 import { IconModal } from '../../components/commonModal';
 import { groupsData, lastSee, profilePic } from '../../utils/data/modalData';
@@ -71,96 +71,95 @@ const Privacy = (props: PrivacyProps) => {
         setStatusPrivacyOptionModal(!statusPrivacyOptionModal)
 
     };
-        const handleToggle = () => {
-            setToggleVisible(!toggleVisible);
-        }
+    const handleToggle = () => {
+        setToggleVisible(!toggleVisible);
+    }
 
-        const openModal = (id: number, screenName: string | undefined) => {
-            // setSelectedModalId(id);
-            if (id === 4) {
-                handleStatusPrivacyOptionModal();
-            } else if(id ===1) {
-                handleProfilePicModal();
-            } else if (id ===2){
-                handleLastSeenModal()
-            } else if (id ===3){
-                handleGroupModal();
-            } else{
-                navigation.navigate(screenName as never);
+    const openModal = (id: number, screenName: string | undefined) => {
+        if (id === 4) {
+            handleStatusPrivacyOptionModal();
+        } else if (id === 1) {
+            handleProfilePicModal();
+        } else if (id === 2) {
+            handleLastSeenModal()
+        } else if (id === 3) {
+            handleGroupModal();
+        } else {
+            navigation.navigate(screenName as never);
+        }
+    };
+
+    const StatusPrivacyOption = () => {
+        const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+        const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
+
+        const handleCancelButton = () => {
+            setIsCancelButtonActive(true);
+            setStatusPrivacyOptionModal(false);
+        };
+
+        const handleDeleteChatButton = () => {
+            setIsCancelButtonActive(false);
+        };
+
+        const handleStatusSelect = (status: string, id: number) => {
+            setSelectedStatus(status);
+            if (id === 2) {
+                navigation.navigate(screenName.StatusMyContactExcept as never);
+                setStatusPrivacyOptionModal(false)
+            }
+            else if (id === 3) {
+                navigation.navigate(screenName.StatusOnlyShareWith as never);
+                setStatusPrivacyOptionModal(false)
             }
         };
-  
-        const StatusPrivacyOption = () => {
-            const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
-            const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
 
-            const handleCancelButton = () => {
-                setIsCancelButtonActive(true);
-                setStatusPrivacyOptionModal(false);
-            };
-
-            const handleDeleteChatButton = () => {
-                setIsCancelButtonActive(false);
-            };
-
-            const handleStatusSelect = (status: string, id: number) => {
-                setSelectedStatus(status);
-                if (id === 2) {
-                    navigation.navigate(screenName.StatusMyContactExcept as never);
-                    setStatusPrivacyOptionModal(false)
-                }
-                else if (id === 3) {
-                    navigation.navigate(screenName.StatusOnlyShareWith as never);
-                    setStatusPrivacyOptionModal(false)
-                }
-            };
-
-            return (
-                <View style={[mh20]} >
-                    <H16font600Black>Status Privacy</H16font600Black>
-                    <H14GreyVar4Bold400 style={[mt20]}>Who can see my status updates</H14GreyVar4Bold400>
-                    <View style={[mt15]}>
-                        {
-                            statusPrivacydata.map((item) => {
-                                return (
-                                    <View style={[flexRow, mv10]} key={item.id}>
-                                        <View>
-                                            <RadioBtn
-                                                key={item.id}
-                                                selected={selectedStatus === item.name}
-                                                onPress={() => handleStatusSelect(item.name, item.id)}
-                                            />
-                                        </View>
-                                        <H14BlackVar2Bold400Text style={[ml10]}>{item.name}</H14BlackVar2Bold400Text>
+        return (
+            <View style={[mh20]} >
+                <H16font600Black>Status Privacy</H16font600Black>
+                <H14GreyVar4Bold400 style={[mt20]}>Who can see my status updates</H14GreyVar4Bold400>
+                <View style={[mt15]}>
+                    {
+                        statusPrivacydata.map((item) => {
+                            return (
+                                <View style={[flexRow, mv10]} key={item.id}>
+                                    <View>
+                                        <RadioBtn
+                                            key={item.id}
+                                            selected={selectedStatus === item.name}
+                                            onPress={() => handleStatusSelect(item.name, item.id)}
+                                        />
                                     </View>
-                                )
-                            })
-                        }
-                    </View>
-                    <RowSpaceBetween style={[mv20]}>
-                        <SmallButton
-                            title={labels.cancel}
-                            onChange={handleCancelButton}
-                            backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
-                            textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar3 : colors.greyVar4)}
-                            borderWidth={isCancelButtonActive ? 0 : 1}
-                            width={DevWidth / 3.15}
-                        />
-                        <SmallButton
-                            title={labels.SaveChanges}
-                            onChange={handleDeleteChatButton}
-                            backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
-                            textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
-                            borderWidth={isCancelButtonActive ? 1 : 0}
-                            width={DevWidth / 3.15}
-                        />
-                    </RowSpaceBetween>
+                                    <H14BlackVar2Bold400Text style={[ml10]}>{item.name}</H14BlackVar2Bold400Text>
+                                </View>
+                            )
+                        })
+                    }
                 </View>
-            )
-        }
+                <RowSpaceBetween style={[mv20]}>
+                    <SmallButton
+                        title={labels.cancel}
+                        onChange={handleCancelButton}
+                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
+                        textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar3 : colors.greyVar4)}
+                        borderWidth={isCancelButtonActive ? 0 : 1}
+                        width={DevWidth / 3.15}
+                    />
+                    <SmallButton
+                        title={labels.SaveChanges}
+                        onChange={handleDeleteChatButton}
+                        backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
+                        textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
+                        borderWidth={isCancelButtonActive ? 1 : 0}
+                        width={DevWidth / 3.15}
+                    />
+                </RowSpaceBetween>
+            </View>
+        )
+    }
 
 
-      
+
 
     const GroupsModal = () => {
         const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);

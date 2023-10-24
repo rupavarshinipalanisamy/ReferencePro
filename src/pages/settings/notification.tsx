@@ -1,11 +1,11 @@
 import React, { Fragment, useState } from 'react';
-import { Text, View, StatusBar, ScrollView } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { CardHeaderText, ToggleSwitch } from '../../components/commonComponents';
-import { MainContainer, RowSpaceBetween } from '../../components/commonView';
+import { RowSpaceBetween } from '../../components/commonView';
 import { SearchHeader } from '../Media/MediaCommonHeader';
 import { labels } from '../../utils/labels';
 import { colors } from '../../utils/colors';
-import { flexRow, flex1, justyfyCenter, mh20, mt15, mt20, mv20, spaceBetween } from '../../components/commonStyles';
+import { flex1, justyfyCenter, mh20, mt15, mt20 } from '../../components/commonStyles';
 import { H12Grey, H14font500Gray4, H14font500Gray41 } from '../../components/commonText';
 import { notificationData1, notificationData2 } from '../../utils/data/notificationData';
 import CustomIcon from '../../utils/Icons';

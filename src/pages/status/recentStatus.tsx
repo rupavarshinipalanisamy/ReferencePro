@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, ScrollView, StyleSheet } from 'react-native';
+import { View, ScrollView, StyleSheet, Platform } from 'react-native';
 import { flex1, mt20 } from '../../components/commonStyles';
 import { BottomTabBar, CustomModal } from '../../components/commonComponents'
 import { colors } from '../../utils/colors';
@@ -51,7 +51,7 @@ const RecentStatusScreen = (props: RecentStatusProps) => {
                 width={DevWidth * 0.55}
                 height={DevHeight * 0.4}
                 modalData={<StatusOptionModalComponent />}
-                marginTop={160}
+                marginTop={Platform.OS === 'ios' ? 100 : 160}
                 onClose={closeCallOptionModal}
             />
             <BottomTabBar />

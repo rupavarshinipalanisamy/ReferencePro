@@ -10,7 +10,7 @@ import { DevHeight, DevWidth } from "../../utils/device";
 import { labels } from "../../utils/labels";
 import { MyStatusPic, StatusView1 } from "../../utils/svg";
 import CustomIcon from "../../utils/Icons";
-import { CustomModal, StatusModal } from "../../components/commonComponents";
+import { CustomModal } from "../../components/commonComponents";
 import { threeDotIcon } from "../../utils/data/statusData";
 import { isDark } from "../../Theme/ThemeContext";
 import { CircleBg, CircleBg1, TopCard } from "../../styledComponent/styledComponent";
@@ -141,13 +141,9 @@ export const BeforeNavigation = () => {
 
         const imageResponse = (response: any) => {
             if (response.didCancel) {
-                // Handle cancel
             } else if (response.errorCode == 'permission') {
-                // Handle permission error
             } else if (response.errorCode == 'others') {
-                // Handle other error
             } else if (response.assets[0].fileSize > 2097152) {
-                // Handle size exceeded error
             } else if (response.assets && response.assets.length > 0) {
                 onImageSelect(response.assets[0].base64);
             }

@@ -3,7 +3,7 @@ import React, { Fragment, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { ImageBackground, ScrollView, TouchableOpacity, View } from 'react-native';
 import { CustomTextInput } from '../../components/commonInputFields';
-import { justyfyCenter, flexRow, alignItemsCenter, ml15, mt15, ml10, mb20, mh25, flex1, m28 } from '../../components/commonStyles';
+import { justyfyCenter, flexRow, alignItemsCenter, ml15, mt15, ml10, mb20, mh25, flex1, m28, mv8 } from '../../components/commonStyles';
 import { H20font600Black, H14font400Gray4, H14font400Blue, } from '../../components/commonText';
 import { IconInputContainer, InputContainer1, CheckBoxContainer, BottomStyle, SocialLogoContainer, TextContainer } from '../../styledComponent/styledComponent';
 import CustomIcon from '../../utils/Icons';
@@ -14,7 +14,7 @@ import { colors } from '../../utils/colors';
 import { LongPurpleButton } from '../../components/commonButtons';
 import { AppleIcon, AppleIconDark, CountryLogo, FaceBookIcon, GoogleIcon, GoogleIconDark, SignUpLogo } from '../../utils/svg';
 import { socialLogo, topLogo } from './loginEmail';
-import { isDark } from '../../Theme/ThemeContext';
+import { useTheme } from '../../Theme/ThemeContext';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { AuthImageBg } from '../../utils/png';
 
@@ -28,6 +28,9 @@ const SignUp = (props: SignUpProps) => {
     const [phoneNumber, setPhoneNumber] = useState<undefined>()
     const [showPassword, setShowPassword] = useState(true);
     const navigation = useNavigation()
+    const { theme } = useTheme();
+
+    const isDarkTheme = theme === 'dark';
 
     const formKeys = {
         name: 'Email',
@@ -66,7 +69,7 @@ const SignUp = (props: SignUpProps) => {
     return (
         <Fragment>
             <View style={[flex1]}>
-                <GestureHandlerRootView style={{ flex: 1, backgroundColor: isDark() ? colors.darkModeVar2 : colors.white }}>
+                <GestureHandlerRootView style={{ flex: 1, backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.white }}>
                     <ImageBackground source={AuthImageBg} style={[flex1]}>
                         <View >
                             <ScrollView>
@@ -74,15 +77,15 @@ const SignUp = (props: SignUpProps) => {
                                     <TouchableOpacity onPress={() => navigation.goBack()}>
                                         <CustomIcon name='arrow-back-outline' size={28} color={colors.black} type='Ionicons' />
                                     </TouchableOpacity>
-                                {topLogo(<SignUpLogo />)}
+                                    {topLogo(<SignUpLogo />)}
                                 </View>
                                 <View>
                                     <View style={[mh25]}>
-                                        <H20font600Black>{labels.signUp}</H20font600Black>
-                                        <H14font400Gray4 style={{ marginVertical: 8 }}>{labels.newaccount}</H14font400Gray4>
-                                        <IconInputContainer style={{ borderBottomColor: isDark() ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
+                                        <H20font600Black style={{ color: isDarkTheme ? colors.white : colors.black }}>{labels.signUp}</H20font600Black>
+                                        <H14font400Gray4 style={[mv8, { color: isDarkTheme ? colors.greyVar3 : colors.greyVar4 }]}>{labels.newaccount}</H14font400Gray4>
+                                        <IconInputContainer style={{ borderBottomColor: isDarkTheme ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
                                             <View style={[justyfyCenter]}>
-                                                <CustomIcon name='person' size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type='octicons' />
+                                                <CustomIcon name='person' size={20} color={isDarkTheme ? colors.greyVar3 : colors.greyVar4} type='octicons' />
                                             </View>
                                             <CustomTextInput
                                                 placeholder={labels.firstName}
@@ -91,9 +94,9 @@ const SignUp = (props: SignUpProps) => {
                                             />
                                         </IconInputContainer>
                                         <View >
-                                            <IconInputContainer style={{ borderBottomColor: isDark() ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
+                                            <IconInputContainer style={{ borderBottomColor: isDarkTheme ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
                                                 <View style={[justyfyCenter]}>
-                                                    <CustomIcon name='person' size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type='octicons' />
+                                                    <CustomIcon name='person' size={20} color={isDarkTheme ? colors.greyVar3 : colors.greyVar4} type='octicons' />
                                                 </View>
                                                 <CustomTextInput
                                                     placeholder={labels.lastName}
@@ -102,9 +105,9 @@ const SignUp = (props: SignUpProps) => {
                                                 />
                                             </IconInputContainer>
                                         </View>
-                                        <IconInputContainer style={{ borderBottomColor: isDark() ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
+                                        <IconInputContainer style={{ borderBottomColor: isDarkTheme ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
                                             <View style={[justyfyCenter]}>
-                                                <CustomIcon name='email-outline' size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type='MaterialCommunityIcons' />
+                                                <CustomIcon name='email-outline' size={20} color={isDarkTheme ? colors.greyVar3 : colors.greyVar4} type='MaterialCommunityIcons' />
                                             </View>
                                             <Controller
                                                 name={formKeys.name}
@@ -125,10 +128,10 @@ const SignUp = (props: SignUpProps) => {
                                             />
                                         </IconInputContainer>
                                         <View >
-                                            <IconInputContainer style={{ borderBottomColor: isDark() ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
+                                            <IconInputContainer style={{ borderBottomColor: isDarkTheme ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
 
                                                 <View style={[justyfyCenter]}>
-                                                    <CustomIcon name='person' size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type='octicons' />
+                                                    <CustomIcon name='person' size={20} color={isDarkTheme ? colors.greyVar3 : colors.greyVar4} type='octicons' />
                                                 </View>
                                                 <CustomTextInput
                                                     placeholder={labels.userName}
@@ -137,15 +140,15 @@ const SignUp = (props: SignUpProps) => {
                                                 />
                                             </IconInputContainer>
                                         </View>
-                                        <IconInputContainer style={{ borderBottomColor: isDark() ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
+                                        <IconInputContainer style={{ borderBottomColor: isDarkTheme ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
                                             <View style={[justyfyCenter]}>
-                                                <CustomIcon name='phone' size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type='Feather' />
+                                                <CustomIcon name='phone' size={20} color={isDarkTheme ? colors.greyVar3 : colors.greyVar4} type='Feather' />
                                             </View>
                                             <View style={[ml15, mt15]}>
                                                 <CountryLogo />
                                             </View>
                                             <View style={[justyfyCenter, ml10]}>
-                                                <CustomIcon name='chevron-down' size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type='octicons' />
+                                                <CustomIcon name='chevron-down' size={20} color={isDarkTheme ? colors.greyVar3 : colors.greyVar4} type='octicons' />
                                             </View>
                                             <CustomTextInput
                                                 placeholder={labels.phNumber}
@@ -155,10 +158,10 @@ const SignUp = (props: SignUpProps) => {
                                             />
                                         </IconInputContainer>
                                         <View >
-                                            <IconInputContainer style={{ borderBottomColor: isDark() ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
+                                            <IconInputContainer style={{ borderBottomColor: isDarkTheme ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
                                                 <InputContainer1>
                                                     <View style={[flexRow, alignItemsCenter]}>
-                                                        <CustomIcon name='lock-outline' size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type='MaterialIcons' />
+                                                        <CustomIcon name='lock-outline' size={20} color={isDarkTheme ? colors.greyVar3 : colors.greyVar4} type='MaterialIcons' />
                                                         <Controller
                                                             name={formKeys.password}
                                                             control={control}
@@ -182,7 +185,7 @@ const SignUp = (props: SignUpProps) => {
                                                             <CustomIcon
                                                                 name={!showPassword ? 'eye' : 'eye-closed'}
                                                                 size={20}
-                                                                color={isDark() ? colors.greyVar3 : colors.greyVar4}
+                                                                color={isDarkTheme ? colors.greyVar3 : colors.greyVar4}
                                                                 type='octicons'
                                                             />
                                                         </TouchableOpacity>
@@ -197,18 +200,18 @@ const SignUp = (props: SignUpProps) => {
                                             />
                                         </View>
                                         <CheckBoxContainer>
-                                            <BottomStyle />
-                                            <H14font400Gray4>{labels.continuemsg}</H14font400Gray4>
-                                            <BottomStyle />
+                                            <BottomStyle style={{ borderBottomColor: isDarkTheme ? 'rgba(78, 80, 114, 0.3)' : colors.borderBottomColor }} />
+                                            <H14font400Gray4 style={{ color: isDarkTheme ? colors.greyVar3 : colors.greyVar4 }}>{labels.continuemsg}</H14font400Gray4>
+                                            <BottomStyle style={{ borderBottomColor: isDarkTheme ? 'rgba(78, 80, 114, 0.3)' : colors.borderBottomColor }} />
                                         </CheckBoxContainer>
                                         <SocialLogoContainer>
-                                            {socialLogo(isDark() ? <GoogleIconDark /> : <GoogleIcon />)}
+                                            {socialLogo(isDarkTheme ? <GoogleIconDark /> : <GoogleIcon />)}
                                             {socialLogo(<FaceBookIcon />)}
-                                            {socialLogo(isDark() ? <AppleIconDark /> : <AppleIcon />)}
+                                            {socialLogo(isDarkTheme ? <AppleIconDark /> : <AppleIcon />)}
                                         </SocialLogoContainer>
                                     </View>
                                     <TextContainer style={[mb20]}>
-                                        <H14font400Gray4>{labels.haveanAccount}</H14font400Gray4>
+                                        <H14font400Gray4 style={{ color: isDarkTheme ? colors.greyVar3 : colors.greyVar4 }}>{labels.haveanAccount}</H14font400Gray4>
                                         <TouchableOpacity
                                             onPress={() => { navigation.navigate(screenName.LoginEmail as never) }}>
                                             <H14font400Blue >{labels.logIn}</H14font400Blue>

@@ -1,13 +1,13 @@
 import React, { Fragment, useState } from 'react';
-import { ImageBackground, View, StatusBar } from 'react-native';
+import { ImageBackground, View } from 'react-native';
 import { BtnConatiner, LogoContainer } from '../../styledComponent/styledComponent';
 import { labels } from '../../utils/labels';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
 import { colors } from '../../utils/colors';
-import { SmallButton, WelcomeButton } from '../../components/commonButtons';
+import { WelcomeButton } from '../../components/commonButtons';
 import { ToodleImageDark, ToodleImageLight, WelcomePageLogo, WelcomePageLogoDark } from '../../utils/svg';
-import { isDark } from '../../Theme/ThemeContext';
+import { useTheme } from '../../Theme/ThemeContext';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { AuthImageBg, AuthImageBottom } from '../../utils/png';
 import { flex1, mt20, mt70 } from '../../components/commonStyles';
@@ -17,6 +17,10 @@ export type WelcomePageProps = {};
 const WelcomePage: React.FC<WelcomePageProps> = (props: WelcomePageProps) => {
   const navigation = useNavigation();
   const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+  const { theme } = useTheme();
+
+  const isDarkTheme = theme === 'dark';
+
   const handleCancelButtonClick = () => {
     setIsCancelButtonActive(true);
     navigation.navigate(screenName.LoginEmail as never);
@@ -32,15 +36,14 @@ const WelcomePage: React.FC<WelcomePageProps> = (props: WelcomePageProps) => {
   return (
     <Fragment>
       <View style={[flex1]}>
-        <StatusBar backgroundColor={colors.purpleVar3} />
-        <GestureHandlerRootView style={{ flex: 1, backgroundColor: isDark() ? colors.darkModeVar2 : colors.white }}>
+        <GestureHandlerRootView style={{ flex: 1, backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.white }}>
           <ImageBackground source={AuthImageBg} style={[flex1]}>
             <LogoContainer>
               <View style={[mt20]}>
-                {isDark() ? <WelcomePageLogoDark /> : <WelcomePageLogo />}
+                {isDarkTheme ? <WelcomePageLogoDark /> : <WelcomePageLogo />}
               </View>
               <View style={[mt70]}>
-                {isDark() ? <ToodleImageDark /> : <ToodleImageLight />}
+                {isDarkTheme ? <ToodleImageDark /> : <ToodleImageLight />}
               </View>
             </LogoContainer>
             <ImageBackground source={AuthImageBottom}
@@ -52,7 +55,7 @@ const WelcomePage: React.FC<WelcomePageProps> = (props: WelcomePageProps) => {
                   textColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
                   onChange={handleCancelButtonClick}
                   borderWidth={isCancelButtonActive ? 1 : 1}
-                   />
+                />
                 <WelcomeButton
                   title={labels.signUp}
                   backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
@@ -60,7 +63,7 @@ const WelcomePage: React.FC<WelcomePageProps> = (props: WelcomePageProps) => {
                   onChange={handleSaveChangesClick}
                   borderWidth={1}
                   borderColor={colors.white}
-                   />
+                />
               </BtnConatiner>
             </ImageBackground>
           </ImageBackground>

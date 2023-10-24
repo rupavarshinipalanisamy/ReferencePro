@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { ImageBackground, View, TouchableOpacity, ScrollView } from 'react-native';
 import { BottomStyle, CheckBox, CheckBoxContainer, CheckBoxContainer1, IconInputContainer, InputContainer1, LoginLogoBigCircle, LoginLogoCircle, SocialLogoCircle, SocialLogoContainer, TextContainer } from '../../styledComponent/styledComponent';
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, m28, mh25, mv10, mv8, ph5 } from '../../components/commonStyles';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, m28, mh25, mv8, ph5 } from '../../components/commonStyles';
 import { H14font400Blue, H14font400Gray4, H20font600Black, } from '../../components/commonText';
 import { labels } from '../../utils/labels';
 import CustomIcon from '../../utils/Icons';
@@ -13,14 +13,17 @@ import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
 import { minLengthValidation, requiredValidation, validationSchema } from '../../utils/validationconfig';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { isDark } from '../../Theme/ThemeContext';
+import { useTheme } from '../../Theme/ThemeContext';
 import { AuthImageBg } from '../../utils/png';
 import { AppleIcon, AppleIconDark, FaceBookIcon, GoogleIcon, GoogleIconDark, LoginPageLogo } from '../../utils/svg';
 
 export const topLogo = (logo: any) => {
+    const { theme } = useTheme();
+
+    const isDarkTheme = theme === 'dark';
     return (
-        <LoginLogoBigCircle>
-            <LoginLogoCircle>
+<LoginLogoBigCircle style={{backgroundColor:isDarkTheme?colors.darkModeVar4:'rgba(248, 236, 258, 0.7)'}}>
+            <LoginLogoCircle style={{backgroundColor:isDarkTheme?colors.darkModeVar6: 'rgba(90, 7, 139, 0.03)'}}>
                 {logo}
             </LoginLogoCircle>
         </LoginLogoBigCircle>
@@ -28,8 +31,12 @@ export const topLogo = (logo: any) => {
 }
 
 export const socialLogo = (content: any) => {
+    const { theme } = useTheme();
+
+    const isDarkTheme = theme === 'dark';
+
     return (
-        <SocialLogoCircle>
+        <SocialLogoCircle style={{backgroundColor: isDarkTheme? colors.darkModeVar6 : colors.purpleVar1 }}>
             {content}
         </SocialLogoCircle>
     )
@@ -42,6 +49,9 @@ const LoginEmail = (props: loginEmailProps) => {
     const [showPassword, setShowPassword] = useState(true);
     const [isChecked, setIsChecked] = useState(false);
     const navigation = useNavigation()
+    const { theme } = useTheme();
+
+    const isDarkTheme = theme === 'dark';
 
     const formKeys = {
         name: 'Email',
@@ -54,7 +64,7 @@ const LoginEmail = (props: loginEmailProps) => {
     } = useForm();
 
     const onLogin = (details: any) => {
-        navigation.navigate(screenName.SignUp as never);
+        navigation.navigate(screenName.Chats as never);
     };
 
     const togglePasswordVisibility = () => {
@@ -68,7 +78,7 @@ const LoginEmail = (props: loginEmailProps) => {
     return (
         <Fragment>
             <View style={[flex1]}>
-                <GestureHandlerRootView style={{ flex: 1, backgroundColor: isDark() ? colors.darkModeVar2 : colors.white }}>
+                <GestureHandlerRootView style={{ flex: 1, backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.white }}>
                     <ImageBackground source={AuthImageBg} style={[flex1]}>
                         <ScrollView>
                             <View style={[m28]}>
@@ -76,11 +86,11 @@ const LoginEmail = (props: loginEmailProps) => {
                             </View>
                             <View>
                                 <View style={[mh25]}>
-                                    <H20font600Black>{labels.logIn}</H20font600Black>
-                                    <H14font400Gray4 style={[mv8]}>{labels.message}</H14font400Gray4>
-                                    <IconInputContainer style={{ borderBottomColor: isDark() ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
+                                    <H20font600Black style={{ color: isDarkTheme ? colors.white : colors.black }}>{labels.logIn}</H20font600Black>
+                                    <H14font400Gray4 style={[mv8, { color: isDarkTheme ? colors.greyVar3 : colors.greyVar4 }]}>{labels.message}</H14font400Gray4>
+                                    <IconInputContainer style={{ borderBottomColor: isDarkTheme ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
                                         <View style={[justyfyCenter]}>
-                                            <CustomIcon name='email-outline' size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type='MaterialCommunityIcons' />
+                                            <CustomIcon name='email-outline' size={20} color={isDarkTheme ? colors.greyVar3 : colors.greyVar4} type='MaterialCommunityIcons' />
                                         </View>
                                         <Controller
                                             name={formKeys.name}
@@ -100,19 +110,20 @@ const LoginEmail = (props: loginEmailProps) => {
                                             }}
                                         />
                                     </IconInputContainer>
-                                    <IconInputContainer style={{ borderBottomColor: isDark() ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
+                                    <IconInputContainer style={{ borderBottomColor: isDarkTheme ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
                                         <InputContainer1>
                                             <View style={[flexRow, alignItemsCenter]}>
-                                                <CustomIcon name='lock-outline' size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type='MaterialIcons' />
+                                                <CustomIcon name='lock-outline' size={20} color={isDarkTheme ? colors.greyVar3 : colors.greyVar4} type='MaterialIcons' />
                                                 <Controller
                                                     name={formKeys.password}
                                                     control={control}
                                                     render={({ field: { onChange, value } }) => (
-                                                        <CustomTextInput
+                                                        <CustomTextInput 
                                                             placeholder={labels.password}
                                                             value={value}
                                                             secureTextEntry={showPassword}
-                                                            onChangeText={onChange} />
+                                                            onChangeText={onChange}
+                                                        />
                                                     )}
                                                     rules={{
                                                         required: requiredValidation(('labels.password')),
@@ -127,7 +138,7 @@ const LoginEmail = (props: loginEmailProps) => {
                                                     <CustomIcon
                                                         name={!showPassword ? 'eye' : 'eye-closed'}
                                                         size={20}
-                                                        color={colors.greyVar3}
+                                                        color={isDarkTheme?colors.greyVar3:colors.greyVar4}
                                                         type='octicons'
                                                     />
                                                 </TouchableOpacity>
@@ -143,7 +154,7 @@ const LoginEmail = (props: loginEmailProps) => {
                                                         <CustomIcon name="check" size={16} color={colors.white} type={'MaterialCommunityIcons'} />)}
                                                 </CheckBox>
                                             </TouchableOpacity>
-                                            <H14font400Gray4 style={[ph5]}>{labels.rememberme}</H14font400Gray4>
+                                            <H14font400Gray4 style={[ph5,{ color: isDarkTheme ? colors.greyVar3 : colors.greyVar4 }]}>{labels.rememberme}</H14font400Gray4>
                                         </View>
                                         <TouchableOpacity
                                             onPress={() => { navigation.navigate(screenName.ForgetPassword as never) }}>
@@ -157,18 +168,18 @@ const LoginEmail = (props: loginEmailProps) => {
                                         />
                                     </View>
                                     <CheckBoxContainer>
-                                        <BottomStyle />
-                                        <H14font400Gray4>{labels.continuemsg}</H14font400Gray4>
-                                        <BottomStyle />
+                                        <BottomStyle style={{borderBottomColor:isDarkTheme?'rgba(78, 80, 114, 0.3)' : colors.borderBottomColor}}/>
+                                        <H14font400Gray4 style={{color: isDarkTheme ? colors.greyVar3 : colors.greyVar4 }}>{labels.continuemsg}</H14font400Gray4>
+                                        <BottomStyle style={{borderBottomColor:isDarkTheme?'rgba(78, 80, 114, 0.3)' : colors.borderBottomColor}}/>
                                     </CheckBoxContainer>
                                     <SocialLogoContainer>
-                                        {socialLogo(isDark() ? <GoogleIconDark /> : <GoogleIcon />)}
+                                        {socialLogo(isDarkTheme ? <GoogleIconDark /> : <GoogleIcon />)}
                                         {socialLogo(<FaceBookIcon />)}
-                                        {socialLogo(isDark() ? <AppleIconDark /> : <AppleIcon />)}
+                                        {socialLogo(isDarkTheme ? <AppleIconDark /> : <AppleIcon />)}
                                     </SocialLogoContainer>
                                 </View>
                                 <TextContainer>
-                                    <H14font400Gray4>{labels.donthaveanaccount}</H14font400Gray4>
+                                    <H14font400Gray4  style={{color: isDarkTheme ? colors.greyVar3 : colors.greyVar4 }}>{labels.donthaveanaccount}</H14font400Gray4>
                                     <TouchableOpacity
                                         onPress={() => { navigation.navigate(screenName.SignUp as never) }}>
                                         <H14font400Blue >{labels.signUp}</H14font400Blue>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, Image, TouchableHighlight, StyleSheet, TouchableOpacity, PanResponder, Animated } from 'react-native';
+import { View, Image, TouchableHighlight, StyleSheet, TouchableOpacity, PanResponder, Animated, Platform } from 'react-native';
 import { MainContainer } from '../../components/commonView';
-import { StatusImg1, UserImg } from '../../utils/png';
+import { StatusImg1 } from '../../utils/png';
 import ProgressBar from 'react-native-progress/Bar';
 import { colors } from '../../utils/colors';
 import CustomIcon from '../../utils/Icons';
@@ -18,7 +18,7 @@ import { useNavigation } from '@react-navigation/native';
 
 export type MyStatusProps = {};
 
-export const MyStatusView = ({image}) => {
+export const MyStatusView = ({ image }) => {
   return (
     <View>{image}</View>
   )
@@ -29,7 +29,7 @@ const MyStatus = (props: MyStatusProps) => {
   const [progress1, setProgress1] = useState(0);
   const [progress2, setProgress2] = useState(0);
   const [callOptionModal, setCallOptionModal] = useState(false);
-  const navigation=useNavigation();
+  const navigation = useNavigation();
 
   const handleCallOptionModal = () => {
     setCallOptionModal(!callOptionModal);
@@ -95,7 +95,7 @@ const MyStatus = (props: MyStatusProps) => {
         <View style={[flex1, flexRow]}>
           <View style={styles.progressBarContainer}>
             <ProgressBar
-              progress={progress1} 
+              progress={progress1}
               width={null}
               height={4}
               color={'white'}
@@ -114,9 +114,9 @@ const MyStatus = (props: MyStatusProps) => {
             />
           </View>
         </View>
-        <View style={[flexRow,alignItemsCenter,ml15,mt10]}>
-          <TouchableOpacity onPress={()=>navigation.goBack()}>
-          <CustomIcon name='chevron-left' size={15} color={colors.white} type='octicons' />
+        <View style={[flexRow, alignItemsCenter, ml15, mt10]}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <CustomIcon name='chevron-left' size={15} color={colors.white} type='octicons' />
           </TouchableOpacity>
           <View style={[mh10]}>
             <MyStatusView image={<MyStatusPic />} />
@@ -128,21 +128,21 @@ const MyStatus = (props: MyStatusProps) => {
         </View>
       </View>
       {cardOpen ? (
-        <View style={[styles.viewContainer, { backgroundColor: isDark()?colors.darkModeVar4: colors.white }]} >
-          <View style={[styles.viewTopContainer,{backgroundColor:isDark()?colors.darkModeVar6:colors.purpleVar1}]}>
+        <View style={[styles.viewContainer, { backgroundColor: isDark() ? colors.darkModeVar4 : colors.white }]} >
+          <View style={[styles.viewTopContainer, { backgroundColor: isDark() ? colors.darkModeVar6 : colors.purpleVar1 }]}>
             <View style={[mh10, spaceBetween, flexRow]}>
               <H16font500Black>{labels.viewedBy15}</H16font500Black>
               <TouchableOpacity
                 onPress={handleCallOptionModal}
               >
-                <CustomIcon name='dots-three-vertical' type='entypo' color={isDark()?colors.white:colors.greyVar4} size={15} />
+                <CustomIcon name='dots-three-vertical' type='entypo' color={isDark() ? colors.white : colors.greyVar4} size={15} />
               </TouchableOpacity>
             </View>
           </View>
-          <View style={[mt10,mb30]}>
+          <View style={[mt10, mb30]}>
             {myStatusView.map((item) => {
               return (
-                <View key={item.id} style={ [flexRow,mh20,mv10,alignItemsCenter]}>
+                <View key={item.id} style={[flexRow, mh20, mv10, alignItemsCenter]}>
                   <Image style={{ height: 42, width: 42 }} source={item.image} />
                   <View style={[mh8]}>
                     <H15font500Black>{item.name}</H15font500Black>
@@ -157,7 +157,7 @@ const MyStatus = (props: MyStatusProps) => {
             width={DevWidth * 0.50}
             height={DevHeight * 0.4}
             modalData={<StatusOptionModalComponent />}
-            marginTop={350}
+            marginTop={Platform.OS === 'ios' ? 100 : 350}
             onClose={closeCallOptionModal}
           />
         </View>
@@ -208,12 +208,12 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 25
   },
   viewTopContainer: {
-    height: 42, 
-    backgroundColor: colors.purpleVar1, 
-    marginTop: 20, 
-    width: '90%', 
-    alignSelf: 'center', 
-    borderRadius: 6, 
+    height: 42,
+    backgroundColor: colors.purpleVar1,
+    marginTop: 20,
+    width: '90%',
+    alignSelf: 'center',
+    borderRadius: 6,
     justifyContent: 'center',
   }
 });

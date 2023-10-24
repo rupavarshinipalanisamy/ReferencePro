@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { CommonLineDividerGrey, IconBackground, RowSpaceBetween, TopContainerWhiteCard } from '../../components/commonView';
 import { StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native';
-import { TouchableOpacity, View, StatusBar, } from 'react-native';
+import { TouchableOpacity, View, } from 'react-native';
 import { colors } from '../../utils/colors';
 import CustomIcon from '../../utils/Icons';
 import { justyfyCenter, ml10, alignItemsCenter, flexRow, ph10, mt20, mh20, mv20, ml30, flex1, mr30, ml15, mh25, pl13, ph15 } from '../../components/commonStyles';
@@ -105,24 +105,24 @@ const SettingsScreen = (props: settingsScreenProps) => {
 
     return (
         <Fragment>
-            <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
-                <TopContainerWhiteCard>
+            <View style={[flex1, { backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.whiteVar0 }]} >
+                <TopContainerWhiteCard style={{backgroundColor:isDarkTheme?colors.darkModeVar1:colors.white}}>
                     <View style={{ flexDirection: 'row', marginHorizontal: 20, justifyContent: 'space-between' }}>
-                        <H18BlackText style={pl13}>Settings</H18BlackText>
-                        <CustomIcon name='search-outline' size={20} color={isDark()?colors.white:colors.black} type='Ionicons' />
+                        <H18BlackText style={[pl13,{color:isDarkTheme?colors.white:colors.black}]}>Settings</H18BlackText>
+                        <CustomIcon name='search-outline' size={20} color={isDarkTheme?colors.white:colors.black} type='Ionicons' />
                     </View>
                 </TopContainerWhiteCard>
                 <ScrollView>
                     <View style={[mh25]}>
-                        <RowSpaceBetween style={[{ backgroundColor: isDark() ? colors.darkModeVar4 : colors.purpleVar1 }, flex1, styles.cardSurface]}>
+                        <RowSpaceBetween style={[{ backgroundColor: isDarkTheme ? colors.darkModeVar4 : colors.purpleVar1 }, flex1, styles.cardSurface]}>
                             <View style={flexRow}>
                                 <SettingAvatar />
                                 <View style={[ph15]}>
-                                    <H15font500Black>Mark Villiams</H15font500Black>
-                                    <H14font400Gray4>Hello, I am using Dreamschat</H14font400Gray4>
+                                    <H15font500Black style={{color:isDarkTheme?colors.greyVar0:colors.black}}>Mark Villiams</H15font500Black>
+                                    <H14font400Gray4 style={{color:isDarkTheme?colors.greyVar3:colors.greyVar4}}>Hello, I am using Dreamschat</H14font400Gray4>
                                 </View>
                             </View>
-                            <IconBackground style={{ backgroundColor: isDark() ? colors.darkModeVar7 : colors.purpleVar4 }}>
+                            <IconBackground style={{ backgroundColor: isDarkTheme ? colors.darkModeVar7 : colors.purpleVar4 }}>
                                 <CustomIcon name='qr-code' size={20} color={colors.black} type='MaterialIcons' />
                             </IconBackground>
                         </RowSpaceBetween>
@@ -133,16 +133,16 @@ const SettingsScreen = (props: settingsScreenProps) => {
                                     <View key={settingsDatas.id} style={[flexRow, mt20]}>
                                         <InputContainer1>
                                             <View style={[flexRow, alignItemsCenter]}>
-                                                <IconBackground style={{ backgroundColor: isDark() ? colors.darkModeVar7 : colors.purpleVar4 }}>
-                                                    <CustomIcon name={settingsDatas.iconName} type={settingsDatas.iconType} size={settingsDatas.iconSize} color={isDark() ? colors.greyVar3 : colors.purpleVar3} />
+                                                <IconBackground style={{ backgroundColor: isDarkTheme ? colors.darkModeVar7 : colors.purpleVar4 }}>
+                                                    <CustomIcon name={settingsDatas.iconName} type={settingsDatas.iconType} size={settingsDatas.iconSize} color={isDarkTheme ? colors.greyVar3 : colors.purpleVar3} />
                                                 </IconBackground>
                                                 <TouchableOpacity key={settingsDatas.id} onPress={() => handleTabPress(settingsDatas.id, settingsDatas.screenName)}>
-                                                    <H15font500Black style={[ph10]}>{settingsDatas.name}</H15font500Black>
+                                                    <H15font500Black style={[ph10,{color:isDarkTheme?colors.greyVar0:colors.black}]}>{settingsDatas.name}</H15font500Black>
                                                 </TouchableOpacity>
                                             </View>
                                             <View style={[justyfyCenter]}>
                                                 <TouchableOpacity>
-                                                    <CustomIcon name={settingsDatas.iconName1} type={settingsDatas.iconType1} size={settingsDatas.iconSize} color={isDark() ? colors.greyVar3 : colors.black} />
+                                                    <CustomIcon name={settingsDatas.iconName1} type={settingsDatas.iconType1} size={settingsDatas.iconSize} color={isDarkTheme ? colors.greyVar3 : colors.black} />
                                                 </TouchableOpacity>
                                             </View>
                                         </InputContainer1>
