@@ -57,7 +57,7 @@ const ContactPage = ({ }: AllChatsProps) => {
                 ) : isCustomActionBar ? (
                     <CustomActionBar1 text={selectedCards.length} selectedCardsCount={selectedCards.length} />
                 ) : (
-                    <ChatHeader title={labels.Chats} icon1Navigate={screenName.AccountSettings} icon3Navigate={screenName.NewChat} icon2Navigate={screenName.ForwardTo} />
+                    <ChatHeader title={labels.Contact} icon1Navigate={screenName.AccountSettings} icon3Navigate={screenName.NewChat} icon2Navigate={screenName.ForwardTo} />
                 )}
             </>
         );
@@ -74,7 +74,6 @@ const ContactPage = ({ }: AllChatsProps) => {
 
     return (
         <Fragment>
-            <StatusBar backgroundColor={colors.purpleVar3} />
             <PurpleMainContainer>
                 <Header
                     selectedTab={selectedTab}
@@ -88,10 +87,10 @@ const ContactPage = ({ }: AllChatsProps) => {
                                 <View key={letter}>
                                     <H18BlackBoldText600  style={[mt10,mh20]}>{letter}</H18BlackBoldText600>
                                     {contactsByFirstLetter[letter].map((data) => (
+                                        <View  key={data.id}>
                                         <TouchableOpacity
-                                            key={data.id}
+                                           
                                             onPress={() => {
-                                                navigation.navigate(screenName.ContactDetails as never)
                                                 if (selectedCards.length === 0) {
                                                     console.log('navigated====>');
                                                 } else {
@@ -110,7 +109,9 @@ const ContactPage = ({ }: AllChatsProps) => {
                                             }
                                         >
                                             <View>
+                                                <TouchableOpacity onPress={()=>navigation.navigate(screenName.ContactDetails as never)}>
                                                 <View>{data.profImg}</View>
+                                                </TouchableOpacity>
                                                 {
                                                     selectedCards.includes(data.id) && (
                                                         <View style={[{ backgroundColor: colors.green }, styles.status, alignItemsCenter, justyfyCenter]} >
@@ -134,6 +135,7 @@ const ContactPage = ({ }: AllChatsProps) => {
                                                 </View>
                                             </View>
                                         </TouchableOpacity>
+                                        </View>
                                     ))}
                                 </View>
                             ))}

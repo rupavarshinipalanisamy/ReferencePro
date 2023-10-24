@@ -42,7 +42,7 @@ const App = (props: AppProps) => {
   return (
     <ThemeProvider>
       <View style={{ flex: 1 }}>
-        <RootNavigation initialRouteName={screenName.SettingsScreen} />
+        <RootNavigation initialRouteName={screenName.NoStatus} />
       </View>
     </ThemeProvider>
   );

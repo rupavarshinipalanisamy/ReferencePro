@@ -68,7 +68,6 @@ const Notification = (props: NotificationProps) => {
     return (
         <Fragment>
             <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
-                <StatusBar backgroundColor={isDark() ? colors.darkModeVar1 : colors.white} />
                 <SearchHeader headerText={labels.notify} />
                 <ScrollView>
                     <View style={[mh20, mt20]}>

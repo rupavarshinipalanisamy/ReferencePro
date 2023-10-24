@@ -15,9 +15,9 @@ import { CardHeaderText, PasswordToggleIcon, ToggleSwitch } from '../../componen
 import { SearchHeader } from '../Media/MediaCommonHeader';
 import { isDark } from '../../Theme/ThemeContext';
 
-export type SocialProfilesProps = {};
+export type PasswordProps = {};
 
-const Password = (props: SocialProfilesProps) => {
+const Password = (props: PasswordProps) => {
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [currentPassword, setCurrentPassword] = useState(true);
   const [newPassword, setNewPassword] = useState(true);
@@ -65,7 +65,6 @@ const Password = (props: SocialProfilesProps) => {
   return (
     <Fragment>
       <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
-        <StatusBar backgroundColor={isDark() ? colors.darkModeVar1 : colors.white} />
         <ScrollView style={{ flex: 1 }}>
           <SearchHeader headerText={labels.pwdandSec} />
           <View style={[mt20, mh20]}>

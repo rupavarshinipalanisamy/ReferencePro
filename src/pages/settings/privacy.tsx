@@ -75,7 +75,7 @@ const Privacy = (props: PrivacyProps) => {
         setToggleVisible(!toggleVisible);
     };
 
-    const openModal = (id: number) => {
+    const openModal = (id: number, screenName : string) => {
         setSelectedModalId(id);
         if (id === 4) {
             handleStatusPrivacyOptionModal();
@@ -85,6 +85,8 @@ const Privacy = (props: PrivacyProps) => {
             handleProfilePicModal()
         } else if (id === 3) {
             handleGroupModal()
+        } else if (id === 6) {
+            navigation.navigate(screenName as never);
         }
     };
 
@@ -353,7 +355,6 @@ const Privacy = (props: PrivacyProps) => {
     return (
         <Fragment>
             <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
-                <StatusBar backgroundColor={isDark() ? colors.darkModeVar1 : colors.white} />
                 <SearchHeader headerText={labels.privacy} height={DevHeight / 12} />
                 <View style={[mh20, mt20]}>
                     {privacyData.map((data, index) => {
@@ -361,7 +362,7 @@ const Privacy = (props: PrivacyProps) => {
                             <RowSpaceBetween key={data.id}>
                                 <View style={[pv10]}>
                                     <TouchableOpacity
-                                        onPress={() => openModal(data.id)}>
+                                        onPress={() => openModal(data.id, data.screenName)}>
                                         <H16fontNormalGray4>{data.heading}</H16fontNormalGray4>
                                     </TouchableOpacity>
                                     <H12fontNormalGray>{data.status}</H12fontNormalGray>

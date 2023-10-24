@@ -62,7 +62,7 @@ import SignUp from '../../assets/images/signup-logo.svg';
 import Country from '../../assets/images/counrty-logo.svg';
 import Share from '../../assets/images/share-icon.svg';
 import Avatar from '../../assets/images/settings-avatar.svg'
-import CreatePassword from '../assets/images/modal-logo.svg';
+import CreatePassword1 from '../../assets/images/modal-logo.svg';
 
 
 export const LeftArrowWhiteIcon = () => (
@@ -266,5 +266,5 @@ export const SettingAvatar = () => (
 );
 
 export const CreatePasswordLogo2 = () => (
-    <CreatePassword />
+    <CreatePassword1 />
 );

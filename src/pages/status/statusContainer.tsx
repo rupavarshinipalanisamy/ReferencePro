@@ -4,8 +4,8 @@ import { useNavigation } from "@react-navigation/native";
 import { IconModal } from "../../components/commonModal";
 import { screenName } from "../../utils/screenName";
 import { colors } from "../../utils/colors";
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh15, pl13, spaceBetween } from "../../components/commonStyles";
-import { H14font400Gray4, H15Grey, H15font500Black } from "../../components/commonText";
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh15, mh20, mt20, mv20, pl13, spaceBetween } from "../../components/commonStyles";
+import { H14GreyVar4Bold400, H14font400Gray4, H15Grey, H15font500Black, H16font600Black } from "../../components/commonText";
 import { DevHeight, DevWidth } from "../../utils/device";
 import { labels } from "../../utils/labels";
 import { MyStatusPic, StatusView1 } from "../../utils/svg";
@@ -14,6 +14,9 @@ import { CustomModal, StatusModal } from "../../components/commonComponents";
 import { threeDotIcon } from "../../utils/data/statusData";
 import { isDark } from "../../Theme/ThemeContext";
 import { CircleBg, CircleBg1, TopCard } from "../../styledComponent/styledComponent";
+import { launchCamera } from "react-native-image-picker";
+import { SmallButton } from "../../components/commonButtons";
+import { RowSpaceBetween } from "../../components/commonView";
 
 export const StatusOptionModalComponent = () => {
     const navigation = useNavigation()
@@ -103,6 +106,80 @@ export const BeforeNavigation = () => {
         setPic(base64Image);
         setIsImagePickerOpen(false);
     };
+
+
+    type StatusModalProps = {
+        onImageSelect: (base64Image: string) => void;
+    };
+    
+     const StatusModal: React.FC<StatusModalProps> = ({ onImageSelect }) => {
+        const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+        const navigation = useNavigation();
+    
+        const handleCancelButton = () => {
+            setIsCancelButtonActive(true);
+            openCamera();
+        };
+    
+        const handleDeleteChatButton = () => {
+            navigation.navigate(screenName.StatusAdd as never)
+            setShowIconModal(false)
+        };
+    
+    
+        const openCamera = () => {
+            let options = {
+                mediaType: 'photo',
+                quality: 1,
+                includeBase64: true,
+            };
+            launchCamera(options, response => {
+                imageResponse(response);
+            });
+        };
+    
+    
+        const imageResponse = (response: any) => {
+            if (response.didCancel) {
+                // Handle cancel
+            } else if (response.errorCode == 'permission') {
+                // Handle permission error
+            } else if (response.errorCode == 'others') {
+                // Handle other error
+            } else if (response.assets[0].fileSize > 2097152) {
+                // Handle size exceeded error
+            } else if (response.assets && response.assets.length > 0) {
+                onImageSelect(response.assets[0].base64);
+            }
+        };
+    
+        return (
+            <View style={[mh20]} >
+                <H16font600Black>Choose Image</H16font600Black>
+                <H14GreyVar4Bold400 style={[mt20]}>Choose image picking options.</H14GreyVar4Bold400>
+                <RowSpaceBetween style={[mv20]}>
+                    <SmallButton
+                        title={labels.Camera}
+                        onChange={handleCancelButton}
+                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? colors.darkModeVar4 : colors.white)}
+                        textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.greyVar3 : colors.greyVar4)}
+                        borderWidth={isCancelButtonActive ? 0 : 1}
+                        width={DevWidth / 3.15}
+                        borderColor={`rgba(78, 80, 114, 0.3)`}
+                    />
+                    <SmallButton
+                        title={labels.Gallery}
+                        onChange={handleDeleteChatButton}
+                        backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
+                        textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
+                        borderWidth={isCancelButtonActive ? 1 : 0}
+                        width={DevWidth / 3.15}
+                    />
+                </RowSpaceBetween>
+            </View>
+        );
+    };
+    
 
     return (
         <TopCard>

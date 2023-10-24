@@ -503,6 +503,7 @@ export const CustomActionBar1: React.FC<CustomActionBar1Props> = ({
 }) => {
     const [isModalVisible, setModalVisible] = useState(false);
     const [deleteOptionModal, setDeleteOptionModal] = useState(false);
+    
 
     const handleDeleteOptionModal = () => {
         setDeleteOptionModal(!deleteOptionModal)
@@ -560,7 +561,10 @@ export const CustomActionBar1: React.FC<CustomActionBar1Props> = ({
     return (
         <View style={[flexRow, spaceBetween, mh20, mv15, pt10]}>
             <View style={flexRow}>
+                <TouchableOpacity>
                 <LeftArrowWhiteIcon />
+
+                </TouchableOpacity>
                 <View style={{ backgroundColor: isDark() ? colors.purpleVar3 : 'rgba(0, 0, 0, 0.3)', height: 20, width: 20, borderRadius: 20, }}>
                     <Text style={{ textAlign: 'center', color: colors.white, fontSize: 14 }}>{text}</Text>
                 </View>

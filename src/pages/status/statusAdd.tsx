@@ -57,7 +57,6 @@ const ReplyFooterView = () => {
 const StatusAdd = (props: statusAddProps) => {
     return (
         <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
-            <StatusBar backgroundColor={isDark() ? colors.darkModeVar1 : colors.white} />
             <TopContainerWhiteCard1 height={DevHeight / 12} {...props}>
                 <TouchableOpacity style={[flexRow, spaceBetween, { marginTop: 25, }]}>
                     <View style={{ flexDirection: 'row' }}>

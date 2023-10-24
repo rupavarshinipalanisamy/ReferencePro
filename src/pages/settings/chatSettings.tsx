@@ -1,20 +1,19 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { Fragment, useEffect, useState } from 'react';
-import { StatusBar, Text, TouchableOpacity, View } from 'react-native';
+import { StatusBar, TouchableOpacity, View } from 'react-native';
 import { IconModal, ThemeModal, } from '../../components/commonModal';
-import { flexRow, mt20, alignItemsCenter, ph15, mh20, spaceBetween, justyfyCenter, mh30, mh5, mt15, mt8, mv10, mv20, ph5, mt10, ph10, mt30, flex1 } from '../../components/commonStyles';
-import { H16font900Black, H16fontNormalGray4, H12fontNormalGray, H14font400Gray4, H14font500Gray4, H16font600Black } from '../../components/commonText';
-import { MainContainer, RowSpaceBetween, TopContainerWhiteCard } from '../../components/commonView';
+import { flexRow, mt20, alignItemsCenter, ph15, mh20, spaceBetween, mh30, mt8, mv20, mt30, flex1 } from '../../components/commonStyles';
+import { H16fontNormalGray4, H12fontNormalGray, H14font400Gray4, H16font600Black } from '../../components/commonText';
+import { RowSpaceBetween } from '../../components/commonView';
 import CustomIcon from '../../utils/Icons';
 import { labels } from '../../utils/labels';
 import { chatSettings } from '../../utils/data/chatsData';
-import { chooseTheme, clearAllChats, profilePic } from '../../utils/data/modalData';
-import { RadioBtn, ToggleSwitch } from '../../components/commonComponents';
+import { ToggleSwitch } from '../../components/commonComponents';
 import { SmallButton } from '../../components/commonButtons';
 import { DevWidth } from '../../utils/device';
 import { colors } from '../../utils/colors';
 import { CheckBox } from '../../styledComponent/styledComponent';
-import { isDark } from '../../Theme/ThemeContext';
+import { isDark, useTheme } from '../../Theme/ThemeContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SearchHeader } from '../Media/MediaCommonHeader';
 
@@ -31,7 +30,11 @@ const ChatSettings = (props: ChatSettingsProps) => {
     const [archieveModal, setArchieveModal] = useState(false);
     const [deleteModal, setDeleteModal] = useState(false);
     const [clearAllModal,setClearAllModal] = useState(false);
-    const [themeModal,setThemeModal] = useState(false)
+    const [themeModal,setThemeModal] = useState(false);
+    const {theme} = useTheme();
+
+    const isDarkTheme = theme === 'dark';
+
 
 
     const handleThemeSelect = async (themeName: string) => {
@@ -202,7 +205,6 @@ const ChatSettings = (props: ChatSettingsProps) => {
             <View style={[mh30]}>
                 <H16font600Black >{labels.clearAllChats1}</H16font600Black>
                 <H14font400Gray4 style={[mt8]}>{labels.deleteMsg}</H14font400Gray4>
-    
                 <View style={[flexRow, mv20, alignItemsCenter]}>
                     <TouchableOpacity
                         onPress={toggleCheckbox2}>
@@ -246,8 +248,7 @@ const ChatSettings = (props: ChatSettingsProps) => {
 
     return (
         <Fragment>
-            <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
-                <StatusBar backgroundColor={isDark() ? colors.darkModeVar1 : colors.white} />
+            <View style={[flex1, { backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.whiteVar0 }]} >
                 <SearchHeader headerText={labels.chat} />
                 <View style={[mh20, mt20]}>
                     <H16fontNormalGray4>{labels.theme} </H16fontNormalGray4>

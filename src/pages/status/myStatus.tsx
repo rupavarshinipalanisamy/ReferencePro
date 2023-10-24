@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, Image, TouchableHighlight, StyleSheet, TouchableOpacity, PanResponder, Animated } from 'react-native';
 import { MainContainer } from '../../components/commonView';
-import { StatusImg1 } from '../../utils/png';
+import { StatusImg1, UserImg } from '../../utils/png';
 import ProgressBar from 'react-native-progress/Bar';
 import { colors } from '../../utils/colors';
 import CustomIcon from '../../utils/Icons';
@@ -160,7 +160,6 @@ const MyStatus = (props: MyStatusProps) => {
             marginTop={350}
             onClose={closeCallOptionModal}
           />
-
         </View>
       ) : (
         <Animated.View

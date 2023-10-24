@@ -44,7 +44,6 @@ export const agreeText = (text1: string, text2: string) => {
 const TermsAndConditions = (props: termsAndConditionsProps) => {
     return (
         <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
-            <StatusBar backgroundColor={isDark() ? colors.darkModeVar1 : colors.white} />
             <SearchHeader headerText={labels.termandCondition} />
             <View style={[m15, mt30]} >
                 {privacyContentData(labels.termsandcondition1)}

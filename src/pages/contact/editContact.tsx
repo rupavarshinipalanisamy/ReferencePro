@@ -42,8 +42,7 @@ const EditContact = (props: EditContactProps) => {
 
     return (
         <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
-            <StatusBar backgroundColor={isDark() ? colors.darkModeVar1 : colors.white} />
-            <SearchHeader headerText={labels.EditProfile} />
+            <SearchHeader headerText={labels.editCont} />
             <View style={[flex1, mh30]}>
                 {
                     editContact.map((field) => (
