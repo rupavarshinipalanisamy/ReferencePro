@@ -1,20 +1,22 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Button } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { IconModal } from "../../components/commonModal";
 import { screenName } from "../../utils/screenName";
 import { colors } from "../../utils/colors";
-import { SmallButton } from "../../components/commonButtons";
 import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh15, mh20, mt20, mv20, pl13, spaceBetween } from "../../components/commonStyles";
-import { H14font400Gray4, H15Grey, H15font500Black, H16font600Black } from "../../components/commonText";
-import { RowSpaceBetween } from "../../components/commonView";
+import { H14GreyVar4Bold400, H14font400Gray4, H15Grey, H15font500Black, H16font600Black } from "../../components/commonText";
 import { DevHeight, DevWidth } from "../../utils/device";
 import { labels } from "../../utils/labels";
-import { MyStatusPic } from "../../utils/svg";
+import { MyStatusPic, StatusView1 } from "../../utils/svg";
 import CustomIcon from "../../utils/Icons";
-import StatusView1 from '../../../assets/images/status-view1.svg'
-import { CustomModal } from "../../components/commonComponents";
+import { CustomModal, StatusModal } from "../../components/commonComponents";
 import { threeDotIcon } from "../../utils/data/statusData";
+import { isDark } from "../../Theme/ThemeContext";
+import { CircleBg, CircleBg1, TopCard } from "../../styledComponent/styledComponent";
+import { launchCamera } from "react-native-image-picker";
+import { SmallButton } from "../../components/commonButtons";
+import { RowSpaceBetween } from "../../components/commonView";
 
 export const StatusOptionModalComponent = () => {
     const navigation = useNavigation()
@@ -23,9 +25,9 @@ export const StatusOptionModalComponent = () => {
             {
                 threeDotIcon.map((item) => {
                     return (
-                        <TouchableOpacity key={item.id} onPress={() => navigation.navigate(item.screenName as never)} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
+                        <TouchableOpacity key={item.id} onPress={() => { }} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
                             <View style={[flexRow]}>
-                                <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={colors.blackVar1} />
+                                <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={isDark()?colors.greyVar3:colors.blackVar1} />
                                 <View style={[alignItemsCenter, justyfyCenter, pl13]}>
                                     <H15Grey>{item.name}</H15Grey>
                                 </View>
@@ -40,153 +42,172 @@ export const StatusOptionModalComponent = () => {
 
 export const AfterNavigation = () => {
     const [callOptionModal, setCallOptionModal] = useState(false);
-  
+
     const handleCallOptionModal = () => {
-      setCallOptionModal(!callOptionModal);
+        setCallOptionModal(!callOptionModal);
     }
-  
+
     const closeCallOptionModal = () => {
-      setCallOptionModal(false);
+        setCallOptionModal(false);
     }
-  
+
     const navigation = useNavigation();
-  
+
     const navigateToAnotherPage = () => {
-      navigation.navigate(screenName.MyStatus as never); 
+        navigation.navigate(screenName.MyStatus as never);
     }
-  
+
     return (
-     <View style={styles.container}>
-         <View style={{ flexDirection: "row" }}>
-        <TouchableOpacity onPress={navigateToAnotherPage}>
-          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-            <StatusView1 />
-            <View style={{ position: 'absolute' }}>
-              <MyStatusPic />
+        <TopCard>
+            <View style={[flexRow]}>
+                <TouchableOpacity onPress={navigateToAnotherPage}>
+                    <View style={[alignItemsCenter, justyfyCenter]}>
+                        <StatusView1 />
+                        <View style={{ position: 'absolute' }}>
+                            <MyStatusPic />
+                        </View>
+                    </View>
+                </TouchableOpacity>
+                <View style={[mh15, flexRow, spaceBetween, flex1]}>
+                    <View>
+                        <H15font500Black>{labels.myStatus}</H15font500Black>
+                        <H14font400Gray4>{labels.muteTime1}</H14font400Gray4>
+                    </View>
+                    <TouchableOpacity
+                        style={[alignItemsCenter, justyfyCenter]}
+                        onPress={handleCallOptionModal}
+                    >
+                        <CustomIcon name='dots-three-horizontal' type='entypo' color={colors.greyVar3} size={15} />
+                    </TouchableOpacity>
+                </View>
+                <CustomModal
+                    isVisible={callOptionModal}
+                    width={DevWidth * 0.50}
+                    height={DevHeight * 0.4}
+                    modalData={<StatusOptionModalComponent />}
+                    marginTop={160}
+                    onClose={closeCallOptionModal}
+                />
             </View>
-          </View>
-        </TouchableOpacity>
-        <View style={[mh15, flexRow, spaceBetween, flex1]}>
-          <View>
-            <H15font500Black>{labels.myStatus}</H15font500Black>
-            <H14font400Gray4>{labels.muteTime1}</H14font400Gray4>
-          </View>
-          <TouchableOpacity
-            style={[alignItemsCenter, justyfyCenter]}
-            onPress={handleCallOptionModal}
-          >
-            <CustomIcon name='dots-three-horizontal' type='entypo' color={colors.greyVar3} size={15} />
-          </TouchableOpacity>
-        </View>
-  
-        <CustomModal
-          isVisible={callOptionModal}
-          width={DevWidth * 0.50}
-          height={DevHeight * 0.4}
-          modalData={<StatusOptionModalComponent />}
-          marginTop={160}
-          onClose={closeCallOptionModal}
-        />
-      </View>
-     </View>
+        </TopCard>
     );
-  }
-  
+}
+
 export const BeforeNavigation = () => {
+    const [Pic, setPic] = useState('');
     const [showIconModal, setShowIconModal] = useState(false);
+    const [isImagePickerOpen, setIsImagePickerOpen] = useState(false);
 
     const openIconModal = () => {
         setShowIconModal(true);
     }
 
-    const closeIconModal = () => {
-        setShowIconModal(false);
-    }
+    const handleImageSelect = (base64Image: string) => {
+        setPic(base64Image);
+        setIsImagePickerOpen(false);
+    };
+
+
+    type StatusModalProps = {
+        onImageSelect: (base64Image: string) => void;
+    };
+
+    const StatusModal: React.FC<StatusModalProps> = ({ onImageSelect }) => {
+        const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+        const navigation = useNavigation();
+
+        const handleCancelButton = () => {
+            setIsCancelButtonActive(true);
+            openCamera();
+        };
+
+        const handleDeleteChatButton = () => {
+            navigation.navigate(screenName.StatusAdd as never)
+            setShowIconModal(false)
+        };
+
+
+        const openCamera = () => {
+            let options = {
+                mediaType: 'photo',
+                quality: 1,
+                includeBase64: true,
+            };
+            launchCamera(options, response => {
+                imageResponse(response);
+            });
+        };
+
+
+        const imageResponse = (response: any) => {
+            if (response.didCancel) {
+                // Handle cancel
+            } else if (response.errorCode == 'permission') {
+                // Handle permission error
+            } else if (response.errorCode == 'others') {
+                // Handle other error
+            } else if (response.assets[0].fileSize > 2097152) {
+                // Handle size exceeded error
+            } else if (response.assets && response.assets.length > 0) {
+                onImageSelect(response.assets[0].base64);
+            }
+        };
+
+        return (
+            <View style={[mh20]} >
+                <H16font600Black>Choose Image</H16font600Black>
+                <H14GreyVar4Bold400 style={[mt20]}>Choose image picking options.</H14GreyVar4Bold400>
+                <RowSpaceBetween style={[mv20]}>
+                    <SmallButton
+                        title={labels.Camera}
+                        onChange={handleCancelButton}
+                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? colors.darkModeVar4 : colors.white)}
+                        textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.greyVar3 : colors.greyVar4)}
+                        borderWidth={isCancelButtonActive ? 0 : 1}
+                        width={DevWidth / 3.15}
+                        borderColor={`rgba(78, 80, 114, 0.3)`}
+                    />
+                    <SmallButton
+                        title={labels.Gallery}
+                        onChange={handleDeleteChatButton}
+                        backgroundColor={isCancelButtonActive ? (isDark() ? colors.darkModeVar4 : colors.white) : colors.purpleVar3}
+                        textColor={isCancelButtonActive ? (isDark() ? colors.greyVar3 : colors.greyVar4) : colors.white}
+                        borderWidth={isCancelButtonActive ? 1 : 0}
+                        width={DevWidth / 3.15}
+                        borderColor={`rgba(78, 80, 114, 0.3)`}
+                    />
+                </RowSpaceBetween>
+            </View>
+        );
+    };
+
 
     return (
-        <View style={styles.container}>
-            <View style={{ flexDirection: "row" }}>
-            <TouchableOpacity onPress={openIconModal}>
-                <MyStatusPic />
-                <View style={{
-                    backgroundColor: 'white',
-                    position: 'absolute',
-                    top: 25,
-                    left: 27,
-                    height: 13, width: 13, borderRadius: 13, justifyContent: 'center', alignItems: 'center'
-                }}>
-                    <View style={{
-                        borderRadius: 10,
-                        height: 10,
-                        width: 10,
-                        backgroundColor: 'green',
-                        alignItems: 'center'
-                    }}>
-                        <CustomIcon name='add' type='MaterialIcons' size={9} color={colors.white} />
+        <TopCard>
+            <View style={[flexRow]}>
+                <TouchableOpacity onPress={openIconModal}>
+                    <MyStatusPic />
+                    <CircleBg>
+                        <CircleBg1>
+                            <CustomIcon name='add' type='MaterialIcons' size={9} color={isDark() ? colors.darkModeVar6 : colors.white} />
+                        </CircleBg1>
+                    </CircleBg>
+                </TouchableOpacity>
+                <View style={[mh15, flexRow, spaceBetween, flex1]}>
+                    <View >
+                        <H15font500Black>{labels.myStatus}</H15font500Black>
+                        <H14font400Gray4>{labels.statusUploadCont}</H14font400Gray4>
                     </View>
+                    <IconModal
+                        isVisible={showIconModal}
+                        onClose={() => setIsImagePickerOpen(false)}
+                        contentComponent={<StatusModal onImageSelect={handleImageSelect} />}
+                        iconName='image-plus'
+                        iconType='MaterialCommunityIcons'
+                        iconSize={25}
+                    />
                 </View>
-            </TouchableOpacity>
-            <View style={[mh15, flexRow, spaceBetween, flex1]}>
-                <View >
-                    <H15font500Black>{labels.myStatus}</H15font500Black>
-                    <H14font400Gray4>{labels.statusUploadCont}</H14font400Gray4>
-                </View>
-            <IconModal
-                isVisible={showIconModal}
-                onClose={closeIconModal}
-                contentComponent={<ModalContent />}
-                iconName='image-plus'
-                iconType='MaterialCommunityIcons'
-                iconSize={25}
-            />
             </View>
-        </View>
-        </View>
+        </TopCard>
     );
 }
-
-const ModalContent = ({  }) => {
-    const navigation = useNavigation();
-    const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
-
-    const handleCancelButton = () => {
-        setIsCancelButtonActive(true);
-    };
-
-    const handleDeleteChatButton = () => {
-        navigation.navigate(screenName.StatusAdd as never)
-    };
-
-    return (
-        <View style={[mh20]}>
-            <H16font600Black>Choose Image?</H16font600Black>
-            <Text style={[mt20]}>Choose image picking options.</Text>
-            <RowSpaceBetween style={[mv20]}>
-                <SmallButton
-                    title={labels.Camera}
-                    onChange={handleCancelButton}
-                    backgroundColor={isCancelButtonActive ? colors.purpleVar3 : colors.white}
-                    textColor={isCancelButtonActive ? colors.white : colors.greyVar4}
-                    borderWidth={isCancelButtonActive ? 0 : 1}
-                    width={DevWidth /3.15 }
-                />
-                <SmallButton
-                    title={labels.Gallery}
-                    onChange={handleDeleteChatButton}
-                    backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
-                    textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
-                    borderWidth={isCancelButtonActive ? 1 : 0}
-                    width={DevWidth / 3.15}
-                />
-            </RowSpaceBetween>
-        </View>
-    )
-}
-
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: colors.purpleVar4,
-        margin: 20,
-        padding: 10,
-    },
-});

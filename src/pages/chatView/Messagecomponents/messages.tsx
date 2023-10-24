@@ -346,6 +346,8 @@ export const FooterChatView = () => {
                         <TextInput
                             style={{ flex: 1, marginLeft: 5, fontSize: 14, fontWeight: '400',color:isDark()?colors.greyVar3:colors.greyVar4}}
                             placeholder="Type here..."
+                            placeholderTextColor={isDark() ? colors.greyVar3 : colors.greyVar4}
+
                         />
                     </View>
                     <View style={{ flexDirection: 'row' }}>
@@ -482,7 +484,6 @@ export const ReplyFooterView = ({ onIconClick }: any) => {
         </View>
     );
 }
-
 
 export const FooterAdminChatView = () => {
     return (

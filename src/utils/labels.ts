@@ -309,7 +309,14 @@ export const labels = {
     Horace1:'Horace',
     Keene:'Keene',
     addContact:'Add Contact',
-    termTextCon:'Lorem  ipsum  dolor sit amet,  consectetur  adipiscing  elit, sed do  eiusmod  tempor  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis  nostrud exercitation  ullamco  aliquip  ex  ea commodo  consequat.'
+    termTextCon:'Lorem  ipsum  dolor sit amet,  consectetur  adipiscing  elit, sed do  eiusmod  tempor  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis  nostrud exercitation  ullamco  aliquip  ex  ea commodo  consequat.',
+    contactDetails:'Contact Details',
+    MyStatus:'My Status',
+    No25:'25',
+    viewedBy15:'Viewed By 15',
+    block:'Block',
+    edit:'Edit',
+    share:'Share',
     
 
 

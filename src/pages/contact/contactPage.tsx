@@ -1,19 +1,17 @@
 import React, { Fragment, useState, } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { colors } from '../../utils/colors';
-import { alignItemsCenter, alignSelfCenter, borderRadius10, flex1, flexRow, justyfyCenter, m15, mb15, mh20, ml15, mr5, mt20, mt3, mt5, mv10, p10, pb5, ph10, ph20, ph5, pv15, spaceBetween, spaceEvenly } from '../../components/commonStyles';
-import { PinnedChatsdata, allChatsData } from '../../utils/data/chatsData';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh10, mh20, mh5, mt10, mt20, mt3, ph10, ph5 } from '../../components/commonStyles';
 import { DevWidth } from '../../utils/device';
-import { CardSurface, CommonLineDividerGrey, PurpleMainContainer, RowSpaceBetween, RowSpaceEvenly } from '../../components/commonView'
+import { PurpleMainContainer } from '../../components/commonView'
 import { labels } from '../../utils/labels';
-import { H15Green, H15Grey, H15Red, H16SemiBoldBlack, H18BoldGrey } from '../../components/commonText';
-import { ArchiveIconBlackIcon, BlackDoubleTickIcon, BlackSingleTickIcon, BlueDoubleTickIcon, ContactImg1, FileBlackIcon, MikeBlackIcon, PhoneIncomingRedIcon, PictureBlackIcon, PinBlackIcon, VideoBlackIcon, VideoRedIcon } from '../../utils/svg';
+import { H15Grey1, H16SemiBoldBlack, H18BlackBoldText600 } from '../../components/commonText';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
-import { BottomTabBar, ChatHeader, ContactHeader, CustomActionBar, CustomActionBarSecond } from '../../components/commonComponents'
+import { BottomTabBar, ChatHeader, CustomActionBar1, CustomActionBarSecond } from '../../components/commonComponents'
 import { contactList } from '../../utils/data/contactData';
 import CustomIcon from '../../utils/Icons';
-import { useTheme } from '../../Theme/ThemeContext';
+import { useTheme, isDark  } from '../../Theme/ThemeContext';
 
 
 export type AllChatsProps = {
@@ -27,12 +25,16 @@ const ContactPage = ({ }: AllChatsProps) => {
     const {theme} = useTheme();
     const isDarkTheme = theme === 'dark';
 
-    const toggleCardSelection = (cardId: number) => {
-        if (selectedCards.includes(cardId)) {
-            setSelectedCards(selectedCards.filter(id => id !== cardId));
+    const handleCardSelection = (cardId: number) => {
+        const updatedSelectedCards = [...selectedCards];
+
+        if (updatedSelectedCards.includes(cardId)) {
+            updatedSelectedCards.splice(updatedSelectedCards.indexOf(cardId), 1);
         } else {
-            setSelectedCards([...selectedCards, cardId]);
+            updatedSelectedCards.push(cardId);
         }
+
+        setSelectedCards(updatedSelectedCards);
     };
 
     const handleTabPress = (tab: string) => {
@@ -54,6 +56,8 @@ const ContactPage = ({ }: AllChatsProps) => {
             <>
                 {showCustomActionBarSecond ? (
                     <CustomActionBarSecond itemNumber={selectedCards.length} />
+                ) : isCustomActionBar ? (
+                    <CustomActionBar1 text={selectedCards.length} selectedCardsCount={selectedCards.length} />
                 ) : (
                     <ContactHeader title={labels.Contact} icon2Navigate={() => {navigation.navigate(screenName.AddContact as never)}} profileAvatar={() => {navigation.navigate(screenName.SettingsScreen as never)}} />
                 )}
@@ -78,20 +82,21 @@ const ContactPage = ({ }: AllChatsProps) => {
                     selectedCards={selectedCards}
                     handleTabPress={handleTabPress}
                 />
-                <View style={[flex1, mt20, styles.whiteBg]}>
+                <View style={[flex1, mt20, styles.whiteBg,{backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0}]}>
                     <View style={flex1}>
                         <ScrollView showsVerticalScrollIndicator={false}>
                             {Object.keys(contactsByFirstLetter).map((letter) => (
                                 <View key={letter}>
-                                    <Text style={styles.firstLetter}>{letter}</Text>
+                                    <H18BlackBoldText600  style={[mt10,mh20]}>{letter}</H18BlackBoldText600>
                                     {contactsByFirstLetter[letter].map((data) => (
+                                        <View  key={data.id}>
                                         <TouchableOpacity
-                                            key={data.id}
+                                           
                                             onPress={() => {
                                                 if (selectedCards.length === 0) {
                                                     console.log('navigated====>');
                                                 } else {
-                                                    toggleCardSelection(data.id);
+                                                    handleCardSelection(data.id);
                                                 }
                                             }}
                                             onLongPress={() => {
@@ -100,20 +105,24 @@ const ContactPage = ({ }: AllChatsProps) => {
                                                 }
                                             }}
                                             style={
-                                                selectedCards.includes(data.id) ? styles.selectedCardContainer : styles.cardContainer
+                                                selectedCards.includes(data.id) ? [styles.selectedCardContainer,{backgroundColor:isDark()?colors.darkModeVar6:colors.purpleVar1} ]
+                                                : 
+                                                [styles.cardContainer,{backgroundColor:isDark()?colors.darkModeVar4:colors.white}]
                                             }
                                         >
                                             <View>
+                                                <TouchableOpacity onPress={()=>navigation.navigate(screenName.ContactDetails as never)}>
                                                 <View>{data.profImg}</View>
+                                                </TouchableOpacity>
                                                 {
                                                     selectedCards.includes(data.id) && (
                                                         <View style={[{ backgroundColor: colors.green }, styles.status, alignItemsCenter, justyfyCenter]} >
-                                                            <CustomIcon name='check' size={10} color={colors.white} type='entypo' />
+                                                            <CustomIcon name='check' size={10} color={isDark()?colors.darkModeVar2:colors.white} type='entypo' />
                                                         </View>
                                                     )
                                                 }
                                             </View>
-                                            <View>
+                                            <View style={[mh10]}>
                                                 <H16SemiBoldBlack style={[ph10]}>
                                                     {data.contName}
                                                 </H16SemiBoldBlack>
@@ -121,13 +130,14 @@ const ContactPage = ({ }: AllChatsProps) => {
                                                     <CustomIcon
                                                         name="location-outline"
                                                         size={18}
-                                                        color={colors.greyVar4}
+                                                        color={isDark()?colors.greyVar3:colors.greyVar4}
                                                         type="Ionicons"
                                                     />
-                                                    <H15Grey>{data.location}</H15Grey>
+                                                    <H15Grey1 style={[mh5]}>{data.location}</H15Grey1>
                                                 </View>
                                             </View>
                                         </TouchableOpacity>
+                                        </View>
                                     ))}
                                 </View>
                             ))}
@@ -142,22 +152,13 @@ const ContactPage = ({ }: AllChatsProps) => {
 
 const styles = StyleSheet.create({
     whiteBg: {
-        backgroundColor: colors.white,
         height: '100%',
         width: '100%',
         borderTopLeftRadius: 45,
         borderTopRightRadius: 45,
         overflow: 'hidden',
     },
-    firstLetter: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: colors.black,
-        marginTop: 10,
-        marginLeft: 20,
-    },
     cardContainer: {
-        backgroundColor: 'white',
         flexDirection: 'row',
         elevation: 4,
         margin: 15,
@@ -165,7 +166,6 @@ const styles = StyleSheet.create({
         borderRadius: 8
     },
     selectedCardContainer: {
-        backgroundColor: colors.purpleVar1,
         flexDirection: 'row',
         padding: 10,
         paddingHorizontal: 25,

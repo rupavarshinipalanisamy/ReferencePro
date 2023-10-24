@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { screenName } from './src/utils/screenName';
 import WelcomePage from './src/pages/authentication/welcomePage';
@@ -42,8 +42,8 @@ import GroupSettings from './src/pages/groups/GroupSettings';
 import { useTheme } from './src/Theme/ThemeContext';
 import VerifyCode from './src/pages/VerifyCode';
 import {
-  DefaultTheme,
-  DarkTheme,
+    DefaultTheme,
+    DarkTheme,
 } from '@react-navigation/native';
 import ChooseWallper from './src/pages/ChooseWallper';
 import Notification from './src/pages/settings/notification';
@@ -68,6 +68,7 @@ import StatusAdd from './src/pages/status/statusAdd';
 import MyStatus from './src/pages/status/myStatus';
 import FriendStatus from './src/pages/status/friendStatus';
 import EditContact from './src/pages/contact/editContact';
+import ContactDetails from './src/pages/contact/contactDetails';
 
 const Stack = createNativeStackNavigator();
 
@@ -142,6 +143,7 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.MyStatus} component={MyStatus} />
             <Stack.Screen name={screenName.FriendStatus} component={FriendStatus} />
             <Stack.Screen name={screenName.EditContact} component={EditContact} />
+            <Stack.Screen name={screenName.ContactDetails} component={ContactDetails} />
         </Stack.Navigator>
     );
 };
@@ -151,7 +153,7 @@ interface RootNavigationProps {
 };
 
 const RootNavigation = (props: RootNavigationProps) => {
-    const { theme } = useTheme(); 
+    const { theme } = useTheme();
     return (
         <NavigationContainer theme={theme === 'dark' ? DarkTheme : DefaultTheme}>
             <HomeNavigation initialRouteName={props.initialRouteName} />

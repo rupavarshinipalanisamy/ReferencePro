@@ -42,7 +42,6 @@ const App = (props: AppProps) => {
       </SplashScreenContainer>
     );
   }
-
   return (
     <ThemeProvider>
       <View style={{ flex: 1 }}>
@@ -53,7 +52,7 @@ const App = (props: AppProps) => {
             barStyle="light-content"
           />
         </View>
-        <RootNavigation initialRouteName={screenName.Chats} />
+        <RootNavigation initialRouteName={screenName.WelcomePage} />
       </View>
     </ThemeProvider>
   );

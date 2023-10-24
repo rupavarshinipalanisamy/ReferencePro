@@ -25,10 +25,10 @@ export const BlueSignalImg = require('../../assets/images/png/blueSignal.png');
 export const GroupVideoCallImg1 = require('../../assets/images/png/videoCallImg1.png');
 export const GroupVideoCallImg2 = require('../../assets/images/png/videoCallImg2.png');
 export const GroupVideoCallImg3 = require('../../assets/images/png/videoCallImg3.png');
-export const MediaImg1 = require('../../assets/images/png/mediaimg1.png');
-export const MediaImg2 = require('../../assets/images/png/mediaimg2.png');
-export const MediaImg3 = require('../../assets/images/png/mediaimg3.png');
-export const MediaImg4 = require('../../assets/images/png/mediaimg4.png');
+export const MediaImg1 = require('../../assets/images/png/galleryImg1.png');
+export const MediaImg2 = require('../../assets/images/png/galleryImg2.png');
+export const MediaImg3 = require('../../assets/images/png/galleryImg3.png');
+export const MediaImg4 = require('../../assets/images/png/galleryImg4.png');
 export const QrCodeImg = require('../../assets/images/png/qrcode.png');
 export const UserImg = require('../../assets/images/png/userImg.png');
 export const UsFlagTmg = require('../../assets/images/png/usFlag.png');
@@ -52,7 +52,6 @@ export const ViewPic2 = require('../../assets/images/png/view-pic2.png')
 export const ViewPic3 = require('../../assets/images/png/view-pic3.png')
 export const MutePic1 = require('../../assets/images/png/mute-pic1.png')
 export const MutePic2 = require('../../assets/images/png/mute-pic2.png')
-export const StatusImg1 = require('../../assets/images/png/statusImg1.png')
 export const ImageImg1= require('../../assets/images/png/recentimg1.png');
 export const ImageImg2= require('../../assets/images/png/recentimg2.png');
 export const ImageImg3= require('../../assets/images/png/recentimg3.png');
@@ -86,6 +85,10 @@ export const Wallpaper9=require('../../assets/images/png/wallpaper9.png')
 export const Wallpaper10=require('../../assets/images/png/wallpaper10.png')
 export const Wallpaper11=require('../../assets/images/png/wallpaper11.png')
 export const Wallpaper12=require('../../assets/images/png/wallpaper12.png')
+export const StatusImg1 = require('../../assets/images/png/statusImg1.png');
+export const AuthImageBg =require('../../assets/images/png/background-image.png');
+export const AuthImageBottom =require('../../assets/images/png/welcomepage_bottom.png');
+
 
 
 
