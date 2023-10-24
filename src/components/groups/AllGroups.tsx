@@ -115,7 +115,7 @@ const AllGroups = (props: AllGroupsProps) => {
                                         ) : group.id === 7 ? (
                                             <View style={[flexRow]}>
                                                 <H14GreyVar4Bold400 style = {mr5}>{labels.Alex}</H14GreyVar4Bold400>
-                                                <View style={[mr5, mt3]} >
+                                                <View style={[mr5]} >
                                                     {isDarkTheme ? <StickerDarkIcon /> : <StickerGreyIcon />}
                                                 </View>
                                                 <H14GreyVar4Bold400>{labels.Sticker}</H14GreyVar4Bold400>
