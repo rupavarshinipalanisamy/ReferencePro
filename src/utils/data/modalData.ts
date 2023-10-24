@@ -105,7 +105,7 @@ export const deleteAllChats =[
 export const CallThreeDotsOption = [
     {
         id: 1,
-        name : labels.delete,
+        name : labels.RemoveFromCallLog,
         iconName : 'delete',
         iconType : "AntDesign",
         iconSize : 16,

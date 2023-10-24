@@ -64,5 +64,6 @@ export const screenName = {
     StatusAdd:'StatusAdd',
     MyStatus:'MyStatus',
     FriendStatus:'FriendStatus',
-    EditContact:'EditContact'
+    EditContact:'EditContact',
+    ContactDetails:'ContactDetails',
 };

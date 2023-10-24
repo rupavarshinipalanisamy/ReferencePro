@@ -10,7 +10,8 @@ import PinnedChats from '../../components/chats/PinnedChats';
 import ArchiveChats from '../../components/chats/ArchiveChats';
 import { ArchiveIconWhiteIcon, DeleteWhiteIcon, LeftArrowWhiteIcon, ThreeDotsWhiteIcon } from '../../utils/svg';
 import { screenName } from '../../utils/screenName';
-import { isDark } from '../../Theme/ThemeContext';
+import { isDark, useTheme } from '../../Theme/ThemeContext';
+import { useNavigation } from '@react-navigation/native';
 
 export type chatProps = {
 
@@ -19,7 +20,8 @@ export type chatProps = {
 const Chats = (props: chatProps) => {
     const [selectedTab, setSelectedTab] = useState(labels.AllChats);
     const [selectedCards, setSelectedCards] = useState<number[]>([]);
-
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
 
     const tabs = [
         { label: labels.AllChats },
@@ -53,6 +55,7 @@ const Chats = (props: chatProps) => {
     const Header = ({ selectedTab, selectedCards, handleTabPress } : HeaderProps ) => {
         const isCustomActionBar = selectedCards.length > 0;
         const showCustomActionBarSecond = selectedTab === labels.ArchiveChat && isCustomActionBar;
+        const navigation = useNavigation() ;
 
         return (
             <>
@@ -61,7 +64,7 @@ const Chats = (props: chatProps) => {
                 ) : isCustomActionBar ? (
                     <CustomActionBar text={selectedCards.length} selectedCardsCount={selectedCards.length} />
                 ) : (
-                    <ChatHeader title={labels.Chats} icon1Navigate={screenName.AccountSettings} icon3Navigate={screenName.NewChat} icon2Navigate={screenName.ForwardTo} />
+                    <ChatHeader title={labels.Chats} icon1Navigate={() => {navigation.navigate(screenName.AccountSettings as never)}} icon3Navigate={() => {navigation.navigate(screenName.NewChat as never)}} icon2Navigate={() => {navigation.navigate(screenName.ForwardTo as never)}} />
                 )}
             </>
         );
@@ -69,7 +72,7 @@ const Chats = (props: chatProps) => {
 
     return (
         <Fragment>
-            <PurpleMainContainer>
+            <PurpleMainContainer style={{backgroundColor: isDarkTheme ? colors.darkModeVar1 : colors.purpleVar3}}>
                 <Header
                     selectedTab={selectedTab}
                     selectedCards={selectedCards}

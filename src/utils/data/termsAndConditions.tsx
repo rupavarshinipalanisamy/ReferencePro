@@ -1,11 +1,12 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import { SearchHeader } from '../../pages/Media/MediaCommonHeader';
 import { labels } from '../labels';
 import { H14BlackText, H14font400Gray4, H15font500Black } from '../../components/commonText';
-import { flex1, m15, mt30, mv20 } from '../../components/commonStyles';
+import { flex1, flexRow, m15, mh10, mt30, mv20, mv5 } from '../../components/commonStyles';
 import { CheckCircleIcon } from '../svg';
 import { colors } from '../colors';
+import { isDark } from '../../Theme/ThemeContext';
 
 export type termsAndConditionsProps = {
 }
@@ -29,9 +30,9 @@ export const privacyContentData = (value: string) => {
 
 export const agreeText = (text1: string, text2: string) => {
     return (
-        <View style={{ flexDirection: 'row', marginVertical: 5 }}>
+        <View style={[flexRow, mv5]}>
             <CheckCircleIcon />
-            <View style={{ marginHorizontal: 10, flexDirection: 'row' }}>
+            <View style={[mh10, flexRow]}>
                 <H14font400Gray4>{text1}</H14font400Gray4>
                 <H14BlackText>{text2}</H14BlackText>
             </View>
@@ -42,10 +43,9 @@ export const agreeText = (text1: string, text2: string) => {
 
 const TermsAndConditions = (props: termsAndConditionsProps) => {
     return (
-        <View style={[flex1, { backgroundColor: colors.whiteVar0 }]} >
-
+        <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
             <SearchHeader headerText={labels.termandCondition} />
-            <View style={[m15,mt30]} >
+            <View style={[m15, mt30]} >
                 {privacyContentData(labels.termsandcondition1)}
                 {privacyContentData(labels.termText2)}
                 {privacyContentData(labels.termText2)}
@@ -54,7 +54,6 @@ const TermsAndConditions = (props: termsAndConditionsProps) => {
                     {agreeText(labels.agreeText, labels.privacyPolicy)}
                 </View>
             </View>
-
         </View>
     )
 }

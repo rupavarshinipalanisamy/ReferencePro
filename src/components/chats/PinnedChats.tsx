@@ -11,7 +11,7 @@ import { DevWidth } from '../../utils/device';
 import { BottomTabBar } from '../commonComponents';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
-import { isDark } from '../../Theme/ThemeContext';
+import { isDark, useTheme } from '../../Theme/ThemeContext';
 import CustomIcon from '../../utils/Icons';
 
 export type PinnedChatsProps = {
@@ -22,13 +22,16 @@ export type PinnedChatsProps = {
 
 const PinnedChats = ({ selectedCards, onCardSelection }: PinnedChatsProps) => {
     const navigation = useNavigation();
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
+
     return (
         <View style={[{ backgroundColor: isDark() ? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
             <View style={flex1}>
                 <ScrollView showsVerticalScrollIndicator={false}>
                     {PinnedChatsdata.map((chat) => (
                         <View key={chat.id}>
-                            {chat.id === 1 ? <View style={mv10} /> : <CommonLineDividerGrey />}
+                            {chat.id === 1 ? <View style={mv10} /> : <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />}
                             <TouchableOpacity onPress={() => {
                                 if (selectedCards.length === 0) {
                                     navigation.navigate(screenName.ChatView as never);

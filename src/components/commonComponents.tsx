@@ -1,9 +1,9 @@
 import React, { useState, ReactNode, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal, Switch, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal, Switch, Image, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mh20, mh30, ml10, ml15, mr10, mt10, mt15, mt20, mt30, mt5, mv10, mv15, mv20, p10, p5, pl10, pl13, pl5, pr10, pt10, spaceAround, spaceBetween, textCenter, flex1 } from './commonStyles';
 import { colors } from '../utils/colors';
-import { ArchiveIconBlackIcon, ArchiveIconWhiteIcon, DarkThemeMessageIcon, DeleteWhiteIcon, LeftArrowWhiteIcon, MessageIcon, MikeWhiteIcon, PinWhiteIcon, Profile, ProfileAvatarIcon, ThreeDotsWhiteIcon } from '../utils/svg';
+import { ArchiveIconBlackIcon, ArchiveIconWhiteIcon, DarkThemeMessageIcon, DeleteWhiteIcon, LeftArrowWhiteIcon, MessageIcon, MikeWhiteIcon, PinWhiteIcon, Profile, ProfileAvatarIcon, ShareIcon, ThreeDotsWhiteIcon } from '../utils/svg';
 import { DevHeight, DevWidth } from '../utils/device';
 import { RadioButton, RadioButtonRound, RowSpaceBetween, SelectedRadioBtn } from './commonView';
 import { bottomNavData } from '../utils/data/bottomNavData';
@@ -26,9 +26,9 @@ import { color } from 'react-native-elements/dist/helpers';
 interface ChatHeaderProps {
     title: string;
     isCall?: boolean;
-    icon1Navigate?: string;
-    icon2Navigate?: string;
-    icon3Navigate?: string;
+    icon1Navigate?: () => void;
+    icon2Navigate?: () => void;
+    icon3Navigate?: () => void;
 }
 
 export const ChatHeader: React.FC<ChatHeaderProps> = ({ title, isCall, icon1Navigate, icon2Navigate, icon3Navigate }) => {
@@ -107,13 +107,13 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({ title, isCall, icon1Navi
                     </View>
                 ) : (
                     <View style={[flexRow, spaceBetween]}>
-                        <TouchableOpacity onPress={() => { navigation.navigate(icon1Navigate as never) }} style={mh10}>
+                        <TouchableOpacity onPress={icon1Navigate} style={mh10}>
                             <CustomIcon name="camera-outline" size={20} color={colors.white} type='Ionicons' />
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() => { navigation.navigate(icon2Navigate as never) }} style={mh10}>
+                        <TouchableOpacity onPress={icon2Navigate} style={mh10}>
                             <CustomIcon name='search' color={colors.white} type='Ionicons' size={20} />
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() => { navigation.navigate(icon3Navigate as never) }} style={mh10}>
+                        <TouchableOpacity onPress={icon3Navigate} style={mh10}>
                             <CustomIcon name='add' type='Ionicons' size={20} color={colors.white} />
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => { navigation.navigate(screenName.SettingsScreen as never) }} style={mh10}>
@@ -158,22 +158,25 @@ export const CallHeader: React.FC<ChatHeaderProps> = ({ title }) => {
 
 // ====================   Contact based Header Component   ====================
 
-interface ChatHeaderProps {
+interface ContactHeaderProps {
     title: string;
+    icon1Navigate ?: () => void;
+    icon2Navigate ?: () => void;
+    profileAvatar ?: () => void;
 }
 
-export const ContactHeader: React.FC<ChatHeaderProps> = ({ title }) => {
+export const ContactHeader: React.FC<ContactHeaderProps> = ({ title, icon1Navigate, icon2Navigate, profileAvatar }) => {
     return (
         <View style={[flexRow, spaceBetween, mh20, mv15]}>
             <Text style={styles.chatHeaderText}>{title}</Text>
             <View style={[flexRow, spaceBetween]}>
-                <TouchableOpacity onPress={() => { }}>
+                <TouchableOpacity onPress={icon1Navigate}>
                     <Icon name="search" size={22} color={colors.white} style={mh10} />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => { }}>
+                <TouchableOpacity onPress={icon2Navigate}>
                     <Icon name="add-outline" size={25} color={colors.white} style={mh10} />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => { }}>
+                <TouchableOpacity onPress={profileAvatar}>
                     <ProfileAvatarIcon />
                 </TouchableOpacity>
             </View>
@@ -202,7 +205,7 @@ export const TabControl: React.FC<TabControlProps> = ({ tabs, activeTab, onTabPr
                     ]}
                     onPress={() => onTabPress(tabInfo.label)}
                 >
-                    <View style={[flexRow, spaceBetween]}>
+                    <View style={[flexRow, spaceBetween, alignItemsCenter, justyfyCenter]}>
                         <Text
                             style={[
                                 styles.tabText,
@@ -468,7 +471,7 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
                 // height={80}
                 width={DevWidth * 0.47}
                 modalData={<PinChatOption />}
-                marginTop={48}
+                marginTop={ Platform.OS === 'ios' ? 100 : 48}
                 onClose={() => setModalVisible(false)}
             />
             <IconModal
@@ -483,6 +486,106 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
                 isVisible={muteOptionModal}
                 onClose={() => handleMuteOptionModal()}
                 contentComponent={<MuteChatOption />}
+                iconName='trash-o'
+                iconType='FontAwesome'
+                iconSize={26}
+            />
+        </View>
+    );
+};
+
+// ====================NavBar while selecting cards in Contact page ======================
+interface CustomActionBar1Props {
+    text?: number;
+    onThreeDotsPress?: () => void;
+    selectedCardsCount?: number;
+}
+
+export const CustomActionBar1: React.FC<CustomActionBar1Props> = ({
+    text,
+    onThreeDotsPress,
+    selectedCardsCount,
+}) => {
+    const [isModalVisible, setModalVisible] = useState(false);
+    const [deleteOptionModal, setDeleteOptionModal] = useState(false);
+    
+
+    const handleDeleteOptionModal = () => {
+        setDeleteOptionModal(!deleteOptionModal)
+    }
+  
+    const handleThreeDotsClick = () => {
+        if (selectedCardsCount === 1) {
+            setModalVisible((prevIsModalVisible) => !prevIsModalVisible);
+        } else if (selectedCardsCount > 1) {
+            console.log('Three dots icon clicked for multiple cards');
+        }
+        if (onThreeDotsPress) {
+            onThreeDotsPress();
+        }
+    };
+
+    const DeleteChatOption = () => {
+        const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+
+        const handleCancelButton = () => {
+            setIsCancelButtonActive(true);
+            setDeleteOptionModal(false);
+        };
+
+        const handleDeleteChatButton = () => {
+            setIsCancelButtonActive(false);
+        };
+
+        return (
+            <View style={[mh20]} >
+                <H16font600Black>Delete Contact?</H16font600Black>
+                <H14GreyVar4Bold400 style={[mt20]}>This Contact will be removed from your {'\n'}contact List.</H14GreyVar4Bold400>
+                <RowSpaceBetween style={[mv20]}>
+                    <SmallButton
+                        title={labels.cancel}
+                        onChange={handleCancelButton}
+                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
+                        textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar3 : colors.greyVar4)}
+                        borderWidth={isCancelButtonActive ? 0 : 1}
+                        width={DevWidth / 3.15}
+                    />
+                    <SmallButton
+                        title={labels.delete}
+                        onChange={handleDeleteChatButton}
+                        backgroundColor={isCancelButtonActive ? colors.white : (isDark() ? colors.redVar2 : colors.red)}
+                        textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
+                        borderWidth={isCancelButtonActive ? 1 : 0}
+                        width={DevWidth / 3.15}
+                    />
+                </RowSpaceBetween>
+            </View>
+        )
+    }
+
+    return (
+        <View style={[flexRow, spaceBetween, mh20, mv15, pt10]}>
+            <View style={flexRow}>
+                <TouchableOpacity>
+                <LeftArrowWhiteIcon />
+
+                </TouchableOpacity>
+                <View style={{ backgroundColor: isDark() ? colors.purpleVar3 : 'rgba(0, 0, 0, 0.3)', height: 20, width: 20, borderRadius: 20, }}>
+                    <Text style={{ textAlign: 'center', color: colors.white, fontSize: 14 }}>{text}</Text>
+                </View>
+            </View>
+            <View style={[flexRow, spaceAround]}>
+                <TouchableOpacity style={ml10} onPress={handleThreeDotsClick}>
+                    <ShareIcon />
+                </TouchableOpacity>
+                <TouchableOpacity style={ml10} onPress={handleDeleteOptionModal}>
+                    <DeleteWhiteIcon />
+                </TouchableOpacity>
+            </View>
+            <IconModal
+                isVisible={deleteOptionModal}
+                onClose={() => handleDeleteOptionModal()}
+                contentComponent={<DeleteChatOption />}
                 iconName='trash-o'
                 iconType='FontAwesome'
                 iconSize={26}
@@ -646,7 +749,7 @@ export const BottomTabBar = () => {
     };
 
     return (
-        <View style={[alignSelfCenter, borderRadius10, { height: DevHeight * 0.08, width: DevWidth * 0.9, backgroundColor: isDark() ? colors.darkModeVar1 : colors.purpleVar3, position: 'absolute', bottom: 10 }]}>
+        <View style={[alignSelfCenter, borderRadius10, { height: DevHeight * 0.07, width: DevWidth * 0.9, backgroundColor: isDark() ? colors.darkModeVar1 : colors.purpleVar3, position: 'absolute', bottom: 10 }]}>
             <RowSpaceBetween style={[alignItemsCenter, mv10, mh20]}>
                 {
                     bottomNavData.map((item) => {
@@ -782,18 +885,23 @@ export const MultiSelectOption: React.FC<MultiSelectProps> = ({
 };
 
 
-// =============== Multi select option component======================
+// =============== Image picker component======================
 
 type ImagePickerProps = {
     onImageSelect: (base64Image: string) => void;
+    cameraOption ?: () => void;
 };
 
-export const ImagePicker: React.FC<ImagePickerProps> = ({ onImageSelect }) => {
+export const ImagePicker: React.FC<ImagePickerProps> = ({ onImageSelect, cameraOption}) => {
     const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
 
     const handleCancelButton = () => {
         setIsCancelButtonActive(true);
-        openCamera();
+        if (Platform.OS === "ios"){
+            cameraOption;
+        }else {
+            openCamera();
+        }
     };
 
     const handleDeleteChatButton = () => {
@@ -855,6 +963,81 @@ export const ImagePicker: React.FC<ImagePickerProps> = ({ onImageSelect }) => {
                 <SmallButton
                     title={labels.Gallery}
                     onChange={handleDeleteChatButton}
+                    backgroundColor={isCancelButtonActive ? (isDark() ? colors.darkModeVar4 : colors.white) : colors.purpleVar3}
+                    textColor={isCancelButtonActive ? (isDark() ? colors.greyVar3 : colors.greyVar4) : colors.white}
+                    borderWidth={isCancelButtonActive ? 1 : 0}
+                    width={DevWidth / 3.15}
+                    borderColor={`rgba(78, 80, 114, 0.3)`}
+                />
+            </RowSpaceBetween>
+        </View>
+    );
+};
+
+
+// ============== camera picker ====================
+type StatusModalProps = {
+    onImageSelect: (base64Image: string) => void;
+};
+
+export const StatusModal: React.FC<StatusModalProps> = ({ onImageSelect }) => {
+    const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+    const navigation = useNavigation();
+
+    const handleCancelButton = () => {
+        setIsCancelButtonActive(true);
+        openCamera();
+    };
+
+    const handleDeleteChatButton = () => {
+        navigation.navigate(screenName.StatusAdd as never)
+    };
+
+
+    const openCamera = () => {
+        let options = {
+            mediaType: 'photo',
+            quality: 1,
+            includeBase64: true,
+        };
+        launchCamera(options, response => {
+            imageResponse(response);
+        });
+    };
+
+
+
+    const imageResponse = (response: any) => {
+        if (response.didCancel) {
+            // Handle cancel
+        } else if (response.errorCode == 'permission') {
+            // Handle permission error
+        } else if (response.errorCode == 'others') {
+            // Handle other error
+        } else if (response.assets[0].fileSize > 2097152) {
+            // Handle size exceeded error
+        } else if (response.assets && response.assets.length > 0) {
+            onImageSelect(response.assets[0].base64);
+        }
+    };
+
+    return (
+        <View style={[mh20]} >
+            <H16font600Black>Choose Image</H16font600Black>
+            <H14GreyVar4Bold400 style={[mt20]}>Choose image picking options.</H14GreyVar4Bold400>
+            <RowSpaceBetween style={[mv20]}>
+                <SmallButton
+                    title={labels.Camera}
+                    onChange={handleCancelButton}
+                    backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? colors.darkModeVar4 : colors.white)}
+                    textColor={isCancelButtonActive ? colors.white : (isDark() ? colors.greyVar3 : colors.greyVar4)}
+                    borderWidth={isCancelButtonActive ? 0 : 1}
+                    width={DevWidth / 3.15}
+                    borderColor={`rgba(78, 80, 114, 0.3)`}
+                />
+                <SmallButton
+                    title={labels.Gallery}
+                    onChange={handleDeleteChatButton}
                     backgroundColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
                     textColor={isCancelButtonActive ? colors.greyVar4 : colors.white}
                     borderWidth={isCancelButtonActive ? 1 : 0}
@@ -865,7 +1048,6 @@ export const ImagePicker: React.FC<ImagePickerProps> = ({ onImageSelect }) => {
     );
 };
 
-
 // =============== Radio Button component======================
 interface RadioBtnProps {
     selected: boolean;
@@ -875,7 +1057,9 @@ interface RadioBtnProps {
 export const RadioBtn: React.FC<RadioBtnProps> = ({ selected, onPress }) => {
     return (
         <RadioButton onPress={onPress}>
-            <RadioButtonRound style={{ backgroundColor: selected ? (isDark() ? colors.greyVar3 : colors.purpleVar3) : colors.white }}>
+            <RadioButtonRound style={{ backgroundColor: selected ? colors.purpleVar3 : isDark()?colors.darkModeVar6:colors.white,
+    borderColor: isDark()?colors.darkModeVar5: colors.greyVar2
+             }}>
                 {selected && (
                     <SelectedRadioBtn />
                 )}
@@ -913,12 +1097,10 @@ export const CardHeaderText: React.FC<CardHeaderTextProps> = ({ text }) => {
   
     return (
       <TouchableOpacity onPress={toggleVisibility}>
-        <CustomIcon name={iconName} size={20} color={colors.greyVar4} type='octicons' />
+        <CustomIcon name={iconName} size={20} color={isDark()?colors.greyVar3:colors.greyVar4} type='octicons' />
       </TouchableOpacity>
     );
   };
-
-
 
 
 // ==================== Profile Card ==============================
@@ -934,7 +1116,7 @@ export const ProfileCard = () => {
                 }}>
                     <View style={{ alignItems: 'center', marginTop: 40 }}>
                         <H16Black600Text>{labels.horaceKeene}</H16Black600Text>
-                        <H14GreyVar4Bold400>last seen at 7:15 PM</H14GreyVar4Bold400>
+                        <H14GreyVar4Bold400>last seen at 07:15 PM</H14GreyVar4Bold400>
                         <View style={[flexRow, { marginTop: 10 }]}>
                             <View style={[{ alignItems: 'center', justifyContent: 'center' }]}>
                                 <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={22} color={isDark()?colors.greyVar3:colors.greyVar4} />
@@ -977,7 +1159,6 @@ const styles = StyleSheet.create({
         height: 18,
         width: 18,
         borderRadius: 20,
-        top: 3,
         left: 5,
     },
     roundNumberText: {

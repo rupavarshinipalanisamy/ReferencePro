@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   },
   purpleMainContainer: {
     flex: 1,
-    backgroundColor: isDark() ? colors.darkModeVar1 : colors.purpleVar3,
+    // backgroundColor: isDark() ? colors.darkModeVar1 : colors.purpleVar3,
   },
   subContainer: {
     flex: 1,
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     width: '88%',
     alignSelf: 'center',
     height: 1,
-    backgroundColor: isDark() ? colors.darkModeVar3 : colors.greyVar0,
+    // backgroundColor: isDark() ? colors.darkModeVar3 : colors.greyVar0,
   },
   commonLineDividerPurple: {
     width: '88%',
@@ -96,7 +96,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   iconBackground: {
-    backgroundColor: colors.purpleVar4,
     width: 38,
     borderRadius: 5,
     justifyContent: 'center',
@@ -125,7 +124,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: colors.greyVar2
   },
   selectedRadioBtn: {
     width: 10,
@@ -250,7 +248,7 @@ export const TwoSmallButton = styled(TouchableOpacity)`
   `
 
 export const TopContainerWhiteCard = styled(View)`
-backgroundColor: white;
+backgroundColor:  ${props => isDark() ? colors.darkModeVar1 : colors.white};
 borderBottomStartRadius: 25px;
 borderBottomEndRadius: 25px;
 elevation: 4;
@@ -292,7 +290,6 @@ interface TopContainerWhiteCardProps {
 
 
 export const TopContainerWhiteCard1 = styled(View) <TopContainerWhiteCardProps>`
-
   background-color: ${props => isDark() ? colors.darkModeVar1 : colors.white};
   border-bottom-start-radius: 25px;
   border-bottom-end-radius: 25px;

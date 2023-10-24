@@ -140,9 +140,9 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
         <View style={{ height: DevWidth / 4.2, backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, borderBottomRightRadius: 25, borderBottomLeftRadius: 25, elevation: 1 }}>
             <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
                 <View style={[flexRow]}>
-                    <View style={{paddingTop:12}} >
+                    <TouchableOpacity style={{paddingTop:12}} onPress={() => {navigation.goBack()}} >
                         <CustomIcon name='chevron-left' color={isDark() ? colors.white : colors.black} size={15} type="entypo" />
-                    </View>
+                    </TouchableOpacity>
                     <View style={[flexRow, spaceBetween, flex1]}>
                         <TouchableOpacity style={[pl10, flexRow]} onPress={() => { navigation.navigate(props.profileNavigate as never) }}>
                             {props.groups ? <Image source={GroupImg1Img} /> :
@@ -173,7 +173,7 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
                 isVisible={optionModal}
                 width={DevWidth * 0.47}
                 modalData={<OptionModalComponent />}
-                marginTop={48}
+                marginTop={ Platform.OS === 'ios' ? 100 : 48}
                 onClose={() => setOptionModal(false)}
             />
             <CustomModal
@@ -181,7 +181,7 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
                 width={DevWidth * 0.47}
                 height={DevHeight * 0.4}
                 modalData={<GroupOptionModalComponent />}
-                marginTop={48}
+                marginTop={ Platform.OS === 'ios' ? 100 : 48}
                 onClose={() => setGroupOptionModal(false)}
             />
             <CustomModal
@@ -189,7 +189,7 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
                 width={DevWidth * 0.55}
                 height={DevHeight * 0.4}
                 modalData={<CallOptionModalComponent />}
-                marginTop={48}
+                marginTop={ Platform.OS === 'ios' ? 100 : 48}
                 onClose={() => setCallOptionModal(false)}
             />
         </View>
@@ -487,7 +487,6 @@ export const ReplyFooterView = ({ onIconClick }: any) => {
         </View>
     );
 }
-
 
 export const FooterAdminChatView = () => {
     return (

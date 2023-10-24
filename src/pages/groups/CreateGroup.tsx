@@ -83,7 +83,7 @@ const CreateGroup = (props: CreateGroupProps) => {
 
     return (
         <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
-            <SearchHeader headerText={labels.CreateGroup} searchIcon={true} />
+            <SearchHeader headerText={labels.CreateGroup} searchIcon={true}  />
             <View style={[mt20, mh30]}>
                 {Pic ? (
                     <Image
@@ -138,7 +138,7 @@ const CreateGroup = (props: CreateGroupProps) => {
             <IconModal
                 isVisible={isImagePickerOpen}
                 onClose={() => setIsImagePickerOpen(false)}
-                contentComponent={<ImagePicker onImageSelect={handleImageSelect} />}
+                contentComponent={<ImagePicker onImageSelect={handleImageSelect} cameraOption={() => {setIsImagePickerOpen(false)}} />}
                 iconName='image-plus'
                 iconType='MaterialCommunityIcons'
                 iconSize={24}

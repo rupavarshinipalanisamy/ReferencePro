@@ -9,7 +9,8 @@ import AllGroups from '../../components/groups/AllGroups';
 import PinnedGroups from '../../components/groups/PinnedGroups';
 import ArchiveGroups from '../../components/groups/ArchiveGroups';
 import { screenName } from '../../utils/screenName';
-import { isDark } from '../../Theme/ThemeContext';
+import { isDark, useTheme } from '../../Theme/ThemeContext';
+import { useNavigation } from '@react-navigation/native';
 
 export type GroupsProps = {
     
@@ -23,15 +24,18 @@ const Groups = (props: GroupsProps) => {
         { label: labels.PinnedGroups},
         { label: labels.ArchiveGroup},
     ];
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
 
     const handleTabPress = (tab: string) => {
         setSelectedTab(tab);
     };
+    const navigation = useNavigation();
 
     return (
         <Fragment>
-            <PurpleMainContainer>
-                <ChatHeader title={labels.Groups} icon3Navigate={screenName.CreateGroup} />
+            <PurpleMainContainer style = {{backgroundColor: isDarkTheme ? colors.darkModeVar1 : colors.purpleVar3}}> 
+                <ChatHeader title={labels.Groups} icon3Navigate={() => { navigation.navigate(screenName.CreateGroup as never)}} />
                 <View style={flex1}>
                     <TabControl tabs={tabs} activeTab={selectedTab} onTabPress={handleTabPress} />
                     {selectedTab === labels.AllGroups && (

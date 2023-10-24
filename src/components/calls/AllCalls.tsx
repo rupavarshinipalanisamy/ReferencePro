@@ -9,7 +9,7 @@ import { AllCallsdata } from '../../utils/data/callsData';
 import CustomIcon from '../../utils/Icons';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
-import { isDark } from '../../Theme/ThemeContext';
+import { isDark, useTheme } from '../../Theme/ThemeContext';
 
 export type AllCallsProps = {
     selectedCards: number[];
@@ -19,13 +19,16 @@ export type AllCallsProps = {
 
 const AllCalls = ({ selectedCards, onCardSelection }: AllCallsProps) => {
     const navigation = useNavigation();
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
+
     return (
         <View style={[flex1, mt20, styles.whiteBg, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.white }]}>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={flex1}>
                     {AllCallsdata.map((call) => (
                         <View key={call.id}>
-                            {call.id === 1 ? <View style={mv10} /> : <CommonLineDividerGrey />}
+                            {call.id === 1 ? <View style={mv10} /> : <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />}
                             <TouchableOpacity onPress={() => {
                                 if (selectedCards.length === 0) {
                                     navigation.navigate(screenName.CallHistory as never);

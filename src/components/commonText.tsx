@@ -136,12 +136,20 @@ export const H18BoldGrey = styled(Text)`
 `
 export const H16SemiBoldBlack = styled(Text)`
   ${h7};
-  ${black};
+  color : ${props => isDark() ? colors.greyVar0 : colors.greyVar4};
+  ${fontRegular};
+  ${letterSpacing03}; 
+`
+
+
+export const H16SemiBoldBlack1 = styled(Text)`
+  ${h7};
+  color : ${props => isDark() ? colors.greyVar0 : colors.black};
   ${fontRegular};
   ${letterSpacing03}; 
 `
 export const H14GreyVar4Bold400 = styled(Text)`
-  color : ${props => isDark() ? colors.greyVar3 : colors.greyVar4};
+  color : ${props => isDark() ? colors.greyVar0 : colors.black};
   ${h9};
   ${fontBold400};
 `
@@ -167,18 +175,30 @@ color : ${props => isDark() ? colors.redVar2 : colors.red};
   ${letterSpacing03};
   `
 export const H14font500Gray4 = styled(Text)`
-  ${textcolorGray};
+color : ${props => isDark() ? colors.greyVar3 : colors.greyVar4};
+
+  ${h9};
+  ${fontRegular};
+`
+
+export const H14font500Gray41 = styled(Text)`
+color : ${props => isDark() ? colors.greyVar0 : colors.greyVar4};
+
   ${h9};
   ${fontRegular};
 `
 export const H14font400Black = styled(Text)`
   ${black};
-  ${h9};
-  ${fontBold400};
+  color:  ${props => isDark() ? colors.greyVar0 : colors.black};
+
 `
 export const H15Grey = styled(Text)`
   ${h8};
   color: ${props => isDark() ? colors.white : colors.greyVar4};
+`
+export const H15Grey1 = styled(Text)`
+  ${h8};
+  color: ${props => isDark() ? colors.greyVar3 : colors.greyVar4};
 `
 
 export const DefaultH15Grey = styled(Text)`
@@ -186,10 +206,14 @@ export const DefaultH15Grey = styled(Text)`
 ${textcolorGray}
 `
 export const H16font500Black = styled(Text)`
-
+color : ${props => isDark() ? colors.white : colors.black};
  ${h7};
  ${fontRegular};
- ${black};
+ `
+ export const H16font500White = styled(Text)`
+ ${h7};
+ ${fontRegular};
+ ${white};
  `
 export const H12Grey = styled(Text)`
   ${h10};
@@ -251,7 +275,7 @@ export const H18BlackText = styled(Text)`
 `;
 export const H18BlackBoldText600 = styled(Text)`
   ${h6};
-  ${black};
+  color : ${props => isDark() ? colors.greyVar0 : colors.black};
   ${fontBold600};
   `
 export const H16Black600Text = styled(Text)`
@@ -279,6 +303,13 @@ export const H18BlackBoldText = styled(Text)`
 export const H14BlackText = styled(Text)`
   ${h9};
   ${black};
+  color : ${props => isDark() ? colors.greyVar0 : colors.black};
+
+`;
+export const H12BlackText = styled(Text)`
+  ${h10};
+  ${fontBold400};
+  color : ${props => isDark() ? colors.darkModeVar4 : colors.white};
 `;
 export const H12BlackText = styled(Text)`
   ${h10};
@@ -356,7 +387,7 @@ export const H16fontNormalPurple = styled(Text)`
 export const H18fontBoldBlack = styled(Text)`
   ${h6};
   ${fontBold};
-  ${black};
+  color : ${props => isDark() ? colors.white : colors.black};
 `;
 export const H18Blackvar2Bold600 = styled(Text)`
   ${h6};
@@ -371,7 +402,7 @@ export const H25fontBoldBlack = styled(Text)`
 export const H16fontBoldBlack = styled(Text)`
   ${h7};
   ${fontBold600};
-  ${black};
+  color : ${props => isDark() ? colors.greyVar0 : colors.black};
 `;
 export const TextNowSecond = styled(Text)`
 ${h7};
@@ -424,7 +455,8 @@ export const H12fontBold400blackVar2 = styled(Text)`
 export const H16fontNormalGray4 = styled(Text)`
   ${h8};
   ${fontBold600};
-  ${textcolorGray};
+  color : ${props => isDark() ? colors.greyVar0 : colors.greyVar4};
+
 `;
 export const H16font900 = styled(Text)`
 ${h7};
@@ -456,7 +488,7 @@ export const H14font400Purple3 = styled(Text)`
 
 export const H14font400Gray4 = styled(Text)`
 ${h9};
-${textcolorGray};
+color : ${props => isDark() ? colors.greyVar3 : colors.greyVar4};
 ${fontBold400}
 `
 export const H14font400White = styled(Text)`
@@ -468,7 +500,7 @@ ${fontBold400}
 export const H20font600Black = styled(Text)`
   ${h5};
   ${fontBold600};
-  ${black};
+  color:  ${props => isDark() ? colors.white : colors.black}; 
 `;
 export const H20font600BlackVar2 = styled(Text)`
   ${h5};
@@ -489,7 +521,8 @@ ${fontBold600};
 export const H15font500Black = styled(Text)`
   ${h8};
   ${fontRegular};
-  ${black};
+  color:  ${props => isDark() ? colors.greyVar0 : colors.black};
+
 `;
 export const H16font600Black = styled(Text)`
   ${h7};

@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, TextInput } from 'react-native';
 import ImageScreen from './Image';
 import { colors } from '../../utils/colors';
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, mt10, mt20, mt3, mt30, mt8, pb10, pl10, pl13, pl15, pt10, spaceBetween } from '../../components/commonStyles';
-import { TopContainerWhiteCard1 } from '../../components/commonView';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh10, mh20, mt10, mt20, mt3, mt30, mt8, mv20, pb10, pl10, pl13, pl15, pt10, spaceBetween } from '../../components/commonStyles';
+import { RowSpaceBetween, TopContainerWhiteCard1 } from '../../components/commonView';
 import CustomIcon from '../../utils/Icons';
-import { H14GreyVar4Bold400, H14blackVar1bold400Text, H15Blackvar2Bold500, H15Grey, H16Black600Text, H18BlackText, H18GreyVar4Text } from '../../components/commonText';
+import { H14GreyVar4Bold400, H14blackVar1bold400Text, H14font400Black, H14font400Gray4, H15Blackvar2Bold500, H15Grey, H16Black600Text, H16font600Black, H18BlackText, H18GreyVar4Text } from '../../components/commonText';
 import { labels } from '../../utils/labels';
 import { DevHeight, DevWidth } from '../../utils/device';
 import Docs from './Docs';
@@ -14,6 +14,12 @@ import Link from './Link';
 import { CustomModal } from '../../components/commonComponents';
 import { useNavigation } from '@react-navigation/native';
 import { isDark } from '../../Theme/ThemeContext';
+import { screenName } from '../../utils/screenName';
+import { friendStatusModal } from '../../utils/data/statusData';
+import { SmallButton } from '../../components/commonButtons';
+import { IconModal } from '../../components/commonModal';
+import { contactThreeDotIcon } from '../../utils/data/contactData';
+import { Platform } from 'react-native';
 
 export type MediaProps = {
 
@@ -363,19 +369,103 @@ const styles = StyleSheet.create({
     },
 });
 
-
+// ====================== Search Header ==========================
 interface SearchHeader {
     height?: number;
     headerText: string;
     searchIcon?: boolean;
-    editIcon?: boolean
+    editIcon?: boolean;
+    editDotIcon?: boolean;
+
+    
 }
 
 export const SearchHeader = (props: SearchHeader) => {
+  const [optionModal, setOptionModal] = useState(false);
+  const [statusPrivacyOptionModal, setStatusPrivacyOptionModal] = useState(false);
+  const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
+
+
+ 
+  const handleCancelButtonClick = () => {
+    setIsCancelButtonActive(true);
+
+};
+
+const handleSaveChangesClick = () => {
+    setIsCancelButtonActive(false);
+    setStatusPrivacyOptionModal(false)
+
+};
+
+const handleCallOptionModal = () => {
+    setOptionModal(!optionModal);
+}
+
     const navigation = useNavigation()
+
+
+    const OptionModalComponent = () => {
+        return (
+            <View>
+                {contactThreeDotIcon.map((item) => {
+                    return (
+                        <TouchableOpacity key={item.id} onPress={() => {
+                            if (item.id === 3) {
+                                setOptionModal(false)
+                                setStatusPrivacyOptionModal(true)
+                            }
+                        }} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
+                            <View style={[flexRow]}>
+                                <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={isDark()?colors.greyVar3:colors.blackVar1} />
+                                <View style={[alignItemsCenter, justyfyCenter, pl13]}>
+                                    <H15Grey>{item.name}</H15Grey>
+                                </View>
+                            </View>
+                        </TouchableOpacity>
+                    )
+                })
+                }
+            </View>
+        )
+    }
+
+
+    const GroupsModal = () => {
+        return (
+            <View style={[mh20]}>
+                <H16font600Black>Block Number ?</H16font600Black>
+              <H14font400Gray4 style={[mt20]}>You will no longer receive calls or texts</H14font400Gray4>
+              <View style={[flexRow]}>
+              <H14font400Gray4 >form </H14font400Gray4>
+                <H14font400Black>9988776655</H14font400Black>
+              </View>
+                <RowSpaceBetween style={[mv20]}>
+                    <SmallButton
+                        title={labels.cancel}
+                        onChange={handleSaveChangesClick}
+                        backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
+                        textColor={isCancelButtonActive ? colors.white : isDark() ? colors.redVar3 : colors.greyVar4}
+                        borderWidth={isCancelButtonActive ? 0 : 1}
+                        width={DevWidth / 3.15}
+                    />
+                    <SmallButton
+                        title={labels.mute}
+                        onChange={handleCancelButtonClick}
+                        backgroundColor={isCancelButtonActive ? (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white) : colors.purpleVar3}
+                        textColor={isCancelButtonActive ? isDark() ? colors.redVar3 : colors.greyVar4 : colors.white}
+                        borderWidth={isCancelButtonActive ? 1 : 0}
+                        width={DevWidth / 3.15}
+                    />
+                </RowSpaceBetween>
+            </View>
+        )
+    }
+
+    
     return (
         <View>
-            <TopContainerWhiteCard1 height={DevHeight / 7.5}{...props}>
+            <TopContainerWhiteCard1 height={DevHeight / 10}{...props}>
                 <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
                     <View style={[flexRow, spaceBetween]}>
                         <View style={[flexRow]}>
@@ -391,9 +481,35 @@ export const SearchHeader = (props: SearchHeader) => {
                         {props.searchIcon &&
                             <CustomIcon name="search" size={20} color={isDark() ? colors.white : colors.greyVar4} type="Ionicons" />
                         }
+                         {props.editDotIcon &&
+                         <View style={{flexDirection:'row',alignItems:'center',}}>
+                            <TouchableOpacity style={[mh10]}
+                            onPress={()=>{navigation.navigate(screenName.EditContact as never)}}>
+                            <CustomIcon name='pencil' type="octicons" size={20} color={isDark() ? colors.white : colors.greyVar4} />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={handleCallOptionModal}>
+                            <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={20} color={isDark() ? colors.white : colors.greyVar4} />
+                            </TouchableOpacity>
+                            </View>
+                        }
                     </View>
                 </View>
             </TopContainerWhiteCard1>
+            <CustomModal
+                    isVisible={optionModal}
+                    width={DevWidth * 0.47}
+                    modalData={<OptionModalComponent />}
+                    marginTop={Platform.OS === 'ios' ? 100 : 48}
+                    onClose={() => setOptionModal(false)}
+                />
+               <IconModal
+                isVisible={statusPrivacyOptionModal}
+                onClose={() => setStatusPrivacyOptionModal(false)}
+                contentComponent={<GroupsModal />}
+                iconName='block-flipped'
+                iconType='MaterialIcons'
+                iconSize={24}
+            />    
         </View>
     )
 }

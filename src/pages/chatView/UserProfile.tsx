@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, Image, Dimensions } from 'react-native';
-import { MainContainer, CommonLineDividerGrey } from '../../components/commonView';
+import { MainContainer} from '../../components/commonView';
 import { colors } from '../../utils/colors';
 import { alignItemsCenter, flexRow, justyfyCenter, mb15, mr5, mt10, mt15, mt20, pl10, pl13, pt10, pt5, spaceBetween } from '../../components/commonStyles';
 import CustomIcon from '../../utils/Icons';

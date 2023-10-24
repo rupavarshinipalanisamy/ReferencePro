@@ -6,6 +6,7 @@ import { flexRow, mb15, mt10, mt15, mt5, p10, p5, pl0, pl10, pl13, spaceBetween 
 import { CommonLineDividerGrey } from '../../components/commonView';
 import { DocImg1, DocImg2, DocImg3, DocImg4, DocImg5, DocImg6, DocImg7, DocImg8 } from '../../utils/png';
 import { lastweekDocsData, recentDocsData } from '../../utils/data/MediaData';
+import { useTheme } from '../../Theme/ThemeContext';
 
 export type DocsProps = {
 
@@ -15,6 +16,9 @@ export type DocsProps = {
 
 
 const Docs = () => {
+    const {theme} = useTheme();
+    const isDarkTheme = theme === 'dark';
+
     return (
         <View >
             <View style={{ marginHorizontal: 20 }}>
@@ -35,7 +39,7 @@ const Docs = () => {
                             </View>
                             <H12font400Grey >{item.date}</H12font400Grey>
                         </View>
-                        {index !== recentDocsData.length - 1 && <CommonLineDividerGrey />}
+                        {index !== recentDocsData.length - 1 && <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}}  />}
                     </View>
                 ))}
             </View>
@@ -58,7 +62,7 @@ const Docs = () => {
                             </View>
                             <H12font400Grey>{item.date}</H12font400Grey>
                         </View>
-                        {index !== lastweekDocsData.length - 1 && <CommonLineDividerGrey />}
+                        {index !== lastweekDocsData.length - 1 && <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />}
                     </View>
 
 
