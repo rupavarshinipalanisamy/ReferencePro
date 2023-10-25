@@ -13,7 +13,7 @@ import { createGroupUserSelectData } from '../../utils/data/groupsData';
 import { SmallButton } from '../../components/commonButtons';
 import { newChatData } from '../../utils/data/chatsData';
 import { SearchHeader } from '../Media/MediaCommonHeader';
-import { isDark } from '../../Theme/ThemeContext';
+import { isDark, useTheme } from '../../Theme/ThemeContext';
 
 export type NewChatProps = {
 
@@ -23,6 +23,9 @@ export type NewChatProps = {
 const NewChat = (props: NewChatProps) => {
     const navigation = useNavigation();
 
+  const { theme } = useTheme();
+  const isDarkTheme = theme === 'dark';
+
     return (
         <View style={[flex1, { backgroundColor:isDark()?colors.darkModeVar2: colors.whiteVar0 }]} >
        <SearchHeader headerText='New Chat' searchIcon={true}/>
@@ -31,11 +34,11 @@ const NewChat = (props: NewChatProps) => {
                     {
                         newChatData.map((item) => {
                             return (
-                                <View key={item.id} style={[p10, mv10, styles.whiteCard, { backgroundColor:isDark() ? colors.darkModeVar4 : colors.white }]}>
+                                <View key={item.id} style={[p10, mv10, styles.whiteCard, { backgroundColor:isDarkTheme ? colors.darkModeVar4 : colors.white }]}>
                                     <View style={[flexRow]}>
                                         <View style={[alignItemsCenter, justyfyCenter]}>
                                             <Image source={item.img} style={styles.profileImg} />
-                                            <View style={[{ backgroundColor: item.status === 'active' ?  (isDark()?colors.greenVar2:colors.green) : '' }, item.status === 'active' ? styles.status : null]} />
+                                            <View style={[{ backgroundColor: item.status === 'active' ?  (isDarkTheme?colors.greenVar2:colors.green) : '' , borderColor: isDarkTheme?colors.darkModeVar4:colors.white}, item.status === 'active' ? styles.status : null]} />
                                         </View>
                                         <View style={[flex1]}>
                                             <RowSpaceBetween style={[pb5]}>
@@ -66,7 +69,7 @@ const styles = StyleSheet.create({
     },
     status: {
         borderWidth: 3,
-        borderColor: isDark()?colors.darkModeVar4:colors.white,
+       
         position: 'absolute',
         bottom: 0,
         right: 10,

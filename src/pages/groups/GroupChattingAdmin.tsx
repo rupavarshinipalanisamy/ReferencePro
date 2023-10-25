@@ -9,6 +9,8 @@ import { Bluetick } from '../../components/chatViewComponents';
 import { screenName } from '../../utils/screenName';
 import { ChatBackgroundImg, Chatimg1Img, Chatimg2Img, Chatimg4Img, Chatimg6Img, Chatimg7Img, Chatimg8Img } from '../../utils/png';
 import { labels } from '../../utils/labels';
+import { useTheme } from '../../Theme/ThemeContext';
+import { H12font400Grey, H14Blackvar2Bold500 } from '../../components/commonText';
 
 export type GroupChattingAdminProps = {
     
@@ -16,15 +18,19 @@ export type GroupChattingAdminProps = {
 
 
 const GroupChattingAdmin = (props: GroupChattingAdminProps) => {
+
+
+  const { theme } = useTheme();
+  const isDarkTheme = theme === 'dark';
     const chatMessages = [
-        { id: 1, message: receiveMessage1(), type: "receivemsg", time: "8:16 PM", name: 'Elizabeth sosa', profileImg: Chatimg2Img },
-        { id: 2, message: sentMessage1("Good Morning Mam"), type: "sentmsg", time: "8:17 PM", profileImg: Chatimg1Img, name : 'You' },
-        { id: 3, message: receiveMessage2(), type: "receivemsg", time: "8:16 PM", name: 'james Albert', profileImg: Chatimg6Img },
-        { id: 4, message: SentMessage2(), type: "sentmsg", time: "8:17 PM", profileImg: Chatimg1Img, name : 'You' },
-        { id: 5, message: receiveMessage3(), type: "receivemsg", time: "8:16 PM", name: 'Dina Brown', profileImg: Chatimg7Img },
-        { id: 6, message: sentMessage3(), type: "sentmsg", time: "8:17 PM", profileImg: Chatimg1Img, name : 'You' },
-        { id: 7, message: receiveMessage4(), type: "receivemsg", time: "8:16 PM", name: 'Horacce Keene', profileImg: Chatimg4Img },
-        { id: 8, message: sentMessage1("Thank You Mam"), type: "sentmsg", time: "8:17 PM", profileImg: Chatimg1Img },
+        { id: 1, message: receiveMessage1(isDarkTheme), type: "receivemsg", time: "8:16 PM", name: 'Elizabeth sosa', profileImg: Chatimg2Img },
+        { id: 2, message: sentMessage1("Good Morning Mam",isDarkTheme), type: "sentmsg", time: "8:17 PM", profileImg: Chatimg1Img, name : 'You' },
+        { id: 3, message: receiveMessage2(isDarkTheme), type: "receivemsg", time: "8:16 PM", name: 'james Albert', profileImg: Chatimg6Img },
+        { id: 4, message: SentMessage2(isDarkTheme), type: "sentmsg", time: "8:17 PM", profileImg: Chatimg1Img, name : 'You' },
+        { id: 5, message: receiveMessage3(isDarkTheme), type: "receivemsg", time: "8:16 PM", name: 'Dina Brown', profileImg: Chatimg7Img },
+        { id: 6, message: sentMessage3(isDarkTheme), type: "sentmsg", time: "8:17 PM", profileImg: Chatimg1Img, name : 'You' },
+        { id: 7, message: receiveMessage4(isDarkTheme), type: "receivemsg", time: "8:16 PM", name: 'Horacce Keene', profileImg: Chatimg4Img },
+        { id: 8, message: sentMessage1("Thank You Mam",isDarkTheme), type: "sentmsg", time: "8:17 PM", profileImg: Chatimg1Img },
     ];
     return (
         <Fragment>
@@ -44,8 +50,8 @@ const GroupChattingAdmin = (props: GroupChattingAdminProps) => {
                                 key={message.id}>
                                 <View style={[{ flexDirection : message.type === 'sentmsg' ? 'row-reverse' : 'row' }, alignItemsCenter, justyfyCenter, mv5]}>
                                     <Image source={message.profileImg} style={[{ height: 30, width: 30, borderRadius: 100 },message.type === 'sentmsg' ? ml10 : mr10]} />
-                                    <Text style={[{ fontSize: 16, color: colors.black }, message.type === 'sentmsg' ? ml10 : mr10]}>{message.name}</Text>
-                                    <Text style={[{ fontSize: 14, color: colors.greyVar4 }, message.type === 'sentmsg' ? ml10 : mr10]}>{message.time}</Text>
+                                    <H14Blackvar2Bold500 style={[ message.type === 'sentmsg' ? ml10 : mr10]}>{message.name}</H14Blackvar2Bold500>
+                                    <H12font400Grey style={[message.type === 'sentmsg' ? ml10 : mr10]}>{message.time}</H12font400Grey>
                                     <Text style={[]}> {message.type === 'sentmsg' ? Bluetick() : null}</Text>
                                 </View>
                                 <Text>{message.message}</Text>

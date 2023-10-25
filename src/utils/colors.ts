@@ -48,6 +48,7 @@ export const colors = {
     darkModeVar4:'#252728',
     darkModeVar5 : '#4E5072',
     darkModeVar6 :'#343637',
-    darkModeVar7:'#313536'
+    darkModeVar7:'#313536',
+    darrr:'rgba(194, 194, 194,0.1)'
 };
 

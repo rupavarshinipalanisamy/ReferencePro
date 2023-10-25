@@ -13,13 +13,15 @@ import { labels } from '../../utils/labels';
 import { MultiSelectOption } from '../../components/commonComponents';
 import { createGroupUserSelectData } from '../../utils/data/groupsData';
 import { SmallButton } from '../../components/commonButtons';
-import { isDark } from '../../Theme/ThemeContext';
+import { isDark, useTheme } from '../../Theme/ThemeContext';
 import { SearchHeader } from '../Media/MediaCommonHeader';
 
 
 
 
 const Forward = () => {
+    const { theme } = useTheme();
+    const isDarkTheme = theme === 'dark';
     const [selectedItems, setSelectedItems] = useState<number[]>([]);
     const [optionSelect, setOptionSelect] = useState(false);
 
@@ -50,7 +52,7 @@ const Forward = () => {
                                     <View style={[flexRow]}>
                                         <View style={[alignItemsCenter, justyfyCenter]}>
                                             <Image source={item.img} style={styles.profileImg} />
-                                            <View style={[{ backgroundColor: item.status === 'active' ? (isDark()?colors.greenVar2:colors.green) : '' }, item.status === 'active' ? styles.status : null]} />
+                                            <View style={[{ backgroundColor: item.status === 'active' ? (isDark()?colors.greenVar2:colors.green) : '' ,borderColor: isDarkTheme?colors.darkModeVar4:colors.white}, item.status === 'active' ? styles.status : null]} />
                                         </View>
                                         <View style={[flex1]}>
                                             <RowSpaceBetween style={[pb5]}>
@@ -84,7 +86,7 @@ const styles = StyleSheet.create({
     },
     status: {
         borderWidth: 3,
-        borderColor: isDark()?colors.darkModeVar4:colors.white,
+        
         position: 'absolute',
         bottom: 0,
         right: 10,
