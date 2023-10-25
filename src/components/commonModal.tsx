@@ -1,9 +1,9 @@
-import React, { useState ,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, TouchableOpacity, View, StyleSheet, TouchableWithoutFeedback, Modal as RNmodal, TextInput, Platform } from 'react-native';
 import { colors } from '../utils/colors';
 import { labels } from '../utils/labels';
 import { ButtonContainer1, CheckBox, HalfCircle, HalfCircle2, ModalBg, ModalContainer, ModalContent, ModalContent1 } from '../styledComponent/styledComponent';
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, mb15, mh10, mh15, mh5, mr5, mt20, p5, pl10, pr10, pr13, spaceBetween } from './commonStyles';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mb15, mh10, mh15, mh5, mr5, mt15, mt20, p5, pl10, pr10, pr13, spaceBetween } from './commonStyles';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../utils/screenName';
 import { H12font400Grey, H14BlackText, H14font400Gray4, H14font400grey3black2, H16font600Black, H16fontNormalGray, H16fontNormalGray4, H18fontBoldBlack } from './commonText';
@@ -117,7 +117,7 @@ export const ThemeModal: React.FC<CommonModalProps & { onThemeSelect: (themeName
               </View>
             </View>
 
-            <RowSpaceBetween style={[mt14]}>
+            <RowSpaceBetween style={[mt15]}>
               <SmallButton
                 width={DevWidth / 3.15}
                 title={labels.cancel}
@@ -279,7 +279,7 @@ export const EditModal = ({ isVisible, onClose }) => {
 
       </View>
 
-      <View style={{ backgroundColor: isDark() ? colors.darkModeVar4 : colors.purpleVar1, borderTopLeftRadius: 8, borderBottomRightRadius: 8, borderBottomLeftRadius: 8, padding: 10,marginTop:5}}>
+      <View style={{ backgroundColor: isDark() ? colors.darkModeVar4 : colors.purpleVar1, borderTopLeftRadius: 8, borderBottomRightRadius: 8, borderBottomLeftRadius: 8, padding: 10, marginTop: 5 }}>
         <H14font400grey3black2>
           Thank You Mam
         </H14font400grey3black2>
@@ -287,15 +287,28 @@ export const EditModal = ({ isVisible, onClose }) => {
     </Modal >
   );
 };
-export const EditModal2 = ({ isVisible, onClose, onEditModal2Press }) => {
+export const EditModal2 = ({ isVisible, onClose }) => {
 
   const [inputText, setInputText] = useState('');
   const [editText, setEditText] = useState('Thank You Mam')
-  const handleDone = () => {
-    onEditModal2Press(inputText); // Pass the input text to the function in the parent component
-  };
+  // const handleDone = () => {
+  //   onEditModal2Press(inputText); // Pass the input text to the function in the parent component
+  // };
   return (
-    <Modal isVisible={isVisible} onBackdropPress={onClose} backdropOpacity={0} style={{ margin: 0, position: 'absolute', bottom: 0, width: '100%' }}>
+    <Modal isVisible={isVisible} onBackdropPress={onClose} backdropOpacity={0.5} style={{ margin: 0, position: 'absolute', bottom: 0, width: '100%' }}>
+      <View style={{ alignItems: 'flex-end', marginTop: DevHeight / 1.5 ,bottom:50,marginHorizontal:20}}>
+        <View style={[flexRow]}>
+        <H12font400Grey style={[pr10]}>8:17 PM</H12font400Grey>
+        <Tick />
+
+      </View>
+
+      <View style={{ backgroundColor: isDark() ? colors.darkModeVar4 : colors.purpleVar1, borderTopLeftRadius: 8, borderBottomRightRadius: 8, borderBottomLeftRadius: 8, padding: 10, marginTop: 5 }}>
+        <H14font400grey3black2>
+          Thank You Mam
+        </H14font400grey3black2>
+      </View>
+      </View>
       <View style={{ backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, alignItems: 'center', height: DevHeight / 9.5, paddingHorizontal: 20, borderTopLeftRadius: 20, borderTopRightRadius: 20, flexDirection: 'row', justifyContent: 'center' }}>
         <View style={{ width: DevWidth / 1.3, height: 40, backgroundColor: isDark() ? colors.darkModeVar6 : colors.white, borderColor: isDark() ? 'rgba(78,80,114,0.5)' : colors.greyVar2, borderWidth: 2, borderRadius: 6, marginTop: 30, bottom: 8 }}>
           <View style={{ flexDirection: 'row', width: '80%', height: 40, paddingHorizontal: 2, alignItems: 'center' }}>
@@ -308,8 +321,8 @@ export const EditModal2 = ({ isVisible, onClose, onEditModal2Press }) => {
             </View>
           </View>
         </View>
-        <TouchableOpacity style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', bottom: Plat.OS === 'ios' ? 8 : 15 }}
-          onPress={handleDone}
+        <TouchableOpacity style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', bottom: Platform.OS === 'ios' ? 20 : 8 }}
+
         >
           <CustomIcon name='done' type="MaterialIcons" color={colors.white} size={18} />
         </TouchableOpacity>

@@ -1,18 +1,22 @@
 import { AddView, Bluetick, Tick } from "../../components/chatViewComponents";
-import { SentMessage2, receiveMessage1, receiveMessage2, receiveMessage3, receiveMessage4, sentMessage1, sentMessage3, sentMessage4 } from "../../pages/chatView/Messagecomponents/messages";
+import { SentMessage2, SentMessage6, receiveMessage1, receiveMessage2, receiveMessage3, receiveMessage4, sentMessage1, sentMessage3, sentMessage4, sentMessage5 } from "../../pages/chatView/Messagecomponents/messages";
 import { Reactmsg } from "../../components/chatViewComponents";
 import { colors } from "../colors";
 
-export const chatMessages = [
-    { id: 1, message: receiveMessage1(), type: "receivemsg", time: "8:16 PM" },
-    { id: 2, message: sentMessage1("Good Morning Mam"), type: "sentmsg", time: "8:17 PM", icon: Bluetick() },
-    { id: 3, message: receiveMessage2(), type: "receivemsg", time: "8:16 PM" },
-    { id: 4, message: SentMessage2(), type: "sentmsg", time: "8:17 PM", icon: Bluetick() },
-    { id: 5, message: receiveMessage3(), type: "receivemsg", time: "8:16 PM" },
-    { id: 6, message: sentMessage3(), type: "sentmsg", time: "8:17 PM", icon: Bluetick() ,msg:Reactmsg()},
-    { id: 7, message: receiveMessage4(), type: "receivemsg", time: "8:16 PM" },
-    { id: 8, message: sentMessage4(), type: "sentmsg", time: "8:17 PM", icon: Tick(),text:'Edited',iconName:'circle',iconType:'font-awesome'}
-  ];
+
+// export const chatMessages = [
+//     { id: 1, message: receiveMessage1(), type: "receivemsg", time: "8:16 PM" },
+//     { id: 2, message: sentMessage1("Good Morning Mam"), type: "sentmsg", time: "8:17 PM", icon: Bluetick() },
+//     { id: 3, message: receiveMessage2(), type: "receivemsg", time: "8:16 PM" },
+//     { id: 4, message: SentMessage2(), type: "sentmsg", time: "8:17 PM", icon: Bluetick() },
+//     { id: 5, message: SentMessage6(), type: "sentmsg" },
+//     { id: 6, message: receiveMessage3(), type: "receivemsg", time: "8:16 PM" },
+//     { id: 7, message: sentMessage3(), type: "sentmsg", time: "8:17 PM", icon: Bluetick() ,msg:Reactmsg()},
+//     { id: 8, message: receiveMessage4(), type: "receivemsg", time: "8:16 PM" },
+//     { id: 9, message: sentMessage4(), type: "sentmsg", time: "8:17 PM", icon: Tick(),text:'Edited',iconName:'circle',iconType:'font-awesome'},
+//     { id: 10, message: sentMessage5(), type: "sentmsg"}
+
+//   ];
 
   export const Emojidata = [
     { id: 1, emoji: '😀' },

@@ -116,7 +116,7 @@ const ContactPage = ({ }: AllChatsProps) => {
                                                 </TouchableOpacity>
                                                 {
                                                     selectedCards.includes(data.id) && (
-                                                        <View style={[{ backgroundColor: colors.green }, styles.status, alignItemsCenter, justyfyCenter]} >
+                                                        <View style={[{ backgroundColor: colors.green ,borderColor: isDarkTheme?colors.darkModeVar4:colors.white}, styles.status, alignItemsCenter, justyfyCenter]} >
                                                             <CustomIcon name='check' size={10} color={isDarkTheme?colors.darkModeVar2:colors.white} type='entypo' />
                                                         </View>
                                                     )
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
     },
     status: {
         borderWidth: 1.5,
-        borderColor: colors.white,
+      
         position: 'absolute',
         bottom: 0,
         right: 0,
