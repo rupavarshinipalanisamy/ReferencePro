@@ -41,7 +41,7 @@ const GroupChatting = (props: GroupChattingProps) => {
                 <ImageBackground
             source={ChatBackgroundImg}
             style={styles.backgroundImage}
-            imageStyle={{ opacity:0.15 }} >
+            imageStyle={{ opacity:0.06 }} >
                     <View style={[{ alignItems: 'center' }, pt10]}>
                         <DayDetails/>
                     </View>
