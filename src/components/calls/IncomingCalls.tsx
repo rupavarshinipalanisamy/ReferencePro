@@ -9,7 +9,7 @@ import { AllCallsdata } from '../../utils/data/callsData';
 import CustomIcon from '../../utils/Icons';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
-import { isDark, useTheme } from '../../Theme/ThemeContext';
+import { useTheme } from '../../Theme/ThemeContext';
 
 export type IncomingCallsProps = {
     selectedCards: number[];
@@ -22,7 +22,7 @@ const IncomingCalls = ({ selectedCards, onCardSelection }: IncomingCallsProps) =
     const {theme} = useTheme();
     const isDarkTheme = theme === 'dark';
     return (
-        <View style={[flex1, mt20, styles.whiteBg, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.white }]}>
+        <View style={[flex1, mt20, styles.whiteBg, { backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.white }]}>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={flex1}>
                     {AllCallsdata.map((call) => (
@@ -40,28 +40,28 @@ const IncomingCalls = ({ selectedCards, onCardSelection }: IncomingCallsProps) =
                                     if (!selectedCards.includes(call.id)) {
                                         onCardSelection(call.id);
                                     }
-                                }} style={[ph20, pv15, { backgroundColor: selectedCards.includes(call.id) ? (isDark() ? colors.darkModeVar4 : colors.purpleVar1) : (isDark() ? colors.darkModeVar2 : 'transparent') }]}
+                                }} style={[ph20, pv15, { backgroundColor: selectedCards.includes(call.id) ? (isDarkTheme ? colors.darkModeVar4 : colors.purpleVar1) : (isDarkTheme ? colors.darkModeVar2 : 'transparent') }]}
                             >
                                 <View style={[flexRow]}>
                                     <View>
                                         <Image source={call.img} style={styles.profileImg} />
                                         {
                                             selectedCards.includes(call.id) ? (
-                                                <View style={[{ backgroundColor: colors.green, borderColor: isDark() ? colors.darkModeVar2 : colors.white, }, styles.statusTick, alignItemsCenter, justyfyCenter]} >
+                                                <View style={[{ backgroundColor: colors.green, borderColor: isDarkTheme ? colors.darkModeVar2 : colors.white, }, styles.statusTick, alignItemsCenter, justyfyCenter]} >
                                                     <CustomIcon name='check' size={10} color={colors.white} type='entypo' />
                                                 </View>
                                             ) : (
-                                                <View style={[{ backgroundColor: call.status === 'active' ? '#20c997' : '', borderColor: isDark() ? colors.darkModeVar2 : colors.white, }, call.status === 'active' ? styles.status : null]} />
+                                                <View style={[{ backgroundColor: call.status === 'active' ? '#20c997' : '', borderColor: isDarkTheme ? colors.darkModeVar2 : colors.white, }, call.status === 'active' ? styles.status : null]} />
                                             )
                                         }
                                     </View>
                                     <View style={[flex1]}>
                                         <RowSpaceBetween style={pb5}>
-                                            <H15Blackvar2Bold500>{call.name}</H15Blackvar2Bold500>
+                                            <H15Blackvar2Bold500 style = {{color : isDarkTheme ? colors.greyVar0 : colors.blackVar2}}>{call.name}</H15Blackvar2Bold500>
                                             <CustomIcon name="phone-incoming" size={call.iconSize} color={colors.green} type='Feather' />
                                         </RowSpaceBetween>
                                         <RowSpaceBetween style={pb5}>
-                                            <H14GreyVar4Bold400>{call.text}</H14GreyVar4Bold400>
+                                            <H14GreyVar4Bold400 style={{color : isDarkTheme ? colors.greyVar0 : colors.black}}>{call.text}</H14GreyVar4Bold400>
                                             <H14GreyVar4Bold400>{call.duration}</H14GreyVar4Bold400>
                                         </RowSpaceBetween>
                                     </View>

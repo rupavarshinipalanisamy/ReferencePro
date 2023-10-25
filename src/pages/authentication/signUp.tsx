@@ -213,7 +213,7 @@ const SignUp = (props: SignUpProps) => {
                                     <TextContainer style={[mb20]}>
                                         <H14font400Gray4 style={{ color: isDarkTheme ? colors.greyVar3 : colors.greyVar4 }}>{labels.haveanAccount}</H14font400Gray4>
                                         <TouchableOpacity
-                                            onPress={() => { navigation.navigate(screenName.LoginEmail as never) }}>
+                                            onPress={() => { navigation.navigate(screenName.Chats as never) }}>
                                             <H14font400Blue >{labels.logIn}</H14font400Blue>
                                         </TouchableOpacity>
                                     </TextContainer>

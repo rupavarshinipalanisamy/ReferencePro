@@ -62,7 +62,6 @@ const WelcomePage: React.FC<WelcomePageProps> = (props: WelcomePageProps) => {
                   textColor={isCancelButtonActive ? colors.white : colors.purpleVar3}
                   onChange={handleSaveChangesClick}
                   borderWidth={1}
-                  borderColor={colors.white}
                 />
               </BtnConatiner>
             </ImageBackground>

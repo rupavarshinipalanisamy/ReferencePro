@@ -211,7 +211,7 @@ alignSelf:center;
 `
 export const BtnConatiner = styled(View)`
 marginTop:330px;
-bottom:20px;
+bottom:35px;
 marginHorizontal: 20px;
 justifyContent: space-between;
 flexDirection:row;
@@ -234,7 +234,6 @@ background-color: ${props => isDark() ? colors.darkModeVar7 : colors.purpleVar1}
 export const TopCard = styled(View)`
 padding: 10px;
 margin:20px;
-background-color: ${props => isDark() ? colors.darkModeVar7 : colors.purpleVar1};
 `
 export const CircleBg = styled(View)`
 position: absolute;
@@ -245,7 +244,6 @@ width: 13px;
 borderRadius: 13px;
 justifyContent: center;
 alignItems: center;
-background-color: ${props => isDark() ? colors.darkModeVar7 : colors.white};
 `
 
 export const CircleBg1 = styled(View)`

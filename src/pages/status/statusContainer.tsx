@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity, Platform } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { IconModal } from "../../components/commonModal";
 import { screenName } from "../../utils/screenName";
@@ -12,7 +12,7 @@ import { MyStatusPic, StatusView1 } from "../../utils/svg";
 import CustomIcon from "../../utils/Icons";
 import { CustomModal } from "../../components/commonComponents";
 import { threeDotIcon } from "../../utils/data/statusData";
-import { isDark } from "../../Theme/ThemeContext";
+import { isDark, useTheme } from "../../Theme/ThemeContext";
 import { CircleBg, CircleBg1, TopCard } from "../../styledComponent/styledComponent";
 import { launchCamera } from "react-native-image-picker";
 import { SmallButton } from "../../components/commonButtons";
@@ -20,6 +20,7 @@ import { RowSpaceBetween } from "../../components/commonView";
 
 export const StatusOptionModalComponent = () => {
     const navigation = useNavigation()
+
     return (
         <View>
             {
@@ -27,7 +28,7 @@ export const StatusOptionModalComponent = () => {
                     return (
                         <TouchableOpacity key={item.id} onPress={() => { }} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
                             <View style={[flexRow]}>
-                                <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={isDark()?colors.greyVar3:colors.blackVar1} />
+                                <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={isDark() ? colors.greyVar3 : colors.blackVar1} />
                                 <View style={[alignItemsCenter, justyfyCenter, pl13]}>
                                     <H15Grey>{item.name}</H15Grey>
                                 </View>
@@ -42,6 +43,8 @@ export const StatusOptionModalComponent = () => {
 
 export const AfterNavigation = () => {
     const [callOptionModal, setCallOptionModal] = useState(false);
+    const { theme } = useTheme();
+    const isDarkTheme = theme === 'dark';
 
     const handleCallOptionModal = () => {
         setCallOptionModal(!callOptionModal);
@@ -58,7 +61,7 @@ export const AfterNavigation = () => {
     }
 
     return (
-        <TopCard>
+        <TopCard style={{ backgroundColor: isDarkTheme ? colors.darkModeVar7 : colors.purpleVar1 }}>
             <View style={[flexRow]}>
                 <TouchableOpacity onPress={navigateToAnotherPage}>
                     <View style={[alignItemsCenter, justyfyCenter]}>
@@ -70,8 +73,8 @@ export const AfterNavigation = () => {
                 </TouchableOpacity>
                 <View style={[mh15, flexRow, spaceBetween, flex1]}>
                     <View>
-                        <H15font500Black>{labels.myStatus}</H15font500Black>
-                        <H14font400Gray4>{labels.muteTime1}</H14font400Gray4>
+                        <H15font500Black style={{color:isDarkTheme?colors.greyVar0:colors.black}}>{labels.myStatus}</H15font500Black>
+                        <H14font400Gray4 style={{color:isDarkTheme?colors.greyVar3:colors.greyVar4}}>{labels.muteTime1}</H14font400Gray4>
                     </View>
                     <TouchableOpacity
                         style={[alignItemsCenter, justyfyCenter]}
@@ -85,7 +88,7 @@ export const AfterNavigation = () => {
                     width={DevWidth * 0.50}
                     height={DevHeight * 0.4}
                     modalData={<StatusOptionModalComponent />}
-                    marginTop={160}
+                    marginTop={Platform.OS === 'ios'?100 : 160}
                     onClose={closeCallOptionModal}
                 />
             </View>
@@ -97,10 +100,12 @@ export const BeforeNavigation = () => {
     const [Pic, setPic] = useState('');
     const [showIconModal, setShowIconModal] = useState(false);
     const [isImagePickerOpen, setIsImagePickerOpen] = useState(false);
+    const { theme } = useTheme();
+    const isDarkTheme = theme === 'dark';
 
     const openIconModal = () => {
         setShowIconModal(true);
-    }
+    };
 
     const handleImageSelect = (base64Image: string) => {
         setPic(base64Image);
@@ -179,20 +184,20 @@ export const BeforeNavigation = () => {
 
 
     return (
-        <TopCard>
+        <TopCard style={{ backgroundColor: isDarkTheme ? colors.darkModeVar7 : colors.purpleVar1 }}>
             <View style={[flexRow]}>
                 <TouchableOpacity onPress={openIconModal}>
                     <MyStatusPic />
-                    <CircleBg>
+                    <CircleBg style={{backgroundColor:isDarkTheme?colors.darkModeVar7:colors.white}}>
                         <CircleBg1>
-                            <CustomIcon name='add' type='MaterialIcons' size={9} color={isDark() ? colors.darkModeVar6 : colors.white} />
+                            <CustomIcon name='add' type='MaterialIcons' size={9} color={isDarkTheme ? colors.darkModeVar6 : colors.white} />
                         </CircleBg1>
                     </CircleBg>
                 </TouchableOpacity>
                 <View style={[mh15, flexRow, spaceBetween, flex1]}>
                     <View >
-                        <H15font500Black>{labels.myStatus}</H15font500Black>
-                        <H14font400Gray4>{labels.statusUploadCont}</H14font400Gray4>
+                        <H15font500Black style={{color:isDarkTheme?colors.greyVar0:colors.black}}>{labels.myStatus}</H15font500Black>
+                        <H14font400Gray4 style={{color:isDarkTheme?colors.greyVar3:colors.greyVar4}}>{labels.statusUploadCont}</H14font400Gray4>
                     </View>
                     <IconModal
                         isVisible={showIconModal}

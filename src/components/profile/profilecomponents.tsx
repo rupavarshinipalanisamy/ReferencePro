@@ -17,13 +17,13 @@ export const SocialMediaIcon = () => {
     return (
         <>
             <View style={[flexRow]}>
-                <View style={[{ alignItems: 'center', justifyContent: 'center'},pl5]}>
+                <View style={[{ alignItems: 'center', justifyContent: 'center' }, pl5]}>
                     <CustomIcon name='sc-facebook' type="EvilIcons" size={20} color={isDark() ? colors.greyVar3 : colors.blackVar2} />
                 </View>
-                <View style={[{ alignItems: 'center', justifyContent: 'center' },pl5]}>
+                <View style={[{ alignItems: 'center', justifyContent: 'center' }, pl5]}>
                     <CustomIcon name='twitter' type="entypo" size={18} color={isDark() ? colors.greyVar3 : colors.blackVar2} />
                 </View>
-                <View style={[{ alignItems: 'center', justifyContent: 'center' },pl5]}>
+                <View style={[{ alignItems: 'center', justifyContent: 'center' }, pl5]}>
                     <CustomIcon name='youtube' type="MaterialCommunityIcons" size={20} color={isDark() ? colors.greyVar3 : colors.blackVar2} />
                 </View>
             </View>
@@ -43,11 +43,11 @@ export const Header = () => {
         return (
             <View>
 
-                <TouchableOpacity style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10}}>
-                    <View style={[flexRow,alignItemsCenter]}>
+                <TouchableOpacity style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
+                    <View style={[flexRow, alignItemsCenter]}>
                         <CustomIcon name="pencil" size={16} color={isDark() ? colors.greyVar3 : colors.blackVar1} type="octicons" />
-                        <View style={[ pl13]}>
-                        <H14blackVar1bold400Text>Edit</H14blackVar1bold400Text>
+                        <View style={[pl13]}>
+                            <H14blackVar1bold400Text>Edit</H14blackVar1bold400Text>
                         </View>
                     </View>
                 </TouchableOpacity>
@@ -57,9 +57,11 @@ export const Header = () => {
     return (
         <View style={{ marginVertical: 20 }}>
             <View style={[flexRow, spaceBetween, { marginHorizontal: 25 }]}>
-                <CustomIcon name='chevron-back-sharp' color={isDark()?colors.white:colors.greyVar4} size={16} type="Ionicons" />
+                <TouchableOpacity onPress={() => {navigation.goBack()}}>
+                    <CustomIcon name='chevron-back-sharp' color={isDark() ? colors.white : colors.greyVar4} size={16} type="Ionicons" />
+                </TouchableOpacity>
                 <TouchableOpacity onPress={handleOptionModal}>
-                    <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={isDark()?colors.white:colors.greyVar4} />
+                    <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={isDark() ? colors.white : colors.greyVar4} />
 
 
                 </TouchableOpacity>
@@ -77,7 +79,7 @@ export const Header = () => {
 }
 
 export const InfoCard = () => {
-    const {theme} = useTheme();
+    const { theme } = useTheme();
     const isDarkTheme = theme === 'dark';
     return (
         <View style={mt20}>
@@ -95,7 +97,7 @@ export const InfoCard = () => {
                 )}
             </View>
             <View style={[mt15, mb15]}>
-                <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />
+                <CommonLineDividerGrey style={{ backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0 }} />
             </View>
         </View>
     );
@@ -104,18 +106,18 @@ export const InfoCard = () => {
 
 export const MediaCard = () => {
     const navigation = useNavigation();
-    const {theme} = useTheme();
+    const { theme } = useTheme();
     const isDarkTheme = theme === 'dark';
     return (
         <View>
             <TouchableOpacity style={[flexRow, spaceBetween]} onPress={() => navigation.navigate(screenName.Media as never)}>
                 <CardHeaderText text='Media' />
                 <View style={[flexRow]}>
-                    <View style={[styles.roundNumber, { backgroundColor:isDark()?colors.darkModeVar6:'rgba(97, 97, 97, 0.15) ' }, mt10, mr5]}>
+                    <View style={[styles.roundNumber, { backgroundColor: isDark() ? colors.darkModeVar6 : 'rgba(97, 97, 97, 0.15) ' }, mt10, mr5]}>
                         <H12font400Grey>68</H12font400Grey>
                     </View>
-                    <View style={{alignItems:'center',justifyContent:'center',marginTop:7}}>
-                        <CustomIcon name='chevron-right' color={isDark()?colors.greyVar0:colors.greyVar4} size={20} type="MaterialIcons"
+                    <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 7 }}>
+                        <CustomIcon name='chevron-right' color={isDark() ? colors.greyVar0 : colors.greyVar4} size={20} type="MaterialIcons"
                         />
                     </View>
                 </View>
@@ -137,7 +139,7 @@ export const MediaCard = () => {
                 ))}
             </View>
             <View style={[mt15, mb15]}>
-                <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />
+                <CommonLineDividerGrey style={{ backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0 }} />
             </View>
         </View>
 
@@ -145,7 +147,7 @@ export const MediaCard = () => {
 }
 
 export const Groups = () => {
-    const {theme} = useTheme();
+    const { theme } = useTheme();
     const isDarkTheme = theme === 'dark';
     return (
         <View>
@@ -154,14 +156,14 @@ export const Groups = () => {
                 <MediumCardSurface key={index} >
                     <Image source={item.img} />
                     <View style={pl10}>
-                        <H15Blackvar2Bold500 style={{lineHeight:23}}>{item.grpName}</H15Blackvar2Bold500>
-                        <H14GreyVar4Bold400Text style={{lineHeight:20}}>{item.personName}</H14GreyVar4Bold400Text>
+                        <H15Blackvar2Bold500 style={{ lineHeight: 23 }}>{item.grpName}</H15Blackvar2Bold500>
+                        <H14GreyVar4Bold400Text style={{ lineHeight: 20 }}>{item.personName}</H14GreyVar4Bold400Text>
                     </View>
                 </MediumCardSurface>
 
             ))}
             <View style={[mt20, mb15]}>
-                <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />
+                <CommonLineDividerGrey style={{ backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0 }} />
             </View>
         </View>
 

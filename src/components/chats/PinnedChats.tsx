@@ -11,7 +11,7 @@ import { DevWidth } from '../../utils/device';
 import { BottomTabBar } from '../commonComponents';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
-import { isDark, useTheme } from '../../Theme/ThemeContext';
+import { useTheme } from '../../Theme/ThemeContext';
 import CustomIcon from '../../utils/Icons';
 
 export type PinnedChatsProps = {
@@ -26,7 +26,7 @@ const PinnedChats = ({ selectedCards, onCardSelection }: PinnedChatsProps) => {
     const isDarkTheme = theme === 'dark';
 
     return (
-        <View style={[{ backgroundColor: isDark() ? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
+        <View style={[{ backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
             <View style={flex1}>
                 <ScrollView showsVerticalScrollIndicator={false}>
                     {PinnedChatsdata.map((chat) => (
@@ -43,17 +43,17 @@ const PinnedChats = ({ selectedCards, onCardSelection }: PinnedChatsProps) => {
                                     if (!selectedCards.includes(chat.id)) {
                                         onCardSelection(chat.id);
                                     }
-                                }} style={[ph20, pv15, { backgroundColor: selectedCards.includes(chat.id) ? (isDark() ? colors.darkModeVar4 : colors.purpleVar1) : (isDark() ? colors.darkModeVar2 : 'transparent') }]}>
+                                }} style={[ph20, pv15, { backgroundColor: selectedCards.includes(chat.id) ? (isDarkTheme ? colors.darkModeVar4 : colors.purpleVar1) : (isDarkTheme ? colors.darkModeVar2 : 'transparent') }]}>
                                 <View style={[flexRow]}>
                                     <View>
                                         <Image source={chat.profileImg} style={styles.profileImg} />
                                         {
                                             selectedCards.includes(chat.id) ? (
-                                                <View style={[{ backgroundColor: colors.green, borderColor: isDark() ? colors.darkModeVar2 : colors.white, }, styles.statusTick, alignItemsCenter, justyfyCenter]} >
+                                                <View style={[{ backgroundColor: colors.green, borderColor: isDarkTheme ? colors.darkModeVar2 : colors.white, }, styles.statusTick, alignItemsCenter, justyfyCenter]} >
                                                     <CustomIcon name='check' size={10} color={colors.white} type='entypo' />
                                                 </View>
                                             ) : (
-                                                <View style={[{ backgroundColor: chat.status === 'active' ? '#20c997' : '', borderColor: isDark() ? colors.darkModeVar2 : colors.white, }, chat.status === 'active' ? styles.status : null]} />
+                                                <View style={[{ backgroundColor: chat.status === 'active' ? '#20c997' : '', borderColor: isDarkTheme ? colors.darkModeVar2 : colors.white, }, chat.status === 'active' ? styles.status : null]} />
                                             )
                                         }
                                     </View>

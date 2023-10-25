@@ -13,7 +13,7 @@ export const colorIconsData = [
         iconSize: 14,
         iconColor: colors.yellow,
         bgcolor: colors.yellowVar1,
-        screenName: screenName.StarredMsg,
+        
     },
     {
         id: 2,
@@ -23,7 +23,6 @@ export const colorIconsData = [
         iconSize: 14,
         iconColor: colors.blueVar3,
         bgcolor: colors.blueVar4,
-        screenName: screenName.Chats,
     },
     {
         id: 3,
@@ -33,7 +32,7 @@ export const colorIconsData = [
         iconSize: 14,
         iconColor: colors.green,
         bgcolor: colors.greenVar1,
-        screenName: screenName.VerifyCode,
+        
     },
     {
         id: 4,
@@ -62,7 +61,6 @@ export const colorIconsData = [
         iconSize: 14,
         iconColor: colors.red,
         bgcolor: colors.redVar1,
-        screenName: screenName.ChatView,
     },
 ]
 export const mediaData = [

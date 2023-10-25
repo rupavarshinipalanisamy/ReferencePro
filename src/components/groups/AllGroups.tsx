@@ -11,7 +11,7 @@ import { DevWidth } from '../../utils/device';
 import { allGroupsData } from '../../utils/data/groupsData';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
-import { isDark, useTheme } from '../../Theme/ThemeContext';
+import { useTheme } from '../../Theme/ThemeContext';
 
 export type AllGroupsProps = {
 
@@ -24,7 +24,7 @@ const AllGroups = (props: AllGroupsProps) => {
     const isDarkTheme = theme === 'dark';
 
     return (
-        <View style={[{ backgroundColor: isDark() ? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
+        <View style={[{ backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={flex1}>
                     {allGroupsData.map((group) => (

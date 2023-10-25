@@ -11,7 +11,7 @@ import { DevHeight, DevWidth } from '../../utils/device';
 import { mutedStatusData, statusData, threeDotIcon, viewedStatusData } from '../../utils/data/statusData';
 import { AfterNavigation, BeforeNavigation, StatusOptionModalComponent } from './statusContainer';
 import { screenName } from '../../utils/screenName';
-import { isDark } from '../../Theme/ThemeContext';
+import { isDark, useTheme } from '../../Theme/ThemeContext';
 import { StatusView, StatusView1 } from '../../utils/svg';
 import { Platform } from 'react-native';
 export interface StatusData {
@@ -27,29 +27,37 @@ export interface RecentStatusItemProps {
   isMuted?: boolean;
 }
 
-export const StatusItem: React.FC<RecentStatusItemProps> = ({ data, onPress, statusView, isMuted }) => (
-  <View>
-    <View style={isMuted ? [styles.card2,{backgroundColor:isDark() ? colors.darkModeVar7 : colors.white,}] 
-    : 
-    [styles.card1,{backgroundColor:isDark() ? colors.darkModeVar7 : colors.white,}]}>
-      <TouchableOpacity onPress={onPress}>
-        <View style={[alignItemsCenter, justyfyCenter]}>
-          {statusView}
-          <Image source={data.image} style={styles.img} />
+export const StatusItem: React.FC<RecentStatusItemProps> = ({ data, onPress, statusView, isMuted }) => {
+  const {theme} = useTheme();
+  const isDarkTheme = theme === 'dark';
+
+  return (
+    <View>
+      <View style={isMuted ? [styles.card2,{backgroundColor:isDarkTheme ? colors.darkModeVar7 : colors.white,}] 
+      : 
+      [styles.card1,{backgroundColor:isDarkTheme ? colors.darkModeVar7 : colors.white,}]}>
+        <TouchableOpacity onPress={onPress}>
+          <View style={[alignItemsCenter, justyfyCenter]}>
+            {statusView}
+            <Image source={data.image} style={styles.img} />
+          </View>
+        </TouchableOpacity>
+        <View style={[mh10, mt5]}>
+          <H15font500Black style={{color:isDarkTheme?colors.greyVar0:colors.black}}>{data.name}</H15font500Black>
+          <H14font400Gray4 style={{color:isDarkTheme?colors.greyVar3:colors.greyVar4}}>{data.time}</H14font400Gray4>
         </View>
-      </TouchableOpacity>
-      <View style={[mh10, mt5]}>
-        <H15font500Black>{data.name}</H15font500Black>
-        <H14font400Gray4>{data.time}</H14font400Gray4>
       </View>
     </View>
-  </View>
-);
+  )
+};
 
 export const statusText = (value: string,) => {
+  const {theme} = useTheme();
+  const isDarkTheme = theme === 'dark';
+
   return (
     <View style={[mh20]}>
-      <H14font400Black>{value}</H14font400Black>
+      <H14font400Black style={{color:isDarkTheme?colors.greyVar0:colors.black}}>{value}</H14font400Black>
     </View>
   )
 }
@@ -63,6 +71,8 @@ const AllStatus = (props: AllStatusProps) => {
   const navigation = useNavigation();
   const [callOptionModal, setCallOptionModal] = useState(false);
   const route = useRoute();
+  const {theme} = useTheme();
+  const isDarkTheme = theme === 'dark';
   const showSecondScreen = route.params?.showSecondScreen === true;
 
 
@@ -74,7 +84,7 @@ const AllStatus = (props: AllStatusProps) => {
   };
 
   return (
-    <View style={[{ backgroundColor: isDark() ? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
+    <View style={[{ backgroundColor:  isDarkTheme? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
       <View style={flex1}>
         <ScrollView showsVerticalScrollIndicator={false}>
           {showSecondScreen ? <AfterNavigation /> : <BeforeNavigation />}

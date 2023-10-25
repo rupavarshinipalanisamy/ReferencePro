@@ -8,6 +8,7 @@ import { screenName } from '../../utils/screenName';
 import { ChatBackgroundImg, Chatimg1Img, Chatimg2Img, Chatimg4Img, Chatimg6Img, Chatimg7Img, Chatimg8Img } from '../../utils/png';
 import { labels } from '../../utils/labels';
 import { Bluetick, DayDetails } from '../../components/chatViewComponents';
+import { useTheme } from '../../Theme/ThemeContext';
 
 export type GroupChattingProps = {
 
@@ -15,9 +16,11 @@ export type GroupChattingProps = {
 
 
 const GroupChatting = (props: GroupChattingProps) => {
-
+    
+    const { theme } = useTheme();
+    const isDarkTheme = theme === 'dark';
     const chatMessages = [
-        { id: 1, message: receiveMessage1(), type: "receivemsg", time: "8:16 PM", name: 'Elizabeth sosa', profileImg: Chatimg2Img },
+        { id: 1, message: receiveMessage1(isDarkTheme), type: "receivemsg", time: "8:16 PM", name: 'Elizabeth sosa', profileImg: Chatimg2Img },
         { id: 2, message: sentMessage1("Good Morning Mam"), type: "sentmsg", time: "8:17 PM", profileImg: Chatimg1Img, name : 'You' },
         { id: 3, message: receiveMessage2(), type: "receivemsg", time: "8:16 PM", name: 'james Albert', profileImg: Chatimg6Img },
         { id: 4, message: SentMessage2(), type: "sentmsg", time: "8:17 PM", profileImg: Chatimg1Img, name : 'You' },
@@ -33,7 +36,8 @@ const GroupChatting = (props: GroupChattingProps) => {
                 <ImageBackground
                     source={ChatBackgroundImg}
                     style={{ flex: 1 }}
-                    imageStyle={{ opacity: 0.1, backgroundColor: 'rgba(200, 180, 230, 0.5)' }}
+                    imageStyle={{ opacity: 0.1, backgroundColor: isDarkTheme ?'rgba(194, 194, 194,1)':'rgba(220, 198, 224, 0.1)'
+                }}
                 >
                     <View style={[{ alignItems: 'center' }, pt10]}>
                         <DayDetails/>

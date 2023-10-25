@@ -11,7 +11,7 @@ import { StatusItem, statusText } from './allStatus';
 import { AfterNavigation, BeforeNavigation, StatusOptionModalComponent } from './statusContainer';
 import { screenName } from '../../utils/screenName';
 import { StatusView } from '../../utils/svg';
-import { isDark } from '../../Theme/ThemeContext';
+import { useTheme } from '../../Theme/ThemeContext';
 
 export type RecentStatusProps = {
     selectedCards: number[];
@@ -22,6 +22,8 @@ const RecentStatusScreen = (props: RecentStatusProps) => {
     const navigation = useNavigation();
     const [callOptionModal, setCallOptionModal] = useState(false);
     const route = useRoute();
+    const { theme } = useTheme();
+    const isDarkTheme = theme === 'dark';
     const showSecondScreen = route.params?.showSecondScreen === true;
 
     const closeCallOptionModal = () => {
@@ -33,16 +35,15 @@ const RecentStatusScreen = (props: RecentStatusProps) => {
     };
 
     return (
-    <View style={[{ backgroundColor: isDark() ? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
+        <View style={[{ backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
             <View style={flex1}>
-            <ScrollView showsVerticalScrollIndicator={false}>
-                {showSecondScreen ? <AfterNavigation /> : <BeforeNavigation />}
+                <ScrollView showsVerticalScrollIndicator={false}>
+                    {showSecondScreen ? <AfterNavigation /> : <BeforeNavigation />}
                     {statusText(labels.recentStatus)}
                     <View>
                         {recentstatusData.map((data, index) => (
                             <StatusItem key={data.id} data={data} onPress={() => handleStatusItemClick(data.id)} statusView={<StatusView />} />
                         ))}
-
                     </View>
                 </ScrollView>
             </View>

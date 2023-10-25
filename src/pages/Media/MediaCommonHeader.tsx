@@ -75,6 +75,7 @@ interface MediaHeaderProps {
 
 export const MediaHeader = (props: MediaHeaderProps) => {
     const [selectedTab, setSelectedTab] = useState('Image');
+    const navigation = useNavigation();
 
     const handleTabPress = (tab: string) => {
         setSelectedTab(tab);
@@ -162,9 +163,9 @@ export const MediaHeader = (props: MediaHeaderProps) => {
                 <View style={[{ marginHorizontal: 25, marginTop: 15 }, flex1, justyfyCenter]}>
                     <View style={[flexRow, spaceBetween]}>
                         <View style={[flexRow]}>
-                            <View style={pt10}>
+                            <TouchableOpacity onPress={() => {navigation.goBack()}} style={pt10}>
                                 <CustomIcon name='chevron-back-sharp' color={isDark()?colors.white:colors.blackVar2} size={16} type="Ionicons" />
-                            </View>
+                            </TouchableOpacity>
                             <View style={[flexRow]}>
                                 <TouchableOpacity style={[pl10]}>
                                     <Image source={require('../../../assets/images/png/profile.png')} />
@@ -228,7 +229,6 @@ export const MediaHeader = (props: MediaHeaderProps) => {
 }
 
 
-
 interface TextInputHeaderProps {
     height?: number;
     onBack: () => void
@@ -269,7 +269,6 @@ export const TextInputHeader = (props: TextInputHeaderProps) => {
                     </View>
                 </View>
             </TopContainerWhiteCard1>
-
         </View>
     )
 }
@@ -352,7 +351,6 @@ export const StarredAndVerifycodeHeader = (props: StarredAndVerifycodeHeaderProp
         </View>
     )
 }
-
 
 const styles = StyleSheet.create({
     tabContainer: {

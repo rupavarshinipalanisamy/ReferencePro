@@ -22,8 +22,8 @@ export const topLogo = (logo: any) => {
 
     const isDarkTheme = theme === 'dark';
     return (
-<LoginLogoBigCircle style={{backgroundColor:isDarkTheme?colors.darkModeVar4:'rgba(248, 236, 258, 0.7)'}}>
-            <LoginLogoCircle style={{backgroundColor:isDarkTheme?colors.darkModeVar6: 'rgba(90, 7, 139, 0.03)'}}>
+        <LoginLogoBigCircle style={{ backgroundColor: isDarkTheme ? colors.darkModeVar4 : 'rgba(248, 236, 258, 0.7)' }}>
+            <LoginLogoCircle style={{ backgroundColor: isDarkTheme ? colors.darkModeVar6 : 'rgba(90, 7, 139, 0.03)' }}>
                 {logo}
             </LoginLogoCircle>
         </LoginLogoBigCircle>
@@ -36,7 +36,7 @@ export const socialLogo = (content: any) => {
     const isDarkTheme = theme === 'dark';
 
     return (
-        <SocialLogoCircle style={{backgroundColor: isDarkTheme? colors.darkModeVar6 : colors.purpleVar1 }}>
+        <SocialLogoCircle style={{ backgroundColor: isDarkTheme ? colors.darkModeVar6 : colors.purpleVar1 }}>
             {content}
         </SocialLogoCircle>
     )
@@ -118,7 +118,7 @@ const LoginEmail = (props: loginEmailProps) => {
                                                     name={formKeys.password}
                                                     control={control}
                                                     render={({ field: { onChange, value } }) => (
-                                                        <CustomTextInput 
+                                                        <CustomTextInput
                                                             placeholder={labels.password}
                                                             value={value}
                                                             secureTextEntry={showPassword}
@@ -138,7 +138,7 @@ const LoginEmail = (props: loginEmailProps) => {
                                                     <CustomIcon
                                                         name={!showPassword ? 'eye' : 'eye-closed'}
                                                         size={20}
-                                                        color={isDarkTheme?colors.greyVar3:colors.greyVar4}
+                                                        color={isDarkTheme ? colors.greyVar3 : colors.greyVar4}
                                                         type='octicons'
                                                     />
                                                 </TouchableOpacity>
@@ -154,7 +154,7 @@ const LoginEmail = (props: loginEmailProps) => {
                                                         <CustomIcon name="check" size={16} color={colors.white} type={'MaterialCommunityIcons'} />)}
                                                 </CheckBox>
                                             </TouchableOpacity>
-                                            <H14font400Gray4 style={[ph5,{ color: isDarkTheme ? colors.greyVar3 : colors.greyVar4 }]}>{labels.rememberme}</H14font400Gray4>
+                                            <H14font400Gray4 style={[ph5, { color: isDarkTheme ? colors.greyVar3 : colors.greyVar4 }]}>{labels.rememberme}</H14font400Gray4>
                                         </View>
                                         <TouchableOpacity
                                             onPress={() => { navigation.navigate(screenName.ForgetPassword as never) }}>
@@ -168,9 +168,9 @@ const LoginEmail = (props: loginEmailProps) => {
                                         />
                                     </View>
                                     <CheckBoxContainer>
-                                        <BottomStyle style={{borderBottomColor:isDarkTheme?'rgba(78, 80, 114, 0.3)' : colors.borderBottomColor}}/>
-                                        <H14font400Gray4 style={{color: isDarkTheme ? colors.greyVar3 : colors.greyVar4 }}>{labels.continuemsg}</H14font400Gray4>
-                                        <BottomStyle style={{borderBottomColor:isDarkTheme?'rgba(78, 80, 114, 0.3)' : colors.borderBottomColor}}/>
+                                        <BottomStyle style={{ borderBottomColor: isDarkTheme ? 'rgba(78, 80, 114, 0.3)' : colors.borderBottomColor }} />
+                                        <H14font400Gray4 style={{ color: isDarkTheme ? colors.greyVar3 : colors.greyVar4 }}>{labels.continuemsg}</H14font400Gray4>
+                                        <BottomStyle style={{ borderBottomColor: isDarkTheme ? 'rgba(78, 80, 114, 0.3)' : colors.borderBottomColor }} />
                                     </CheckBoxContainer>
                                     <SocialLogoContainer>
                                         {socialLogo(isDarkTheme ? <GoogleIconDark /> : <GoogleIcon />)}
@@ -179,7 +179,7 @@ const LoginEmail = (props: loginEmailProps) => {
                                     </SocialLogoContainer>
                                 </View>
                                 <TextContainer>
-                                    <H14font400Gray4  style={{color: isDarkTheme ? colors.greyVar3 : colors.greyVar4 }}>{labels.donthaveanaccount}</H14font400Gray4>
+                                    <H14font400Gray4 style={{ color: isDarkTheme ? colors.greyVar3 : colors.greyVar4 }}>{labels.donthaveanaccount}</H14font400Gray4>
                                     <TouchableOpacity
                                         onPress={() => { navigation.navigate(screenName.SignUp as never) }}>
                                         <H14font400Blue >{labels.signUp}</H14font400Blue>

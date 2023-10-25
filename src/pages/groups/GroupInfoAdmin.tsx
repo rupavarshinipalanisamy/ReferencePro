@@ -4,12 +4,12 @@ import { CommonLineDividerGrey, MainContainer } from '../../components/commonVie
 import { colors } from '../../utils/colors';
 import { ColorIconTabSecond, GroupInfoCard, GroupProfileCard, Groups, Header, MediaCard } from './GroupInfo';
 import { useNavigation } from '@react-navigation/native';
-import { alignItemsCenter, flexRow, justyfyCenter, mb15, mr5, mt10, pl13, spaceBetween } from '../../components/commonStyles';
+import { alignItemsCenter, flexRow, justyfyCenter, mb15, mr5, mt10, mt5, pl13, spaceBetween } from '../../components/commonStyles';
 import CustomIcon from '../../utils/Icons';
-import { H16BlackText } from '../../components/commonText';
+import { H14Blackvar2Bold500, H16BlackText } from '../../components/commonText';
 import { colorIconsAdminData } from '../../utils/data/groupsData';
 import { ToggleSwitch } from '../../components/commonComponents';
-import { useTheme } from '../../Theme/ThemeContext';
+import { isDark, useTheme } from '../../Theme/ThemeContext';
 
 export type GroupInfoAdminProps = {
 
@@ -33,18 +33,17 @@ const ColorIconTab = () => {
                         <TouchableOpacity key={item.id} onPress={() => navigation.navigate(item.screenName as never)}>
                             <View style={[flexRow, spaceBetween, { paddingBottom: 15 }]}>
                                 <View style={[flexRow]}>
-
-                                    <View style={{ height: 35, width: 35, borderRadius: 8, backgroundColor: item.bgcolor, alignItems: 'center', justifyContent: 'center' }}>
+                                    <View style={{ height: 26, width: 26, borderRadius: 8, backgroundColor: item.bgcolor, alignItems: 'center', justifyContent: 'center' }}>
                                         <CustomIcon name={item.iconName} size={item.iconSize} type={item.iconType} color={item.iconColor} />
                                     </View>
                                     <View style={[alignItemsCenter, justyfyCenter, pl13]}>
-                                        <H16BlackText>{item.name}</H16BlackText>
+                                        <H14Blackvar2Bold500>{item.name}</H14Blackvar2Bold500>
                                     </View>
                                 </View>
                                 {
                                     item.id === 2 ? (
                                         <View style={[flexRow, alignItemsCenter, justyfyCenter]}>
-                                            <View style={[styles.roundNumber, { backgroundColor: 'rgba(97, 97, 97, 0.05) ' }, mt10, mr5]}>
+                                            <View style={[styles.roundNumber, { backgroundColor: 'rgba(97, 97, 97, 0.05) ' }, mt5, mr5]}>
                                                 <Text style={styles.roundNumberText}>10</Text>
                                             </View>
                                             <View style={[{ transform: [{ rotate: '180deg' }] }]}
@@ -79,7 +78,7 @@ const ColorIconTab = () => {
 const GroupInfoAdmin = (props: GroupInfoAdminProps) => {
     return (
         <Fragment>
-            <MainContainer style={{ backgroundColor: colors.whiteVar0, flex: 1 }}>
+            <MainContainer style={{ backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0, flex: 1 }}>
                 <Header />
                 <ScrollView style={{ marginHorizontal: 20 }} showsVerticalScrollIndicator={false}>
                     <GroupProfileCard />

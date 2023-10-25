@@ -5,13 +5,13 @@ import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh10, mh20, mh5, mt10,
 import { DevWidth } from '../../utils/device';
 import { PurpleMainContainer } from '../../components/commonView'
 import { labels } from '../../utils/labels';
-import { H15Grey1, H16SemiBoldBlack, H16SemiBoldBlack1, H18BlackBoldText600 } from '../../components/commonText';
+import { H15Grey1, H16SemiBoldBlack1, H18BlackBoldText600 } from '../../components/commonText';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
-import { BottomTabBar, ChatHeader, ContactHeader, CustomActionBar1, CustomActionBarSecond } from '../../components/commonComponents'
+import { BottomTabBar, ContactHeader, CustomActionBar1, CustomActionBarSecond } from '../../components/commonComponents'
 import { contactList } from '../../utils/data/contactData';
 import CustomIcon from '../../utils/Icons';
-import { useTheme, isDark  } from '../../Theme/ThemeContext';
+import { useTheme  } from '../../Theme/ThemeContext';
 
 
 export type AllChatsProps = {

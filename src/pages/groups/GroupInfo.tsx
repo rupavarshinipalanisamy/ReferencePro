@@ -5,7 +5,7 @@ import { CommonLineDividerGrey, MainContainer, RowSpaceBetween } from '../../com
 import { useNavigation } from '@react-navigation/native';
 import { alignItemsCenter, flexRow, justyfyCenter, mb15, mh20, mr5, mt10, mt15, mt20, mt3, mt5, mv20, pl10, pl13, pt10, pt5, spaceBetween } from '../../components/commonStyles';
 import CustomIcon from '../../utils/Icons';
-import { H14BlackText, H14GreyVar4Bold400, H14blackVar1bold400Text, H15BlackBold600, H15Grey, H16BlackText, H16font600Black, H18BlackText, H18fontBoldBlack } from '../../components/commonText';
+import { H12fontBold400GreyVar4, H12fontBold400blackVar2, H14BlackText, H14BlackVar2Bold400Text, H14Blackvar2Bold500, H14GreyVar4Bold400, H14GreyVar4Bold400Text, H14blackVar1bold400Text, H15BlackBold600, H15Blackvar2Bold500, H15Grey, H16BlackText, H16font600Black, H18BlackText, H18Blackvar2Bold600, H18fontBoldBlack } from '../../components/commonText';
 import { CardHeaderText, CustomModal } from '../../components/commonComponents';
 import { DevHeight, DevWidth } from '../../utils/device';
 import { labels } from '../../utils/labels';
@@ -49,10 +49,10 @@ export const Header = () => {
         <View style={{ marginVertical: 20 }}>
             <View style={[flexRow, spaceBetween, { marginHorizontal: 25 }]}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <CustomIcon name='chevron-back-sharp' color={colors.greyVar4} size={16} type="Ionicons" />
+                    <CustomIcon name='chevron-back-sharp' color={isDark() ? colors.white : colors.greyVar4} size={16} type="Ionicons" />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={handleOptionModal}>
-                    <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={colors.greyVar4} />
+                    <CustomIcon name='dots-vertical' type="MaterialCommunityIcons" size={22} color={isDark() ? colors.white : colors.greyVar4} />
                 </TouchableOpacity>
             </View>
             <CustomModal
@@ -72,21 +72,21 @@ export const GroupProfileCard = () => {
         <View>
             <View style={{ marginTop: 50 }}>
                 <View style={{
-                    backgroundColor: colors.white, height: DevHeight / 4.5, width: '100%', borderRadius: 20, elevation: 1, justifyContent: 'center',
-                    shadowOpacity: 1, shadowColor: colors.greyVar4
+                    backgroundColor: isDark() ? colors.darkModeVar4 : colors.white, height: DevHeight / 4.5, width: '100%', borderRadius: 20, elevation: 1, justifyContent: 'center',
+                    shadowOpacity:0.1, shadowColor: colors.greyVar0
                 }}>
                     <View style={{ alignItems: 'center', marginTop: 40 }}>
-                        <H18fontBoldBlack>{labels.horaceKeene}</H18fontBoldBlack>
-                        <Text style={{ fontSize: 16, color: colors.greyVar4 }}>Group . 35 Participants</Text>
+                        <H18Blackvar2Bold600>{labels.horaceKeene}</H18Blackvar2Bold600>
+                        <H14GreyVar4Bold400 >Group . 35 Participants</H14GreyVar4Bold400>
                         <View style={[flexRow, { marginTop: 10 }]}>
                             <View style={[{ alignItems: 'center', justifyContent: 'center' }]}>
-                                <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={22} color={colors.greyVar4} />
+                                <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={22} color={isDark() ? colors.greyVar3 : colors.greyVar4} />
                             </View>
                             <View style={[{ alignItems: 'center', justifyContent: 'center' }, pl10]}>
-                                <CustomIcon name='phone' type="Feather" size={18} color={colors.greyVar4} />
+                                <CustomIcon name='phone' type="Feather" size={18} color={isDark() ? colors.greyVar3 : colors.greyVar4} />
                             </View>
                             <View style={[{ alignItems: 'center', justifyContent: 'center' }, pl10]}>
-                                <CustomIcon name='chatbox-ellipses-outline' type="Ionicons" size={18} color={colors.greyVar4} />
+                                <CustomIcon name='chatbox-ellipses-outline' type="Ionicons" size={18} color={isDark() ? colors.greyVar3 : colors.greyVar4} />
                             </View>
                         </View>
                     </View>
@@ -133,13 +133,13 @@ export const GroupInfoCard = () => {
             <RowSpaceBetween>
                 <CardHeaderText text='Info' />
                 <View style={[justyfyCenter, alignItemsCenter]}>
-                    <CustomIcon name='pencil-outline' type='MaterialCommunityIcons' color={colors.black} size={20} />
+                    <CustomIcon name='pencil-outline' type='MaterialCommunityIcons' color={isDark() ? colors.greyVar3 : colors.black} size={20} />
                 </View>
             </RowSpaceBetween>
             <View style={mt10}>
-                <Text style={[{ color: colors.greyVar4 }, mt5]}>{labels.GroupDescription}</Text>
-                <H15BlackBold600 style={[mt5]}>{labels.HelloIamUsingDreamsChat}</H15BlackBold600>
-                <Text style={[{ color: colors.greyVar4 }, mt5]}>{labels.DummyText}</Text>
+                <H12fontBold400blackVar2 style={[mt5]}>{labels.GroupDescription}</H12fontBold400blackVar2>
+                <H14BlackVar2Bold400Text style={[mt5]}>{labels.HelloIamUsingDreamsChat}</H14BlackVar2Bold400Text>
+                <H12fontBold400GreyVar4 style={[{ color: colors.greyVar4 }, mt5]}>{labels.DummyText}</H12fontBold400GreyVar4>
             </View>
             <View style={[mt15, mb15]}>
                 <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />
@@ -157,11 +157,11 @@ export const MediaCard = () => {
             <TouchableOpacity style={[flexRow, spaceBetween]} onPress={() => { }}>
                 <CardHeaderText text='Media' />
                 <View style={flexRow}>
-                    <View style={[styles.roundNumber, { backgroundColor: 'rgba(97, 97, 97, 0.15) ' }, mt10, mr5]}>
-                        <Text style={styles.roundNumberText}>68</Text>
+                    <View style={[styles.roundNumber, { backgroundColor: 'rgba(97, 97, 97, 0.15) ' }, mt5, mr5]}>
+                        <Text style={[styles.roundNumberText, {color: isDark() ? colors.greyVar4 : colors.greyVar4,}]}>68</Text>
                     </View>
                     <View style={{ alignItems: 'center', justifyContent: 'center', transform: [{ rotate: '180deg' }] }}>
-                        <CustomIcon name='chevron-back-sharp' color={colors.greyVar4} size={16} type="Ionicons"
+                        <CustomIcon name='chevron-back-sharp' color={isDark() ? colors.greyVar3 : colors.greyVar4} size={16} type="Ionicons"
                         />
                     </View>
                 </View>
@@ -198,18 +198,18 @@ export const Groups = () => {
             <RowSpaceBetween>
                 <CardHeaderText text='35 Participants' />
                 <View style={[justyfyCenter, alignItemsCenter]}>
-                    <CustomIcon name='search' type='Feather' color={colors.black} size={20} />
+                    <CustomIcon name='search' type='Feather' color={isDark() ? colors.greyVar3 : colors.black} size={20} />
                 </View>
             </RowSpaceBetween>
             {groupsData.map((item, index) => (
-                <View key={index} style={styles.cardSurface}>
+                <View key={index} style={[styles.cardSurface, {backgroundColor: isDark() ? colors.darkModeVar4 : colors.white,}]}>
                     <View>
                         <Image source={item.img} style={{ height: 40, width: 40, borderRadius: 100 }} />
                         <View style={[{ backgroundColor: item.status === 'active' ? '#20c997' : '' }, item.status === 'active' ? styles.status : null]} />
                     </View>
                     <View style={pl10}>
-                        <Text style={{ color: 'black', fontSize: 15, fontWeight: '500' }}>{item.name}</Text>
-                        <Text style={[{ color: colors.greyVar4 }, pt5]}>{item.personName}</Text>
+                        <H15Blackvar2Bold500>{item.name}</H15Blackvar2Bold500>
+                        <H14GreyVar4Bold400Text style={[{ color: colors.greyVar4 }, pt5]}>{item.personName}</H14GreyVar4Bold400Text>
                     </View>
                 </View>
 
@@ -240,24 +240,24 @@ const ColorIconTab = () => {
                                         <CustomIcon name={item.iconName} size={item.iconSize} type={item.iconType} color={item.iconColor} />
                                     </View>
                                     <View style={[alignItemsCenter, justyfyCenter, pl13]}>
-                                        <H16BlackText>{item.name}</H16BlackText>
+                                        <H14Blackvar2Bold500>{item.name}</H14Blackvar2Bold500>
                                     </View>
                                 </View>
                                 {
                                     item.id === 1 ? (
                                         <View style={[flexRow, alignItemsCenter, justyfyCenter]}>
-                                            <View style={[styles.roundNumber, { backgroundColor: 'rgba(97, 97, 97, 0.05) ' }, mt10, mr5]}>
-                                                <Text style={styles.roundNumberText}>10</Text>
+                                            <View style={[styles.roundNumber, { backgroundColor: 'rgba(97, 97, 97, 0.05) ' }, mt5, mr5]}>
+                                                <Text style={[styles.roundNumberText,{color: isDark() ? colors.greyVar4 : colors.greyVar4,}]}>10</Text>
                                             </View>
                                             <View style={[{ transform: [{ rotate: '180deg' }] }]}
                                             >
-                                                <CustomIcon name='chevron-back-sharp' color={colors.greyVar4} size={16} type="Ionicons"
+                                                <CustomIcon name='chevron-back-sharp' color={isDark() ? colors.greyVar3 : colors.greyVar4} size={16} type="Ionicons"
                                                 />
                                             </View>
                                         </View>
                                     ) : (
                                         <TouchableOpacity style={[{ transform: [{ rotate: '180deg' }] }, flexRow, alignItemsCenter, justyfyCenter]}>
-                                            <CustomIcon name='chevron-back-sharp' color={colors.greyVar4} size={16} type="Ionicons"
+                                            <CustomIcon name='chevron-back-sharp' color={isDark() ? colors.greyVar3 : colors.greyVar4} size={16} type="Ionicons"
                                             />
                                         </TouchableOpacity>
                                     )
@@ -337,15 +337,15 @@ export const ColorIconTabSecond = () => {
                             <View style={[flexRow, spaceBetween, { paddingBottom: 15 }]}>
                                 <View style={[flexRow]}>
 
-                                    <View style={{ height: 35, width: 35, borderRadius: 8, backgroundColor: item.bgcolor, alignItems: 'center', justifyContent: 'center' }}>
+                                    <View style={{ height: 26, width: 26, borderRadius: 8, backgroundColor: item.bgcolor, alignItems: 'center', justifyContent: 'center' }}>
                                         <CustomIcon name={item.iconName} size={item.iconSize} type={item.iconType} color={item.iconColor} />
                                     </View>
                                     <View style={[alignItemsCenter, justyfyCenter, pl13]}>
-                                        <H16BlackText>{item.name}</H16BlackText>
+                                        <H14Blackvar2Bold500>{item.name}</H14Blackvar2Bold500>
                                     </View>
                                 </View>
                                 <View style={[{ transform: [{ rotate: '180deg' }] }, flexRow, alignItemsCenter, justyfyCenter]}>
-                                    <CustomIcon name='chevron-back-sharp' color={colors.greyVar4} size={16} type="Ionicons"
+                                    <CustomIcon name='chevron-back-sharp' color={isDark() ? colors.greyVar3 : colors.greyVar4} size={16} type="Ionicons"
                                     />
                                 </View>
                             </View>
@@ -369,7 +369,7 @@ export const ColorIconTabSecond = () => {
 const GroupInfo = (props: GroupInfoProps) => {
     return (
         <Fragment>
-            <MainContainer style={{ backgroundColor: colors.whiteVar0, flex: 1 }}>
+            <MainContainer style={{ backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0, flex: 1 }}>
                 <Header />
                 <ScrollView style={{ marginHorizontal: 20 }} showsVerticalScrollIndicator={false}>
                     <GroupProfileCard />
@@ -394,14 +394,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     roundNumberText: {
-
-        color: colors.greyVar4,
+        fontWeight : '400',
         fontSize: 12,
     },
     cardSurface: {
-        backgroundColor: colors.white,
         padding: 10,
-        elevation: 4,
+        elevation: 2,
         marginTop: 15,
         flexDirection: 'row',
         borderRadius: 5,
@@ -422,7 +420,7 @@ const styles = StyleSheet.create({
     },
     status: {
         borderWidth: 3,
-        borderColor: colors.white,
+        borderColor: isDark() ? colors.black : colors.white,
         position: 'absolute',
         bottom: 3,
         right: 0,

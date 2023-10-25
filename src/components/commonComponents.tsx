@@ -1116,7 +1116,7 @@ export const ProfileCard = () => {
             <View style={{ marginTop: 50 }}>
                 <View style={{
                     backgroundColor: isDark()?colors.darkModeVar4:colors.white, height: DevHeight / 4.5, width: '100%', borderRadius: 20, elevation: 5, justifyContent: 'center',
-                    shadowOpacity: 1, shadowColor: colors.greyVar4
+                    shadowOpacity:0.1, shadowColor: colors.greyVar0
                 }}>
                     <View style={{ alignItems: 'center', marginTop: 40 }}>
                         <H16Black600Text>{labels.horaceKeene}</H16Black600Text>

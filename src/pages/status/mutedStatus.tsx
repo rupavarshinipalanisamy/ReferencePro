@@ -11,7 +11,7 @@ import { StatusItem, statusText } from './allStatus';
 import { StatusView1 } from '../../utils/svg';
 import { AfterNavigation, BeforeNavigation, StatusOptionModalComponent } from './statusContainer';
 import { screenName } from '../../utils/screenName';
-import { isDark } from '../../Theme/ThemeContext';
+import { useTheme } from '../../Theme/ThemeContext';
 import { Platform } from 'react-native';
 
 export type MutedStatusProps = {
@@ -23,6 +23,8 @@ const MutedStatusScreen = (props: MutedStatusProps) => {
     const navigation = useNavigation();
     const [callOptionModal, setCallOptionModal] = useState(false);
     const route = useRoute();
+    const { theme } = useTheme();
+    const isDarkTheme = theme === 'dark';
     const showSecondScreen = route.params?.showSecondScreen === true;
 
     const closeCallOptionModal = () => {
@@ -35,7 +37,7 @@ const MutedStatusScreen = (props: MutedStatusProps) => {
 
 
     return (
-        <View style={[{ backgroundColor: isDark() ? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
+        <View style={[{ backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
             <View style={flex1}>
                 <ScrollView showsVerticalScrollIndicator={false}>
             {showSecondScreen ? <AfterNavigation /> : <BeforeNavigation />}
