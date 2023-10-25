@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useRef } from 'react';
-import { Text, View, ImageBackground, StyleSheet, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Image, Animated, StatusBar, TextInput, Modal as RNModal } from 'react-native';
+import { Text, View, ImageBackground, StyleSheet, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Image, Animated, StatusBar, TextInput, Modal as RNModal ,Platform} from 'react-native';
 import { colors } from '../utils/colors';
 import { alignItemsCenter, flex1, flexRow, justyfyCenter, pb10, pl13, pl15, pl6, pt10, spaceBetween } from '../components/commonStyles'
 import { labels } from '../utils/labels';
@@ -46,7 +46,7 @@ export const Tick = () => {
 
 export const Reactmsg = () => {
   return (
-    <View style={{ paddingTop: 5 }} >
+    <View style={{paddingTop:Platform.OS==='ios'?0:5}} >
       <View style={{ backgroundColor: isDark() ? colors.darkModeVar4 : colors.white, height: 22, width: 40, borderRadius: 10, flexDirection: 'row', marginRight: 230 }}>
         <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'space-evenly', flex: 1 }}>
           <H12font400Grey >1</H12font400Grey>

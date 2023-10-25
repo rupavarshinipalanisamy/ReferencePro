@@ -50,17 +50,42 @@ const ChatMessage = ({ message, onSwipeRight, onPress, hanldeLogPress, selectedC
             <Animated.View
                 style={[
                     {
-                        backgroundColor: selectedCards.includes(message.id) ? (isDark()?colors.darkModeVar6:colors.purpleVar4 ): 'transparent',
-                        marginVertical:2, 
+                        backgroundColor: selectedCards.includes(message.id) ? (isDark() ? colors.darkModeVar6 : colors.purpleVar4) : 'transparent',
                         transform: [{ translateX: translateX }],
                     },
                 ]}
             >
+
+
                 <TouchableOpacity
-                    style={[
+
+                    key={message.id}
+                    onPress={() => {
+                        if (selectedCards.length === 0) {
+                            console.log('--');
+                        } else {
+                            toggleCardSelection(message.id); // Use the toggle function from props
+                        }
+                    }}
+
+                    onLongPress={(event) => {
+                        hanldeLogPress(event, message.id);
+                        if (!selectedCards.includes(message.id)) {
+                            toggleCardSelection(message.id);
+                        }
+                    }}
+                                  >
+                    <View>
+                        <H12font400Grey style={[message.type === 'sentmsg'?{alignItems:'flex-end'}:{alignItems:'flex-start'}]}>{message.time}</H12font400Grey>
+                        <Text style={pl6}> {message.icon}</Text>
+                    </View>
+                    <View style={[
                         message.type === 'sentmsg' ? { alignItems: 'flex-end' } : { alignItems: 'flex-start' },
-                        { paddingTop:5, marginHorizontal: 20, position: 'relative' ,marginBottom:4},
-                    ]}
+                        { marginHorizontal: 20 },
+                    ]}>{message.message}</View>
+                </TouchableOpacity>
+                {/* <TouchableOpacity
+
                     key={message.id}
                     onPress={() => {
                         if (selectedCards.length === 0) {
@@ -97,7 +122,7 @@ const ChatMessage = ({ message, onSwipeRight, onPress, hanldeLogPress, selectedC
                     </View>
                     <Text>{message.message}</Text>
                     <TouchableOpacity onPress={onPress}>{message.msg}</TouchableOpacity>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </Animated.View>
         </PanGestureHandler>
     );
