@@ -35,7 +35,7 @@ const GroupChatting = (props: GroupChattingProps) => {
     return (
         <Fragment>
             <MainContainer>
-            <GestureHandlerRootView style={{ flex: 1 ,backgroundColor:isDark()?colors.darkModeVar2:colors.white}}>
+            <GestureHandlerRootView style={{ flex: 1 ,backgroundColor:isDark()?colors.darkModeVar2:colors.whiteVar0}}>
         <View style={{ flex: 1 }}>
                 <HeaderChatView backgroundColor={colors.purpleVar3} groups={true} profileNavigate={screenName.GroupInfo} videoNavigate={screenName.GroupVideoCallAttend} audioNavigate={screenName.GroupAudioCallAttend} title={labels.UIUXDesigner} subTitle={labels.DebraJamesHollis} />
                 <ImageBackground

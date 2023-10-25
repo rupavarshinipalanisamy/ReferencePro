@@ -171,8 +171,7 @@ const ChatView = () => {
           <ImageBackground
             source={ChatBackgroundImg}
             style={styles.backgroundImage}
-            imageStyle={{ opacity: 0.1, backgroundColor: isDark() ? 'rgba(194, 194, 194,0.1)' : 'rgba(220, 198, 224, 0.1)' }} >
-
+            imageStyle={{ opacity: 0.18, backgroundColor: isDark() ? 'rgba(194, 194, 194,0.1)' : 'rgba(220, 198, 224, 0.1)' }} >
             {renderHeader()}
 
             <ScrollView style={{ flex: 1 }}>
