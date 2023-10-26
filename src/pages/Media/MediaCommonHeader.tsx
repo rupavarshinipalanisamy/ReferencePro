@@ -474,7 +474,7 @@ const handleCallOptionModal = () => {
                             <H18BlackText style={pl13}>{props.headerText}</H18BlackText>
                         </View>
                         {props.editIcon &&
-                            <CustomIcon name='pencil' size={20} color={isDark() ? colors.white : colors.greyVar4} type='SimpleLineIcons' />}
+                            <CustomIcon name='pencil' size={18} color={isDark() ? colors.white : colors.greyVar4} type='SimpleLineIcons' />}
                         {props.searchIcon &&
                             <CustomIcon name="search" size={20} color={isDark() ? colors.white : colors.greyVar4} type="Ionicons" />
                         }

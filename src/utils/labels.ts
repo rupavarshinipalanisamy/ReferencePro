@@ -268,7 +268,7 @@ export const labels = {
     UrgentCallsOnly : 'Urgent Calls Only',
     ForwardTo : 'Forward To',
     device:'Device',
-    ipAdd:'Ip Address',
+    ipAdd:'IP Address',
     location:'Location',
     dateAndtime: '19 Sep 2022, 10:20:20',
     devicename: 'Safari Macos',

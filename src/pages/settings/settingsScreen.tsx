@@ -107,8 +107,8 @@ const SettingsScreen = (props: settingsScreenProps) => {
         <Fragment>
             <View style={[flex1, { backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.whiteVar0 }]} >
                 <TopContainerWhiteCard style={{backgroundColor:isDarkTheme?colors.darkModeVar1:colors.white}}>
-                    <View style={{ flexDirection: 'row', marginHorizontal: 20, justifyContent: 'space-between' }}>
-                        <H18BlackText style={[pl13,{color:isDarkTheme?colors.white:colors.black}]}>Settings</H18BlackText>
+                    <View style={{ flexDirection: 'row', marginHorizontal: 22, justifyContent: 'space-between' }}>
+                        <H18BlackText style={[{color:isDarkTheme?colors.white:colors.black}]}>Settings</H18BlackText>
                         <CustomIcon name='search-outline' size={20} color={isDarkTheme?colors.white:colors.black} type='Ionicons' />
                     </View>
                 </TopContainerWhiteCard>
@@ -229,7 +229,6 @@ export default SettingsScreen
 const styles = StyleSheet.create({
     cardSurface: {
         padding: 10,
-        elevation: 4,
         marginTop: 20,
         flexDirection: 'row',
         borderRadius: 8,

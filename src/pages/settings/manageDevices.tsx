@@ -5,7 +5,7 @@ import { colors } from '../../utils/colors';
 import { H14font400Gray4, H14redText, H15font500Black } from '../../components/commonText';
 import { manageDevicesdata } from '../../utils/data/manageDeviceData';
 import { RowSpaceBetween } from '../../components/commonView';
-import { flex1, mh10, mt10, mt5, mv5 } from '../../components/commonStyles';
+import { flex1, mh10, mt10, mt5, mv3, mv5 } from '../../components/commonStyles';
 import { SearchHeader } from '../Media/MediaCommonHeader';
 import { isDark } from '../../Theme/ThemeContext';
 
@@ -32,32 +32,33 @@ export const cardDetails = () => {
         <View >
             {manageDevicesdata.map((item) => {
                 return (
-                    <View key={item.id}>
+                    <View key={item.id} style={{marginTop:17,marginHorizontal:22}}>
                         <View style={[styles.cardContainer, {
                             backgroundColor: isDark() ? colors.darkModeVar4 : colors.white,
                             borderColor: isDark() ? colors.darkModeVar5 : colors.greyVar0
                         }]} >
                             <View>
-                                <RowSpaceBetween style={[mv5]}>
+                                <RowSpaceBetween style={[mv3]}>
                                     <H15font500Black>{item.date}</H15font500Black>
                                     <H14font400Gray4>{item.dateAndtime}</H14font400Gray4>
                                 </RowSpaceBetween>
-                                <RowSpaceBetween style={[mv5]}>
+                                <RowSpaceBetween style={[mv3]}>
                                     <H15font500Black>{item.device}</H15font500Black>
                                     <H14font400Gray4>{item.deviceName}</H14font400Gray4>
                                 </RowSpaceBetween>
-                                <RowSpaceBetween style={[mv5]}>
+                                <RowSpaceBetween style={[mv3]}>
                                     <H15font500Black>{item.ipAdd}</H15font500Black>
                                     <H14font400Gray4>{item.ipId}</H14font400Gray4>
                                 </RowSpaceBetween>
-                                <RowSpaceBetween style={[mv5]}>
+                                <RowSpaceBetween style={[mv3]}>
                                     <H15font500Black>{item.location}</H15font500Black>
                                     <H14font400Gray4>{item.devLoc}</H14font400Gray4>
                                 </RowSpaceBetween>
-                                <RowSpaceBetween style={[mv5]}>
+                                <RowSpaceBetween style={[mv3]}>
                                     <H15font500Black style={[mt10]}>{item.status}</H15font500Black>
                                     <CardHeaderText1 text={labels.Delete} />
                                 </RowSpaceBetween>
+                                
                             </View>
                         </View>
                     </View>
@@ -82,6 +83,8 @@ const ManageDevices = (props: manageDevicesProps) => {
                     {cardDetails()}
                     {cardDetails()}
                     {cardDetails()}
+                    {cardDetails()}
+
                 </ScrollView>
             </View>
         </Fragment>
@@ -96,8 +99,8 @@ const styles = StyleSheet.create({
     },
     cardContainer: {
         borderRadius: 10,
-        padding: 15,
-        margin: 20,
+        padding: 12,
         borderWidth: 2,
+        
     }
 })
