@@ -321,7 +321,7 @@ export const EditModal2 = ({ isVisible, onClose }) => {
             </View>
           </View>
         </View>
-        <TouchableOpacity style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', bottom: Platform.OS === 'ios' ? 20 : 8 }}
+        <TouchableOpacity style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', bottom: Platform.OS === 'ios' ? 20 : 16 }}
 
         >
           <CustomIcon name='done' type="MaterialIcons" color={colors.white} size={18} />

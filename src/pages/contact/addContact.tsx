@@ -36,7 +36,7 @@ const AddContact = (props: AddContactProps) => {
 
     const handleSaveContact = () => {
         navigation.navigate(screenName.ContactPage as never)
-    }
+    };
 
     return (
         <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
@@ -65,6 +65,6 @@ const AddContact = (props: AddContactProps) => {
             </View>
         </View>
     )
-}
+};
 
 export default AddContact;

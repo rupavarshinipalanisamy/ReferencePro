@@ -209,7 +209,6 @@ const styles = StyleSheet.create({
   },
   viewTopContainer: {
     height: 42,
-    backgroundColor: colors.purpleVar1,
     marginTop: 20,
     width: '90%',
     alignSelf: 'center',

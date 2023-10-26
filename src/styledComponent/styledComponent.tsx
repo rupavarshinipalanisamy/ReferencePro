@@ -247,10 +247,31 @@ alignItems: center;
 `
 
 export const CircleBg1 = styled(View)`
-
 height: 10px; 
 width: 10px; 
 borderRadius: 10px;
 alignItems: center;
 background-color: ${colors.green};
+`
+export const IconConatiner2 = styled(View)`
+backgroundColor:${colors.purpleVar3};
+height:32px;
+width:32px;
+borderRadius:32px;
+justifyContent: center;
+alignItems: center;
+`
+export const WhiteBgContact = styled(View)`
+height:100%;
+width:100%;
+borderTopLeftRadius:45px;
+borderTopRightRadius:45px;
+overflow: hidden;
+`
+export const progressBarsContainer = styled(View)`
+left:8px;
+right:px;
+marginTop:10px;
+position: absolute;
+flex: 1px;
 `

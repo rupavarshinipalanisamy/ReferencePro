@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, ScrollView, StyleSheet } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { flex1, mt20 } from '../../components/commonStyles';
 import { BottomTabBar, CustomModal } from '../../components/commonComponents'
 import { colors } from '../../utils/colors';
@@ -13,6 +13,7 @@ import { AfterNavigation, BeforeNavigation, StatusOptionModalComponent } from '.
 import { screenName } from '../../utils/screenName';
 import { useTheme } from '../../Theme/ThemeContext';
 import { Platform } from 'react-native';
+import { WhiteBgContact } from '../../styledComponent/styledComponent';
 
 export type MutedStatusProps = {
     selectedCards: number[];
@@ -37,10 +38,10 @@ const MutedStatusScreen = (props: MutedStatusProps) => {
 
 
     return (
-        <View style={[{ backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
+        <WhiteBgContact style={[{ backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.white }, flex1, mt20]}>
             <View style={flex1}>
                 <ScrollView showsVerticalScrollIndicator={false}>
-            {showSecondScreen ? <AfterNavigation /> : <BeforeNavigation />}
+                    {showSecondScreen ? <AfterNavigation /> : <BeforeNavigation />}
                     {statusText(labels.viewedStatus)}
                     <View style={{ opacity: 0.5 }}>
                         {recentstatusData.map((data, index) => (
@@ -58,19 +59,8 @@ const MutedStatusScreen = (props: MutedStatusProps) => {
                 onClose={closeCallOptionModal}
             />
             <BottomTabBar />
-        </View >
+        </WhiteBgContact >
     )
-}
+};
 
-const styles = StyleSheet.create({
-    whiteBg: {
-        height: '100%',
-        width: '100%',
-        borderTopLeftRadius: 45,
-        borderTopRightRadius: 45,
-        overflow: 'hidden'
-    },
-
-});
-
-export default MutedStatusScreen
+export default MutedStatusScreen;

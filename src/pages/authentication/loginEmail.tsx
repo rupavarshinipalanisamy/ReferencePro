@@ -100,6 +100,7 @@ const LoginEmail = (props: loginEmailProps) => {
                                                     placeholder={labels.emailaddress}
                                                     value={value}
                                                     onChangeText={onChange}
+                                                    textColor={isDarkTheme?colors.greyVar3:colors.blackVar1}
                                                 />
                                             )}
                                             rules={{
@@ -123,6 +124,7 @@ const LoginEmail = (props: loginEmailProps) => {
                                                             value={value}
                                                             secureTextEntry={showPassword}
                                                             onChangeText={onChange}
+                                                            textColor={isDarkTheme?colors.greyVar3:colors.blackVar1}
                                                         />
                                                     )}
                                                     rules={{

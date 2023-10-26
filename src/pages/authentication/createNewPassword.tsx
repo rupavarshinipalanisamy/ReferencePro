@@ -53,6 +53,7 @@ const CreateNewPassword = (props: createNewPasswordProps) => {
 
     const onLogin = (details: any) => {
     };
+
     return (
         <Fragment>
             <View style={[flex1]}>
@@ -82,6 +83,7 @@ const CreateNewPassword = (props: createNewPasswordProps) => {
                                                         value={value}
                                                         secureTextEntry={showPassword}
                                                         onChangeText={onChange}
+                                                    textColor={isDarkTheme?colors.greyVar3:colors.blackVar1}
                                                     />
                                                 )}
                                                 rules={{
@@ -117,6 +119,7 @@ const CreateNewPassword = (props: createNewPasswordProps) => {
                                                         value={value}
                                                         secureTextEntry={shownewPassword}
                                                         onChangeText={onChange}
+                                                    textColor={isDarkTheme?colors.greyVar3:colors.blackVar1}
                                                     />
                                                 )}
                                                 rules={{

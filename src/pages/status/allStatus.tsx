@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { View, ScrollView, TouchableOpacity, Image, StyleSheet } from 'react-native';
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh10, mh20, mt20, mt5, pl13 } from '../../components/commonStyles';
-import { H14font400Black, H14font400Gray4, H15Grey, H15font500Black } from '../../components/commonText';
+import { alignItemsCenter, flex1, justyfyCenter, mh10, mh20, mt20, mt5 } from '../../components/commonStyles';
+import { H14font400Black, H14font400Gray4, H15font500Black } from '../../components/commonText';
 import { BottomTabBar, CustomModal } from '../../components/commonComponents'
 import { colors } from '../../utils/colors';
-import CustomIcon from '../../utils/Icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { labels } from '../../utils/labels';
 import { DevHeight, DevWidth } from '../../utils/device';
-import { mutedStatusData, statusData, threeDotIcon, viewedStatusData } from '../../utils/data/statusData';
+import { mutedStatusData, statusData, viewedStatusData } from '../../utils/data/statusData';
 import { AfterNavigation, BeforeNavigation, StatusOptionModalComponent } from './statusContainer';
 import { screenName } from '../../utils/screenName';
-import { isDark, useTheme } from '../../Theme/ThemeContext';
+import { useTheme } from '../../Theme/ThemeContext';
 import { StatusView, StatusView1 } from '../../utils/svg';
 import { Platform } from 'react-native';
+import { WhiteBgContact } from '../../styledComponent/styledComponent';
 export interface StatusData {
   id: number;
   image: any;
@@ -28,14 +28,14 @@ export interface RecentStatusItemProps {
 }
 
 export const StatusItem: React.FC<RecentStatusItemProps> = ({ data, onPress, statusView, isMuted }) => {
-  const {theme} = useTheme();
+  const { theme } = useTheme();
   const isDarkTheme = theme === 'dark';
 
   return (
     <View>
-      <View style={isMuted ? [styles.card2,{backgroundColor:isDarkTheme ? colors.darkModeVar7 : colors.white,}] 
-      : 
-      [styles.card1,{backgroundColor:isDarkTheme ? colors.darkModeVar7 : colors.white,}]}>
+      <View style={isMuted ? [styles.card2, { backgroundColor: isDarkTheme ? colors.darkModeVar7 : colors.white, }]
+        :
+        [styles.card1, { backgroundColor: isDarkTheme ? colors.darkModeVar7 : colors.white, }]}>
         <TouchableOpacity onPress={onPress}>
           <View style={[alignItemsCenter, justyfyCenter]}>
             {statusView}
@@ -43,8 +43,8 @@ export const StatusItem: React.FC<RecentStatusItemProps> = ({ data, onPress, sta
           </View>
         </TouchableOpacity>
         <View style={[mh10, mt5]}>
-          <H15font500Black style={{color:isDarkTheme?colors.greyVar0:colors.black}}>{data.name}</H15font500Black>
-          <H14font400Gray4 style={{color:isDarkTheme?colors.greyVar3:colors.greyVar4}}>{data.time}</H14font400Gray4>
+          <H15font500Black style={{ color: isDarkTheme ? colors.greyVar0 : colors.black }}>{data.name}</H15font500Black>
+          <H14font400Gray4 style={{ color: isDarkTheme ? colors.greyVar3 : colors.greyVar4 }}>{data.time}</H14font400Gray4>
         </View>
       </View>
     </View>
@@ -52,12 +52,12 @@ export const StatusItem: React.FC<RecentStatusItemProps> = ({ data, onPress, sta
 };
 
 export const statusText = (value: string,) => {
-  const {theme} = useTheme();
+  const { theme } = useTheme();
   const isDarkTheme = theme === 'dark';
 
   return (
     <View style={[mh20]}>
-      <H14font400Black style={{color:isDarkTheme?colors.greyVar0:colors.black}}>{value}</H14font400Black>
+      <H14font400Black style={{ color: isDarkTheme ? colors.greyVar0 : colors.black }}>{value}</H14font400Black>
     </View>
   )
 }
@@ -71,7 +71,7 @@ const AllStatus = (props: AllStatusProps) => {
   const navigation = useNavigation();
   const [callOptionModal, setCallOptionModal] = useState(false);
   const route = useRoute();
-  const {theme} = useTheme();
+  const { theme } = useTheme();
   const isDarkTheme = theme === 'dark';
   const showSecondScreen = route.params?.showSecondScreen === true;
 
@@ -79,12 +79,13 @@ const AllStatus = (props: AllStatusProps) => {
   const closeCallOptionModal = () => {
     setCallOptionModal(false);
   }
+
   const handleStatusItemClick = (id: number) => {
     navigation.navigate(screenName.FriendStatus as never);
-  };
+  }
 
   return (
-    <View style={[{ backgroundColor:  isDarkTheme? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
+    <WhiteBgContact style={[{ backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.white }, flex1, mt20]}>
       <View style={flex1}>
         <ScrollView showsVerticalScrollIndicator={false}>
           {showSecondScreen ? <AfterNavigation /> : <BeforeNavigation />}
@@ -121,7 +122,7 @@ const AllStatus = (props: AllStatusProps) => {
         onClose={closeCallOptionModal}
       />
       <BottomTabBar />
-    </View >
+    </WhiteBgContact >
   )
 }
 
@@ -145,13 +146,6 @@ const styles = StyleSheet.create({
     marginTop: 18,
     flexDirection: 'row',
     borderRadius: 6,
-  },
-  whiteBg: {
-    height: '100%',
-    width: '100%',
-    borderTopLeftRadius: 45,
-    borderTopRightRadius: 45,
-    overflow: 'hidden'
   },
   img: {
     position: 'absolute',
