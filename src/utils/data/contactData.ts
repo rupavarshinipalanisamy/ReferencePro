@@ -56,12 +56,7 @@ export const contactList = [
         location: labels.location6,
         profImg: ContactImg9(),
     },
-    {
-        id: 10,
-        contName: labels.elaine,
-        location: labels.location1,
-        profImg: ContactImg9(),
-    },
+
 
 ]
 

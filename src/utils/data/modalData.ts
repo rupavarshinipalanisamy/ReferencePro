@@ -45,7 +45,7 @@ export const lastSee = [
     },
     {
         id: 2,
-        status: labels.sameandlastSeen
+        status: labels.sameaslastSeen
 
     }
 ]

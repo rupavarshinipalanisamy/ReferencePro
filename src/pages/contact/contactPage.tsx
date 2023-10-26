@@ -1,5 +1,5 @@
 import React, { Fragment, useState, } from 'react';
-import { View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, ScrollView ,Text} from 'react-native';
 import { colors } from '../../utils/colors';
 import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh10, mh20, mh5, mt10, mt20, mt3, ph10, ph5 } from '../../components/commonStyles';
 import { PurpleMainContainer } from '../../components/commonView'
@@ -79,8 +79,8 @@ const ContactPage = ({ }: AllChatsProps) => {
                     handleTabPress={handleTabPress}
                 />
                 <WhiteBgContact style={[flex1, mt20, { backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.whiteVar0 }]}>
-                    <View style={flex1}>
-                        <ScrollView showsVerticalScrollIndicator={false}>
+                    <View >
+                        <ScrollView  showsVerticalScrollIndicator={false}>
                             {Object.keys(contactsByFirstLetter).map((letter) => (
                                 <View key={letter}>
                                     <H18BlackBoldText600 style={[mt10, mh20, { color: isDarkTheme ? colors.greyVar0 : colors.black }]}>{letter}</H18BlackBoldText600>
@@ -107,7 +107,7 @@ const ContactPage = ({ }: AllChatsProps) => {
                                             >
                                                 <View>
                                                     <TouchableOpacity onPress={() => navigation.navigate(screenName.ContactDetails as never)}>
-                                                        <View>{data.profImg}</View>
+                                                        <View style={[]}>{data.profImg}</View>
                                                     </TouchableOpacity>
                                                     {
                                                         selectedCards.includes(data.id) && (
@@ -117,7 +117,7 @@ const ContactPage = ({ }: AllChatsProps) => {
                                                         )
                                                     }
                                                 </View>
-                                                <View style={[mh10]}>
+                                                <View style={[mh5]}>
                                                     <H16SemiBoldBlack1 style={[ph10, { color: isDarkTheme ? colors.greyVar0 : colors.black }]}>
                                                         {data.contName}
                                                     </H16SemiBoldBlack1>
@@ -136,11 +136,17 @@ const ContactPage = ({ }: AllChatsProps) => {
                                     ))}
                                 </View>
                             ))}
+                         <Text></Text>
+                         <Text></Text>
+                         <Text></Text>
+                         <Text></Text>
                         </ScrollView>
                     </View>
-                    <BottomTabBar />
                 </WhiteBgContact>
+
             </PurpleMainContainer>
+            <BottomTabBar />
+
         </Fragment>
     );
 }
@@ -149,9 +155,11 @@ const styles = StyleSheet.create({
     cardContainer: {
         flexDirection: 'row',
         elevation: 4,
-        margin: 15,
         padding: 10,
-        borderRadius: 8
+        marginHorizontal:20,
+        borderRadius: 8,
+        marginTop:15,
+        alignItems:'center'
     },
     selectedCardContainer: {
         flexDirection: 'row',

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { View, TextInput, Text } from 'react-native';
+import { View, TextInput, Text,TouchableOpacity } from 'react-native';
 import { colors } from "../utils/colors";
 import { DevWidth } from "../utils/device";
 import { isDark } from "../Theme/ThemeContext";
@@ -253,7 +253,7 @@ borderRadius: 10px;
 alignItems: center;
 background-color: ${colors.green};
 `
-export const IconConatiner2 = styled(View)`
+export const IconConatiner2 = styled(TouchableOpacity)`
 backgroundColor:${colors.purpleVar3};
 height:32px;
 width:32px;

@@ -57,11 +57,15 @@ const LoginEmail = (props: loginEmailProps) => {
         name: 'Email',
         password: 'Password',
     };
+    const defaultValues = {
+        Email: 'dreamschat@gmail.com', 
+        Password: 'dreams123', 
+      };
     const {
         handleSubmit,
         control,
         formState: { errors },
-    } = useForm();
+    } = useForm({defaultValues});
 
     const onLogin = (details: any) => {
         navigation.navigate(screenName.Chats as never);

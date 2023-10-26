@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, Text } from 'react-native';
 import { flex1, mt20 } from '../../components/commonStyles';
 import { BottomTabBar, CustomModal } from '../../components/commonComponents'
 import { colors } from '../../utils/colors';
@@ -48,6 +48,10 @@ const MutedStatusScreen = (props: MutedStatusProps) => {
                             <StatusItem key={data.id} data={data} onPress={() => handleStatusItemClick(data.id)} statusView={<StatusView1 />} isMuted={true} />
                         ))}
                     </View>
+                    <Text></Text>
+                    <Text></Text>
+                    <Text></Text>
+                    <Text></Text>
                 </ScrollView>
             </View>
             <CustomModal

@@ -32,7 +32,7 @@ export const cardDetails = () => {
         <View >
             {manageDevicesdata.map((item) => {
                 return (
-                    <View key={item.id} style={{marginTop:17,marginHorizontal:22}}>
+                    <View key={item.id} style={{marginBottom:15}}>
                         <View style={[styles.cardContainer, {
                             backgroundColor: isDark() ? colors.darkModeVar4 : colors.white,
                             borderColor: isDark() ? colors.darkModeVar5 : colors.greyVar0
@@ -80,11 +80,12 @@ const ManageDevices = (props: manageDevicesProps) => {
             <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
                 <SearchHeader headerText={labels.manageDev} />
                 <ScrollView>
+                    <View style={{marginTop:20,marginHorizontal:20}}>
                     {cardDetails()}
                     {cardDetails()}
                     {cardDetails()}
                     {cardDetails()}
-
+                    </View>
                 </ScrollView>
             </View>
         </Fragment>

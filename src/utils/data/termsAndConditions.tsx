@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, StatusBar } from 'react-native';
+import { View } from 'react-native';
 import { SearchHeader } from '../../pages/Media/MediaCommonHeader';
 import { labels } from '../labels';
 import { H14BlackText, H14font400Gray4, H15font500Black } from '../../components/commonText';
-import { flex1, flexRow, m15, mh10, mt30, mv20, mv5 } from '../../components/commonStyles';
+import { flex1, flexRow, m15, mh10, ml5, mt30, mv20, mv5 } from '../../components/commonStyles';
 import { CheckCircleIcon } from '../svg';
 import { colors } from '../colors';
 import { isDark } from '../../Theme/ThemeContext';
@@ -34,7 +34,7 @@ export const agreeText = (text1: string, text2: string) => {
             <CheckCircleIcon />
             <View style={[mh10, flexRow]}>
                 <H14font400Gray4>{text1}</H14font400Gray4>
-                <H14BlackText>{text2}</H14BlackText>
+                <H14BlackText style={[ml5]}>{text2}</H14BlackText>
             </View>
         </View>
 

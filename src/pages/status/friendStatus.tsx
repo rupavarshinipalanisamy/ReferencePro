@@ -17,6 +17,7 @@ import { SmallButton } from '../../components/commonButtons';
 import { useNavigation } from '@react-navigation/native';
 import { isDark } from '../../Theme/ThemeContext';
 import { Platform } from 'react-native';
+import { screenName } from '../../utils/screenName';
 
 export type MyStatusProps = {
 };
@@ -41,6 +42,19 @@ const FriendStatus = (props: MyStatusProps) => {
 
     const handleCallOptionModal = () => {
         setOptionModal(!optionModal);
+    }
+
+    const handleCustomModal = (id: number) => {
+        if (id === 1) {
+            setOptionModal(false)
+            setStatusPrivacyOptionModal(true)
+        } else if (id === 3) {
+            navigation.navigate(screenName.SingleAudioCallRing as never)
+        } else if (id === 4) {
+            navigation.navigate(screenName.SingleVideoCall as never)
+        } else if (id === 5) {
+            navigation.navigate(screenName.UserProfile as never)
+        }
     }
 
     const translateY = new Animated.Value(0);
@@ -96,14 +110,9 @@ const FriendStatus = (props: MyStatusProps) => {
             <View>
                 {friendStatusModal.map((item) => {
                     return (
-                        <TouchableOpacity key={item.id} onPress={() => {
-                            if (item.id === 1) {
-                                setOptionModal(false)
-                                setStatusPrivacyOptionModal(true)
-                            }
-                        }} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
+                        <TouchableOpacity key={item.id} onPress={() => { handleCustomModal(item.id) }} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
                             <View style={[flexRow]}>
-                                <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={isDark()?colors.greyVar3:colors.blackVar1} />
+                                <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={isDark() ? colors.greyVar3 : colors.blackVar1} />
                                 <View style={[alignItemsCenter, justyfyCenter, pl13]}>
                                     <H15Grey>{item.title}</H15Grey>
                                 </View>
@@ -133,7 +142,7 @@ const FriendStatus = (props: MyStatusProps) => {
                     <SmallButton
                         title={labels.mute}
                         onChange={handleCancelButtonClick}
-                        backgroundColor={isCancelButtonActive ? (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white) : colors.purpleVar3  }
+                        backgroundColor={isCancelButtonActive ? (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white) : colors.purpleVar3}
                         textColor={isCancelButtonActive ? isDark() ? colors.redVar3 : colors.greyVar4 : colors.white}
                         borderWidth={isCancelButtonActive ? 1 : 0}
                         width={DevWidth / 3.15}
@@ -152,7 +161,7 @@ const FriendStatus = (props: MyStatusProps) => {
                 <View style={{ flexDirection: 'row', flex: 1 }}>
                     <View style={styles.progressBarContainer}>
                         <ProgressBar
-                            progress={progress1} 
+                            progress={progress1}
                             width={null}
                             height={4}
                             color={'white'}

@@ -45,7 +45,6 @@ export type PrivacyProps = {};
 const Privacy = (props: PrivacyProps) => {
     const navigation = useNavigation();
     const [toggleVisible, setToggleVisible] = useState(false);
-    const [selectedModalId, setSelectedModalId] = useState(null);
     const [statusPrivacyOptionModal, setStatusPrivacyOptionModal] = useState(false);
     const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
     const [lastSeenOptionModal, setLastSeenOPtionModal] = useState(false);
@@ -244,12 +243,12 @@ const Privacy = (props: PrivacyProps) => {
                         {profilePic.map((data, index) => {
                             return (
                                 <View key={data.id}  >
-                                    <TouchableOpacity>
+                                    <TouchableOpacity onPress={()=>handleStatusSelect(data.status)}>
                                         <View style={[mv10, flexRow]}  >
                                             <RadioBtn
                                                 key={data.id}
                                                 selected={selectedStatus === data.status}
-                                                onPress={() => handleStatusSelect(data.status)}
+                                                onPress={()=>{}}
                                             />
                                             <H14font500Gray4 style={[mh5]}>{data.status}</H14font500Gray4>
                                         </View>
@@ -299,12 +298,12 @@ const Privacy = (props: PrivacyProps) => {
                         {profilePic.map((data, index) => {
                             return (
                                 <View key={data.id}  >
-                                    <TouchableOpacity>
+                                    <TouchableOpacity onPress={()=>{handleStatusSelect(data.status)}}>
                                         <View style={[mv10, flexRow]}  >
                                             <RadioBtn
                                                 key={data.id}
                                                 selected={selectedStatus === data.status}
-                                                onPress={() => handleStatusSelect(data.status)}
+                                                onPress={() => {}}
                                             />
                                             <H14font500Gray4 style={[mh5]}>{data.status}</H14font500Gray4>
                                         </View>
@@ -318,12 +317,12 @@ const Privacy = (props: PrivacyProps) => {
                         {lastSee.map((data, index) => {
                             return (
                                 <View key={data.id}  >
-                                    <TouchableOpacity>
+                                    <TouchableOpacity onPress={()=>{ handleStatusSelect(data.status)}}>
                                         <View style={[mv10, flexRow]}  >
                                             <RadioBtn
                                                 key={data.id}
                                                 selected={selectedStatus === data.status}
-                                                onPress={() => handleStatusSelect(data.status)}
+                                                onPress={() =>{}}
                                             />
                                             <H14font500Gray4 style={[mh5]}>{data.status}</H14font500Gray4>
                                         </View>

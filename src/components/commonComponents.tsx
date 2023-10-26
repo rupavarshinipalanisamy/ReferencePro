@@ -1111,6 +1111,7 @@ export const CardHeaderText: React.FC<CardHeaderTextProps> = ({ text }) => {
 
 
 export const ProfileCard = () => {
+    const navigation = useNavigation()
     return (
         <View>
             <View style={{ marginTop: 50 }}>
@@ -1122,17 +1123,15 @@ export const ProfileCard = () => {
                         <H16Black600Text>{labels.horaceKeene}</H16Black600Text>
                         <H14GreyVar4Bold400>last seen at 07:15 PM</H14GreyVar4Bold400>
                         <View style={[flexRow, { marginTop: 10 }]}>
-                            <View style={[{ alignItems: 'center', justifyContent: 'center' }]}>
+                         <TouchableOpacity style={[{ alignItems: 'center', justifyContent: 'center' }]} onPress={()=>navigation.navigate(screenName.SingleVideoCall as never)}>
                                 <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={22} color={isDark()?colors.greyVar3:colors.greyVar4} />
-                            </View>
-                            <View style={[{ alignItems: 'center', justifyContent: 'center' }, pl10]}>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={[{ alignItems: 'center', justifyContent: 'center' }, pl10]} onPress={()=>navigation.navigate(screenName.SingleAudioCallRing as never)}>
                                 <CustomIcon name='phone' type="Feather" size={16} color={isDark()?colors.greyVar3:colors.greyVar4} />
-                            </View>
-                            <View style={[{ alignItems: 'center', justifyContent: 'center' }, pl10]}>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={[{ alignItems: 'center', justifyContent: 'center' }, pl10]} onPress={()=>navigation.navigate(screenName.ChatView as never)}>
                                 {isDark()? <DarkThemeMessageIcon/>:<MessageIcon/>}
-                               
-                                
-                            </View>
+                            </TouchableOpacity>
                         </View>
                     </View>
                 </View>

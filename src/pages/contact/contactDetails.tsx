@@ -10,11 +10,20 @@ import CustomIcon from '../../utils/Icons';
 import { H12font400Grey, H15Blackvar2Bold500 } from '../../components/commonText';
 import { isDark } from '../../Theme/ThemeContext';
 import { IconConatiner2 } from '../../styledComponent/styledComponent';
+import { useNavigation } from '@react-navigation/native';
+import { screenName } from '../../utils/screenName';
 
 export type contactDetailsProps = {
 }
 
 const ContactDetails = (props: contactDetailsProps) => {
+    const navigation=useNavigation()
+
+    const handleIcon=(id:number)=>{
+        if(id === 1){
+navigation.navigate(screenName.SingleAudioCallRing)
+        }
+    }
     return (
         <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
             <SearchHeader headerText={labels.contactDetails} editDotIcon={true} />
@@ -31,10 +40,10 @@ const ContactDetails = (props: contactDetailsProps) => {
                                             <H15Blackvar2Bold500>{data.subTitle}</H15Blackvar2Bold500>
                                         </View>
                                         <View style={[flexRow]}>
-                                            <IconConatiner2 style={[ mh15]}>
+                                            <IconConatiner2 style={[ mh15]} onPress={()=>navigation.navigate(screenName.ChatView as never)}>
                                                 <CustomIcon name='chatbox-outline' size={15} color={colors.white} type='Ionicons' />
                                             </IconConatiner2>
-                                            <IconConatiner2 >
+                                            <IconConatiner2 onPress={()=>{handleIcon(data.id)}}>
                                                 <CustomIcon name={data.iconName} size={15} color={colors.white} type={data.iconType} />
                                             </IconConatiner2>
                                         </View>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, ScrollView, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, ScrollView, TouchableOpacity, Image, StyleSheet ,Text} from 'react-native';
 import { alignItemsCenter, flex1, justyfyCenter, mh10, mh20, mt20, mt5 } from '../../components/commonStyles';
 import { H14font400Black, H14font400Gray4, H15font500Black } from '../../components/commonText';
 import { BottomTabBar, CustomModal } from '../../components/commonComponents'
@@ -111,6 +111,10 @@ const AllStatus = (props: AllStatusProps) => {
               <StatusItem key={data.id} data={data} onPress={() => handleStatusItemClick(data.id)} statusView={<StatusView1 />} isMuted={true} />
             ))}
           </View>
+          <Text></Text>
+          <Text></Text>
+          <Text></Text>
+          <Text></Text>
         </ScrollView>
       </View>
       <CustomModal
