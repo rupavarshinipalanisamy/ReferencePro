@@ -52,7 +52,7 @@ const App = (props: AppProps) => {
             barStyle="light-content"
           />
         </View>
-        <RootNavigation initialRouteName={screenName.WelcomePage} />
+        <RootNavigation initialRouteName={screenName.Chats} />
       </View>
     </ThemeProvider>
   );

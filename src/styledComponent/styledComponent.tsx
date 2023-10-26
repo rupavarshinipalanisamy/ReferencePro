@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { View, TextInput, Text } from 'react-native';
 import { colors } from "../utils/colors";
-import { DevWidth } from "../utils/device";
+import { DevHeight, DevWidth } from "../utils/device";
 import { isDark } from "../Theme/ThemeContext";
 
 export const LogoContainer = styled(View)`
@@ -254,3 +254,25 @@ borderRadius: 10px;
 alignItems: center;
 background-color: ${colors.green};
 `
+
+export const EmojiText = styled(Text)`
+font-size:18px;
+color:${colors.yellow};
+margin:5px;
+`
+export const ChatViewCommonHeader=styled(View)`
+height: ${DevWidth / 4.2}px;
+borderBottomRightRadius: 25px;
+borderBottomLeftRadius: 25px;
+elevation: 1;
+`
+export const FooterFirstView=styled(View)`
+alignItems:center;
+height:${ DevHeight / 9.5}px;
+paddingHorizontal: 20px;
+borderTopLeftRadius: 20px;
+borderTopRightRadius: 20px;
+flexDirection:row; 
+justifyContent:center; 
+`
+
