@@ -22,7 +22,7 @@ export type ForgetPasswordProps = {
 }
 
 const ForgetPassword = (props: ForgetPasswordProps) => {
-    const navigation = useNavigation()
+    const navigation = useNavigation();
     const { theme } = useTheme();
 
     const isDarkTheme = theme === 'dark';
@@ -30,6 +30,7 @@ const ForgetPassword = (props: ForgetPasswordProps) => {
     const formKeys = {
         name: 'Email',
     };
+
     const {
         handleSubmit,
         control,
@@ -39,6 +40,7 @@ const ForgetPassword = (props: ForgetPasswordProps) => {
     const onLogin = (details: any) => {
         navigation.navigate(screenName.Verification as never);
     };
+
     return (
         <Fragment>
             <View style={[flex1]}>
@@ -66,6 +68,7 @@ const ForgetPassword = (props: ForgetPasswordProps) => {
                                                 placeholder={labels.emailaddress}
                                                 value={value}
                                                 onChangeText={onChange}
+                                                textColor={isDarkTheme?colors.greyVar3:colors.blackVar1}
                                             />
                                         )}
                                         rules={{
@@ -96,6 +99,6 @@ const ForgetPassword = (props: ForgetPasswordProps) => {
             </View>
         </Fragment>
     )
-}
+};
 
-export default ForgetPassword
+export default ForgetPassword;

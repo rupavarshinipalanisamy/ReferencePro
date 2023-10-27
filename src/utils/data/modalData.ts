@@ -45,7 +45,7 @@ export const lastSee = [
     },
     {
         id: 2,
-        status: labels.sameandlastSeen
+        status: labels.sameaslastSeen
 
     }
 ]
@@ -164,6 +164,21 @@ export const statusPrivacydata = [
     {
         id : 3,
         name : 'Only Share with',
+    },
+]
+
+export const LanguagesData = [
+    {
+        id : 1,
+        name : 'English',
+    },
+    {
+        id : 2,
+        name : 'French',
+    },
+    {
+        id : 3,
+        name : 'Japanese',
     },
 ]
 

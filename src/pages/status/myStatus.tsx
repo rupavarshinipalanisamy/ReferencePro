@@ -12,7 +12,7 @@ import { H14font400Gray4, H14font400White, H15font500Black, H15font500White, H16
 import { CustomModal } from '../../components/commonComponents';
 import { DevWidth, DevHeight } from '../../utils/device';
 import { StatusOptionModalComponent } from './statusContainer';
-import { alignItemsCenter, flex1, flexRow, mb30, mh10, mh20, mh8, ml15, mt10, mv10, spaceBetween } from '../../components/commonStyles';
+import { alignItemsCenter, flex1, flexRow, mb30, mh10, mh20, mh8, ml15, ml5, mt10, mv10, spaceBetween } from '../../components/commonStyles';
 import { isDark } from '../../Theme/ThemeContext';
 import { useNavigation } from '@react-navigation/native';
 
@@ -169,7 +169,7 @@ const MyStatus = (props: MyStatusProps) => {
           <TouchableOpacity style={{ flex: 1 }} onPress={toggleCard}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <CustomIcon name='eye' size={20} color={colors.white} type='octicons' />
-              <H16font500White style={{ color: colors.white }}>{labels.No25}</H16font500White>
+              <H16font500White style={[ml5,{ color: colors.white }]}> {labels.No25}</H16font500White>
             </View>
           </TouchableOpacity>
         </Animated.View>
@@ -209,7 +209,6 @@ const styles = StyleSheet.create({
   },
   viewTopContainer: {
     height: 42,
-    backgroundColor: colors.purpleVar1,
     marginTop: 20,
     width: '90%',
     alignSelf: 'center',

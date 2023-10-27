@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Text, View, Image, StyleSheet, ScrollView } from 'react-native';
-import { alignItemsCenter, alignItemsLeft, alignSelfCenter, borderRadius10, borderRadius15, flex050, flex1, flexRow, justifyEnd, justifyStart, justyfyCenter, mh20, mh30, ml10, ml15, ml30, mr5, mt10, mt15, mt20, mt3, mt30, mt5, mv10, mv15, mv20, textCenter } from '../../components/commonStyles';
+import { alignItemsCenter, alignItemsLeft, alignSelfCenter, borderRadius10, borderRadius15, flex050, flex1, flexRow, justifyEnd, justifyStart, justyfyCenter, mh20, mh30, ml10, ml15, ml30, mr5, mt10, mt15, mt20, mt3, mt30, mt5, mv10, mv15, mv20, pb10, pb5, textCenter } from '../../components/commonStyles';
 import { colors } from '../../utils/colors';
 import { DevHeight, DevWidth } from '../../utils/device';
 import CustomIcon from '../../utils/Icons';
@@ -44,8 +44,8 @@ const DeleteAccount = (props: DeleteAccountProps) => {
                             </RowSpaceBetween>
                         </View>
                     </View>
-                    <CommonLineDividerPurple style={[mv15]} />
-                    <View>
+                    <CommonLineDividerPurple style={[mv10]} />
+                    <View style={[pb10]}>
                         <View style={[flexRow, mh20]}>
                             <CustomIcon name='checkcircle' type="AntDesign" size={16} color={colors.purpleVar3} />
                             <H14GreyVar4Bold400Text style={[ml10, { letterSpacing: 0.5, fontSize: 15, lineHeight: 21 }]}>The account will be deleted from{'\n'}dreamschat and all your devices</H14GreyVar4Bold400Text>
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 170,
+        marginTop: 175,
         bottom: 10
     },
 })

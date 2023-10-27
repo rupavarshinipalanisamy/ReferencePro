@@ -26,7 +26,7 @@ export const CustomTextInput: React.FC<CustomTextInputProps> = ({
   return (
     <View >
       <InputData
-        style = {{color : textColor ||isDarkTheme?colors.white: colors.black}}
+        style = {{color : textColor }}
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}

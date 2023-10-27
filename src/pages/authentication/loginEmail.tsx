@@ -28,7 +28,7 @@ export const topLogo = (logo: any) => {
             </LoginLogoCircle>
         </LoginLogoBigCircle>
     )
-}
+};
 
 export const socialLogo = (content: any) => {
     const { theme } = useTheme();
@@ -40,7 +40,7 @@ export const socialLogo = (content: any) => {
             {content}
         </SocialLogoCircle>
     )
-}
+};
 
 export type loginEmailProps = {
 }
@@ -48,7 +48,7 @@ export type loginEmailProps = {
 const LoginEmail = (props: loginEmailProps) => {
     const [showPassword, setShowPassword] = useState(true);
     const [isChecked, setIsChecked] = useState(false);
-    const navigation = useNavigation()
+    const navigation = useNavigation();
     const { theme } = useTheme();
 
     const isDarkTheme = theme === 'dark';
@@ -57,11 +57,17 @@ const LoginEmail = (props: loginEmailProps) => {
         name: 'Email',
         password: 'Password',
     };
+
+    const defaultValues = {
+        Email: 'dreamschat@gmail.com',
+        Password: 'dreams123',
+    };
+
     const {
         handleSubmit,
         control,
         formState: { errors },
-    } = useForm();
+    } = useForm({ defaultValues });
 
     const onLogin = (details: any) => {
         navigation.navigate(screenName.Chats as never);
@@ -100,6 +106,7 @@ const LoginEmail = (props: loginEmailProps) => {
                                                     placeholder={labels.emailaddress}
                                                     value={value}
                                                     onChangeText={onChange}
+                                                    textColor={isDarkTheme ? colors.greyVar3 : colors.blackVar1}
                                                 />
                                             )}
                                             rules={{
@@ -123,6 +130,7 @@ const LoginEmail = (props: loginEmailProps) => {
                                                             value={value}
                                                             secureTextEntry={showPassword}
                                                             onChangeText={onChange}
+                                                            textColor={isDarkTheme ? colors.greyVar3 : colors.blackVar1}
                                                         />
                                                     )}
                                                     rules={{
@@ -191,7 +199,7 @@ const LoginEmail = (props: loginEmailProps) => {
                 </GestureHandlerRootView>
             </View>
         </Fragment>
-    );
+    )
 };
 
 export default LoginEmail;

@@ -48,7 +48,6 @@ export const screenName = {
     CreateGroup : 'CreateGroup',
     CreateGroupUserSelect : 'CreateGroupUserSelect',
     AccountSettings : 'AccountSettings',
-    AccountSettingsEdit : 'AccountSettingsEdit',
     StatusOnlyShareWith : 'StatusOnlyShareWith',
     StatusMyContactExcept : 'StatusMyContactExcept',
     EditAccountSettings : 'EditAccountSettings',

@@ -2,8 +2,8 @@ import React from 'react';
 import { Text, View, Image } from 'react-native';
 import { H12font400Grey, H15Blackvar2Bold500, H18BlackBoldText } from '../../components/commonText';
 import { colors } from '../../utils/colors';
-import { flexRow, mb15, mt10, mt15, mt5, p10, p5, pl0, pl10, pl13, spaceBetween } from '../../components/commonStyles';
-import { CommonLineDividerGrey } from '../../components/commonView';
+import { flexRow, mb15, mh20, mt10, mt15, mt5, p10, p5, pl0, pl10, pl13, spaceBetween } from '../../components/commonStyles';
+import { CommonLineDividerGrey, FullCommonLineDividerGrey } from '../../components/commonView';
 import { DocImg1, DocImg2, DocImg3, DocImg4, DocImg5, DocImg6, DocImg7, DocImg8 } from '../../utils/png';
 import { lastweekDocsData, recentDocsData } from '../../utils/data/MediaData';
 import { useTheme } from '../../Theme/ThemeContext';
@@ -39,7 +39,12 @@ const Docs = () => {
                             </View>
                             <H12font400Grey >{item.date}</H12font400Grey>
                         </View>
-                        {index !== recentDocsData.length - 1 && <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}}  />}
+                        {index !== recentDocsData.length - 1 &&
+                        <View style={{marginHorizontal:10}}>
+
+                        <FullCommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}}  />
+                         </View>
+                        }
                     </View>
                 ))}
             </View>
@@ -62,7 +67,13 @@ const Docs = () => {
                             </View>
                             <H12font400Grey>{item.date}</H12font400Grey>
                         </View>
-                        {index !== lastweekDocsData.length - 1 && <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />}
+                        {index !== lastweekDocsData.length - 1 && 
+                        
+                        <View style={{marginHorizontal:10}}>
+
+                        <FullCommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}}  />
+                         </View>                        
+                        }
                     </View>
 
 

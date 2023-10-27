@@ -9,7 +9,7 @@ import { H12font400Black, H12font400Grey, H14BlackText, H14GreyVar4Bold400Text, 
 import { CardHeaderText, CustomModal } from '../commonComponents';
 import { DevWidth } from '../../utils/device';
 import { InfoCardData, groupsData, mediaData } from '../../utils/data/profileData';
-import { CommonLineDividerGrey, MediumCardSurface } from '../commonView';
+import { CommonLineDividerGrey, FullCommonLineDividerGrey, MediumCardSurface } from '../commonView';
 import { screenName } from '../../utils/screenName';
 import { isDark, useTheme } from '../../Theme/ThemeContext';
 import { labels } from '../../utils/labels';
@@ -97,7 +97,7 @@ export const InfoCard = () => {
                 )}
             </View>
             <View style={[mt15, mb15]}>
-                <CommonLineDividerGrey style={{ backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0 }} />
+                <FullCommonLineDividerGrey style={{ backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0 }} />
             </View>
         </View>
     );
@@ -139,7 +139,7 @@ export const MediaCard = () => {
                 ))}
             </View>
             <View style={[mt15, mb15]}>
-                <CommonLineDividerGrey style={{ backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0 }} />
+                <FullCommonLineDividerGrey style={{ backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0 }} />
             </View>
         </View>
 
@@ -163,7 +163,7 @@ export const Groups = () => {
 
             ))}
             <View style={[mt20, mb15]}>
-                <CommonLineDividerGrey style={{ backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0 }} />
+                <FullCommonLineDividerGrey style={{ backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0 }} />
             </View>
         </View>
 

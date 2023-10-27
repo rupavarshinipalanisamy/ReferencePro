@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Image, TouchableHighlight, StyleSheet, TouchableOpacity, PanResponder, Animated } from 'react-native';
-import { MainContainer, RowSpaceBetween } from '../../components/commonView';
+import { RowSpaceBetween } from '../../components/commonView';
 import { StatusImg1, StatusPic3 } from '../../utils/png';
 import ProgressBar from 'react-native-progress/Bar';
 import { colors } from '../../utils/colors';
@@ -10,13 +10,14 @@ import { friendStatusModal } from '../../utils/data/statusData';
 import { H14font400Gray4, H14font400White, H15Grey, H15font500White, H16font500White, H16font600Black } from '../../components/commonText';
 import { CustomModal } from '../../components/commonComponents';
 import { DevWidth } from '../../utils/device';
-import { alignItemsCenter, flexRow, justyfyCenter, mh20, mt20, mv20, pl13 } from '../../components/commonStyles';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh20, mt20, mv20, pl13 } from '../../components/commonStyles';
 import { FooterChatView } from '../chatView/Messagecomponents/messages';
 import { IconModal } from '../../components/commonModal';
 import { SmallButton } from '../../components/commonButtons';
 import { useNavigation } from '@react-navigation/native';
 import { isDark } from '../../Theme/ThemeContext';
 import { Platform } from 'react-native';
+import { screenName } from '../../utils/screenName';
 
 export type MyStatusProps = {
 };
@@ -32,17 +33,28 @@ const FriendStatus = (props: MyStatusProps) => {
 
     const handleCancelButtonClick = () => {
         setIsCancelButtonActive(true);
-
-    };
+    }
 
     const handleSaveChangesClick = () => {
         setIsCancelButtonActive(false);
         setStatusPrivacyOptionModal(false)
-
-    };
+    }
 
     const handleCallOptionModal = () => {
         setOptionModal(!optionModal);
+    }
+
+    const handleCustomModal = (id: number) => {
+        if (id === 1) {
+            setOptionModal(false)
+            setStatusPrivacyOptionModal(true)
+        } else if (id === 3) {
+            navigation.navigate(screenName.SingleAudioCallRing as never)
+        } else if (id === 4) {
+            navigation.navigate(screenName.SingleVideoCall as never)
+        } else if (id === 5) {
+            navigation.navigate(screenName.UserProfile as never)
+        }
     }
 
     const translateY = new Animated.Value(0);
@@ -98,14 +110,9 @@ const FriendStatus = (props: MyStatusProps) => {
             <View>
                 {friendStatusModal.map((item) => {
                     return (
-                        <TouchableOpacity key={item.id} onPress={() => {
-                            if (item.id === 1) {
-                                setOptionModal(false)
-                                setStatusPrivacyOptionModal(true)
-                            }
-                        }} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
+                        <TouchableOpacity key={item.id} onPress={() => { handleCustomModal(item.id) }} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
                             <View style={[flexRow]}>
-                                <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={isDark()?colors.greyVar3:colors.blackVar1} />
+                                <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={isDark() ? colors.greyVar3 : colors.blackVar1} />
                                 <View style={[alignItemsCenter, justyfyCenter, pl13]}>
                                     <H15Grey>{item.title}</H15Grey>
                                 </View>
@@ -116,7 +123,7 @@ const FriendStatus = (props: MyStatusProps) => {
                 }
             </View>
         )
-    }
+    };
 
     const GroupsModal = () => {
         return (
@@ -135,7 +142,7 @@ const FriendStatus = (props: MyStatusProps) => {
                     <SmallButton
                         title={labels.mute}
                         onChange={handleCancelButtonClick}
-                        backgroundColor={isCancelButtonActive ? (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white) : colors.purpleVar3  }
+                        backgroundColor={isCancelButtonActive ? (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white) : colors.purpleVar3}
                         textColor={isCancelButtonActive ? isDark() ? colors.redVar3 : colors.greyVar4 : colors.white}
                         borderWidth={isCancelButtonActive ? 1 : 0}
                         width={DevWidth / 3.15}
@@ -143,10 +150,10 @@ const FriendStatus = (props: MyStatusProps) => {
                 </RowSpaceBetween>
             </View>
         )
-    }
+    };
 
     return (
-        <MainContainer>
+        <View style={[flex1]}>
             <TouchableHighlight onPress={closeCard} style={{ flex: 1 }}>
                 <Image source={StatusImg1} style={styles.image} />
             </TouchableHighlight>
@@ -154,7 +161,7 @@ const FriendStatus = (props: MyStatusProps) => {
                 <View style={{ flexDirection: 'row', flex: 1 }}>
                     <View style={styles.progressBarContainer}>
                         <ProgressBar
-                            progress={progress1} 
+                            progress={progress1}
                             width={null}
                             height={4}
                             color={'white'}
@@ -173,7 +180,7 @@ const FriendStatus = (props: MyStatusProps) => {
                         />
                     </View>
                 </View>
-                <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center' }}>
+                <RowSpaceBetween style={[alignItemsCenter]}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10, marginLeft: 15 }}>
                         <TouchableOpacity onPress={() => navigation.goBack()}>
                             <CustomIcon name='chevron-left' size={15} color={colors.white} type='octicons' />
@@ -193,7 +200,7 @@ const FriendStatus = (props: MyStatusProps) => {
                             <CustomIcon name='dots-three-vertical' type='entypo' color={colors.white} size={15} />
                         </TouchableOpacity>
                     </View>
-                </View>
+                </RowSpaceBetween>
                 <CustomModal
                     isVisible={optionModal}
                     width={DevWidth * 0.47}
@@ -214,8 +221,8 @@ const FriendStatus = (props: MyStatusProps) => {
                     style={[styles.swipeableContainer, { transform: [{ translateY }] }]}
                     {...panResponder.panHandlers}
                 >
-                    <TouchableOpacity style={{ flex: 1 }} onPress={toggleCard}>
-                        <View style={{ alignItems: 'center' }}>
+                    <TouchableOpacity style={[flex1]} onPress={toggleCard}>
+                        <View style={[alignItemsCenter]}>
                             <CustomIcon name='chevron-up' size={20} color={colors.white} type='octicons' />
                             <H16font500White>Reply</H16font500White>
                         </View>
@@ -230,7 +237,7 @@ const FriendStatus = (props: MyStatusProps) => {
                 iconType='MaterialIcons'
                 iconSize={24}
             />
-        </MainContainer>
+        </View>
     );
 };
 
@@ -258,4 +265,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default FriendStatus
+export default FriendStatus;

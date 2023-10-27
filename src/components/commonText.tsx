@@ -536,9 +536,9 @@ export const H15PurpletoGrey = styled(Text)`
   ${h8};
   ${fontRegular}
   color:  ${props => isDark() ? colors.greyVar0 : colors.purpleVar3};
-
-
 `;
+
+
 
 
 

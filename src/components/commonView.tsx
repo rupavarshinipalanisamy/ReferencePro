@@ -170,7 +170,13 @@ const styles = StyleSheet.create({
     height: 5,
     width: DevWidth * 0.2,
     backgroundColor: colors.greyVar0
-  }
+  },
+  fullCommonLineDividerGrey:{
+    width: '100%',
+    alignSelf: 'center',
+    height: 1,
+    // backgroundColor: isDark() ? colors.darkModeVar3 : colors.greyVar0,
+  },
 });
 const {
   rowSpaceBetween,
@@ -180,6 +186,7 @@ const {
   purpleMainContainer,
   subContainer,
   commonLineDividerGrey,
+  fullCommonLineDividerGrey,
   commonLineDividerPurple,
   tabContainer,
   textNow,
@@ -196,7 +203,7 @@ const {
   cardSurface,
   longButton,
   smallButton,
-  greyTabView
+  greyTabView,
 
 
 
@@ -212,6 +219,9 @@ export const PurpleMainContainer = styled(SafeAreaView) <{ secondary?: boolean }
 `;
 export const CommonLineDividerGrey = styled(View)`
   ${commonLineDividerGrey}
+`
+export const FullCommonLineDividerGrey = styled(View)`
+  ${fullCommonLineDividerGrey}
 `
 export const CommonLineDividerPurple = styled(View)`
   ${commonLineDividerPurple};

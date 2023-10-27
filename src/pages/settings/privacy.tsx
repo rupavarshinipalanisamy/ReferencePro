@@ -45,34 +45,34 @@ export type PrivacyProps = {};
 const Privacy = (props: PrivacyProps) => {
     const navigation = useNavigation();
     const [toggleVisible, setToggleVisible] = useState(false);
-    const [selectedModalId, setSelectedModalId] = useState(null);
     const [statusPrivacyOptionModal, setStatusPrivacyOptionModal] = useState(false);
     const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
     const [lastSeenOptionModal, setLastSeenOPtionModal] = useState(false);
     const [profileOptionModal, setProfileOptionModal] = useState(false);
     const [groupModal, setGroupModal] = useState(false);
+
     const handleStatusSelect = (status: string) => {
         setSelectedStatus(status);
-    };
+    }
 
     const handleLastSeenModal = () => {
         setLastSeenOPtionModal(!lastSeenOptionModal)
-    };
+    }
 
     const handleProfilePicModal = () => {
         setProfileOptionModal(!profileOptionModal)
-    };
+    }
 
     const handleGroupModal = () => {
         setGroupModal(!groupModal)
-    };
+    }
 
     const handleStatusPrivacyOptionModal = () => {
         setStatusPrivacyOptionModal(!statusPrivacyOptionModal)
+    }
 
-    };
     const handleToggle = () => {
-        setToggleVisible(!toggleVisible);
+        setToggleVisible(!toggleVisible)
     }
 
     const openModal = (id: number, screenName: string | undefined) => {
@@ -244,12 +244,12 @@ const Privacy = (props: PrivacyProps) => {
                         {profilePic.map((data, index) => {
                             return (
                                 <View key={data.id}  >
-                                    <TouchableOpacity>
+                                    <TouchableOpacity onPress={() => handleStatusSelect(data.status)}>
                                         <View style={[mv10, flexRow]}  >
                                             <RadioBtn
                                                 key={data.id}
                                                 selected={selectedStatus === data.status}
-                                                onPress={() => handleStatusSelect(data.status)}
+                                                onPress={() => { }}
                                             />
                                             <H14font500Gray4 style={[mh5]}>{data.status}</H14font500Gray4>
                                         </View>
@@ -299,12 +299,12 @@ const Privacy = (props: PrivacyProps) => {
                         {profilePic.map((data, index) => {
                             return (
                                 <View key={data.id}  >
-                                    <TouchableOpacity>
+                                    <TouchableOpacity onPress={() => { handleStatusSelect(data.status) }}>
                                         <View style={[mv10, flexRow]}  >
                                             <RadioBtn
                                                 key={data.id}
                                                 selected={selectedStatus === data.status}
-                                                onPress={() => handleStatusSelect(data.status)}
+                                                onPress={() => { }}
                                             />
                                             <H14font500Gray4 style={[mh5]}>{data.status}</H14font500Gray4>
                                         </View>
@@ -318,12 +318,12 @@ const Privacy = (props: PrivacyProps) => {
                         {lastSee.map((data, index) => {
                             return (
                                 <View key={data.id}  >
-                                    <TouchableOpacity>
+                                    <TouchableOpacity onPress={() => { handleStatusSelect(data.status) }}>
                                         <View style={[mv10, flexRow]}  >
                                             <RadioBtn
                                                 key={data.id}
                                                 selected={selectedStatus === data.status}
-                                                onPress={() => handleStatusSelect(data.status)}
+                                                onPress={() => { }}
                                             />
                                             <H14font500Gray4 style={[mh5]}>{data.status}</H14font500Gray4>
                                         </View>

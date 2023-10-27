@@ -35,24 +35,32 @@ const CreateNewPassword = (props: createNewPasswordProps) => {
     };
 
     const formKeys = {
-        password: 'password',
-        confirmpassword: 'confirmpassword'
+        password: 'Password',
+        confirmpassword: 'Confirmpassword'
     };
+
+    const defaultValues = {
+        Password: 'dreams123',
+        Confirmpassword: 'dreams123',
+    };
+
     const {
         handleSubmit,
         control,
         formState: { errors },
-    } = useForm();
+    } = useForm({ defaultValues });
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
+
     const togglePasswordVisibility1 = () => {
         setShowNewPassword(!shownewPassword);
     };
 
     const onLogin = (details: any) => {
     };
+
     return (
         <Fragment>
             <View style={[flex1]}>
@@ -82,6 +90,7 @@ const CreateNewPassword = (props: createNewPasswordProps) => {
                                                         value={value}
                                                         secureTextEntry={showPassword}
                                                         onChangeText={onChange}
+                                                        textColor={isDarkTheme ? colors.greyVar3 : colors.blackVar1}
                                                     />
                                                 )}
                                                 rules={{
@@ -117,6 +126,7 @@ const CreateNewPassword = (props: createNewPasswordProps) => {
                                                         value={value}
                                                         secureTextEntry={shownewPassword}
                                                         onChangeText={onChange}
+                                                        textColor={isDarkTheme ? colors.greyVar3 : colors.blackVar1}
                                                     />
                                                 )}
                                                 rules={{

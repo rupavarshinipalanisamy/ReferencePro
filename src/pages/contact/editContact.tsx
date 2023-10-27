@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Image, StatusBar } from 'react-native';
+import { View, Image } from 'react-native';
 import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh20, mh30, ml10, ml5, mv20 } from '../../components/commonStyles';
 import { colors } from '../../utils/colors';
 import CustomIcon from '../../utils/Icons';
@@ -15,7 +15,6 @@ import { UsFlagTmg } from '../../utils/png';
 import { editContact } from '../../utils/data/contactData';
 
 export type EditContactProps = {
-
 }
 
 const EditContact = (props: EditContactProps) => {
@@ -38,7 +37,7 @@ const EditContact = (props: EditContactProps) => {
 
     const handleSaveChanges = () => {
         navigation.navigate(screenName.ContactDetails as never)
-    }
+    };
 
     return (
         <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
@@ -94,6 +93,6 @@ const EditContact = (props: EditContactProps) => {
             </View>
         </View>
     )
-}
+};
 
-export default EditContact
+export default EditContact;

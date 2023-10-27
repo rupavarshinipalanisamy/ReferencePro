@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, ScrollView, StyleSheet, Platform } from 'react-native';
+import { View, ScrollView, Platform } from 'react-native';
 import { flex1, mt20 } from '../../components/commonStyles';
 import { BottomTabBar, CustomModal } from '../../components/commonComponents'
 import { colors } from '../../utils/colors';
@@ -12,6 +12,7 @@ import { AfterNavigation, BeforeNavigation, StatusOptionModalComponent } from '.
 import { screenName } from '../../utils/screenName';
 import { StatusView } from '../../utils/svg';
 import { useTheme } from '../../Theme/ThemeContext';
+import { WhiteBgContact } from '../../styledComponent/styledComponent';
 
 export type RecentStatusProps = {
     selectedCards: number[];
@@ -32,12 +33,12 @@ const RecentStatusScreen = (props: RecentStatusProps) => {
 
     const handleStatusItemClick = (id: number) => {
         navigation.navigate(screenName.FriendStatus as never);
-    };
+    }
 
     return (
-        <View style={[{ backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
+        <WhiteBgContact style={[{ backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.white }, flex1, mt20]}>
             <View style={flex1}>
-                <ScrollView showsVerticalScrollIndicator={false}>
+                <ScrollView showsVerticalScrollIndicator={false} style={{marginBottom:80}}>
                     {showSecondScreen ? <AfterNavigation /> : <BeforeNavigation />}
                     {statusText(labels.recentStatus)}
                     <View>
@@ -56,19 +57,8 @@ const RecentStatusScreen = (props: RecentStatusProps) => {
                 onClose={closeCallOptionModal}
             />
             <BottomTabBar />
-        </View >
+        </WhiteBgContact >
     )
-}
+};
 
-const styles = StyleSheet.create({
-    whiteBg: {
-        height: '100%',
-        width: '100%',
-        borderTopLeftRadius: 45,
-        borderTopRightRadius: 45,
-        overflow: 'hidden'
-    },
-
-});
-
-export default RecentStatusScreen
+export default RecentStatusScreen;

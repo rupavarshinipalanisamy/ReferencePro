@@ -18,12 +18,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export type ChatSettingsProps = {
-
 }
 
 const ChatSettings = (props: ChatSettingsProps) => {
     const navigation = useNavigation();
-    const [selectedModalId, setSelectedModalId] = useState(null);
     const [toggleVisible, setToggleVisible] = useState(false);
     const [selectedTheme, setSelectedTheme] = useState('');
     const [archieveModal, setArchieveModal] = useState(false);
@@ -34,11 +32,10 @@ const ChatSettings = (props: ChatSettingsProps) => {
 
     const isDarkTheme = theme === 'dark';
 
-
     const handleThemeSelect = async (themeName: string) => {
         setSelectedTheme(themeName);
         await AsyncStorage.setItem('selectedTheme', themeName);
-    };
+    }
 
     const handleArchievModal = () => {
         setArchieveModal(!archieveModal)
@@ -56,13 +53,11 @@ const ChatSettings = (props: ChatSettingsProps) => {
         setThemeModal(!themeModal)
     }
 
-
     const handleToggle = () => {
         setToggleVisible(!toggleVisible);
     }
 
     const openModal = (id: number) => {
-        setSelectedModalId(id);
         if (id === 4) {
             handleArchievModal();
         } else if (id === 6) {
@@ -123,7 +118,7 @@ const ChatSettings = (props: ChatSettingsProps) => {
                 </RowSpaceBetween>
             </View>
         )
-    }
+    };
 
     const DeleteAllModal = () => {
         const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
@@ -175,12 +170,12 @@ const ChatSettings = (props: ChatSettingsProps) => {
                 </RowSpaceBetween>
             </View>
         )
-    }
+    };
+
     const ClearAllModal = () => {
         const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
         const [isChecked2, setIsChecked2] = useState(false);
         const [isChecked1, setIsChecked1] = useState(false);
-
 
         const handleCancelButtonClick = () => {
             setIsCancelButtonActive(true);
@@ -242,7 +237,7 @@ const ChatSettings = (props: ChatSettingsProps) => {
                 </RowSpaceBetween>
             </View>
         )
-    }
+    };
 
     return (
         <Fragment>
@@ -284,7 +279,6 @@ const ChatSettings = (props: ChatSettingsProps) => {
                     onThemeSelect={handleThemeSelect}
                     selectedTheme={selectedTheme}
                 />
-
                 <IconModal
                     isVisible={archieveModal}
                     onClose={() => handleArchievModal()}
@@ -292,14 +286,12 @@ const ChatSettings = (props: ChatSettingsProps) => {
                     iconName={'archive'}
                     iconType='Foundation'
                     iconSize={27} />
-
                 <IconModal isVisible={clearAllModal}
                     onClose={() => handleClearAllModal()}
                     contentComponent={<ClearAllModal />}
                     iconName={'trash-outline'}
                     iconType='Ionicons'
                     iconSize={27} />
-
                 <IconModal isVisible={deleteModal}
                     onClose={() => handleDeleteAllModal()}
                     contentComponent={<DeleteAllModal />}
@@ -309,6 +301,6 @@ const ChatSettings = (props: ChatSettingsProps) => {
             </View>
         </Fragment>
     )
-}
+};
 
-export default ChatSettings
+export default ChatSettings;

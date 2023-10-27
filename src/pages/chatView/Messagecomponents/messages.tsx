@@ -20,6 +20,7 @@ import Modal from 'react-native-modal';
 import { attachmentData } from '../../../utils/data/chatsData';
 import { Bluetick, ForwardView, Tick } from '../../../components/chatViewComponents';
 import { EditModal, EditModal2 } from '../../../components/commonModal';
+import { ChatViewCommonHeader, FooterFirstView } from '../../../styledComponent/styledComponent';
 
 
 
@@ -138,7 +139,7 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
     }
 
     return (
-        <View style={{ height: DevWidth / 4.2, backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, borderBottomRightRadius: 25, borderBottomLeftRadius: 25, elevation: 1 }}>
+        <ChatViewCommonHeader style={{ backgroundColor: isDark() ? colors.darkModeVar1 : colors.white }}>
             <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
                 <View style={[flexRow]}>
                     <TouchableOpacity style={{ paddingTop: 12 }} onPress={() => { navigation.goBack() }} >
@@ -149,11 +150,9 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
                             {props.groups ? <Image source={GroupImg1Img} /> :
                                 <Image source={ProfileImg} />
                             }
-
                             <View style={pl13}>
                                 <H15Blackvar2Bold500 style={{ lineHeight: 23 }}>{props.title}</H15Blackvar2Bold500>
                                 <H14GreyVar4Bold400Text style={{ lineHeight: 20 }}>{props.subTitle}</H14GreyVar4Bold400Text>
-
                             </View>
                         </TouchableOpacity>
                         <View style={[flexRow, alignItemsCenter]}>
@@ -193,21 +192,21 @@ export const HeaderChatView = (props: HeaderChatViewProps) => {
                 marginTop={Platform.OS === 'ios' ? 100 : 48}
                 onClose={() => setCallOptionModal(false)}
             />
-        </View>
+        </ChatViewCommonHeader>
     )
 
 }
 
 
-export const LongPressedHaeder = ({ messageType, openBothModal }) => {
+export const LongPressedHaeder = ({ messageType }) => {
 
 
     const [optionModal, setOptionModal] = useState(false);
 
-    const [SendMsgMdl, SetSendMsgMdl] = useState(false);
+    const [sendMsgMdl, setSendMsgMdl] = useState(false);
     const handleOptionModal = () => {
         if (messageType === 'sentmsg') {
-            SetSendMsgMdl(!SendMsgMdl);
+            setSendMsgMdl(!sendMsgMdl);
 
         }
         else {
@@ -279,8 +278,9 @@ export const LongPressedHaeder = ({ messageType, openBothModal }) => {
                 }
 
                 {isdoubleModal && (
-                     <EditModal2 isVisible={true}  onPress={()=>SetSendMsgMdl(false)} />
-                    )}
+                    <EditModal2 isVisible={true} onPress={() => setDoubleModal(false)} />
+                )}
+
             </View>
         )
     }
@@ -288,7 +288,7 @@ export const LongPressedHaeder = ({ messageType, openBothModal }) => {
 
     return (
 
-        <View style={{ height: DevWidth / 4.2, backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, borderBottomRightRadius: 25, borderBottomLeftRadius: 25, elevation: 1 }}>
+        <ChatViewCommonHeader style={{ height: DevWidth / 4.2, backgroundColor: isDark() ? colors.darkModeVar1 : colors.white }}>
             <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
                 <View style={[flexRow]}>
 
@@ -323,7 +323,7 @@ export const LongPressedHaeder = ({ messageType, openBothModal }) => {
             </View>
 
             <CustomModal
-                isVisible={SendMsgMdl}
+                isVisible={sendMsgMdl}
                 width={DevWidth * 0.47}
                 modalData={<SendMsgModal />}
                 marginTop={Platform.OS === 'ios' ? 100 : 48}
@@ -338,7 +338,7 @@ export const LongPressedHaeder = ({ messageType, openBothModal }) => {
             />
 
 
-        </View>
+        </ChatViewCommonHeader>
 
     )
 }
@@ -354,7 +354,7 @@ export const FooterChatView = () => {
     }
 
     return (
-        <View style={{ backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, alignItems: 'center', height: DevHeight / 9.5, paddingHorizontal: 20, borderTopLeftRadius: 20, borderTopRightRadius: 20, flexDirection: 'row', justifyContent: 'center' }}>
+        <FooterFirstView style={{ backgroundColor: isDark() ? colors.darkModeVar1 : colors.white }}>
             <View style={{ width: DevWidth / 1.3, height: 40, backgroundColor: isDark() ? colors.darkModeVar6 : colors.white, borderColor: isDark() ? 'rgba(78,80,114,0.5)' : colors.greyVar2, borderWidth: 2, borderRadius: 6, marginTop: 30, bottom: 8 }}>
                 <View style={{ flexDirection: 'row', width: '80%', height: 40, paddingHorizontal: 2, alignItems: 'center' }}>
                     <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginLeft: 15 }}>
@@ -373,7 +373,7 @@ export const FooterChatView = () => {
                     </View>
                 </View>
             </View>
-            <View style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', bottom: Platform.OS === 'ios' ? 20 : 8 }}>
+            <View style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', bottom: Platform.OS === 'ios' ? 20 : 16 }}>
                 <CustomIcon name='microphone-outline' type="MaterialCommunityIcons" color={colors.white} size={18} />
             </View>
             <RNModal transparent={true} visible={isModalVisible} onRequestClose={closeModal}>
@@ -410,7 +410,7 @@ export const FooterChatView = () => {
                     </Modal>
                 </View>
             </RNModal>
-        </View>
+        </FooterFirstView>
     )
 }
 
@@ -460,7 +460,7 @@ export const ReplyFooterView = ({ onIconClick }: any) => {
                     </View>
                 </View>
             </View>
-            <View style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', bottom: Platform.OS === 'ios' ? 25 : 8 }}>
+            <View style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', bottom: Platform.OS === 'ios' ? 25: 16}}>
                 <CustomIcon name='paper-plane' type="font-awesome" color={colors.white} size={14} />
             </View>
             <RNModal transparent={true} visible={isModalVisible} onRequestClose={closeModal}>
@@ -721,10 +721,7 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 8,
         padding: 10,
         marginTop: 5
-
-
     },
-
     footerView: {
         backgroundColor: colors.white,
         height: 100,

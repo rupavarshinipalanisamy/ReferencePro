@@ -21,7 +21,7 @@ import { AuthImageBg } from '../../utils/png';
 export type SignUpProps = {
 }
 
-const SignUp = (props: SignUpProps) => {
+const SignUp = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [userName, setUserName] = useState('');
@@ -37,14 +37,8 @@ const SignUp = (props: SignUpProps) => {
         password: 'Password',
     };
     const {
-        handleSubmit,
         control,
-        formState: { errors },
     } = useForm();
-
-    const onSignup = (details: any) => {
-        navigation.navigate(screenName.WelcomePage as never);
-    };
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -52,19 +46,19 @@ const SignUp = (props: SignUpProps) => {
 
     const handleFirstName = (newFirstName: string) => {
         setFirstName(newFirstName);
-    }
+    };
 
     const handleLastName = (newLastName: string) => {
         setLastName(newLastName);
-    }
+    };
 
     const handleUserName = (newUserName: string) => {
         setUserName(newUserName);
-    }
+    };
 
     const handlePhoneNumber = (newPhoneNumber: undefined) => {
         setPhoneNumber(newPhoneNumber);
-    }
+    };
 
     return (
         <Fragment>
@@ -91,9 +85,10 @@ const SignUp = (props: SignUpProps) => {
                                                 placeholder={labels.firstName}
                                                 value={firstName}
                                                 onChangeText={handleFirstName}
+                                                textColor={isDarkTheme ? colors.greyVar3 : colors.blackVar1}
                                             />
                                         </IconInputContainer>
-                                        <View >
+                                        <View>
                                             <IconInputContainer style={{ borderBottomColor: isDarkTheme ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
                                                 <View style={[justyfyCenter]}>
                                                     <CustomIcon name='person' size={20} color={isDarkTheme ? colors.greyVar3 : colors.greyVar4} type='octicons' />
@@ -102,6 +97,7 @@ const SignUp = (props: SignUpProps) => {
                                                     placeholder={labels.lastName}
                                                     value={lastName}
                                                     onChangeText={handleLastName}
+                                                    textColor={isDarkTheme ? colors.greyVar3 : colors.blackVar1}
                                                 />
                                             </IconInputContainer>
                                         </View>
@@ -117,6 +113,7 @@ const SignUp = (props: SignUpProps) => {
                                                         placeholder={labels.emailaddress}
                                                         value={value}
                                                         onChangeText={onChange}
+                                                        textColor={isDarkTheme ? colors.greyVar3 : colors.blackVar1}
                                                     />
                                                 )}
                                                 rules={{
@@ -127,9 +124,8 @@ const SignUp = (props: SignUpProps) => {
                                                 }}
                                             />
                                         </IconInputContainer>
-                                        <View >
+                                        <View>
                                             <IconInputContainer style={{ borderBottomColor: isDarkTheme ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
-
                                                 <View style={[justyfyCenter]}>
                                                     <CustomIcon name='person' size={20} color={isDarkTheme ? colors.greyVar3 : colors.greyVar4} type='octicons' />
                                                 </View>
@@ -137,6 +133,7 @@ const SignUp = (props: SignUpProps) => {
                                                     placeholder={labels.userName}
                                                     value={userName}
                                                     onChangeText={handleUserName}
+                                                    textColor={isDarkTheme ? colors.greyVar3 : colors.blackVar1}
                                                 />
                                             </IconInputContainer>
                                         </View>
@@ -155,9 +152,10 @@ const SignUp = (props: SignUpProps) => {
                                                 value={phoneNumber}
                                                 onChangeText={handlePhoneNumber}
                                                 keyboardType='numeric'
+                                                textColor={isDarkTheme ? colors.greyVar3 : colors.blackVar1}
                                             />
                                         </IconInputContainer>
-                                        <View >
+                                        <View>
                                             <IconInputContainer style={{ borderBottomColor: isDarkTheme ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
                                                 <InputContainer1>
                                                     <View style={[flexRow, alignItemsCenter]}>
@@ -170,7 +168,9 @@ const SignUp = (props: SignUpProps) => {
                                                                     placeholder={labels.password}
                                                                     value={value}
                                                                     secureTextEntry={showPassword}
-                                                                    onChangeText={onChange} />
+                                                                    onChangeText={onChange}
+                                                                    textColor={isDarkTheme ? colors.greyVar3 : colors.blackVar1}
+                                                                />
                                                             )}
                                                             rules={{
                                                                 required: requiredValidation(('labels.password')),
@@ -224,7 +224,7 @@ const SignUp = (props: SignUpProps) => {
                 </GestureHandlerRootView>
             </View>
         </Fragment>
-    );
+    )
 };
 
-export default SignUp
+export default SignUp;

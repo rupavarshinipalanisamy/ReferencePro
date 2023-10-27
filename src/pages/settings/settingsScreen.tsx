@@ -5,7 +5,7 @@ import { ScrollView } from 'react-native';
 import { TouchableOpacity, View, } from 'react-native';
 import { colors } from '../../utils/colors';
 import CustomIcon from '../../utils/Icons';
-import { justyfyCenter, ml10, alignItemsCenter, flexRow, ph10, mt20, mh20, mv20, ml30, flex1, mr30, ml15, mh25, pl13, ph15 } from '../../components/commonStyles';
+import { justyfyCenter, ml10, alignItemsCenter, flexRow, ph10, mt20, mh20, mv20, ml30, flex1, mr30, ml15, mh25, ph15, justifyEnd, mb15, mv10, mh30 } from '../../components/commonStyles';
 import { InputContainer1 } from '../../styledComponent/styledComponent';
 import { H14BlackVar2Bold400Text, H14blackVar1bold400Text, H14font400Gray4, H15font500Black, H16font600Black, H18BlackText } from '../../components/commonText';
 import { useNavigation } from '@react-navigation/native';
@@ -18,9 +18,10 @@ import { IconModal } from '../../components/commonModal';
 import { screenName } from '../../utils/screenName';
 import { isDark, useTheme } from '../../Theme/ThemeContext';
 import { SettingAvatar } from '../../utils/svg';
+import { RadioBtn } from '../../components/commonComponents';
+import { LanguagesData } from '../../utils/data/modalData';
 
 export type settingsScreenProps = {
-
 }
 
 const SettingsScreen = (props: settingsScreenProps) => {
@@ -29,7 +30,8 @@ const SettingsScreen = (props: settingsScreenProps) => {
     const [logoutOptionModal, setLogoutOptionModal] = useState(false);
     const [isLanguageModalVisible, setLanguageModalVisible] = useState(false);
     const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
-    const {theme} = useTheme();
+    const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
+    const { theme } = useTheme();
     const isDarkTheme = theme === 'dark';
 
     const handleCancelButton = () => {
@@ -65,6 +67,10 @@ const SettingsScreen = (props: settingsScreenProps) => {
         }
     };
 
+    const handleLanguageSelect = (status: string) => {
+        setSelectedStatus(status);
+    };
+
     const LogoutOption = () => {
         const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
 
@@ -75,6 +81,7 @@ const SettingsScreen = (props: settingsScreenProps) => {
 
         const handleDeleteChatButton = () => {
             setIsCancelButtonActive(false);
+            navigation.navigate(screenName.WelcomePage as never);
         };
 
         return (
@@ -107,8 +114,8 @@ const SettingsScreen = (props: settingsScreenProps) => {
         <Fragment>
             <View style={[flex1, { backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.whiteVar0 }]} >
                 <TopContainerWhiteCard style={{backgroundColor:isDarkTheme?colors.darkModeVar1:colors.white}}>
-                    <View style={{ flexDirection: 'row', marginHorizontal: 20, justifyContent: 'space-between' }}>
-                        <H18BlackText style={[pl13,{color:isDarkTheme?colors.white:colors.black}]}>Settings</H18BlackText>
+                    <View style={{ flexDirection: 'row', marginHorizontal: 22, justifyContent: 'space-between' }}>
+                        <H18BlackText style={[{color:isDarkTheme?colors.white:colors.black}]}>Settings</H18BlackText>
                         <CustomIcon name='search-outline' size={20} color={isDarkTheme?colors.white:colors.black} type='Ionicons' />
                     </View>
                 </TopContainerWhiteCard>
@@ -118,8 +125,8 @@ const SettingsScreen = (props: settingsScreenProps) => {
                             <View style={flexRow}>
                                 <SettingAvatar />
                                 <View style={[ph15]}>
-                                    <H15font500Black style={{color:isDarkTheme?colors.greyVar0:colors.black}}>Mark Villiams</H15font500Black>
-                                    <H14font400Gray4 style={{color:isDarkTheme?colors.greyVar3:colors.greyVar4}}>Hello, I am using Dreamschat</H14font400Gray4>
+                                    <H15font500Black style={{ color: isDarkTheme ? colors.greyVar0 : colors.black }}>Mark Villiams</H15font500Black>
+                                    <H14font400Gray4 style={{ color: isDarkTheme ? colors.greyVar3 : colors.greyVar4 }}>Hello, I am using Dreamschat</H14font400Gray4>
                                 </View>
                             </View>
                             <IconBackground style={{ backgroundColor: isDarkTheme ? colors.darkModeVar7 : colors.purpleVar4 }}>
@@ -137,7 +144,7 @@ const SettingsScreen = (props: settingsScreenProps) => {
                                                     <CustomIcon name={settingsDatas.iconName} type={settingsDatas.iconType} size={settingsDatas.iconSize} color={isDarkTheme ? colors.greyVar3 : colors.purpleVar3} />
                                                 </IconBackground>
                                                 <TouchableOpacity key={settingsDatas.id} onPress={() => handleTabPress(settingsDatas.id, settingsDatas.screenName)}>
-                                                    <H15font500Black style={[ph10,{color:isDarkTheme?colors.greyVar0:colors.black}]}>{settingsDatas.name}</H15font500Black>
+                                                    <H15font500Black style={[ph10, { color: isDarkTheme ? colors.greyVar0 : colors.black }]}>{settingsDatas.name}</H15font500Black>
                                                 </TouchableOpacity>
                                             </View>
                                             <View style={[justyfyCenter]}>
@@ -170,26 +177,36 @@ const SettingsScreen = (props: settingsScreenProps) => {
                     <View>
                         <View
                             style={{
-                                height: DevHeight / 5,
+                                height: DevHeight / 3,
                                 backgroundColor: isDark() ? colors.darkModeVar4 : colors.white,
                                 paddingTop: 25,
                                 borderTopLeftRadius: 10,
                                 borderTopRightRadius: 10
                             }}
                         >
-                            <View style={[flexRow, alignItemsCenter, justyfyCenter]}>
-                                <TouchableOpacity style={[ml30]}>
-                                    <CustomIcon name='globe' size={18} color={isDark() ? colors.greyVar0 : colors.blackVar2} type="octicons" />
-                                </TouchableOpacity>
-                                <RowSpaceBetween style={[flex1, mr30]}>
-                                    <H14BlackVar2Bold400Text style={[ml10]}>English</H14BlackVar2Bold400Text>
-                                    <TouchableOpacity>
-                                        <CustomIcon size={20} name='chevron-down' type='Feather' color={isDark() ? colors.greyVar0 : colors.blackVar2} />
-                                    </TouchableOpacity>
-                                </RowSpaceBetween>
+                            <View style={[ml30]}>
+                                <H15font500Black style={[ph10, { color: isDarkTheme ? colors.greyVar0 : colors.black }]}>Select App Language</H15font500Black>
                             </View>
-                            <CommonLineDividerGrey style = {[{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}, mv20]} />
-                            <View style={[flex1]}>
+                            <CommonLineDividerGrey style={[{ backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0 }, mv20]} />
+                                <View style={[mh30]}>
+                                    {
+                                        LanguagesData.map((item) => {
+                                            return (
+                                                <View style={[flexRow, mv10]} key={item.id}>
+                                                    <View>
+                                                        <RadioBtn
+                                                            key={item.id}
+                                                            selected={selectedStatus === item.name}
+                                                            onPress={() => handleLanguageSelect(item.name)}
+                                                        />
+                                                    </View>
+                                                    <H14BlackVar2Bold400Text style={[ml10]}>{item.name}</H14BlackVar2Bold400Text>
+                                                </View>
+                                            )
+                                        })
+                                    }
+                                </View>
+                            <View style={[flex1, justifyEnd, mb15]}>
                                 <RowSpaceBetween>
                                     <View style={{ flex: 0.85 }} />
                                     <View style={[flexRow, flex1]}>
@@ -221,15 +238,14 @@ const SettingsScreen = (props: settingsScreenProps) => {
                 </Modal>
             </View>
         </Fragment>
-    );
+    )
 };
 
-export default SettingsScreen
+export default SettingsScreen;
 
 const styles = StyleSheet.create({
     cardSurface: {
         padding: 10,
-        elevation: 4,
         marginTop: 20,
         flexDirection: 'row',
         borderRadius: 8,
@@ -242,5 +258,4 @@ const styles = StyleSheet.create({
         height: DevHeight / 10,
         justifyContent: 'center'
     }
-
-})
+});

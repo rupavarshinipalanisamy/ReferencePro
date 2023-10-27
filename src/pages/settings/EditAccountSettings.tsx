@@ -92,7 +92,7 @@ const EditAccountSettings = (props: EditAccountSettingsProps) => {
 
     return (
         <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
-            <SearchHeader headerText={labels.EditProfile} searchIcon={true} />
+            <SearchHeader headerText={labels.EditProfile} />
             <View style={[flex1, mh30]}>
                 {
                     inputFields.map((field) => (
