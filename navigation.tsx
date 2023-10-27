@@ -51,7 +51,6 @@ import TermsAndConditions from './src/utils/data/termsAndConditions';
 import CreateGroup from './src/pages/groups/CreateGroup';
 import CreateGroupUserSelect from './src/pages/groups/CreateGroupUserSelect';
 import AccountSettings from './src/pages/settings/AccountSettings';
-import AccountSettingsEdit from './src/pages/settings/AccountSettingsEdit';
 import StatusMyContactsExceptOnly from './src/pages/settings/StatusMyContactsExceptOnly';
 import StatusOnlyShareWith from './src/pages/settings/StatusOnlyShareWith';
 import EditAccountSettings from './src/pages/settings/EditAccountSettings';
@@ -125,7 +124,6 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.CreateGroup} component={CreateGroup} />
             <Stack.Screen name={screenName.CreateGroupUserSelect} component={CreateGroupUserSelect} />
             <Stack.Screen name={screenName.AccountSettings} component={AccountSettings} />
-            <Stack.Screen name={screenName.AccountSettingsEdit} component={AccountSettingsEdit} />
             <Stack.Screen name={screenName.StatusMyContactExcept} component={StatusMyContactsExceptOnly} />
             <Stack.Screen name={screenName.StatusOnlyShareWith} component={StatusOnlyShareWith} />
             <Stack.Screen name={screenName.EditAccountSettings} component={EditAccountSettings} />

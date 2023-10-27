@@ -167,6 +167,21 @@ export const statusPrivacydata = [
     },
 ]
 
+export const LanguagesData = [
+    {
+        id : 1,
+        name : 'English',
+    },
+    {
+        id : 2,
+        name : 'French',
+    },
+    {
+        id : 3,
+        name : 'Japanese',
+    },
+]
+
 export const chatViewModalData = [
     {
         id: 1,

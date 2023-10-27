@@ -3,7 +3,7 @@ import { Text, View, TouchableOpacity, ScrollView, Image, StyleSheet, Dimensions
 import { colors } from '../../utils/colors';
 import { CommonLineDividerGrey, MainContainer, RowSpaceBetween } from '../../components/commonView';
 import { useNavigation } from '@react-navigation/native';
-import { alignItemsCenter, flexRow, justyfyCenter, mb15, mh20, mr5, mt10, mt15, mt20, mt3, mt5, mv20, pl10, pl13, pt10, pt5, spaceBetween } from '../../components/commonStyles';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mb15, mh20, mr5, mt10, mt15, mt20, mt3, mt5, mv20, pl10, pl13, pt10, pt5, spaceBetween } from '../../components/commonStyles';
 import CustomIcon from '../../utils/Icons';
 import { H12fontBold400GreyVar4, H12fontBold400blackVar2, H14BlackText, H14BlackVar2Bold400Text, H14Blackvar2Bold500, H14GreyVar4Bold400, H14GreyVar4Bold400Text, H14blackVar1bold400Text, H15BlackBold600, H15Blackvar2Bold500, H15Grey, H16BlackText, H16font600Black, H18BlackText, H18Blackvar2Bold600, H18fontBoldBlack } from '../../components/commonText';
 import { CardHeaderText, CustomModal } from '../../components/commonComponents';
@@ -73,7 +73,7 @@ export const GroupProfileCard = () => {
             <View style={{ marginTop: 50 }}>
                 <View style={{
                     backgroundColor: isDark() ? colors.darkModeVar4 : colors.white, height: DevHeight / 4.5, width: '100%', borderRadius: 20, elevation: 1, justifyContent: 'center',
-                    shadowOpacity:0.1, shadowColor: colors.greyVar0
+                    shadowOpacity: 0.1, shadowColor: colors.greyVar0
                 }}>
                     <View style={{ alignItems: 'center', marginTop: 40 }}>
                         <H18Blackvar2Bold600>{labels.horaceKeene}</H18Blackvar2Bold600>
@@ -100,7 +100,7 @@ export const GroupProfileCard = () => {
 }
 
 export const GroupInfoCard = () => {
-    const {theme} = useTheme();
+    const { theme } = useTheme();
     const isDarkTheme = theme === 'dark';
 
     const socialMediaIcon = () => {
@@ -142,7 +142,7 @@ export const GroupInfoCard = () => {
                 <H12fontBold400GreyVar4 style={[{ color: colors.greyVar4 }, mt5]}>{labels.DummyText}</H12fontBold400GreyVar4>
             </View>
             <View style={[mt15, mb15]}>
-                <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />
+                <CommonLineDividerGrey style={{ backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0 }} />
             </View>
         </View>
     );
@@ -150,7 +150,7 @@ export const GroupInfoCard = () => {
 
 export const MediaCard = () => {
     const navigation = useNavigation();
-    const {theme} = useTheme();
+    const { theme } = useTheme();
     const isDarkTheme = theme === 'dark';
     return (
         <View>
@@ -158,7 +158,7 @@ export const MediaCard = () => {
                 <CardHeaderText text='Media' />
                 <View style={flexRow}>
                     <View style={[styles.roundNumber, { backgroundColor: 'rgba(97, 97, 97, 0.15) ' }, mt5, mr5]}>
-                        <Text style={[styles.roundNumberText, {color: isDark() ? colors.greyVar4 : colors.greyVar4,}]}>68</Text>
+                        <Text style={[styles.roundNumberText, { color: isDark() ? colors.greyVar4 : colors.greyVar4, }]}>68</Text>
                     </View>
                     <View style={{ alignItems: 'center', justifyContent: 'center', transform: [{ rotate: '180deg' }] }}>
                         <CustomIcon name='chevron-back-sharp' color={isDark() ? colors.greyVar3 : colors.greyVar4} size={16} type="Ionicons"
@@ -184,14 +184,14 @@ export const MediaCard = () => {
                 ))}
             </View>
             <View style={[mt15, mb15]}>
-                <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />
+                <CommonLineDividerGrey style={{ backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0 }} />
             </View>
         </View>
     )
 }
 
 export const Groups = () => {
-    const {theme} = useTheme();
+    const { theme } = useTheme();
     const isDarkTheme = theme === 'dark';
     return (
         <View>
@@ -202,20 +202,61 @@ export const Groups = () => {
                 </View>
             </RowSpaceBetween>
             {groupsData.map((item, index) => (
-                <View key={index} style={[styles.cardSurface, {backgroundColor: isDark() ? colors.darkModeVar4 : colors.white,}]}>
-                    <View>
-                        <Image source={item.img} style={{ height: 40, width: 40, borderRadius: 100 }} />
-                        <View style={[{ backgroundColor: item.status === 'active' ? '#20c997' : '' }, item.status === 'active' ? styles.status : null]} />
-                    </View>
-                    <View style={pl10}>
-                        <H15Blackvar2Bold500>{item.name}</H15Blackvar2Bold500>
-                        <H14GreyVar4Bold400Text style={[{ color: colors.greyVar4 }, pt5]}>{item.personName}</H14GreyVar4Bold400Text>
-                    </View>
+                <View style={{}} key={index}>
+                    {
+                        item.id === 1 ? (
+                            <View style={[styles.cardSurface,flex1, { backgroundColor: isDark() ? colors.darkModeVar4 : colors.white, }]}>
+                                <RowSpaceBetween style = {flex1}>
+                                    <View style={[flexRow, spaceBetween]}>
+                                        <View>
+                                            <Image source={item.img} style={[{ height: 40, width: 40, borderRadius: 100 }, mt3]} />
+                                            <View style={[{ backgroundColor: item.status === 'active' ? '#20c997' : '' }, item.status === 'active' ? styles.status : null]} />
+                                        </View>
+                                        <View style={pl10}>
+                                            <H15Blackvar2Bold500>{item.name}</H15Blackvar2Bold500>
+                                            <H14GreyVar4Bold400Text style={[{ color: colors.greyVar4 }, pt5]}>{item.personName}</H14GreyVar4Bold400Text>
+                                        </View>
+                                    </View>
+                                    <View style = {[mr5, mt3]}>
+                                        <CardHeaderText text='Admin' />
+                                    </View>
+                                </RowSpaceBetween>
+                            </View>
+                        ) : item.id === 2 ? (
+                            <View style={[styles.cardSurface,flex1, { backgroundColor: isDark() ? colors.darkModeVar4 : colors.white, }]}>
+                                <RowSpaceBetween style = {flex1}>
+                                    <View style={[flexRow, spaceBetween]}>
+                                        <View>
+                                            <Image source={item.img} style={[{ height: 40, width: 40, borderRadius: 100 }, mt3]} />
+                                            <View style={[{ backgroundColor: item.status === 'active' ? '#20c997' : '' }, item.status === 'active' ? styles.status : null]} />
+                                        </View>
+                                        <View style={pl10}>
+                                            <H15Blackvar2Bold500>{item.name}</H15Blackvar2Bold500>
+                                            <H14GreyVar4Bold400Text style={[{ color: colors.greyVar4 }, pt5]}>{item.personName}</H14GreyVar4Bold400Text>
+                                        </View>
+                                    </View>
+                                    <View style = {[mr5, mt3]}>
+                                        <CardHeaderText text='Admin' />
+                                    </View>
+                                </RowSpaceBetween>
+                            </View>
+                        ) : (
+                            <View style={[styles.cardSurface, { backgroundColor: isDark() ? colors.darkModeVar4 : colors.white, }]}>
+                                <View>
+                                    <Image source={item.img} style={[{ height: 40, width: 40, borderRadius: 100 }, mt3]} />
+                                    <View style={[{ backgroundColor: item.status === 'active' ? '#20c997' : '' }, item.status === 'active' ? styles.status : null]} />
+                                </View>
+                                <View style={pl10}>
+                                    <H15Blackvar2Bold500>{item.name}</H15Blackvar2Bold500>
+                                    <H14GreyVar4Bold400Text style={[{ color: colors.greyVar4 }, pt5]}>{item.personName}</H14GreyVar4Bold400Text>
+                                </View>
+                            </View>
+                        )
+                    }
                 </View>
-
             ))}
             <View style={[mt20, mb15]}>
-                <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />
+                <CommonLineDividerGrey style={{ backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0 }} />
             </View>
         </View>
 
@@ -224,7 +265,7 @@ export const Groups = () => {
 
 const ColorIconTab = () => {
     const navigation = useNavigation()
-    const {theme} = useTheme();
+    const { theme } = useTheme();
     const isDarkTheme = theme === 'dark';
 
     return (
@@ -247,7 +288,7 @@ const ColorIconTab = () => {
                                     item.id === 1 ? (
                                         <View style={[flexRow, alignItemsCenter, justyfyCenter]}>
                                             <View style={[styles.roundNumber, { backgroundColor: 'rgba(97, 97, 97, 0.05) ' }, mt5, mr5]}>
-                                                <Text style={[styles.roundNumberText,{color: isDark() ? colors.greyVar4 : colors.greyVar4,}]}>10</Text>
+                                                <Text style={[styles.roundNumberText, { color: isDark() ? colors.greyVar4 : colors.greyVar4, }]}>10</Text>
                                             </View>
                                             <View style={[{ transform: [{ rotate: '180deg' }] }]}
                                             >
@@ -268,7 +309,7 @@ const ColorIconTab = () => {
                 })
             }
             <View style={[mt10, mb15]}>
-                <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />
+                <CommonLineDividerGrey style={{ backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0 }} />
             </View>
         </View>
     )
@@ -394,7 +435,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     roundNumberText: {
-        fontWeight : '400',
+        fontWeight: '400',
         fontSize: 12,
     },
     cardSurface: {
