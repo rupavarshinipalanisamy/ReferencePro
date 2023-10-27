@@ -1,4 +1,4 @@
-import { DocImg1, DocImg2, DocImg3, DocImg4, DocImg5, DocImg6, DocImg7, DocImg8, ImageImg1, ImageImg2, ImageImg3, ImageImg4, ImageImg5, ImageImg6, ImageImg7, Linkimg1, Linkimg2, Linkimg3, Linkimg4, Videoimg1, Videoimg10, Videoimg2, Videoimg3, Videoimg4, Videoimg5, Videoimg6, Videoimg7, Videoimg8, Videoimg9 } from "../png"
+import { DocImg1, DocImg2, DocImg3, DocImg4, DocImg5, DocImg6, DocImg7, DocImg8, ImageImg1, ImageImg2, ImageImg3, ImageImg4, ImageImg5, ImageImg6, ImageImg7, ImageView1, Linkimg1, Linkimg2, Linkimg3, Linkimg4, VideoView1, Videoimg1, Videoimg10, Videoimg2, Videoimg3, Videoimg4, Videoimg5, Videoimg6, Videoimg7, Videoimg8, Videoimg9 } from "../png"
 
 export const recentImages = [
     {
@@ -35,6 +35,39 @@ export const recentImages = [
     },
 
 ]
+
+export const ImageViewData = [
+    {
+        id: 1,
+        img: ImageView1
+    },
+    {
+        id: 2,
+        img: ImageView1
+    },
+    {
+        id: 3,
+        img: ImageView1
+    },
+ 
+]
+
+export const VideoViewData = [
+    {
+        id: 1,
+        img:VideoView1
+    },
+    {
+        id: 2,
+        img: VideoView1
+    },
+    {
+        id: 3,
+        img: VideoView1
+    },
+ 
+]
+
 
 export const recentVideos = [
     {

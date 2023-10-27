@@ -6,7 +6,7 @@ import { labels } from '../utils/labels';
 import CustomIcon from '../utils/Icons';
 import { H12font400Black, H12font400Grey, H14BlackText, H14BlackVar2Bold400Text, H14GreyVar4Bold400, H14blackVar1bold400Text, H15Blackvar2Bold500, H16BlackText } from './commonText';
 import { ProfileImg } from '../utils/png';
-import { isDark } from '../Theme/ThemeContext';
+import { isDark, useTheme } from '../Theme/ThemeContext';
 import { DevHeight, DevWidth } from '../utils/device';
 import { attachmentData } from '../utils/data/chatsData';
 import Modal from 'react-native-modal';
@@ -95,18 +95,30 @@ export const ForwardView = () => {
   )
 }
 
+// export const AddView = () => {
+//   const {theme} = useTheme();
+//   const isDarkTheme = theme === 'dark';
+//   return (
+//     <View style={{ height: 26, width: 26, backgroundColor: isDarkTheme? 'rgba(78,80,114,0.3)' : colors.white, borderRadius: 13 }}>
+//       <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
+//         <CustomIcon name='plus' type="octicons" size={16} color={isDarkTheme? colors.greyVar3 : colors.greyVar7} />
+//       </View>
+//     </View>
+//   )
+// }
+
 export const AddView = () => {
+  const {theme} = useTheme();
+  const isDarkTheme = theme === 'dark';
   return (
-    <View style={{ height: 26, width: 26, backgroundColor: isDark() ? 'rgba(78,80,114,0.3)' : colors.white, borderRadius: 13 }}>
+    <View style={{ height: 28, width: 28, backgroundColor: isDarkTheme? colors.darkModeVar6 : colors.greyVar7, borderRadius: 13 }}>
       <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
-        <CustomIcon name='plus' type="octicons" size={16} color={isDark() ? colors.greyVar3 : colors.greyVar4} />
-
-
+        <CustomIcon name='plus' type="octicons" size={14} color={isDarkTheme? colors.white : colors.blackVar1} />
       </View>
-
     </View>
   )
 }
+
 
 
 

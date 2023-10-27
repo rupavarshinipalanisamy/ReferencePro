@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, ScrollView, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { Text, View, ScrollView, StyleSheet, TouchableOpacity, Image, SafeAreaView } from 'react-native';
 import { flex1, flexRow, mr5, mt20, mt3, mv10, pb5, ph20, pv15 } from '../commonStyles';
 import { FileBlackIcon, FileDarkIcon, ImageDarkIcon, MicrophoneDarkIcon, MikeBlackIcon, PictureBlackIcon, PinBlackIcon, PinDarkIcon, StickerDarkIcon, StickerGreyIcon, VideoBlackIcon, VideoDarkIcon } from '../../utils/svg';
 import { CommonLineDividerGrey, RowSpaceBetween, RowSpaceEvenly } from '../commonView';
@@ -24,8 +24,8 @@ const AllGroups = (props: AllGroupsProps) => {
     const isDarkTheme = theme === 'dark';
 
     return (
-        <View style={[{ backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
-            <ScrollView showsVerticalScrollIndicator={false}>
+        <SafeAreaView style={[{ backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
+            <ScrollView showsVerticalScrollIndicator={false} style={{marginBottom :60}} >
                 <View style={flex1}>
                     {allGroupsData.map((group) => (
                         <View key={group.id}>
@@ -40,7 +40,7 @@ const AllGroups = (props: AllGroupsProps) => {
                                 onLongPress={() => {
                                     // if (!selectedCards.includes(chat.id)) {
                                     //     onCardSelection(chat.id);
-                                    // }
+                                    // } 
                                 }} style={[ph20, pv15]}>
                                 <View style={[flexRow]}>
                                     <View>
@@ -134,7 +134,7 @@ const AllGroups = (props: AllGroupsProps) => {
                 </View>
             </ScrollView>
             <BottomTabBar />
-        </View >
+        </SafeAreaView >
     )
 }
 

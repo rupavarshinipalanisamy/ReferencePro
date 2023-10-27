@@ -24,7 +24,6 @@ import { colors } from "../colors";
     { id: 3, emoji: '👍' },
     { id: 4, emoji: '😎' },
     { id: 5, emoji: '😍' },
-    { id: 7, emoji: AddView() },
   ];
 
   export const tabs = [

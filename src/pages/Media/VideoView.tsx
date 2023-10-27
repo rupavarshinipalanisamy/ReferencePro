@@ -1,30 +1,45 @@
 import React from 'react';
-import { ImageBackground, View } from 'react-native';
+import { View, FlatList, ImageBackground,Text } from 'react-native';
 import { MediaHeader } from './MediaCommonHeader';
-import { DevHeight } from '../../utils/device';
-import CustomIcon from '../../utils/Icons';
+import { DevHeight, DevWidth } from '../../utils/device';
+import ImageViewImg from '../../../assets/images/ImageView.svg'
 import { colors } from '../../utils/colors';
 import { isDark } from '../../Theme/ThemeContext';
+import { ImageViewData, VideoViewData, recentImages } from '../../utils/data/MediaData';
+import { MediaImg1 } from '../../utils/png';
+import CustomIcon from '../../utils/Icons';
 
-export type VideoViewProps = {
+export type ImageViewProps = {
 
 }
+const ImageView = (props: ImageViewProps) => {
+
+    const renderItem = ({ item }) => (
+        <View>
+            <ImageBackground source={item.img} style={{ width: DevWidth, height: DevHeight/1.24,alignItems:'center',justifyContent:'center' }} >
+                <CustomIcon name="play-circle-o" size={40} color={colors.white} type="font-awesome" />
 
 
-const VideoView = (props: VideoViewProps) => {
+            </ImageBackground>
+
+        </View>
+    );
+
     return (
-        <View style={{ flex: 1 ,backgroundColor:isDark()?colors.darkModeVar2:colors.whiteVar0}}>
-            <MediaHeader height={DevHeight / 7} startDot={true} Imagess={false} />
-            <View style={{paddingBottom:'35%',padding:25}}>
-                <ImageBackground source={require('../../../assets/images/png/VideoView.png')}
-                    style={{ width: '100%',height:'100%',alignItems:'center',justifyContent:'center'}}
-                >
-                    <CustomIcon name="play-circle-o" size={40} color={colors.white} type="font-awesome" />
-
-                </ImageBackground>
+        <View >
+            <MediaHeader height={DevHeight / 7} startDot={true} Imagess={false} imageViewModal={true} />
+            <View style={{ marginHorizontal: 20,marginTop:20}}>
+            <FlatList
+                data={VideoViewData}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.id.toString()}
+                horizontal
+                pagingEnabled
+                snapToAlignment='center'
+            />
             </View>
         </View>
     )
 }
 
-export default VideoView
+export default ImageView

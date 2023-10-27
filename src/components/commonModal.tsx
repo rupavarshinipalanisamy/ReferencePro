@@ -287,7 +287,7 @@ export const EditModal = ({ isVisible, onClose }) => {
     </Modal >
   );
 };
-export const EditModal2 = ({ isVisible, onClose }) => {
+export const EditModal2 = ({ isVisible,onPress }) => {
 
   const [inputText, setInputText] = useState('');
   const [editText, setEditText] = useState('Thank You Mam')
@@ -295,7 +295,7 @@ export const EditModal2 = ({ isVisible, onClose }) => {
   //   onEditModal2Press(inputText); // Pass the input text to the function in the parent component
   // };
   return (
-    <Modal isVisible={isVisible} onBackdropPress={onClose} backdropOpacity={0.5} style={{ margin: 0, position: 'absolute', bottom: 0, width: '100%' }}>
+    <Modal isVisible={isVisible}  backdropOpacity={0.8} style={{ margin: 0, position: 'absolute', bottom: 0, width: '100%' }}>
       <View style={{ alignItems: 'flex-end', marginTop: DevHeight / 1.5 ,bottom:50,marginHorizontal:20}}>
         <View style={[flexRow]}>
         <H12font400Grey style={[pr10]}>8:17 PM</H12font400Grey>
@@ -322,7 +322,7 @@ export const EditModal2 = ({ isVisible, onClose }) => {
           </View>
         </View>
         <TouchableOpacity style={{ backgroundColor: colors.purpleVar3, height: 40, width: 40, borderRadius: 12, marginLeft: 15, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-end', bottom: Platform.OS === 'ios' ? 20 : 8 }}
-
+onPress={onPress}
         >
           <CustomIcon name='done' type="MaterialIcons" color={colors.white} size={18} />
         </TouchableOpacity>

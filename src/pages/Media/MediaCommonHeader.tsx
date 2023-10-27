@@ -253,9 +253,11 @@ export const TextInputHeader = (props: TextInputHeaderProps) => {
                             </TouchableOpacity>
 
                             <View style={[pl13]}>
-                                <TextInput placeholder='Search...' style={{
+                                <TextInput placeholder='Search...' 
+                                placeholderTextColor={isDark()?colors.greyVar3:colors.blackVar1}
+                                style={{
                                     borderBottomWidth: 1, borderBottomColor:isDark()? 'rgba(78,80,114,0.5)':colors.greyVar2, width: DevWidth / 1.35,
-                                    fontSize: 14, fontWeight: '400', color: colors.blackVar1
+                                    fontSize: 14, fontWeight: '400', color:isDark()?colors.greyVar3:colors.blackVar1
                                 }} />
 
 

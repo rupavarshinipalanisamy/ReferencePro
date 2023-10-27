@@ -88,3 +88,5 @@ export const Wallpaper12=require('../../assets/images/png/wallpaper12.png')
 export const StatusImg1 = require('../../assets/images/png/statusImg1.png');
 export const AuthImageBg =require('../../assets/images/png/background-image.png');
 export const AuthImageBottom =require('../../assets/images/png/welcomepage_bottom.png');
+export const ImageView1 =require('../../assets/images/png/ImageView1.png');
+export const VideoView1 =require('../../assets/images/png/VideoView1.png');

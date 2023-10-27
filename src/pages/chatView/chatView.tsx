@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect, useRef } from 'react';
 import { Text, View, ImageBackground, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Dimensions, Platform, Animated } from 'react-native';
 import { colors } from '../../utils/colors';
-import { flexRow, mh20, pl10, pl6, pt10 } from '../../components/commonStyles';
+import { flexRow, mh20, mt3, mt5, pl10, pl6, pt10 } from '../../components/commonStyles';
 import { labels } from '../../utils/labels';
 import { FooterChatView, HeaderChatView, LongPressedHaeder, ReplyFooterView, SentMessage2, SentMessage6, receiveMessage1, receiveMessage2, receiveMessage3, receiveMessage4, sentMessage1, sentMessage3, sentMessage4, sentMessage5 } from './Messagecomponents/messages';
 import Modal from 'react-native-modal';
@@ -14,7 +14,7 @@ import { ClearChatModal } from '../../ModalContents/IconModelContents';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { tabs } from '../../utils/data/chatViewData';
 import { Emojidata } from '../../utils/data/chatViewData';
-import { Bluetick, DayDetails, Reactmsg, Tick } from '../../components/chatViewComponents';
+import { AddView, Bluetick, DayDetails, Reactmsg, Tick } from '../../components/chatViewComponents';
 import ChatMessage from '../../components/chatView/chatMessages';
 import {
   PanGestureHandler,
@@ -116,8 +116,6 @@ const ChatView = () => {
       return (
         <LongPressedHaeder
           messageType={chatMessages1.find((message) => selectedCards.includes(message.id))?.type}
-
-          openModal={openModalEdit}
         />
       );
     } else {
@@ -298,9 +296,14 @@ const ChatView = () => {
             <View style={[styles.modalContent, { backgroundColor: isDarkTheme ? colors.darkModeVar4 : colors.white }]}>
               {Emojidata.map((item) => (
                 <TouchableOpacity key={item.id}  >
-                  <Text style={{ fontSize: 18, color: colors.yellow, margin: 5 }}>{item.emoji}</Text>
+                  <Text style={{ fontSize: 16, color: colors.yellow, margin: 5 }}>{item.emoji}</Text>
                 </TouchableOpacity>
               ))}
+              <View style={{marginTop:3}}>
+              <AddView/>
+
+
+              </View>
             </View>
           </Modal>
         )}
