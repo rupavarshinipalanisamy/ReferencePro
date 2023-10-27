@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Image, TouchableHighlight, StyleSheet, TouchableOpacity, PanResponder, Animated } from 'react-native';
-import { MainContainer, RowSpaceBetween } from '../../components/commonView';
+import { RowSpaceBetween } from '../../components/commonView';
 import { StatusImg1, StatusPic3 } from '../../utils/png';
 import ProgressBar from 'react-native-progress/Bar';
 import { colors } from '../../utils/colors';
@@ -123,7 +123,7 @@ const FriendStatus = (props: MyStatusProps) => {
                 }
             </View>
         )
-    }
+    };
 
     const GroupsModal = () => {
         return (
@@ -150,7 +150,7 @@ const FriendStatus = (props: MyStatusProps) => {
                 </RowSpaceBetween>
             </View>
         )
-    }
+    };
 
     return (
         <View style={[flex1]}>

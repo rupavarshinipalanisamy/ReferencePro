@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, ScrollView, TouchableOpacity, Image, StyleSheet ,Text} from 'react-native';
+import { View, ScrollView, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { alignItemsCenter, flex1, justyfyCenter, mh10, mh20, mt20, mt5 } from '../../components/commonStyles';
 import { H14font400Black, H14font400Gray4, H15font500Black } from '../../components/commonText';
 import { BottomTabBar, CustomModal } from '../../components/commonComponents'
@@ -14,12 +14,14 @@ import { useTheme } from '../../Theme/ThemeContext';
 import { StatusView, StatusView1 } from '../../utils/svg';
 import { Platform } from 'react-native';
 import { WhiteBgContact } from '../../styledComponent/styledComponent';
+
 export interface StatusData {
   id: number;
   image: any;
   name: string;
   time: string;
 }
+
 export interface RecentStatusItemProps {
   data: StatusData;
   onPress: () => void;
@@ -60,7 +62,7 @@ export const statusText = (value: string,) => {
       <H14font400Black style={{ color: isDarkTheme ? colors.greyVar0 : colors.black }}>{value}</H14font400Black>
     </View>
   )
-}
+};
 
 export type AllStatusProps = {
   selectedCards: number[];
@@ -87,7 +89,7 @@ const AllStatus = (props: AllStatusProps) => {
   return (
     <WhiteBgContact style={[{ backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.white }, flex1, mt20]}>
       <View style={flex1}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false} style={{ marginBottom: 80 }}>
           {showSecondScreen ? <AfterNavigation /> : <BeforeNavigation />}
           {statusText(labels.recentStatus)}
           <View>
@@ -111,10 +113,6 @@ const AllStatus = (props: AllStatusProps) => {
               <StatusItem key={data.id} data={data} onPress={() => handleStatusItemClick(data.id)} statusView={<StatusView1 />} isMuted={true} />
             ))}
           </View>
-          <Text></Text>
-          <Text></Text>
-          <Text></Text>
-          <Text></Text>
         </ScrollView>
       </View>
       <CustomModal

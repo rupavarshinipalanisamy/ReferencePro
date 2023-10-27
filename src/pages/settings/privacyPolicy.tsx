@@ -25,6 +25,6 @@ const PrivacyPolicy = (props: PrivacyPolicyProps) => {
             </View>
         </Fragment>
     )
-}
+};
 
-export default PrivacyPolicy
+export default PrivacyPolicy;

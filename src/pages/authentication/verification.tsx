@@ -102,7 +102,7 @@ const Verification = (props: VerificationProps) => {
                 </GestureHandlerRootView>
             </View>
         </Fragment>
-    );
+    )
 };
 
 export default Verification; 

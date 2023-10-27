@@ -42,23 +42,23 @@ const SignUp = () => {
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
-    }
+    };
 
     const handleFirstName = (newFirstName: string) => {
         setFirstName(newFirstName);
-    }
+    };
 
     const handleLastName = (newLastName: string) => {
         setLastName(newLastName);
-    }
+    };
 
     const handleUserName = (newUserName: string) => {
         setUserName(newUserName);
-    }
+    };
 
     const handlePhoneNumber = (newPhoneNumber: undefined) => {
         setPhoneNumber(newPhoneNumber);
-    }
+    };
 
     return (
         <Fragment>
@@ -126,7 +126,6 @@ const SignUp = () => {
                                         </IconInputContainer>
                                         <View>
                                             <IconInputContainer style={{ borderBottomColor: isDarkTheme ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
-
                                                 <View style={[justyfyCenter]}>
                                                     <CustomIcon name='person' size={20} color={isDarkTheme ? colors.greyVar3 : colors.greyVar4} type='octicons' />
                                                 </View>
@@ -225,7 +224,7 @@ const SignUp = () => {
                 </GestureHandlerRootView>
             </View>
         </Fragment>
-    );
+    )
 };
 
 export default SignUp;

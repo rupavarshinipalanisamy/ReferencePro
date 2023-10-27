@@ -69,7 +69,7 @@ const WelcomePage: React.FC<WelcomePageProps> = (props: WelcomePageProps) => {
         </GestureHandlerRootView>
       </View>
     </Fragment>
-  );
+  )
 };
 
 export default WelcomePage;

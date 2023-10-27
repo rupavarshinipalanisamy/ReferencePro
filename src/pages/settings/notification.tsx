@@ -23,15 +23,19 @@ const Notification = (props: NotificationProps) => {
     const handleToggle = () => {
         setToggleVisible(!toggleVisible);
     }
+
     const handleToggle1 = () => {
         setToggleVisible1(!toggleVisible1);
     }
+
     const handleToggle2 = () => {
         setToggleVisible2(!toggleVisible2);
     }
+
     const handleToggle3 = () => {
         setToggleVisible3(!toggleVisible3);
     }
+
     const handleToggle4 = () => {
         setToggleVisible4(!toggleVisible4);
     }
@@ -63,7 +67,7 @@ const Notification = (props: NotificationProps) => {
                 }
             </View>
         )
-    }
+    };
 
     return (
         <Fragment>
@@ -129,6 +133,6 @@ const Notification = (props: NotificationProps) => {
             </View>
         </Fragment>
     )
-}
+};
 
 export default Notification
