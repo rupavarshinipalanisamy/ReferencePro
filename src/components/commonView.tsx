@@ -186,6 +186,7 @@ const {
   purpleMainContainer,
   subContainer,
   commonLineDividerGrey,
+  fullCommonLineDividerGrey,
   commonLineDividerPurple,
   tabContainer,
   textNow,
@@ -203,7 +204,6 @@ const {
   longButton,
   smallButton,
   greyTabView,
-  fullCommonLineDividerGrey
 
 
 
@@ -219,6 +219,9 @@ export const PurpleMainContainer = styled(SafeAreaView) <{ secondary?: boolean }
 `;
 export const CommonLineDividerGrey = styled(View)`
   ${commonLineDividerGrey}
+`
+export const FullCommonLineDividerGrey = styled(View)`
+  ${fullCommonLineDividerGrey}
 `
 export const CommonLineDividerPurple = styled(View)`
   ${commonLineDividerPurple};
@@ -321,7 +324,4 @@ ${longButton}
 
 export const GreyTabView = styled(TouchableOpacity)`
 ${greyTabView}
-`
-export const FullCommonLineDividerGrey = styled(View)`
-  ${fullCommonLineDividerGrey}
 `

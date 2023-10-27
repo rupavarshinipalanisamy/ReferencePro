@@ -263,7 +263,7 @@ export const CustomModal: React.FC<ModalProps> = ({ isVisible, width, modalData,
                         alignItems: 'flex-end',
                     }}
                 >
-                    <View style={[{ backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, elevation: 4, borderRadius: 8, width: width || DevWidth * 0.5, padding: 10, marginTop: marginTop || 30, marginLeft: marginLeft || 0 ,borderWidth:2,borderColor:isDark()?'rgba(78,80,114,0.2)':colors.greyVar7}]}>{modalData}</View>
+                    <View style={[{ backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, elevation: 0.5, borderRadius: 8, width: width || DevWidth * 0.5, padding: 10, marginTop: marginTop || 30, marginLeft: marginLeft || 0 ,borderWidth:2,borderColor:isDark()?'rgba(78,80,114,0.2)':colors.greyVar7}]}>{modalData}</View>
                 </Modal>
             </View>
         </RNModal>
@@ -843,7 +843,7 @@ export const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ value, onToggle }) =
                     style={[
                         styles.toggle,
                         {
-                            transform: [{ translateX: value ? 22 : 0 }],
+                            transform: [{ translateX: value ? 20 : 3 }],
                             backgroundColor: value ? colors.white : colors.greyVar2,
                         },
                     ]}
@@ -1185,15 +1185,15 @@ const styles = StyleSheet.create({
         fontSize: 12,
     },
     container: {
-        width: 45,
-        height: 25,
+        width: 40,
+        height: 20,
         borderRadius: 20,
         flexDirection: 'row',
         alignItems: 'center',
     },
     toggle: {
-        width: 20,
-        height: 20,
+        width:15,
+        height: 15,
         borderRadius: 15,
     },
     multiSelectBox: {

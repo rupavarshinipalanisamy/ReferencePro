@@ -28,7 +28,7 @@ const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
 
     return (
         <View style={[{ backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollView showsVerticalScrollIndicator={false} style = {flex1}>
                 <View style={[flexRow, spaceBetween, mt20, alignSelfCenter, p10, borderRadius10, styles.archiveCard, mb15, { backgroundColor: isDarkTheme ? colors.darkModeVar4 : colors.purpleVar1, }]}>
                     <View style={[flexRow, spaceEvenly]}>
                         {isDarkTheme ? <ArchiveIconDarkShade1Icon /> : <ArchiveIconBlackIcon />}

@@ -23,7 +23,7 @@ export const bottomNavData = [
         name : labels.Status,
         iconName : 'record-circle-outline',
         iconType : "MaterialCommunityIcons",
-        iconSize : 20,
+        iconSize : 22,
         screenName : screenName.NoStatus,
     },
     {
@@ -31,7 +31,7 @@ export const bottomNavData = [
         name : labels.Contact,
         iconName : 'person-circle-outline',
         iconType : "Ionicons",
-        iconSize : 20,
+        iconSize : 22,
         screenName : screenName.ContactPage,
     },
     {
@@ -39,7 +39,7 @@ export const bottomNavData = [
         name : labels.Call,
         iconName : 'phone',
         iconType : "Feather",
-        iconSize : 20,
+        iconSize : 18,
         screenName : screenName.Calls,
     },
 ]
