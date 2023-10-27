@@ -18,7 +18,6 @@ import { isDark } from '../../Theme/ThemeContext';
 export type PasswordProps = {};
 
 const Password = (props: PasswordProps) => {
-  const [isUnlocked, setIsUnlocked] = useState(false);
   const [currentPassword, setCurrentPassword] = useState(true);
   const [newPassword, setNewPassword] = useState(true);
   const [confirmPassword, setConfirmPassword] = useState(true);
@@ -28,23 +27,21 @@ const Password = (props: PasswordProps) => {
   const handleToggle = () => {
     setToggleVisible(!toggleVisible);
   }
-  const handleToggleClick = () => {
-    setIsUnlocked((prevState) => !prevState);
-  };
 
   const handleCancelButtonClick = () => {
     setIsCancelButtonActive(true);
-  };
+  }
 
   const handleSaveChangesClick = () => {
     setIsCancelButtonActive(false);
-  };
+  }
 
   const formKeys = {
     newpassword: 'password',
     currentPassword: 'currentpassword',
     confirmpassword: 'confirmpassword'
-  };
+  }
+
   const {
     handleSubmit,
     control,
@@ -53,14 +50,15 @@ const Password = (props: PasswordProps) => {
 
   const handleCurrentPassword = () => {
     setCurrentPassword(!currentPassword);
-  };
+  }
+
   const handleNewPassword = () => {
     setNewPassword(!newPassword);
-  };
+  }
+
   const handleConfirmPassword = () => {
     setConfirmPassword(!confirmPassword);
-  };
-
+  }
 
   return (
     <Fragment>
@@ -135,7 +133,6 @@ const Password = (props: PasswordProps) => {
                 </View>
               </InputContainer1>
             </IconInputContainer>
-
             <IconInputContainer style={{ borderBottomColor: isDark() ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
               <InputContainer1 >
                 <View style={[flexRow, alignItemsCenter]}>
@@ -163,7 +160,6 @@ const Password = (props: PasswordProps) => {
                 </View>
               </InputContainer1>
             </IconInputContainer>
-
           </View>
         </ScrollView>
         <RowSpaceBetween style={[mh20, { bottom: 20 }]}>
@@ -182,7 +178,7 @@ const Password = (props: PasswordProps) => {
         </RowSpaceBetween>
       </View>
     </Fragment>
-  );
+  )
 };
 
 export default Password;

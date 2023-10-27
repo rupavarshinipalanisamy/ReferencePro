@@ -12,7 +12,7 @@ import { H14font400Gray4, H14font400White, H15font500Black, H15font500White, H16
 import { CustomModal } from '../../components/commonComponents';
 import { DevWidth, DevHeight } from '../../utils/device';
 import { StatusOptionModalComponent } from './statusContainer';
-import { alignItemsCenter, flex1, flexRow, mb30, mh10, mh20, mh8, ml10, ml15, ml5, mt10, mv10, spaceBetween } from '../../components/commonStyles';
+import { alignItemsCenter, flex1, flexRow, mb30, mh10, mh20, mh8, ml15, ml5, mt10, mv10, spaceBetween } from '../../components/commonStyles';
 import { isDark } from '../../Theme/ThemeContext';
 import { useNavigation } from '@react-navigation/native';
 

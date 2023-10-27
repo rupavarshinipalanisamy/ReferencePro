@@ -19,7 +19,6 @@ import { SmallButton } from "../../components/commonButtons";
 import { RowSpaceBetween } from "../../components/commonView";
 
 export const StatusOptionModalComponent = () => {
-    const navigation = useNavigation()
 
     return (
         <View>
@@ -93,8 +92,8 @@ export const AfterNavigation = () => {
                 />
             </View>
         </TopCard>
-    );
-}
+    )
+};
 
 export const BeforeNavigation = () => {
     const [Pic, setPic] = useState('');
@@ -179,7 +178,7 @@ export const BeforeNavigation = () => {
                     />
                 </RowSpaceBetween>
             </View>
-        );
+        )
     };
 
 

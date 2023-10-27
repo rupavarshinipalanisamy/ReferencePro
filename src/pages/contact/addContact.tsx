@@ -31,7 +31,7 @@ const AddContact = (props: AddContactProps) => {
         setFormData((prevData) => ({
             ...prevData,
             [key]: value,
-        }));
+        }))
     };
 
     const handleSaveContact = () => {

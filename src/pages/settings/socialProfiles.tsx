@@ -1,8 +1,7 @@
 import React from 'react';
-import { View, StatusBar } from 'react-native';
+import { View } from 'react-native';
 import { IconBackground } from '../../components/commonView';
 import { colors } from '../../utils/colors';
-import { DevHeight } from '../../utils/device';
 import { labels } from '../../utils/labels';
 import { H12fontBold400GreyVar4, H15font500Black } from '../../components/commonText';
 import CustomIcon from '../../utils/Icons';
@@ -12,7 +11,6 @@ import { SearchHeader } from '../Media/MediaCommonHeader';
 import { isDark } from '../../Theme/ThemeContext';
 
 export type socialProfilesProps = {
-
 }
 
 const SocialProfiles = (props: socialProfilesProps) => {
@@ -36,6 +34,6 @@ const SocialProfiles = (props: socialProfilesProps) => {
             </View>
         </View>
     )
-}
+};
 
 export default SocialProfiles;

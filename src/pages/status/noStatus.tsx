@@ -9,7 +9,7 @@ import AllStatus from './allStatus';
 import RecentStatusScreen from './recentStatus';
 import ViewedStatusScreen from './viewedStatus';
 import MutedStatusScreen from './mutedStatus';
-import { useTheme, isDark } from '../../Theme/ThemeContext';
+import { useTheme } from '../../Theme/ThemeContext';
 
 export type NoStatusProps = {
   changeButtonText: (text: string) => void; 
@@ -74,6 +74,6 @@ const NoStatus = (props: NoStatusProps) => {
       </PurpleMainContainer>
     </Fragment>
   )
-}
+};
 
 export default NoStatus;

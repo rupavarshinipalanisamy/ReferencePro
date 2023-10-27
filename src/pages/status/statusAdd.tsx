@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, TextInput, StatusBar, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
 import { TopContainerWhiteCard1 } from '../../components/commonView';
 import CustomIcon from '../../utils/Icons';
 import { colors } from '../../utils/colors';
@@ -51,8 +51,8 @@ const ReplyFooterView = () => {
                 </View>
             </View>
         </View>
-    );
-}
+    )
+};
 
 const StatusAdd = (props: statusAddProps) => {
     return (
@@ -89,7 +89,8 @@ const StatusAdd = (props: statusAddProps) => {
             </View>
         </View>
     )
-}
+};
+
 const styles = StyleSheet.create({
     container: {
         height: 80,
@@ -126,4 +127,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default StatusAdd
+export default StatusAdd;

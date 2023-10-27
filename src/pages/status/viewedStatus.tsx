@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, ScrollView, StyleSheet, Text } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { flex1, mt20 } from '../../components/commonStyles';
 import { BottomTabBar, CustomModal } from '../../components/commonComponents'
 import { colors } from '../../utils/colors';
@@ -13,6 +13,7 @@ import { screenName } from '../../utils/screenName';
 import { StatusView1 } from '../../utils/svg';
 import { useTheme } from '../../Theme/ThemeContext';
 import { Platform } from 'react-native';
+import { WhiteBgContact } from '../../styledComponent/styledComponent';
 
 export type ViewedStatusProps = {
     selectedCards: number[];
@@ -33,10 +34,10 @@ const ViewedStatusScreen = (props: ViewedStatusProps) => {
 
     const handleStatusItemClick = (id: number) => {
         navigation.navigate(screenName.FriendStatus as never);
-    };
+    }
 
     return (
-        <View style={[{ backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
+        <WhiteBgContact style={[{ backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
             <View style={flex1}>
                 <ScrollView showsVerticalScrollIndicator={false}>
                     {showSecondScreen ? <AfterNavigation /> : <BeforeNavigation />}
@@ -46,10 +47,6 @@ const ViewedStatusScreen = (props: ViewedStatusProps) => {
                             <StatusItem key={data.id} data={data} onPress={() => handleStatusItemClick(data.id)} statusView={<StatusView1 />} />
                         ))}
                     </View>
-                    <Text></Text>
-                    <Text></Text>
-                    <Text></Text>
-                    <Text></Text>
                 </ScrollView>
             </View>
             <CustomModal
@@ -61,18 +58,8 @@ const ViewedStatusScreen = (props: ViewedStatusProps) => {
                 onClose={closeCallOptionModal}
             />
             <BottomTabBar />
-        </View >
+        </WhiteBgContact >
     )
-}
-
-const styles = StyleSheet.create({
-    whiteBg: {
-        height: '100%',
-        width: '100%',
-        borderTopLeftRadius: 45,
-        borderTopRightRadius: 45,
-        overflow: 'hidden'
-    },
-});
+};
 
 export default ViewedStatusScreen;

@@ -5,7 +5,7 @@ import { colors } from '../../utils/colors';
 import { H14font400Gray4, H14redText, H15font500Black } from '../../components/commonText';
 import { manageDevicesdata } from '../../utils/data/manageDeviceData';
 import { RowSpaceBetween } from '../../components/commonView';
-import { flex1, mh10, mt10, mt5, mv3, mv5 } from '../../components/commonStyles';
+import { flex1, mh10, mt10, mt5, mv3 } from '../../components/commonStyles';
 import { SearchHeader } from '../Media/MediaCommonHeader';
 import { isDark } from '../../Theme/ThemeContext';
 
@@ -24,7 +24,7 @@ export const CardHeaderText1: React.FC<CardHeaderTextProps> = ({ text }) => {
                 </H14redText>
             </View>
         </View >
-    );
+    )
 };
 
 export const cardDetails = () => {
@@ -58,7 +58,6 @@ export const cardDetails = () => {
                                     <H15font500Black style={[mt10]}>{item.status}</H15font500Black>
                                     <CardHeaderText1 text={labels.Delete} />
                                 </RowSpaceBetween>
-                                
                             </View>
                         </View>
                     </View>
@@ -66,12 +65,10 @@ export const cardDetails = () => {
             })
             }
         </View>
-
     )
-}
+};
 
 export type manageDevicesProps = {
-
 }
 
 const ManageDevices = (props: manageDevicesProps) => {
@@ -90,7 +87,7 @@ const ManageDevices = (props: manageDevicesProps) => {
             </View>
         </Fragment>
     )
-}
+};
 
 export default ManageDevices
 const styles = StyleSheet.create({
@@ -102,6 +99,5 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         padding: 12,
         borderWidth: 2,
-        
     }
-})
+});

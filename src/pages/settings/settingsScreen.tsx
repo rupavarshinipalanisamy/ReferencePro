@@ -5,7 +5,7 @@ import { ScrollView } from 'react-native';
 import { TouchableOpacity, View, } from 'react-native';
 import { colors } from '../../utils/colors';
 import CustomIcon from '../../utils/Icons';
-import { justyfyCenter, ml10, alignItemsCenter, flexRow, ph10, mt20, mh20, mv20, ml30, flex1, mr30, ml15, mh25, pl13, ph15 } from '../../components/commonStyles';
+import { justyfyCenter, ml10, alignItemsCenter, flexRow, ph10, mt20, mh20, mv20, ml30, flex1, mr30, ml15, mh25, ph15 } from '../../components/commonStyles';
 import { InputContainer1 } from '../../styledComponent/styledComponent';
 import { H14BlackVar2Bold400Text, H14blackVar1bold400Text, H14font400Gray4, H15font500Black, H16font600Black, H18BlackText } from '../../components/commonText';
 import { useNavigation } from '@react-navigation/native';
@@ -20,7 +20,6 @@ import { isDark, useTheme } from '../../Theme/ThemeContext';
 import { SettingAvatar } from '../../utils/svg';
 
 export type settingsScreenProps = {
-
 }
 
 const SettingsScreen = (props: settingsScreenProps) => {
@@ -221,10 +220,10 @@ const SettingsScreen = (props: settingsScreenProps) => {
                 </Modal>
             </View>
         </Fragment>
-    );
+    )
 };
 
-export default SettingsScreen
+export default SettingsScreen;
 
 const styles = StyleSheet.create({
     cardSurface: {
@@ -241,5 +240,4 @@ const styles = StyleSheet.create({
         height: DevHeight / 10,
         justifyContent: 'center'
     }
-
-})
+});

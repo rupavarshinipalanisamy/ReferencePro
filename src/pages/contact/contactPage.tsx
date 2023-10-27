@@ -1,7 +1,7 @@
 import React, { Fragment, useState, } from 'react';
-import { View, StyleSheet, TouchableOpacity, ScrollView ,Text} from 'react-native';
+import { View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { colors } from '../../utils/colors';
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh10, mh20, mh5, mt10, mt20, mt3, ph10, ph5 } from '../../components/commonStyles';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh20, mh5, mt10, mt20, mt3, ph10, ph5 } from '../../components/commonStyles';
 import { PurpleMainContainer } from '../../components/commonView'
 import { labels } from '../../utils/labels';
 import { H15Grey1, H16SemiBoldBlack1, H18BlackBoldText600 } from '../../components/commonText';
@@ -80,7 +80,7 @@ const ContactPage = ({ }: AllChatsProps) => {
                 />
                 <WhiteBgContact style={[flex1, mt20, { backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.whiteVar0 }]}>
                     <View >
-                        <ScrollView  showsVerticalScrollIndicator={false}>
+                        <ScrollView showsVerticalScrollIndicator={false} style={{ marginBottom: 80 }}>
                             {Object.keys(contactsByFirstLetter).map((letter) => (
                                 <View key={letter}>
                                     <H18BlackBoldText600 style={[mt10, mh20, { color: isDarkTheme ? colors.greyVar0 : colors.black }]}>{letter}</H18BlackBoldText600>
@@ -128,7 +128,7 @@ const ContactPage = ({ }: AllChatsProps) => {
                                                             color={isDarkTheme ? colors.greyVar3 : colors.greyVar4}
                                                             type="Ionicons"
                                                         />
-                                                        <H15Grey1 style={[mh5, { color: isDarkTheme ? colors.greyVar3 : colors.greyVar4 }]}>{data.location}</H15Grey1>
+                                                        <H15Grey1 style={[{ color: isDarkTheme ? colors.greyVar3 : colors.greyVar4 }]}>{data.location}</H15Grey1>
                                                     </View>
                                                 </View>
                                             </TouchableOpacity>
@@ -136,30 +136,24 @@ const ContactPage = ({ }: AllChatsProps) => {
                                     ))}
                                 </View>
                             ))}
-                         <Text></Text>
-                         <Text></Text>
-                         <Text></Text>
-                         <Text></Text>
                         </ScrollView>
                     </View>
                 </WhiteBgContact>
-
             </PurpleMainContainer>
             <BottomTabBar />
-
         </Fragment>
-    );
-}
+    )
+};
 
 const styles = StyleSheet.create({
     cardContainer: {
         flexDirection: 'row',
         elevation: 4,
         padding: 10,
-        marginHorizontal:20,
+        marginHorizontal: 20,
         borderRadius: 8,
-        marginTop:15,
-        alignItems:'center'
+        marginTop: 15,
+        alignItems: 'center',
     },
     selectedCardContainer: {
         flexDirection: 'row',

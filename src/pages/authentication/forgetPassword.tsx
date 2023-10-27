@@ -22,7 +22,7 @@ export type ForgetPasswordProps = {
 }
 
 const ForgetPassword = (props: ForgetPasswordProps) => {
-    const navigation = useNavigation()
+    const navigation = useNavigation();
     const { theme } = useTheme();
 
     const isDarkTheme = theme === 'dark';

@@ -41,10 +41,7 @@ import CallHistory from './src/pages/calls/CallHistory';
 import GroupSettings from './src/pages/groups/GroupSettings';
 import { useTheme } from './src/Theme/ThemeContext';
 import VerifyCode from './src/pages/VerifyCode';
-import {
-    DefaultTheme,
-    DarkTheme,
-} from '@react-navigation/native';
+import { DefaultTheme, DarkTheme } from '@react-navigation/native';
 import ChooseWallper from './src/pages/ChooseWallper';
 import Notification from './src/pages/settings/notification';
 import TermsAndConditions from './src/utils/data/termsAndConditions';
@@ -71,7 +68,6 @@ import EditContact from './src/pages/contact/editContact';
 import ContactDetails from './src/pages/contact/contactDetails';
 
 const Stack = createNativeStackNavigator();
-
 interface NavigationProps {
     initialRouteName: string;
 }
@@ -135,7 +131,6 @@ const HomeNavigation = (props: NavigationProps) => {
             <Stack.Screen name={screenName.ForwardTo} component={Forward} />
             <Stack.Screen name={screenName.InviteFriend} component={Invitefriend} />
             <Stack.Screen name={screenName.MessageInfo} component={MessageInfo} />
-
             <Stack.Screen name={screenName.Managedevices} component={ManageDevices} />
             <Stack.Screen name={screenName.PrivacyPolicy} component={PrivacyPolicy} />
             <Stack.Screen name={screenName.NoStatus} component={NoStatus} />
@@ -147,7 +142,6 @@ const HomeNavigation = (props: NavigationProps) => {
         </Stack.Navigator>
     );
 };
-
 interface RootNavigationProps {
     initialRouteName: string;
 };
