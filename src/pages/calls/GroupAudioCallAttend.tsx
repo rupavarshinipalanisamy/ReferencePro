@@ -1,10 +1,9 @@
 import React from 'react';
-import { View, FlatList, Image, Text, TouchableOpacity } from 'react-native';
+import { View, FlatList, Image, TouchableOpacity } from 'react-native';
 import { H14Blackvar2Bold500 } from '../../components/commonText';
 import { CallCommonHeader } from '../../components/commonHeaders';
 import { callBottomDataThird, groupCallData } from '../../utils/data/callsData';
 import { DevHeight, DevWidth } from '../../utils/device';
-import { CallBottomTab } from '../../components/commonComponents';
 import { isDark } from '../../Theme/ThemeContext';
 import { colors } from '../../utils/colors';
 import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mt15, mt20, mt8, spaceAround } from '../../components/commonStyles';
@@ -32,7 +31,7 @@ const GroupAudioCallAttend = () => {
                     data={groupCallData}
                     renderItem={renderItem}
                     keyExtractor={(item) => item.id.toString()}
-                    numColumns={2} // Set the number of columns here
+                    numColumns={2}
                 />
             </View>
             <View style={[{ height: DevHeight * 0.12, width: DevWidth, backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, borderTopLeftRadius: 45, borderTopRightRadius: 45 }]}>

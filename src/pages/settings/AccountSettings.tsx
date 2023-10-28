@@ -1,22 +1,17 @@
 import React, { useState } from 'react';
-import { Text, View, Image, TouchableOpacity, StyleSheet, Alert } from 'react-native';
-import { alignItemsCenter, alignSelfCenter, borderRadius6, flex1, flexRow, justifyStart, justyfyCenter, mh15, mh20, mh30, ml10, ml15, ml30, mr30, mt20, mv10, mv15, mv20 } from '../../components/commonStyles';
+import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { alignItemsCenter, borderRadius6, flex1, flexRow, justyfyCenter, mh30, ml15, mt20, mv10 } from '../../components/commonStyles';
 import { colors } from '../../utils/colors';
-import { DevHeight, DevWidth } from '../../utils/device';
 import CustomIcon from '../../utils/Icons';
-import { RowSpaceAround, RowSpaceBetween } from '../../components/commonView';
-import { H12Grey, H15Blackvar2Bold500, H15Grey, H16BlackText, H16font600Black, H16fontBoldBlack, H18BlackBoldText600 } from '../../components/commonText';
+import { H12Grey, H15Blackvar2Bold500 } from '../../components/commonText';
 import { labels } from '../../utils/labels';
 import { Chatimg1Img } from '../../utils/png';
-import { accountSettingData, settingsData } from '../../utils/data/settingsData';
-import { CustomModal, ImagePicker } from '../../components/commonComponents';
+import { accountSettingData } from '../../utils/data/settingsData';
+import { ImagePicker } from '../../components/commonComponents';
 import { useNavigation } from '@react-navigation/native';
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker'
-import { ToastAndroid } from 'react-native';
 import { screenName } from '../../utils/screenName';
 import { IconModal } from '../../components/commonModal';
-import { SmallButton } from '../../components/commonButtons';
-import { SearchHeader, StarredAndVerifycodeHeader } from '../Media/MediaCommonHeader';
+import { StarredAndVerifycodeHeader } from '../Media/MediaCommonHeader';
 import { isDark } from '../../Theme/ThemeContext';
 
 export type AccountSettingsProps = {
@@ -41,8 +36,8 @@ const AccountSettings = (props: AccountSettingsProps) => {
 
 
     return (
-        <View style={[flex1,  { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
-            <StarredAndVerifycodeHeader headerText={labels.AccountSetting} isSearchDot={false} pencilNavigate={() => {navigation.navigate(screenName.EditAccountSettings as never)}} />
+        <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
+            <StarredAndVerifycodeHeader headerText={labels.AccountSetting} isSearchDot={false} pencilNavigate={() => { navigation.navigate(screenName.EditAccountSettings as never) }} />
             <View style={[mt20, alignItemsCenter, justyfyCenter]}>
                 <View>
                     {Pic ? (

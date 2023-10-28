@@ -1,11 +1,11 @@
 import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
-import { alignItemsCenter, alignSelfCenter, borderRadius10, flex1, flexRow, justyfyCenter, mb20, mh10, ml10, mt10, mt15, mt20, mt30, mt5, spaceAround } from '../../components/commonStyles';
+import { View, TouchableOpacity } from 'react-native';
+import { alignItemsCenter, alignSelfCenter, borderRadius10, flex1, flexRow, justyfyCenter, mh10, mt10, mt15, mt20, mt30, spaceAround } from '../../components/commonStyles';
 import { colors } from '../../utils/colors';
 import { DevHeight, DevWidth } from '../../utils/device';
 import { labels } from '../../utils/labels';
 import CustomIcon from '../../utils/Icons';
-import { DefaultH15Grey, H14GreyVar4Bold400, H15Grey, H18Blackvar2Bold600, H20BlackBoldText } from '../../components/commonText';
+import { H14GreyVar4Bold400, H18Blackvar2Bold600 } from '../../components/commonText';
 import { CallAvatarBigIcon } from '../../utils/svg';
 import { CallCommonHeader } from '../../components/commonHeaders';
 import { callBottomDataSecond } from '../../utils/data/callsData';

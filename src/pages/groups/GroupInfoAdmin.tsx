@@ -6,7 +6,7 @@ import { ColorIconTabSecond, GroupInfoCard, GroupProfileCard, Groups, Header, Me
 import { useNavigation } from '@react-navigation/native';
 import { alignItemsCenter, flexRow, justyfyCenter, mb15, mr5, mt10, mt5, pl13, spaceBetween } from '../../components/commonStyles';
 import CustomIcon from '../../utils/Icons';
-import { H14Blackvar2Bold500, H16BlackText } from '../../components/commonText';
+import { H14Blackvar2Bold500 } from '../../components/commonText';
 import { colorIconsAdminData } from '../../utils/data/groupsData';
 import { ToggleSwitch } from '../../components/commonComponents';
 import { isDark, useTheme } from '../../Theme/ThemeContext';
@@ -18,7 +18,7 @@ export type GroupInfoAdminProps = {
 const ColorIconTab = () => {
     const navigation = useNavigation();
     const [toggleVisible, setToggleVisible] = useState(false);
-    const {theme} = useTheme();
+    const { theme } = useTheme();
     const isDarkTheme = theme === 'dark';
 
     const handleToggleChange = () => {
@@ -53,7 +53,7 @@ const ColorIconTab = () => {
                                             </View>
                                         </View>
                                     ) : item.id === 1 ? (
-                                        <View style = {[alignItemsCenter,justyfyCenter]}>
+                                        <View style={[alignItemsCenter, justyfyCenter]}>
                                             <ToggleSwitch value={toggleVisible} onToggle={handleToggleChange} />
                                         </View>
                                     ) : (
@@ -69,7 +69,7 @@ const ColorIconTab = () => {
                 })
             }
             <View style={[mt10, mb15]}>
-                <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />
+                <CommonLineDividerGrey style={{ backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0 }} />
             </View>
         </View>
     )
@@ -103,7 +103,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     roundNumberText: {
-
         color: colors.greyVar4,
         fontSize: 12,
     },
@@ -123,7 +122,6 @@ const styles = StyleSheet.create({
     },
     gridItem: {
         flex: 1,
-
     },
     gridItemImage: {
         width: (Dimensions.get('window').width - 75) / 4,

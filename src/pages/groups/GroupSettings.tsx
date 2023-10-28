@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import { Text, View } from 'react-native';
-import { DevHeight, DevWidth } from '../../utils/device';
+import { View } from 'react-native';
 import CustomIcon from '../../utils/Icons';
 import { colors } from '../../utils/colors';
 import { labels } from '../../utils/labels';
-import { H14Blackvar2Bold500, H15BlackBold600, H15Grey, H16fontBoldBlack, H18BlackBoldText, H18BlackBoldText600 } from '../../components/commonText';
-import { alignItemsCenter, alignSelfCenter, borderRadius10, flex1, flexRow, justifyEnd, justifyStart, justyfyCenter, mh20, ml10, ml15, ml30, mt20, mv10 } from '../../components/commonStyles';
+import { H14Blackvar2Bold500 } from '../../components/commonText';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh20, ml15, mt20, mv10 } from '../../components/commonStyles';
 import { GroupSettingData } from '../../utils/data/groupsData';
 import { RowSpaceBetween } from '../../components/commonView';
 import { ToggleSwitch } from '../../components/commonComponents';
-import { ButtonNow } from '../../components/commonButtons';
 import { SearchHeader } from '../Media/MediaCommonHeader';
 import { isDark } from '../../Theme/ThemeContext';
 
@@ -30,7 +28,7 @@ const GroupSettings = (props: GroupSettingsProps) => {
     };
 
     return (
-        <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 :  colors.whiteVar0 }]} >
+        <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
             <SearchHeader headerText={labels.GroupSetting} />
             <View style={[mt20, mh20]}>
                 {
