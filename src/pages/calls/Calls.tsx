@@ -1,15 +1,15 @@
 import React, { useState, Fragment } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { labels } from '../../utils/labels';
 import { PurpleMainContainer } from '../../components/commonView';
 import { colors } from '../../utils/colors';
-import { CallHeader, ChatHeader, CustomcallActionBar, TabControl } from '../../components/commonComponents';
+import { ChatHeader, CustomcallActionBar, TabControl } from '../../components/commonComponents';
 import { flex1 } from '../../components/commonStyles';
 import AllCalls from '../../components/calls/AllCalls';
 import IncomingCalls from '../../components/calls/IncomingCalls';
 import OutgoingCalls from '../../components/calls/OutgoingCalls';
 import MissedCalls from '../../components/calls/MissedCalls';
-import { isDark, useTheme } from '../../Theme/ThemeContext';
+import { useTheme } from '../../Theme/ThemeContext';
 
 export type CallsProps = {
 
@@ -19,7 +19,7 @@ export type CallsProps = {
 const Calls = (props: CallsProps) => {
     const [selectedTab, setSelectedTab] = useState(labels.AllCalls);
     const [selectedCards, setSelectedCards] = useState<number[]>([]);
-    const {theme} = useTheme();
+    const { theme } = useTheme();
     const isDarkTheme = theme === 'dark';
 
     const tabs = [
@@ -50,17 +50,17 @@ const Calls = (props: CallsProps) => {
         selectedTab: string;
         selectedCards: number[];
         handleTabPress: (tab: string) => void;
-      }
+    }
 
-    const Header = ({ selectedTab, selectedCards, handleTabPress } : HeaderProps ) => {
+    const Header = ({ selectedTab, selectedCards, handleTabPress }: HeaderProps) => {
         const isCustomActionBar = selectedCards.length > 0;
 
         return (
             <>
-                { isCustomActionBar ? (
+                {isCustomActionBar ? (
                     <CustomcallActionBar text={selectedCards.length} selectedCardsCount={selectedCards.length} />
                 ) : (
-                    <ChatHeader title={labels.Calls} isCall = {true} />
+                    <ChatHeader title={labels.Calls} isCall={true} />
                 )}
             </>
         );
@@ -68,21 +68,21 @@ const Calls = (props: CallsProps) => {
 
     return (
         <Fragment>
-            <PurpleMainContainer style = {{backgroundColor: isDarkTheme ? colors.darkModeVar1 : colors.purpleVar3}}>
+            <PurpleMainContainer style={{ backgroundColor: isDarkTheme ? colors.darkModeVar1 : colors.purpleVar3 }}>
                 <Header selectedTab={selectedTab} selectedCards={selectedCards} handleTabPress={handleTabPress} />
                 <View style={flex1}>
                     <TabControl tabs={tabs} activeTab={selectedTab} onTabPress={handleTabPress} />
                     {selectedTab === labels.AllCalls && (
-                        <AllCalls selectedCards = {selectedCards} onCardSelection={handleCardSelection} />
+                        <AllCalls selectedCards={selectedCards} onCardSelection={handleCardSelection} />
                     )}
                     {selectedTab === labels.Incoming && (
-                        <IncomingCalls selectedCards = {selectedCards} onCardSelection={handleCardSelection} />
+                        <IncomingCalls selectedCards={selectedCards} onCardSelection={handleCardSelection} />
                     )}
                     {selectedTab === labels.Outgoing && (
-                        <OutgoingCalls selectedCards = {selectedCards} onCardSelection={handleCardSelection} />
+                        <OutgoingCalls selectedCards={selectedCards} onCardSelection={handleCardSelection} />
                     )}
                     {selectedTab === labels.Missed && (
-                        <MissedCalls selectedCards = {selectedCards} onCardSelection={handleCardSelection} />
+                        <MissedCalls selectedCards={selectedCards} onCardSelection={handleCardSelection} />
                     )}
                 </View>
             </PurpleMainContainer>

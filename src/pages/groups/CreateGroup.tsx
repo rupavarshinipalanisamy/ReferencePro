@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import { alignItemsCenter, alignSelfCenter, flex1, flexRow, justifyEnd, justifyStart, justyfyCenter, mh20, mh30, ml10, ml30, mr30, mt20, pv20 } from '../../components/commonStyles';
+import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { alignItemsCenter, flex1, justyfyCenter, mh30, mt20 } from '../../components/commonStyles';
 import { colors } from '../../utils/colors';
-import { DevHeight, DevWidth } from '../../utils/device';
 import CustomIcon from '../../utils/Icons';
-import { H18BlackBoldText600 } from '../../components/commonText';
 import { labels } from '../../utils/labels';
 import { RowSpaceBetween } from '../../components/commonView';
-import { Chatimg1Img, UserImg } from '../../utils/png';
-import { ButtonContainer, ButtonContainer1, IconInputContainer } from '../../styledComponent/styledComponent';
+import { UserImg } from '../../utils/png';
+import { IconInputContainer } from '../../styledComponent/styledComponent';
 import { CustomTextInput } from '../../components/commonInputFields';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
@@ -83,7 +81,7 @@ const CreateGroup = (props: CreateGroupProps) => {
 
     return (
         <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
-            <SearchHeader headerText={labels.CreateGroup} searchIcon={true}  />
+            <SearchHeader headerText={labels.CreateGroup} searchIcon={true} />
             <View style={[mt20, mh30]}>
                 {Pic ? (
                     <Image
@@ -105,7 +103,7 @@ const CreateGroup = (props: CreateGroupProps) => {
                 {
                     inputFields.map((field) => (
                         <View key={field.key}>
-                            <IconInputContainer style = {{borderBottomColor : isDark() ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor}}>
+                            <IconInputContainer style={{ borderBottomColor: isDark() ? `rgba(78, 80, 114, 0.3)` : colors.borderBottomColor }}>
                                 <View style={[justyfyCenter]}>
                                     <CustomIcon name={field.iconName} size={20} color={colors.greyVar4} type={field.iconType} />
                                 </View>
@@ -138,7 +136,7 @@ const CreateGroup = (props: CreateGroupProps) => {
             <IconModal
                 isVisible={isImagePickerOpen}
                 onClose={() => setIsImagePickerOpen(false)}
-                contentComponent={<ImagePicker onImageSelect={handleImageSelect} cameraOption={() => {setIsImagePickerOpen(false)}} />}
+                contentComponent={<ImagePicker onImageSelect={handleImageSelect} cameraOption={() => { setIsImagePickerOpen(false) }} />}
                 iconName='image-plus'
                 iconType='MaterialCommunityIcons'
                 iconSize={24}
