@@ -217,4 +217,9 @@ export const lastweekDocsData = [
         },
     ];
 
-
+   export  const tabs = [
+        { label: "Image" },
+        { label: "Video" },
+        { label: "Docs" },
+        { label: "Links" },
+    ];

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, TextInput, Platform } from 'react-native';
 import ImageScreen from './Image';
 import { colors } from '../../utils/colors';
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh10, mh20, mt10, mt20, mt3, mt30, mt8, mv20, pb10, pl10, pl13, pl15, pt10, spaceBetween } from '../../components/commonStyles';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh10, mh20, mh5, mt10, mt20, mt3, mt30, mt8, mv20, p4, pb10, pl10, pl13, pl15, pt10, pv10, spaceBetween } from '../../components/commonStyles';
 import { RowSpaceBetween, TopContainerWhiteCard1 } from '../../components/commonView';
 import CustomIcon from '../../utils/Icons';
 import { H14GreyVar4Bold400, H14blackVar1bold400Text, H14font400Black, H14font400Gray4, H15Blackvar2Bold500, H15Grey, H16Black600Text, H16font600Black, H18BlackText, H18GreyVar4Text } from '../../components/commonText';
@@ -19,6 +19,7 @@ import { friendStatusModal } from '../../utils/data/statusData';
 import { SmallButton } from '../../components/commonButtons';
 import { IconModal } from '../../components/commonModal';
 import { contactThreeDotIcon } from '../../utils/data/contactData';
+import { tabs } from '../../utils/data/MediaData';
 
 export type MediaProps = {
 
@@ -80,12 +81,7 @@ export const MediaHeader = (props: MediaHeaderProps) => {
     const handleTabPress = (tab: string) => {
         setSelectedTab(tab);
     };
-    const tabs = [
-        { label: "Image" },
-        { label: "Video" },
-        { label: "Docs" },
-        { label: "Links" },
-    ];
+
 
     const imageViewModalData = [
         {
@@ -187,7 +183,7 @@ export const MediaHeader = (props: MediaHeaderProps) => {
 
                     </View>
                 </View>
-                {props.Imagess && <View style={{ marginHorizontal: 5, marginBottom: 22 }}>
+                {props.Imagess && <View style={[mh5,{marginBottom: 22 }]}>
                     <TabControl tabs={tabs} activeTab={selectedTab} onTabPress={handleTabPress} />
                 </View>}
             </TopContainerWhiteCard1>
@@ -293,7 +289,7 @@ export const StarredAndVerifycodeHeader = (props: StarredAndVerifycodeHeaderProp
     const StarMessageModal = () => {
         return (
             <View>
-                <TouchableOpacity style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
+                <TouchableOpacity style={[p4,mh20,pv10]}>
                     <View style={flexRow}>
                         <View style={[alignItemsCenter, justyfyCenter]}>
                             <CustomIcon name='star' color={isDark()?colors.greyVar4:colors.blackVar1} size={18} type="Feather" />
@@ -414,7 +410,7 @@ const handleCallOptionModal = () => {
                                 setOptionModal(false)
                                 setStatusPrivacyOptionModal(true)
                             }
-                        }} style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
+                        }} style={[p4,mh10,pv10]}>
                             <View style={[flexRow]}>
                                 <CustomIcon name={item.iconName} type={item.iconType} size={item.iconSize} color={isDark()?colors.greyVar3:colors.blackVar1} />
                                 <View style={[alignItemsCenter, justyfyCenter, pl13]}>
@@ -468,7 +464,7 @@ const handleCallOptionModal = () => {
                 <View style={[{ marginHorizontal: 25 }, flex1, justyfyCenter]}>
                     <View style={[flexRow, spaceBetween]}>
                         <View style={[flexRow]}>
-                            <TouchableOpacity style={[justyfyCenter, alignItemsCenter, { marginTop: 2 }]}
+                            <TouchableOpacity style={[justyfyCenter, alignItemsCenter,{ marginTop: 2 }]}
                                 onPress={navigation.goBack}
                             >
                                 <CustomIcon name='chevron-left' color={isDark() ? colors.white : colors.black} size={18} type="entypo" />

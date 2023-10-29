@@ -5,6 +5,7 @@ import { H15Blackvar2Bold500, H18BlackBoldText } from "../../components/commonTe
 import { useNavigation } from "@react-navigation/native";
 import { screenName } from "../../utils/screenName";
 import { recentImages } from "../../utils/data/MediaData";
+import { m5, mt20 } from "../../components/commonStyles";
 
 
 const ImageScreen = () => {
@@ -26,12 +27,12 @@ const ImageScreen = () => {
 
     return (
         <View style={styles.container}>
-            <H15Blackvar2Bold500 style={{ lineHeight:20, marginTop: 20,margin:5}}>Recent</H15Blackvar2Bold500>
+            <H15Blackvar2Bold500 style={[mt20,m5,{ lineHeight:20}]}>Recent</H15Blackvar2Bold500>
             <View style={styles.gridContainer}>
                 {renderImages(recentImages)}
             </View>
 
-            <H15Blackvar2Bold500 style={{lineHeight:20, marginTop: 20,margin:5}}>Last week</H15Blackvar2Bold500>
+            <H15Blackvar2Bold500 style={[mt20,m5,{ lineHeight:20}]}>Last week</H15Blackvar2Bold500>
             <View style={styles.gridContainer}>
                 {renderImages(recentImages)}
             </View>

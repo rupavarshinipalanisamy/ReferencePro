@@ -7,6 +7,7 @@ import { colors } from "../../utils/colors";
 import { useNavigation } from "@react-navigation/native";
 import { screenName } from "../../utils/screenName";
 import { lastMonth, lastWeek, recentVideos } from "../../utils/data/MediaData";
+import { m5, mt20 } from "../../components/commonStyles";
 
 const ImageScreen = () => {
 
@@ -28,16 +29,16 @@ const ImageScreen = () => {
     };
     return (
         <View style={styles.container}>
-            <H15Blackvar2Bold500 style={{ lineHeight: 20, marginTop: 20, margin: 5 }}>Recent</H15Blackvar2Bold500>          
+            <H15Blackvar2Bold500 style={[mt20,m5,{ lineHeight: 20}]}>Recent</H15Blackvar2Bold500>          
               <View style={styles.gridContainer}>
                 {renderImages(recentVideos)}
             </View>
 
-            <H15Blackvar2Bold500 style={{ lineHeight: 20, marginTop: 20, margin: 5 }}>Last Week</H15Blackvar2Bold500>
+            <H15Blackvar2Bold500 style={[mt20,m5,{ lineHeight: 20}]}>Last Week</H15Blackvar2Bold500>
             <View style={styles.gridContainer}>
                 {renderImages(lastWeek)}
             </View>
-            <H15Blackvar2Bold500 style={{ lineHeight: 20, marginTop: 20, margin: 5 }}>Last Month</H15Blackvar2Bold500>
+            <H15Blackvar2Bold500 style={[mt20,m5,{ lineHeight: 20}]}>Last Month</H15Blackvar2Bold500>
             <View style={styles.gridContainer}>
                 {renderImages(lastMonth)}
             </View>

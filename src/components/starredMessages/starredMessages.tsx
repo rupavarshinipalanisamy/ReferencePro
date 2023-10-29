@@ -6,7 +6,7 @@ import CustomIcon from '../../utils/Icons';
 import AudioImg from '../../../assets/images/Audio.svg'
 import SendImg2 from '../../../assets/images/sendMsg1.svg'
 
-import { flexRow, justyfyCenter, m5, mt3, p5, pl10, pl13, spaceBetween } from '../commonStyles';
+import { flexRow, justyfyCenter, m5, mt3, p10, p5, pl10, pl13, spaceBetween } from '../commonStyles';
 import { DevWidth } from '../../utils/device';
 import { H12DefaultGreyVar3, H12GreyVar8, H14BlackText, H14BlackVar2Bold400Text, H14blackVar1bold400Text, H14blueVar1Text, H14font400grey3black2 } from '../commonText';
 import { labels } from '../../utils/labels';
@@ -50,7 +50,7 @@ export const Card3 = (props: CardProps) => {
     return (
         <View style={{ alignItems: 'flex-start' }}>
             <MessageCard backgroundColor={isDark() ? colors.darkModeVar4 : colors.whiteVar1} {...props} >
-                <View style={[{ backgroundColor: isDark() ? colors.darkModeVar6 : colors.greyVar7, alignItems: 'center', padding: 10, width: DevWidth / 1.6, borderRadius: 8, margin: 5 }, flexRow, spaceBetween]}>
+                <View style={[p10,m5,{ backgroundColor: isDark() ? colors.darkModeVar6 : colors.greyVar7, alignItems: 'center', width: DevWidth / 1.6, borderRadius: 8 }, flexRow, spaceBetween]}>
                     <View style={[flexRow]}>
                         <View style={justyfyCenter}>
                             <CustomIcon name='document-text-outline' type="Ionicons" color={isDark() ? colors.greyVar3 : colors.greyVar4} size={20} />
@@ -62,7 +62,7 @@ export const Card3 = (props: CardProps) => {
                     </View>
                     <CustomIcon name='download' type="Feather" color={isDark() ? colors.greyVar3 : colors.greyVar4} size={20} />
                 </View>
-                <View style={[{ margin: 5 }]}>
+                <View style={m5}>
                     <H14font400grey3black2>{labels.checkThisFile}</H14font400grey3black2>
                 </View>
             </MessageCard>

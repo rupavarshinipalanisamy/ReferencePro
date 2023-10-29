@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { View, TextInput, Text,TouchableOpacity } from 'react-native';
+import { View, TextInput, Text, TouchableOpacity } from 'react-native';
 import { colors } from "../utils/colors";
 import { DevHeight, DevWidth } from "../utils/device";
 import { isDark } from "../Theme/ThemeContext";
@@ -189,7 +189,7 @@ export const ModalContent = styled(View)`
 export const ModalContent1 = styled(View)`
   background-color: ${props => isDark() ? colors.darkModeVar4 : colors.white};
   borderRadius: 15px;
-  width:${DevWidth/1.3}px;
+  width:${DevWidth / 1.3}px;
   max-width:400px; 
 `;
 
@@ -281,19 +281,68 @@ font-size:18px;
 color:${colors.yellow};
 margin:5px;
 `
-export const ChatViewCommonHeader=styled(View)`
+export const ChatViewCommonHeader = styled(View)`
 height: ${DevWidth / 4.2}px;
 borderBottomRightRadius: 25px;
 borderBottomLeftRadius: 25px;
 elevation: 1;
 `
-export const FooterFirstView=styled(View)`
+export const FooterFirstView = styled(View)`
 alignItems:center;
-height:${ DevHeight / 9.5}px;
+height:${DevHeight / 9.5}px;
 paddingHorizontal: 20px;
 borderTopLeftRadius: 20px;
 borderTopRightRadius: 20px;
 flexDirection:row; 
 justifyContent:center; 
 `
+export const FooterSecondView = styled(View)`
+width: ${DevWidth / 1.3}px;
+height:40px;
+borderWidth:2px;
+borderRadius:6px; 
+marginTop:30px;
+bottom:8px;
+`
+export const ReplyFooterSecondView = styled(View)`
+width:86%;
+height:117px;
+borderWidth:2px;
+borderRadius:6px; 
+marginTop:30px;
+bottom:8px;
+`
+export const ReplyFooterThirdView = styled(View)`
+width:98%;
+height:67px;
+borderRadius:5px; 
+bottom:8px;
+marginHorizontal:3px;
+borderLeftWidth: 1.5px;
+marginTop:12px;
+borderLeftColor:${colors.purpleVar3}
+`
+
+export const FooterIconView = styled(View)`
+backgroundColor: ${colors.purpleVar3};
+height: 40px; 
+width: 40px;
+borderRadius: 12px; 
+marginLeft: 15px;
+alignItems: center; 
+justifyContent:center; 
+alignSelf:flex-end;
+`
+export const UserProfRoundNum = styled(View)`
+height: 24px;
+width: 24px;
+borderRadius: 15px;
+marginLeft: 10px;
+alignItems: 'center';
+justifyContent: 'center';
+marginRight:5px;
+
+`
+
+
 

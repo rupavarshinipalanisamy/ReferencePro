@@ -7,6 +7,7 @@ import { LongPurpleButton } from '../components/commonButtons';
 import { isDark } from '../Theme/ThemeContext';
 import { colors } from '../utils/colors';
 import { ChooseWallperData } from '../utils/data/wallpaperData';
+import { flex1 } from '../components/commonStyles';
 
 export type ChooseWallperProps = {
 
@@ -32,8 +33,8 @@ const ChooseWallper = (props: ChooseWallperProps) => {
     };
 
     return (
-        <View style={{ flex: 1, backgroundColor: isDark() ? colors.darkModeVar1 : colors.whiteVar0 }}>
-            <ScrollView style={{ flex: 1 }}>
+        <View style={[flex1,{backgroundColor: isDark() ? colors.darkModeVar1 : colors.whiteVar0 }]}>
+            <ScrollView style={flex1}>
                 <SearchHeader headerText='Choose Wallpaper' />
                 <View style={styles.container}>
                     <View style={styles.gridContainer}>
@@ -63,7 +64,6 @@ const styles = StyleSheet.create({
         marginVertical: 20,
     },
     touchable: {
-        // aspectRatio: 1,
         width: (Dimensions.get('window').width - 80) / 3,
         margin: 5,
     },

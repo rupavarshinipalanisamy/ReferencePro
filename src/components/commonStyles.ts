@@ -190,6 +190,9 @@ const styles = StyleSheet.create({
   p5: {
     padding: 5,
   },
+  p4 :{
+    padding: 4,
+  },
   p10: {
     padding: 10,
   },
@@ -339,6 +342,9 @@ const styles = StyleSheet.create({
   },
   ph5: {
     paddingHorizontal: 5,
+  },
+  ph2: {
+    paddingHorizontal: 2,
   },
   ph10: {
     paddingHorizontal: 10,
@@ -566,6 +572,7 @@ export const {
 export const {
   p0,
   p5,
+  p4,
   p10,
   p15,
   pv5,
@@ -582,6 +589,7 @@ export const {
   ph10,
   ph15,
   ph20,
+  ph2,
   ph30,
   ph31,
   w100,

@@ -3,13 +3,13 @@ import React, { Fragment, useState } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, Image, Dimensions, Platform } from 'react-native';
 import CustomIcon from '../../utils/Icons';
 import { colors } from '../../utils/colors';
-import { alignItemsCenter, flexRow, justyfyCenter, mb15, mr5, mt10, mt15, mt20, pl10, pl13, pl2, pl5, pr5, pt10, pt5, spaceBetween } from '../commonStyles';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mb15, mh10, mr5, mt10, mt15, mt20, mv20, p4, pl10, pl13, pl2, pl5, pr5, pt10, pt5, pv10, spaceBetween } from '../commonStyles';
 import { useNavigation } from '@react-navigation/native';
 import { H12font400Black, H12font400Grey, H14BlackText, H14GreyVar4Bold400Text, H14blackVar1bold400Text, H14font400grey3black2, H15Blackvar2Bold500, H15Grey } from '../commonText';
 import { CardHeaderText, CustomModal } from '../commonComponents';
 import { DevWidth } from '../../utils/device';
 import { InfoCardData, groupsData, mediaData } from '../../utils/data/profileData';
-import { CommonLineDividerGrey, FullCommonLineDividerGrey, MediumCardSurface } from '../commonView';
+import { Alignjustifycenter, CommonLineDividerGrey, FullCommonLineDividerGrey, MediumCardSurface } from '../commonView';
 import { screenName } from '../../utils/screenName';
 import { isDark, useTheme } from '../../Theme/ThemeContext';
 import { labels } from '../../utils/labels';
@@ -17,15 +17,15 @@ export const SocialMediaIcon = () => {
     return (
         <>
             <View style={[flexRow]}>
-                <View style={[{ alignItems: 'center', justifyContent: 'center' }, pl5]}>
+                <Alignjustifycenter style={pl5}>
                     <CustomIcon name='sc-facebook' type="EvilIcons" size={20} color={isDark() ? colors.greyVar3 : colors.blackVar2} />
-                </View>
-                <View style={[{ alignItems: 'center', justifyContent: 'center' }, pl5]}>
+                </Alignjustifycenter>
+                <Alignjustifycenter style={pl5}>
                     <CustomIcon name='twitter' type="entypo" size={18} color={isDark() ? colors.greyVar3 : colors.blackVar2} />
-                </View>
-                <View style={[{ alignItems: 'center', justifyContent: 'center' }, pl5]}>
+                </Alignjustifycenter>
+                <Alignjustifycenter style={pl5}>
                     <CustomIcon name='youtube' type="MaterialCommunityIcons" size={20} color={isDark() ? colors.greyVar3 : colors.blackVar2} />
-                </View>
+                </Alignjustifycenter>
             </View>
 
         </>
@@ -43,7 +43,7 @@ export const Header = () => {
         return (
             <View>
 
-                <TouchableOpacity style={{ padding: 4, marginHorizontal: 10, paddingVertical: 10 }}>
+                <TouchableOpacity style={[p4,mh10,pv10]}>
                     <View style={[flexRow, alignItemsCenter]}>
                         <CustomIcon name="pencil" size={16} color={isDark() ? colors.greyVar3 : colors.blackVar1} type="octicons" />
                         <View style={[pl13]}>
@@ -55,7 +55,7 @@ export const Header = () => {
         )
     }
     return (
-        <View style={{ marginVertical: 20 }}>
+        <View style={mv20}>
             <View style={[flexRow, spaceBetween, { marginHorizontal: 25 }]}>
                 <TouchableOpacity onPress={() => {navigation.goBack()}}>
                     <CustomIcon name='chevron-back-sharp' color={isDark() ? colors.white : colors.greyVar4} size={16} type="Ionicons" />
@@ -113,20 +113,20 @@ export const MediaCard = () => {
             <TouchableOpacity style={[flexRow, spaceBetween]} onPress={() => navigation.navigate(screenName.Media as never)}>
                 <CardHeaderText text='Media' />
                 <View style={[flexRow]}>
-                    <View style={[styles.roundNumber, { backgroundColor: isDark() ? colors.darkModeVar6 : 'rgba(97, 97, 97, 0.15) ' }, mt10, mr5]}>
+                    <Alignjustifycenter style={[styles.roundNumber, { backgroundColor: isDark() ? colors.darkModeVar6 : 'rgba(97, 97, 97, 0.15) ' }, mt10, mr5]}>
                         <H12font400Grey>68</H12font400Grey>
-                    </View>
-                    <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 7 }}>
+                    </Alignjustifycenter>
+                    <Alignjustifycenter style={{  marginTop: 7 }}>
                         <CustomIcon name='chevron-right' color={isDark() ? colors.greyVar0 : colors.greyVar4} size={20} type="MaterialIcons"
                         />
-                    </View>
+                    </Alignjustifycenter>
                 </View>
             </TouchableOpacity>
             <View style={styles.gridContainer}>
                 {mediaData.map((item) => (
                     <TouchableOpacity
                         key={item.id}
-                        style={styles.gridItem}
+                        style={flex1}
                         onPress={() => {
                             navigation.navigate(screenName.Media as never)
                         }}
@@ -176,31 +176,18 @@ const styles = StyleSheet.create({
         width: 20,
         borderRadius: 12,
         marginLeft: 10,
-        alignItems: 'center',
-        justifyContent: 'center'
+
     },
     roundNumberText: {
         color: colors.greyVar4,
         fontSize: 12,
-    },
-    cardSurface: {
-        backgroundColor: colors.white,
-        padding: 10,
-        elevation: 4,
-        marginTop: 20,
-        flexDirection: 'row',
-        borderRadius: 8,
-        shadowColor: colors.greyVar3
     },
     gridContainer: {
         flexDirection: 'row',
         flexWrap: 'wrap',
         marginVertical: 15
     },
-    gridItem: {
-        flex: 1,
-
-    },
+  
     gridItemImage: {
         width: (Dimensions.get('window').width - 75) / 4,
         borderRadius: 10

@@ -3,14 +3,10 @@ import { View, Image, FlatList } from 'react-native';
 import { StarredAndVerifycodeHeader } from './Media/MediaCommonHeader';
 import { QrCodeImg } from '../utils/png';
 import { QrImgView } from '../styledComponent/styledComponent';
-import { flex1, mt30, mt8, spaceBetween } from '../components/commonStyles';
+import { flex1, mh20, mt30, mt8, spaceBetween } from '../components/commonStyles';
 import { H14GreyVar4Bold400} from '../components/commonText';
 import { LongPurpleButton } from '../components/commonButtons';
 import { MiddleData } from '../utils/data/VerfifyCodeData';
-
-
-
-
 
 const VerifyCode = () => {
         const [data, setData] = useState(MiddleData);
@@ -38,10 +34,8 @@ const VerifyCode = () => {
                     To verify that messages and calls with Horace{'\n'} Keene are end-to-end encrypted, scan this code{'\n'} on their phone. You can also compare the {'\n'} number above instead.
                 </H14GreyVar4Bold400>
             </View>
-            <View style={{ marginHorizontal: 20, justifyContent: 'flex-end', flex: 1 ,bottom:25}}>
+            <View style={[mh20,flex1,{justifyContent: 'flex-end',bottom:25}]}>
                 <LongPurpleButton title='Scan Code' />
-
-
             </View>
         </View>
     )

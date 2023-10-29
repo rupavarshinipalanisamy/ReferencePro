@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useRef } from 'react';
 import { Text, View, ImageBackground, StyleSheet, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Image, Animated, StatusBar, TextInput, Modal as RNModal ,Platform} from 'react-native';
 import { colors } from '../utils/colors';
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, pb10, pl13, pl15, pl6, pt10, spaceBetween } from '../components/commonStyles'
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mt20, pb10, pl13, pl15, pl6, pt10, spaceBetween } from '../components/commonStyles'
 import { labels } from '../utils/labels';
 import CustomIcon from '../utils/Icons';
 import { H12font400Black, H12font400Grey, H14BlackText, H14BlackVar2Bold400Text, H14GreyVar4Bold400, H14blackVar1bold400Text, H15Blackvar2Bold500, H16BlackText } from './commonText';
@@ -10,7 +10,7 @@ import { isDark, useTheme } from '../Theme/ThemeContext';
 import { DevHeight, DevWidth } from '../utils/device';
 import { attachmentData } from '../utils/data/chatsData';
 import Modal from 'react-native-modal';
-import { GreyTabView } from './commonView';
+import { Alignjustifycenter, GreyTabView } from './commonView';
 
 
 
@@ -64,8 +64,7 @@ export const Reactmsg = () => {
 export const All = () => {
   return (
 
-    <View style={{ marginHorizontal: 25, marginTop: 20 }}>
-
+    <View style={[mt20,{ marginHorizontal: 25}]}>
       <View style={[flexRow, spaceBetween]}>
         <View style={flexRow}>
           <Image source={ProfileImg} />
@@ -85,36 +84,24 @@ export const All = () => {
 export const ForwardView = () => {
   return (
     <View style={{ height: 26, width: 26, backgroundColor: isDark() ? colors.darkModeVar4 : colors.white, borderRadius: 13 }}>
-      <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
+      <Alignjustifycenter style={flex1}>
         <CustomIcon name='share-outline' type="MaterialCommunityIcons" size={16} color={isDark() ? colors.greyVar3 : colors.greyVar4} />
 
 
-      </View>
+      </Alignjustifycenter>
 
     </View>
   )
 }
-
-// export const AddView = () => {
-//   const {theme} = useTheme();
-//   const isDarkTheme = theme === 'dark';
-//   return (
-//     <View style={{ height: 26, width: 26, backgroundColor: isDarkTheme? 'rgba(78,80,114,0.3)' : colors.white, borderRadius: 13 }}>
-//       <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
-//         <CustomIcon name='plus' type="octicons" size={16} color={isDarkTheme? colors.greyVar3 : colors.greyVar7} />
-//       </View>
-//     </View>
-//   )
-// }
 
 export const AddView = () => {
   const {theme} = useTheme();
   const isDarkTheme = theme === 'dark';
   return (
     <View style={{ height: 28, width: 28, backgroundColor: isDarkTheme? colors.darkModeVar6 : colors.greyVar7, borderRadius: 13 }}>
-      <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
+      <Alignjustifycenter style={flex1}>
         <CustomIcon name='plus' type="octicons" size={14} color={isDarkTheme? colors.white : colors.blackVar1} />
-      </View>
+      </Alignjustifycenter>
     </View>
   )
 }

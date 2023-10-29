@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal, Switch, Ima
 import Icon from 'react-native-vector-icons/Ionicons';
 import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mh20, mh30, ml10, ml15, mr10, mt10, mt15, mt20, mt30, mt5, mv10, mv15, mv20, p10, p5, pl10, pl13, pl5, pr10, pt10, spaceAround, spaceBetween, textCenter, flex1 } from './commonStyles';
 import { colors } from '../utils/colors';
-import { ArchiveIconBlackIcon, ArchiveIconWhiteIcon, DarkThemeMessageIcon, DeleteWhiteIcon, LeftArrowWhiteIcon, MessageIcon, MikeWhiteIcon, PinWhiteIcon, Profile, ProfileAvatarIcon, ShareIcon, ThreeDotsWhiteIcon } from '../utils/svg';
+import { ArchiveIconBlackIcon, ArchiveIconWhiteIcon, DarkThemeMessageIcon, DcallIcon, DeleteWhiteIcon, LcallIcon, LeftArrowWhiteIcon, MessageIcon, MikeWhiteIcon, PinWhiteIcon, Profile, ProfileAvatarIcon, ShareIcon, ThreeDotsWhiteIcon } from '../utils/svg';
 import { DevHeight, DevWidth } from '../utils/device';
 import { RadioButton, RadioButtonRound, RowSpaceBetween, SelectedRadioBtn } from './commonView';
 import { bottomNavData } from '../utils/data/bottomNavData';
@@ -1119,24 +1119,24 @@ export const ProfileCard = () => {
                     backgroundColor: isDark()?colors.darkModeVar4:colors.white, height: DevHeight / 4.5, width: '100%', borderRadius: 20, elevation: 5, justifyContent: 'center',
                     shadowOpacity:0.1, shadowColor: colors.greyVar0
                 }}>
-                    <View style={{ alignItems: 'center', marginTop: 40 }}>
+                    <View style={[alignItemsCenter,{marginTop: 40 }]}>
                         <H16Black600Text>{labels.horaceKeene}</H16Black600Text>
                         <H14GreyVar4Bold400>last seen at 07:15 PM</H14GreyVar4Bold400>
-                        <View style={[flexRow, { marginTop: 10 }]}>
-                         <TouchableOpacity style={[{ alignItems: 'center', justifyContent: 'center' }]} onPress={()=>navigation.navigate(screenName.SingleVideoCall as never)}>
-                                <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={22} color={isDark()?colors.greyVar3:colors.greyVar4} />
+                        <View style={[flexRow, { marginTop:8 }]}>
+                         <TouchableOpacity  style={[alignItemsCenter,justyfyCenter]} onPress={()=>navigation.navigate(screenName.SingleVideoCall as never)}>
+                                <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={23} color={isDark()?colors.greyVar3:colors.greyVar4} />
                             </TouchableOpacity>
-                            <TouchableOpacity style={[{ alignItems: 'center', justifyContent: 'center' }, pl10]} onPress={()=>navigation.navigate(screenName.SingleAudioCallRing as never)}>
-                                <CustomIcon name='phone' type="Feather" size={16} color={isDark()?colors.greyVar3:colors.greyVar4} />
+                            <TouchableOpacity  style={[alignItemsCenter,justyfyCenter,pl10]} onPress={()=>navigation.navigate(screenName.SingleAudioCallRing as never)}>
+                                {isDark()?<DcallIcon/>:<LcallIcon/>}
                             </TouchableOpacity>
-                            <TouchableOpacity style={[{ alignItems: 'center', justifyContent: 'center' }, pl10]} onPress={()=>navigation.navigate(screenName.ChatView as never)}>
+                            <TouchableOpacity style={[alignItemsCenter,justyfyCenter,pl10]} onPress={()=>navigation.navigate(screenName.ChatView as never)}>
                                 {isDark()? <DarkThemeMessageIcon/>:<MessageIcon/>}
                             </TouchableOpacity>
                         </View>
                     </View>
                 </View>
             </View>
-            <View style={{ position: 'absolute', zIndex: 1, alignSelf: 'center', overflow: 'hidden' }}>
+            <View style={[alignSelfCenter,{ position: 'absolute', zIndex: 1,overflow: 'hidden' }]}>
                 <Profile />
             </View>
         </View>

@@ -79,6 +79,8 @@ import Share from '../../assets/images/share-icon.svg';
 import Avatar from '../../assets/images/settings-avatar.svg'
 import CreatePassword1 from '../../assets/images/modal-logo.svg';
 import DarkThmMsgIcon from '../../assets/images/darkThememsgIcon.svg'
+import CallIconLight from '../../assets/images/callIconLight.svg'
+import CallIconDark from '../../assets/images/darkcallIcon.svg'
 
 
 
@@ -333,4 +335,11 @@ export const VideoGreenDarkIcon = () => (
 );
 export const VideoRedDarkIcon = () => (
     <VideoRedDark />
+);
+
+export const LcallIcon = () => (
+    <CallIconLight />
+);
+export const DcallIcon = () => (
+    <CallIconDark />
 );

@@ -8,6 +8,7 @@ import { isDark } from '../../Theme/ThemeContext';
 import { ImageViewData, VideoViewData, recentImages } from '../../utils/data/MediaData';
 import { MediaImg1 } from '../../utils/png';
 import CustomIcon from '../../utils/Icons';
+import { alignItemsCenter, justyfyCenter, mh20, mt20 } from '../../components/commonStyles';
 
 export type ImageViewProps = {
 
@@ -16,10 +17,8 @@ const ImageView = (props: ImageViewProps) => {
 
     const renderItem = ({ item }) => (
         <View>
-            <ImageBackground source={item.img} style={{ width: DevWidth, height: DevHeight/1.24,alignItems:'center',justifyContent:'center' }} >
+            <ImageBackground source={item.img} style={[alignItemsCenter,justyfyCenter,{ width: DevWidth, height: DevHeight/1.24}]} >
                 <CustomIcon name="play-circle-o" size={40} color={colors.white} type="font-awesome" />
-
-
             </ImageBackground>
 
         </View>
@@ -28,7 +27,7 @@ const ImageView = (props: ImageViewProps) => {
     return (
         <View >
             <MediaHeader height={DevHeight / 7} startDot={true} Imagess={false} imageViewModal={true} />
-            <View style={{ marginHorizontal: 20,marginTop:20}}>
+            <View style={[mh20,mt20]}>
             <FlatList
                 data={VideoViewData}
                 renderItem={renderItem}

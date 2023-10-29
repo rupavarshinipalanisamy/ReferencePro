@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { MainContainer } from '../../components/commonView';
+import { Alignjustifycenter, MainContainer, RowSpaceBetween } from '../../components/commonView';
 import { colors } from '../../utils/colors';
-import { alignItemsCenter, alignSelfCenter, flexRow, justyfyCenter, mr15, mr5, mt15, pl13, spaceBetween } from '../../components/commonStyles';
+import { alignItemsCenter, alignSelfCenter, flexRow, justyfyCenter, mb15, mh2, mh20, mr15, mr5, mt15, pl13, spaceBetween } from '../../components/commonStyles';
 import CustomIcon from '../../utils/Icons';
 import { DevWidth } from '../../utils/device';
 import { labels } from '../../utils/labels';
@@ -55,14 +55,14 @@ const UserProfile = () => {
 
         return (
             <View>
-                <View style={{ marginHorizontal: 20 }}>
+                <View style={mh20}>
                     <H16font600Black style={[{ textAlign: 'center', bottom: 5 }]}>Block Horace Keene?</H16font600Black>
                     <Text style={{
                         textAlign: 'center', fontSize: 14, fontWeight: '400', lineHeight: 20, color: colors.greyVar4, marginTop: 5
                     }}>Blocked contacts will no longer be able to call you or send you messages.</Text>
                 </View>
 
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 20, marginBottom: 15, marginTop: 18 }}>
+                <RowSpaceBetween style={[mh20,mb15,{marginTop: 18 }]}>
                     <SmallButton
                         title={labels.cancel}
                         onChange={handleCancelButtonClick}
@@ -79,7 +79,7 @@ const UserProfile = () => {
                         borderWidth={isCancelButtonActive ? 1 : 0}
                         width={DevWidth / 3.15}
                     />
-                </View>
+                </RowSpaceBetween>
             </View>
         )
     }
@@ -103,7 +103,7 @@ const UserProfile = () => {
 
         return (
             <View>
-                <View style={{ marginHorizontal: 20 }}>
+                <View style={mh20}>
                     <H16font600Black style={[{ textAlign: 'center', bottom: 5 }]}>Report Horace Keene?</H16font600Black>
                     <Text style={{
                         textAlign: 'center', fontSize: 14, fontWeight: '400', lineHeight: 20, color: colors.greyVar4, marginTop: 5
@@ -119,7 +119,7 @@ const UserProfile = () => {
 
                 </View>
 
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 20, marginBottom: 15, marginTop: 18 }}>
+                <RowSpaceBetween style={[mh20,mb15,{marginTop: 18 }]}>
                     <SmallButton
                         title={labels.cancel}
                         backgroundColor={isCancelButtonActive ? colors.purpleVar3 : (isDark() ? `rgba(200, 16, 46, 0.2)` : colors.white)}
@@ -136,7 +136,7 @@ const UserProfile = () => {
                         borderWidth={isCancelButtonActive ? 2 : 0}
                         width={DevWidth / 3.15}
                     />
-                </View>
+                </RowSpaceBetween>
             </View>
         )
     }
@@ -145,7 +145,7 @@ const UserProfile = () => {
         <Fragment>
             <MainContainer style={{ backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0, flex: 1 }}>
                 <Header />
-                <ScrollView style={{ marginHorizontal: 20 }} showsVerticalScrollIndicator={false}>
+                <ScrollView style={mh20} showsVerticalScrollIndicator={false}>
                     <ProfileCard />
                     <InfoCard />
                     <MediaCard />
@@ -158,26 +158,26 @@ const UserProfile = () => {
                                         key={item.id}
                                         onPress={() => openModal(item.id)}
                                     >
-                                        <View style={[flexRow, spaceBetween, { paddingBottom: 12 }]}>
+                                        <View style={[flexRow, spaceBetween,{ paddingBottom: 12 }]}>
                                             <View style={[flexRow]}>
-                                                <View style={{ height: 26, width: 26, borderRadius: 6, backgroundColor: item.bgcolor, alignItems: 'center', justifyContent: 'center' }}>
+                                                <Alignjustifycenter style={{ height: 26, width: 26, borderRadius: 6, backgroundColor: item.bgcolor}}>
                                                     <CustomIcon name={item.iconName} size={item.iconSize} type={item.iconType} color={item.iconColor} />
-                                                </View>
-                                                <View style={[alignItemsCenter, justyfyCenter, pl13]}>
+                                                </Alignjustifycenter>
+                                                <Alignjustifycenter style={pl13}>
                                                     <H14Blackvar2Bold500>{item.name}</H14Blackvar2Bold500>
-                                                </View>
+                                                </Alignjustifycenter>
                                             </View>
                                             {
                                                 item.id === 1 ? (
-                                                    <View style={[flexRow, alignItemsCenter, justyfyCenter]}>
-                                                        <View style={[styles.roundNumber, { backgroundColor: isDark() ? colors.darkModeVar6 : 'rgba(97, 97, 97, 0.15) ' }, mr5]}>
+                                                    <Alignjustifycenter style={flexRow}>
+                                                        <Alignjustifycenter style={[styles.roundNumber, { backgroundColor: isDark() ? colors.darkModeVar6 : 'rgba(97, 97, 97, 0.15) ' }, mr5]}>
                                                             <H14GreyVar4Bold400>10</H14GreyVar4Bold400>
-                                                        </View>
-                                                        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                                                        </Alignjustifycenter>
+                                                        <Alignjustifycenter style={{ alignItems: 'center', justifyContent: 'center' }}>
                                                             <CustomIcon name='chevron-right' color={isDark() ? colors.greyVar0 : colors.greyVar4} size={24} type="MaterialIcons"
                                                             />
-                                                        </View>
-                                                    </View>
+                                                        </Alignjustifycenter>
+                                                    </Alignjustifycenter>
                                                 ) : (
                                                     <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center' }}>
                                                         <CustomIcon name='chevron-right' color={isDark() ? colors.greyVar0 : colors.greyVar4} size={24} type="MaterialIcons"
@@ -219,8 +219,6 @@ const styles = StyleSheet.create({
         width: 24,
         borderRadius: 15,
         marginLeft: 10,
-        alignItems: 'center',
-        justifyContent: 'center'
     },
 })
 export default UserProfile

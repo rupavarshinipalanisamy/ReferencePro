@@ -25,7 +25,7 @@ const InviteFriend = () => {
     return (
         <Fragment>
             <StatusBar backgroundColor={colors.purpleVar3} />
-            <View style={[flex1, { backgroundColor: isDark()?colors.darkModeVar2:colors.whiteVar0 }]}>
+            <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]}>
                 <SearchHeader headerText='Invite A Friend' searchIcon={true} />
                 <View style={flex1}>
                     <ScrollView showsVerticalScrollIndicator={false}>
@@ -36,7 +36,7 @@ const InviteFriend = () => {
                                     <TouchableOpacity
                                         key={data.id}
                                         style={[
-                                            styles.cardContainer,{  backgroundColor:isDark()?colors.darkModeVar4:colors.white}
+                                            styles.cardContainer, { backgroundColor: isDark() ? colors.darkModeVar4 : colors.white }
                                         ]}
                                     >
                                         <View>
@@ -45,23 +45,23 @@ const InviteFriend = () => {
 
                                         </View>
                                         <View>
-                                            <H15Blackvar2Bold500 style={[pl13,{lineHeight:23}]}>
+                                            <H15Blackvar2Bold500 style={[pl13, { lineHeight: 23 }]}>
                                                 {data.contName}
                                             </H15Blackvar2Bold500>
 
 
 
-                                            <View style={[flexRow,pl10]}>
-                                                <View style={[alignItemsCenter,justyfyCenter]}>
-                                                <CustomIcon
-                                                    name="location-outline"
-                                                    size={14}
-                                                    color={isDark()?colors.greyVar3:colors.greyVar4}
-                                                    type="Ionicons"
-                                                />
+                                            <View style={[flexRow, pl10]}>
+                                                <View style={[alignItemsCenter, justyfyCenter]}>
+                                                    <CustomIcon
+                                                        name="location-outline"
+                                                        size={14}
+                                                        color={isDark() ? colors.greyVar3 : colors.greyVar4}
+                                                        type="Ionicons"
+                                                    />
 
                                                 </View>
-                                              
+
                                                 <H14font400Gray4 style={pl5}>{data.location}</H14font400Gray4>
                                             </View>
 
@@ -79,14 +79,6 @@ const InviteFriend = () => {
 }
 
 const styles = StyleSheet.create({
-    // whiteBg: {
-    //     backgroundColor: colors.white,
-    //     height: '100%',
-    //     width: '100%',
-    //     borderTopLeftRadius: 45,
-    //     borderTopRightRadius: 45,
-    //     overflow: 'hidden',
-    // },
     firstLetter: {
         fontSize: 20,
         fontWeight: 'bold',
@@ -95,9 +87,8 @@ const styles = StyleSheet.create({
         marginLeft: 20,
     },
     cardContainer: {
-      
         flexDirection: 'row',
-        alignItems:'center',
+        alignItems: 'center',
         elevation: 4,
         margin: 15,
         padding: 10,

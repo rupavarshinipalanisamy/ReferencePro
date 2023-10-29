@@ -7,6 +7,7 @@ import { colors } from '../../utils/colors';
 import { isDark } from '../../Theme/ThemeContext';
 import { ImageViewData, recentImages } from '../../utils/data/MediaData';
 import { MediaImg1 } from '../../utils/png';
+import { mh20, mt20 } from '../../components/commonStyles';
 
 export type ImageViewProps = {
 
@@ -22,7 +23,7 @@ const ImageView = (props: ImageViewProps) => {
     return (
         <View>
             <MediaHeader height={DevHeight / 7} startDot={true} Imagess={false} imageViewModal={true} />
-            <View style={{ marginHorizontal: 20,marginTop:20}}>
+            <View style={[mh20,mt20]}>
 
                 <FlatList
                     data={ImageViewData}
@@ -32,11 +33,7 @@ const ImageView = (props: ImageViewProps) => {
                     pagingEnabled
                     snapToAlignment='center'
                 />
-
-
             </View>
-
-
         </View>
     )
 }

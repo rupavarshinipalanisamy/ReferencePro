@@ -15,6 +15,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  rowSpaceBetweenAlignCenter: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems:'center'
+  },
   rowSpaceEvenly: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
@@ -26,6 +31,10 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: colors.white,
+  },
+  alignjustifycenter: {
+    alignItems:'center',
+    justifyContent:'center'
   },
   purpleMainContainer: {
     flex: 1,
@@ -117,6 +126,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+ 
   radioButtonRound: {
     width: 20,
     height: 20,
@@ -131,13 +141,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: colors.white,
   },
-  // receiveMsgCard: {
-  //   backgroundColor: colors.white,
-  //   borderTopRightRadius: 8,
-  //   borderBottomRightRadius: 8,
-  //   borderBottomLeftRadius: 8,
-  //   padding: 10
-  // },
 
   cardSurface: {
     backgroundColor: colors.white,
@@ -177,6 +180,23 @@ const styles = StyleSheet.create({
     height: 1,
     // backgroundColor: isDark() ? colors.darkModeVar3 : colors.greyVar0,
   },
+  receiveMsgCard: {
+
+    borderTopRightRadius: 8,
+    borderBottomRightRadius: 8,
+    borderBottomLeftRadius: 8,
+    padding: 10,
+    marginTop: 5
+
+
+},
+sndMsgCard: {
+  borderTopLeftRadius: 8,
+  borderBottomRightRadius: 8,
+  borderBottomLeftRadius: 8,
+  padding: 10,
+  marginTop: 5
+},
 });
 const {
   rowSpaceBetween,
@@ -204,6 +224,10 @@ const {
   longButton,
   smallButton,
   greyTabView,
+  rowSpaceBetweenAlignCenter,
+  receiveMsgCard,
+  sndMsgCard,
+  alignjustifycenter
 
 
 
@@ -256,7 +280,15 @@ export const CommonButtonBook = styled(TouchableOpacity)`
 export const TwoSmallButton = styled(TouchableOpacity)`
   ${smallButton};
   `
-
+  export const RowSpaceAlignCenter = styled(TouchableOpacity)`
+  ${rowSpaceBetweenAlignCenter};
+  `
+  export const ReceiveMsgCard = styled(View)`
+  ${receiveMsgCard};
+  `
+  export const SendMsgCard = styled(View)`
+  ${sndMsgCard};
+  `
 export const TopContainerWhiteCard = styled(View)`
 backgroundColor:  ${props => isDark() ? colors.darkModeVar1 : colors.white};
 borderBottomStartRadius: 25px;
@@ -279,6 +311,9 @@ ${radioButtonRound}
 `
 export const SelectedRadioBtn = styled(View)`
 ${selectedRadioBtn}
+`
+export const Alignjustifycenter = styled(View)`
+${alignjustifycenter}
 `
 
 
