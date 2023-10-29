@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useRef } from 'react';
 import { Text, View, ImageBackground, StyleSheet, ScrollView, TouchableOpacity, StatusBar,Animated } from 'react-native';
 import { colors } from '../../utils/colors';
-import { flex1, flexRow, mh20, mt3, mt5, pl10, pl6, pt10 } from '../../components/commonStyles';
+import { flex1, flexRow,pl6, pt10 } from '../../components/commonStyles';
 import { labels } from '../../utils/labels';
 import { FooterChatView, HeaderChatView, LongPressedHaeder, ReplyFooterView, SentMessage2, SentMessage6, receiveMessage1, receiveMessage2, receiveMessage3, receiveMessage4, sentMessage1, sentMessage3, sentMessage4, sentMessage5 } from './Messagecomponents/messages';
 import Modal from 'react-native-modal';
@@ -9,20 +9,18 @@ import { DevWidth } from '../../utils/device';
 import { screenName } from '../../utils/screenName';
 import { ChatBackgroundImg } from '../../utils/png';
 import { isDark, useTheme } from '../../Theme/ThemeContext';
-import { EditModal, EditModal2, IconModal, ReactModal } from '../../components/commonModal';
+import {  IconModal, ReactModal } from '../../components/commonModal';
 import { ClearChatModal } from '../../ModalContents/IconModelContents';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { tabs } from '../../utils/data/chatViewData';
 import { Emojidata } from '../../utils/data/chatViewData';
 import { AddView, Bluetick, DayDetails, Reactmsg, Tick } from '../../components/chatViewComponents';
-import ChatMessage from '../../components/chatView/chatMessages';
 import {
   PanGestureHandler,
   State as GestureState,
 } from 'react-native-gesture-handler';
 import { H12font400Grey } from '../../components/commonText';
 import CustomIcon from '../../utils/Icons';
-import { EmojiText } from '../../styledComponent/styledComponent';
 
 const ChatView = () => {
   const [isModalVisible, setModalVisible] = useState(false);

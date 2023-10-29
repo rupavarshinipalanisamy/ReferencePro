@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, ScrollView, StyleSheet, TouchableOpacity, Image, SafeAreaView } from 'react-native';
+import { Text, View, ScrollView, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { flex1, flexRow, mb60, mr5, mt20, mt3, mv10, pb5, ph20, pv15 } from '../commonStyles';
 import { FileBlackIcon, FileDarkIcon, ImageDarkIcon, MicrophoneDarkIcon, MikeBlackIcon, PictureBlackIcon, PinBlackIcon, PinDarkIcon, StickerDarkIcon, StickerGreyIcon, VideoBlackIcon, VideoDarkIcon } from '../../utils/svg';
 import { CommonLineDividerGrey, RowSpaceBetween, RowSpaceEvenly } from '../commonView';

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import {  View, TouchableOpacity } from 'react-native';
 import { DevHeight, DevWidth } from '../utils/device';
 import { colors } from '../utils/colors';
 import CustomIcon from '../utils/Icons';
-import { H12fontBold400GreyVar4, H12fontBold400GreyVar4DarkWhite, H15Grey } from './commonText';
+import { H12fontBold400GreyVar4DarkWhite, H15Grey } from './commonText';
 import { labels } from '../utils/labels';
 import { isDark } from '../Theme/ThemeContext';
 import { useNavigation } from '@react-navigation/native';

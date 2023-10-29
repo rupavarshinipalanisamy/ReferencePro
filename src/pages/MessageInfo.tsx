@@ -1,13 +1,12 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { SearchHeader } from './Media/MediaCommonHeader';
 import { colors } from '../utils/colors';
 import { Bluetick } from '../components/chatViewComponents';
 import SendImg1 from '../../assets/images/sentMsg.svg'
-import { SentMessage2, SentMessage6 } from './chatView/Messagecomponents/messages';
 import CustomIcon from '../utils/Icons';
 import { CommonLineDividerGrey } from '../components/commonView';
-import { alignItemsCenter, flexRow, justyfyCenter, mh20, mr5, mt10, mt15, mv10, pl13, pr10, pr13, pr7 } from '../components/commonStyles';
+import { alignItemsCenter, flexRow, justyfyCenter, mh20, mr5, mt15} from '../components/commonStyles';
 import { MessageStatusData } from '../utils/data/chatViewData';
 import { useTheme } from '../Theme/ThemeContext';
 import { H12fontBold400GreyVar4, H14GreyVar4Bold400Text, H14font400grey3black2, H15Blackvar2Bold500 } from '../components/commonText';

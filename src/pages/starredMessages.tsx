@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Text, View, TouchableOpacity, Image, ScrollView } from 'react-native';
-import { CommonLineDividerGrey, FullCommonLineDividerGrey, MessageCard, TopContainerWhiteCard1 } from '../components/commonView';
-import { DevHeight, DevWidth } from '../utils/device';
+import { Text, View,Image, ScrollView } from 'react-native';
+import {  FullCommonLineDividerGrey} from '../components/commonView';
 import CustomIcon from '../utils/Icons';
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, m5, mb20, mh20, mt15, mt3, p5, pb5, pl10, pl13, pl30, pl32, pl7, pt10, pt15, pt5, spaceBetween } from '../components/commonStyles';
+import { flex1, flexRow,mb20, mh20, mt15, mt3,  pl10, pl13,pl7, pt10, spaceBetween } from '../components/commonStyles';
 import { colors } from '../utils/colors';
-import { H12fontBold400GreyVar4, H14BlackText, H14BlackVar2Bold400Text, H14GreyVar4Bold400, H14blueVar1Text, H16BlackText, H18BlackText } from '../components/commonText';
+import { H12fontBold400GreyVar4,H14BlackVar2Bold400Text} from '../components/commonText';
 import { labels } from '../utils/labels';
 import { Chatimg1Img } from '../utils/png';
 import AlexProfile from '../../assets/images/starredProfile.svg'

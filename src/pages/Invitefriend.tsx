@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, ScrollView, StatusBar } from 'react-native';
+import {  View, StyleSheet, TouchableOpacity, ScrollView, StatusBar } from 'react-native';
 import { colors } from '../utils/colors';
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, mt3, ph10, ph5, pl10, pl13, pl5, pr13, pr6 } from '../components/commonStyles';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter,pl10, pl13, pl5 } from '../components/commonStyles';
 import { DevWidth } from '../utils/device';
-import { H14font400Gray4, H15Blackvar2Bold500, H15Grey, H16SemiBoldBlack, H18BlackBoldText600 } from '../components/commonText';
+import { H14font400Gray4, H15Blackvar2Bold500,H18BlackBoldText600 } from '../components/commonText';
 import { contactList } from '../utils/data/contactData';
 import CustomIcon from '../utils/Icons';
 import { SearchHeader } from './Media/MediaCommonHeader';

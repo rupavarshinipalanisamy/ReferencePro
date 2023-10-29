@@ -31,7 +31,6 @@ const AllCalls = ({ selectedCards, onCardSelection }: AllCallsProps) => {
                             <TouchableOpacity onPress={() => {
                                 if (selectedCards.length === 0) {
                                     navigation.navigate(screenName.CallHistory as never);
-                                    // console.log('selected cards log in all calls')
                                 } else {
                                     onCardSelection(call.id);
                                 }
@@ -60,11 +59,9 @@ const AllCalls = ({ selectedCards, onCardSelection }: AllCallsProps) => {
                                         <RowSpaceBetween style={pb5}>
                                             <H15Blackvar2Bold500 style={{ color: isDarkTheme ? colors.greyVar0 : colors.blackVar2 }}>{call.name}</H15Blackvar2Bold500>
                                             <CustomIcon name={call.iconName} size={call.iconSize} color={call.iconColor} type={call.iconType} />
-                                            {/* <Text style={{ fontWeight: call.id === 4 ? '700' : 'normal' }}>{call.duration}</Text> */}
                                         </RowSpaceBetween>
                                         <RowSpaceBetween style={pb5}>
                                             <H14GreyVar4Bold400 style={{ color: isDarkTheme ? colors.greyVar0 : colors.black }}>{call.text}</H14GreyVar4Bold400>
-                                            {/* <CustomIcon name={call.iconName} size={call.iconSize} color={call.iconColor} type={call.iconType} /> */}
                                             <H14GreyVar4Bold400 style={{ color: call.DurationColor }}>{call.duration}</H14GreyVar4Bold400>
                                         </RowSpaceBetween>
                                     </View>

@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, TextInput, StyleSheet, TextInputProps } from 'react-native';
+import { View,TextInputProps } from 'react-native';
 import { colors } from '../utils/colors';
 import { InputData } from '../styledComponent/styledComponent';
-import { isDark, useTheme } from '../Theme/ThemeContext';
+import {  useTheme } from '../Theme/ThemeContext';
 
 interface CustomTextInputProps extends TextInputProps {
   placeholder?: string;

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal, Platform } 
 import Icon from 'react-native-vector-icons/Ionicons';
 import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mh20, ml10, ml15, mt15, mt20, mv10, mv15, mv20, p5, pl10, pl13, pt10, spaceAround, spaceBetween, textCenter, flex1 } from './commonStyles';
 import { colors } from '../utils/colors';
-import { ArchiveIconBlackIcon, ArchiveIconWhiteIcon, DarkThemeMessageIcon, DcallIcon, DeleteWhiteIcon, LcallIcon, LeftArrowWhiteIcon, MessageIcon, MikeWhiteIcon, PinWhiteIcon, Profile, ProfileAvatarIcon, ShareIcon, ThreeDotsWhiteIcon } from '../utils/svg';
+import {  ArchiveIconWhiteIcon, DarkThemeMessageIcon, DcallIcon, DeleteWhiteIcon, LcallIcon, LeftArrowWhiteIcon, MessageIcon, MikeWhiteIcon, PinWhiteIcon, Profile, ProfileAvatarIcon, ShareIcon, ThreeDotsWhiteIcon } from '../utils/svg';
 import { DevHeight, DevWidth } from '../utils/device';
 import { RadioButton, RadioButtonRound, RowSpaceBetween, SelectedRadioBtn } from './commonView';
 import { bottomNavData } from '../utils/data/bottomNavData';
@@ -1127,7 +1127,7 @@ export const ProfileCard = () => {
                                 <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={22} color={isDark() ? colors.greyVar3 : colors.greyVar4} />
                             </TouchableOpacity>
                             <TouchableOpacity style={[{ alignItems: 'center', justifyContent: 'center' }, pl10]} onPress={() => navigation.navigate(screenName.SingleAudioCallRing as never)}>
-                                <CustomIcon name='phone' type="Feather" size={16} color={isDark() ? colors.greyVar3 : colors.greyVar4} />
+                                {isDark()?<DcallIcon/>:<LcallIcon/>}
                             </TouchableOpacity>
                             <TouchableOpacity style={[{ alignItems: 'center', justifyContent: 'center' }, pl10]} onPress={() => navigation.navigate(screenName.ChatView as never)}>
                                 {isDark() ? <DarkThemeMessageIcon /> : <MessageIcon />}

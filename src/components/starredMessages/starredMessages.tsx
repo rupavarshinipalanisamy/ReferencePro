@@ -5,10 +5,9 @@ import { colors } from '../../utils/colors';
 import CustomIcon from '../../utils/Icons';
 import AudioImg from '../../../assets/images/Audio.svg'
 import SendImg2 from '../../../assets/images/sendMsg1.svg'
-
 import { flexRow, justyfyCenter, m5, mt3, p10, p5, pl10, pl13, spaceBetween } from '../commonStyles';
 import { DevWidth } from '../../utils/device';
-import { H12DefaultGreyVar3, H12GreyVar8, H14BlackText, H14BlackVar2Bold400Text, H14blackVar1bold400Text, H14blueVar1Text, H14font400grey3black2 } from '../commonText';
+import { H12DefaultGreyVar3, H12GreyVar8,H14blackVar1bold400Text, H14blueVar1Text, H14font400grey3black2 } from '../commonText';
 import { labels } from '../../utils/labels';
 import { isDark } from '../../Theme/ThemeContext';
 

@@ -1,18 +1,17 @@
 
-import React, { Fragment, useState } from 'react';
-import { Text, View, StyleSheet, ScrollView, TouchableOpacity, Image, Dimensions, Platform } from 'react-native';
+import React, {useState } from 'react';
+import { View, StyleSheet,TouchableOpacity, Image, Dimensions, Platform } from 'react-native';
 import CustomIcon from '../../utils/Icons';
 import { colors } from '../../utils/colors';
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, mb15, mh10, mr5, mt10, mt15, mt20, mv20, p4, pl10, pl13, pl2, pl5, pr5, pt10, pt5, pv10, spaceBetween } from '../commonStyles';
+import { alignItemsCenter, flex1, flexRow, mb15, mh10, mr5, mt10, mt15, mt20, mv20, p4, pl10, pl13,  pl5,pt10,  pv10, spaceBetween } from '../commonStyles';
 import { useNavigation } from '@react-navigation/native';
-import { H12font400Black, H12font400Grey, H14BlackText, H14GreyVar4Bold400Text, H14blackVar1bold400Text, H14font400grey3black2, H15Blackvar2Bold500, H15Grey } from '../commonText';
+import { H12font400Black, H12font400Grey, H14BlackText, H14GreyVar4Bold400Text, H14blackVar1bold400Text, H14font400grey3black2, H15Blackvar2Bold500 } from '../commonText';
 import { CardHeaderText, CustomModal } from '../commonComponents';
 import { DevWidth } from '../../utils/device';
 import { InfoCardData, groupsData, mediaData } from '../../utils/data/profileData';
-import { Alignjustifycenter, CommonLineDividerGrey, FullCommonLineDividerGrey, MediumCardSurface } from '../commonView';
+import { Alignjustifycenter, FullCommonLineDividerGrey, MediumCardSurface } from '../commonView';
 import { screenName } from '../../utils/screenName';
 import { isDark, useTheme } from '../../Theme/ThemeContext';
-import { labels } from '../../utils/labels';
 export const SocialMediaIcon = () => {
     return (
         <>

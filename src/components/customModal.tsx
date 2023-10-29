@@ -1,5 +1,5 @@
 import React,{ReactNode} from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { HalfCircle2, ModalContainer, ModalContent } from '../styledComponent/styledComponent';
 
 export type customModalProps = {

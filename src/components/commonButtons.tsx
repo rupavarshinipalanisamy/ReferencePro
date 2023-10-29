@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
 import { LongButton, TwoSmallButton } from './commonView';
 import { H15font600, H15fontBold600 } from './commonText';
-import { DevHeight, DevWidth } from '../utils/device';
+import { DevWidth } from '../utils/device';
 import { isDark } from '../Theme/ThemeContext';
 import { colors } from '../utils/colors';
 

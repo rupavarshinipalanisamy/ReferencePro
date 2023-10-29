@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { Alignjustifycenter, MainContainer, RowSpaceBetween } from '../../components/commonView';
 import { colors } from '../../utils/colors';
-import { alignItemsCenter, alignSelfCenter, flexRow, justyfyCenter, mb15, mh2, mh20, mr15, mr5, mt15, pl13, spaceBetween } from '../../components/commonStyles';
+import {  alignSelfCenter, flexRow,  mb15, mh20, mr15, mr5, mt15, pl13, spaceBetween } from '../../components/commonStyles';
 import CustomIcon from '../../utils/Icons';
 import { DevWidth } from '../../utils/device';
 import { labels } from '../../utils/labels';

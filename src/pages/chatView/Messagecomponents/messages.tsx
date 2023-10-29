@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Text, View, Image, ImageBackground, StyleSheet, TouchableOpacity, TextInput, Modal as RNModal, Platform } from 'react-native';
+import { Text, View, Image, ImageBackground,TouchableOpacity, TextInput, Modal as RNModal, Platform } from 'react-native';
 import { colors } from '../../../utils/colors';
-import { flex1, flexRow, pt10, pl10, spaceBetween, alignItemsCenter, justyfyCenter, pt5, pl13, p5, mt5, borderRadius10, spaceAround, mb20, ml5, pt25, pt15, mt3, pr10, p4, mh10, pv10, ph2, ml15, mr10, p10, mt20, borderRadius20, mv5 } from '../../../components/commonStyles';
+import { flex1, flexRow, pl10, spaceBetween, alignItemsCenter, justyfyCenter, pt5, pl13, p5, mt5, borderRadius10,ml5,mt3, p4, mh10, pv10, ph2, ml15, mr10, p10, mt20, borderRadius20, mv5 } from '../../../components/commonStyles';
 import CustomIcon from '../../..//utils/Icons';
-import { H12BlackText, H12DefaultGreyVar3, H12GreyVar8, H12font400Grey, H14BlackText, H14GreyVar4Bold400, H14GreyVar4Bold400Text, H14blackVar1bold400Text, H14blueVar1Text, H14font400grey3black2, H15Blackvar2Bold500, H15Grey, H15PurpletoGrey, H16WhiteText, H16fontNormalBlue, H16fontNormalGray, H16fontSemiBoldBluevar4, H16fontSemiBoldGreyvar4, H18WhiteText, H20font600BlackVar2 } from '../../../components/commonText';
+import { H12BlackText, H12DefaultGreyVar3, H12GreyVar8,H14GreyVar4Bold400, H14GreyVar4Bold400Text, H14blackVar1bold400Text, H14blueVar1Text, H14font400grey3black2, H15Blackvar2Bold500,  H15PurpletoGrey,H16fontSemiBoldBluevar4, H16fontSemiBoldGreyvar4,H20font600BlackVar2 } from '../../../components/commonText';
 import { labels } from '../../../utils/labels';
 import { DevHeight, DevWidth } from '../../../utils/device';
 import AudioImg from '../../../../assets/images/Audio.svg'
@@ -18,8 +18,8 @@ import { isDark } from '../../../Theme/ThemeContext';
 import { screenName } from '../../../utils/screenName';
 import Modal from 'react-native-modal';
 import { attachmentData } from '../../../utils/data/chatsData';
-import { Bluetick, ForwardView, Tick } from '../../../components/chatViewComponents';
-import { EditModal, EditModal2 } from '../../../components/commonModal';
+import {  ForwardView } from '../../../components/chatViewComponents';
+import {EditModal2 } from '../../../components/commonModal';
 import { ChatViewCommonHeader, FooterFirstView, FooterIconView, FooterSecondView, ReplyFooterSecondView, ReplyFooterThirdView } from '../../../styledComponent/styledComponent';
 import { RadioButton, ReceiveMsgCard, RowSpaceAlignCenter, RowSpaceBetween, SendMsgCard } from '../../../components/commonView';
 

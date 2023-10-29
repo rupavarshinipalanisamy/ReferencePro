@@ -1,16 +1,13 @@
-import React, { Fragment, useState, useRef } from 'react';
-import { Text, View, ImageBackground, StyleSheet, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Image, Animated, StatusBar, TextInput, Modal as RNModal ,Platform} from 'react-native';
+import React from 'react';
+import { Text, View,StyleSheet, TouchableOpacity, Image, Modal as RNModal} from 'react-native';
 import { colors } from '../utils/colors';
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, mt20, pb10, pl13, pl15, pl6, pt10, spaceBetween } from '../components/commonStyles'
+import {  flex1, flexRow,  mt20, pb10, pl15,spaceBetween } from '../components/commonStyles'
 import { labels } from '../utils/labels';
 import CustomIcon from '../utils/Icons';
-import { H12font400Black, H12font400Grey, H14BlackText, H14BlackVar2Bold400Text, H14GreyVar4Bold400, H14blackVar1bold400Text, H15Blackvar2Bold500, H16BlackText } from './commonText';
+import { H12font400Black, H12font400Grey, H14BlackVar2Bold400Text, H14GreyVar4Bold400, H15Blackvar2Bold500, H16BlackText } from './commonText';
 import { ProfileImg } from '../utils/png';
 import { isDark, useTheme } from '../Theme/ThemeContext';
-import { DevHeight, DevWidth } from '../utils/device';
-import { attachmentData } from '../utils/data/chatsData';
-import Modal from 'react-native-modal';
-import { Alignjustifycenter, GreyTabView } from './commonView';
+import { Alignjustifycenter } from './commonView';
 
 
 
