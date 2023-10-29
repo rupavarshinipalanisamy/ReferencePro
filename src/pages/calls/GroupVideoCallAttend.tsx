@@ -1,10 +1,9 @@
 import React from 'react';
-import { View, FlatList, Image, Text, TouchableOpacity } from 'react-native';
-import { H14Blackvar2Bold500, H14Blackvar2Bold500Same } from '../../components/commonText';
+import { View, FlatList, Image, TouchableOpacity } from 'react-native';
+import { H14Blackvar2Bold500Same } from '../../components/commonText';
 import { CallCommonHeader } from '../../components/commonHeaders';
-import { callBottomDataThird, groupCallData, groupVideoCallData } from '../../utils/data/callsData';
+import { callBottomDataThird, groupVideoCallData } from '../../utils/data/callsData';
 import { DevHeight, DevWidth } from '../../utils/device';
-import { CallBottomTab } from '../../components/commonComponents';
 import { isDark } from '../../Theme/ThemeContext';
 import { colors } from '../../utils/colors';
 import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mt15, mt20, mt8, spaceAround } from '../../components/commonStyles';
@@ -23,16 +22,10 @@ const GroupVideoCallAttend = () => {
                             <H14Blackvar2Bold500Same style={mt8}>{labels.JamesAlbert}</H14Blackvar2Bold500Same>
                         </View>
                     ) : (
-                        <Image source={item.image} style={{ borderRadius: item.id === 4 ? 25 : 10, width: item.id === 1 || item.id === 2 || item.id === 3 ? DevWidth / 2.35 : 40, height : '100%' }} />
+                        <Image source={item.image} style={{ borderRadius: item.id === 4 ? 25 : 10, width: item.id === 1 || item.id === 2 || item.id === 3 ? DevWidth / 2.35 : 40, height: '100%' }} />
                     )
                 }
             </View>
-            {/* <View style={{ height: DevHeight / 4, width: DevWidth / 2.35, backgroundColor: colors.white, borderColor: colors.blueVar3, borderRadius: 10, alignItems: 'center', justifyContent: 'center', borderWidth: item.id === 4 ? 2 : 0 }}>
-                <Image source={item.image} style={{ borderRadius: item.id === 4 ? 25 : 10, width: item.id === 1 || item.id === 2 || item.id === 3 ? DevWidth / 2.35 : 40 }} />
-                {item.id === 4 && (
-                    <H14Blackvar2Bold500Same style={mt8}>{labels.JamesAlbert}</H14Blackvar2Bold500Same>
-                )}
-            </View> */}
         </View>
     );
 
@@ -44,7 +37,7 @@ const GroupVideoCallAttend = () => {
                     data={groupVideoCallData}
                     renderItem={renderItem}
                     keyExtractor={(item) => item.id.toString()}
-                    numColumns={2} // Set the number of columns here
+                    numColumns={2} 
                 />
             </View>
             <View style={[{ height: DevHeight * 0.12, width: DevWidth, backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, borderTopLeftRadius: 45, borderTopRightRadius: 45 }]}>

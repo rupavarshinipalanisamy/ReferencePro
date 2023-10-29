@@ -1,17 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Text, View, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import { alignItemsCenter, alignSelfCenter, flex1, flexRow, justifyEnd, justifyStart, justyfyCenter, mh20, mh30, ml10, ml30, mr30, mt15, mt3, mt5, mv10, p10, pb5 } from '../../components/commonStyles';
+import React, { useState } from 'react';
+import { View, Image, StyleSheet, ScrollView } from 'react-native';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh30, mt15, mt3, mt5, mv10, p10, pb5 } from '../../components/commonStyles';
 import { colors } from '../../utils/colors';
-import { DevHeight, DevWidth } from '../../utils/device';
-import CustomIcon from '../../utils/Icons';
 import { RowSpaceBetween } from '../../components/commonView';
-import { H14GreyVar4Bold400, H15Blackvar2Bold500, H15Grey, H16SemiBoldBlack, H18BlackBoldText600 } from '../../components/commonText';
+import { H14GreyVar4Bold400, H15Blackvar2Bold500 } from '../../components/commonText';
 import { labels } from '../../utils/labels';
 import { createGroupUserSelectData } from '../../utils/data/groupsData';
 import { MultiSelectOption } from '../../components/commonComponents';
-import { ButtonContainer } from '../../styledComponent/styledComponent';
 import { SmallButton } from '../../components/commonButtons';
-import { Chatimg1Img, Chatimg2Img, Chatimg3Img, Chatimg4Img, Chatimg5Img, Chatimg6Img, Chatimg7Img } from '../../utils/png';
 import { useNavigation } from '@react-navigation/native';
 import { SearchHeader } from '../Media/MediaCommonHeader';
 import { isDark } from '../../Theme/ThemeContext';
@@ -21,7 +17,6 @@ export type CreateGroupUserSelectProps = {
 }
 
 const CreateGroupUserSelect = (props: CreateGroupUserSelectProps) => {
-    const Navigation = useNavigation();
     const [selectedItems, setSelectedItems] = useState<number[]>([]);
     const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
 
@@ -51,7 +46,7 @@ const CreateGroupUserSelect = (props: CreateGroupUserSelectProps) => {
                     {
                         createGroupUserSelectData.map((item) => {
                             return (
-                                <View key={item.id} style={[p10, mv10, styles.whiteCard,{backgroundColor: isDark() ? colors.darkModeVar4 : colors.white,}]}>
+                                <View key={item.id} style={[p10, mv10, styles.whiteCard, { backgroundColor: isDark() ? colors.darkModeVar4 : colors.white, }]}>
                                     <View style={[flexRow]}>
                                         <View style={[alignItemsCenter, justyfyCenter]}>
                                             <Image source={item.img} style={styles.profileImg} />
@@ -74,7 +69,7 @@ const CreateGroupUserSelect = (props: CreateGroupUserSelectProps) => {
                         })
                     }
                 </View>
-                <RowSpaceBetween style = {[mh30]}>
+                <RowSpaceBetween style={[mh30]}>
                     <SmallButton
                         title={labels.cancel}
                         onChange={handleCancelButton}

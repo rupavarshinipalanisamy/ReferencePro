@@ -1,22 +1,18 @@
 import React, { useState } from 'react';
-import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import { alignItemsCenter, alignSelfCenter, flex1, flexRow, justifyEnd, justifyStart, justyfyCenter, mh10, mh15, mh20, mh30, mh5, ml10, ml30, ml5, mr30, mt20, mv20, pv20 } from '../../components/commonStyles';
+import { Text, View, Image, StyleSheet } from 'react-native';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh20, mh30, ml10, ml5, mv20 } from '../../components/commonStyles';
 import { colors } from '../../utils/colors';
-import { DevHeight, DevWidth } from '../../utils/device';
 import CustomIcon from '../../utils/Icons';
-import { H18BlackBoldText600 } from '../../components/commonText';
 import { labels } from '../../utils/labels';
 import { RowSpaceBetween } from '../../components/commonView';
-// import { UserImg } from '../../utils/png';
-import { ButtonContainer, ButtonContainer1, IconInputContainer } from '../../styledComponent/styledComponent';
+import { IconInputContainer } from '../../styledComponent/styledComponent';
 import { CustomTextInput } from '../../components/commonInputFields';
-// import { ButtonSaveandCancel } from '../../components/commonButtons';
 import { useNavigation } from '@react-navigation/native';
-import { screenName } from '../../utils/screenName';
 import { SearchHeader } from '../Media/MediaCommonHeader';
 import { isDark } from '../../Theme/ThemeContext';
 import { UsFlagTmg } from '../../utils/png';
 import { SmallButton } from '../../components/commonButtons';
+import { DevWidth } from '../../utils/device';
 
 export type EditAccountSettingsProps = {
 

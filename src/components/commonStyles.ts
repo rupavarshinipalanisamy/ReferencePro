@@ -166,8 +166,11 @@ const styles = StyleSheet.create({
   mb15: {
     marginBottom: 15,
   },
+  mb60:{
+    marginBottom:60,
+  },
   mb50:{
-    marginBottom:90,
+    marginBottom:50,
   },
   mb40: {
     marginBottom: 40,
@@ -558,7 +561,7 @@ export const {
   mb20,
   mb30,
   mb40,
-
+  mb60,
   mb50,
   mt10,
   mt3,

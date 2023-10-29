@@ -1,7 +1,7 @@
-import React, { useState, ReactNode, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal, Switch, Image, Platform } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Modal as RNModal, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mh20, mh30, ml10, ml15, mr10, mt10, mt15, mt20, mt30, mt5, mv10, mv15, mv20, p10, p5, pl10, pl13, pl5, pr10, pt10, spaceAround, spaceBetween, textCenter, flex1 } from './commonStyles';
+import { alignItemsCenter, alignSelfCenter, borderRadius10, flexRow, justyfyCenter, mh10, mh20, ml10, ml15, mt15, mt20, mv10, mv15, mv20, p5, pl10, pl13, pt10, spaceAround, spaceBetween, textCenter, flex1 } from './commonStyles';
 import { colors } from '../utils/colors';
 import { ArchiveIconBlackIcon, ArchiveIconWhiteIcon, DarkThemeMessageIcon, DcallIcon, DeleteWhiteIcon, LcallIcon, LeftArrowWhiteIcon, MessageIcon, MikeWhiteIcon, PinWhiteIcon, Profile, ProfileAvatarIcon, ShareIcon, ThreeDotsWhiteIcon } from '../utils/svg';
 import { DevHeight, DevWidth } from '../utils/device';
@@ -11,7 +11,7 @@ import CustomIcon from '../utils/Icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Modal from 'react-native-modal';
 import { muteNotificationdata, threeDotsOption } from '../utils/data/modalData';
-import { H12purpleVar3Text, H14BlackVar2Bold400Text, H14GreyVar4Bold400, H14blackVar1bold400Text, H14purpleVar3Text, H15Grey, H16Black600Text, H16font600Black, H16fontNormalGray, H16fontNormalGray4, H18BlackText, H18fontBoldBlack } from './commonText';
+import { H12purpleVar3Text, H14BlackVar2Bold400Text, H14GreyVar4Bold400, H14blackVar1bold400Text, H16Black600Text, H16font600Black } from './commonText';
 import { labels } from '../utils/labels';
 import { callBottomDataFourth } from '../utils/data/callsData';
 import { screenName } from '../utils/screenName';
@@ -19,7 +19,6 @@ import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { IconModal } from './commonModal';
 import { SmallButton } from './commonButtons';
 import { isDark, useTheme } from '../Theme/ThemeContext';
-import { color } from 'react-native-elements/dist/helpers';
 
 // ====================   Chat based Header Component   ====================
 
@@ -160,9 +159,9 @@ export const CallHeader: React.FC<ChatHeaderProps> = ({ title }) => {
 
 interface ContactHeaderProps {
     title: string;
-    icon1Navigate ?: () => void;
-    icon2Navigate ?: () => void;
-    profileAvatar ?: () => void;
+    icon1Navigate?: () => void;
+    icon2Navigate?: () => void;
+    profileAvatar?: () => void;
 }
 
 export const ContactHeader: React.FC<ContactHeaderProps> = ({ title, icon1Navigate, icon2Navigate, profileAvatar }) => {
@@ -193,7 +192,7 @@ interface TabControlProps {
 }
 
 export const TabControl: React.FC<TabControlProps> = ({ tabs, activeTab, onTabPress }) => {
-    const {theme} = useTheme();
+    const { theme } = useTheme();
     const isDarkTheme = theme === 'dark';
     return (
         <View style={styles.tabContainer}>
@@ -263,7 +262,7 @@ export const CustomModal: React.FC<ModalProps> = ({ isVisible, width, modalData,
                         alignItems: 'flex-end',
                     }}
                 >
-                    <View style={[{ backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, elevation: 0.5, borderRadius: 8, width: width || DevWidth * 0.5, padding: 10, marginTop: marginTop || 30, marginLeft: marginLeft || 0 ,borderWidth:2,borderColor:isDark()?'rgba(78,80,114,0.2)':colors.greyVar7}]}>{modalData}</View>
+                    <View style={[{ backgroundColor: isDark() ? colors.darkModeVar1 : colors.white, elevation: 0.5, borderRadius: 8, width: width || DevWidth * 0.5, padding: 10, marginTop: marginTop || 30, marginLeft: marginLeft || 0, borderWidth: 2, borderColor: isDark() ? 'rgba(78,80,114,0.2)' : colors.greyVar7 }]}>{modalData}</View>
                 </Modal>
             </View>
         </RNModal>
@@ -473,7 +472,7 @@ export const CustomActionBar: React.FC<CustomActionBarProps> = ({
                 // height={80}
                 width={DevWidth * 0.47}
                 modalData={<PinChatOption />}
-                marginTop={ Platform.OS === 'ios' ? 100 : 48}
+                marginTop={Platform.OS === 'ios' ? 100 : 48}
                 onClose={() => setModalVisible(false)}
             />
             <IconModal
@@ -510,12 +509,12 @@ export const CustomActionBar1: React.FC<CustomActionBar1Props> = ({
 }) => {
     const [isModalVisible, setModalVisible] = useState(false);
     const [deleteOptionModal, setDeleteOptionModal] = useState(false);
-    
+
 
     const handleDeleteOptionModal = () => {
         setDeleteOptionModal(!deleteOptionModal)
     }
-  
+
     const handleThreeDotsClick = () => {
         if (selectedCardsCount === 1) {
             setModalVisible((prevIsModalVisible) => !prevIsModalVisible);
@@ -569,7 +568,7 @@ export const CustomActionBar1: React.FC<CustomActionBar1Props> = ({
         <View style={[flexRow, spaceBetween, mh20, mv15, pt10]}>
             <View style={flexRow}>
                 <TouchableOpacity>
-                <LeftArrowWhiteIcon />
+                    <LeftArrowWhiteIcon />
 
                 </TouchableOpacity>
                 <View style={{ backgroundColor: isDark() ? colors.purpleVar3 : 'rgba(0, 0, 0, 0.3)', height: 20, width: 20, borderRadius: 20, }}>
@@ -738,7 +737,7 @@ export const BottomTabBar = () => {
     const [selectedTab, setSelectedTab] = useState('Chats');
     const navigation = useNavigation();
     const route = useRoute();
-    const {theme} = useTheme();
+    const { theme } = useTheme();
     const isDarkTheme = theme === 'dark';
 
     useEffect(() => {
@@ -893,17 +892,17 @@ export const MultiSelectOption: React.FC<MultiSelectProps> = ({
 
 type ImagePickerProps = {
     onImageSelect: (base64Image: string) => void;
-    cameraOption ?: () => void;
+    cameraOption?: () => void;
 };
 
-export const ImagePicker: React.FC<ImagePickerProps> = ({ onImageSelect, cameraOption}) => {
+export const ImagePicker: React.FC<ImagePickerProps> = ({ onImageSelect, cameraOption }) => {
     const [isCancelButtonActive, setIsCancelButtonActive] = useState(false);
 
     const handleCancelButton = () => {
         setIsCancelButtonActive(true);
-        if (Platform.OS === "ios"){
+        if (Platform.OS === "ios") {
             cameraOption;
-        }else {
+        } else {
             openCamera();
         }
     };
@@ -1061,9 +1060,10 @@ interface RadioBtnProps {
 export const RadioBtn: React.FC<RadioBtnProps> = ({ selected, onPress }) => {
     return (
         <RadioButton onPress={onPress}>
-            <RadioButtonRound style={{ backgroundColor: selected ? colors.purpleVar3 : isDark()?colors.darkModeVar6:colors.white,
-    borderColor: isDark()?colors.darkModeVar5: colors.greyVar2
-             }}>
+            <RadioButtonRound style={{
+                backgroundColor: selected ? colors.purpleVar3 : isDark() ? colors.darkModeVar6 : colors.white,
+                borderColor: isDark() ? colors.darkModeVar5 : colors.greyVar2
+            }}>
                 {selected && (
                     <SelectedRadioBtn />
                 )}
@@ -1081,11 +1081,11 @@ export const CardHeaderText: React.FC<CardHeaderTextProps> = ({ text }) => {
     return (
         <View style={{ alignItems: 'flex-start', marginTop: 5 }}>
             <View style={{
-                backgroundColor: isDark()?colors.darkModeVar4:colors.purpleVar1,
-                borderRadius:4,
+                backgroundColor: isDark() ? colors.darkModeVar4 : colors.purpleVar1,
+                borderRadius: 4,
                 padding: 5
             }}>
-                <H12purpleVar3Text style={{ marginHorizontal: 7}}>
+                <H12purpleVar3Text style={{ marginHorizontal: 7 }}>
                     {text}
                 </H12purpleVar3Text>
             </View>
@@ -1096,15 +1096,15 @@ export const CardHeaderText: React.FC<CardHeaderTextProps> = ({ text }) => {
 };
 //   ====================  PasswordIcon  ====================
 
- export const PasswordToggleIcon = ({ isVisible, toggleVisibility }) => {
+export const PasswordToggleIcon = ({ isVisible, toggleVisibility }) => {
     const iconName = isVisible ? 'eye' : 'eye-closed';
-  
+
     return (
-      <TouchableOpacity onPress={toggleVisibility}>
-        <CustomIcon name={iconName} size={20} color={isDark()?colors.greyVar3:colors.greyVar4} type='octicons' />
-      </TouchableOpacity>
+        <TouchableOpacity onPress={toggleVisibility}>
+            <CustomIcon name={iconName} size={20} color={isDark() ? colors.greyVar3 : colors.greyVar4} type='octicons' />
+        </TouchableOpacity>
     );
-  };
+};
 
 
 // ==================== Profile Card ==============================
@@ -1116,21 +1116,21 @@ export const ProfileCard = () => {
         <View>
             <View style={{ marginTop: 50 }}>
                 <View style={{
-                    backgroundColor: isDark()?colors.darkModeVar4:colors.white, height: DevHeight / 4.5, width: '100%', borderRadius: 20, elevation: 5, justifyContent: 'center',
-                    shadowOpacity:0.1, shadowColor: colors.greyVar0
+                    backgroundColor: isDark() ? colors.darkModeVar4 : colors.white, height: DevHeight / 4.5, width: '100%', borderRadius: 20, elevation: 5, justifyContent: 'center',
+                    shadowOpacity: 0.1, shadowColor: colors.greyVar0
                 }}>
                     <View style={[alignItemsCenter,{marginTop: 40 }]}>
                         <H16Black600Text>{labels.horaceKeene}</H16Black600Text>
                         <H14GreyVar4Bold400>last seen at 07:15 PM</H14GreyVar4Bold400>
-                        <View style={[flexRow, { marginTop:8 }]}>
-                         <TouchableOpacity  style={[alignItemsCenter,justyfyCenter]} onPress={()=>navigation.navigate(screenName.SingleVideoCall as never)}>
-                                <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={23} color={isDark()?colors.greyVar3:colors.greyVar4} />
+                        <View style={[flexRow, { marginTop: 10 }]}>
+                            <TouchableOpacity style={[{ alignItems: 'center', justifyContent: 'center' }]} onPress={() => navigation.navigate(screenName.SingleVideoCall as never)}>
+                                <CustomIcon name='video-outline' type="MaterialCommunityIcons" size={22} color={isDark() ? colors.greyVar3 : colors.greyVar4} />
                             </TouchableOpacity>
-                            <TouchableOpacity  style={[alignItemsCenter,justyfyCenter,pl10]} onPress={()=>navigation.navigate(screenName.SingleAudioCallRing as never)}>
-                                {isDark()?<DcallIcon/>:<LcallIcon/>}
+                            <TouchableOpacity style={[{ alignItems: 'center', justifyContent: 'center' }, pl10]} onPress={() => navigation.navigate(screenName.SingleAudioCallRing as never)}>
+                                <CustomIcon name='phone' type="Feather" size={16} color={isDark() ? colors.greyVar3 : colors.greyVar4} />
                             </TouchableOpacity>
-                            <TouchableOpacity style={[alignItemsCenter,justyfyCenter,pl10]} onPress={()=>navigation.navigate(screenName.ChatView as never)}>
-                                {isDark()? <DarkThemeMessageIcon/>:<MessageIcon/>}
+                            <TouchableOpacity style={[{ alignItems: 'center', justifyContent: 'center' }, pl10]} onPress={() => navigation.navigate(screenName.ChatView as never)}>
+                                {isDark() ? <DarkThemeMessageIcon /> : <MessageIcon />}
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -1192,7 +1192,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     toggle: {
-        width:15,
+        width: 15,
         height: 15,
         borderRadius: 15,
     },

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, mr5, mt0, mt20, mt3, mt5, mv10, pb5, ph20, pv15 } from '../commonStyles';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mb60, mr5, mt0, mt20, mt3, mt5, mv10, pb5, ph20, pv15 } from '../commonStyles';
 import { PinnedChatsdata } from '../../utils/data/chatsData';
 import { CommonLineDividerGrey, RowSpaceBetween, RowSpaceEvenly } from '../commonView';
-import { H12fontBold400GreyVar4, H12fontBold400blackVar2, H14GreenBold400, H14GreyVar4Bold400, H14RedBold400, H15Blackvar2Bold500, H15Green, H15Grey, H15Red, H16SemiBoldBlack } from '../commonText';
+import { H12fontBold400GreyVar4, H12fontBold400blackVar2, H14GreenBold400, H14GreyVar4Bold400, H14RedBold400, H15Blackvar2Bold500 } from '../commonText';
 import { labels } from '../../utils/labels';
 import { BlackDoubleTickIcon, BlackSingleTickIcon, BlueDoubleTickIcon, DoubleTickDarkIcon, FileBlackIcon, FileDarkIcon, ImageDarkIcon, MicrophoneDarkIcon, MikeBlackIcon, PhoneIncomingDarkIcon, PhoneIncomingRedIcon, PictureBlackIcon, PinBlackIcon, PinDarkIcon, SingleTickDarkIcon, VideoBlackIcon, VideoDarkIcon, VideoRedDarkIcon, VideoRedIcon } from '../../utils/svg';
 import { colors } from '../../utils/colors';
@@ -22,16 +22,16 @@ export type PinnedChatsProps = {
 
 const PinnedChats = ({ selectedCards, onCardSelection }: PinnedChatsProps) => {
     const navigation = useNavigation();
-    const {theme} = useTheme();
+    const { theme } = useTheme();
     const isDarkTheme = theme === 'dark';
 
     return (
         <View style={[{ backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
             <View style={flex1}>
-                <ScrollView showsVerticalScrollIndicator={false}>
+                <ScrollView showsVerticalScrollIndicator={false} style={mb60}>
                     {PinnedChatsdata.map((chat) => (
                         <View key={chat.id}>
-                            {chat.id === 1 ? <View style={mv10} /> : <CommonLineDividerGrey style = {{backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0}} />}
+                            {chat.id === 1 ? <View style={mv10} /> : <CommonLineDividerGrey style={{ backgroundColor: isDarkTheme ? colors.darkModeVar3 : colors.greyVar0 }} />}
                             <TouchableOpacity onPress={() => {
                                 if (selectedCards.length === 0) {
                                     navigation.navigate(screenName.ChatView as never);
@@ -116,7 +116,7 @@ const PinnedChats = ({ selectedCards, onCardSelection }: PinnedChatsProps) => {
                                                         <Text style={styles.roundNumberText}>3</Text>
                                                     </View>
                                                     <View style={mt5}>
-                                                    {isDarkTheme ? <PinDarkIcon /> : <PinBlackIcon />}
+                                                        {isDarkTheme ? <PinDarkIcon /> : <PinBlackIcon />}
                                                     </View>
                                                 </RowSpaceEvenly>
                                             </RowSpaceBetween>
@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
     status: {
         borderWidth: 3,
         position: 'absolute',
-        bottom: 5,
+        bottom: 0,
         right: 10,
         height: 15,
         width: 15,
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     statusTick: {
         borderWidth: 1.5,
         position: 'absolute',
-        bottom: 4,
+        bottom: 0,
         right: 10,
         height: 16,
         width: 16,
@@ -226,7 +226,8 @@ const styles = StyleSheet.create({
         width: 40,
         height: 40,
         borderRadius: 20,
-        marginRight: 12
+        marginRight: 12,
+        marginTop: 3
     }
 });
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { colors } from '../../utils/colors';
-import { alignItemsCenter, alignSelfCenter, borderRadius10, flex1, flexRow, justyfyCenter, mb15, ml15, mr5, mt20, mt3, mt5, p10, pb5, ph20, pv15, spaceBetween, spaceEvenly } from '../commonStyles';
+import { alignItemsCenter, alignSelfCenter, borderRadius10, flex1, flexRow, justyfyCenter, mb15, mb60, ml15, mr5, mt20, p10, pb5, ph20, pv15, spaceBetween, spaceEvenly } from '../commonStyles';
 import { allChatsData } from '../../utils/data/chatsData';
 import { DevWidth } from '../../utils/device';
 import { CommonLineDividerGrey, RowSpaceBetween, RowSpaceEvenly } from '../commonView';
 import { labels } from '../../utils/labels';
-import { H12fontBold400GreyVar4, H12fontBold400blackVar2, H14GreenBold400, H14GreyVar4Bold400, H14RedBold400, H15Blackvar2Bold500, H15Green, H15Grey, H15Red, H16GreyVar4Bold600Text, H16SemiBoldBlack, H18BoldGrey } from '../commonText';
+import { H12fontBold400GreyVar4, H12fontBold400blackVar2, H14GreenBold400, H14GreyVar4Bold400, H14RedBold400, H15Blackvar2Bold500, H16GreyVar4Bold600Text } from '../commonText';
 import { ArchiveIconBlackIcon, ArchiveIconDarkShade1Icon, BlackDoubleTickIcon, BlackSingleTickIcon, BlueDoubleTickIcon, DoubleTickDarkIcon, FileBlackIcon, FileDarkIcon, ImageDarkIcon, MicrophoneDarkIcon, MikeBlackIcon, PhoneIncomingDarkIcon, PhoneIncomingRedIcon, PictureBlackIcon, PinBlackIcon, PinDarkIcon, SingleTickDarkIcon, VideoBlackIcon, VideoDarkIcon } from '../../utils/svg';
 import { useNavigation } from '@react-navigation/native';
 import { screenName } from '../../utils/screenName';
@@ -20,7 +20,6 @@ export type AllChatsProps = {
     onCardSelection: (cardId: number) => void;
 }
 
-
 const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
     const navigation = useNavigation();
     const { theme } = useTheme();
@@ -28,7 +27,7 @@ const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
 
     return (
         <View style={[{ backgroundColor: isDarkTheme ? colors.darkModeVar2 : colors.white }, flex1, mt20, styles.whiteBg]}>
-            <ScrollView showsVerticalScrollIndicator={false} style = {flex1}>
+            <ScrollView showsVerticalScrollIndicator={false} style={mb60}>
                 <View style={[flexRow, spaceBetween, mt20, alignSelfCenter, p10, borderRadius10, styles.archiveCard, mb15, { backgroundColor: isDarkTheme ? colors.darkModeVar4 : colors.purpleVar1, }]}>
                     <View style={[flexRow, spaceEvenly]}>
                         {isDarkTheme ? <ArchiveIconDarkShade1Icon /> : <ArchiveIconBlackIcon />}
@@ -111,7 +110,7 @@ const AllChats = ({ selectedCards, onCardSelection }: AllChatsProps) => {
                                                     </View>
                                                     <H14GreyVar4Bold400 style={{ color: isDarkTheme ? colors.greyVar0 : colors.greyVar4 }}>{labels.Audio}</H14GreyVar4Bold400>
                                                 </RowSpaceEvenly>
-                                                { isDarkTheme ? <SingleTickDarkIcon /> : <BlackSingleTickIcon />}
+                                                {isDarkTheme ? <SingleTickDarkIcon /> : <BlackSingleTickIcon />}
                                             </RowSpaceBetween>
                                         ) : chat.id === 4 ? (
                                             <RowSpaceBetween>
@@ -197,7 +196,7 @@ const styles = StyleSheet.create({
     status: {
         borderWidth: 3,
         position: 'absolute',
-        bottom: 2,
+        bottom: 0,
         right: 10,
         height: 15,
         width: 15,
@@ -206,7 +205,7 @@ const styles = StyleSheet.create({
     statusTick: {
         borderWidth: 1.5,
         position: 'absolute',
-        bottom: 4,
+        bottom: 0,
         right: 10,
         height: 16,
         width: 16,
@@ -221,7 +220,8 @@ const styles = StyleSheet.create({
         width: 40,
         height: 40,
         borderRadius: 20,
-        marginRight: 12
+        marginRight: 12,
+        marginTop: 3
     }
 });
 

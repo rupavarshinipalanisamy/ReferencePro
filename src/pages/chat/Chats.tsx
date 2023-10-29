@@ -1,16 +1,15 @@
 import React, { Fragment, useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View } from 'react-native';
 import { PurpleMainContainer } from '../../components/commonView';
 import { colors } from '../../utils/colors';
 import AllChats from '../../components/chats/AllChats';
-import {labels} from '../../utils/labels';
+import { labels } from '../../utils/labels';
 import { ChatHeader, CustomActionBar, CustomActionBarSecond, TabControl } from '../../components/commonComponents';
-import { flex1, flexRow, mh20, ml10, mv15, spaceAround, spaceBetween } from '../../components/commonStyles';
+import { flex1 } from '../../components/commonStyles';
 import PinnedChats from '../../components/chats/PinnedChats';
 import ArchiveChats from '../../components/chats/ArchiveChats';
-import { ArchiveIconWhiteIcon, DeleteWhiteIcon, LeftArrowWhiteIcon, ThreeDotsWhiteIcon } from '../../utils/svg';
 import { screenName } from '../../utils/screenName';
-import { isDark, useTheme } from '../../Theme/ThemeContext';
+import { useTheme } from '../../Theme/ThemeContext';
 import { useNavigation } from '@react-navigation/native';
 
 export type chatProps = {
@@ -20,7 +19,7 @@ export type chatProps = {
 const Chats = (props: chatProps) => {
     const [selectedTab, setSelectedTab] = useState(labels.AllChats);
     const [selectedCards, setSelectedCards] = useState<number[]>([]);
-    const {theme} = useTheme();
+    const { theme } = useTheme();
     const isDarkTheme = theme === 'dark';
 
     const tabs = [
@@ -50,12 +49,12 @@ const Chats = (props: chatProps) => {
         selectedTab: string;
         selectedCards: number[];
         handleTabPress: (tab: string) => void;
-      }
+    }
 
-    const Header = ({ selectedTab, selectedCards, handleTabPress } : HeaderProps ) => {
+    const Header = ({ selectedTab, selectedCards, handleTabPress }: HeaderProps) => {
         const isCustomActionBar = selectedCards.length > 0;
         const showCustomActionBarSecond = selectedTab === labels.ArchiveChat && isCustomActionBar;
-        const navigation = useNavigation() ;
+        const navigation = useNavigation();
 
         return (
             <>
@@ -64,7 +63,7 @@ const Chats = (props: chatProps) => {
                 ) : isCustomActionBar ? (
                     <CustomActionBar text={selectedCards.length} selectedCardsCount={selectedCards.length} />
                 ) : (
-                    <ChatHeader title={labels.Chats} icon1Navigate={() => {navigation.navigate(screenName.AccountSettings as never)}} icon3Navigate={() => {navigation.navigate(screenName.NewChat as never)}} icon2Navigate={() => {navigation.navigate(screenName.ForwardTo as never)}} />
+                    <ChatHeader title={labels.Chats} icon1Navigate={() => { navigation.navigate(screenName.AccountSettings as never) }} icon3Navigate={() => { navigation.navigate(screenName.NewChat as never) }} icon2Navigate={() => { navigation.navigate(screenName.ForwardTo as never) }} />
                 )}
             </>
         );
@@ -72,7 +71,7 @@ const Chats = (props: chatProps) => {
 
     return (
         <Fragment>
-            <PurpleMainContainer style={{backgroundColor: isDarkTheme ? colors.darkModeVar1 : colors.purpleVar3}}>
+            <PurpleMainContainer style={{ backgroundColor: isDarkTheme ? colors.darkModeVar1 : colors.purpleVar3 }}>
                 <Header
                     selectedTab={selectedTab}
                     selectedCards={selectedCards}

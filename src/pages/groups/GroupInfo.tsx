@@ -3,15 +3,13 @@ import { Text, View, TouchableOpacity, ScrollView, Image, StyleSheet, Dimensions
 import { colors } from '../../utils/colors';
 import { CommonLineDividerGrey, MainContainer, RowSpaceBetween } from '../../components/commonView';
 import { useNavigation } from '@react-navigation/native';
-import { alignItemsCenter, flex1, flexRow, justyfyCenter, mb15, mh20, mr5, mt10, mt15, mt20, mt3, mt5, mv20, pl10, pl13, pt10, pt5, spaceBetween } from '../../components/commonStyles';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mb15, mh20, mr5, mt10, mt15, mt20, mt3, mt5, mv20, pl10, pl13, pt5, spaceBetween } from '../../components/commonStyles';
 import CustomIcon from '../../utils/Icons';
-import { H12fontBold400GreyVar4, H12fontBold400blackVar2, H14BlackText, H14BlackVar2Bold400Text, H14Blackvar2Bold500, H14GreyVar4Bold400, H14GreyVar4Bold400Text, H14blackVar1bold400Text, H15BlackBold600, H15Blackvar2Bold500, H15Grey, H16BlackText, H16font600Black, H18BlackText, H18Blackvar2Bold600, H18fontBoldBlack } from '../../components/commonText';
+import { H12fontBold400GreyVar4, H12fontBold400blackVar2, H14BlackVar2Bold400Text, H14Blackvar2Bold500, H14GreyVar4Bold400, H14GreyVar4Bold400Text, H14blackVar1bold400Text, H15BlackBold600, H15Blackvar2Bold500, H15Grey, H16BlackText, H16font600Black, H18BlackText, H18Blackvar2Bold600, H18fontBoldBlack } from '../../components/commonText';
 import { CardHeaderText, CustomModal } from '../../components/commonComponents';
 import { DevHeight, DevWidth } from '../../utils/device';
 import { labels } from '../../utils/labels';
-import { Chatimg1Img, Chatimg2Img, Chatimg3Img, Chatimg4Img, Chatimg5Img, GroupImg1Img } from '../../utils/png';
 import { GroupProfileAvatarIcon } from '../../utils/svg';
-import { screenName } from '../../utils/screenName';
 import { colorIconsData, colorIconsDataSecond, groupMediaData, groupsData } from '../../utils/data/groupsData';
 import { IconModal } from '../../components/commonModal';
 import { SmallButton } from '../../components/commonButtons';
@@ -59,7 +57,6 @@ export const Header = () => {
                 isVisible={optionModal}
                 width={DevWidth * 0.49}
                 modalData={<OptionModalComponent />}
-                // marginTop={48}
                 onClose={() => setOptionModal(false)}
             />
         </View>
@@ -205,8 +202,8 @@ export const Groups = () => {
                 <View style={{}} key={index}>
                     {
                         item.id === 1 ? (
-                            <View style={[styles.cardSurface,flex1, { backgroundColor: isDark() ? colors.darkModeVar4 : colors.white, }]}>
-                                <RowSpaceBetween style = {flex1}>
+                            <View style={[styles.cardSurface, flex1, { backgroundColor: isDark() ? colors.darkModeVar4 : colors.white, }]}>
+                                <RowSpaceBetween style={flex1}>
                                     <View style={[flexRow, spaceBetween]}>
                                         <View>
                                             <Image source={item.img} style={[{ height: 40, width: 40, borderRadius: 100 }, mt3]} />
@@ -217,14 +214,14 @@ export const Groups = () => {
                                             <H14GreyVar4Bold400Text style={[{ color: colors.greyVar4 }, pt5]}>{item.personName}</H14GreyVar4Bold400Text>
                                         </View>
                                     </View>
-                                    <View style = {[mr5, mt3]}>
+                                    <View style={[mr5, mt3]}>
                                         <CardHeaderText text='Admin' />
                                     </View>
                                 </RowSpaceBetween>
                             </View>
                         ) : item.id === 2 ? (
-                            <View style={[styles.cardSurface,flex1, { backgroundColor: isDark() ? colors.darkModeVar4 : colors.white, }]}>
-                                <RowSpaceBetween style = {flex1}>
+                            <View style={[styles.cardSurface, flex1, { backgroundColor: isDark() ? colors.darkModeVar4 : colors.white, }]}>
+                                <RowSpaceBetween style={flex1}>
                                     <View style={[flexRow, spaceBetween]}>
                                         <View>
                                             <Image source={item.img} style={[{ height: 40, width: 40, borderRadius: 100 }, mt3]} />
@@ -235,7 +232,7 @@ export const Groups = () => {
                                             <H14GreyVar4Bold400Text style={[{ color: colors.greyVar4 }, pt5]}>{item.personName}</H14GreyVar4Bold400Text>
                                         </View>
                                     </View>
-                                    <View style = {[mr5, mt3]}>
+                                    <View style={[mr5, mt3]}>
                                         <CardHeaderText text='Admin' />
                                     </View>
                                 </RowSpaceBetween>
@@ -453,7 +450,6 @@ const styles = StyleSheet.create({
     },
     gridItem: {
         flex: 1,
-
     },
     gridItemImage: {
         width: (Dimensions.get('window').width - 75) / 4,

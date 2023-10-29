@@ -1,23 +1,14 @@
-import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { Text, View, Image, StyleSheet, ScrollView } from 'react-native';
-import { screenName } from '../../utils/screenName';
+import { View, Image, StyleSheet, ScrollView } from 'react-native';
 import { newChatData } from '../../utils/data/chatsData';
-import { alignItemsCenter, alignSelfCenter, flex1, flexRow, justifyStart, justyfyCenter, mh20, mh30, ml10, ml15, ml30, mr15, mr30, mt15, mt3, mt5, mv10, mv20, p10, pb5 } from '../../components/commonStyles';
+import { alignItemsCenter, flex1, flexRow, justyfyCenter, mh20, mt15, mt3, mt5, mv10, p10, pb5 } from '../../components/commonStyles';
 import { colors } from '../../utils/colors';
-import { DevHeight, DevWidth } from '../../utils/device';
-import CustomIcon from '../../utils/Icons';
-import { RowSpaceAround, RowSpaceBetween } from '../../components/commonView';
-import { H14GreyVar4Bold400, H15Blackvar2Bold500, H18BlackBoldText600 } from '../../components/commonText';
+import { RowSpaceBetween } from '../../components/commonView';
+import { H14GreyVar4Bold400, H15Blackvar2Bold500 } from '../../components/commonText';
 import { labels } from '../../utils/labels';
 import { MultiSelectOption } from '../../components/commonComponents';
-import { createGroupUserSelectData } from '../../utils/data/groupsData';
-import { SmallButton } from '../../components/commonButtons';
 import { isDark, useTheme } from '../../Theme/ThemeContext';
 import { SearchHeader } from '../Media/MediaCommonHeader';
-
-
-
 
 const Forward = () => {
     const { theme } = useTheme();
@@ -26,7 +17,7 @@ const Forward = () => {
     const [optionSelect, setOptionSelect] = useState(false);
 
 
-     const handleItemSelect = (itemId: number) => {
+    const handleItemSelect = (itemId: number) => {
         if (optionSelect) {
             setSelectedItems((prevSelectedItems) =>
                 prevSelectedItems.filter((item) => item !== itemId)
@@ -41,8 +32,8 @@ const Forward = () => {
     };
 
     return (
-        <View style={[flex1, { backgroundColor:isDark()?colors.darkModeVar2: colors.whiteVar0 }]} >
-            <SearchHeader headerText={labels.ForwardTo}  searchIcon={true}/>
+        <View style={[flex1, { backgroundColor: isDark() ? colors.darkModeVar2 : colors.whiteVar0 }]} >
+            <SearchHeader headerText={labels.ForwardTo} searchIcon={true} />
             <ScrollView showsVerticalScrollIndicator={false} >
                 <View style={[flex1, mh20, mt15]}>
                     {
@@ -52,7 +43,7 @@ const Forward = () => {
                                     <View style={[flexRow]}>
                                         <View style={[alignItemsCenter, justyfyCenter]}>
                                             <Image source={item.img} style={styles.profileImg} />
-                                            <View style={[{ backgroundColor: item.status === 'active' ? (isDark()?colors.greenVar2:colors.green) : '' ,borderColor: isDarkTheme?colors.darkModeVar4:colors.white}, item.status === 'active' ? styles.status : null]} />
+                                            <View style={[{ backgroundColor: item.status === 'active' ? (isDark() ? colors.greenVar2 : colors.green) : '', borderColor: isDarkTheme ? colors.darkModeVar4 : colors.white }, item.status === 'active' ? styles.status : null]} />
                                         </View>
                                         <View style={[flex1]}>
                                             <RowSpaceBetween style={[pb5]}>
@@ -86,7 +77,6 @@ const styles = StyleSheet.create({
     },
     status: {
         borderWidth: 3,
-        
         position: 'absolute',
         bottom: 0,
         right: 10,
